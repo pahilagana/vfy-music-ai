@@ -1,0 +1,110 @@
+{
+  "name": "DownLoad-Fy",
+  "short_name": "VFy",
+    "share_target": {
+    "action": " /",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "./vivek/viveklogo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+        }
+  ],
+  "screenshots": [
+{
+      "src": "./vivek/vkk.jpg",
+      "type": "image/jpeg",
+      "sizes": "320x640"
+    },
+    {
+      "src": "./vk1.jpg",
+      "type": "image/jpeg",
+      "sizes": "320x640"
+    },
+    {
+      "src": "./vivek/vk2.jpg",
+      "type": "image/jpeg",
+      "sizes": "320x640"
+    },
+{
+      "src": "./vk3.jpg",
+      "type": "image/jpeg",
+      "sizes": "320x640"
+    },
+    {
+      "src": "./vk4.jpg",
+      "type": "image/jpeg",
+      "sizes": "320x640"
+    },
+{
+      "src": "./vk5.jpg",
+      "type": "image/jpeg",
+      "sizes": "320x640"
+    },
+    {
+      "src": "./vk6.jpg",
+      "type": "image/jpeg",
+      "sizes": "320x640"
+    },
+{
+      "src": "./vk7.jpg",
+      "type": "image/jpeg",
+      "sizes": "320x640"
+    },
+    
+    {
+      "src": "./vk8.jpg",
+      "type": "image/jpeg",
+      "sizes": "320x640"
+    }
+ ],
+  "shortcuts": [
+
+    {
+      "name": "VFy-MUSIC",
+      "url": "/directdl",
+      "icons": [
+        {
+          "src": "/logo/vkji.png",
+          "type": "image/png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "VFy-Video",
+      "url": "/fm",
+      "icons": [
+        {
+          "src": "/logo/1vivek.png",
+          "type": "image/png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    
+    {
+      "name": "VFy-Music",
+      "url": "/music",
+      "icons": [
+        {
+          "src": "/logo/vivek2.png",
+          "type": "image/png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+ "description": "VFy:Support:- YouTube Facebook Instagram Twitter Vimeo Spotify SoundCloud And 1000+Website's "
+}
