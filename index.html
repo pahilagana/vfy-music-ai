@@ -1,4 +1,24 @@
+	<div id="loadingvkm">
 
+  
+
+
+
+  
+  
+  <div class="loading-icon">
+<h4>VFy</h4>
+	
+</div>
+  
+
+
+
+  
+
+
+
+  </div>
 
 <link href='https://www.blogger.com/static/v1/widgets/55013136-widget_css_bundle.css' rel='stylesheet' type='text/css'/>
 <link rel="manifest" href="./manifest.webmanifest">
@@ -50,27 +70,7 @@ video audio  downloading site so please  visit and download high quality audio s
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Vivekmasona/musicjs/bootstrap.min.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Vivekmasona/musicjs/jquery.mobile-1.4.5.min.css" />
 
-	<div id="loadingvkm">
 
-  
-
-
-
-  
-  
-  <div class="loading-icon">
-<h4>VFy</h4>
-	
-</div>
-  
-
-
-
-  
-
-
-
-  </div>
 
 <style>
 h4 {
@@ -578,7 +578,7 @@ var offlineMsg = document.getElementById("offline-message");
 
 
 <style>
-#share_titlevk,#share_textvk,#outputvk{
+#share_titlevk,#share_textvk,#outputvkm{
     text-align:center;
     font-size:0px;
 }
@@ -601,7 +601,7 @@ var offlineMsg = document.getElementById("offline-message");
 </style>
 
 
-<div id="outputvk"></div>
+<div id="outputvkm"></div>
 <div id="share_titlevk"></div>
 <div id="share_textvk"></div>
 
@@ -613,7 +613,7 @@ var offlineMsg = document.getElementById("offline-message");
     vTitle.innerText = 'Title- VIVEKFY '   + url.searchParams.get('title');
     let vUrl = document.querySelector('#share_textvk');
     vUrl.innerText  = 'URL - ' + url.searchParams.get('text');
-    let output = document.querySelector("#outputvk");
+    let output = document.querySelector("#outputvkm");
     console.log(output);
     function hide(){
       document.querySelector('#loadingvk').style="display:none";
