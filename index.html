@@ -313,11 +313,9 @@ function getOutput(item,i){
  //Build our output:
   var output =
   '<ul data-role="listview" data-inset="true" id="myList">' +
-      '<li><a onclick="loadSong(this)" index="'+i+'" class="list" vid="'+id+'"><img src="'+thumb+'" alt="vivekfy.jpg"><font size="6"
-          face="arial"
-          color="#15E2F5">
+      '<li><a onclick="loadSong(this)" index="'+i+'" class="list" vid="'+id+'"><img src="'+thumb+'" alt="vivekfy.jpg" font color="#15E2F5">
           vivekfy:-
-    </font>'+title+'</a></li>' +
+    '+title+'</a></li>' +
   '</ul>';
 
   return output;
