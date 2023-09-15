@@ -313,7 +313,11 @@ function getOutput(item,i){
  //Build our output:
   var output =
   '<ul data-role="listview" data-inset="true" id="myList">' +
-      '<li><a onclick="loadSong(this)" index="'+i+'" class="list" vid="'+id+'"><img src="'+thumb+'" alt="vivekfy.jpg">VFY:-'+title+'</a></li>' +
+      '<li><a onclick="loadSong(this)" index="'+i+'" class="list" vid="'+id+'"><img src="'+thumb+'" alt="vivekfy.jpg"><font size="6"
+          face="arial"
+          color="#15E2F5">
+          vivekfy:-
+    </font>'+title+'</a></li>' +
   '</ul>';
 
   return output;
@@ -337,8 +341,8 @@ function play(id,Sid){
      // data = "https://vivekmasona.000webhostapp.com/Play?vfy=https://youtu.be/"+id;
        document.getElementById("SThumb").src = "https://i.ytimg.com/vi/"+id+"/hqdefault.jpg";
     document.getElementById("pahilagana").onclick = ()=>{
-        location.href= "https://mp3api.ytjar.info/?id="+id;
-        // location.href= "https://vfy-live.netlify.app/dl/?title=Thanks+VfyTM&text="+id;
+        // location.href= "https://mp3api.ytjar.info/?id="+id;
+        location.href= "https://vfy-live.netlify.app/dl/?title=Thanks+VfyTM&text="+id;
     };
 document.getElementById("vivekmasona").onclick = ()=>{
         location.href= "https://vivekfy.onrender.com/videodl?url="+id;
