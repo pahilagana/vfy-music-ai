@@ -1,9 +1,27 @@
 <script>
-var op = new Audio();
-op.src = 'https://drive.uber.radio/uber/bollywoodlove/icecast.audio';
+
+var audio = document.getElementById('audio');
+var isPlaying = false;
+
+$('.btn-play-music').click(function(){
+    $(this).toggleClass('pause');
+    $(this).parent('.music-box').toggleClass('playing');
+    $(this).find('.fa').toggleClass('fa-pause');
+    if (isPlaying) {
+      audio.pause()
+    } else {
+      audio.play();
+    }
+});
+audio.onplaying = function() {
+  isPlaying = true;
+};
+audio.onpause = function() {
+  isPlaying = false;
+};
+
 </script>
 
-<script src='demo-to-prevent-copy-paste-on-blogger_files/googleapis.js'></script><script type='text/javascript'> if(typeof document.onselectstart!="undefined" ) {document.onselectstart=new Function ("return false" ); } else{document.onmousedown=new Function ("return false" );document.onmouseup=new Function ("return false"); } </script>
 
 
 
@@ -171,7 +189,17 @@ border-radius:5px;
   <div id="upper">
     <div data-role="header">
       
-      <h1>VFY
+	    
+	    <div class="music-box">
+  <button  class="btn btn-play-music play"><i class="fa fa-play"></i></button>
+  <br>
+  <audio id="audio" autostart="0" autostart="false">
+    <source src="https://drive.uber.radio/uber/bollywoodlove/icecast.audio" type="audio/mp3" />
+  </audio>
+</div>
+      
+	    
+	    <h1>VFY
 <span id="Tube">Music<span></span></span></h1>
       
     </div>
