@@ -228,7 +228,7 @@ border-radius:5px;
 
       <li style="width:50px; height:50px; position: relative; border:0.5px solid transparent;"><img style="width:100%; height:100%;" id="SThumb" src="/vivek2.png" /></li>
       <li><a id="play"><i class="fa fa-stop" aria-hidden="true"></i></a></li>
-      <li><a id="vivekmasona"><i class="fa fa-tv" aria-hidden="true"></i></a></li>
+      <li><a id="vivekmasona"><i class="fa fa-info-circle" aria-hidden="true"></i></a></li>
       <li><a id="pahilagana"><i class="fa fa-download" aria-hidden="true"></i></a></li>
       
     </ul>
@@ -313,7 +313,7 @@ function getOutput(item,i){
  //Build our output:
   var output =
   '<ul data-role="listview" data-inset="true" id="myList">' +
-      '<li><a onclick="loadSong(this)" index="'+i+'" class="list" vid="'+id+'"><img src="'+thumb+'" alt="vivekfy.jpg">VFY:-'+title+'</a></li>' +
+      '<li><a onclick="loadSong(this)" index="'+i+'" class="list" vid="'+id+'"><img src="'+thumb+'" alt="vivekfy.jpg">VFY💕'+title+'</a></li>' +
   '</ul>';
 
   return output;
@@ -341,7 +341,7 @@ function play(id,Sid){
         location.href= "https://vivekfy-mp3-api.onrender.com/download?url=https://youtu.be/"+id;
     };
 document.getElementById("vivekmasona").onclick = ()=>{
-        location.href= "https://vivekfy.onrender.com/videodl?url="+id;
+        location.href= "https://vivekfy.deno.dev/vid?id="+id;
     };
 
     audio = document.getElementById("SAudio");
