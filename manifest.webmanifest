@@ -5,7 +5,7 @@
     "action": "/",
     "params": {
       "titl": "titl",
-      "text": "text",
+      "tex": "tex",
       "url": "url"
     }
   },
