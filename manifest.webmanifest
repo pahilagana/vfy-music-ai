@@ -1,12 +1,14 @@
 {
-  "name": "Vfy Smart Ai",
+  "name": "Player-or-Downloader ",
   "short_name": "VFy-MUSIC",
+    "share_target": {
+    "action": "/",
     "params": {
-    "title": "title",
-    "text": "text",
-    "url": "url"
-  }
-}
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
 
   "start_url": "./",
   "display": "standalone",
