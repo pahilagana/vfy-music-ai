@@ -5,7 +5,7 @@
     "action": "/",
     "params": {
       "titl": "titl",
-      "tex": "tex",
+      "text": "text",
       "url": "url"
     }
   },
@@ -23,5 +23,5 @@
   ],
   
     
- "description": "VFy:Support:- ONLINE MUSIC PLAYER  "
+ "description": "VFy:Support:- ONLINE MUSIC PLAYER AND MUSIC DOWNLOAD"
 }
