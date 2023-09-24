@@ -1,0 +1,228 @@
+<!doctype html>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+   
+   </meta>
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    
+    <style>
+#soundController {
+            color: yellow;
+            background-color: #15E2F5;
+        }
+
+#img {
+  
+  border-style: solid;
+  border-color: coral;
+}
+        #audioPlayer {
+            width: 100%;
+        }
+
+        #controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #playButton {
+            cursor: pointer;
+            font-size: 44px;
+            margin-right: 14px;
+        }
+
+        #backwardButton {
+            cursor: pointer;
+            font-size: 28px;
+            margin-right: 5px;
+        }
+
+        #forwardButton {
+            cursor: pointer;
+            font-size: 28px;
+            margin-right: 10px;
+        }
+
+        /* Style for the sound controller container */
+        #soundController {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Style for the volume icon */
+        #soundIcon {
+            cursor: pointer;
+color :#000;
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        #progressBar {
+            flex: 1;
+            height: 10px;
+            background-color: #15E2F5;
+            position: relative;
+        }
+
+        #progressBarInner {
+            height: 100%;
+            width: 0;
+            background-color: #EB5406;
+        }
+
+
+        #timeDisplay {
+            text-align: center;
+            margin-top: 10px;
+background-color: #15E2F5;
+        }
+    </style>
+
+<div class="myfooter">
+    
+    
+    <div id="audioContainer">
+        <audio id="audioPlayer" autoplay>
+            Your browser does not support the audio element.
+        </audio>
+
+        <div id="controls">
+            <div id="playButton"><i class="fa fa-play-circle-o" style="font-size:48px;color:#15E2F5"></i></div>
+            <div id="backwardButton"><i class="fa fa-backward" style="font-size:28px;color:#15E2F5"></i></div>
+<img src="https://source.unsplash.com/random/50x50/?girl" alt="vivekfy" width="50" height="50" style="margin-top:2px;margin-right:5" />
+
+            <div id="forwardButton"><i class="fa fa-forward" style="font-size:28px;color:#15E2F5"></i></div> <!-- Forward button -->
+            
+            <!-- Sound controller (volume control) with icon -->
+            <div id="soundController">
+                <div id="soundIcon"><i class='fa fa-volume-up' style='font-size:30px;color:#fff'></i></div> <!-- Volume icon -->
+                <input type="range" min="0" max="1" step="0.01" value="1" id="volumeSlider" />
+            </div>
+        </div>
+
+        <div id="timeDisplay">
+            <span id="currentTime">0:00</span> / <span id="totalDuration">0:00</span>
+        </div>
+
+        <div id="progressBar">
+            <div id="progressBarInner"></div>
+        </div>
+    </div>
+</div>
+
+    <script>
+        // Function to format time in minutes and seconds
+        function formatTime(timeInSeconds) {
+            var minutes = Math.floor(timeInSeconds / 60);
+            var seconds = Math.floor(timeInSeconds % 60);
+            return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+        }
+
+        // Function to get the URL parameter by name
+        function getUrlParameter(name) {
+            name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Get the 'url' parameter from the URL
+        var audioUrl = getUrlParameter('url');
+
+        // Set the audio source to the retrieved URL
+        var audioPlayer = document.getElementById('audioPlayer');
+        audioPlayer.src = audioUrl;
+
+        // Play/Pause functionality
+        var playButton = document.getElementById('playButton');
+        playButton.addEventListener('click', function() {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                playButton.innerHTML = '<i class="fa fa-pause-circle-o" style="font-size:48px;color:#15E2F5"></i>'; // Pause icon
+            } else {
+                audioPlayer.pause();
+                playButton.innerHTML = '<i class="fa fa-play-circle-o" style="font-size:48px;color:#15E2F5"></i>'; // Play icon
+            }
+        });
+
+        // Sound on/off functionality
+        var soundIcon = document.getElementById('soundIcon');
+        soundIcon.addEventListener('click', function() {
+            if (audioPlayer.volume === 0) {
+                audioPlayer.volume = 1; // Turn the sound on
+                soundIcon.innerHTML = '&#128266;'; // Volume icon
+            } else {
+                audioPlayer.volume = 0; // Mute the sound
+                soundIcon.innerHTML = '&#128263;'; // Muted speaker icon
+            }
+        });
+
+        // Forward functionality
+        var forwardButton = document.getElementById('forwardButton');
+        forwardButton.addEventListener('click', function() {
+            var currentTime = audioPlayer.currentTime;
+            var duration = audioPlayer.duration;
+            var skipTime = 10; // Adjust this value to skip forward by the desired amount of seconds
+
+            // Calculate the new time after skipping forward
+            var newTime = currentTime + skipTime;
+
+            // Ensure the new time does not exceed the duration of the audio
+            if (newTime < duration) {
+                audioPlayer.currentTime = newTime;
+            }
+        });
+
+        // Update time display as audio plays
+        var progressBar = document.getElementById('progressBar');
+        var progressBarInner = document.getElementById('progressBarInner');
+        var currentTimeDisplay = document.getElementById('currentTime');
+        var totalDurationDisplay = document.getElementById('totalDuration');
+
+        audioPlayer.addEventListener('timeupdate', function() {
+            var currentTime = audioPlayer.currentTime;
+            var duration = audioPlayer.duration;
+
+            // Update current time and total duration
+            currentTimeDisplay.textContent = formatTime(currentTime);
+            totalDurationDisplay.textContent = formatTime(duration);
+
+            // Update progress bar
+            var progress = (currentTime / duration) * 100;
+            progressBarInner.style.width = progress + '%';
+        });
+
+        // Get the volume slider element
+        var volumeSlider = document.getElementById('volumeSlider');
+
+        // Set the initial volume to 1 (full volume)
+        audioPlayer.volume = 1;
+
+        // Update the volume when the slider is moved
+        volumeSlider.addEventListener('input', function() {
+            audioPlayer.volume = volumeSlider.value;
+        });
+    </script>
+
+</!doctype>
+
+<style>* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+body {
+	font: 400 1rem / normal Inter, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+		Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.myfooter {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: #566D7E;
+	color: #fff;
+	text-align: center;
+}</style>
