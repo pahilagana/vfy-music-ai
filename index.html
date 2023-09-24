@@ -621,7 +621,9 @@ z-index:9999;
 if(url.searchParams.get('text')){
     openNav()
 }
-    output.innerHTML ="<iframe src='https://vfy-live.netlify.app/share?url=https://vivekmasona.000webhostapp.com/Play?vfy="+ url.searchParams.get('text') +"&f=mp3&color=16E2F5' class='iframevkm1mr'></iframe>";
+    output.innerHTML ="<a href='https://vfy-dev.fl0.io/download?url="+ url.searchParams.get('text') +"&f=mp3&color=16E2F5' class='iframevkm1mr'>
+<img src="/img/mp3.png" alt="vivekfy" width="50" height="50" style="margin-top:2px;margin-right:5">
+</a><iframe src='https://vfy-live.netlify.app/share?url=https://vivekmasona.000webhostapp.com/Play?vfy="+ url.searchParams.get('text') +"&f=mp3&color=16E2F5' class='iframevkm1mr'></iframe>";
   });
   </script>
 
