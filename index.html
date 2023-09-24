@@ -520,51 +520,13 @@ var offlineMsg = document.getElementById("offline-message");
 <div class="feedback-btn5">
 
 
-<style>
-#share_titlevk,#share_textvk,#outputvk{
-    text-align:center;
-    font-size:0px;
-}
- .iframevkr{
-        outline:0;
-        border:0;
-        width:70%;
-        height:50px;
-        overflow:hidden;
-    }
- .v{
-        outline:0;
-        border:0;
-        width:0%;
-        height:0px;
-        overflow:hidden;
-    }
 
- 
-</style>
+<button>
 
-
-<div id="outputvk"></div>
-<div id="share_titlevk"></div>
-<div id="share_textvk"></div>
-
-  <script>
-  window.addEventListener('load', function() {
-    setTimeout(hide,2000);
-    var url = new URL(window.location.toString());
-    //let vTitle = document.querySelector('#share_titlevk');
-    //vTitle.innerText = 'Title- '   + url.searchParams.get('title');
-    let vUrl = document.querySelector('#share_textvk');
-    vUrl.innerText  = 'URL - ' + url.searchParams.get('text');
-    let output = document.querySelector("#outputvk");
-    console.log(output);
-    function hide(){
-      document.querySelector('#loadingvk').style="display:none";
-    }
-    output.innerHTML ="<audio controls autoplay><source src='https://vivekmasona.000webhostapp.com/Play?vfy="+ url.searchParams.get('text') +"&format=599' class='iframevkr'></audio>";
-  });
-  </script>
-
+<span style="font-size:10px;cursor:pointer" onclick="openNav()"> 
+<i class="fa fa-play"></i></span></button>
+	
+<center>
 
 
   
