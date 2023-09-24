@@ -145,6 +145,22 @@ background-color: #15E2F5;
                 playButton.innerHTML = '<i class="fa fa-play-circle-o" style="font-size:48px;color:#15E2F5"></i>'; // Play icon
             }
         });
+// Backward functionality
+var backwardButton = document.getElementById('backwardButton');
+backwardButton.addEventListener('click', function() {
+    var currentTime = audioPlayer.currentTime;
+    var skipTime = 10; // Adjust this value to skip backward by the desired amount of seconds
+
+    // Calculate the new time after skipping backward
+    var newTime = currentTime - skipTime;
+
+    // Ensure the new time is not negative
+    if (newTime >= 0) {
+        audioPlayer.currentTime = newTime;
+    }
+});
+
+	    
 
         // Sound on/off functionality
         var soundIcon = document.getElementById('soundIcon');
