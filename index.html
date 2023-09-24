@@ -698,8 +698,11 @@ Color:red;
   <div class="overlay-content">
     <center>
 
-<div id='pop'>
-</marquee><div id="share_titlevkm1m"></div>
+<div class="alert alert-success" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong><div id="share_titlevkm1m">
+
+</div>
 <div id="share_textvkm1m"></div></div>
 <div id="outputvkm1m"></div>    
 </center>
@@ -941,33 +944,16 @@ function toastCaseValidation(option){
 
 
 
-</style>
-<style>#pop{
-height: 0%;
 
-width: 100%;
-position: fixed;
-bottom: 80%;
-right: 0%;
-border: 0px solid;
-padding: 10px;
-background: transparent;
-border-radius: 100%;
-}
 
-#pop{
-height: 0%;
 
-width: 100%;
-position: fixed;
-bottom: 40%;
-right: 0%;
-border: 0px solid;
-padding: 10px;
-background: transparent;
-border-radius: 100%;
-}
-</style>
+
+<script>window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+    });
+}, 2000);</script>
+
 	
 	
 
