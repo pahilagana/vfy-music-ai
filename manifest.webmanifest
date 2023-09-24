@@ -4,7 +4,7 @@
     "share_target": {
     "action": "/",
     "params": {
-      "titl": "titl",
+      "titl": "title",
       "text": "text",
       "url": "url"
     }
