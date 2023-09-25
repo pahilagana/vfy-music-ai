@@ -96,9 +96,13 @@ background-color: #15E2F5;
     </style>
 
 <div class="myfooter">
-    
+    <div id="thumbnailContainer"></div>
     
     <div id="audioContainer">
+<div id="progressBar">
+            <div id="progressBarInner"></div>
+        </div>
+	    
         <audio id="audioPlayer" autoplay>
             Your browser does not support the audio element.
         </audio>
@@ -126,9 +130,7 @@ background-color: #15E2F5;
             <span id="currentTime">0:00</span> / <span id="totalDuration">0:00</span>
         </div>
 
-        <div id="progressBar">
-            <div id="progressBarInner"></div>
-        </div>
+        
     </div>
 </div>
 
@@ -252,6 +254,44 @@ loopButton.addEventListener('click', function() {
             audioPlayer.volume = volumeSlider.value;
         });
     </script>
+
+  <script>
+        function getVideoIdFromUrl(url) {
+            const shortUrlMatch = url.match(/youtu.be\/([^?]+)/);
+            if (shortUrlMatch && shortUrlMatch.length > 1) {
+                return shortUrlMatch[1];
+            }
+        
+            const regularUrlMatch = url.match(/[?&]v=([^&]+)/);
+            if (regularUrlMatch && regularUrlMatch.length > 1) {
+                return regularUrlMatch[1];
+            }
+        
+            return null;
+        }
+        
+        // Get the URL parameter from the query string
+        const urlParam = new URLSearchParams(window.location.search).get('url');
+        
+        if (urlParam) {
+            const videoId = getVideoIdFromUrl(urlParam);
+        
+            if (videoId) {
+                const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+                const thumbnailContainer = document.getElementById('thumbnailContainer');
+        
+                const thumbnailImg = document.createElement('img');
+                thumbnailImg.src = thumbnailUrl;
+                thumbnailImg.alt = 'YouTube Thumbnail';
+                thumbnailImg.classList.add('img-fluid');
+        
+                thumbnailContainer.appendChild(thumbnailImg);
+            } 
+
+        } 
+    </script>
+
+
 
 </!doctype>
 
