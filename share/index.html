@@ -164,6 +164,12 @@ background-color: #15E2F5;
         // Set the audio source to the retrieved URL
         var audioPlayer = document.getElementById('audioPlayer');
         audioPlayer.src = audioUrl;
+	   
+	    // Automatically skip to 20 seconds when the audio starts playing
+audioPlayer.addEventListener('play', function() {
+    audioPlayer.currentTime = 10; // Skip to 20 seconds
+});
+	    
 
         // Play/Pause functionality
         var playButton = document.getElementById('playButton');
