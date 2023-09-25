@@ -216,7 +216,7 @@ var loopButton = document.getElementById('loopButton');
 loopButton.addEventListener('click', function() {
     if (audioPlayer.loop) {
         audioPlayer.loop = false; // Disable looping
-        loopButton.style.color = 'black'; // Change the button color to indicate looping is off
+        loopButton.style.color = 'red'; // Change the button color to indicate looping is off
     } else {
         audioPlayer.loop = true; // Enable looping
         loopButton.style.color = 'yellow'; // Change the button color to indicate looping is on
