@@ -37,10 +37,14 @@
 var op = new Audio();
 op.src = '/effect/Click.mp3';
 </script>
+<script>
+var vfy = new Audio();
+vfy.src = '/effect/done.mp3';
+</script>
 
 <script src='demo-to-prevent-copy-paste-on-blogger_files/googleapis.js'></script><script type='text/javascript'> if(typeof document.onselectstart!="undefined" ) {document.onselectstart=new Function ("return false" ); } else{document.onmousedown=new Function ("return false" );document.onmouseup=new Function ("return false"); } </script>
 
-<vivek href="#" onmousedown="op.play()">
+<vivek href="#" onmousedown="vfy.play()">
 
 
 
@@ -621,7 +625,7 @@ z-index:9999;
 if(url.searchParams.get('text')){
     openNav()
 }
-    output.innerHTML ="<vfy id='showAutoClose'><a href='https://projectlounge.pw/ytdl/download?url="+ url.searchParams.get('text') +"&color=000'><img src='img/mp4.png' alt='720p video direct download' width='300' height='10%'></a><a href='https://vivekfy-dev.fl0.io/download?url="+ url.searchParams.get('text') +"&color=000'><img src='img/mp3.png' alt='256k mp3 direct download' width='300' height='10%'></a></vfy><iframe src='https://vfy-live.netlify.app/share?url=https://vivekmasona.000webhostapp.com/Play?vfy="+ url.searchParams.get('text') +"&f=mp3&color=16E2F5' class='iframevkm1mr'></iframe>";
+    output.innerHTML ="<vivek href='#' onmousedown='vfy.play()'><a href='https://projectlounge.pw/ytdl/download?url="+ url.searchParams.get('text') +"&color=000'><img src='img/mp4.png' alt='720p video direct download' width='300' height='10%'></a><a href='https://vivekfy-dev.fl0.io/download?url="+ url.searchParams.get('text') +"&color=000'><img src='img/mp3.png' alt='256k mp3 direct download' width='300' height='10%'></a></vivek><iframe src='https://vfy-live.netlify.app/share?url=https://vivekmasona.000webhostapp.com/Play?vfy="+ url.searchParams.get('text') +"&f=mp3&color=16E2F5' class='iframevkm1mr'></iframe>";
   });
   </script>
 
