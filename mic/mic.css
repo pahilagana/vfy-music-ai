@@ -2,7 +2,7 @@
     /* Style for the "off" state */
     button {
       padding: 10px 20px;
-      background-color: #FF5733;
+      background-color: #16e2f5;
       color: white;
       border: none;
       border-radius: 5px;
@@ -12,6 +12,6 @@
 
     /* Style for the "on" state */
     button.on {
-      background-color: #33FF33;
+      background-color: red;
     }
   
