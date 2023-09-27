@@ -16,7 +16,7 @@
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "./vivek2.png",
+      "src": "./v.png",
       "type": "image/png",
       "sizes": "512x512"
         }
