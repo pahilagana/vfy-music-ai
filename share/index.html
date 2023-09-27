@@ -158,7 +158,12 @@ background-color: #15E2F5;
             Your browser does not support the audio element.
         </audio>
 	
-    <div id="thumbnailContainer"></div>
+    <div id="thumbnailContainer" class="full-screen-container">
+        <div class="square-frame">
+            <!-- The generated thumbnail image will be inserted here -->
+            <img src="" alt="vivekfy:-Download kar Lo yarr" class="img-fluid" />
+        </div>
+    </div>
     
     <div id="audioContainer">
 <div id="progressBar">
@@ -318,7 +323,11 @@ loopButton.addEventListener('click', function() {
         });
     </script>
 
-  <script>
+  
+
+
+
+<script>
         function getVideoIdFromUrl(url) {
             const shortUrlMatch = url.match(/youtu.be\/([^?]+)/);
             if (shortUrlMatch && shortUrlMatch.length > 1) {
@@ -341,22 +350,11 @@ loopButton.addEventListener('click', function() {
         
             if (videoId) {
                 const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-                const thumbnailContainer = document.getElementById('thumbnailContainer');
-        
-                const thumbnailImg = document.createElement('img');
+                const thumbnailImg = document.querySelector('#thumbnailContainer .img-fluid');
                 thumbnailImg.src = thumbnailUrl;
-                thumbnailImg.alt = 'vivekfy:-Download kar Lo yarr';
-                thumbnailImg.classList.add('img-fluid');
-        
-                thumbnailContainer.appendChild(thumbnailImg);
-            } 
-
-        } 
+            }
+        }
     </script>
-
-
-
-
 
 
 
