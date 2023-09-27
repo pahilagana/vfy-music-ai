@@ -46,11 +46,10 @@ op.src = '/effect/Click.mp3';
 
 
 <style>
-   /* Style for the custom three-dot menu icon */
-        .custom-audio-player .menu-icon {
-            display: inline-block;
-            cursor: pointer;
-        } 
+   /* Hide the mute button */
+    audio::-webkit-media-controls-mute-button {
+        display: none !important;
+    }
 
     
 </style>
