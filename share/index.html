@@ -395,8 +395,8 @@ body {
 
     /* Define the square frame with a fixed size */
     .square-frame {
-        width: 200px; /* Adjusted to reduce the border size */
-        height: 400px; /* Adjusted to reduce the border size */
+        width: 100%; /* Adjusted to reduce the border size */
+        height: auto; /* Adjusted to reduce the border size */
     }
 
     /* Style the thumbnail image */
@@ -410,16 +410,16 @@ body {
         transition: border 0.3s, box-shadow 0.3s; /* Transition for border and shadow */
         transform-origin: center; /* Set the rotation origin */
         border-radius: 5%; /* Make the image round */
-        animation: rotate10 0.5s linear infinite; /* Rotate the image infinitely */
+        animation: rotate360 118s linear infinite; /* Rotate the image infinitely */
     }
 
     /* Animation for rotation */
-    @keyframes rotate10 {
+    @keyframes rotate360 {
         from {
             transform: rotate(0deg);
         }
         to {
-            transform: rotate(10deg);
+            transform: rotate(360deg);
         }
     }
 </style>
