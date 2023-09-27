@@ -908,7 +908,13 @@ function toastCaseValidation(option){
     background: #000;
   }
 
+<div class="feedback-btn5">
+<script src="/mic/mic.js"></script>
+<link rel="stylesheet" href="/mic/mic.css">	
+<!-- Toggle button with CSS class -->
+<button id="toggleButton" onclick="toggleMicrophone()"><i class="fa fa-microphone" style="font-size:18px;color:green"></i></button>
 
+</div>	
 
 
 
@@ -925,6 +931,49 @@ div.vfy1 {
         $(this).remove(); 
     });
 }, 4000);</script>
+
+
+
+<style>
+.feedback-btn5 {
+z-index:9999;
+    Position: absolute;
+    position-attachment: fixed;
+    width: 42px;
+    height: 42px;
+    background: #566D7E;
+    top: 82%;
+    right: 0;
+    border-left: 2px solid #16E2F5;
+    border-top: 2px solid #16E2F5;
+    border-bottom: 2px solid #16E2F5;
+    box-shadow: 1px 1px 3px #000;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+}
+
+.feedback-btn5:hover {
+	width: 50px;
+}
+
+.feedback-txt {
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    position: absolute;
+    right: -10px;
+    top: 22px;
+    color: #fff;
+    transition: 0.2s ease-out;
+}
+
+.feedback-btn5:hover .feedback-txt {
+	right: -6px;
+}</style>
+
+	
 
 	
 	
