@@ -1,0 +1,17 @@
+
+    /* Style for the "off" state */
+    button {
+      padding: 10px 20px;
+      background-color: #FF5733;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    /* Style for the "on" state */
+    button.on {
+      background-color: #33FF33;
+    }
+  
