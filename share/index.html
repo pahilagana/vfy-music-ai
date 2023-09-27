@@ -1,3 +1,51 @@
+<style>#volumeSlider {
+  /* Remove default browser styles */
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%; /* Set the width to 100% of its container */
+  height: 10px; /* Set the height as desired */
+  background: #ccc; /* Background color of the slider track */
+  border-radius: 5px; /* Rounded corners for the track */
+}
+
+#volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px; /* Set the width of the thumb */
+  height: 10px; /* Set the height of the thumb */
+  background: red; /* Color of the thumb */
+  border-radius: 50%; /* Make the thumb circular */
+  cursor: pointer; /* Show a pointer cursor on hover */
+}
+
+#volumeSlider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #007bff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Style the track when the slider is in its default state */
+#volumeSlider::-webkit-slider-runnable-track {
+  height: 10px; /* Set the height of the track */
+  background: #ccc; /* Background color of the track */
+  border-radius: 5px; /* Rounded corners for the track */
+}
+
+/* Style the track when the slider is in its disabled state */
+#volumeSlider:disabled::-webkit-slider-runnable-track {
+  background: #ccc; /* You can change this color to make it distinct when disabled */
+}
+
+/* Style the thumb when the slider is in its disabled state */
+#volumeSlider:disabled::-webkit-slider-thumb {
+  background: #ccc; /* You can change this color to make it distinct when disabled */
+}</style>
+
+
+
+
 <script>
 var op = new Audio();
 op.src = '/effect/Click.mp3';
