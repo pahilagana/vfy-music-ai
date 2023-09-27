@@ -1,7 +1,4 @@
 
-
-
-
 <link href='https://www.blogger.com/static/v1/widgets/55013136-widget_css_bundle.css' rel='stylesheet' type='text/css'/>
 <link rel="manifest" href="./manifest.webmanifest">
 <link href='/img/vfy.png' rel='apple-touch-icon' sizes='180x180'/>
@@ -35,80 +32,6 @@
 
 <link rel="manifest" href="./manifest.webmanifest">
 
-
-<style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        .audio-player {
-            max-width: 400px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .progress-bar {
-            background-color: #ddd;
-            height: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .progress {
-            background-color: #4CAF50;
-            height: 100%;
-            width: 0;
-            transition: width 0.2s;
-        }
-
-        .time-display {
-            margin-top: 5px;
-        }
-
-        /* Hide the default audio player controls */
-        audio::-webkit-media-controls-panel {
-            display: none !important;
-            appearance: none;
-        }
-    </style>
-
-<script>
-        const audio = document.getElementById('SAudio');
-        const progressBar = document.querySelector('.progress');
-        const timeDisplay = document.querySelector('.time-display');
-
-        audio.addEventListener('timeupdate', updateProgressBar);
-
-        function updateProgressBar() {
-            const currentTime = audio.currentTime;
-            const duration = audio.duration;
-            const progressPercentage = (currentTime / duration) * 100;
-            progressBar.style.width = `${progressPercentage}%`;
-
-            const currentMinutes = Math.floor(currentTime / 60);
-            const currentSeconds = Math.floor(currentTime % 60);
-            const durationMinutes = Math.floor(duration / 60);
-            const durationSeconds = Math.floor(duration % 60);
-
-            const currentTimeString = `${currentMinutes}:${currentSeconds.toString().padStart(2, '0')}`;
-            const durationTimeString = `${durationMinutes}:${durationSeconds.toString().padStart(2, '0')}`;
-
-            timeDisplay.textContent = `${currentTimeString} / ${durationTimeString}`;
-        }
-    </script>
-
-
-
-
-
-
-
-
-
-
-
 <script>
 var op = new Audio();
 op.src = '/effect/Click.mp3';
@@ -122,7 +45,14 @@ op.src = '/effect/Click.mp3';
 
 
 
+<style>
+    
 
+    /* Hide the mute button */
+    audio::-webkit-media-controls-mute-button {
+        display: none !important;
+    }
+</style>
 
 
 
@@ -309,15 +239,8 @@ border-radius:5px;
 </b></center>
 
 
-<div class="progress-bar">
-            <div class="progress"></div>
-        </div>
-        <div class="time-display">0:00 / 0:00</div>
+<audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
 
-	 <div class="audio-player"> 
-
-<audio id="SAudio"><source src='' type='audio/mpeg'></source></audio>
-	 </div>
    <div id="ppl" data-role="navbar">
     <ul id="nav">
 
@@ -1003,4 +926,5 @@ div.vfy1 {
 
 	
 	
+
 
