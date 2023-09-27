@@ -16,7 +16,7 @@
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "./v.png",
+      "src": "./img/add.png",
       "type": "image/png",
       "sizes": "512x512"
         }
