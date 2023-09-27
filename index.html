@@ -1,3 +1,4 @@
+
 <link href='https://www.blogger.com/static/v1/widgets/55013136-widget_css_bundle.css' rel='stylesheet' type='text/css'/>
 <link rel="manifest" href="./manifest.webmanifest">
 <link href='/img/vfy.png' rel='apple-touch-icon' sizes='180x180'/>
@@ -26,20 +27,16 @@
 <title>Music Fy</title>
 
 
+
+
+
 <link rel="manifest" href="./manifest.webmanifest">
 
 <script>
 var op = new Audio();
 op.src = '/effect/Click.mp3';
 </script>
-<style>
-   /* Hide the mute button */
-    audio::-webkit-media-controls-mute-button {
-        display: none !important;
-    }
 
-    
-</style>
 
 <script src='demo-to-prevent-copy-paste-on-blogger_files/googleapis.js'></script><script type='text/javascript'> if(typeof document.onselectstart!="undefined" ) {document.onselectstart=new Function ("return false" ); } else{document.onmousedown=new Function ("return false" );document.onmouseup=new Function ("return false"); } </script>
 
@@ -48,7 +45,14 @@ op.src = '/effect/Click.mp3';
 
 
 
+<style>
+   /* Hide the mute button */
+    audio::-webkit-media-controls-mute-button {
+        display: none !important;
+    }
 
+    
+</style>
 
 
 
@@ -62,6 +66,8 @@ op.src = '/effect/Click.mp3';
 <script src="https://cdn.jsdelivr.net/gh/Vivekmasona/musicjs/jquery-mobile.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Vivekmasona/musicjs/bootstrap.min.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Vivekmasona/musicjs/jquery.mobile-1.4.5.min.css" />
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+	
 <style>
 
 
@@ -176,9 +182,12 @@ border-radius:5px;
 <div data-role="page" id="home" data-theme="b">
   <div id="upper">
     <div data-role="header">
-      
-	  <a href="#" class="ui-btn ui-corner-all ui-shadow" onclick="openNav()"><i class='fa fa-sliders' style='font-size:18px;color:#16E2F5'></i></i></a>
-	   
+
+ <a href="#" class="ui-btn ui-corner-all ui-shadow" onclick="openNav()"><i class='fa fa-sliders' style='font-size:18px;color:#16E2F5'></i></i></a>
+	    
+       
+	
+	    
 	    <div class="vivek" id="example"></div>
      
 	    
@@ -228,7 +237,7 @@ border-radius:5px;
   <div data-role="footer" data-position="fixed" data-id="main-footer" id="foot">
 
 <center>
-<b hidden='' id='vivek_maurya'><img src="/dl/apk.png" alt="vivekfy application" width="165" height="50" z-index="9999"/>
+<b hidden='' id='vivek_maurya'><img src="/img/add.png" alt="vivekfy application" width="340" height="560" z-index="9999"/>
 </b></center>
 
 
@@ -439,7 +448,7 @@ document.getElementById("vivekmasona").onclick = ()=>{
 audio {
        border-radius : 0px; 
 	height: 26px;
-Width:108%;
+Width:100%;
 	outline: 2;
 
 	filter: invert(1);
@@ -520,61 +529,13 @@ var offlineMsg = document.getElementById("offline-message");
 </div></b>
 
 
-<script src="/mic/mic.js"></script>
-<link rel="stylesheet" href="/mic/mic.css">
-<div class="feedback-btn5">
-
-
 
 	
-<!-- Toggle button with CSS class -->
-<button id="toggleButton" onclick="toggleMicrophone()"><img src="mic/mic.png" alt="voice mic of announced" width="38" height="40"><button>
 <center>
 
 
   
-</div>
 
-
-<style>
-.feedback-btn5 {
-z-index:9999;
-    Position: absolute;
-    position-attachment: fixed;
-    width: 42px;
-    height: 42px;
-    background: transparent;
-    top: 82%;
-    right: 0;
-    border-left: 2px solid transparent;
-    border-top: 2px solid transparent;
-    border-bottom: 2px solid transparent;
-    box-shadow: 1px 1px 3px #000;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    cursor: pointer;
-    transition: 0.2s ease-out;
-}
-
-.feedback-btn5:hover {
-	width: 50px;
-}
-
-.feedback-txt {
-    transform: rotate(-90deg);
-    -webkit-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
-    position: absolute;
-    right: -10px;
-    top: 22px;
-    color: #fff;
-    transition: 0.2s ease-out;
-}
-
-.feedback-btn5:hover .feedback-txt {
-	right: -6px;
-}</style>
-</div>
 
 
 
@@ -648,9 +609,10 @@ body {
   z-index: 999999;
   top: 0;
   left: 0;
-  background: rgb(33,199,194);
-background: radial-gradient(circle, rgba(33,199,194,1) 36%, rgba(252,70,107,0) 79%);
-transition: 0.5s;
+  background: rgb(8,22,35);
+background: linear-gradient(180deg, rgba(8,22,35,0.9899470862888154) 8%, rgba(42,120,181,0.27354494730631507) 60%, rgba(11,140,148,0.9698412645430792) 79%);
+	overflow-x: hidden;
+  transition: 0.5s;
 }
 
 .overlay-content {
@@ -682,7 +644,6 @@ Color:#fff;
 background-color:#566D7E;
   right: 92%;
   font-size: 30px;
-
 }
 
 @media screen and (max-height: 450px) {
