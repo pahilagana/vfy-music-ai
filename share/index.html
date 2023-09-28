@@ -440,3 +440,23 @@ body {
         }
 </style>
 
+<script>
+const imgContainer = document.querySelector('.img-container');
+
+imgContainer.addEventListener('click', () => {
+    const squareFrame = document.querySelector('.square-frame');
+    squareFrame.style.borderColor = getRandomColor(); // Change border color to a random color
+});
+
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+	
+</script>
+
