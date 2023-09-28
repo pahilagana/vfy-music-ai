@@ -425,7 +425,14 @@ body {
         opacity: 0; /* Fully visible on hover */
     }
 
-        
+           .square-frame::before,
+        .square-frame::after {
+            content: "";
+            position: absolute;
+            width: calc(100% - 12px); /* Adjust for border width */
+            height: calc(100% - 12px); /* Adjust for border width */
+            border-radius: 50%;
+        }
 
         .img-container {
             width: 100%;
