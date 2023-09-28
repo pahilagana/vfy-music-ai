@@ -393,23 +393,39 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 165vh;
-
-
-		
+            height: 170vh;
+            overflow: hidden; /* Hide scrollbars */
         }
-
-	body {
-  overflow: hidden; /* Hide scrollbars */
-}
-	
 
         .square-frame {
             width: 200px;
             height: 200px;
-            border: 6px solid #16e2f5;
             border-radius: 50%;
-            overflow: hidden;
+            position: relative;
+            animation: rotation 60s linear infinite, borderChange 4s linear infinite alternate;
+        }
+
+        .square-frame::before,
+        .square-frame::after {
+            content: "";
+            position: absolute;
+            width: calc(100% - 12px); /* Adjust for border width */
+            height: calc(100% - 12px); /* Adjust for border width */
+            border-radius: 50%;
+        }
+
+        .square-frame::before {
+            top: 3px; /* Adjust for border width */
+            left: 3px; /* Adjust for border width */
+            border: 3px solid #16e2f5;
+            animation: borderChange 4s linear infinite alternate;
+        }
+
+        .square-frame::after {
+            top: 6px; /* Adjust for border width */
+            left: 6px; /* Adjust for border width */
+            border: 3px solid #ff6f61;
+            animation: borderChange 4s linear infinite alternate reverse;
         }
 
         .img-container {
@@ -418,7 +434,6 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
-		
             animation: rotation 60s linear infinite;
         }
 
@@ -438,25 +453,14 @@ body {
                 transform: rotate(360deg);
             }
         }
+
+        @keyframes borderChange {
+            0% {
+                border-color: #16e2f5;
+            }
+            100% {
+                border-color: #ff6f61;
+            }
+        }
 </style>
-
-<script>
-const imgContainer = document.querySelector('.img-container');
-
-imgContainer.addEventListener('click', () => {
-    const squareFrame = document.querySelector('.square-frame');
-    squareFrame.style.borderColor = getRandomColor(); // Change border color to a random color
-});
-
-function getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
-
-	
-</script>
 
