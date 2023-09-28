@@ -408,14 +408,7 @@ body {
             animation: rotation 60s linear infinite, borderChange 4s linear infinite alternate;
         }
 
-        .square-frame::before,
-        .square-frame::after {
-            content: "";
-            position: absolute;
-            width: calc(100% - 12px); /* Adjust for border width */
-            height: calc(100% - 12px); /* Adjust for border width */
-            border-radius: 50%;
-        }
+        
 	.square-frame::before {
         content: '';
         position: absolute;
@@ -432,19 +425,7 @@ body {
         opacity: 0; /* Fully visible on hover */
     }
 
-        .square-frame::before {
-            top: 3px; /* Adjust for border width */
-            left: 3px; /* Adjust for border width */
-            border: 3px solid #16e2f5;
-            animation: borderChange 4s linear infinite alternate;
-        }
-
-        .square-frame::after {
-            top: 6px; /* Adjust for border width */
-            left: 6px; /* Adjust for border width */
-            border: 3px solid #ff6f61;
-            animation: borderChange 4s linear infinite alternate reverse;
-        }
+        
 
         .img-container {
             width: 100%;
