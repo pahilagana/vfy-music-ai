@@ -29,20 +29,8 @@
     },
     
     
- ],
-  "shortcuts": [
 
-    {
-      "name": "Downloader",
-      "url": "/copy",
-      "icons": [
-        {
-          "src": "/logo/logo.png",
-          "type": "image/png",
-          "sizes": "192x192"
-        }
-      ]
-    },
+  
     
   ],
  "description": "VFy:Support:- YouTube Facebook Instagram Twitter Vimeo Spotify SoundCloud And 1000+Website's "
