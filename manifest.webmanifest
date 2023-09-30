@@ -23,11 +23,11 @@
   ],
   "shortcuts": [
     {
-      "name": "VFy-Music",
-      "url": "/music",
+      "name": "Downloader",
+      "url": "/copy",
       "icons": [
         {
-          "src": "/logo/vivek2.png",
+          "src": "/img/logo.png",
           "type": "image/png",
           "sizes": "192x192"
         }
