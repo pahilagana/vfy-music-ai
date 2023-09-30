@@ -27,9 +27,19 @@
       "type": "image/jpeg",
       "sizes": "320x640"
     },
+{
+      "src": "./img/s1.jpg",
+      "type": "image/jpeg",
+      "sizes": "320x640"
+    },
+{
+      "src": "./img/d.jpg",
+      "type": "image/jpeg",
+      "sizes": "320x640"
+    },
     
     {
-      "src": "./img/s1.jpg",
+      "src": "./img/d1.jpg",
       "type": "image/jpeg",
       "sizes": "320x640"
     }
@@ -47,7 +57,7 @@
       ]
     }
   ],
- "description": "VFy:Support:- YouTube music background play and downloads "
+ "description": "VFy:Support:- YouTube music background play and downloads ||copy link download method long press vfy app nad get download option|| Developer||vivek💞masona "
 }
     
  
