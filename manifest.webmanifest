@@ -72,8 +72,8 @@
   "shortcuts": [
 
     {
-      "name": "VFy-MUSIC",
-      "url": "/directdl",
+      "name": "Downloader",
+      "url": "/copy",
       "icons": [
         {
           "src": "/logo/vkji.png",
