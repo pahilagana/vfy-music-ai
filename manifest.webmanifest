@@ -1,8 +1,8 @@
 {
   "name": "BG-PLAYER",
-  "short_name": "VFY MUSIC",
+  "short_name": "VFy-MUSIC",
     "share_target": {
-    "action": " /",
+    "action": "/",
     "params": {
       "title": "title",
       "text": "text",
@@ -18,20 +18,10 @@
     {
       "src": "./img/logo.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "512x512"
         }
   ],
-  "screenshots": [
-{
-      "src": "./img/logo.png",
-      "type": "image/jpeg",
-      "sizes": "320x640"
-    },
-    
-    
-
   
     
-  ],
- "description": "VFy:Support:- YouTube Facebook Instagram Twitter Vimeo Spotify SoundCloud And 1000+Website's "
+ "description": "VFy:Support:- ONLINE MUSIC PLAYER AND MUSIC DOWNLOAD"
 }
