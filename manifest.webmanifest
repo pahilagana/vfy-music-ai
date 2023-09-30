@@ -28,11 +28,7 @@
       "sizes": "320x640"
     },
     
-    {
-      "src": "./img/logo.png",
-      "type": "image/jpeg",
-      "sizes": "320x640"
-    }
+    
  ],
   "shortcuts": [
 
