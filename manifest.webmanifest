@@ -1,8 +1,8 @@
 {
   "name": "BG-PLAYER",
-  "short_name": "VFy-MUSIC",
+  "short_name": "VFY MUSIC",
     "share_target": {
-    "action": "/",
+    "action": " /",
     "params": {
       "title": "title",
       "text": "text",
@@ -18,10 +18,93 @@
     {
       "src": "./img/logo.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "192x192"
         }
   ],
-  
+  "screenshots": [
+{
+      "src": "./vivek/vkk.jpg",
+      "type": "image/jpeg",
+      "sizes": "320x640"
+    },
+    {
+      "src": "./vk1.jpg",
+      "type": "image/jpeg",
+      "sizes": "320x640"
+    },
+    {
+      "src": "./vivek/vk2.jpg",
+      "type": "image/jpeg",
+      "sizes": "320x640"
+    },
+{
+      "src": "./vk3.jpg",
+      "type": "image/jpeg",
+      "sizes": "320x640"
+    },
+    {
+      "src": "./vk4.jpg",
+      "type": "image/jpeg",
+      "sizes": "320x640"
+    },
+{
+      "src": "./vk5.jpg",
+      "type": "image/jpeg",
+      "sizes": "320x640"
+    },
+    {
+      "src": "./vk6.jpg",
+      "type": "image/jpeg",
+      "sizes": "320x640"
+    },
+{
+      "src": "./vk7.jpg",
+      "type": "image/jpeg",
+      "sizes": "320x640"
+    },
     
- "description": "VFy:Support:- ONLINE MUSIC PLAYER AND MUSIC DOWNLOAD"
+    {
+      "src": "./vk8.jpg",
+      "type": "image/jpeg",
+      "sizes": "320x640"
+    }
+ ],
+  "shortcuts": [
+
+    {
+      "name": "VFy-MUSIC",
+      "url": "/directdl",
+      "icons": [
+        {
+          "src": "/logo/vkji.png",
+          "type": "image/png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "VFy-Video",
+      "url": "/fm",
+      "icons": [
+        {
+          "src": "/vivek/vivek.png",
+          "type": "image/png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    
+    {
+      "name": "VFy-Music",
+      "url": "/music",
+      "icons": [
+        {
+          "src": "/logo/vivek2.png",
+          "type": "image/png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+ "description": "VFy:Support:- YouTube Facebook Instagram Twitter Vimeo Spotify SoundCloud And 1000+Website's "
 }
