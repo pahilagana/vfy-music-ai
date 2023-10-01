@@ -45,6 +45,17 @@
     }
  ],
   "shortcuts": [
+{
+      "name": "Video",
+      "url": "/video",
+      "icons": [
+        {
+          "src": "/img/video.png",
+          "type": "image/png",
+          "sizes": "192x192"
+        }
+      ]
+    },
     {
       "name": "Downloader",
       "url": "/copy",
