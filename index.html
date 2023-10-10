@@ -36,17 +36,24 @@ op.src = '/effect/Click.mp3';
    /* Hide the mute button */
     audio::-webkit-media-controls-mute-button,
     audio::-webkit-media-controls-play-button,
+	audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display,
+audio::-webkit-media-controls-time-remaining-display,
     audio::-webkit-media-controls-pause-button {
     display: none !important;
+	 color: #16E2F5;   
 	}
 
-    /* Style the audio progress bar */
-audio::-webkit-media-controls-current-time-display,
-audio::-webkit-media-controls-time-remaining-display,
-audio::-webkit-media-controls-time-remaining-display,
-{
-  color: #16E2F5; /* Change to your desired color */
+    
+/* Style the audio controls */
+audio::-webkit-media-controls-panel {
+  
+  border-radius: 10px; /* Add rounded corners if desired */
+  padding: 10px; /* Add padding for spacing */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a shadow for a 3D effect */
 }
+
+	
 
 </style>
 
