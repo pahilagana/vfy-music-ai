@@ -43,13 +43,47 @@ op.src = '/effect/Click.mp3';
 	}
 
     
+/* Reset default audio player styles */
+audio {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
 /* Style the audio controls */
 audio::-webkit-media-controls-panel {
-  
+  background-color: #333; /* Change to your desired background color */
+  color: #fff; /* Change to your desired text color */
   border-radius: 10px; /* Add rounded corners if desired */
   padding: 10px; /* Add padding for spacing */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a shadow for a 3D effect */
 }
+
+/* Style the audio progress bar */
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display,
+audio::-webkit-media-controls-time-remaining-display,
+audio::-webkit-media-controls-seek-back-button,
+audio::-webkit-media-controls-seek-forward-button,
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-pause-button,
+audio::-webkit-media-controls-mute-button,
+audio::-webkit-media-controls-volume-slider {
+  color: #fff; /* Change to your desired color */
+}
+
+/* Style the volume slider */
+audio::-webkit-media-controls-volume-slider {
+  background-color: transparent; /* Make the volume slider background transparent */
+}
+
+/* Style the progress bar */
+audio::-webkit-media-controls-progress-bar {
+  background-color: #666; /* Change to your desired color for the progress bar */
+}
+
 
 	
 
