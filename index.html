@@ -269,10 +269,7 @@ border-radius:5px;
 
 <center>
 <b hidden='' id='vivek_maurya'><img src="/img/add.png" alt="vivekfy application" width="300" height="560" z-index="9999"/>
-</b></center>
-<button id="next-song-button">Next Song</button>
-
-<center>
+</b>
 <audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
 </center>
    <div id="ppl" data-role="navbar">
@@ -330,21 +327,6 @@ $(document).on('swiperight', '.ui-page', function(event){
     }
     return false;            
 });
-// Add an event listener to the "Next Song" button
-document.getElementById("next-song-button").addEventListener("click", function() {
-    // Trigger the playback of the next song here
-    // You can use your existing logic to play the next song
-    // For example, you can call your "play" function or simulate a click on the next song in your list.
-    
-    // For simulating a click on the next song in your list, you can use something like this:
-    var nextSongElement = document.querySelector('myList').nextElementSibling;
-    if (nextSongElement) {
-        nextSongElement.click();
-    }
-});
-
-
-	
 
 function search(){
   //Get Form input
