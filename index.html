@@ -209,6 +209,9 @@ border-radius:5px;
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
 
 
+    <div id="content"></div>
+
+	
 <div data-role="page" id="home" data-theme="b">
   <div id="upper">
     <div data-role="header">
@@ -576,7 +579,7 @@ var offlineMsg = document.getElementById("offline-message");
 <div class="feedback-btn5">
 
 
-
+<button id="backButton">Back</button>
 	
 <!-- Toggle button ad any function with CSS class -->
 
@@ -1021,3 +1024,34 @@ div.vfy1 {
     });
 }, 4000);</script>
 
+<script>
+const backButton = document.getElementById('backButton');
+const content = document.getElementById('content');
+
+backButton.addEventListener('click', () => {
+    // Use the History API to navigate back one step
+    window.history.back();
+});
+
+// Load content dynamically (for example, from different pages of your app)
+function loadContent(pageUrl) {
+    fetch(pageUrl)
+        .then(response => response.text())
+        .then(data => {
+            content.innerHTML = data;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
+
+// Initially load some content into the app
+loadContent('initial-page.html');
+
+
+	
+</script>
+
+
+
+	
