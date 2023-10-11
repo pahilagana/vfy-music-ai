@@ -1,10 +1,9 @@
 self.addEventListener('fetch', function (event) {});
-window.addEventListener('load', function() {
-  window.history.pushState({ noBackExitsApp: true }, '')
-})
-
-window.addEventListener('popstate', function(event) {
-  if (event.state && event.state.noBackExitsApp) {
-    window.history.pushState({ noBackExitsApp: true }, '')
-  }
-})
+const status = await navigator.permissions.query({
+  name: 'periodic-background-sync',
+});
+if (status.state === 'granted') {
+  // Periodic background sync can be used.
+} else {
+  // Periodic background sync cannot be used.
+}
