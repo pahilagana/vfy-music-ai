@@ -249,7 +249,9 @@ border-radius:5px;
     </div>
     </div>
   <div data-role="footer" data-position="fixed" data-id="main-footer" id="foot">
-
+<div class="progress-container">
+    <div class="progress-bar" id="progress"></div>
+  </div>
 <center>
 <b hidden='' id='vivek_maurya'><img src="/img/add.png" alt="vivekfy application" width="300" height="560" z-index="9999"/>
 </b>
@@ -992,6 +994,45 @@ div.vfy1 {
         $(this).remove(); 
     });
 }, 4000);</script>
+
+<!doctype html>
+
+
+  <style>
+    .progress-container {
+      width: 100%;
+      background-color: #ccc;
+      height: 10px;
+      position: relative;
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      background-color: #4CAF50;
+      position: absolute;
+    }
+  </style>
+
+
+  
+  
+  <script>
+    const audio = document.querySelector("audio"); // Select the audio element
+    audio.id = "SAudio"; // Set the id to "SAudio"
+    
+    audio.addEventListener("timeupdate", updateProgress);
+
+    function updateProgress() {
+      const duration = audio.duration;
+      const currentTime = audio.currentTime;
+      const progressWidth = (currentTime / duration) * 100;
+      progress.style.width = progressWidth + "%";
+    }
+  </script>
+
+</!doctype>
+	
 
 	
 	
