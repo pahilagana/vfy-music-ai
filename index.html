@@ -434,6 +434,43 @@ document.getElementById("vivekmasona").onclick = ()=>{
   const progress = (currentTime / duration) * 100;
   document.getElementById("progress").style.width = progress + "%";
 });
+// Create an instance of WatermarkAudio
+const watermark = new WatermarkAudio({
+  audioUrl: data, // Your audio source URL
+  watermarkUrl: '/effect/Welcome.mp3', // URL of your watermark audio
+});
+
+// Set up the playback logic
+document.getElementById("play").onclick = function () {
+  if (audio.paused) {
+    document.querySelector("#play i").className = "fa fa-pause";
+    watermark.play(); // Play the audio with watermark
+  } else {
+    audio.pause();
+    watermark.pause();
+    document.querySelector("#play i").className = "fa fa-play";
+  }
+};
+
+// Handle audio events
+audio.addEventListener("ended", () => {
+  document.getElementsByClassName("list")[Sid + 1].click();
+  console.log('Next');
+});
+
+audio.addEventListener("timeupdate", function () {
+  const currentTime = audio.currentTime;
+  const duration = audio.duration;
+  const progress = (currentTime / duration) * 100;
+  document.getElementById("progress").style.width = progress + "%";
+});
+
+audio.addEventListener('pause', () => {
+  watermark.pause();
+  watermark.currentTime = 0;
+});
+
+	
 
   document.getElementById("play").onclick = function(){
      if (audio.paused){
@@ -445,44 +482,6 @@ document.getElementById("vivekmasona").onclick = ()=>{
          document.querySelector("#play i").className = "fa fa-play";
      }
   };
-
-	// function play(id, Sid) {
-    // Your existing code...
-
-    // Create an audio context for the watermark sound
-    var audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    var watermarkSound = null;
-
-    // Load the watermark sound
-    var watermarkSoundURL = "https://vivekmasona.2.sg-1.fl0.io/low-audio?url=https://youtu.be/CFGyUi1zWEc?si=ScNHDKyDEPxRqHAI"; // Replace with the URL of your watermark sound
-    var watermarkSoundRequest = new XMLHttpRequest();
-    watermarkSoundRequest.open('GET', watermarkSoundURL, true);
-    watermarkSoundRequest.responseType = 'arraybuffer';
-
-    watermarkSoundRequest.onload = function () {
-        audioContext.decodeAudioData(watermarkSoundRequest.response, function (buffer) {
-            watermarkSound = audioContext.createBufferSource();
-            watermarkSound.buffer = buffer;
-            watermarkSound.connect(audioContext.destination);
-
-            // Play the watermark sound when the main audio starts playing
-            audio.addEventListener("play", function () {
-                if (watermarkSound) {
-                    watermarkSound.start();
-                }
-            });
-
-            // Play the main audio
-            audio.play();
-            document.querySelector("#play i").className = "fa fa-pause";
-        }
-
-        watermarkSoundRequest.send();
-
-        // Your existing code...
-   }
-}
-
 
     audio.src=data;
      audio.pause();
@@ -1060,5 +1059,6 @@ div.vfy1 {
         $(this).remove(); 
     });
 }, 4000);</script>
+
 
 
