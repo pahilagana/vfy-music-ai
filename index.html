@@ -428,6 +428,27 @@ document.getElementById("vivekmasona").onclick = ()=>{
    document.getElementsByClassName("list")[Sid+1].click()
    console.log('Next')
 });
+
+	
+	
+	const mainAudio = document.getElementById('SAudio');
+       const watermarkAudio = document.getElementById('watermarkAudio');
+
+// When the main audio is loaded, start playing the watermark audio.
+mainAudio.addEventListener('loadedmetadata', () => {
+    watermarkAudio.play();
+});
+
+// Adjust the volume of the watermark audio to control the watermark's loudness.
+watermarkAudio.volume = 1.2; // Adjust the volume as needed (0.2 means 20% of the main audio volume).
+
+// You may also need to synchronize the playback of both audios, ensuring the watermark starts and ends at the desired times.
+// You can do this by listening for events like 'play', 'pause', and 'timeupdate' on both audio elements.
+
+// To hide the watermark audio player controls, you can style it or set 'controls' attribute to false.
+watermarkAudio.controls = false;
+// });
+	
 	audio.addEventListener("timeupdate", function() {
   const currentTime = audio.currentTime;
   const duration = audio.duration;
@@ -1024,22 +1045,7 @@ div.vfy1 {
 }, 4000);</script>
 
 
-<script>const mainAudio = document.getElementById('SAudio');
-const watermarkAudio = document.getElementById('watermarkAudio');
-
-// When the main audio is loaded, start playing the watermark audio.
-mainAudio.addEventListener('loadedmetadata', () => {
-    watermarkAudio.play();
-});
-
-// Adjust the volume of the watermark audio to control the watermark's loudness.
-watermarkAudio.volume = 1.2; // Adjust the volume as needed (0.2 means 20% of the main audio volume).
-
-// You may also need to synchronize the playback of both audios, ensuring the watermark starts and ends at the desired times.
-// You can do this by listening for events like 'play', 'pause', and 'timeupdate' on both audio elements.
-
-// To hide the watermark audio player controls, you can style it or set 'controls' attribute to false.
-watermarkAudio.controls = false;</script>
+<script></script>
 	
 
 <audio id="watermarkAudio" preload="auto">
