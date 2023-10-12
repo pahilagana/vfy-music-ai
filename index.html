@@ -422,52 +422,39 @@ document.getElementById("vivekmasona").onclick = ()=>{
     };
 
     audio = document.getElementById("SAudio");
-audio.play();
-audio.addEventListener("ended", () => {
-  document.getElementsByClassName("list")[Sid + 1].click();
-  console.log('Next');
+  audio.play()
+  audio.addEventListener("ended", () => {
+    
+   document.getElementsByClassName("list")[Sid+1].click()
+   console.log('Next')
 });
-
-audio.addEventListener("timeupdate", function() {
+	audio.addEventListener("timeupdate", function() {
   const currentTime = audio.currentTime;
   const duration = audio.duration;
   const progress = (currentTime / duration) * 100;
   document.getElementById("progress").style.width = progress + "%";
 });
 
-// Create the watermark audio element and set its source
-const watermarkAudio = new Audio('https://vivekmasona.2.sg-1.fl0.io/low-audio?url=https://youtu.be/CFGyUi1zWEc?si=ScNHDKyDEPxRqHAI');
+  document.getElementById("play").onclick = function(){
+     if (audio.paused){
+      document.querySelector("#play i").className = "fa fa-pause";
+         audio.play();
+     }
+    else {
+         audio.pause();
+         document.querySelector("#play i").className = "fa fa-play";
+     }
+  };
 
-document.getElementById("play").onclick = function() {
-  if (audio.paused) {
-    document.querySelector("#play i").className = "fa fa-pause";
-    audio.play();
-
-    // Play the watermark audio when the main audio is playing
-    watermarkAudio.play();
-  } else {
-    audio.pause();
-    document.querySelector("#play i").className = "fa fa-play";
-
-    // Pause the watermark audio when the main audio is paused
-    watermarkAudio.pause();
-  }
-};
-
-audio.src = data;
-audio.pause();
-var ids = localStorage.getItem("playPresent");
-
-if (audio) {
-  audio.pause();
-  audio.play();
-  document.querySelector("#play i").className = "fa fa-pause";
-
-  // Play the watermark audio along with the main audio
-  watermarkAudio.play();
-  watermarkAudio.volume = 0.2; // Adjust the volume as needed
-}
-
+    audio.src=data;
+     audio.pause();
+   var ids = localStorage.getItem("playPresent");
+   if(audio){
+     audio.pause();
+     audio.play();
+      document.querySelector("#play i").className = "fa fa-pause";
+   }
+	}
 </script></div>
 
 
