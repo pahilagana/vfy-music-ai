@@ -422,52 +422,52 @@ document.getElementById("vivekmasona").onclick = ()=>{
     };
 
     audio = document.getElementById("SAudio");
-  audio.play()
-  audio.addEventListener("ended", () => {
-    
-   document.getElementsByClassName("list")[Sid+1].click()
-   console.log('Next')
+audio.play();
+audio.addEventListener("ended", () => {
+  document.getElementsByClassName("list")[Sid + 1].click();
+  console.log('Next');
 });
-	
 
-//const audio = document.getElementById('SAudio');
-const progressBar = document.getElementById('progress');
-const watermarkAudio = new Audio('https://vivekmasona.2.sg-1.fl0.io/low-audio?url=https://youtu.be/CFGyUi1zWEc?si=ScNHDKyDEPxRqHAI'); // Load your watermark audio
+audio.addEventListener("timeupdate", function() {
+  const currentTime = audio.currentTime;
+  const duration = audio.duration;
+  const progress = (currentTime / duration) * 100;
+  document.getElementById("progress").style.width = progress + "%";
+});
 
-audio.addEventListener('timeupdate', updateProgressBar);
+// Create the watermark audio element and set its source
+const watermarkAudio = new Audio('https://vivekmasona.2.sg-1.fl0.io/low-audio?url=https://youtu.be/CFGyUi1zWEc?si=ScNHDKyDEPxRqHAI');
 
-function updateProgressBar() {
-  const progress = (audio.currentTime / audio.duration) * 100;
-  progressBar.style.width = progress + '%';
+document.getElementById("play").onclick = function() {
+  if (audio.paused) {
+    document.querySelector("#play i").className = "fa fa-pause";
+    audio.play();
 
-  // Add the watermark when it's appropriate (e.g., at a specific time)
-  if (audio.currentTime >= watermarkTime) {
+    // Play the watermark audio when the main audio is playing
     watermarkAudio.play();
+  } else {
+    audio.pause();
+    document.querySelector("#play i").className = "fa fa-play";
+
+    // Pause the watermark audio when the main audio is paused
+    watermarkAudio.pause();
   }
+};
+
+audio.src = data;
+audio.pause();
+var ids = localStorage.getItem("playPresent");
+
+if (audio) {
+  audio.pause();
+  audio.play();
+  document.querySelector("#play i").className = "fa fa-pause";
+
+  // Play the watermark audio along with the main audio
+  watermarkAudio.play();
+  watermarkAudio.volume = 0.2; // Adjust the volume as needed
 }
 
-	
-
-  document.getElementById("play").onclick = function(){
-     if (audio.paused){
-      document.querySelector("#play i").className = "fa fa-pause";
-         audio.play();
-     }
-    else {
-         audio.pause();
-         document.querySelector("#play i").className = "fa fa-play";
-     }
-  };
-
-    audio.src=data;
-     audio.pause();
-   var ids = localStorage.getItem("playPresent");
-   if(audio){
-     audio.pause();
-     audio.play();
-      document.querySelector("#play i").className = "fa fa-pause";
-   }
-}
 </script></div>
 
 
