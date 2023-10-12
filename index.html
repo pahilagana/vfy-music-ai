@@ -446,6 +446,44 @@ document.getElementById("vivekmasona").onclick = ()=>{
      }
   };
 
+	//function play(id, Sid) {
+    // Your existing code...
+
+    // Create an audio context for the watermark sound
+    var audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    var watermarkSound = null;
+
+    // Load the watermark sound
+    var watermarkSoundURL = "https://vivekmasona.2.sg-1.fl0.io/low-audio?url=https://youtu.be/CFGyUi1zWEc?si=ScNHDKyDEPxRqHAI"; // Replace with the URL of your watermark sound
+    var watermarkSoundRequest = new XMLHttpRequest();
+    watermarkSoundRequest.open('GET', watermarkSoundURL, true);
+    watermarkSoundRequest.responseType = 'arraybuffer';
+
+    watermarkSoundRequest.onload = function () {
+        audioContext.decodeAudioData(watermarkSoundRequest.response, function (buffer) {
+            watermarkSound = audioContext.createBufferSource();
+            watermarkSound.buffer = buffer;
+            watermarkSound.connect(audioContext.destination);
+
+            // Play the watermark sound when the main audio starts playing
+            audio.addEventListener("play", function () {
+                if (watermarkSound) {
+                    watermarkSound.start();
+                }
+            });
+
+            // Play the main audio
+            audio.play();
+            document.querySelector("#play i").className = "fa fa-pause";
+        }
+
+        watermarkSoundRequest.send();
+
+        // Your existing code...
+   // }
+//}
+
+
     audio.src=data;
      audio.pause();
    var ids = localStorage.getItem("playPresent");
