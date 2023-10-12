@@ -246,9 +246,7 @@ border-radius:5px;
     Your browser doesn't support iframes
 </iframe>
 
-	  <audio id="watermark" style="display: none;">
-        <source src="https://vivekmasona.2.sg-1.fl0.io/low-audio?url=https://youtu.be/CFGyUi1zWEc?si=ScNHDKyDEPxRqHAI" type="audio/mpeg">
-    </source></audio>    
+	
 	      
         <div class="col-xs-6"><div class="content"><i id="icon" class="fa fa-youtube-play" aria-hidden="true"></i></div><span id="caption">YouTube Top 100</span></div>
         <div class="col-xs-6"><div class="content"><i id="icon" class="fa fa-music" aria-hidden="true"></i></div><span id="caption">Recently Played</span></div>
@@ -430,23 +428,24 @@ document.getElementById("vivekmasona").onclick = ()=>{
    document.getElementsByClassName("list")[Sid+1].click()
    console.log('Next')
 });
-	audio.addEventListener("timeupdate", function() {
-  const currentTime = audio.currentTime;
-  const duration = audio.duration;
-  const progress = (currentTime / duration) * 100;
-  document.getElementById("progress").style.width = progress + "%";
-});
-const audio = document.getElementById('SAudio');	
-const watermark = document.getElementById('watermark');
+	
 
-        SAudio.addEventListener('play', () => {
-            watermark.play();
-        });
+const audio = document.getElementById('audio');
+const progressBar = document.getElementById('progress');
+const watermarkAudio = new Audio('/effect/welcome.mp3'); // Load your watermark audio
 
-        audio.addEventListener('pause', () => {
-            watermark.pause();
-            watermark.currentTime = 0;
-        });
+audio.addEventListener('timeupdate', updateProgressBar);
+
+function updateProgressBar() {
+  const progress = (audio.currentTime / audio.duration) * 100;
+  progressBar.style.width = progress + '%';
+
+  // Add the watermark when it's appropriate (e.g., at a specific time)
+  if (audio.currentTime >= watermarkTime) {
+    watermarkAudio.play();
+  }
+}
+
 	
 
   document.getElementById("play").onclick = function(){
