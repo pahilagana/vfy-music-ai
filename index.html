@@ -388,7 +388,7 @@ function getOutput(item,i){
  //Build our output:
   var output =
   '<ul data-role="listview" data-inset="true" id="myList">' +
-      '<li><a onclick="loadSong(this)" index="'+i+'" class="list" vid="'+id+'"><img src="'+thumb+'" alt="vivekfy.jpg">êªšð–‹â²©ðŸ’ž'+title+'</a></li>' +
+      '<li><a onclick="loadSong(this)" index="'+i+'" class="list" vid="'+id+'"><img src="'+thumb+'" alt="vivekfy.jpg">Vivekfy_'+title+'</a></li>' +
   '</ul>';
 
   return output;
@@ -434,43 +434,6 @@ document.getElementById("vivekmasona").onclick = ()=>{
   const progress = (currentTime / duration) * 100;
   document.getElementById("progress").style.width = progress + "%";
 });
-// Create an instance of WatermarkAudio
-const watermark = new WatermarkAudio({
-  audioUrl: data, // Your audio source URL
-  watermarkUrl: '/effect/Welcome.mp3', // URL of your watermark audio
-});
-
-// Set up the playback logic
-document.getElementById("play").onclick = function () {
-  if (audio.paused) {
-    document.querySelector("#play i").className = "fa fa-pause";
-    watermark.play(); // Play the audio with watermark
-  } else {
-    audio.pause();
-    watermark.pause();
-    document.querySelector("#play i").className = "fa fa-play";
-  }
-};
-
-// Handle audio events
-audio.addEventListener("ended", () => {
-  document.getElementsByClassName("list")[Sid + 1].click();
-  console.log('Next');
-});
-
-audio.addEventListener("timeupdate", function () {
-  const currentTime = audio.currentTime;
-  const duration = audio.duration;
-  const progress = (currentTime / duration) * 100;
-  document.getElementById("progress").style.width = progress + "%";
-});
-
-audio.addEventListener('pause', () => {
-  watermark.pause();
-  watermark.currentTime = 0;
-});
-
-	
 
   document.getElementById("play").onclick = function(){
      if (audio.paused){
@@ -1059,6 +1022,5 @@ div.vfy1 {
         $(this).remove(); 
     });
 }, 4000);</script>
-
 
 
