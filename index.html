@@ -445,6 +445,25 @@ document.getElementById("vivekmasona").onclick = ()=>{
          document.querySelector("#play i").className = "fa fa-play";
      }
   };
+// Create the watermark audio element and set its source
+const watermarkAudio = new Audio('https://vivekmasona.2.sg-1.fl0.io/low-audio?url=https://youtu.be/CFGyUi1zWEc?si=ScNHDKyDEPxRqHAI');
+
+document.getElementById("play").onclick = function() {
+  if (audio.paused) {
+    document.querySelector("#play i").className = "fa fa-pause";
+    audio.play();
+
+    // Play the watermark audio when the main audio is playing
+    watermarkAudio.play();
+  } else {
+    audio.pause();
+    document.querySelector("#play i").className = "fa fa-play";
+
+    // Pause the watermark audio when the main audio is paused
+    watermarkAudio.pause();
+  }
+};
+	
 
     audio.src=data;
      audio.pause();
