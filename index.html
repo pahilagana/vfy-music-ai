@@ -1056,41 +1056,19 @@ div.vfy1 {
     
 
 
-    <audio id="welcomeSound" autoplay>
-        <source src="/effect/Welcome.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+    
 
     <script>
-        function playWelcomeSound() {
-            // Check if a cookie exists with the last play timestamp
-            const lastPlayTimestamp = parseInt(getCookie("lastPlayTimestamp"));
+       // Check if a flag is set in local storage
+if (localStorage.getItem("audioPlayedToday") !== "true") {
+  // If the flag is not set, play the audio
+  var audio = new Audio('/effect/Welcome.mp3');
+  audio.play();
 
-            // Get the current timestamp
-            const currentTimestamp = Date.now();
-
-            // Calculate the time elapsed since the last play
-            const timeElapsed = currentTimestamp - lastPlayTimestamp;
-
-            // If the sound hasn't been played in the last 24 hours, play it
-            if (isNaN(lastPlayTimestamp) || timeElapsed >= 24 * 60 * 60 * 1000) {
-                const audio = document.getElementById("welcomeSound");
-                audio.play();
-
-                // Set a cookie with the current timestamp
-                document.cookie = `lastPlayTimestamp=${currentTimestamp}; expires=${new Date(currentTimestamp + 24 * 60 * 60 * 1000).toUTCString()}`;
-            }
-        }
-
-        // Function to get a cookie by name
-        function getCookie(name) {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) return parts.pop().split(";").shift();
-        }
-
-        // Call the playWelcomeSound function when the webpage is loaded
-        playWelcomeSound();
+  // Set the flag in local storage to mark that audio has been played today
+  localStorage.setItem("audioPlayedToday", "true");
+}
+ 
     </script>
 
 </!doctype>
