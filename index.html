@@ -458,6 +458,10 @@ document.getElementById("play").onclick = function() {
   } else {
     audio.pause();
     document.querySelector("#play i").className = "fa fa-play";
+// Play the watermark audio along with the main audio
+  watermarkAudio.play();
+  watermarkAudio.volume = 1; // Adjust the volume as needed
+}
 
     // Pause the watermark audio when the main audio is paused
     watermarkAudio.pause();
