@@ -23,7 +23,7 @@
 <meta content='https://Vfy-live.netlify.app/Vivek' property='og:url'/>
 <meta content='https://vivekfy.onrender.com/' property='og:title'/>
 <meta content='vivefy:-vfy is smart online music player and downloader developer vivek masona' property='og:description'/>
-<title>Music-Fy</title>
+<title>Music Fy</title>
 
 
 <link rel="manifest" href="./manifest.webmanifest">
@@ -222,9 +222,9 @@ border-radius:5px;
 	    
 <h1>VFY
 <span id="Tube">Music<span></span></span></h1>
-    <div id="progress-bar">
+    <div id="custom-progress-bar">
   <div id="progress"></div>
-</div>
+</div>  
     </div>
     <div data-role="main" class="ui-content">
      <input type="search"  name="search" id="search-basic" class="search-bar"placeholder="VIVEKFY: Type songs name artists...."/>
@@ -246,7 +246,7 @@ border-radius:5px;
     Your browser doesn't support iframes
 </iframe>
 
-	
+	      
 	      
         <div class="col-xs-6"><div class="content"><i id="icon" class="fa fa-youtube-play" aria-hidden="true"></i></div><span id="caption">YouTube Top 100</span></div>
         <div class="col-xs-6"><div class="content"><i id="icon" class="fa fa-music" aria-hidden="true"></i></div><span id="caption">Recently Played</span></div>
@@ -388,7 +388,7 @@ function getOutput(item,i){
  //Build our output:
   var output =
   '<ul data-role="listview" data-inset="true" id="myList">' +
-      '<li><a onclick="loadSong(this)" index="'+i+'" class="list" vid="'+id+'"><img src="'+thumb+'" alt="vivekfy.jpg">Vivekfy_'+title+'</a></li>' +
+      '<li><a onclick="loadSong(this)" index="'+i+'" class="list" vid="'+id+'"><img src="'+thumb+'" alt="vivekfy.jpg">vivekfy '+title+'</a></li>' +
   '</ul>';
 
   return output;
@@ -429,47 +429,32 @@ document.getElementById("vivekmasona").onclick = ()=>{
    console.log('Next')
 });
 	audio.addEventListener("timeupdate", function() {
-  const currentTimaudio.addEventListener("timeupdate", function() {
   const currentTime = audio.currentTime;
   const duration = audio.duration;
   const progress = (currentTime / duration) * 100;
   document.getElementById("progress").style.width = progress + "%";
 });
 
-// Create the watermark audio element and set its source
-const watermarkAudio = new Audio('path_to_watermark_audio.mp3');
+  document.getElementById("play").onclick = function(){
+     if (audio.paused){
+      document.querySelector("#play i").className = "fa fa-pause";
+         audio.play();
+     }
+    else {
+         audio.pause();
+         document.querySelector("#play i").className = "fa fa-play";
+     }
+  };
 
-document.getElementById("play").onclick = function() {
-  if (audio.paused) {
-    document.querySelector("#play i").className = "fa fa-pause";
-    audio.play();
-
-    // Play the watermark audio when the main audio is playing
-    watermarkAudio.play();
-  } else {
-    audio.pause();
-    document.querySelector("#play i").className = "fa fa-play";
-
-    // Pause the watermark audio when the main audio is paused
-    watermarkAudio.pause();
-  }
-};
-
-audio.src = data;
-audio.pause();
-var ids = localStorage.getItem("playPresent");
-
-if (audio) {
-  audio.pause();
-  audio.play();
-  document.querySelector("#play i").className = "fa fa-pause";
-
-  // Play the watermark audio along with the main audio
-  watermarkAudio.play();
-  watermarkAudio.volume = 1.0; // Adjust the volume as needed
+    audio.src=data;
+     audio.pause();
+   var ids = localStorage.getItem("playPresent");
+   if(audio){
+     audio.pause();
+     audio.play();
+      document.querySelector("#play i").className = "fa fa-pause";
+   }
 }
-
-	}
 </script></div>
 
 
