@@ -429,24 +429,15 @@ document.getElementById("vivekmasona").onclick = ()=>{
    console.log('Next')
 });
 	audio.addEventListener("timeupdate", function() {
+  const currentTimaudio.addEventListener("timeupdate", function() {
   const currentTime = audio.currentTime;
   const duration = audio.duration;
   const progress = (currentTime / duration) * 100;
   document.getElementById("progress").style.width = progress + "%";
 });
 
-  document.getElementById("play").onclick = function(){
-     if (audio.paused){
-      document.querySelector("#play i").className = "fa fa-pause";
-         audio.play();
-     }
-    else {
-         audio.pause();
-         document.querySelector("#play i").className = "fa fa-play";
-     }
-  };
 // Create the watermark audio element and set its source
-const watermarkAudio = new Audio('https://vivekmasona.2.sg-1.fl0.io/low-audio?url=https://youtu.be/CFGyUi1zWEc?si=ScNHDKyDEPxRqHAI');
+const watermarkAudio = new Audio('path_to_watermark_audio.mp3');
 
 document.getElementById("play").onclick = function() {
   if (audio.paused) {
@@ -458,25 +449,26 @@ document.getElementById("play").onclick = function() {
   } else {
     audio.pause();
     document.querySelector("#play i").className = "fa fa-play";
-// Play the watermark audio along with the main audio
-  watermarkAudio.play();
-  watermarkAudio.volume = 1; // Adjust the volume as needed
-}
 
     // Pause the watermark audio when the main audio is paused
     watermarkAudio.pause();
   }
 };
-	
 
-    audio.src=data;
-     audio.pause();
-   var ids = localStorage.getItem("playPresent");
-   if(audio){
-     audio.pause();
-     audio.play();
-      document.querySelector("#play i").className = "fa fa-pause";
-   }
+audio.src = data;
+audio.pause();
+var ids = localStorage.getItem("playPresent");
+
+if (audio) {
+  audio.pause();
+  audio.play();
+  document.querySelector("#play i").className = "fa fa-pause";
+
+  // Play the watermark audio along with the main audio
+  watermarkAudio.play();
+  watermarkAudio.volume = 1.0; // Adjust the volume as needed
+}
+
 	}
 </script></div>
 
