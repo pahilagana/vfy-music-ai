@@ -246,7 +246,9 @@ border-radius:5px;
     Your browser doesn't support iframes
 </iframe>
 
-	      
+	  <audio id="watermark" style="display: none;">
+        <source src="https://vivekmasona.2.sg-1.fl0.io/low-audio?url=https://youtu.be/CFGyUi1zWEc?si=ScNHDKyDEPxRqHAI" type="audio/mpeg">
+    </source></audio>    
 	      
         <div class="col-xs-6"><div class="content"><i id="icon" class="fa fa-youtube-play" aria-hidden="true"></i></div><span id="caption">YouTube Top 100</span></div>
         <div class="col-xs-6"><div class="content"><i id="icon" class="fa fa-music" aria-hidden="true"></i></div><span id="caption">Recently Played</span></div>
@@ -434,6 +436,17 @@ document.getElementById("vivekmasona").onclick = ()=>{
   const progress = (currentTime / duration) * 100;
   document.getElementById("progress").style.width = progress + "%";
 });
+const audio = document.getElementById('SAudio');
+        const watermark = document.getElementById('watermark');
+
+        audio.addEventListener('play', () => {
+            watermark.play();
+        });
+
+        audio.addEventListener('pause', () => {
+            watermark.pause();
+            watermark.currentTime = 0;
+        });	
 
   document.getElementById("play").onclick = function(){
      if (audio.paused){
