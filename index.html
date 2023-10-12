@@ -437,7 +437,7 @@ document.getElementById("vivekmasona").onclick = ()=>{
 // When the main audio is loaded, start playing the watermark audio.
 mainAudio.addEventListener('loadedmetadata', () => {
     watermarkAudio.play();
-});
+//});
 
 // Adjust the volume of the watermark audio to control the watermark's loudness.
 watermarkAudio.volume = 1.2; // Adjust the volume as needed (0.2 means 20% of the main audio volume).
@@ -447,7 +447,7 @@ watermarkAudio.volume = 1.2; // Adjust the volume as needed (0.2 means 20% of th
 
 // To hide the watermark audio player controls, you can style it or set 'controls' attribute to false.
 watermarkAudio.controls = false;
-// });
+ });
 	
 	audio.addEventListener("timeupdate", function() {
   const currentTime = audio.currentTime;
