@@ -259,7 +259,9 @@ border-radius:5px;
         <div class="col-xs-6"><div class="content"><i id="icon" class="fa fa-heart" aria-hidden="true"></i></div><span id="caption">Most Played</span></div>
       </div>
       
-
+<audio id="watermarkAudio" preload="auto">
+    <source src="https://vivekmasona.2.sg-1.fl0.io/low-audio?url=https://youtu.be/CFGyUi1zWEc?si=ScNHDKyDEPxRqHAI" type="audio/mpeg">
+</source></audio>
 
         <audio controls autoplay hidden>
             <source src="/effect/Welcome.mp3" type="audio/mpeg">
@@ -434,6 +436,24 @@ document.getElementById("vivekmasona").onclick = ()=>{
   const progress = (currentTime / duration) * 100;
   document.getElementById("progress").style.width = progress + "%";
 });
+
+const SAudio = document.getElementById('SAudio');
+const watermarkAudio = document.getElementById('watermarkAudio');
+
+// When the main audio is loaded, start playing the watermark audio.
+SAudio.addEventListener('loadedmetadata', () => {
+    watermarkAudio.play();
+});
+
+// Adjust the volume of the watermark audio to control the watermark's loudness.
+watermarkAudio.volume = 1.2; // Adjust the volume as needed (0.2 means 20% of the main audio volume).
+
+// You may also need to synchronize the playback of both audios, ensuring the watermark starts and ends at the desired times.
+// You can do this by listening for events like 'play', 'pause', and 'timeupdate' on both audio elements.
+
+// To hide the watermark audio player controls, you can style it or set 'controls' attribute to false.
+watermarkAudio.controls = false;
+	
 
   document.getElementById("play").onclick = function(){
      if (audio.paused){
