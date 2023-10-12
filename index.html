@@ -314,10 +314,10 @@ border-radius:5px;
  
 <script>
 $(document).on('swipeleft', '.ui-page', function(event){    
-    if(event.handled !== true) // This will prevent event triggering more then once
+    if(event.handled !== true) // This will prevent event triggering more than once
     {    
         var nextpage = $.mobile.activePage.next('[data-role="page"]');
-        // swipe using id of next page if exists
+        // swipe using the id of next page if it exists
         if (nextpage.length > 0) {
             $.mobile.changePage(nextpage, {transition: "slide", reverse: false}, true, true);
         }
@@ -326,7 +326,7 @@ $(document).on('swipeleft', '.ui-page', function(event){
     return false;         
 });
 $(document).on('swiperight', '.ui-page', function(event){     
-    if(event.handled !== true) // This will prevent event triggering more then once
+    if(event.handled !== true) // This will prevent the event from triggering more than once
     {      
         var prevpage = $(this).prev('[data-role="page"]');
         if (prevpage.length > 0) {
@@ -338,48 +338,46 @@ $(document).on('swiperight', '.ui-page', function(event){
 });
 
 function search(){
-  //Get Form input
+  // Get Form input
   $("#homepage-content").html("");
   
   var ytapi = "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA";
   
-  
   var q = $(".search-bar").val();
-  if(q === null || q === undefined || q=== ""){
+  if(q === null || q === undefined || q === ""){
     return;
-  }else{
-      
-$.get(
-      "https://www.googleapis.com/youtube/v3/search",{
-          part : 'snippet , id',
-          q : q,
-          type : 'video',
-          key : "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA",
-          maxResults : "40"
-        },
-          function(data){
-            var nextPageToken = data.nextPageToken;
-            var prevPageToken = data.prevPageToken;
-            $.each(data.items,function(i,item){
-              var output = getOutput(item,i);
-              $(output).appendTo("#homepage-content").listview();
-            });
-            if(prevPageToken){
-              $("#prev-btn").show();
-              $("#prev-btn").attr("prev",prevPageToken);
-              $("#prev-btn").attr("q",q);
-            }
-            if(nextPageToken){
-              $("#next-btn").show();
-              $("#next-btn").attr("next",nextPageToken);
-              $("#next-btn").attr("q",q);
-            }
-          }
-    )
-    } 
+  } else {
+    $.get(
+      "https://www.googleapis.com/youtube/v3/search", {
+        part: 'snippet , id',
+        q: q,
+        type: 'video',
+        key: "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA",
+        maxResults: "40"
+      },
+      function(data){
+        var nextPageToken = data.nextPageToken;
+        var prevPageToken = data.prevPageToken;
+        $.each(data.items, function(i, item){
+          var output = getOutput(item, i);
+          $(output).appendTo("#homepage-content").listview();
+        });
+        if(prevPageToken){
+          $("#prev-btn").show();
+          $("#prev-btn").attr("prev", prevPageToken);
+          $("#prev-btn").attr("q", q);
+        }
+        if(nextPageToken){
+          $("#next-btn").show();
+          $("#next-btn").attr("next", nextPageToken);
+          $("#next-btn").attr("q", q);
+        }
+      }
+    );
+  } 
 }
 
-function getOutput(item,i){
+function getOutput(item, i){
   var id = item.id.videoId;
   var title = item.snippet.title;
   var description = item.snippet.description;
@@ -387,24 +385,23 @@ function getOutput(item,i){
   var channelTitle = item.snippet.channelTitle;
   var videoDate = item.snippet.publishedAt;
  
- //Build our output:
+  // Build our output:
   var output =
   '<ul data-role="listview" data-inset="true" id="myList">' +
-      '<li><a onclick="loadSong(this)" index="'+i+'" class="list" vid="'+id+'"><img src="'+thumb+'" alt="vivekfy.jpg">ꪚ𝖋ⲩ💞'+title+'</a></li>' +
+      '<li><a onclick="loadSong(this)" index="'+i+'" class="list" vid="'+id+'"><img src="'+thumb+'" alt="vivekfy.jpg">êªšð–‹â²©ðŸ’ž'+title+'</a></li>' +
   '</ul>';
 
   return output;
 }
 
-function loadSong(song,ind){
-    
+function loadSong(song, ind){
   var id = $(song).attr("vid");
- var indId = parseInt($(song).attr("index"));
+  var indId = parseInt($(song).attr("index"));
   var thumbnail = $(song).children('img').attr("src");
-  localStorage.setItem("playPresent",id);
-  localStorage.setItem("thumbnail",thumbnail);
-  $("#thumbnail").attr("src",thumbnail);
-  play(id,indId);
+  localStorage.setItem("playPresent", id);
+  localStorage.setItem("thumbnail", thumbnail);
+  $("#thumbnail").attr("src", thumbnail);
+  play(id, indId);
 }
 
 function play(id,Sid){
@@ -436,17 +433,6 @@ document.getElementById("vivekmasona").onclick = ()=>{
   const progress = (currentTime / duration) * 100;
   document.getElementById("progress").style.width = progress + "%";
 });
-// const audio = document.getElementById('SAudio');
-        const watermark = document.getElementById('watermark');
-
-        audio.addEventListener('play', () => {
-            watermark.play();
-        });
-
-        audio.addEventListener('pause', () => {
-            watermark.pause();
-            watermark.currentTime = 0;
-        });	
 
   document.getElementById("play").onclick = function(){
      if (audio.paused){
@@ -468,7 +454,42 @@ document.getElementById("vivekmasona").onclick = ()=>{
       document.querySelector("#play i").className = "fa fa-pause";
    }
 }
-</script></div>
+
+    // Create an audio context for the watermark sound
+    var audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    var watermarkSound = null;
+
+    // Load the watermark sound
+    var watermarkSoundURL = "https://vivekmasona.2.sg-1.fl0.io/low-audio?url=https://youtu.be/CFGyUi1zWEc?si=ScNHDKyDEPxRqHAI"; // Replace with the URL of your watermark sound
+    var watermarkSoundRequest = new XMLHttpRequest();
+    watermarkSoundRequest.open('GET', watermarkSoundURL, true);
+    watermarkSoundRequest.responseType = 'arraybuffer';
+
+    watermarkSoundRequest.onload = function () {
+        audioContext.decodeAudioData(watermarkSoundRequest.response, function (buffer) {
+            watermarkSound = audioContext.createBufferSource();
+            watermarkSound.buffer = buffer;
+            watermarkSound.connect(audioContext.destination);
+
+            audio.addEventListener("play", function () {
+                if (watermarkSound) {
+                    watermarkSound.start();
+                }
+            });
+
+            audio.play();
+            document.querySelector("#play i").className = "fa fa-pause";
+        });
+
+        watermarkSoundRequest.send();
+    };
+
+    // Your existing code...
+}
+</script>
+
+
+</div>
 
 
 <script>
