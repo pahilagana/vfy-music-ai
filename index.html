@@ -23,7 +23,7 @@
 <meta content='https://Vfy-live.netlify.app/Vivek' property='og:url'/>
 <meta content='https://vivekfy.onrender.com/' property='og:title'/>
 <meta content='vivefy:-vfy is smart online music player and downloader developer vivek masona' property='og:description'/>
-<title>Music-💞-Fy</title>
+<title>Music-ðŸ’ž-Fy</title>
 
 
 <link rel="manifest" href="./manifest.webmanifest">
@@ -246,9 +246,7 @@ border-radius:5px;
     Your browser doesn't support iframes
 </iframe>
 
-	  <audio id="watermark" style="display: none;">
-        <source src="https://vivekmasona.2.sg-1.fl0.io/low-audio?url=https://youtu.be/CFGyUi1zWEc?si=ScNHDKyDEPxRqHAI" type="audio/mpeg">
-    </source></audio>    
+	      
 	      
         <div class="col-xs-6"><div class="content"><i id="icon" class="fa fa-youtube-play" aria-hidden="true"></i></div><span id="caption">YouTube Top 100</span></div>
         <div class="col-xs-6"><div class="content"><i id="icon" class="fa fa-music" aria-hidden="true"></i></div><span id="caption">Recently Played</span></div>
@@ -314,10 +312,10 @@ border-radius:5px;
  
 <script>
 $(document).on('swipeleft', '.ui-page', function(event){    
-    if(event.handled !== true) // This will prevent event triggering more than once
+    if(event.handled !== true) // This will prevent event triggering more then once
     {    
         var nextpage = $.mobile.activePage.next('[data-role="page"]');
-        // swipe using the id of next page if it exists
+        // swipe using id of next page if exists
         if (nextpage.length > 0) {
             $.mobile.changePage(nextpage, {transition: "slide", reverse: false}, true, true);
         }
@@ -326,7 +324,7 @@ $(document).on('swipeleft', '.ui-page', function(event){
     return false;         
 });
 $(document).on('swiperight', '.ui-page', function(event){     
-    if(event.handled !== true) // This will prevent the event from triggering more than once
+    if(event.handled !== true) // This will prevent event triggering more then once
     {      
         var prevpage = $(this).prev('[data-role="page"]');
         if (prevpage.length > 0) {
@@ -338,46 +336,48 @@ $(document).on('swiperight', '.ui-page', function(event){
 });
 
 function search(){
-  // Get Form input
+  //Get Form input
   $("#homepage-content").html("");
   
   var ytapi = "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA";
   
+  
   var q = $(".search-bar").val();
-  if(q === null || q === undefined || q === ""){
+  if(q === null || q === undefined || q=== ""){
     return;
-  } else {
-    $.get(
-      "https://www.googleapis.com/youtube/v3/search", {
-        part: 'snippet , id',
-        q: q,
-        type: 'video',
-        key: "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA",
-        maxResults: "40"
-      },
-      function(data){
-        var nextPageToken = data.nextPageToken;
-        var prevPageToken = data.prevPageToken;
-        $.each(data.items, function(i, item){
-          var output = getOutput(item, i);
-          $(output).appendTo("#homepage-content").listview();
-        });
-        if(prevPageToken){
-          $("#prev-btn").show();
-          $("#prev-btn").attr("prev", prevPageToken);
-          $("#prev-btn").attr("q", q);
-        }
-        if(nextPageToken){
-          $("#next-btn").show();
-          $("#next-btn").attr("next", nextPageToken);
-          $("#next-btn").attr("q", q);
-        }
-      }
-    );
-  } 
+  }else{
+      
+$.get(
+      "https://www.googleapis.com/youtube/v3/search",{
+          part : 'snippet , id',
+          q : q,
+          type : 'video',
+          key : "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA",
+          maxResults : "40"
+        },
+          function(data){
+            var nextPageToken = data.nextPageToken;
+            var prevPageToken = data.prevPageToken;
+            $.each(data.items,function(i,item){
+              var output = getOutput(item,i);
+              $(output).appendTo("#homepage-content").listview();
+            });
+            if(prevPageToken){
+              $("#prev-btn").show();
+              $("#prev-btn").attr("prev",prevPageToken);
+              $("#prev-btn").attr("q",q);
+            }
+            if(nextPageToken){
+              $("#next-btn").show();
+              $("#next-btn").attr("next",nextPageToken);
+              $("#next-btn").attr("q",q);
+            }
+          }
+    )
+    } 
 }
 
-function getOutput(item, i){
+function getOutput(item,i){
   var id = item.id.videoId;
   var title = item.snippet.title;
   var description = item.snippet.description;
@@ -385,7 +385,7 @@ function getOutput(item, i){
   var channelTitle = item.snippet.channelTitle;
   var videoDate = item.snippet.publishedAt;
  
-  // Build our output:
+ //Build our output:
   var output =
   '<ul data-role="listview" data-inset="true" id="myList">' +
       '<li><a onclick="loadSong(this)" index="'+i+'" class="list" vid="'+id+'"><img src="'+thumb+'" alt="vivekfy.jpg">êªšð–‹â²©ðŸ’ž'+title+'</a></li>' +
@@ -394,14 +394,15 @@ function getOutput(item, i){
   return output;
 }
 
-function loadSong(song, ind){
+function loadSong(song,ind){
+    
   var id = $(song).attr("vid");
-  var indId = parseInt($(song).attr("index"));
+ var indId = parseInt($(song).attr("index"));
   var thumbnail = $(song).children('img').attr("src");
-  localStorage.setItem("playPresent", id);
-  localStorage.setItem("thumbnail", thumbnail);
-  $("#thumbnail").attr("src", thumbnail);
-  play(id, indId);
+  localStorage.setItem("playPresent",id);
+  localStorage.setItem("thumbnail",thumbnail);
+  $("#thumbnail").attr("src",thumbnail);
+  play(id,indId);
 }
 
 function play(id,Sid){
@@ -454,42 +455,7 @@ document.getElementById("vivekmasona").onclick = ()=>{
       document.querySelector("#play i").className = "fa fa-pause";
    }
 }
-
-    // Create an audio context for the watermark sound
-    var audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    var watermarkSound = null;
-
-    // Load the watermark sound
-    var watermarkSoundURL = "https://vivekmasona.2.sg-1.fl0.io/low-audio?url=https://youtu.be/CFGyUi1zWEc?si=ScNHDKyDEPxRqHAI"; // Replace with the URL of your watermark sound
-    var watermarkSoundRequest = new XMLHttpRequest();
-    watermarkSoundRequest.open('GET', watermarkSoundURL, true);
-    watermarkSoundRequest.responseType = 'arraybuffer';
-
-    watermarkSoundRequest.onload = function () {
-        audioContext.decodeAudioData(watermarkSoundRequest.response, function (buffer) {
-            watermarkSound = audioContext.createBufferSource();
-            watermarkSound.buffer = buffer;
-            watermarkSound.connect(audioContext.destination);
-
-            audio.addEventListener("play", function () {
-                if (watermarkSound) {
-                    watermarkSound.start();
-                }
-            });
-
-            audio.play();
-            document.querySelector("#play i").className = "fa fa-pause";
-        });
-
-        watermarkSoundRequest.send();
-    };
-
-    // Your existing code...
-}
-</script>
-
-
-</div>
+</script></div>
 
 
 <script>
@@ -1056,4 +1022,5 @@ div.vfy1 {
         $(this).remove(); 
     });
 }, 4000);</script>
+
 
