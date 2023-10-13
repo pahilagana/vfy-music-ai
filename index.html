@@ -1075,6 +1075,21 @@ if (localStorage.getItem("audioPlayedToday") !== "true") {
 </!doctype>
 
 
+<script>
+const names = ["Name 1", "Name 2", "Name 3"]; // Add your list of names here
+let currentIndex = 0;
+
+function changePlaceholder() {
+    const searchBox = document.getElementById("search-basic");
+    searchBox.placeholder = "Search for " + names[currentIndex];
+    currentIndex = (currentIndex + 1) % names.length;
+}
+
+setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
+</script>
+	
+
+
 	
 
 
