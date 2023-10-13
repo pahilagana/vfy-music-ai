@@ -27,7 +27,10 @@
 
 
 <link rel="manifest" href="./manifest.webmanifest">
-
+<script>
+var opp = new Audio();
+opp.src = '/effect/ok.mp3';
+</script>
 <script>
 var op = new Audio();
 op.src = '/effect/Click.mp3';
@@ -326,7 +329,7 @@ border-radius:5px;
     </ul>
   </div>
   </div>   
- 
+ <vivekfy href="#" onmousedown="op.play()">
 <script>
 $(document).on('swipeleft', '.ui-page', function(event){    
     if(event.handled !== true) // This will prevent event triggering more then once
@@ -545,7 +548,7 @@ watermarkAudio2.controls = false;
     }
   }
 </script>
-
+</vivekfy>
 <style>html {
 	background-color:#000;
 }
