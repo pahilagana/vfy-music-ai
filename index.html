@@ -356,7 +356,10 @@ function search(){
   //Get Form input
   $("#homepage-content").html("");
   
-  var ytapi = "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA";
+  //var ytapi = "AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo";
+ //var ytapi = "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA";
+ //var ytapi = "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA";
+ //var ytapi = "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA";
   
   
   var q = $(".search-bar").val();
@@ -376,7 +379,10 @@ $.get(
         //videoType: 'video',
         //order: 'date', // Sort by date (newest first)
         //videoLicense: 'creativeCommon',
-          key : "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA",
+          key : "AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo",
+	  //key : "AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo",
+	  //key : "AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo",
+	  //key : "AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo",   
           maxResults : "40"
         },
           function(data){
