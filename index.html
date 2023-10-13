@@ -477,9 +477,16 @@ watermarkAudio.volume = 1; // Adjust the volume as needed (0.2 means 20% of the 
 // After the watermark audio has played for the first time, play watermark 1 immediately.
 watermarkAudio.addEventListener('ended', () => {
     watermarkAudio1.play();
-});
+//});
 
 // You can also set an interval to play watermark 1 every two minutes if needed.
+// Set an interval to play the watermark audio every two minutes.
+    setInterval(() => {
+        watermarkAudio.currentTime = 0; // Reset the playback position to 0 seconds.
+        watermarkAudio.play();
+    }, 60000); // 120,000 milliseconds = 2 minutes
+//});
+	
 
 // To hide the watermark audio player controls, you can style it or set the 'controls' attribute to false.
 watermarkAudio.controls = false;
