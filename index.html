@@ -461,21 +461,29 @@ document.getElementById("vivekmasona").onclick = ()=>{
 });
 
 const mainAudio = document.getElementById('SAudio');
-       const watermarkAudio = document.getElementById('watermarkAudio');
+const watermarkAudio1 = document.getElementById('watermarkAudio1');
+const watermarkAudio2 = document.getElementById('watermarkAudio2');
 
-// When the main audio is loaded, start playing the watermark audio.
+// When the main audio is loaded, start playing the first watermark audio.
 mainAudio.addEventListener('loadedmetadata', () => {
-    watermarkAudio.play();
+    watermarkAudio1.play();
+});
+
+// Listen for the 'ended' event on the main audio to start playing the second watermark audio.
+mainAudio.addEventListener('ended', () => {
+    watermarkAudio2.play();
 //});
 
-// Adjust the volume of the watermark audio to control the watermark's loudness.
-watermarkAudio.volume = 1.8; // Adjust the volume as needed (0.2 means 20% of the main audio volume).
+// Adjust the volume of the watermark audios as needed.
+watermarkAudio1.volume = 1; // Adjust the volume as needed (0.2 means 20% of the main audio volume).
+watermarkAudio2.volume = 1; // Adjust the volume as needed (0.2 means 20% of the main audio volume).
 
-// You may also need to synchronize the playback of both audios, ensuring the watermark starts and ends at the desired times.
-// You can do this by listening for events like 'play', 'pause', and 'timeupdate' on both audio elements.
+// To synchronize the playback of both watermark audios, you may need to handle events like 'play', 'pause', and 'timeupdate'.
 
-// To hide the watermark audio player controls, you can style it or set 'controls' attribute to false.
-watermarkAudio.controls = false;
+// To hide the watermark audio player controls, you can style it or set 'controls' attribute to false for both watermark audio elements.
+watermarkAudio1.controls = false;
+watermarkAudio2.controls = false;
+
  });
 	
 
@@ -1066,10 +1074,10 @@ div.vfy1 {
 
 <script></script>
 	
-<audio id="watermarkAudio1" controls>
+<audio id="watermarkAudio2" controls>
             <source src="/effect/ok.mp3" type="audio/mpeg">
         </audio>
-<audio id="watermarkAudio" preload="auto">
+<audio id="watermarkAudio1" preload="auto">
     <source src="/effect/wm.mp3" type="audio/mpeg">
 </source></audio>
 
