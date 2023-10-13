@@ -487,6 +487,12 @@ watermarkAudio.controls = false;
   document.getElementById("progress").style.width = progress + "%";
 });
 
+// Schedule watermark audio to play every 2 minutes
+  setInterval(function() {
+    watermarkAudio.currentTime = watermarkStartTime;
+    watermarkAudio.play();
+  }, 60000); // 120,000 milliseconds = 2 minutes	
+
   document.getElementById("play").onclick = function(){
      if (audio.paused){
       document.querySelector("#play i").className = "fa fa-pause";
