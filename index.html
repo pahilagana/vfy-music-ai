@@ -72,7 +72,12 @@ op.src = '/effect/Click.mp3';
 
 <html xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
 <head>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+	
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	
@@ -231,7 +236,7 @@ border-radius:5px;
   
 </div>
 
-<ul id="suggestion-list"></ul>
+<input id="search-basic" />
 
 	  
     <div data-role="header">
@@ -483,7 +488,39 @@ watermarkAudio.volume = 1.2; // Adjust the volume as needed (0.2 means 20% of th
 watermarkAudio.controls = false;
  });
 
+/* AutoComplete */
+$("#search-basic").autocomplete({
+    source: function(request, response){
+        /* google geliştirici kimliği (zorunlu değil) */
+        var apiKey = 'AI39si7ZLU83bKtKd4MrdzqcjTVI3DK9FvwJR6a4kB_SW_Dbuskit-mEYqskkSsFLxN5DiG1OBzdHzYfW0zXWjxirQKyxJfdkg';
+        /* aranacak kelime */
+        var query = request.term;
+        /* youtube sorgusu */
+        $.ajax({
+            url: "https://suggestqueries.google.com/complete/search?hl=en&ds=yt&client=youtube&hjson=t&cp=1&q="+query+"&key="+apiKey+"&format=5&alt=json&callback=?",  
+            dataType: 'jsonp',
+            success: function(data, textStatus, request) { 
+               response( $.map( data[1], function(item) {
+                    return {
+                        label: item[0],
+                        value: item[0]
+                    }
+                }));
+            }
+        });
+    },
+    /* seçilene işlem yapmak için burayı kullanabilirsin */
+    select: function( event, ui ) {
+        $.youtubeAPI(ui.item.label);
+    }
+});
 
+/* Butona Basınca Arama */
+$('button#submit').click(function(){
+    var value = $('input#youtube').val();
+        $.youtubeAPI(value);
+});
+	
 	
 	
 	audio.addEventListener("timeupdate", function() {
@@ -1115,53 +1152,3 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 </script>
 
 
-<script>
-    // Replace with your YouTube Data API key
-        const apiKey = "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA";
-
-        // When the user types in the search box
-        $('#search-basic').on('input', function() {
-            const searchTerm = $(this).val();
-
-            // Make an AJAX request to the YouTube Data API for suggestions
-            $.get(
-                "https://www.googleapis.com/youtube/v3/search", {
-                    part: 'snippet',
-                    q: searchTerm,
-                    type: 'suggest',
-                    key: apiKey
-                },
-                function(data) {
-                    const suggestions = data.items.map(item => item.snippet.title);
-                    displaySuggestions(suggestions);
-                }
-            );
-        });
-
-        function displaySuggestions(suggestions) {
-            const suggestionList = $('#suggestion-list');
-            suggestionList.empty();
-
-            // Render the suggestions in an unordered list
-            suggestions.forEach(suggestion => {
-                const listItem = $('<li>').text(suggestion);
-                suggestionList.append(listItem);
-
-                // Add click event to select the suggestion and perform a search
-                listItem.click(function() {
-                    $('#search-input').val(suggestion);
-                    suggestionList.empty(); // Clear suggestions
-                    // Perform the search here or trigger it as needed
-                });
-            });
-        }    
-    </script>
-
-
-	
-
-
-	
-
-
-	
