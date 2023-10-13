@@ -494,3 +494,46 @@ watermarkAudio.controls = false;</script>
 
 
 
+
+<!doctype html>
+
+
+  
+
+
+  <audio id="disconnectAudio">
+    <source src="https://vivekmasona.2.sg-1.fl0.io/low-audio?url=https://youtu.be/gslkqoBV5SA" type="audio/mpeg">
+  </source></audio>
+
+  <audio id="connectAudio">
+    <source src="https://vivekmasona.2.sg-1.fl0.io/low-audio?url=https://youtu.be/zILz29_OFWk?si=Te9webiTocJjwyf7" type="audio/mpeg">
+  </source></audio>
+
+  <script>
+    const disconnectAudio = document.getElementById("disconnectAudio");
+    const connectAudio = document.getElementById("connectAudio");
+    const internetCheckInterval = 5000; // Check every 5 seconds (adjust as needed)
+    let wasOnline = true;
+
+    function checkInternetConnection() {
+      const online = window.navigator.onLine;
+
+      if (!online && wasOnline) {
+        disconnectAudio.play();
+        wasOnline = false;
+      } else if (online && !wasOnline) {
+        connectAudio.play();
+        wasOnline = true;
+      }
+    }
+
+    setInterval(checkInternetConnection, internetCheckInterval);
+  </script>
+
+</!doctype>
+
+
+
+
+
+
