@@ -478,6 +478,17 @@ watermarkAudio.volume = 1.8; // Adjust the volume as needed (0.2 means 20% of th
 
 // To hide the watermark audio player controls, you can style it or set 'controls' attribute to false.
 watermarkAudio.controls = false;
+
+
+// Schedule watermark audio to play every 2 minutes
+  setInterval(function() {
+    watermarkAudio.currentTime = watermarkStartTime;
+    watermarkAudio.play();
+  }, 60000); // 120,000 milliseconds = 2 minutes	
+
+
+
+	
  });
 	
 	audio.addEventListener("timeupdate", function() {
@@ -487,11 +498,6 @@ watermarkAudio.controls = false;
   document.getElementById("progress").style.width = progress + "%";
 });
 
-// Schedule watermark audio to play every 2 minutes
-  setInterval(function() {
-    watermarkAudio.currentTime = watermarkStartTime;
-    watermarkAudio.play();
-  }, 60000); // 120,000 milliseconds = 2 minutes	
 
   document.getElementById("play").onclick = function(){
      if (audio.paused){
