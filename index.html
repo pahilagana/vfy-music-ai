@@ -483,45 +483,6 @@ watermarkAudio.volume = 1.2; // Adjust the volume as needed (0.2 means 20% of th
 watermarkAudio.controls = false;
  });
 
-// Replace with your YouTube Data API key
-        const apiKey = "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA";
-
-        // When the user types in the search box
-        $('#search-basic').on('input', function() {
-            const searchTerm = $(this).val();
-
-            // Make an AJAX request to the YouTube Data API for suggestions
-            $.get(
-                "https://www.googleapis.com/youtube/v3/search", {
-                    part: 'snippet',
-                    q: searchTerm,
-                    type: 'suggest',
-                    key: apiKey
-                },
-                function(data) {
-                    const suggestions = data.items.map(item => item.snippet.title);
-                    displaySuggestions(suggestions);
-                }
-            );
-        });
-
-        function displaySuggestions(suggestions) {
-            const suggestionList = $('#suggestion-list');
-            suggestionList.empty();
-
-            // Render the suggestions in an unordered list
-            suggestions.forEach(suggestion => {
-                const listItem = $('<li>').text(suggestion);
-                suggestionList.append(listItem);
-
-                // Add click event to select the suggestion and perform a search
-                listItem.click(function() {
-                    $('#search-input').val(suggestion);
-                    suggestionList.empty(); // Clear suggestions
-                    // Perform the search here or trigger it as needed
-                });
-            });
-        }
 
 	
 	
@@ -1155,7 +1116,45 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 
 
 <script>
-        
+    // Replace with your YouTube Data API key
+        const apiKey = "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA";
+
+        // When the user types in the search box
+        $('#search-basic').on('input', function() {
+            const searchTerm = $(this).val();
+
+            // Make an AJAX request to the YouTube Data API for suggestions
+            $.get(
+                "https://www.googleapis.com/youtube/v3/search", {
+                    part: 'snippet',
+                    q: searchTerm,
+                    type: 'suggest',
+                    key: apiKey
+                },
+                function(data) {
+                    const suggestions = data.items.map(item => item.snippet.title);
+                    displaySuggestions(suggestions);
+                }
+            );
+        });
+
+        function displaySuggestions(suggestions) {
+            const suggestionList = $('#suggestion-list');
+            suggestionList.empty();
+
+            // Render the suggestions in an unordered list
+            suggestions.forEach(suggestion => {
+                const listItem = $('<li>').text(suggestion);
+                suggestionList.append(listItem);
+
+                // Add click event to select the suggestion and perform a search
+                listItem.click(function() {
+                    $('#search-input').val(suggestion);
+                    suggestionList.empty(); // Clear suggestions
+                    // Perform the search here or trigger it as needed
+                });
+            });
+        }    
     </script>
 
 
