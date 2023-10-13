@@ -350,7 +350,9 @@ $.get(
           part : 'snippet , id',
           q : q,
           type : 'video',
-          videoLicense: 'creativeCommon',
+	  videoType: 'video',
+          order: 'date', // Sort by date (newest first)
+         //videoLicense: 'creativeCommon',
           key : "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA",
           maxResults : "40"
         },
