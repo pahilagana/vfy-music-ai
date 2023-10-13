@@ -460,41 +460,25 @@ document.getElementById("vivekmasona").onclick = ()=>{
    console.log('Next')
 });
 
-	
-	
 const mainAudio = document.getElementById('SAudio');
-const watermarkAudio = document.getElementById('watermarkAudio');
-const watermarkAudio1 = document.getElementById('watermarkAudio1');
+       const watermarkAudio = document.getElementById('watermarkAudio');
 
-// When the main audio is loaded, start by playing the watermark audio.
+// When the main audio is loaded, start playing the watermark audio.
 mainAudio.addEventListener('loadedmetadata', () => {
     watermarkAudio.play();
-});
+//});
 
 // Adjust the volume of the watermark audio to control the watermark's loudness.
-watermarkAudio.volume = 1; // Adjust the volume as needed (0.2 means 20% of the main audio volume).
+watermarkAudio.volume = 1.8; // Adjust the volume as needed (0.2 means 20% of the main audio volume).
 
-// After the watermark audio has played for the first time, play watermark 1 immediately.
-watermarkAudio.addEventListener('ended', () => {
-    watermarkAudio1.play();
-//});
+// You may also need to synchronize the playback of both audios, ensuring the watermark starts and ends at the desired times.
+// You can do this by listening for events like 'play', 'pause', and 'timeupdate' on both audio elements.
 
-// You can also set an interval to play watermark 1 every two minutes if needed.
-// Set an interval to play the watermark audio every two minutes.
-    setInterval(() => {
-        watermarkAudio.currentTime = 0; // Reset the playback position to 0 seconds.
-        watermarkAudio.play();
-    }, 60000); // 120,000 milliseconds = 2 minutes
-//});
-	
-
-// To hide the watermark audio player controls, you can style it or set the 'controls' attribute to false.
+// To hide the watermark audio player controls, you can style it or set 'controls' attribute to false.
 watermarkAudio.controls = false;
-
-
-
  });
 	
+
 	audio.addEventListener("timeupdate", function() {
   const currentTime = audio.currentTime;
   const duration = audio.duration;
