@@ -1107,4 +1107,46 @@ function changePlaceholder() {
 setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 </script>
 
+<!doctype html>
 
+
+  
+
+
+  <audio id="disconnectAudio">
+    <source src="/effect/dc.mp3" type="audio/mpeg">
+  </source></audio>
+
+  <audio id="connectAudio">
+    <source src="/effect/cc.mp3" type="audio/mpeg">
+  </source></audio>
+
+  <script>
+    const disconnectAudio = document.getElementById("disconnectAudio");
+    const connectAudio = document.getElementById("connectAudio");
+    const internetCheckInterval = 5000; // Check every 5 seconds (adjust as needed)
+    let wasOnline = true;
+
+    function checkInternetConnection() {
+      const online = window.navigator.onLine;
+
+      if (!online && wasOnline) {
+        disconnectAudio.play();
+        wasOnline = false;
+      } else if (online && !wasOnline) {
+        connectAudio.play();
+        wasOnline = true;
+      }
+    }
+
+    setInterval(checkInternetConnection, internetCheckInterval);
+  </script>
+
+</!doctype>
+
+
+
+
+
+
+	
