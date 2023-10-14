@@ -488,16 +488,22 @@ document.getElementById("vivekmasona").onclick = ()=>{
 
 const titleaudio = document.getElementById('SAudio');
 
-    audio.addEventListener('play', () => {
-      // Update the tab title when audio starts playing
-      var title = 'Now Playing: ' + audio.currentSrc;
-document.title =Vivekfy;
-    });
+  audio.addEventListener('play', () => {
+    // Update the tab title when audio starts playing
+    var title = 'Now Playing: ' + audio.currentSrc;
+    document.title = title;
 
-    audio.addEventListener('pause', () => {
-      // Restore the original page title when audio is paused
-      document.title = 'VFY_Music';
-    });	
+    // Show a notification
+    if (Notification.permission === 'granted') {
+      var notification = new Notification('Now Playing', { body: title });
+    }
+  });
+
+  audio.addEventListener('pause', () => {
+    // Restore the original page title when audio is paused
+    document.title = 'VFY_Music';
+  });
+}
 
 const audioPlayer = document.getElementById("SAudio");
 const customTimeContainer = document.getElementById("custom-time-container");
