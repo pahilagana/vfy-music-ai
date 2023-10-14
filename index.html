@@ -1226,28 +1226,28 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 
 
     <script>
-    function speakSearchText() {
-      const searchInput = document.getElementById('search-basic');
-      const textToSpeak = searchInput.value;
+  function speakSearchText() {
+    const searchInput = document.getElementById('search-basic');
+    const textToSpeak = searchInput.value;
 
-      if ('speechSynthesis' in window) {
-        const verifiedText = '' + textToSpeak + '  [result from V fy music]';
-        const utterance = new SpeechSynthesisUtterance(verifiedText);
+    if ('speechSynthesis' in window) {
+      const verifiedText = '' + textToSpeak + '  [result from V fy music]';
+      const utterance = new SpeechSynthesisUtterance(verifiedText);
 
-        // Select a male voice, if available
-        const voices = window.speechSynthesis.getVoices();
-        let maleVoice = voices.find(voice => voice.name === 'your-male-voice-name');
-        if (maleVoice) {
-          utterance.voice = maleVoice;
-        } else {
-          console.log('Male voice not found; using the default voice.');
-        }
-
-        window.speechSynthesis.speak(utterance);
+      // Select a male voice, if available
+      const voices = window.speechSynthesis.getVoices();
+      let maleVoice = voices.find(voice => voice.name === 'your-male-voice-name');
+      if (maleVoice) {
+        utterance.voice = maleVoice;
       } else {
-        console.log('Text-to-speech not supported in this browser');
+        console.log('Male voice not found; using the default voice.');
       }
+
+      utterance.volume = 0.4; // Set volume to 50%
+
+      window.speechSynthesis.speak(utterance);
+    } else {
+      console.log('Text-to-speech not supported in this browser');
     }
-  </script>
-
-
+  }
+</script></!doctype>
