@@ -543,7 +543,17 @@ watermarkAudio2.controls = false;
   const progress = (currentTime / duration) * 100;
   document.getElementById("progress").style.width = progress + "%";
 });
+const audio = document.getElementById('SAudio');
 
+    audio.addEventListener('play', () => {
+      // Update the tab title when audio starts playing
+      document.title = 'Now Playing: ' + audio.currentSrc;
+    });
+
+    audio.addEventListener('pause', () => {
+      // Restore the original page title when audio is paused
+      document.title = 'Audio vivekfy';
+    });
 
   document.getElementById("play").onclick = function(){
      if (audio.paused){
