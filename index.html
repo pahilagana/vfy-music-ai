@@ -1225,15 +1225,23 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 
 
 
-  <script>
+    <script>
     function speakSearchText() {
       const searchInput = document.getElementById('search-basic');
       const textToSpeak = searchInput.value;
 
       if ('speechSynthesis' in window) {
-        const utterance = new SpeechSynthesisUtterance(textToSpeak);
+        const verifiedText = 'please wait, am searching' + textToSpeak + '  [Song from Vfy music]';
+        const utterance = new SpeechSynthesisUtterance(verifiedText);
+
+        // Select a male voice, if available
         const voices = window.speechSynthesis.getVoices();
-        utterance.voice = voices[0];
+        let maleVoice = voices.find(voice => voice.name === 'your-male-voice-name');
+        if (maleVoice) {
+          utterance.voice = maleVoice;
+        } else {
+          console.log('Male voice not found; using the default voice.');
+        }
 
         window.speechSynthesis.speak(utterance);
       } else {
@@ -1241,6 +1249,5 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
       }
     }
   </script>
-	
 
 
