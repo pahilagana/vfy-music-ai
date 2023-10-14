@@ -272,7 +272,7 @@ Background-color:#0D0C0A;
      <input type="search"  name="search" id="search-basic" class="search-bar"placeholder="VIVEKFY: Type songs name artists...."/>
      
 	    
-	<vutton onclick="speakSearchText()">    <button onclick='search()' data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button></vutton>
+	  <vivekfy onclick="speakSearchText()">  <button onclick='search()' data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button></vivekfy>
    
 
     
@@ -488,22 +488,15 @@ document.getElementById("vivekmasona").onclick = ()=>{
 
 const titleaudio = document.getElementById('SAudio');
 
-  audio.addEventListener('play', () => {
-    // Update the tab title when audio starts playing
-    var title = 'Now Playing: ' + audio.currentSrc;
-    document.title = title;
+    audio.addEventListener('play', () => {
+      // Update the tab title when audio starts playing
+      document.title = 'Now Playing: ' + audio.currentSrc;
+    });
 
-    // Show a notification
-    if (Notification.permission === 'granted') {
-      var notification = new Notification('Now Playing', { body: title });
-    }
-  });
-
-  audio.addEventListener('pause', () => {
-    // Restore the original page title when audio is paused
-    document.title = 'VFY_Music';
-  });
-}
+    audio.addEventListener('pause', () => {
+      // Restore the original page title when audio is paused
+      document.title = 'Audio vivekfy';
+    });	
 
 const audioPlayer = document.getElementById("SAudio");
 const customTimeContainer = document.getElementById("custom-time-container");
@@ -1229,9 +1222,12 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 </!doctype>
 
 
-	<script>
+
+
+
+  <script>
     function speakSearchText() {
-      const searchInput = document.getElementById('search-basic');
+      const searchInput = document.getElementById('search_basic');
       const textToSpeak = searchInput.value;
 
       if ('speechSynthesis' in window) {
@@ -1245,12 +1241,6 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
       }
     }
   </script>
-
-</!doctype>
-
-
-
-
-
 	
+
 
