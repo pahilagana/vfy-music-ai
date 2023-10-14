@@ -14,8 +14,6 @@ body {
 
 "use strict";
 
-/* inspired by the ideas given by Louis Hoebregts in his pen :
-https://codepen.io/Mamboleoo/full/XWJPxpZ */
 
 window.addEventListener("load",function() {
 
@@ -254,7 +252,7 @@ function startOver() {
   noiseInitDir = NoiseGen(null, 200,0,0,-0.03,0.03);
   hue = intAlea(360);
   if (org.x == 0 && org.y == 0)
-    org = {x: maxx / 2, y: maxy / 2};
+    org = {x: maxx -50, y: maxy * 0.8};
   mouse = {x: maxx / 2, y: maxy / 2};
   particles = [];
 
