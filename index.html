@@ -90,19 +90,16 @@ Background-color:#000;
   padding : 0px;
 }
 
-.SThumb {
-  animation: rotateAnimation 2s linear infinite;
+#SThumb{
+  width: 50px;
+  animation: rotation 6s infinite linear;
+	width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: relative;
+            animation: rotation 60s linear infinite, borderChange 4s linear infinite alternate;
+        
 }
-
-@keyframes rotateAnimation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 
 @keyframes rotation {
   from {
@@ -112,8 +109,6 @@ Background-color:#000;
     transform: rotate(360deg);
   }
 }
-
-	
 #custom-time-container {
   
 color:#15E2F5
@@ -490,16 +485,6 @@ document.getElementById("vivekmasona").onclick = ()=>{
    document.getElementsByClassName("list")[Sid+1].click()
    console.log('Next')
 });
-const audioimg = document.getElementById("SAudio");
-const imagevfy = document.getElementById("SThumb");
-
-audioimg.addEventListener("play", () => {
-  imagevfy.classList.add("rotate");
-});
-
-audioimg.addEventListener("pause", () => {
-  imagevfy.classList.remove("rotate");
-});
 
 const audioPlayer = document.getElementById("SAudio");
 const customTimeContainer = document.getElementById("custom-time-container");
@@ -515,14 +500,7 @@ audioPlayer.addEventListener("timeupdate", () => {
   const currentTime = audioPlayer.currentTime;
   currentTimeDisplay.textContent = formatTime(currentTime);
 });
-	
-audio.addEventListener("play", () => {
-  image.classList.add("rotate");
-});
 
-audio.addEventListener("pause", () => {
-  image.classList.remove("rotate");
-});
 function formatTime(seconds) {
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = Math.floor(seconds % 60);
@@ -1234,3 +1212,4 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 
 
 	
+
