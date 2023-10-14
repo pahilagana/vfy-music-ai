@@ -488,17 +488,9 @@ document.getElementById("vivekmasona").onclick = ()=>{
    document.getElementsByClassName("list")[Sid+1].click()
    console.log('Next')
 });
-//const audio = document.getElementById("SAudio");
-const image = document.getElementById("SThumb");
 
-audio.addEventListener("play", () => {
-  image.classList.add("rotate");
-});
-
-audio.addEventListener("pause", () => {
-  image.classList.remove("rotate");
-});
 	
+const image = document.getElementById("SThumb");
 
 const audioPlayer = document.getElementById("SAudio");
 const customTimeContainer = document.getElementById("custom-time-container");
@@ -514,7 +506,15 @@ audioPlayer.addEventListener("timeupdate", () => {
   const currentTime = audioPlayer.currentTime;
   currentTimeDisplay.textContent = formatTime(currentTime);
 });
+	
+audioPlayer.addEventListener("play", () => {
+  image.classList.add("rotate");
+});
 
+audioPlayer.addEventListener("pause", () => {
+  image.classList.remove("rotate");
+
+});	
 function formatTime(seconds) {
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = Math.floor(seconds % 60);
