@@ -1231,7 +1231,7 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
     const textToSpeak = searchInput.value;
 
     if ('speechSynthesis' in window) {
-      const verifiedText = '' + textToSpeak + '  [reesults from bhi faai music]';
+      const verifiedText = '' + textToSpeak + '  [output from bhi faai music]';
       const utterance = new SpeechSynthesisUtterance(verifiedText);
 
       // Select a male voice, if available
