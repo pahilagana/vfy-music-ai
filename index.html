@@ -507,14 +507,13 @@ audioPlayer.addEventListener("timeupdate", () => {
   currentTimeDisplay.textContent = formatTime(currentTime);
 });
 	
-audioPlayer.addEventListener("play", () => {
+audio.addEventListener("play", () => {
   image.classList.add("rotate");
 });
 
-audioPlayer.addEventListener("pause", () => {
+audio.addEventListener("pause", () => {
   image.classList.remove("rotate");
-
-});	
+});
 function formatTime(seconds) {
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = Math.floor(seconds % 60);
