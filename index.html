@@ -490,9 +490,16 @@ document.getElementById("vivekmasona").onclick = ()=>{
    document.getElementsByClassName("list")[Sid+1].click()
    console.log('Next')
 });
+const audioimg = document.getElementById("SAudio");
+const imagevfy = document.getElementById("SThumb");
 
-	
-const image = document.getElementById("SThumb");
+audioimg.addEventListener("play", () => {
+  imagevfy.classList.add("rotate");
+});
+
+audioimg.addEventListener("pause", () => {
+  imagevfy.classList.remove("rotate");
+});
 
 const audioPlayer = document.getElementById("SAudio");
 const customTimeContainer = document.getElementById("custom-time-container");
