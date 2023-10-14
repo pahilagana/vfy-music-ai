@@ -462,6 +462,30 @@ document.getElementById("vivekmasona").onclick = ()=>{
    console.log('Next')
 });
 
+const audioPlayer = document.getElementById("SAudio");
+const customTimeContainer = document.getElementById("custom-time-container");
+const currentTimeDisplay = document.getElementById("current-time");
+const totalTimeDisplay = document.getElementById("total-time");
+
+audioPlayer.addEventListener("loadedmetadata", () => {
+  const totalDuration = audioPlayer.duration;
+  totalTimeDisplay.textContent = formatTime(totalDuration);
+});
+
+audioPlayer.addEventListener("timeupdate", () => {
+  const currentTime = audioPlayer.currentTime;
+  currentTimeDisplay.textContent = formatTime(currentTime);
+});
+
+function formatTime(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = Math.floor(seconds % 60);
+  return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+}
+
+
+	
+
 const mainAudio = document.getElementById('SAudio');
 const watermarkAudio1 = document.getElementById('watermarkAudio1');
 const watermarkAudio2 = document.getElementById('watermarkAudio2');
