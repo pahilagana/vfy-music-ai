@@ -1231,7 +1231,7 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
     const textToSpeak = searchInput.value;
 
     if ('speechSynthesis' in window) {
-      const verifiedText = 'hello i am dristi your assistaint please wait your request' + textToSpeak + '  [result from V fy music]';
+      const verifiedText = '' + textToSpeak + '  [result from V fy music]';
       const utterance = new SpeechSynthesisUtterance(verifiedText);
 
       // Select a male voice, if available
