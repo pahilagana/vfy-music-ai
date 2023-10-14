@@ -90,9 +90,15 @@ Background-color:#000;
   padding : 0px;
 }
 
-SThumb{
+img{
   width: 50px;
   animation: rotation 6s infinite linear;
+	width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            position: relative;
+            animation: rotation 60s linear infinite, borderChange 4s linear infinite alternate;
+        
 }
 
 @keyframes rotation {
