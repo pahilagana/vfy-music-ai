@@ -1221,3 +1221,37 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
   }
 </script></!doctype>
 
+
+	<style>
+
+#SThumb{
+  width: 50px;
+  animation: rotation 6s infinite linear;
+	width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: relative;
+            animation: rotation 60s linear infinite, borderChange 4s linear infinite alternate;
+        
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+#custom-time-container {
+  
+  font-size:30px;
+  
+  text-align: center;
+  
+color:#15E2F5;
+  
+}
+	
+		
+	</style>
