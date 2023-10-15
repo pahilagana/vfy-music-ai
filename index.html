@@ -41,23 +41,51 @@ op.src = '/effect/Click.mp3';
             </div>
         </b></div>
 
-<style>
-   /* Hide the mute button */
-    audio::-webkit-media-controls-mute-button,
-    audio::-webkit-media-controls-play-button,
+<style>*
+
+.fixed
+{
+    position: fixed;
+    top:76%;
+    right: 0;
+    width:120px;
+    height:200px;
+    z-index:999;
+}
+.button 
+{
+display: block;
+border: 0;
+line-height: 3;
+margin-bottom: 0.3em;
+outline: none;
+text-decoration: none;
+color: #fff;
+width: 120px;
+
+font-size: 16px;
+border-radius: 20px 0 0 20px;
+}
+.buttonDiv 
+{
+
+border-radius: 50px 0 0 50px;
+}
+
+/* Button Css */
+.bg-b-blue
+{
+    background: rgb(7,21,22);
+background: linear-gradient(180deg, rgba(7,21,22,1) 4%, rgba(71,215,226,1) 43%, rgba(66,198,209,1) 47%, rgba(0,0,0,1) 92%);	}
+.bg-b-blue:hover
+{
+    background:linear-gradient(45deg,#1a77e2,#4485d2);
+}
+.</style>
+
+
+
 	
-    audio::-webkit-media-controls-pause-button {
-    display: none !important;
-	 color: #16E2F5;   
-	}
-
-    
-
-	
-
-</style>
-
-
 
 
 
