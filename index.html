@@ -169,129 +169,6 @@ Color;#15E2F5;
   font-size:50px;
   text-shadow: 1px 2px 5px #04B2A7;
 }
-<style>
-body{
-Background-color:#000;
-  margin: 0px;
-  padding : 0px;
-}
-
-         
-      #current-time, #total-time {
-            color: #ffffff;
-          }
-         
-	
-
-#SThumb{
-  width: 50px;
-  animation: rotation 6s infinite linear;
-	width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            position: relative;
-            animation: rotation 60s linear infinite, borderChange 4s linear infinite alternate;
-        
-}
-
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-#custom-time-container {
-  
-  font-size:30px;
-  
-  text-align: center;
-  
-color:#15E2F5;
-  
-}
-	
-
-#foot{
-background-color:#0D0C0A;
-}
-#upper{
-  position:fixed;
-  width : 100%;
-  background: linear-gradient(0deg, rgba(42,42,42,1) 28%, rgba(0,232,255,1) 53%, rgba(42,42,42,1) 70%);
-  z-index : 1;
-}
-#spacer{
-background: linear-gradient(0deg, rgba(42,42,42,1) 18%, rgba(0,232,255,1) 53%, rgba(42,42,42,1) 80%);
-  height : 174px;
-}
-#tube{
-  color: #fff;
-  background: #15E2F5;
-  padding:0px 4px;
-  border-radius: 6px;
-}
-#search-btn{
-background-colour:#16E2F5;
-  display : block;
-  width : 31%;
-border: 2px solid #16E2F5 !important;
-  margin : auto;
-  border-radius : 20px;
-  margin-top : 20px;
-}
-#foot .ui-btn { 
-Color:#15E2F5;
-background: radial-gradient(circle, rgba(3,6,6,1) 26%, rgba(55,237,246,1) 44%, rgba(13,12,10,1) 59%);
-
-  height: 50px;
- font-size:50px;
-  font-size : 20px; 
-}
-background: radial-gradient(circle, rgba(3,6,6,1) 26%, rgba(55,237,246,1) 44%, rgba(13,12,10,1) 59%);
-.ui-navbar li .ui-btn .ui-btn-inner, .ui-navbar li .ui-btn {
-    border: 0 solid #000 !important;
-}
-Color:#15E2F5;
-.search-header{
-  float : right;
-}
-
-#home-content{
-
-  margin-top: 20px;
-}
-#custom-progress-bar {
-  width: 100%;
-  background: #616D7E;
-}
-
-#progress {
-  width: 0;
-  height: 8px;
-  background: rgb(12,78,10);
-background: linear-gradient(90deg, rgba(12,78,10,1) 4%, rgba(34,108,31,1) 15%, rgba(133,173,130,1) 34%, rgba(168,196,166,1) 38%, rgba(255,255,255,1) 50%, rgba(255,254,254,1) 64%, rgba(255,217,200,1) 70%, rgba(255,103,31,1) 88%);
-
-}
-
-	
-	
-.content{
-
-  height : 180px;
-  background: radial-gradient(circle, rgba(0,0,0,1) 40%, rgba(21,224,244,1) 6%, rgba(42,42,42,1) 46%);
-  margin-top : 10px;
-  text-align : center;
-  border-radius : 8px;
-  
-}
-#icon{
-Color;#15E2F5;
-  line-height: 180px;
-  font-size:50px;
-  text-shadow: 1px 2px 5px #04B2A7;
-}
 #caption{
   font-size : 0px;
 color:#252525;
@@ -316,12 +193,17 @@ Background-color:#0D0C0A;
     justify-content:space-around;
     width:100%;
 }
+#SThumb{
+border-radius:5px;
 
+  opacity: 6;
+
+}
 	#SAudio {
 
     display:flex;
     justify-content: center;
-    width:100%;
+    width:120%;
 	}
 
 #SAudio {
@@ -1302,72 +1184,6 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
   </script>
 
 </!doctype>
-
-
-<audio id="disconnectAudio">
-    <source src="/effect/dc.mp3" type="audio/mpeg">
-  </source></audio>
-
-  <audio id="connectAudio">
-    <source src="/effect/cc.mp3" type="audio/mpeg">
-  </source></audio>
-
-  <script>
-    const disconnectAudio = document.getElementById("disconnectAudio");
-    const connectAudio = document.getElementById("connectAudio");
-    const internetCheckInterval = 5000; // Check every 5 seconds (adjust as needed)
-    let wasOnline = true;
-
-    function checkInternetConnection() {
-      const online = window.navigator.onLine;
-
-      if (!online && wasOnline) {
-        disconnectAudio.play();
-        wasOnline = false;
-      } else if (online && !wasOnline) {
-        connectAudio.play();
-        wasOnline = true;
-      }
-    }
-
-    setInterval(checkInternetConnection, internetCheckInterval);
-  </script>
-
-</!doctype>
-
-
-
-
-
-    <script>
-  function speakSearchText() {
-    const searchInput = document.getElementById('search-basic');
-    const textToSpeak = searchInput.value;
-
-    if ('speechSynthesis' in window) {
-      const verifiedText = '' + textToSpeak + '  [results from bhi faai music]';
-      const utterance = new SpeechSynthesisUtterance(verifiedText);
-
-      // Select a male voice, if available
-      const voices = window.speechSynthesis.getVoices();
-      let maleVoice = voices.find(voice => voice.name === 'your-male-voice-name');
-      if (maleVoice) {
-        utterance.voice = maleVoice;
-      } else {
-        console.log('Male voice not found; using the default voice.');
-      }
-
-      utterance.volume = 1; // Set volume to 50%
-
-      window.speechSynthesis.speak(utterance);
-    } else {
-      console.log('Text-to-speech not supported in this browser');
-    }
-  }
-</script></!doctype>
-
-
-	
 
 
 
