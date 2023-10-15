@@ -314,9 +314,12 @@ Background-color:#0D0C0A;
 	
 	
 <vfy id="showAutoClose">  	
-<a id="vivekmasona"><i class="fa fa-Download" aria-hidden="true">Video</i></a>	<span id="current-time">ᴠ</span>-<span id="total-time">ꜰʏ</span>
+<button class="gradient-button">
+	<a id="vivekmasona"><i class="fa fa-Download" aria-hidden="true">Video</i></a></button>
 	
-      <a id="pahilagana"><i class="fa fa-download" aria-hidden="true">Audio</i></a>
+	<span id="current-time">ᴠ</span>-<span id="total-time">ꜰʏ</span>
+	<button class="gradient-button">
+      <a id="pahilagana"><i class="fa fa-download" aria-hidden="true">Audio</i></a></button>
 
 </vfy>
 </div>
@@ -1317,26 +1320,17 @@ background: linear-gradient(180deg, rgba(7,21,22,1) 4%, rgba(71,215,226,1) 43%, 
 
 
 <style>
-	#fa fa-Download{
-  margin: 50px;
-  text-align: center;
-}
+    .gradient-button {
+      background: linear-gradient(to bottom, #FF6B6B, #FFDD93);
+      color: #ffffff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
 
-fa fa-Download{
-        border-radius:3px;
-        text-decoration:none;
-        font-family:sans-serif;
-        font-size:20px;
-        padding: 10px 20px;
-        background-color:#00ad25;
-        color:#fff;
-        transition-delay:.2s;
-        transition:.3s;
-        font-variant-caps:all-small-caps;
-        box-shadow:4px 3px 11px 0 #00ad25;
-        }
-fa fa-Download:hover{
-        background-color:#009420;
-        box-shadow:4px 3px 11px 0 #005a13;
-        }
-</style>
+    .gradient-button:hover {
+      background: linear-gradient(to bottom, #FFDD93, #FF6B6B);
+    }
+  </style>
