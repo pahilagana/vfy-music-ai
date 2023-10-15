@@ -384,10 +384,10 @@ function search(){
   $("#homepage-content").html("");
   
   var ytapi = "AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo";
- //var ytapi = "AIzaSyCbn2fAWsEvw6TyD4PsfNchyK35rN69jH0";
+  //var ytapi = "AIzaSyCbn2fAWsEvw6TyD4PsfNchyK35rN69jH0";
  //var ytapi = "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA";
  //var ytapi = "AIzaSyBemcQ7KH8CvxN0kKjGK-nhfuBzzTy4KEk";
-  
+ //var ytapi = "AIzaSyBh6s9emY3VYSbsHudlhxProRt8mtFyt2s";
   
   var q = $(".search-bar").val();
   if(q === null || q === undefined || q=== ""){
@@ -410,7 +410,8 @@ $.get(
           key : "AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo",
 	  //key : "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA",
 	  //key : "AIzaSyCbn2fAWsEvw6TyD4PsfNchyK35rN69jH0",
-	  //key : "AIzaSyBemcQ7KH8CvxN0kKjGK-nhfuBzzTy4KEk",   
+	  //key : "AIzaSyBemcQ7KH8CvxN0kKjGK-nhfuBzzTy4KEk", 
+	  //key : "AIzaSyBh6s9emY3VYSbsHudlhxProRt8mtFyt2s";
           maxResults : "40"
         },
           function(data){
