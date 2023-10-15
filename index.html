@@ -90,17 +90,6 @@ Background-color:#000;
   padding : 0px;
 }
 
-/* Add your styles for the button icons and any other elements here */
-.loop-on::before {
-  content: "🔁"; /* You can use a loop icon of your choice */
-}
-
-.loop-off::before {
-  content: "➡️"; /* Icon indicating no loop */
-}
-
-
-	
 #SThumb{
   width: 50px;
   animation: rotation 6s infinite linear;
@@ -257,10 +246,6 @@ Background-color:#0D0C0A;
 
 
 <i class="fa fa-backward" id="rewindButton" style="font-size:38px;color:#15e2f5"></i>
-
-<butto id="loop-button" class="loop-off" onclick="toggleLoop()"></butto>
-	
-	
 <i class="fa fa-forward" id="fastForwardButton" style="font-size:38px;color:#15e2f5"></i>
 
 	
@@ -508,9 +493,6 @@ document.getElementById("vivekmasona").onclick = ()=>{
    document.getElementsByClassName("list")[Sid+1].click()
    console.log('Next')
 });
-
-
-	
 var audio = document.getElementById('SAudio');
 var fastForwardButton = document.getElementById('fastForwardButton');
 
@@ -541,22 +523,6 @@ const titleaudio = document.getElementById('SAudio');
       document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
     });	
 
-
-const audioPlayer = document.getElementById("SAudio");
-const loopButton = document.getElementById("loop-button");
-
-function toggleLoop() {
-  if (audioPlayer.loop) {
-    audioPlayer.loop = false;
-    loopButton.classList.remove("loop-on");
-    loopButton.classList.add("loop-off");
-  } else {
-    audioPlayer.loop = true;
-    loopButton.classList.remove("loop-off");
-    loopButton.classList.add("loop-on");
-  }
-};
-	
 const audioPlayer = document.getElementById("SAudio");
 const customTimeContainer = document.getElementById("custom-time-container");
 const currentTimeDisplay = document.getElementById("current-time");
@@ -1310,3 +1276,4 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
     }
   }
 </script></!doctype>
+
