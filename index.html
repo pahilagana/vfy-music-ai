@@ -244,7 +244,9 @@ Background-color:#0D0C0A;
 
 
 
-<button id="fastForwardButton">Fast Forward 10s</button>
+<button id="rewindButton">Back</button>
+
+<button id="fastForwardButton">Fast</button>
 
 	
 <!-- Toggle button ad any function with CSS class -->
@@ -497,12 +499,23 @@ var fastForwardButton = document.getElementById('fastForwardButton');
 fastForwardButton.addEventListener('click', function () {
     audio.currentTime += 10;
 });
+var audio = document.getElementById('SAudio');
+var rewindButton = document.getElementById('rewindButton');
+
+rewindButton.addEventListener('click', function () {
+    if (audio.currentTime >= 5) {
+        audio.currentTime -= 5;
+    } else {
+        audio.currentTime = 0;
+    }
+});
+	
 
 const titleaudio = document.getElementById('SAudio');
 
     audio.addEventListener('play', () => {
       // Update the tab title when audio starts playing
-      document.title = 'VFY Music...[play]' + audio.currentTime;
+      document.title = 'VFY Music..      ' + audio.currentTime;
     });
 
     audio.addEventListener('pause', () => {
