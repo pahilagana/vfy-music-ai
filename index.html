@@ -244,6 +244,8 @@ Background-color:#0D0C0A;
 
 
 
+<button id="fastForwardButton">Fast Forward 10s</button>
+
 	
 <!-- Toggle button ad any function with CSS class -->
 
@@ -488,6 +490,12 @@ document.getElementById("vivekmasona").onclick = ()=>{
     
    document.getElementsByClassName("list")[Sid+1].click()
    console.log('Next')
+});
+var audio = document.getElementById('SAudio');
+var fastForwardButton = document.getElementById('fastForwardButton');
+
+fastForwardButton.addEventListener('click', function () {
+    audio.currentTime += 10;
 });
 
 const titleaudio = document.getElementById('SAudio');
