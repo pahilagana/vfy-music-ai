@@ -1,8 +1,8 @@
 <link href='https://www.blogger.com/static/v1/widgets/55013136-widget_css_bundle.css' rel='stylesheet' type='text/css'/>
 <link rel="manifest" href="./manifest.webmanifest">
-<link href='/img/vfy.png' rel='apple-touch-icon' sizes='180x180'/>
-<link href='/img/vfy.png' rel='icon' sizes='32x32' type='image/png'/>
-<link href='/img/vfy.png' rel='icon' sizes='16x16' type='image/png'/>
+<link href='https://source.unsplash.com/random/1000x1000/?girl' rel='apple-touch-icon' sizes='180x180'/>
+<link href='https://source.unsplash.com/random/1000x1000/?girl' rel='icon' sizes='32x32' type='image/png'/>
+<link href='https://source.unsplash.com/random/1000x1000/?girl' rel='icon' sizes='16x16' type='image/png'/>
 <link href='https://cdn.jsdelivr.net/gh/Vivekmasona/manifest/Manifest.json' rel='manifest'/>
 <meta content='#16E2F5' name='theme-color'/>
 <meta content='#16E2F5' name='msapplication-navbutton-color'/>
@@ -32,6 +32,9 @@
 var op = new Audio();
 op.src = '/effect/Click.mp3';
 </script>
+
+
+
 <style>
    /* Hide the mute button */
     audio::-webkit-media-controls-mute-button,
@@ -72,24 +75,60 @@ op.src = '/effect/Click.mp3';
 
 <html xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
 <head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	
 
 <script src="https://cdn.jsdelivr.net/gh/Vivekmasona/musicjs/jquery-1.11.3.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/Vivekmasona/musicjs/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/Vivekmasona/musicjs/jquery-mobile.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Vivekmasona/musicjs/bootstrap.min.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Vivekmasona/musicjs/jquery.mobile-1.4.5.min.css" />
-<style>
-
-
-
-
+	
+	
+	
+	
+	
+	<style>
 body{
 Background-color:#000;
   margin: 0px;
   padding : 0px;
 }
 
+         
+      #current-time, #total-time {
+            color: #ffffff;
+          }
+         
+	
+
+#SThumb{
+  width: 50px;
+  animation: rotation 6s infinite linear;
+	width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: relative;
+            animation: rotation 60s linear infinite, borderChange 4s linear infinite alternate;
+        
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+#custom-time-container {
+  
+  font-size:30px;
+  
+  text-align: center;
+  
+color:#15E2F5;
+  
+}
+	
 
 #foot{
 background-color:#0D0C0A;
@@ -142,14 +181,15 @@ Color:#15E2F5;
 }
 #custom-progress-bar {
   width: 100%;
-  background: #fff;
+  background: #616D7E;
 }
 
 #progress {
   width: 0;
-  height: 7px;
-  background: rgb(255,94,0);
-background: linear-gradient(90deg, rgba(255,94,0,1) 0%, rgba(0,212,255,1) 49%, rgba(225,41,17,1) 100%);
+  height: 8px;
+  background: rgb(12,78,10);
+background: linear-gradient(90deg, rgba(12,78,10,1) 4%, rgba(34,108,31,1) 15%, rgba(133,173,130,1) 34%, rgba(168,196,166,1) 38%, rgba(255,255,255,1) 50%, rgba(255,254,254,1) 64%, rgba(255,217,200,1) 70%, rgba(255,103,31,1) 88%);
+
 }
 
 	
@@ -193,17 +233,12 @@ Background-color:#0D0C0A;
     justify-content:space-around;
     width:100%;
 }
-#SThumb{
-border-radius:5px;
 
-  opacity: 6;
-
-}
 	#SAudio {
 
-    display:flex;
+    
     justify-content: center;
-    width:120%;
+    width:100%;
 	}
 
 #SAudio {
@@ -217,20 +252,12 @@ border-radius:5px;
 
 	
 <div data-role="page" id="home" data-theme="b">
-  <div id="upper">
-
-<div class="feedback-btn5">
-
-
-
-	
-<!-- Toggle button ad any function with CSS class -->
-
-<center>
-
-
   
-</div>
+	
+	
+	<div id="upper">
+
+
 	  
     <div data-role="header">
       
@@ -252,7 +279,7 @@ border-radius:5px;
      <input type="search"  name="search" id="search-basic" class="search-bar"placeholder="VIVEKFY: Type songs name artists...."/>
      
 	    
-	    <button onclick='search()' data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button>
+	  <vivekfy onclick="speakSearchText()">  <button onclick='search()' data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button></vivekfy>
    
 
     
@@ -292,15 +319,17 @@ border-radius:5px;
   <div data-role="footer" data-position="fixed" data-id="main-footer" id="foot">
 
 <center>
-<b hidden='' id='vivek_maurya'><img src="/img/add.png" alt="vivekfy application" width="300" height="560" z-index="9999"/>
+<b hidden='' id='vivek_maurya'><img src="/img/add.png" alt="vivekfy application" width="100%" height="100%" z-index="9999"/>
 </b>
 <audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
 <div id="custom-progress-bar">
   <div id="progress"></div>
 </div>  
 <center><div id="custom-time-container">
-      <span id="current-time">0:00</span> / <span id="total-time">0:00</span>
-    </div>
+<i class="fa fa-backward" id="rewindButton" style="font-size:30px;color:#4ed679"></i>
+<span id="current-time">ᴠ</span>-<span id="total-time">ꜰʏ</span>
+<i class="fa fa-forward" id="fastForwardButton" style="font-size:30px;color:#f07729"></i>
+</div>
 </center>
    <div id="ppl" data-role="navbar">
     <ul id="nav">
@@ -321,12 +350,16 @@ border-radius:5px;
 </form></a></li>
 
 
-
-      <li style="width:50px; height:50px; position: relative; border:0.5px solid transparent;"><img style="width:100%; height:100%;" id="SThumb" src="/img/logo.png" /></li>
+<img id="SThumb" src="/img/logo.png"  alt="developer vivek maurya" width="60" height="60" border="0" border-color="#15E2F5" style="border-radius: 200px;">
+      
       <li><a id="play"><i class="fa fa-stop" aria-hidden="true"></i></a></li>
       <li><a id="vivekmasona"><i class="fa fa-download" aria-hidden="true"></i></a></li>
 	  <vfy id="showAutoClose">  
       <li><a id="pahilagana"><i class="fa fa-download" aria-hidden="true"></i></a></li>
+
+
+
+		  
 	  </vfy>
       
     </ul>
@@ -363,10 +396,11 @@ function search(){
   $("#homepage-content").html("");
   
   var ytapi = "AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo";
+ //var ytapi = "AIzaSyCbn2fAWsEvw6TyD4PsfNchyK35rN69jH0";
  //var ytapi = "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA";
- //var ytapi = "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA";
- //var ytapi = "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA";
-  
+ //var ytapi = "AIzaSyBemcQ7KH8CvxN0kKjGK-nhfuBzzTy4KEk";
+ //var ytapi = "AIzaSyBh6s9emY3VYSbsHudlhxProRt8mtFyt2s";
+ //var ytapi = "AIzaSyBfsNcJJHd-O0ftUzH2KqIRc_KhXgPXne0";
   
   var q = $(".search-bar").val();
   if(q === null || q === undefined || q=== ""){
@@ -388,8 +422,10 @@ $.get(
         //videoLicense: 'creativeCommon',
           key : "AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo",
 	  //key : "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA",
-	  //key : "AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo",
-	  //key : "AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo",   
+	  //key : "AIzaSyCbn2fAWsEvw6TyD4PsfNchyK35rN69jH0",
+	  //key : "AIzaSyBemcQ7KH8CvxN0kKjGK-nhfuBzzTy4KEk", 
+	  //key : "AIzaSyBh6s9emY3VYSbsHudlhxProRt8mtFyt2s",
+	  //key : "AIzaSyBfsNcJJHd-O0ftUzH2KqIRc_KhXgPXne0",
           maxResults : "40"
         },
           function(data){
@@ -425,7 +461,7 @@ function getOutput(item,i){
  //Build our output:
   var output =
   '<ul data-role="listview" data-inset="true" id="myList">' +
-      '<li><a onclick="loadSong(this)" index="'+i+'" class="list" vid="'+id+'"><img src="'+thumb+'" alt="vivekfy.jpg">VFY. '+title+'</a></li>' +
+      '<li><a onclick="loadSong(this)" index="'+i+'" class="list" vid="'+id+'"><img src="'+thumb+'" alt="vivekfy.jpg" id="vfyy">VFY. '+title+'</a></li>' +
   '</ul>';
 
   return output;
@@ -446,9 +482,9 @@ function play(id,Sid){
      // data = "https://vivekfy.onrender.com/low-audio?url="+id;
      // data = "https://projectlounge.pw/ytdl/download?url=https://youtu.be/"+id+"&format=599";
      // data = "https://vivekmasona.000webhostapp.com/Play?vfy=https://youtu.be/"+id;
-	data = "https://vivekmasona.2.sg-1.fl0.io/low-audio?url=https://youtu.be/"+id;
-     // data = "https://all-in-one-vid.000webhostapp.com/play?vfy=https://youtu.be/"+id;
-       document.getElementById("SThumb").src = "https://i.ytimg.com/vi/"+id+"/hqdefault.jpg";
+      //data = "https://vivekmasona.2.sg-1.fl0.io/low-audio?url=https://youtu.be/"+id;
+     data = "https://all-in-one-vid.000webhostapp.com/play?vfy=https://youtu.be/"+id;
+       document.getElementById("SThumb").src = "https://i.ytimg.com/vi/"+id+"/maxresdefault.jpg";
     document.getElementById("pahilagana").onclick = ()=>{
         // location.href= "https://vivekmasona.2.sg-1.fl0.io/mp3?url=https://youtu.be/"+id;
         location.href= "https://vivekfy-dev.fl0.io/download?url=https://youtu.be/"+id;
@@ -465,6 +501,35 @@ document.getElementById("vivekmasona").onclick = ()=>{
    document.getElementsByClassName("list")[Sid+1].click()
    console.log('Next')
 });
+var audio = document.getElementById('SAudio');
+var fastForwardButton = document.getElementById('fastForwardButton');
+
+fastForwardButton.addEventListener('click', function () {
+    audio.currentTime += 10;
+});
+var audio = document.getElementById('SAudio');
+var rewindButton = document.getElementById('rewindButton');
+
+rewindButton.addEventListener('click', function () {
+    if (audio.currentTime >= 5) {
+        audio.currentTime -= 5;
+    } else {
+        audio.currentTime = 0;
+    }
+});
+	
+
+const titleaudio = document.getElementById('SAudio');
+
+    audio.addEventListener('play', () => {
+      // Update the tab title when audio starts playing
+      document.title = 'VFY Music..      ' + audio.currentTime;
+    });
+
+    audio.addEventListener('pause', () => {
+      // Restore the original page title when audio is paused
+      document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
+    });	
 
 const audioPlayer = document.getElementById("SAudio");
 const customTimeContainer = document.getElementById("custom-time-container");
@@ -667,44 +732,8 @@ var offlineMsg = document.getElementById("offline-message");
 
 
 
-<style>
-.feedback-btn5 {
-z-index:9999;
-    Position: absolute;
-    position-attachment: fixed;
-    width: 120px;
-    height: 42px;
-    background: transparent;
-    top: -1%;
-    right: 0;
-    border-left: 2px solid transparent;
-    border-top: 2px solid transparent;
-    border-bottom: 2px solid transparent;
-    box-shadow: 1px 1px 3px #000;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    cursor: pointer;
-    transition: 0.2s ease-out;
-}
 
-.feedback-btn5:hover {
-	width: 50px;
-}
 
-.feedback-txt {
-    transform: rotate(-90deg);
-    -webkit-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
-    position: absolute;
-    right: -10px;
-    top: 22px;
-    color: #fff;
-    transition: 0.2s ease-out;
-}
-
-.feedback-btn5:hover .feedback-txt {
-	right: -6px;
-}</style>
 </div>
 
 
@@ -1077,7 +1106,8 @@ function toastCaseValidation(option){
     background: #fe4a5d;
   }
   .hs-theme-success{
-    background: #c16a00;
+    background: rgb(255,94,0);
+background: linear-gradient(90deg, rgba(255,94,0,1) 0%, rgba(0,212,255,1) 49%, rgba(225,41,17,1) 100%);
   }
   .hs-theme-warning{
     background: #000;
@@ -1105,10 +1135,10 @@ div.vfy1 {
 <script></script>
 	
 <audio id="watermarkAudio2" controls>
-            <source src="/effect/ok.mp3" type="audio/mpeg">
+            <source src="/effect/tq.mp3" type="audio/mpeg">
         </audio>
 <audio id="watermarkAudio1" preload="auto">
-    <source src="/effect/wm.mp3" type="audio/mpeg">
+    <source src="/effect/ok.mp3" type="audio/mpeg">
 </source></audio>
 
 
@@ -1121,17 +1151,20 @@ div.vfy1 {
     
 
     <script>
-       // Check if a flag is set in local storage
-if (localStorage.getItem("audioPlayedToday") !== "true") {
-  // If the flag is not set, play the audio
-  var audio = new Audio('/effect/Welcome.mp3');
-  audio.play();
+   // Check if a flag is set in local storage
+   if (localStorage.getItem("audioPlayedToday") !== "true") {
+     // Set a timeout for 5 minutes
+     setTimeout(function () {
+       // Play the audio after the 5-minute delay
+       var audio = new Audio('/effect/Welcome.mp3');
+       audio.play();
 
-  // Set the flag in local storage to mark that audio has been played today
-  localStorage.setItem("audioPlayedToday", "true");
-}
- 
-    </script>
+       // Set the flag in local storage to mark that audio has been played today
+       localStorage.setItem("audioPlayedToday", "true");
+     }, 5 * 60 * 1000); // 5 minutes in milliseconds
+   }
+</script>
+
 
 </!doctype>
 
@@ -1189,5 +1222,30 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 
 
 
+    <script>
+  function speakSearchText() {
+    const searchInput = document.getElementById('search-basic');
+    const textToSpeak = searchInput.value;
 
-	
+    if ('speechSynthesis' in window) {
+      const verifiedText = '' + textToSpeak + '  [results from bhi faai music]';
+      const utterance = new SpeechSynthesisUtterance(verifiedText);
+
+      // Select a male voice, if available
+      const voices = window.speechSynthesis.getVoices();
+      let maleVoice = voices.find(voice => voice.name === 'your-male-voice-name');
+      if (maleVoice) {
+        utterance.voice = maleVoice;
+      } else {
+        console.log('Male voice not found; using the default voice.');
+      }
+
+      utterance.volume = 1; // Set volume to 50%
+
+      window.speechSynthesis.speak(utterance);
+    } else {
+      console.log('Text-to-speech not supported in this browser');
+    }
+  }
+</script></!doctype>
+
