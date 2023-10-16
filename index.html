@@ -1357,6 +1357,10 @@ body{
 	
 
 
+
+
+
+
 <!doctype html>
 <html>
 
@@ -1365,8 +1369,11 @@ body{
 </head>
 
 <body>
-    <button id="pahilagana">Click Me</button>
+    <button id="myButton">Click Me</button>
     
+    <div id="pahilagana">Element 1</div>
+    <div id="vivekmasona">Element 2</div>
+
     <script>
         let isVoiceRecognitionOn = false;
         const toggleButton = document.getElementById('toggleButton');
@@ -1381,11 +1388,23 @@ body{
         recognition.onresult = function (event) {
             const transcript = event.results[event.results.length - 1][0].transcript.toLowerCase();
 
-            if (transcript.includes("mp3")) {
-                const button = document.getElementById('pahilagana');
+            if (transcript.includes("click button")) {
+                const button = document.getElementById('myButton');
 
                 if (button) {
                     button.click();
+                }
+            } else if (transcript.includes("mp3")) {
+                const element = document.getElementById('pahilagana');
+
+                if (element) {
+                    element.click();
+                }
+            } else if (transcript.includes("mp4")) {
+                const element = document.getElementById('vivekmasona');
+
+                if (element) {
+                    element.click();
                 }
             }
         };
@@ -1418,6 +1437,8 @@ body{
 </body>
 
 </html>
+
+
 
 
 	
