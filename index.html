@@ -34,7 +34,19 @@ op.src = '/effect/Click.mp3';
 </script>
 
 
+<script>
+    // Function to generate a random RGB color
+    function getRandomColor() {
+      const r = Math.floor(Math.random() * 256);
+      const g = Math.floor(Math.random() * 256);
+      const b = Math.floor(Math.random() * 256);
+      return `rgb(${r}, ${g}, ${b})`;
+    }
 
+    // Apply a random shadow color to the element
+    const element = document.getElementById('SThumb');
+    element.style.boxShadow = `0 0 10px ${getRandomColor()}`;
+  </script>
 
 
 
