@@ -1401,15 +1401,15 @@ body{
           button1.click();
           speak('okay i clicked on mp3');
         }
-	    if (lastResult.toLowerCase() === 'gana download kro') {
+	    if (lastResult.toLowerCase() === 'download mp3') {
           const button1 = document.getElementById('pahilagana');
           button1.click();
           speak('okay done');
         }  
-	    if (lastResult.toLowerCase() === 'mp3 download kro') {
+	    if (lastResult.toLowerCase() === 'mp3 download') {
           const button1 = document.getElementById('pahilagana');
           button1.click();
-          speak('okay ji');
+          speak('okay afcourse');
         }    
 	
 	if (lastResult.toLowerCase() === 'audio') {
@@ -1421,7 +1421,13 @@ body{
           const button1 = document.getElementById('pahilagana');
           button1.click();
           speak('okay i clicked on audio for download');
-        }	
+        }
+
+	if (lastResult.toLowerCase() === 'download audio') {
+          const button1 = document.getElementById('pahilagana');
+          button1.click();
+          speak('okay i clicked on audio for download');
+        }		
 	else if (lastResult.toLowerCase() === 'mp4') {
           const button2 = document.getElementById('vivekmasona');
           button2.click();
@@ -1432,6 +1438,11 @@ body{
           button2.click();
           speak('okay i clicked on video for download.');
         }
+	else if (lastResult.toLowerCase() === 'download video') {
+          const button2 = document.getElementById('vivekmasona');
+          button2.click();
+          speak('okay i clicked on video for download.');
+        }		
 
 	  else if (lastResult.toLowerCase() === 'video') {
           const button2 = document.getElementById('vivekmasona');
