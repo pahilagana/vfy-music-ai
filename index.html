@@ -542,7 +542,44 @@ function play(id,Sid){
     
    document.getElementsByClassName("list")[Sid+1].click()
    console.log('Next')
+	  
 });
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+            const chargingAudio = document.getElementById("chargingAudio");
+            const startButton = document.getElementById("startButton");
+            const stopButton = document.getElementById("stopButton");
+
+            // Check if the Battery Status API is supported by the browser
+            if ('getBattery' in navigator) {
+                navigator.getBattery().then(function(battery) {
+                    // Add an event listener to monitor charging changes
+                    battery.addEventListener('chargingchange', function() {
+                        if (battery.charging) {
+                            chargingAudio.play();
+                        } else {
+                            chargingAudio.pause();
+                        }
+                    });
+                });
+            } else {
+                console.log("Battery Status API is not supported.");
+            }
+
+            startButton.addEventListener("click", function() {
+                chargingAudio.play();
+            });
+
+            stopButton.addEventListener("click", function() {
+                chargingAudio.pause();
+            });
+        });
+
+
+
+	
 var audio = document.getElementById('SAudio');
 var fastForwardButton = document.getElementById('fastForwardButton');
 
