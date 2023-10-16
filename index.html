@@ -956,14 +956,13 @@ function closeNav() {
 <script>
 /*<![CDATA[*/
   const installButton = document.getElementById("vivek_maurya");
-  const audio = new Audio('/effect/Welcome.mp3'); // Replace 'path_to_your_audio_file.mp3' with the actual file path.
-  audio.autoplay = true; // Add this line to make the audio play automatically
+  const audio = new Audio('/effect/ok.mp3'); // Replace 'path_to_your_audio_file.mp3' with the actual file path.
 
   window.addEventListener("beforeinstallprompt", e => {
     e.preventDefault();
     deferredPrompt = e;
-    installButton.hidden = false;
-    audio.play(); // Play the audio when the button is shown
+    installButton.hidden = true; // Initially hide the button
+
     installButton.addEventListener("click", () => {
       installApp();
     });
@@ -975,6 +974,7 @@ function closeNav() {
     deferredPrompt.userChoice.then(choiceResult => {
       if (choiceResult.outcome === "accepted") {
         installButton.hidden = true;
+        audio.play(); // Play the audio after the button is clicked
       } else {
         // Handle the case where the installation was not accepted.
       }
@@ -986,8 +986,17 @@ function closeNav() {
   window.addEventListener("appinstalled", evt => {
     console.log("appinstalled fired", evt);
   });
+
+  // Add an event listener for the audio to play when fully loaded
+  audio.addEventListener("canplaythrough", () => {
+    audio.play();
+  });
+
+  // Preload the audio to ensure it's ready to play
+  audio.preload = "auto";
 /*]]>*/
 </script>
+
 
 
 
