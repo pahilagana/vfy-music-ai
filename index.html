@@ -1380,14 +1380,14 @@ body{
                 clearTimeout(recognitionTimeout);
                 speak("Please click again");
             } else {
-                speak("mp3 ki mp4"); // Speech is not delayed
+                speak("mp3  mp4"); // Speech is not delayed
                 setTimeout(function () {
                     recognition.start();
                     recognitionTimeout = setTimeout(function () {
                         recognition.stop();
-                        speak("please say mp3 for audio and say mp4 for video");
-                    }, 5000); // Automatically turn off after 1 second
-                }, 1000); // Delay for 3 seconds before starting voice recognition
+                        speak("please say  mp3 for audio download and say mp4 for video");
+                    }, 6000); // Automatically turn off after 1 second
+                }, 2000); // Delay for 3 seconds before starting voice recognition
             }
             isVoiceRecognitionOn = !isVoiceRecognitionOn;
         });
