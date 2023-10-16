@@ -1356,53 +1356,59 @@ body{
 	
 
 
+<!doctype html>
 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Voice Commands for Two Buttons</title>
-</head>
-<body>
-  <button id="pahilagana">Click Button 1</button>
-  <button id="vivekmasona">Click Button 2</button>
   
-  <script>
-    let isVoiceRecognitionOn = false;
-    let recognitionTimeout;
-    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-    recognition.lang = 'en-US';
-    recognition.interimResults = false;
     
-    const toggleButton = document.getElementById('toggleButton');
-    
-    toggleButton.addEventListener('click', function () {
-      if (isVoiceRecognitionOn) {
-        recognition.stop();
-        clearTimeout(recognitionTimeout);
-        toggleButton.textContent = 'Start Voice Command';
-      } else {
-        recognition.start();
-        toggleButton.textContent = 'Stop Voice Command';
-        recognitionTimeout = setTimeout(function() {
-          recognition.stop();
-          toggleButton.textContent = 'Start Voice Command';
-        }, 5000); // Automatically turn off after 5 seconds
-      }
-      isVoiceRecognitionOn = !isVoiceRecognitionOn;
-    });
-    
-    recognition.onresult = function(event) {
-      const lastResult = event.results[event.results.length - 1][0].transcript;
-    
-      if (lastResult.toLowerCase() === 'mp3') {
-        const button1 = document.getElementById('pahilagana');
-        button1.click();
-      } else if (lastResult.toLowerCase() === 'mp4') {
-        const button2 = document.getElementById('vivekmasona');
-        button2.click();
-      }
-    };
-  </script>
-</body>
-</html>
+  
+    <button id="pahilagana">Click Button 1</button>
+    <button id="vivekmasona">Click Button 2</button>
 
+    <script>
+      let isVoiceRecognitionOn = false;
+      let recognitionTimeout;
+      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
+
+      const toggleButton = document.getElementById('toggleButton');
+
+      toggleButton.addEventListener('click', function () {
+        if (isVoiceRecognitionOn) {
+          recognition.stop();
+          clearTimeout(recognitionTimeout);
+          toggleButton.textContent = 'Start Voice Command';
+        } else {
+          recognition.start();
+          toggleButton.textContent = 'Stop Voice Command';
+          recognitionTimeout = setTimeout(function() {
+            recognition.stop();
+            toggleButton.textContent = 'Start Voice Command';
+          }, 5000); // Automatically turn off after 5 seconds
+        }
+        isVoiceRecognitionOn = !isVoiceRecognitionOn;
+      });
+
+      recognition.onresult = function(event) {
+        const lastResult = event.results[event.results.length - 1][0].transcript;
+
+        if (lastResult.toLowerCase() === 'mp3') {
+          const button1 = document.getElementById('pahilagana');
+          button1.click();
+          speak('okay Mp3 download in proses');
+        } else if (lastResult.toLowerCase() === 'mp4') {
+          const button2 = document.getElementById('vivekmasona');
+          button2.click();
+          speak('okay mp4 download is in proses.');
+        }
+      };
+
+      // Function to add text-to-speech
+      function speak(text) {
+        const synth = window.speechSynthesis;
+        const utterance = new SpeechSynthesisUtterance(text);
+        synth.speak(utterance);
+      }
+    </script>
+  
+</!doctype>
