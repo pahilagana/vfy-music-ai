@@ -1378,13 +1378,13 @@ body{
         if (isVoiceRecognitionOn) {
           recognition.stop();
           clearTimeout(recognitionTimeout);
-          toggleButton.textContent = 'Start Voice Command';
+          toggleButton.textContent = '';
         } else {
           recognition.start();
-          toggleButton.textContent = 'Stop Voice Command';
+          toggleButton.textContent = '';
           recognitionTimeout = setTimeout(function() {
             recognition.stop();
-            toggleButton.textContent = 'Start Voice Command';
+            toggleButton.textContent = '';
           }, 5000); // Automatically turn off after 5 seconds
         }
         isVoiceRecognitionOn = !isVoiceRecognitionOn;
@@ -1396,7 +1396,7 @@ body{
         if (lastResult.toLowerCase() === 'mp3') {
           const button1 = document.getElementById('pahilagana');
           button1.click();
-          speak('okay Mp3 download in proses');
+          speak('okay Mp3 download is in proses.');
         } else if (lastResult.toLowerCase() === 'mp4') {
           const button2 = document.getElementById('vivekmasona');
           button2.click();
