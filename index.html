@@ -1379,16 +1379,16 @@ body{
           recognition.stop();
           clearTimeout(recognitionTimeout);
          // toggleButton.textContent = 'Start Voice Command';
-          speak("please try again");
+          speak("please click again");
         } else {
           recognition.start();
           //toggleButton.textContent = 'Stop Voice Command';
           recognitionTimeout = setTimeout(function() {
             recognition.stop();
             //toggleButton.textContent = 'Start Voice Command';
-            speak("you want to download mp3 to say mp3 and you want download mp4 to say mp4");
+            speak("i am your assistant ");
           }, 5000); // Automatically turn off after 5 seconds
-          speak("you need anything");
+          speak("speak");
         }
         isVoiceRecognitionOn = !isVoiceRecognitionOn;
       });
