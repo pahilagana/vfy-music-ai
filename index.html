@@ -288,9 +288,7 @@ Background-color:#0D0C0A;
 
 	  
     <div data-role="header">
-      <button id="toggleButton">Voice Recognition: Off</button>
-
-	  <a href="#" class="ui-btn ui-corner-all ui-shadow" onclick="openNav()"><i class='fa fa-sliders' style='font-size:18px;color:#16E2F5'></i></i></a>
+        <a href="#" class="ui-btn ui-corner-all ui-shadow" onclick="openNav()"><i class='fa fa-sliders' style='font-size:18px;color:#16E2F5'></i></i></a>
 	   <a id="fastForwardButto"><i class="fa fa-microphone" onclick="startDictation()" aria-hidden="true" style="font-size:19px;color:#15e2f5"></i></a>
       
 	    <div class="vivek" id="example"></div>
@@ -309,7 +307,8 @@ Background-color:#0D0C0A;
      <input type="search"  name="search" id="search-basic" class="search-bar"placeholder="VIVEKFY: Type songs name artists...."/>
      
 	    
-	    
+	   <button id="toggleButton">Start Voice Command</button>
+ 
 	     
 	    
 	    
@@ -1359,86 +1358,52 @@ body{
 
 
 
-
-
-<!doctype html>
+<!DOCTYPE html>
 <html>
-
 <head>
-    <title>Voice Command Button Click</title>
+  <title>Voice Command Button Click with Automatic Turn Off</title>
 </head>
-
 <body>
-    <button id="myButton">Click Me</button>
+  <button id="pahilagana">Click Me</button>
+  
+  <script>
+    let isVoiceRecognitionOn = false;
+    let recognitionTimeout;
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
     
-    <div id="pahilagana">Element 1</div>
-    <div id="vivekmasona">Element 2</div>
-
-    <script>
-        let isVoiceRecognitionOn = false;
-        const toggleButton = document.getElementById('toggleButton');
-        const recognition = new webkitSpeechRecognition();
-
-        recognition.continuous = true;
-
-        recognition.onstart = function () {
-            console.log("Voice recognition started");
-        };
-
-        recognition.onresult = function (event) {
-            const transcript = event.results[event.results.length - 1][0].transcript.toLowerCase();
-
-            if (transcript.includes("click button")) {
-                const button = document.getElementById('myButton');
-
-                if (button) {
-                    button.click();
-                }
-            } else if (transcript.includes("mp3")) {
-                const element = document.getElementById('pahilagana');
-
-                if (element) {
-                    element.click();
-                }
-            } else if (transcript.includes("mp4")) {
-                const element = document.getElementById('vivekmasona');
-
-                if (element) {
-                    element.click();
-                }
-            }
-        };
-
-        recognition.onend = function () {
-            console.log("Voice recognition ended");
-            if (isVoiceRecognitionOn) {
-                recognition.start();
-            }
-        };
-
-        toggleButton.addEventListener('click', function () {
-            if (isVoiceRecognitionOn) {
-                recognition.stop();
-                toggleButton.textContent = "Voice Recognition: Off";
-            } else {
-                recognition.start();
-                toggleButton.textContent = "Voice Recognition: On";
-            }
-            isVoiceRecognitionOn = !isVoiceRecognitionOn;
-        });
-
-        if ('webkitSpeechRecognition' in window) {
-            console.log("Voice recognition is supported in this browser.");
-        } else {
-            console.log("Voice recognition is not supported in this browser.");
-            toggleButton.disabled = true;
-        }
-    </script>
+    const toggleButton = document.getElementById('toggleButton');
+    
+    toggleButton.addEventListener('mp3', function () {
+      if (isVoiceRecognitionOn) {
+        recognition.stop();
+        clearTimeout(recognitionTimeout);
+        toggleButton.textContent = 'Start Voice Command';
+      } else {
+        recognition.start();
+        toggleButton.textContent = 'Stop Voice Command';
+        recognitionTimeout = setTimeout(function() {
+          recognition.stop();
+          toggleButton.textContent = 'Start Voice Command';
+        }, 5000); // Automatically turn off after 5 seconds
+      }
+      isVoiceRecognitionOn = !isVoiceRecognitionOn;
+    });
+    
+    recognition.onresult = function(event) {
+      const lastResult = event.results[event.results.length - 1][0].transcript;
+    
+      if (lastResult.toLowerCase() === 'click button') {
+        const button = document.getElementById('myButton');
+        button.click();
+      }
+    };
+  </script>
 </body>
-
 </html>
 
 
 
 
-	
+        
