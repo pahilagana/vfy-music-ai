@@ -1405,18 +1405,28 @@ body{
 	if (lastResult.toLowerCase() === 'audio') {
           const button1 = document.getElementById('pahilagana');
           button1.click();
-          speak('okay i clicked on mp3');
+          speak('okay i clicked on audio');
         }
+	if (lastResult.toLowerCase() === 'audio download') {
+          const button1 = document.getElementById('pahilagana');
+          button1.click();
+          speak('okay i clicked on audio for download');
+        }	
 	else if (lastResult.toLowerCase() === 'mp4') {
           const button2 = document.getElementById('vivekmasona');
           button2.click();
           speak('okay i clicked on mp4.');
         }
+		else if (lastResult.toLowerCase() === 'video download') {
+          const button2 = document.getElementById('vivekmasona');
+          button2.click();
+          speak('okay i clicked on video for download.');
+        }
 
 	  else if (lastResult.toLowerCase() === 'video') {
           const button2 = document.getElementById('vivekmasona');
           button2.click();
-          speak('okay i clicked on mp4.');
+          speak('okay i clicked on video.');
         }    
       };
 
