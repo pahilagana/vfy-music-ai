@@ -948,17 +948,23 @@ function closeNav() {
 </script>
 
 
+
+
+
+
+	
 <script>
 /*<![CDATA[*/
   const installButton = document.getElementById("vivek_maurya");
   const audio = new Audio('/effect/Welcome.mp3'); // Replace 'path_to_your_audio_file.mp3' with the actual file path.
+  audio.autoplay = true; // Add this line to make the audio play automatically
 
   window.addEventListener("beforeinstallprompt", e => {
     e.preventDefault();
     deferredPrompt = e;
     installButton.hidden = false;
+    audio.play(); // Play the audio when the button is shown
     installButton.addEventListener("click", () => {
-      audio.play(); // Play the audio when the button is clicked
       installApp();
     });
   });
