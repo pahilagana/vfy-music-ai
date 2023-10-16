@@ -1355,71 +1355,46 @@ body{
 
 	
 
-
-
-
-
 <!doctype html>
 
 
-    Voice Command Link Click
+    Voice Command Button Click
 
 
-    <d href="" id="vivekmasona">Click me</d>
+    <button id="pahilagana">Click Me</button>
     
-    <div id="recognizedSpeech"></div>
-
     <script>
-        let isListening = false; // Flag to track if voice recognition is active
-        let recognition; // Speech recognition object
-
-        // Function to start or stop voice recognition
-        function toggleVoiceRecognition() {
-            if (isListening) {
-                recognition.stop();
-                document.getElementById("toggleVoice").textContent = "Start Voice Recognition";
-            } else {
-                recognition = new webkitSpeechRecognition();
-                recognition.continuous = false;
-                recognition.interimResults = false;
-
-                recognition.onresult = (event) => {
-                    const result = event.results[0][0].transcript.toLowerCase();
-
-                    // Display recognized speech on the page
-                    const recognizedSpeech = document.getElementById("recognizedSpeech");
-                    recognizedSpeech.textContent = result;
-
-                    // Check for the voice command to click the link
-                    if (result.includes("mp3")) {
-                        // Open the link in a new tab
-                        const link = document.getElementById("vivekmasona");
-                        if (link) {
-                            window.open(link.href, "_blank");
-                        }
+        if ('webkitSpeechRecognition' in window) {
+            const recognition = new webkitSpeechRecognition();
+            recognition.continuous = true;
+            
+            recognition.onstart = function() {
+                console.log("Voice recognition started");
+            };
+            
+            recognition.onresult = function(event) {
+                const transcript = event.results[event.results.length - 1][0].transcript.toLowerCase();
+                
+                if (transcript.includes("download")) {
+                    const button = document.getElementById('pahilagana');
+                    
+                    if (button) {
+                        button.click();
                     }
-                };
-
-                // Initial message with adjusted volume
-                const synth = window.speechSynthesis;
-                const initialMessage = new SpeechSynthesisUtterance("What do you want?");
-                initialMessage.volume = 1; // Adjust the volume here
-                synth.speak(initialMessage);
-
-                recognition.start();
-                document.getElementById("toggleVoice").textContent = "Stop Voice Recognition";
-            }
-
-            isListening = !isListening;
+                }
+            };
+            
+            recognition.onend = function() {
+                console.log("Voice recognition ended");
+            };
+            
+            recognition.start();
+        } else {
+            console.log("Voice recognition is not supported in this browser.");
         }
-
-        document.getElementById("toggleVoice").addEventListener("click", toggleVoiceRecognition);
     </script>
 
 </!doctype>
-
-
-	
 
 
 
