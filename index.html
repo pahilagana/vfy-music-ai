@@ -34,20 +34,6 @@ op.src = '/effect/Click.mp3';
 </script>
 
 
-<script>
-    // Function to generate a random RGB color
-    function getRandomColor() {
-      const r = Math.floor(Math.random() * 256);
-      const g = Math.floor(Math.random() * 256);
-      const b = Math.floor(Math.random() * 256);
-      return `rgb(${r}, ${g}, ${b})`;
-    }
-
-    // Apply a random shadow color to the element
-    const element = document.getElementById('SThumb');
-    element.style.boxShadow = `0 0 10px ${getRandomColor()}`;
-	}
-  </script>
 
 
 
@@ -98,7 +84,7 @@ background: radial-gradient(circle, rgba(63,181,219,1) 0%, rgba(158,149,151,1) 1
 	
 	.bg-b-blue:hover
 {
-    background-color:yello;
+    background-color:yellow;
 }
 .</style>
 
@@ -1310,7 +1296,7 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
             border-radius: 50%;
 
 animation: spin 4s linear infinite;
-	
+box-shadow: 0 0 10px yellow;	
 }
 
 @keyframes spin {
