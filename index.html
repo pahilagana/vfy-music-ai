@@ -134,7 +134,7 @@ Background-color:#000;
 
          
       #current-time, #total-time {
-            color: #E74C3C;
+            color: #15e2f5;
           }
          
 	
@@ -144,10 +144,8 @@ Background-color:#000;
   
   text-align: center;
   
-color:#E74C3C;
-background: rgb(7,21,22);
-background: linear-gradient(180deg, rgba(7,21,22,1) 4%, rgba(71,215,226,1) 43%, rgba(66,198,209,1) 47%, rgba(0,0,0,1) 92%);	}
-
+color:#15e2f5;
+background-color: #000;
 	
   
 }
@@ -364,8 +362,6 @@ Background-color:#0D0C0A;
 <i class="fa fa-download my-float"></i>
 </a>
 
-<a href="" id="vivekmasona"><img src='img/mp4.png' alt='720p video direct download' width='120' height='5%'></a>
-
 
 <center><div id="custom-time-container">
       <span id="current-time">0:00</span> / <span id="total-time">0:00</span>
@@ -528,10 +524,10 @@ function play(id,Sid){
         // location.href= "https://vivekmasona.2.sg-1.fl0.io/mp3?url=https://youtu.be/"+id;
         location.href= "https://vivekfy-dev.fl0.io/download?url=https://youtu.be/"+id;
     };
-document.getElementById("vivekmasona").onclick = ()=>{
-        location.href= "https://projectlounge.pw/ytdl/download?url=https://youtu.be/"+id;
+//document.getElementById("vivekmasona").onclick = ()=>{
+        //location.href= "https://projectlounge.pw/ytdl/download?url=https://youtu.be/"+id;
 	// location.href= "https://vivekmasona.2.sg-1.fl0.io/mp4?url=https://youtu.be/"+id;
-    };
+    //};
 
     audio = document.getElementById("SAudio");
   audio.play()
