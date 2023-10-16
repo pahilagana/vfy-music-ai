@@ -288,7 +288,7 @@ Background-color:#0D0C0A;
 
 	  
     <div data-role="header">
-      
+      <button id="toggleVoice">Start Voice Recognition</button>
 	  <a href="#" class="ui-btn ui-corner-all ui-shadow" onclick="openNav()"><i class='fa fa-sliders' style='font-size:18px;color:#16E2F5'></i></i></a>
 	   <a id="fastForwardButto"><i class="fa fa-microphone" onclick="startDictation()" aria-hidden="true" style="font-size:19px;color:#15e2f5"></i></a>
       
@@ -1357,6 +1357,69 @@ body{
 
 
 
+
+
+<!doctype html>
+
+
+    Voice Command Link Click
+
+
+    <d href="" id="vivekmasona">Click me</d>
+    
+    <div id="recognizedSpeech"></div>
+
+    <script>
+        let isListening = false; // Flag to track if voice recognition is active
+        let recognition; // Speech recognition object
+
+        // Function to start or stop voice recognition
+        function toggleVoiceRecognition() {
+            if (isListening) {
+                recognition.stop();
+                document.getElementById("toggleVoice").textContent = "Start Voice Recognition";
+            } else {
+                recognition = new webkitSpeechRecognition();
+                recognition.continuous = false;
+                recognition.interimResults = false;
+
+                recognition.onresult = (event) => {
+                    const result = event.results[0][0].transcript.toLowerCase();
+
+                    // Display recognized speech on the page
+                    const recognizedSpeech = document.getElementById("recognizedSpeech");
+                    recognizedSpeech.textContent = result;
+
+                    // Check for the voice command to click the link
+                    if (result.includes("mp3")) {
+                        // Open the link in a new tab
+                        const link = document.getElementById("vivekmasona");
+                        if (link) {
+                            window.open(link.href, "_blank");
+                        }
+                    }
+                };
+
+                // Initial message with adjusted volume
+                const synth = window.speechSynthesis;
+                const initialMessage = new SpeechSynthesisUtterance("What do you want?");
+                initialMessage.volume = 1; // Adjust the volume here
+                synth.speak(initialMessage);
+
+                recognition.start();
+                document.getElementById("toggleVoice").textContent = "Stop Voice Recognition";
+            }
+
+            isListening = !isListening;
+        }
+
+        document.getElementById("toggleVoice").addEventListener("click", toggleVoiceRecognition);
+    </script>
+
+</!doctype>
+
+
+	
 
 
 
