@@ -1366,7 +1366,7 @@ body{
 <body>
   <button id="pahilagana">Click Me</button>
   
-  <script>
+<script>
     let isVoiceRecognitionOn = false;
     let recognitionTimeout;
     const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
@@ -1375,7 +1375,7 @@ body{
     
     const toggleButton = document.getElementById('toggleButton');
     
-    toggleButton.addEventListener('mp3', function () {
+    toggleButton.addEventListener('click', function () {
       if (isVoiceRecognitionOn) {
         recognition.stop();
         clearTimeout(recognitionTimeout);
@@ -1394,16 +1394,9 @@ body{
     recognition.onresult = function(event) {
       const lastResult = event.results[event.results.length - 1][0].transcript;
     
-      if (lastResult.toLowerCase() === 'click button') {
+      if (lastResult.toLowerCase() === 'mp3') {
         const button = document.getElementById('pahilagana');
         button.click();
       }
     };
   </script>
-</body>
-</html>
-
-
-
-
-        
