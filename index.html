@@ -1400,11 +1400,24 @@ body{
           const button1 = document.getElementById('pahilagana');
           button1.click();
           speak('okay i clicked on mp3');
-        } else if (lastResult.toLowerCase() === 'mp4') {
+        }
+	
+	if (lastResult.toLowerCase() === 'audio') {
+          const button1 = document.getElementById('pahilagana');
+          button1.click();
+          speak('okay i clicked on mp3');
+        }
+	else if (lastResult.toLowerCase() === 'mp4') {
           const button2 = document.getElementById('vivekmasona');
           button2.click();
           speak('okay i clicked on mp4.');
         }
+
+	  else if (lastResult.toLowerCase() === 'video') {
+          const button2 = document.getElementById('vivekmasona');
+          button2.click();
+          speak('okay i clicked on mp4.');
+        }    
       };
 
       // Function to add text-to-speech
