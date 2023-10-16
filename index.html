@@ -281,7 +281,7 @@ Background-color:#0D0C0A;
 	
 <div data-role="page" id="home" data-theme="b">
   
-	
+	<button id="toggleButton">Start Voice Command</button>
 	
 	<div id="upper">
 
@@ -307,7 +307,7 @@ Background-color:#0D0C0A;
      <input type="search"  name="search" id="search-basic" class="search-bar"placeholder="VIVEKFY: Type songs name artists...."/>
      
 	    
-	   <button id="toggleButton">Start Voice Command</button>
+	   
  
 	     
 	    
@@ -1395,7 +1395,7 @@ body{
       const lastResult = event.results[event.results.length - 1][0].transcript;
     
       if (lastResult.toLowerCase() === 'click button') {
-        const button = document.getElementById('myButton');
+        const button = document.getElementById('pahilagana');
         button.click();
       }
     };
