@@ -946,9 +946,49 @@ function closeNav() {
 
 	
 </script>
-<script>/*<![CDATA[*/ 
-  const installButton = document.getElementById("vivek_maurya");window.addEventListener("beforeinstallprompt", e => {e.preventDefault();deferredPrompt = e;installButton.hidden = false;installButton.addEventListener("click", installApp);});function installApp() {deferredPrompt.prompt();installButton.disabled = true;deferredPrompt.userChoice.then(choiceResult => {if (choiceResult.outcome === "accepted") {installButton.hidden = true;} else {}installButton.disabled = false;deferredPrompt = null;});}window.addEventListener("appinstalled", evt => {console.log("appinstalled fired", evt);});
-  /*]]>*/</script>
+
+
+<script>
+/*<![CDATA[*/
+  const installButton = document.getElementById("vivek_maurya");
+  const audio = new Audio('/effect/Welcome.mp3'); // Replace 'path_to_your_audio_file.mp3' with the actual file path.
+
+  window.addEventListener("beforeinstallprompt", e => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installButton.hidden = false;
+    installButton.addEventListener("click", () => {
+      audio.play(); // Play the audio when the button is clicked
+      installApp();
+    });
+  });
+
+  function installApp() {
+    deferredPrompt.prompt();
+    installButton.disabled = true;
+    deferredPrompt.userChoice.then(choiceResult => {
+      if (choiceResult.outcome === "accepted") {
+        installButton.hidden = true;
+      } else {
+        // Handle the case where the installation was not accepted.
+      }
+      installButton.disabled = false;
+      deferredPrompt = null;
+    });
+  }
+
+  window.addEventListener("appinstalled", evt => {
+    console.log("appinstalled fired", evt);
+  });
+/*]]>*/
+</script>
+
+
+
+
+
+	
+
 <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('./sw.js');
