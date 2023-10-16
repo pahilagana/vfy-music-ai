@@ -1366,32 +1366,31 @@ body{
     <button id="vivekmasona"></button>
 
     <script>
-      let isVoiceRecognitionOn = false;
-      let recognitionTimeout;
-      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-      recognition.lang = 'en-US';
-      recognition.interimResults = false;
+        let isVoiceRecognitionOn = false;
+        let recognitionTimeout;
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = 'en-US';
+        recognition.interimResults = false;
 
-      const toggleButton = document.getElementById('toggleButton');
+        const toggleButton = document.getElementById('toggleButton');
 
-      toggleButton.addEventListener('click', function () {
-        if (isVoiceRecognitionOn) {
-          recognition.stop();
-          clearTimeout(recognitionTimeout);
-         // toggleButton.textContent = 'Start Voice Command';
-          speak("please click again");
-        } else {
-          recognition.start();
-          //toggleButton.textContent = 'Stop Voice Command';
-          recognitionTimeout = setTimeout(function() {
-            recognition.stop();
-            //toggleButton.textContent = 'Start Voice Command';
-            speak("say mp3 for download audio and say mp4 for video");
-          }, 5000); // Automatically turn off after 5 seconds
-          speak("how can i help you");
-        }
-        isVoiceRecognitionOn = !isVoiceRecognitionOn;
-      });
+        toggleButton.addEventListener('click', function () {
+            if (isVoiceRecognitionOn) {
+                recognition.stop();
+                clearTimeout(recognitionTimeout);
+                speak("Please click again");
+            } else {
+                speak("you want to download audio video"); // Speech is not delayed
+                setTimeout(function () {
+                    recognition.start();
+                    recognitionTimeout = setTimeout(function () {
+                        recognition.stop();
+                        speak("please say mp3 for audio and say mp4 for video");
+                    }, 5000); // Automatically turn off after 1 second
+                }, 1000); // Delay for 3 seconds before starting voice recognition
+            }
+            isVoiceRecognitionOn = !isVoiceRecognitionOn;
+        });
 
       recognition.onresult = function(event) {
         const lastResult = event.results[event.results.length - 1][0].transcript;
