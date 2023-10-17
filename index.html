@@ -1385,9 +1385,9 @@ body{
                     recognition.start();
                     recognitionTimeout = setTimeout(function () {
                         recognition.stop();
-                        speak("please say  mp3 for audio download and say mp4 for video");
+                        speak("Tips of downloads say  mp3 for download audio  and say mp4 for video");
                     }, 5000); // Automatically turn off after 1 second
-                }, 3000); // Delay for 3 seconds before starting voice recognition
+                }, 2000); // Delay for 3 seconds before starting voice recognition
             }
             isVoiceRecognitionOn = !isVoiceRecognitionOn;
         });
