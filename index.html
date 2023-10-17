@@ -1380,12 +1380,12 @@ body{
                 clearTimeout(recognitionTimeout);
                 speak("Please click again");
             } else {
-                speak("speak now"); // Speech is not delayed
+                speak("what do you want mp3 ya mp4"); // Speech is not delayed
                 setTimeout(function () {
                     recognition.start();
                     recognitionTimeout = setTimeout(function () {
                         recognition.stop();
-                        speak("Tips of downloads say  mp3 for download audio  and say mp4 for video");
+                        speak("i am always here for you");
                     }, 5000); // Automatically turn off after 1 second
                 }, 2000); // Delay for 3 seconds before starting voice recognition
             }
