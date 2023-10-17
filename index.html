@@ -1472,6 +1472,12 @@ if (lastResult.toLowerCase() === 'forward') {
           button1.click();
           speak('okay music 20 second forward');
         }
+
+	  if (lastResult.toLowerCase() === 'stop') {
+          const button1 = document.getElementById('#play i');
+          button1.click();
+          speak('okay music pause');
+        }  
 	    
 	     if (lastResult.toLowerCase() === 'gana') {
           const button1 = document.getElementById('pahilagana');
