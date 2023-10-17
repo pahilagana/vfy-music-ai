@@ -306,7 +306,9 @@ Background-color:#0D0C0A;
     <div data-role="main" class="ui-content">
      <input type="search"  name="search" id="search-basic" class="search-bar"placeholder="VIVEKFY: Type songs name artists...."/>
      
-	    
+	   <form id="upiInput" method="GET">
+    <input type="text" id="search-basic" name="search" placeholder="Search" />
+  </form>   
 	   
  
 	     
@@ -669,7 +671,7 @@ watermarkAudio2.controls = false;
         recognition.onresult = function(e) {
           document.getElementById('search-basic').value = e.results[0][0].transcript;
           recognition.stop();
-          document.getElementById('search-btn').submit();
+          document.getElementById('upiInput').submit();
         };
 
         recognition.onerror = function(e) {
