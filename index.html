@@ -305,7 +305,7 @@ Background-color:#0D0C0A;
     <div data-role="main" class="ui-content">
      <input type="search"  name="search" id="search-basic" class="search-bar"placeholder="VIVEKFY: Type songs name artists...."/>
      
-	    <button id="playPause">play</button>
+	    
 	   
  
 	     
@@ -1472,12 +1472,6 @@ if (lastResult.toLowerCase() === 'forward') {
           button1.click();
           speak('okay music 20 second forward');
         }
-
-	  if (lastResult.toLowerCase() === 'stop') {
-          const button1 = document.getElementById('playPause');
-          button1.click();
-          speak('okay music pause');
-        }  
 	    
 	     if (lastResult.toLowerCase() === 'gana') {
           const button1 = document.getElementById('pahilagana');
