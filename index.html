@@ -1420,6 +1420,12 @@ if (lastResult.toLowerCase() === 'music') {
           button1.click();
           speak('okay i am downloading music');
         }   
+if (lastResult.toLowerCase() === 'back') {
+          const button1 = document.getElementById('rewindButton');
+          button1.click();
+          speak('okay music 10 second back');
+        }   
+	    
 	     if (lastResult.toLowerCase() === 'gana') {
           const button1 = document.getElementById('pahilagana');
           button1.click();
