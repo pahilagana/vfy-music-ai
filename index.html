@@ -673,7 +673,7 @@ watermarkAudio2.controls = false;
         document.getElementById('search-basic').value
                                  = e.results[0][0].transcript;
         recognition.stop();
-        document.getElementById('upiInput').submit();
+        document.getElementById('search-btn').submit();
       };
 
       recognition.onerror = function(e) {
