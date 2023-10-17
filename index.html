@@ -306,9 +306,7 @@ Background-color:#0D0C0A;
     <div data-role="main" class="ui-content">
      <input type="search"  name="search" id="search-basic" class="search-bar"placeholder="VIVEKFY: Type songs name artists...."/>
      
-	   <form id="upiInput" method="GET">
-    <input type="text" id="search-basic" name="search" placeholder="Search" />
-  </form>   
+	   
 	   
  
 	     
@@ -658,28 +656,25 @@ watermarkAudio2.controls = false;
 </script></div>
 
 
-<script>
-    function startDictation() {
-      if (window.hasOwnProperty('webkitSpeechRecognition')) {
-        var recognition = new webkitSpeechRecognition();
-
-        recognition.continuous = false;
-        recognition.interimResults = false;
-        recognition.lang = "en-US";
-        recognition.start();
-
-        recognition.onresult = function(e) {
-          document.getElementById('search-basic').value = e.results[0][0].transcript;
-          recognition.stop();
-          document.getElementById('upiInput').submit();
-        };
-
-        recognition.onerror = function(e) {
-          recognition.stop();
+    <script>
+        function search() {
+            // Implement your search functionality here
+            const searchTerm = document.getElementById('search-basic').value;
+            // Example: You can perform a search or do something with the searchTerm.
+            alert('Performing search for: ' + searchTerm);
         }
-      }
-    }
-  </script>
+
+        function startVoiceSearch() {
+            const recognition = new webkitSpeechRecognition() || SpeechRecognition(); // Check for browser compatibility
+            recognition.onresult = function(event) {
+                const transcript = event.results[0][0].transcript;
+                document.getElementById('search-basic').value = transcript;
+                search(); // Call the search function after setting the input value
+            };
+            recognition.start();
+        }
+    </script>
+
 
 <style>html {
 	background-color:#000;
