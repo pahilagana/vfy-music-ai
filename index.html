@@ -1425,7 +1425,17 @@ if (lastResult.toLowerCase() === 'back') {
           button1.click();
           speak('okay music 10 second back');
         }   
-	    
+if (lastResult.toLowerCase() === 'pichhe') {
+          const button1 = document.getElementById('rewindButton');
+          button1.click();
+          speak('okay music 10 second back');
+        }   
+	      
+	 if (lastResult.toLowerCase() === 'aage') {
+          const button1 = document.getElementById('fastForwardButton');
+          button1.click();
+          speak('okay music 20 second forward');
+        }      
 	     if (lastResult.toLowerCase() === 'gana') {
           const button1 = document.getElementById('pahilagana');
           button1.click();
