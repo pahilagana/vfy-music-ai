@@ -1423,7 +1423,7 @@ if (lastResult.toLowerCase() === 'music') {
 if (lastResult.toLowerCase() === 'back') {
           const button1 = document.getElementById('rewindButton');
           button1.click();
-          speak('okay music 10 second back');
+          speak('okay music 5 second back');
         }   
 if (lastResult.toLowerCase() === 'start') {
           const button1 = document.getElementById('play');
@@ -1440,14 +1440,26 @@ if (lastResult.toLowerCase() === 'start') {
 if (lastResult.toLowerCase() === 'piche') {
           const button1 = document.getElementById('rewindButton');
           button1.click();
-          speak('okay music 10 second back');
+          speak('okay music 5 second back');
+        } 
+if (lastResult.toLowerCase() === 'rewind') {
+          const button1 = document.getElementById('rewindButton');
+          button1.click();
+          speak('okay music 5 second back');
         }   
+	      
 	      
 	 if (lastResult.toLowerCase() === 'aage') {
           const button1 = document.getElementById('fastForwardButton');
           button1.click();
           speak('okay music 20 second forward');
-        }      
+        }
+if (lastResult.toLowerCase() === 'forward') {
+          const button1 = document.getElementById('fastForwardButton');
+          button1.click();
+          speak('okay music 20 second forward');
+        }
+	    
 	     if (lastResult.toLowerCase() === 'gana') {
           const button1 = document.getElementById('pahilagana');
           button1.click();
