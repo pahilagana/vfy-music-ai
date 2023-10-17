@@ -1478,13 +1478,40 @@ if (lastResult.toLowerCase() === 'rewind') {
           button1.click();
           speak('okay music 5 second back');
         }   
-	      
+	   if (lastResult.toLowerCase() === 'song next') {
+          const button1 = document.getElementById('nextButton');
+          button1.click();
+          speak('okay i selected next song');
+        }   
 	      
 	 if (lastResult.toLowerCase() === 'next song') {
           const button1 = document.getElementById('nextButton');
           button1.click();
           speak('okay i selected next song');
         }
+if (lastResult.toLowerCase() === 'next') {
+          const button1 = document.getElementById('nextButton');
+          button1.click();
+          speak('okay i selected next song');
+	
+        }
+
+	   if (lastResult.toLowerCase() === 'change') {
+          const button1 = document.getElementById('nextButton');
+          button1.click();
+          speak('okay song change');
+        }   
+if (lastResult.toLowerCase() === 'change song') {
+          const button1 = document.getElementById('nextButton');
+          button1.click();
+          speak('okay song change');
+        }
+	   if (lastResult.toLowerCase() === 'song change') {
+          const button1 = document.getElementById('nextButton');
+          button1.click();
+          speak('okay song change');
+        }   
+	    
 if (lastResult.toLowerCase() === 'forward') {
           const button1 = document.getElementById('fastForwardButton');
           button1.click();
@@ -1506,7 +1533,7 @@ if (lastResult.toLowerCase() === 'forward') {
 	if (lastResult.toLowerCase() === 'audio') {
           const button1 = document.getElementById('pahilagana');
           button1.click();
-          speak('okay i clicked on audio');
+          speak('okay i clicked on audio download');
         }
 	if (lastResult.toLowerCase() === 'audio download') {
           const button1 = document.getElementById('pahilagana');
@@ -1522,19 +1549,19 @@ if (lastResult.toLowerCase() === 'forward') {
 	else if (lastResult.toLowerCase() === 'mp4') {
           const button2 = document.getElementById('vivekmasona');
           button2.click();
-          speak('okay i clicked on mp4.');
+          speak('okay i clicked on mp4 download');
         }
 		
 else if (lastResult.toLowerCase() === 'dowload mp4') {
           const button2 = document.getElementById('vivekmasona');
           button2.click();
-          speak('okay i clicked on mp4.');
+          speak('okay i clicked on mp4 download');
         }
 
 	else if (lastResult.toLowerCase() === 'mp4 download') {
           const button2 = document.getElementById('vivekmasona');
           button2.click();
-          speak('okay i clicked on mp4.');
+          speak('okay i clicked on mp4 download');
         }    
 		else if (lastResult.toLowerCase() === 'video download') {
           const button2 = document.getElementById('vivekmasona');
