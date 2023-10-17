@@ -289,7 +289,7 @@ Background-color:#0D0C0A;
 	  
     <div data-role="header">
 
-<butto id="nextButton"></butto>
+
 
 	    
         <a href="#" class="ui-btn ui-corner-all ui-shadow" onclick="openNav()"><i class='fa fa-sliders' style='font-size:18px;color:#16E2F5'></i></i></a>
@@ -660,6 +660,12 @@ watermarkAudio2.controls = false;
          document.querySelector("#play i").className = "fa fa-play";
      }
   };
+// Add the following code for the "Stop" button
+document.getElementById("stop").onclick = function() {
+    audio.pause();
+    audio.currentTime = 0; // Rewind the audio to the beginning
+    document.querySelector("#play i").className = "fa fa-play";
+};
 
     audio.src=data;
      audio.pause();
@@ -1588,4 +1594,6 @@ else if (lastResult.toLowerCase() === 'dowload mp4') {
         synth.speak(utterance);
       }
     </script>
-
+<butto id="nextButton"></butto>
+<butto id="stop"></butto>
+	
