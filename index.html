@@ -559,7 +559,19 @@ rewindButton.addEventListener('click', function () {
         audio.currentTime = 0;
     }
 });
-	
+document.getElementById("nextButton").addEventListener("click", () => {
+    // Simulate a click on the next item in the playlist
+    var nextSongIndex = Sid + 1; // Calculate the index of the next song
+    var playlistItems = document.getElementsByClassName("list");
+
+    if (nextSongIndex < playlistItems.length) {
+        playlistItems[nextSongIndex].click(); // Play the next song
+        console.log('Manually went to the next song');
+    } else {
+        console.log('End of playlist');
+        // You may want to handle what happens when it's the end of the playlist.
+    }
+});	
 
 const titleaudio = document.getElementById('SAudio');
 
@@ -1462,10 +1474,10 @@ if (lastResult.toLowerCase() === 'rewind') {
         }   
 	      
 	      
-	 if (lastResult.toLowerCase() === 'aage') {
-          const button1 = document.getElementById('fastForwardButton');
+	 if (lastResult.toLowerCase() === 'next song') {
+          const button1 = document.getElementById('nextButton');
           button1.click();
-          speak('okay music 20 second forward');
+          speak('okay i selected next song');
         }
 if (lastResult.toLowerCase() === 'forward') {
           const button1 = document.getElementById('fastForwardButton');
