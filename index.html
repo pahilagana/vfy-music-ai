@@ -572,7 +572,7 @@ const seekSlider = document.getElementById('seek-slider');
             const progress = (currentTime / duration) * 100;
             seekSlider.value = currentTime;
             seekSlider.max = duration;
-        });
+        //});
 
         seekSlider.addEventListener('input', () => {
             const seekTime = seekSlider.value;
