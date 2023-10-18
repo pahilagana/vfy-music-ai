@@ -1545,6 +1545,11 @@ if (lastResult.toLowerCase() === 'start') {
           button1.click();
           speak('okay song stoped');
 	      }
+	      if (lastResult.toLowerCase() === 'video') {
+          const button1 = document.getElementById('vivek');
+          button1.click();
+          speak('okay video mode on');
+	      }
 	      if (lastResult.toLowerCase() === 'music stop') {
           const button1 = document.getElementById('stop');
           button1.click();
@@ -1666,7 +1671,7 @@ else if (lastResult.toLowerCase() === 'dowload mp4') {
           speak('okay i clicked on video for download.');
         }		
 
-	  else if (lastResult.toLowerCase() === 'video') {
+	  else if (lastResult.toLowerCase() === 'cinema') {
           const button2 = document.getElementById('vivekmasona');
           button2.click();
           speak('okay i clicked on video.');
@@ -1686,7 +1691,9 @@ else if (lastResult.toLowerCase() === 'dowload mp4') {
 <butto id="stop"></butto>
 	<butto id="rewindButton"></butto>
 <butto id="fastForwardButton"></butto>
-	
+	<a href="https://vfy.netlify.app/ai">
+  <butto id="vivek"></butto>
+</a>
 
 
 
