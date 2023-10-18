@@ -716,7 +716,7 @@ watermarkAudio2.controls = false;
 document.getElementById("stop").onclick = function() {
     audio.pause();
     audio.currentTime = 0; // Rewind the audio to the beginning
-    document.querySelector("#play i").className = "fa fa-play";
+    document.querySelector("#play i").className = "fa fa-pause";
 };
 
     audio.src=data;
@@ -725,7 +725,7 @@ document.getElementById("stop").onclick = function() {
    if(audio){
      audio.pause();
      audio.play();
-      document.querySelector("#play i").className = "fa fa-pause";
+      document.querySelector("#play i").className = "fa fa-play";
    }
 }
 </script></div>
