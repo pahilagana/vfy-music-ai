@@ -642,11 +642,17 @@ watermarkAudio2.controls = false;
  });
 	
 
-	audio.addEventListener("timeupdate", function() {
-  const currentTime = audio.currentTime;
+const progressBar = document.getElementById("progress");
+
+progressBar.addEventListener("click", function(e) {
+  const progressBarRect = progressBar.getBoundingClientRect();
+  const clickX = e.clientX - progressBarRect.left;
+  const progressBarWidth = progressBarRect.width;
+  const progress = (clickX / progressBarWidth);
+  
+  const audio = document.getElementById("SAudio");
   const duration = audio.duration;
-  const progress = (currentTime / duration) * 100;
-  document.getElementById("progress").style.width = progress + "%";
+  audio.currentTime = progress * duration;
 });
 
 
