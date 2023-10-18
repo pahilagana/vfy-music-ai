@@ -557,21 +557,7 @@ document.getElementById("vivekmasona").onclick = ()=>{
         location.href= "https://projectlounge.pw/ytdl/download?url=https://youtu.be/"+id;
         //location.href= "https://vivekmasona.2.sg-1.fl0.io/mp4?url=https://youtu.be/"+id;
     };
-const audio = document.getElementById('SAudio');
-        const seekSlider = document.getElementById('seek-slider');
 
-        audio.addEventListener('timeupdate', () => {
-            const currentTime = audio.currentTime;
-            const duration = audio.duration;
-            const progress = (currentTime / duration) * 100;
-            seekSlider.value = currentTime;
-            seekSlider.max = duration;
-        });
-
-        seekSlider.addEventListener('input', () => {
-            const seekTime = seekSlider.value;
-            audio.currentTime = seekTime;
-        });
 
 
 	
@@ -631,6 +617,23 @@ const titleaudio = document.getElementById('SAudio');
       document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
     });	
 
+
+	const audio = document.getElementById('SAudio');
+        const seekSlider = document.getElementById('seek-slider');
+
+        audio.addEventListener('timeupdate', () => {
+            const currentTime = audio.currentTime;
+            const duration = audio.duration;
+            const progress = (currentTime / duration) * 100;
+            seekSlider.value = currentTime;
+            seekSlider.max = duration;
+        });
+
+        seekSlider.addEventListener('input', () => {
+            const seekTime = seekSlider.value;
+            audio.currentTime = seekTime;
+        });
+
 const audioPlayer = document.getElementById("SAudio");
 const customTimeContainer = document.getElementById("custom-time-container");
 const currentTimeDisplay = document.getElementById("current-time");
@@ -682,12 +685,7 @@ watermarkAudio2.controls = false;
  });
 	
 
-	audio.addEventListener("timeupdate", function() {
-  const currentTime = audio.currentTime;
-  const duration = audio.duration;
-  const progress = (currentTime / duration) * 100;
-  document.getElementById("progress").style.width = progress + "%";
-});
+	
 
 
   document.getElementById("play").onclick = function(){
