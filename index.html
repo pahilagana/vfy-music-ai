@@ -575,8 +575,8 @@ rewindButton.addEventListener('click', function () {
         audio.currentTime = 0;
     }
 });
-const audio = document.getElementById(SAudio');
-        const seekSlider = document.getElementById('seek-slider');
+const audio = document.getElementById('SAudio');
+const seekSlider = document.getElementById('seek-slider');
 
         audio.addEventListener('timeupdate', () => {
             const currentTime = audio.currentTime;
@@ -584,7 +584,7 @@ const audio = document.getElementById(SAudio');
             const progress = (currentTime / duration) * 100;
             seekSlider.value = currentTime;
             seekSlider.max = duration;
-        //});
+        });
 
         seekSlider.addEventListener('input', () => {
             const seekTime = seekSlider.value;
