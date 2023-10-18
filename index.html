@@ -566,7 +566,11 @@ var fastForwardButton = document.getElementById('fastForwardButton');
 
 fastForwardButton.addEventListener('click', function () {
     audio.currentTime += 10;
+    if (audio.currentTime > audio.duration) {
+        audio.currentTime = audio.duration;
+    }
 });
+
 var audio = document.getElementById('SAudio');
 var rewindButton = document.getElementById('rewindButton');
 
