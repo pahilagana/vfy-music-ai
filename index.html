@@ -643,6 +643,7 @@ watermarkAudio2.controls = false;
 	
 
 const progressBar = document.getElementById("progress");
+const audio = document.getElementById("SAudio");
 
 progressBar.addEventListener("click", function(e) {
   const progressBarRect = progressBar.getBoundingClientRect();
@@ -650,10 +651,22 @@ progressBar.addEventListener("click", function(e) {
   const progressBarWidth = progressBarRect.width;
   const progress = (clickX / progressBarWidth);
   
-  const audio = document.getElementById("SAudio");
   const duration = audio.duration;
-  audio.currentTime = progress * duration;
+  const newTime = progress * duration;
+  audio.currentTime = newTime;
 });
+
+audio.addEventListener("timeupdate", function() {
+  const currentTime = audio.currentTime;
+  const duration = audio.duration;
+  const progress = (currentTime / duration) * 100;
+  document.getElementById("progress").style.width = progress + "%";
+});
+
+
+
+
+	
 
 
   document.getElementById("play").onclick = function(){
