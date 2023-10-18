@@ -1,3 +1,4 @@
+
 <link href='https://www.blogger.com/static/v1/widgets/55013136-widget_css_bundle.css' rel='stylesheet' type='text/css'/>
 <link rel="manifest" href="./manifest.webmanifest">
 <link href='/img/mylogo.png' rel='apple-touch-icon' sizes='180x180'/>
@@ -638,8 +639,8 @@ function play(id,Sid){
      // data = "https://vivekfy.onrender.com/low-audio?url="+id;
      // data = "https://projectlounge.pw/ytdl/download?url=https://youtu.be/"+id+"&format=599";
      // data = "https://vivekmasona.000webhostapp.com/Play?vfy=https://youtu.be/"+id;
-      data = "https://vivekmasona.2.sg-1.fl0.io/low-audio?url=https://youtu.be/"+id;
-     //data = "https://all-in-one-vid.000webhostapp.com/play?vfy=https://youtu.be/"+id;
+      //data = "https://vivekmasona.2.sg-1.fl0.io/low-audio?url=https://youtu.be/"+id;
+     data = "https://all-in-one-vid.000webhostapp.com/play?vfy=https://youtu.be/"+id;
     document.getElementById("SThumb").src = "https://i.ytimg.com/vi/"+id+"/maxresdefault.jpg";
     document.getElementById("pahilagana").onclick = ()=>{
         //location.href= "https://vivekmasona.2.sg-1.fl0.io/mp3?url=https://youtu.be/"+id;
@@ -1528,7 +1529,7 @@ if (lastResult.toLowerCase() === 'start') {
           button1.click();
           speak('okay song stoped');
 	      }
-	      if (lastResult.toLowerCase() === 'watch') {
+	      if (lastResult.toLowerCase() === 'video') {
           const button1 = document.getElementById('vivek');
           button1.click();
           speak('okay video mode on');
@@ -1643,13 +1644,13 @@ else if (lastResult.toLowerCase() === 'dowload mp4') {
           button2.click();
           speak('okay i clicked on mp4 download');
         }    
-		else if (lastResult.toLowerCase() === 'what is your father's name') {
+		else if (lastResult.toLowerCase() === 'control') {
           const button2 = document.getElementById('modal');
           button2.click();
-          speak('vivek Verma ');
+          speak('okay you can skip song ');
         }    
 		else if (lastResult.toLowerCase() === 'developer') {
-          const button2 = document.getElementById('modal');
+          const button2 = document.getElementById('modal1');
           button2.click();
           speak('vivek verma is bhi faai developer');
         }    	
@@ -1669,7 +1670,7 @@ else if (lastResult.toLowerCase() === 'dowload mp4') {
           speak('okay i clicked on video for download.');
         }		
 
-	  else if (lastResult.toLowerCase() === 'video') {
+	  else if (lastResult.toLowerCase() === 'cinema') {
           const button2 = document.getElementById('vivekmasona');
           button2.click();
           speak('okay i clicked on video.');
@@ -1759,6 +1760,7 @@ function closeModal() {
 
 
     
+
 
 
 
