@@ -557,7 +557,24 @@ document.getElementById("nextButton").addEventListener("click", () => {
         console.log('End of playlist');
         // You may want to handle what happens when it's the end of the playlist.
     }
-});	
+});
+
+
+const audio = document.getElementById('SAudio');
+const seekSlider = document.getElementById('seek-slider');
+
+        audio.addEventListener('timeupdate', () => {
+            const currentTime = audio.currentTime;
+            const duration = audio.duration;
+            const progress = (currentTime / duration) * 100;
+            seekSlider.value = currentTime;
+            seekSlider.max = duration;
+        });
+
+        seekSlider.addEventListener('input', () => {
+            const seekTime = seekSlider.value;
+            audio.currentTime = seekTime;
+        });	
 	
 var audio = document.getElementById('SAudio');
 var fastForwardButton = document.getElementById('fastForwardButton');
@@ -575,21 +592,7 @@ rewindButton.addEventListener('click', function () {
         audio.currentTime = 0;
     }
 });
-const audio = document.getElementById('SAudio');
-const seekSlider = document.getElementById('seek-slider');
 
-        audio.addEventListener('timeupdate', () => {
-            const currentTime = audio.currentTime;
-            const duration = audio.duration;
-            const progress = (currentTime / duration) * 100;
-            seekSlider.value = currentTime;
-            seekSlider.max = duration;
-        });
-
-        seekSlider.addEventListener('input', () => {
-            const seekTime = seekSlider.value;
-            audio.currentTime = seekTime;
-        });
 
 const titleaudio = document.getElementById('SAudio');
 
