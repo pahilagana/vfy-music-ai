@@ -470,18 +470,24 @@ Background-color:#0D0C0A;
 <vfy id="showAutoClose">  	
 <a href="#" id="pahilagana" class="float1"></a>
 <a href="#" id="vivekmasona" class="float1"></a>
+
+<butto onclick="openModal()">
+
+	
 <center><div id="custom-time-container">
       <span id="current-time">0:00</span> / <span id="total-time">0:00</span>
     </div>
 </center>
-      
+</butto>  
 </vfy>
 </div>
 </center>
    <div id="ppl" data-role="navbar">
     
 	   
-	   <audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
+
+
+
 
 	   
 	   
@@ -1690,4 +1696,60 @@ else if (lastResult.toLowerCase() === 'dowload mp4') {
 </a>
 
 
+
+
+<style>
+  /* Styling for the modal container */
+  .modal-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 1;
+  }
+
+  /* Styling for the modal content */
+  .modal-content {
+    background-color: #15e2f5;
+    width: 300px;
+    margin: 150% auto;
+    padding: 20px;
+    text-align: center;
+  }
+</style>
+
+
+
+
+
+
+<!-- The modal container -->
+<div id="modal" class="modal-container">
+  <div class="modal-content">
+    <span onclick="closeModal()" style="float: right;">&times;</span>
+    <audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
+
+	   
+  </div>
+</div>
+
+<script>
+// Function to open the modal
+function openModal() {
+  document.getElementById("modal").style.display = "block";
+  // Automatically close the modal after 3 seconds
+  setTimeout(closeModal, 2000);
+}
+
+// Function to close the modal
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+</script>
+
+
+</!doctype>
 
