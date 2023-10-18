@@ -365,7 +365,7 @@ Background-color:#0D0C0A;
 	}
 
 #SAudio {
-  display: yes;
+  display: none;
 	}	
 </style>
 
@@ -1624,6 +1624,11 @@ if (lastResult.toLowerCase() === 'forward') {
           speak('okay i clicked on mp4 download');
         }
 		
+	else if (lastResult.toLowerCase() === 'normal') {
+          const button2 = document.getElementById('normal');
+          button2.click();
+          speak('okay i open bhi faai full mode app');
+        }	
 else if (lastResult.toLowerCase() === 'dowload mp4') {
           const button2 = document.getElementById('vivekmasona');
           button2.click();
@@ -1669,6 +1674,9 @@ else if (lastResult.toLowerCase() === 'dowload mp4') {
 	<a href="https://vfy.netlify.app/ai">
   <butto id="vivek"></butto>
 </a>
-
+	
+<a href="https://vfy.netlify.app">
+  <butto id="normal"></butto>
+</a>
 
 
