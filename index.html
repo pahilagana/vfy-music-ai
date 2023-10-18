@@ -34,7 +34,21 @@ op.src = '/effect/Click.mp3';
 </script>
 
 
+<style>
+   /* Hide the mute button */
+    audio::-webkit-media-controls-mute-button,
+    audio::-webkit-media-controls-play-button,
+	
+    audio::-webkit-media-controls-pause-button {
+    display: none !important;
+	 color: #16E2F5;   
+	}
 
+    
+
+	
+
+</style>
 
 
 <div class="fixed">
@@ -1634,32 +1648,4 @@ else if (lastResult.toLowerCase() === 'dowload mp4') {
 
 
 
-
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    /* For WebKit-based browsers (Chrome, Safari) */
-    input[type="range"]::-webkit-progress-value {
-      background: blue; /* Change this to your desired color */
-    }
-
-    /* For Firefox */
-    input[type="range"]::-moz-progress-bar {
-      background: blue; /* Change this to your desired color */
-    }
-
-    /* For other browsers that support the ::progress-bar pseudo-element */
-    input[type="range"]::progress-bar {
-      background: blue; /* Change this to your desired color */
-    }
-  </style>
-</head>
-<body>
-  <input type="range" min="0" max="100" value="50">
-</body>
-</html>
-
-	
-	
 
