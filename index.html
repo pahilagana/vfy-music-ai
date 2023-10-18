@@ -34,21 +34,51 @@ op.src = '/effect/Click.mp3';
 </script>
 
 
-<style>
-   /* Hide the mute button */
-    audio::-webkit-media-controls-mute-button,
-    audio::-webkit-media-controls-play-button,
-	
-    audio::-webkit-media-controls-pause-button {
-    display: none !important;
-	 color: #16E2F5;   
-	}
-
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Make the background transparent */
+    audio::-webkit-media-controls-panel,
+    audio::-webkit-media-controls {
+      background-color: transparent;
+    }
     
+    /* Hide the time display */
+    audio::-webkit-media-controls-current-time-display {
+      display: none;
+    }
+    
+    audio::-webkit-media-controls-time-remaining-display {
+      display: none;
+    }
+    
+    /* Hide the speaker icon */
+    audio::-webkit-media-controls-volume-slider {
+      display: none;
+    }
+    
+    /* Hide the three-dot option button (menu) */
+    audio::-webkit-media-controls-mute-button,
+    audio::-webkit-media-controls-overflow-button {
+      display: none;
+    }
+    
+    /* Show only the progress bar */
+    audio::-webkit-media-controls-panel {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    audio::-webkit-media-controls-play-button,
+    audio::-webkit-media-controls-seek-back-button,
+    audio::-webkit-media-controls-seek-forward-button {
+      display: none;
+    }
+  </style>
 
-	
 
-</style>
 
 
 <div class="fixed">
