@@ -446,7 +446,7 @@ Background-color:#0D0C0A;
 
 
  <li><a id="stop"><i class="fa fa-stop" aria-hidden="true"></i></a></li>
-      <li><a id="play"><i class="fa fa-stop" aria-hidden="true"></i></a></li>
+      <li><a id="play"><i class="fa fa-play" aria-hidden="true"></i></a></li>
 <li><a id="nextButton"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></li>
 
 	 
@@ -716,7 +716,7 @@ watermarkAudio2.controls = false;
 document.getElementById("stop").onclick = function() {
     audio.pause();
     audio.currentTime = 0; // Rewind the audio to the beginning
-    document.querySelector("#play i").className = "fa fa-pause";
+    document.querySelector("#play i").className = "fa fa-play";
 };
 
     audio.src=data;
@@ -725,7 +725,7 @@ document.getElementById("stop").onclick = function() {
    if(audio){
      audio.pause();
      audio.play();
-      document.querySelector("#play i").className = "fa fa-play";
+      document.querySelector("#play i").className = "fa fa-pause";
    }
 }
 </script></div>
