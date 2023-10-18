@@ -360,11 +360,10 @@ Background-color:#0D0C0A;
 <b hidden='' id='vivek_maurya'><img src="/img/add.png" alt="vivekfy application" width="100%" height="100%" z-index="9999"/>
 </b>
 <audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
-    	
-	<input type="range" id="seek-slider" min="0" value="0" step="1" />
-
-
-	<center><div id="custom-time-container">
+<div id="custom-progress-bar">
+  <div id="progress"></div>
+</div>  
+<center><div id="custom-time-container">
 	
 	
 	
@@ -560,24 +559,7 @@ document.getElementById("nextButton").addEventListener("click", () => {
         console.log('End of playlist');
         // You may want to handle what happens when it's the end of the playlist.
     }
-});
-
-
-const audio = document.getElementById('SAudio');
-const seekSlider = document.getElementById('seek-slider');
-
-        audio.addEventListener('timeupdate', () => {
-            const currentTime = audio.currentTime;
-            const duration = audio.duration;
-            const progress = (currentTime / duration) * 100;
-            seekSlider.value = currentTime;
-            seekSlider.max = duration;
-        //});
-
-        seekSlider.addEventListener('input', () => {
-            const seekTime = seekSlider.value;
-            audio.currentTime = seekTime;
-        });	
+});	
 	
 var audio = document.getElementById('SAudio');
 var fastForwardButton = document.getElementById('fastForwardButton');
@@ -660,7 +642,12 @@ watermarkAudio2.controls = false;
  });
 	
 
-	
+	audio.addEventListener("timeupdate", function() {
+  const currentTime = audio.currentTime;
+  const duration = audio.duration;
+  const progress = (currentTime / duration) * 100;
+  document.getElementById("progress").style.width = progress + "%";
+});
 
 
   document.getElementById("play").onclick = function(){
