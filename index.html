@@ -1707,7 +1707,8 @@ else if (lastResult.toLowerCase() === 'dowload mp4') {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.7);
+    background: rgb(63,181,219);
+background: linear-gradient(180deg, rgba(63,181,219,0.35220014046931614) 0%, rgba(21,35,39,1) 100%);
     z-index: 999999;
   }
 
@@ -1741,7 +1742,7 @@ else if (lastResult.toLowerCase() === 'dowload mp4') {
 function openModal() {
   document.getElementById("modal").style.display = "block";
   // Automatically close the modal after 3 seconds
-  setTimeout(closeModal, 2000);
+  setTimeout(closeModal, 3000);
 }
 
 // Function to close the modal
