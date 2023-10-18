@@ -203,37 +203,18 @@ Color:#15E2F5;
 
   margin-top: 20px;
 }
+#custom-progress-bar {
+  width: 100%;
+  background: #616D7E;
+}
 
-/* CSS for the slider */
-        #seek-slider {
-            background-color: yellow; /* Background color */
-            -webkit-appearance: none;
-            appearance: none;
-            width: 100%;
-            height: 10px;
-            border-radius: 5px;
-        }
+#progress {
+  width: 0;
+  height: 6px;
+  background: rgb(12,78,10);
+background: linear-gradient(90deg, rgba(12,78,10,1) 4%, rgba(34,108,31,1) 15%, rgba(133,173,130,1) 34%, rgba(168,196,166,1) 38%, rgba(255,255,255,1) 50%, rgba(255,254,254,1) 64%, rgba(255,217,200,1) 70%, rgba(255,103,31,1) 88%);
 
-        /* Style the slider thumb (pointer) */
-        #seek-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 15px;
-            height: 15px;
-            background-color: red; /* Thumb color */
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        #seek-slider::-moz-range-thumb {
-            width: 15px;
-            height: 15px;
-            background-color: red; /* Thumb color */
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-		
+}
 #search-basic{
 	
 border-radius: 1 px;
@@ -393,8 +374,9 @@ Background-color:#0D0C0A;
 <vfy id="showAutoClose">  	
 <a href="#" id="pahilagana" class="float1"></a>
 <a href="#" id="vivekmasona" class="float1"></a>
-<center>    
-<input type="range" id="seek-slider" min="0" value="0" step="1" />
+<center><div id="custom-time-container">
+      <span id="current-time">0:00</span> / <span id="total-time">0:00</span>
+    </div>
 </center>
       
 </vfy>
@@ -558,9 +540,6 @@ document.getElementById("vivekmasona").onclick = ()=>{
         //location.href= "https://vivekmasona.2.sg-1.fl0.io/mp4?url=https://youtu.be/"+id;
     };
 
-
-
-	
     audio = document.getElementById("SAudio");
   audio.play()
   audio.addEventListener("ended", () => {
@@ -581,11 +560,6 @@ document.getElementById("nextButton").addEventListener("click", () => {
         // You may want to handle what happens when it's the end of the playlist.
     }
 });	
-
-
-
-
-
 	
 var audio = document.getElementById('SAudio');
 var fastForwardButton = document.getElementById('fastForwardButton');
@@ -616,23 +590,6 @@ const titleaudio = document.getElementById('SAudio');
       // Restore the original page title when audio is paused
       document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
     });	
-
-
-	const audio = document.getElementById('SAudio');
-        const seekSlider = document.getElementById('seek-slider');
-
-        audio.addEventListener('timeupdate', () => {
-            const currentTime = audio.currentTime;
-            const duration = audio.duration;
-            const progress = (currentTime / duration) * 100;
-            seekSlider.value = currentTime;
-            seekSlider.max = duration;
-        });
-
-        seekSlider.addEventListener('input', () => {
-            const seekTime = seekSlider.value;
-            audio.currentTime = seekTime;
-        });
 
 const audioPlayer = document.getElementById("SAudio");
 const customTimeContainer = document.getElementById("custom-time-container");
@@ -685,7 +642,12 @@ watermarkAudio2.controls = false;
  });
 	
 
-	
+	audio.addEventListener("timeupdate", function() {
+  const currentTime = audio.currentTime;
+  const duration = audio.duration;
+  const progress = (currentTime / duration) * 100;
+  document.getElementById("progress").style.width = progress + "%";
+});
 
 
   document.getElementById("play").onclick = function(){
@@ -1669,4 +1631,5 @@ else if (lastResult.toLowerCase() === 'dowload mp4') {
 <butto id="nextButton"></butto>
 <butto id="stop"></butto>
 	
+
 
