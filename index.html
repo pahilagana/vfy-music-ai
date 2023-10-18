@@ -361,7 +361,9 @@ Background-color:#0D0C0A;
 </b>
 <audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
     	
-	
+	<input type="range" id="seek-slider" min="0" value="0" step="1" />
+
+
 	<center><div id="custom-time-container">
 	
 	
@@ -658,12 +660,7 @@ watermarkAudio2.controls = false;
  });
 	
 
-	audio.addEventListener("timeupdate", function() {
-  const currentTime = audio.currentTime;
-  const duration = audio.duration;
-  const progress = (currentTime / duration) * 100;
-  document.getElementById("progress").style.width = progress + "%";
-});
+	
 
 
   document.getElementById("play").onclick = function(){
