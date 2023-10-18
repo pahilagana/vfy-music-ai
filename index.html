@@ -580,21 +580,7 @@ document.getElementById("nextButton").addEventListener("click", () => {
 });	
 
 
-const audio = document.getElementById('SAudio');
-        const seekSlider = document.getElementById('seek-slider');
 
-        audio.addEventListener('timeupdate', () => {
-            const currentTime = audio.currentTime;
-            const duration = audio.duration;
-            const progress = (currentTime / duration) * 100;
-            seekSlider.value = currentTime;
-            seekSlider.max = duration;
-        });
-
-        seekSlider.addEventListener('input', () => {
-            const seekTime = seekSlider.value;
-            audio.currentTime = seekTime;
-        });
 
 
 	
@@ -615,7 +601,21 @@ rewindButton.addEventListener('click', function () {
     }
 });
 
+const audio = document.getElementById('SAudio');
+        const seekSlider = document.getElementById('seek-slider');
 
+        audio.addEventListener('timeupdate', () => {
+            const currentTime = audio.currentTime;
+            const duration = audio.duration;
+            const progress = (currentTime / duration) * 100;
+            seekSlider.value = currentTime;
+            seekSlider.max = duration;
+        });
+
+        seekSlider.addEventListener('input', () => {
+            const seekTime = seekSlider.value;
+            audio.currentTime = seekTime;
+        });
 const titleaudio = document.getElementById('SAudio');
 
     audio.addEventListener('play', () => {
