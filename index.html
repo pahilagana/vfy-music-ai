@@ -559,31 +559,7 @@ document.getElementById("nextButton").addEventListener("click", () => {
         console.log('End of playlist');
         // You may want to handle what happens when it's the end of the playlist.
     }
-});
-
-const progressBar = document.getElementById("progress");
-const audio = document.getElementById("SAudio");
-
-progressBar.addEventListener("click", function(e) {
-  const progressBarRect = progressBar.getBoundingClientRect();
-  const clickX = e.clientX - progressBarRect.left;
-  const progressBarWidth = progressBarRect.width;
-  const progress = (clickX / progressBarWidth);
-  
-  const duration = audio.duration;
-  const newTime = progress * duration;
-  audio.currentTime = newTime;
-});
-
-audio.addEventListener("timeupdate", function() {
-  const currentTime = audio.currentTime;
-  const duration = audio.duration;
-  const progress = (currentTime / duration) * 100;
-  document.getElementById("progress").style.width = progress + "%";
-});
-
-
-	
+});	
 	
 var audio = document.getElementById('SAudio');
 var fastForwardButton = document.getElementById('fastForwardButton');
@@ -666,12 +642,12 @@ watermarkAudio2.controls = false;
  });
 	
 
-
-
-
-
-
-	
+	audio.addEventListener("timeupdate", function() {
+  const currentTime = audio.currentTime;
+  const duration = audio.duration;
+  const progress = (currentTime / duration) * 100;
+  document.getElementById("progress").style.width = progress + "%";
+});
 
 
   document.getElementById("play").onclick = function(){
@@ -1655,5 +1631,4 @@ else if (lastResult.toLowerCase() === 'dowload mp4') {
 <butto id="nextButton"></butto>
 <butto id="stop"></butto>
 	
-
 
