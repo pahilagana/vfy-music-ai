@@ -270,7 +270,7 @@ Background-color:#0D0C0A;
 	}
 
 #SAudio {
-  display: none;
+  display: yes;
 	}	
 </style>
 
@@ -1630,5 +1630,36 @@ else if (lastResult.toLowerCase() === 'dowload mp4') {
     </script>
 <butto id="nextButton"></butto>
 <butto id="stop"></butto>
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* For WebKit-based browsers (Chrome, Safari) */
+    input[type="range"]::-webkit-progress-value {
+      background: blue; /* Change this to your desired color */
+    }
+
+    /* For Firefox */
+    input[type="range"]::-moz-progress-bar {
+      background: blue; /* Change this to your desired color */
+    }
+
+    /* For other browsers that support the ::progress-bar pseudo-element */
+    input[type="range"]::progress-bar {
+      background: blue; /* Change this to your desired color */
+    }
+  </style>
+</head>
+<body>
+  <input type="range" min="0" max="100" value="50">
+</body>
+</html>
+
+	
 	
 
