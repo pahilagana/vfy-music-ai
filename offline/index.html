@@ -1,0 +1,59 @@
+<!doctype html>
+
+
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#container {
+  width: 40vmax;
+  aspect-ratio: 2 / 3;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.profile {
+  height: 60%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
+}
+#container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("https://i.postimg.cc/2ymkN9N4/blob-haikei-2.png");
+  scale: 1.4;
+  background-size: cover;
+  background-position: center;
+  z-index: 10;
+  mix-blend-mode: lighten;
+  animation: blobRotate 10s linear infinite forwards;
+}
+@keyframes blobRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}</style>
+
+<div id="container">
+  <img src="https://i.postimg.cc/pyb163NH/9.jpg" alt="" class="profile" />
+</div>
+
+</!doctype>
