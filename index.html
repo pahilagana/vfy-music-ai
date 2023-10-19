@@ -651,13 +651,52 @@ document.getElementById("vivekmasona").onclick = ()=>{
         //location.href= "https://vivekmasona.2.sg-1.fl0.io/mp4?url=https://youtu.be/"+id;
     };
 
+audio = document.getElementById("SAudio");
+  audio.play()
+  audio.addEventListener("ended", () => {
+    
+   document.getElementsByClassName("list")[Sid+1].click()
+   console.log('Next')
+});
+document.getElementById("nextButton").addEventListener("click", () => {
+    // Simulate a click on the next item in the playlist
+    var nextSongIndex = Sid + 1; // Calculate the index of the next song
+    var playlistItems = document.getElementsByClassName("list");
+
+    if (nextSongIndex < playlistItems.length) {
+        playlistItems[nextSongIndex].click(); // Play the next song
+        console.log('Manually went to the next song');
+    } else {
+        console.log('End of playlist');
+        // You may want to handle what happens when it's the end of the playlist.
+    }
+});	
+	
+var audio = document.getElementById('SAudio');
+var fastForwardButton = document.getElementById('fastForwardButton');
+
+fastForwardButton.addEventListener('click', function () {
+    audio.currentTime += 10;
+});
+var audio = document.getElementById('SAudio');
+var rewindButton = document.getElementById('rewindButton');
+
+rewindButton.addEventListener('click', function () {
+    if (audio.currentTime >= 5) {
+        audio.currentTime -= 5;
+    } else {
+        audio.currentTime = 0;
+    }
+});
+
+
 // Pause the audio player
     var audio = document.getElementById("SAudio");
     audio.pause();
 
 
 
-    var videoUrl = "https://www.youtube.com/embed/" + id;
+ var videoUrl = "https://www.youtube.com/embed/" + id;
 
     var iframe = document.createElement("iframe");
     iframe.setAttribute("width", "560");
@@ -701,47 +740,7 @@ playVideoButton.addEventListener("click", function() {
 
 
 
-
 	
-
-    audio = document.getElementById("SAudio");
-  audio.play()
-  audio.addEventListener("ended", () => {
-    
-   document.getElementsByClassName("list")[Sid+1].click()
-   console.log('Next')
-});
-document.getElementById("nextButton").addEventListener("click", () => {
-    // Simulate a click on the next item in the playlist
-    var nextSongIndex = Sid + 1; // Calculate the index of the next song
-    var playlistItems = document.getElementsByClassName("list");
-
-    if (nextSongIndex < playlistItems.length) {
-        playlistItems[nextSongIndex].click(); // Play the next song
-        console.log('Manually went to the next song');
-    } else {
-        console.log('End of playlist');
-        // You may want to handle what happens when it's the end of the playlist.
-    }
-});	
-	
-var audio = document.getElementById('SAudio');
-var fastForwardButton = document.getElementById('fastForwardButton');
-
-fastForwardButton.addEventListener('click', function () {
-    audio.currentTime += 10;
-});
-var audio = document.getElementById('SAudio');
-var rewindButton = document.getElementById('rewindButton');
-
-rewindButton.addEventListener('click', function () {
-    if (audio.currentTime >= 5) {
-        audio.currentTime -= 5;
-    } else {
-        audio.currentTime = 0;
-    }
-});
-
 
 const titleaudio = document.getElementById('SAudio');
 
