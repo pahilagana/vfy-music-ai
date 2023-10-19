@@ -678,7 +678,7 @@ var fastForwardButton = document.getElementById('fastForwardButton');
 fastForwardButton.addEventListener('click', function () {
     audio.currentTime += 10;
 });
-
+var audio = document.getElementById('SAudio');
 var rewindButton = document.getElementById('rewindButton');
 
 rewindButton.addEventListener('click', function () {
@@ -689,17 +689,18 @@ rewindButton.addEventListener('click', function () {
     }
 });
 
+
 const titleaudio = document.getElementById('SAudio');
 
-audio.addEventListener('play', () => {
-    // Update the tab title when audio starts playing
-    document.title = 'VFY Music.. ' + audio.currentTime;
-});
+    audio.addEventListener('play', () => {
+      // Update the tab title when audio starts playing
+      document.title = 'VFY Music..      ' + audio.currentTime;
+    });
 
-audio.addEventListener('pause', () => {
-    // Restore the original page title when audio is paused
-    document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
-});
+    audio.addEventListener('pause', () => {
+      // Restore the original page title when audio is paused
+      document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
+    });	
 
 const audioPlayer = document.getElementById("SAudio");
 const customTimeContainer = document.getElementById("custom-time-container");
@@ -707,20 +708,23 @@ const currentTimeDisplay = document.getElementById("current-time");
 const totalTimeDisplay = document.getElementById("total-time");
 
 audioPlayer.addEventListener("loadedmetadata", () => {
-    const totalDuration = audioPlayer.duration;
-    totalTimeDisplay.textContent = formatTime(totalDuration);
+  const totalDuration = audioPlayer.duration;
+  totalTimeDisplay.textContent = formatTime(totalDuration);
 });
 
 audioPlayer.addEventListener("timeupdate", () => {
-    const currentTime = audioPlayer.currentTime;
-    currentTimeDisplay.textContent = formatTime(currentTime);
+  const currentTime = audioPlayer.currentTime;
+  currentTimeDisplay.textContent = formatTime(currentTime);
 });
 
 function formatTime(seconds) {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = Math.floor(seconds % 60);
-    return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = Math.floor(seconds % 60);
+  return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
 }
+
+
+	
 
 const mainAudio = document.getElementById('SAudio');
 const watermarkAudio1 = document.getElementById('watermarkAudio1');
@@ -734,7 +738,7 @@ mainAudio.addEventListener('loadedmetadata', () => {
 // Listen for the 'ended' event on the main audio to start playing the second watermark audio.
 mainAudio.addEventListener('ended', () => {
     watermarkAudio2.play();
-});
+//});
 
 // Adjust the volume of the watermark audios as needed.
 watermarkAudio1.volume = 1; // Adjust the volume as needed (0.2 means 20% of the main audio volume).
@@ -746,39 +750,43 @@ watermarkAudio2.volume = 1; // Adjust the volume as needed (0.2 means 20% of the
 watermarkAudio1.controls = false;
 watermarkAudio2.controls = false;
 
-audio.addEventListener("timeupdate", function () {
-    const currentTime = audio.currentTime;
-    const duration = audio.duration;
-    const progress = (currentTime / duration) * 100;
-    document.getElementById("progress").style.width = progress + "%";
+ });
+	
+
+	audio.addEventListener("timeupdate", function() {
+  const currentTime = audio.currentTime;
+  const duration = audio.duration;
+  const progress = (currentTime / duration) * 100;
+  document.getElementById("progress").style.width = progress + "%";
 });
 
-document.getElementById("play").onclick = function () {
-    if (audio.paused) {
-        document.querySelector("#play i").className = "fa fa-pause";
-        audio.play();
-    } else {
-        audio.pause();
-        document.querySelector("#play i").className = "fa fa-play";
-    }
-};
 
+  document.getElementById("play").onclick = function(){
+     if (audio.paused){
+      document.querySelector("#play i").className = "fa fa-pause";
+         audio.play();
+     }
+    else {
+         audio.pause();
+         document.querySelector("#play i").className = "fa fa-play";
+     }
+  };
 // Add the following code for the "Stop" button
-document.getElementById("stop").onclick = function () {
+document.getElementById("stop").onclick = function() {
     audio.pause();
     audio.currentTime = 0; // Rewind the audio to the beginning
     document.querySelector("#play i").className = "fa fa-play";
 };
 
-audio.src = data;
-audio.pause();
-var ids = localStorage.getItem("playPresent");
-if (audio) {
-    audio.pause();
-    audio.play();
-    document.querySelector("#play i").className = "fa fa-pause";
+    audio.src=data;
+     audio.pause();
+   var ids = localStorage.getItem("playPresent");
+   if(audio){
+     audio.pause();
+     audio.play();
+      document.querySelector("#play i").className = "fa fa-pause";
+   }
 }
-
 </script></div>
 
 
