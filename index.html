@@ -658,8 +658,6 @@ document.getElementById("vivekmasona").onclick = ()=>{
    document.getElementsByClassName("list")[Sid+1].click()
    console.log('Next')
 });
-
-
 document.getElementById("nextButton").addEventListener("click", () => {
     // Simulate a click on the next item in the playlist
     var nextSongIndex = Sid + 1; // Calculate the index of the next song
@@ -672,27 +670,7 @@ document.getElementById("nextButton").addEventListener("click", () => {
         console.log('End of playlist');
         // You may want to handle what happens when it's the end of the playlist.
     }
-});
-
-
-
-const audio = document.getElementById("SAudio");
-let currentVolume = 1.0; // Initial volume
-
-document.getElementById("increaseVolumeButton").addEventListener("click", function() {
-    currentVolume = Math.min(1.0, currentVolume + 0.1); // Increase volume by 0.1, max 1.0
-    audio.volume = currentVolume;
-});
-
-document.getElementById("decreaseVolumeButton").addEventListener("click", function() {
-    currentVolume = Math.max(0.0, currentVolume - 0.2); // Decrease volume by 0.2, min 0.0
-    audio.volume = currentVolume;
-});
-
-
-
-	
-	
+});	
 	
 var audio = document.getElementById('SAudio');
 var fastForwardButton = document.getElementById('fastForwardButton');
@@ -739,8 +717,6 @@ audioPlayer.addEventListener("timeupdate", () => {
   currentTimeDisplay.textContent = formatTime(currentTime);
 });
 
-
-	
 function formatTime(seconds) {
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = Math.floor(seconds % 60);
@@ -1678,16 +1654,11 @@ else if (lastResult.toLowerCase() === 'dowload mp4') {
           button2.click();
           speak('vivek verma is bhi faai developer');
         }    	
-	else if (lastResult.toLowerCase() === 'volume down') {
-          const button2 = document.getElementById('decreaseVolumeButton');
+	else if (lastResult.toLowerCase() === 'light') {
+          const button2 = document.getElementById('light');
           button2.click();
-          speak('okay volume Down');
-        }  
-		else if (lastResult.toLowerCase() === 'volume up') {
-          const button2 = document.getElementById('increaseVolumeButton');
-          button2.click();
-          speak('okay volume up');
-        }    	
+          speak('okay i open lite mode 2x faster');
+        }    		
 		else if (lastResult.toLowerCase() === 'video download') {
           const button2 = document.getElementById('vivekmasona');
           button2.click();
@@ -1764,8 +1735,7 @@ z-index: 999999;
   <div class="modal-content">
     <span onclick="closeModal()" style="float: right;"></span>
     <audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
-<button id="increaseVolumeButton">Increase Volume</button>
-    <button id="decreaseVolumeButton">Decrease Volume</button>
+
 	   
   </div>
 </div>
@@ -1790,6 +1760,7 @@ function closeModal() {
 
 
     
+
 
 
 
