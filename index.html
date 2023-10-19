@@ -672,16 +672,7 @@ document.getElementById("nextButton").addEventListener("click", () => {
     }
 });
 
-const audio = document.getElementById('SAudio');
-        let currentVolume = 1.0; // Initial   document.getElementById('increaseVolumeButton').addEventListener('click', function() {
-            currentVolume = Math.min(1.0, currentVolume + 0.1); // Increase volume by 0.1, max 1.0
-            audio.volume = currentVolume;
-        });
 
-        document.getElementById('decreaseVolumeButton').addEventListener('click', function() {
-            currentVolume = Math.max(0.0, currentVolume - 0.2); // Decrease volume by 0.1, min 0.0
-            audio.volume = currentVolume;
-        });
 
 
 	
@@ -703,7 +694,16 @@ rewindButton.addEventListener('click', function () {
     }
 });
 
+const audio = document.getElementById('SAudio');
+        let currentVolume = 1.0; // Initial   document.getElementById('increaseVolumeButton').addEventListener('click', function() {
+            currentVolume = Math.min(1.0, currentVolume + 0.1); // Increase volume by 0.1, max 1.0
+            audio.volume = currentVolume;
+        });
 
+        document.getElementById('decreaseVolumeButton').addEventListener('click', function() {
+            currentVolume = Math.max(0.0, currentVolume - 0.2); // Decrease volume by 0.1, min 0.0
+            audio.volume = currentVolume;
+        });
 const titleaudio = document.getElementById('SAudio');
 
     audio.addEventListener('play', () => {
