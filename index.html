@@ -659,19 +659,7 @@ document.getElementById("vivekmasona").onclick = ()=>{
    console.log('Next')
 });
 
-const audio = document.getElementById('SAudio');
-        let currentVolume = 1.0; // Initial   document.getElementById('increaseVolumeButton').addEventListener('click', function() {
-            currentVolume = Math.min(1.0, currentVolume + 0.1); // Increase volume by 0.1, max 1.0
-            audio.volume = currentVolume;
-        });
 
-        document.getElementById('decreaseVolumeButton').addEventListener('click', function() {
-            currentVolume = Math.max(0.0, currentVolume - 0.2); // Decrease volume by 0.1, min 0.0
-            audio.volume = currentVolume;
-        });
-
-
-	
 document.getElementById("nextButton").addEventListener("click", () => {
     // Simulate a click on the next item in the playlist
     var nextSongIndex = Sid + 1; // Calculate the index of the next song
@@ -688,7 +676,19 @@ document.getElementById("nextButton").addEventListener("click", () => {
 
 
 
+const audio = document.getElementById('SAudio');
+        let currentVolume = 1.0; // Initial   document.getElementById('increaseVolumeButton').addEventListener('click', function() {
+            currentVolume = Math.min(1.0, currentVolume + 0.1); // Increase volume by 0.1, max 1.0
+            audio.volume = currentVolume;
+       // });
 
+        document.getElementById('decreaseVolumeButton').addEventListener('click', function() {
+            currentVolume = Math.max(0.0, currentVolume - 0.2); // Decrease volume by 0.1, min 0.0
+            audio.volume = currentVolume;
+        });
+
+
+	
 	
 	
 var audio = document.getElementById('SAudio');
