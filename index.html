@@ -689,36 +689,6 @@ rewindButton.addEventListener('click', function () {
     }
 });
 
-var audio = document.getElementById("SAudio");
-var volumeUpButton = document.getElementById("volumeUpButton");
-var volumeDownButton = document.getElementById("volumeDownButton");
-
-// Initial volume level (you can set this to your desired level)
-var currentVolume = 1.0;
-
-// Function to update the volume and display it
-function updateVolume() {
-    audio.volume = currentVolume;
-    console.log('Current Volume: ' + (currentVolume * 100) + '%');
-}
-
-// Add a click event listener to the volume up button
-volumeUpButton.addEventListener("click", function() {
-    if (currentVolume < 1.0) {
-        currentVolume += 0.1; // You can adjust the step as needed
-        updateVolume();
-    }
-});
-
-// Add a click event listener to the volume down button
-volumeDownButton.addEventListener("click", function() {
-    if (currentVolume > 0.0) {
-        currentVolume -= 0.1; // You can adjust the step as needed
-        updateVolume();
-    }
-});
-
-
 
 const titleaudio = document.getElementById('SAudio');
 
@@ -1765,8 +1735,6 @@ z-index: 999999;
   <div class="modal-content">
     <span onclick="closeModal()" style="float: right;"></span>
     <audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
-<button id="volumeUpButton">Volume Up</button>
-<button id="volumeDownButton">Volume Down</button>
 
 	   
   </div>
