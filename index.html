@@ -698,16 +698,18 @@ rewindButton.addEventListener('click', function () {
 
 
 const titleaudio = document.getElementById('SAudio');
+titleaudio.id = 'audioElement'; // Add the ID 'audioElement' to the audio element
 
-    audio.addEventListener('play', () => {
-      // Update the tab title when audio starts playing
-      document.title = 'VFY Music..      ' + audio.currentTime;
-    });
+audio.addEventListener('play', () => {
+  // Update the tab title to the name of the song when audio starts playing
+  document.title = titleaudio.textContent;
+});
 
-    audio.addEventListener('pause', () => {
-      // Restore the original page title when audio is paused
-      document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
-    });	
+audio.addEventListener('pause', () => {
+  // Restore the original page title when audio is paused
+  document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
+});
+
 
 
 const audioPlayer = document.getElementById("SAudio");
