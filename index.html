@@ -399,8 +399,7 @@ background-color: transparent;
 
 
 <!-- Display the current video ID and time -->
-<p>Current Video ID: <span id="currentVideoId">VIDEO_ID</span></p>
-<p>Current Time: <span id="currentTimeDisplay">0:00</span></p>
+
 <button id="playVideoButton">Play Video</button>
 
 
@@ -731,13 +730,15 @@ function formatTime(seconds) {
   const remainingSeconds = Math.floor(seconds % 60);
   return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
 }
-
+// Pause the audio player
+var audio = document.getElementById("SAudio");
+audio.pause();
 // Add an event listener to the "Play Video" button
 var playVideoButton = document.getElementById("playVideoButton");
 playVideoButton.addEventListener("click", function() {
     // Retrieve the current video ID and time
-    var currentVideoId = document.getElementById("currentVideoId").textContent;
-    var currentTime = document.getElementById("currentTimeDisplay").textContent;
+    //var currentVideoId = document.getElementById("currentVideoId").textContent;
+    //var currentTime = document.getElementById("currentTimeDisplay").textContent;
 
     // Construct the video URL with the video ID and time
     var videoUrl = "https://www.youtube.com/embed/" + id;
