@@ -740,7 +740,8 @@ playVideoButton.addEventListener("click", function() {
     var currentTime = document.getElementById("currentTimeDisplay").textContent;
 
     // Construct the video URL with the video ID and time
-    var videoUrl = "https://www.youtube.com/embed/" + currentVideoId + "?start=" + convertTimeToSeconds(currentTime);
+    var videoUrl = "https://www.youtube.com/embed/" + id;
+
 
     // Create and display the video
     var iframe = document.createElement("iframe");
