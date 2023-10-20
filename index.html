@@ -1,4 +1,4 @@
-
+<button id="playVideoButton">Play Video</button>
 <link href='https://www.blogger.com/static/v1/widgets/55013136-widget_css_bundle.css' rel='stylesheet' type='text/css'/>
 <link rel="manifest" href="./manifest.webmanifest">
 <link href='/img/mylogo.png' rel='apple-touch-icon' sizes='180x180'/>
@@ -672,14 +672,15 @@ document.getElementById("nextButton").addEventListener("click", () => {
     }
 });	
 	
+
 var audio = document.getElementById('SAudio');
 var fastForwardButton = document.getElementById('fastForwardButton');
+var rewindButton = document.getElementById('rewindButton');
+var playVideoButton = document.getElementById('playVideoButton');
 
 fastForwardButton.addEventListener('click', function () {
     audio.currentTime += 10;
 });
-var audio = document.getElementById('SAudio');
-var rewindButton = document.getElementById('rewindButton');
 
 rewindButton.addEventListener('click', function () {
     if (audio.currentTime >= 5) {
@@ -688,6 +689,53 @@ rewindButton.addEventListener('click', function () {
         audio.currentTime = 0;
     }
 });
+
+audio.pause();
+
+playVideoButton.addEventListener('click', function () {
+    var currentlyPlayingSong = document.querySelector(".currently-playing");
+    var videoId = currentlyPlayingSong.getAttribute("vid");
+    var playlistIndex = parseInt(currentlyPlayingSong.getAttribute("index"));
+    play(videoId, playlistIndex);
+});
+
+function play(id, index) {
+    var audio = document.getElementById("SAudio");
+    audio.pause();
+
+    var videoUrl = "https://www.youtube.com/embed/" + id;
+
+    var iframe = document.createElement("iframe");
+    iframe.setAttribute("width", "560");
+    iframe.setAttribute("height", "315");
+    iframe.setAttribute("src", videoUrl);
+    iframe.setAttribute("frameborder", "0");
+    iframe.setAttribute("allowfullscreen", true);
+
+    var alertContent = document.createElement("div");
+    alertContent.appendChild(iframe);
+
+    var alertBox = document.createElement("div");
+    alertBox.appendChild(alertContent);
+
+    var modal = document.createElement("div");
+    modal.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+    modal.style.position = "fixed";
+    modal.style.top = "0";
+    modal.style.left = "0";
+    modal.style.width = "100%";
+    modal.style.height = "100%";
+    modal.style.display = "flex";
+    modal.style.alignItems = "center";
+    modal.style.justifyContent = "center";
+    modal.appendChild(alertBox);
+
+    document.body.appendChild(modal);
+}
+
+
+
+	
 
 
 const titleaudio = document.getElementById('SAudio');
