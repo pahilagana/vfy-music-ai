@@ -400,8 +400,6 @@ background-color: transparent;
 
 <!-- Display the current video ID and time -->
 
-<button id="playVideoButton">Play Video</button>
-
 
 
 	    
@@ -1602,7 +1600,7 @@ if (lastResult.toLowerCase() === 'start') {
           button1.click();
           speak('okay song stoped');
 	      }
-	      if (lastResult.toLowerCase() === 'video') {
+	      if (lastResult.toLowerCase() === 'video mode') {
           const button1 = document.getElementById('vivek');
           button1.click();
           speak('okay video mode on');
@@ -1727,10 +1725,10 @@ else if (lastResult.toLowerCase() === 'dowload mp4') {
           button2.click();
           speak('vivek verma is bhi faai developer');
         }    	
-	else if (lastResult.toLowerCase() === 'light') {
-          const button2 = document.getElementById('light');
+	else if (lastResult.toLowerCase() === 'video') {
+          const button2 = document.getElementById('playVideoButton');
           button2.click();
-          speak('okay i open lite mode 2x faster');
+          speak('okay stop audio then play video');
         }    		
 		else if (lastResult.toLowerCase() === 'video download') {
           const button2 = document.getElementById('vivekmasona');
@@ -1772,6 +1770,8 @@ else if (lastResult.toLowerCase() === 'dowload mp4') {
 </a>
 
  <butto id="developer"></butto>
+
+<butto id="playVideoButton"></butto>
 
 
 <style>
