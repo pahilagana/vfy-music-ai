@@ -758,18 +758,20 @@ playVideoButton.addEventListener("click", function() {
     var alertBox = document.createElement("div");
     alertBox.appendChild(alertContent);
 
-    var modal = document.createElement("div");
-    modal.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
-    modal.style.position = "fixed";
-    modal.style.top = "0";
-    modal.style.left = "0";
-    modal.style.width = "100%";
-    modal.style.height = "100%";
-    modal.style.display = "flex";
-    modal.style.alignItems = "center";
-    modal.style.justifyContent = "center";
-    modal.appendChild(alertBox);
+    // Create the close button
+var closeButton = document.createElement("button");
+closeButton.innerText = "Close";
+closeButton.style.position = "absolute";
+closeButton.style.top = "10px";
+closeButton.style.right = "10px";
 
+// Add an event listener to close the modal when the button is clicked
+closeButton.addEventListener("click", function() {
+    document.body.removeChild(modal);
+});
+
+// Append the close button to the modal
+modal.appendChild(closeButton);
     document.body.appendChild(modal);
 });
 
