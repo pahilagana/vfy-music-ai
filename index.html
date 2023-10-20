@@ -743,10 +743,29 @@ function convertTimeToSeconds(time) {
   return (minutes * 60) + seconds;
 }
 
+
+
+	// Assuming that Sid is the index of the currently playing video
+var Sid = 0; // Initialize Sid to the index of the current video
+
+function playNextVideo() {
+    // Increment Sid to move to the next video
+    Sid++;
+
+    // Check if there is a video element at the new index
+    var videoElements = document.getElementsByClassName("list");
+    if (Sid < videoElements.length) {
+        videoElements[Sid].click(); // Click on the next video to play it
+        console.log('Next'); // Output a message indicating that the next video is playing
+    } else {
+        console.log('No more videos'); // Output a message if there are no more videos to play
+    }
+}
+
 // Add an event listener to the "Play Video" button
 var playVideoButton = document.getElementById("playVideoButton");
 playVideoButton.addEventListener("click", function() {
-// Pause audio elements with the ID "SAudio"
+    // Pause audio elements with the ID "SAudio"
     var audioElements = document.querySelectorAll("#SAudio");
     for (var i = 0; i < audioElements.length; i++) {
         audioElements[i].pause();
@@ -780,21 +799,27 @@ playVideoButton.addEventListener("click", function() {
     closeButton.innerHTML = "&#10006;"; // This is the HTML entity for the "X" character
     closeButton.className = "close-button"; // Add a class for styling
     closeButton.addEventListener("click", function() {
+        // Resume audio elements with the ID "SAudio" when closing the popup
+        for (var i = 0; i < audioElements.length; i++) {
+            audioElements[i].play();
+        }
         document.body.removeChild(modal); // Close the modal when the button is clicked
     });
 
     // Style the close button to overlay the video in the center
     closeButton.style.position = "absolute";
-    closeButton.style.top = "34%";
-    closeButton.style.left = "5%";
+    closeButton.style.top = "35%";
+    closeButton.style.left = "10%";
     closeButton.style.transform = "translate(-50%, -50%)"; // Center the button
+
+    // Add an event listener to the video element to detect when it ends
+    iframe.addEventListener("ended", playNextVideo);
 
     modal.appendChild(iframe);
     modal.appendChild(closeButton);
     document.body.appendChild(modal);
 });
 
-	
     
 
 	
