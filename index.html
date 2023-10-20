@@ -702,7 +702,7 @@ titleaudio.id = 'audioElement'; // Add the ID 'audioElement' to the audio elemen
 
 audio.addEventListener('play', () => {
   // Update the tab title to the name of the song when audio starts playing
-  document.title = titleaudio.textContent;
+  document.title = +title;
 });
 
 audio.addEventListener('pause', () => {
