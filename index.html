@@ -1478,7 +1478,7 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 
       // Select a male voice, if available
       const voices = window.speechSynthesis.getVoices();
-      let maleVoice = voices.find(voice => voice.name === 'your-male-voice-name');
+      let maleVoice = voices.find(voice => voice.name === 'Prabhat');
       if (maleVoice) {
         utterance.voice = maleVoice;
       } else {
