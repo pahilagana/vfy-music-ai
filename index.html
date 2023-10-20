@@ -776,6 +776,10 @@ playVideoButton.addEventListener("click", function() {
     closeButton.addEventListener("click", function() {
         document.body.removeChild(modal); // Close the modal when the button is clicked
     });
+// Style the close button to overlay the video in the top-right corner
+    closeButton.style.position = "absolute";
+    closeButton.style.top = "10px";
+    closeButton.style.right = "10px";
 
     modal.appendChild(closeButton);
     modal.appendChild(iframe);
