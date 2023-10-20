@@ -398,14 +398,6 @@ background-color: transparent;
 
 
 
-<!-- Display the current video ID and time -->
-
-
-<button id="playVideoButton">Play Video</button>
-
-
-	    
-
 	    
 	    
 <h1>VFY
@@ -710,14 +702,10 @@ const titleaudio = document.getElementById('SAudio');
       document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
     });	
 
-
-const audioPlayer = document.getElementById("SAudio");
 const audioPlayer = document.getElementById("SAudio");
 const customTimeContainer = document.getElementById("custom-time-container");
 const currentTimeDisplay = document.getElementById("current-time");
 const totalTimeDisplay = document.getElementById("total-time");
-const playVideoButton = document.getElementById("playVideoButton");
-const videoPlayButton = document.getElementById("videoPlayButton"); // Create a play button for the video
 
 audioPlayer.addEventListener("loadedmetadata", () => {
   const totalDuration = audioPlayer.duration;
@@ -734,67 +722,6 @@ function formatTime(seconds) {
   const remainingSeconds = Math.floor(seconds % 60);
   return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
 }
-
-// Function to pause the audio player
-function pauseAudio() {
-  var audio = document.getElementById("SAudio");
-  audio.pause();
-}
-
-// Function to play the video and pause the audio
-function playVideoAndPauseAudio(videoId, playlistIndex) {
-  pauseAudio();
-  var videoUrl = "https://www.youtube.com/embed/" + videoId;
-
-  var iframe = document.createElement("iframe");
-  iframe.setAttribute("width", "560");
-  iframe.setAttribute("height", "315");
-  iframe.setAttribute("src", videoUrl);
-  iframe.setAttribute("frameborder", "0");
-  iframe.setAttribute("allowfullscreen", true);
-
-  var alertContent = document.createElement("div");
-  alertContent.appendChild(iframe);
-
-  var alertBox = document.createElement("div");
-  alertBox.appendChild(alertContent);
-
-  var modal = document.createElement("div");
-  modal.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
-  modal.style.position = "fixed";
-  modal.style.top = "0";
-  modal.style.left = "0";
-  modal.style.width = "100%";
-  modal.style.height = "100%";
-  modal.style.display = "flex";
-  modal.style.alignItems = "center";
-  modal.style.justifyContent = "center";
-  modal.appendChild(alertBox);
-
-  document.body.appendChild(modal);
-}
-
-// Add an event listener to the "Play Video" button
-playVideoButton.addEventListener("click", function() {
-  var currentlyPlayingSong = document.querySelector(".currently-playing");
-  var videoId = currentlyPlayingSong.getAttribute("vid");
-  var playlistIndex = parseInt(currentlyPlayingSong.getAttribute("index"));
-
-  playVideoAndPauseAudio(videoId, playlistIndex);
-});
-
-// Add an event listener to the "Play Video" play button
-videoPlayButton.addEventListener("click", function() {
-  // Retrieve the ID of the currently playing video dynamically
-  var currentlyPlayingVideo = document.querySelector(".currently-playing-video");
-  var videoId = currentlyPlayingVideo.getAttribute("vid");
-
-  // Play the video
-  var videoIframe = document.querySelector("iframe");
-  videoIframe.src = "https://www.youtube.com/embed/" + videoId;
-});
-
-	
 
 
 	
