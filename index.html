@@ -742,8 +742,8 @@ function convertTimeToSeconds(time) {
 // Add an event listener to the "Play Video" button
 var playVideoButton = document.getElementById("playVideoButton");
 playVideoButton.addEventListener("click", function() {
-    // Pause any audio elements on the page
-    var audioElements = document.getElementsByTagName("SAudio");
+// Pause audio elements with the ID "SAudio"
+    var audioElements = document.querySelectorAll("#SAudio");
     for (var i = 0; i < audioElements.length; i++) {
         audioElements[i].pause();
     }
