@@ -698,17 +698,36 @@ rewindButton.addEventListener('click', function () {
 
 
 const titleaudio = document.getElementById('SAudio');
-titleaudio.id = 'audioElement'; // Add the ID 'audioElement' to the audio element
+const audio = titleaudio.querySelector('audio');
 
 audio.addEventListener('play', () => {
-  // Update the tab title to the name of the song when audio starts playing
-  document.title =' +title;
+  // Update the tab title when audio starts playing
+  document.title = 'VFY Music..      ' + audio.currentTime;
+
+  // Create a notification
+  if ("Notification" in window) {
+    Notification.requestPermission().then(function(permission) {
+      if (permission === "granted") {
+        var notification = new Notification('Now Playing', {
+          body: 'VFY Music - ' + audio.currentTime,
+          icon: 'thumbnail.jpg' // Replace with the actual path to your thumbnail image
+        });
+
+        // Add an event listener to handle clicks on the notification
+        notification.onclick = function() {
+          // Handle notification click
+          // You can define what happens when the notification is clicked
+        };
+      }
+    });
+  }
 });
 
 audio.addEventListener('pause', () => {
   // Restore the original page title when audio is paused
   document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
 });
+
 
 
 
