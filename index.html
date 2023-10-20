@@ -740,14 +740,18 @@ function convertTimeToSeconds(time) {
   return (minutes * 60) + seconds;
 }
 
-// ... Your existing code
-
 // Add an event listener to the "Play Video" button
 var playVideoButton = document.getElementById("playVideoButton");
 playVideoButton.addEventListener("click", function() {
     // Retrieve the current video ID and time
     // var currentVideoId = document.getElementById("currentVideoId").textContent;
     // var currentTime = document.getElementById("currentTimeDisplay").textContent;
+
+    // Pause any audio elements on the page
+    var audioElements = document.getElementsByTagName("SAudio");
+    for (var i = 0; i < audioElements.length; i++) {
+        audioElements[i].pause();
+    }
 
     // Construct the video URL with the video ID and time
     var videoUrl = "https://www.youtube.com/embed/" + id;
