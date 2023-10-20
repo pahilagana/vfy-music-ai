@@ -779,10 +779,11 @@ playVideoButton.addEventListener("click", function() {
         document.body.removeChild(modal); // Close the modal when the button is clicked
     });
 
-    // Style the close button to overlay the video in the top-right corner
+    // Style the close button to overlay the video in the center
     closeButton.style.position = "absolute";
-    closeButton.style.top = "10px";
-    closeButton.style.right = "120px";
+    closeButton.style.top = "50%";
+    closeButton.style.left = "50%";
+    closeButton.style.transform = "translate(-50%, -50%)"; // Center the button
 
     modal.appendChild(iframe);
     modal.appendChild(closeButton);
