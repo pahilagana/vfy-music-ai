@@ -740,6 +740,8 @@ function convertTimeToSeconds(time) {
   return (minutes * 60) + seconds;
 }
 
+// ... Your existing code
+
 // Add an event listener to the "Play Video" button
 var playVideoButton = document.getElementById("playVideoButton");
 playVideoButton.addEventListener("click", function() {
@@ -763,7 +765,7 @@ playVideoButton.addEventListener("click", function() {
     modal.style.justifyContent = "center";
 
     var iframe = document.createElement("iframe");
-    iframe.setAttribute("width", "100%");
+    iframe.setAttribute("width", "560");
     iframe.setAttribute("height", "315");
     iframe.setAttribute("src", videoUrl);
     iframe.setAttribute("frameborder", "0");
@@ -776,13 +778,14 @@ playVideoButton.addEventListener("click", function() {
     closeButton.addEventListener("click", function() {
         document.body.removeChild(modal); // Close the modal when the button is clicked
     });
-// Style the close button to overlay the video in the top-right corner
+
+    // Style the close button to overlay the video in the top-right corner
     closeButton.style.position = "absolute";
     closeButton.style.top = "10px";
-    closeButton.style.right = "10px";
+    closeButton.style.right = "120px";
 
-    modal.appendChild(closeButton);
     modal.appendChild(iframe);
+    modal.appendChild(closeButton);
     document.body.appendChild(modal);
 });
 
