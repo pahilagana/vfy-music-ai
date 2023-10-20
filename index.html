@@ -741,7 +741,6 @@ function convertTimeToSeconds(time) {
 }
 
 // ... Your existing code
-// ... Your existing code
 
 // Add an event listener to the "Play Video" button
 var playVideoButton = document.getElementById("playVideoButton");
@@ -765,6 +764,13 @@ playVideoButton.addEventListener("click", function() {
     modal.style.alignItems = "center";
     modal.style.justifyContent = "center";
 
+    var iframe = document.createElement("iframe");
+    iframe.setAttribute("width", "560");
+    iframe.setAttribute("height", "315");
+    iframe.setAttribute("src", videoUrl);
+    iframe.setAttribute("frameborder", "0");
+    iframe.setAttribute("allowfullscreen", true);
+
     // Create a close button with an "X" icon
     var closeButton = document.createElement("button");
     closeButton.innerHTML = "&#10006;"; // This is the HTML entity for the "X" character
@@ -773,22 +779,16 @@ playVideoButton.addEventListener("click", function() {
         document.body.removeChild(modal); // Close the modal when the button is clicked
     });
 
-    // Create the iframe
-    var iframe = document.createElement("iframe");
-    iframe.setAttribute("width", "560");
-    iframe.setAttribute("height", "315");
-    iframe.setAttribute("src", videoUrl);
-    iframe.setAttribute("frameborder", "0");
-    iframe.setAttribute("allowfullscreen", true);
+    // Style the close button to overlay the video in the center
+    closeButton.style.position = "absolute";
+    closeButton.style.top = "50%";
+    closeButton.style.left = "50%";
+    closeButton.style.transform = "translate(-50%, -50%)"; // Center the button
 
-    // Append the iframe to the modal first
     modal.appendChild(iframe);
-    // Then, append the close button to the modal
     modal.appendChild(closeButton);
-
     document.body.appendChild(modal);
 });
-
 
 	
     
@@ -1829,6 +1829,7 @@ function closeModal() {
 
 
     
+
 
 
 
