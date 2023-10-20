@@ -398,7 +398,15 @@ background-color: transparent;
 
 
 
-	  <button id="playVideoButton">Play Video</button>  
+<!-- Display the current video ID and time -->
+
+<button id="playVideoButton">Play Video</button>
+
+
+
+	    
+
+	    
 	    
 <h1>VFY
 <span id="Tube">Music<span></span></span></h1>
@@ -672,50 +680,22 @@ document.getElementById("nextButton").addEventListener("click", () => {
     }
 });	
 	
+var audio = document.getElementById('SAudio');
+var fastForwardButton = document.getElementById('fastForwardButton');
 
-
-    // Pause the audio player
-    var audio = document.getElementById("SAudio");
-    audio.pause();
-
-    // Create the video iframe
-    var videoUrl = "https://www.youtube.com/embed/" + id;
-    var iframe = document.createElement("iframe");
-    iframe.setAttribute("width", "560");
-    iframe.setAttribute("height", "315");
-    iframe.setAttribute("src", videoUrl);
-    iframe.setAttribute("frameborder", "0");
-    iframe.setAttribute("allowfullscreen", true);
-
-    // Create the alert content and box
-    var alertContent = document.createElement("div");
-    alertContent.appendChild(iframe);
-    var alertBox = document.createElement("div");
-    alertBox.appendChild(alertContent);
-
-    // Create the modal
-    var modal = document.createElement("div");
-    modal.style.cssText = "background-color: rgba(0, 0, 0, 0.7); position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;";
-    modal.appendChild(alertBox);
-
-    // Append the modal to the document body
-    document.body.appendChild(modal);
-}
-
-// Add an event listener to the "Play Video" button
-var playVideoButton = document.getElementById("playVideoButton");
-playVideoButton.addEventListener("click", function() {
-    // Retrieve the ID of the currently playing song dynamically
-    var currentlyPlayingSong = document.querySelector(".currently-playing");
-    var videoId = currentlyPlayingSong.getAttribute("vid");
-    var playlistIndex = parseInt(currentlyPlayingSong.getAttribute("index"));
-
-    playVideo(videoId, playlistIndex);
+fastForwardButton.addEventListener('click', function () {
+    audio.currentTime += 10;
 });
+var audio = document.getElementById('SAudio');
+var rewindButton = document.getElementById('rewindButton');
 
-
-
-	
+rewindButton.addEventListener('click', function () {
+    if (audio.currentTime >= 5) {
+        audio.currentTime -= 5;
+    } else {
+        audio.currentTime = 0;
+    }
+});
 
 
 const titleaudio = document.getElementById('SAudio');
@@ -750,6 +730,57 @@ function formatTime(seconds) {
   const remainingSeconds = Math.floor(seconds % 60);
   return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
 }
+// Pause the audio player
+var audio = document.getElementById("SAudio");
+audio.pause();
+// Add an event listener to the "Play Video" button
+var playVideoButton = document.getElementById("playVideoButton");
+playVideoButton.addEventListener("click", function() {
+    // Retrieve the current video ID and time
+    //var currentVideoId = document.getElementById("currentVideoId").textContent;
+    //var currentTime = document.getElementById("currentTimeDisplay").textContent;
+
+    // Construct the video URL with the video ID and time
+    var videoUrl = "https://www.youtube.com/embed/" + id;
+
+
+    // Create and display the video
+    var iframe = document.createElement("iframe");
+    iframe.setAttribute("width", "560");
+    iframe.setAttribute("height", "315");
+    iframe.setAttribute("src", videoUrl);
+    iframe.setAttribute("frameborder", "0");
+    iframe.setAttribute("allowfullscreen", true);
+
+    var alertContent = document.createElement("div");
+    alertContent.appendChild(iframe);
+
+    var alertBox = document.createElement("div");
+    alertBox.appendChild(alertContent);
+
+    var modal = document.createElement("div");
+    modal.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+    modal.style.position = "fixed";
+    modal.style.top = "0";
+    modal.style.left = "0";
+    modal.style.width = "100%";
+    modal.style.height = "100%";
+    modal.style.display = "flex";
+    modal.style.alignItems = "center";
+    modal.style.justifyContent = "center";
+    modal.appendChild(alertBox);
+
+    document.body.appendChild(modal);
+});
+
+// Function to convert time in format '0:00' to seconds
+function convertTimeToSeconds(time) {
+    var parts = time.split(":");
+    var minutes = parseInt(parts[0]);
+    var seconds = parseInt(parts[1]);
+    return (minutes * 60) + seconds;
+}
+
 
 
 	
@@ -1788,6 +1819,7 @@ function closeModal() {
 
 
     
+
 
 
 
