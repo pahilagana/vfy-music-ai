@@ -1767,6 +1767,21 @@ else if (lastResult.toLowerCase() === 'time') {
           button2.click();
           speak('');
         }
+	else if (lastResult.toLowerCase() === 'battery') {
+          const button2 = document.getElementById('speakButton1');
+          button2.click();
+          speak('');
+        }
+else if (lastResult.toLowerCase() === 'charging') {
+          const button2 = document.getElementById('speakButton1');
+          button2.click();
+          speak('');
+        }
+	else if (lastResult.toLowerCase() === 'samay') {
+          const button2 = document.getElementById('speakButton');
+          button2.click();
+          speak('');
+        }	
 	  else if (lastResult.toLowerCase() === 'play video') {
           const button2 = document.getElementById('playVideoButton');
           button2.click();
@@ -1883,7 +1898,24 @@ function closeModal() {
     }
   </script>
 
+<button id="speakButton1"></button>
 
+    <script>
+        document.getElementById("speakButton1").addEventListener("click", function () {
+            if ('speechSynthesis' in window) {
+                navigator.getBattery().then(function (battery) {
+                    var chargePercentage = (battery.level * 100).toString() + " percent";
+                    var synth = window.speechSynthesis;
+                    var utterance = new SpeechSynthesisUtterance(chargePercentage);
+                    synth.speak(utterance);
+                }).catch(function (err) {
+                    console.error("Battery API is not supported in this browser.");
+                });
+            } else {
+                console.error("Web Speech API is not supported in this browser.");
+            }
+        });
+    </script>
 
 
 
