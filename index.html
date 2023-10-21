@@ -690,7 +690,7 @@ audio.addEventListener("ended", function() {
 audio.addEventListener("error", function() {
     setTimeout(function() {
         playNextSong();
-    }, 10000); // 20 seconds
+    }, 10000); // 10 seconds
 });
 
 
@@ -712,33 +712,6 @@ rewindButton.addEventListener('click', function () {
     }
 });
 
-
-
-const audioPlayer = document.getElementById("SAudio");
-const toggleButton = document.getElementById("toggleButton");
-
-audioPlayer.addEventListener("timeupdate", () => {
-  const currentTime = audioPlayer.currentTime;
-  if (currentTime === 0) {
-    toggleButton.disabled = false;
-  } else {
-    toggleButton.disabled = true;
-  }
-});
-
-toggleButton.addEventListener("click", () => {
-  // Yahan par aap button click ke event handler mein jo kuch karna chahte hain, woh code likhein.
-  // Example: Agar audio play/pause karna chahte hain to:
-  if (audioPlayer.paused) {
-    audioPlayer.play();
-  } else {
-    audioPlayer.pause();
-  }
-});
-
-
-
-	
 
 const titleaudio = document.getElementById('SAudio');
 
