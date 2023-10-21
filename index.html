@@ -714,10 +714,17 @@ rewindButton.addEventListener('click', function () {
 
 
 // Get a reference to the audio element
-var audio = document.getElementById('SAudio'); // Replace 'yourAudioElementId' with the actual ID of your audio element
+var audio = document.getElementById('yourAudioElementId'); // Replace 'yourAudioElementId' with the actual ID of your audio element
 
 // Get a reference to the button element
 var button = document.getElementById('toggleButton');
+
+// Function to click the button after 1 second
+function clickButtonAfterDelay() {
+    setTimeout(function() {
+        button.click();
+    }, 1000); // 1000 milliseconds = 1 second
+}
 
 // Add a click event listener to the button
 button.addEventListener('click', function() {
@@ -725,6 +732,8 @@ button.addEventListener('click', function() {
     if (!audio.paused) {
         // Pause the audio
         audio.pause();
+        // Call the function to click the button after a delay
+        clickButtonAfterDelay();
     } else {
         // If audio is paused, play it
         audio.play();
