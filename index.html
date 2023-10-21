@@ -785,13 +785,13 @@ playVideoButton.addEventListener("click", function() {
     modal.style.justifyContent = "center";
 
     var iframe = document.createElement("iframe");
-iframe.setAttribute("width", "560");
-iframe.setAttribute("height", "315");
+iframe.style.width = "100%"; // Set iframe width to 100%
+iframe.style.height = "100%"; // Set iframe height to 100%
 iframe.setAttribute("src", videoUrl);
-iframe.setAttribute("frameborder", "4"); // Set the border width to 4px
-iframe.style.border = "4px solid #15e2f5"; // Set the border color and style
+iframe.setAttribute("frameborder", "0");
+iframe.style.border = "4px solid #15e2f5"; // Add a 4px border around the iframe
 iframe.setAttribute("allowfullscreen", false);
-iframe.setAttribute("autoplay", "true"); // Add the autoplay attribute
+iframe.setAttribute("autoplay", "true");
 
     // Create a close button with an "X" icon
     var closeButton = document.createElement("button");
