@@ -793,14 +793,14 @@ iframe.style.border = "0px solid #15e2f5"; // Add a 4px border around the iframe
 iframe.setAttribute("allowfullscreen", false);
 iframe.setAttribute("autoplay", "true");
 
-    // Create a close button with an "X" icon
     var closeButton = document.createElement("button");
-    closeButton.innerHTML = "&#10006;"; // This is the HTML entity for the "X" character
-    closeButton.className = "close-button"; // Add a class for styling
-    closeButton.addEventListener("click", function() {
-        document.body.removeChild(modal); // Close the modal when the button is clicked
-    });
-
+closeButton.innerHTML = "&#10006;";
+closeButton.className = "close-button";
+closeButton.style.color = "#15e2f5"; // Text color
+closeButton.style.backgroundColor = "red"; // Background color
+closeButton.addEventListener("click", function() {
+    document.body.removeChild(modal); // Close the modal when the button is clicked
+});
     // Style the close button to overlay the video in the center
     closeButton.style.position = "absolute";
     closeButton.style.top = "38%";
