@@ -617,34 +617,58 @@ $.get(
     } 
 }
 
-function getOutput(item,i){
-  var id = item.id.videoId;
-  var title = item.snippet.title;
-  var description = item.snippet.description;
-  var thumb = item.snippet.thumbnails.high.url;
-  var channelTitle = item.snippet.channelTitle;
-  var videoDate = item.snippet.publishedAt;
- 
- //Build our output:
-  var output =
-  '<ul data-role="listview" data-inset="true" id="myList">' +
-      '<li><a onclick="loadSong(this)" index="'+i+'" class="list" vid="'+id+'"><img src="'+thumb+'" alt="vivekfy.jpg" id="vfyy">VFY. '+title+'</a></li>' +
-  '</ul>';
+$(document).ready(function() {
+            if ('Notification' in window) {
+                Notification.requestPermission();
+            }
+        });
 
-  return output;
-}
+        function getOutput(item, i) {
+            var id = item.id.videoId;
+            var title = item.snippet.title;
+            var description = item.snippet.description;
+            var thumb = item.snippet.thumbnails.high.url;
+            var channelTitle = item.snippet.channelTitle;
+            var videoDate = item.snippet.publishedAt;
 
-function loadSong(song,ind){
-    
-  var id = $(song).attr("vid");
- var indId = parseInt($(song).attr("index"));
-  var thumbnail = $(song).children('img').attr("src");
-  localStorage.setItem("playPresent",id);
-  localStorage.setItem("thumbnail",thumbnail);
-  $("#thumbnail").attr("src",thumbnail);
-  play(id,indId);
-}
+            var output =
+                '<ul data-role="listview" data-inset="true" id="myList">' +
+                '<li><a onclick="loadSong(this)" index="' + i + '" class="list" vid="' + id + '"><img src="' + thumb + '" alt="vivekfy.jpg" id="vfyy">VFY. ' + title + '</a></li>' +
+                '</ul>';
 
+            return output;
+        }
+
+        function loadSong(song, ind) {
+            var id = $(song).attr("vid");
+            var indId = parseInt($(song).attr("index"));
+            var title = "VFY. " + $(song).text();
+            var thumbnail = $(song).children('img').attr("src");
+            localStorage.setItem("playPresent", id);
+            localStorage.setItem("thumbnail", thumbnail);
+            $("#thumbnail").attr("src", thumbnail);
+            play(id, indId);
+
+            showNotification(title, thumbnail);
+        }
+
+        function showNotification(title, thumbnail) {
+            if ('Notification' in window && Notification.permission === 'granted') {
+                var options = {
+                    body: "Audio is now playing",
+                    icon: thumbnail
+                };
+
+                var notification = new Notification(title, options);
+            }
+        }
+
+        // Mock the play function for demonstration purposes
+        function play(id, indId) {
+            // Your audio playback logic here
+            // This is just a mock function
+            console.log("Playing audio with ID: " + id);
+        }
 function play(id,Sid){
       //data = "https://vivekfy.onrender.com/audio/"+id;
      // data = "https://projectlounge.pw/ytdl/download?url=https://youtu.be/"+id+"&format=599";
