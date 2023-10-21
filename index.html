@@ -665,20 +665,32 @@ document.getElementById("vivekmasona").onclick = ()=>{
     };
 
     var audio = document.getElementById("SAudio");
+
+// Function to play the next song
+function playNextSong() {
+    var nextSongIndex = Sid + 1; // Calculate the index of the next song
+    var playlistItems = document.getElementsByClassName("list");
+
+    if (nextSongIndex < playlistItems.length) {
+        playlistItems[nextSongIndex].click(); // Play the next song
+        audio.play(); // Play the audio
+        console.log('Automatically went to the next song and started playing.');
+    } else {
+        console.log('End of playlist');
+        // You may want to handle what happens when it's the end of the playlist.
+    }
+}
+
+// Listen for the 'ended' event
+audio.addEventListener("ended", function() {
+    playNextSong();
+});
+
+// Listen for the 'error' event
 audio.addEventListener("error", function() {
     setTimeout(function() {
-        var nextSongIndex = Sid + 1; // Calculate the index of the next song
-        var playlistItems = document.getElementsByClassName("list");
-
-        if (nextSongIndex < playlistItems.length) {
-            playlistItems[nextSongIndex].click(); // Play the next song
-            audio.play(); // Play the audio
-            console.log('Automatically went to the next song after an error and started playing.');
-        } else {
-            console.log('End of playlist');
-            // You may want to handle what happens when it's the end of the playlist.
-        }
-    }, 5000); // 20 seconds
+        playNextSong();
+    }, 10000); // 20 seconds
 });
 
 
