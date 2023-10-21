@@ -1928,6 +1928,8 @@ function closeModal() {
     <button id="voice-search-button">Start </button>
     
     <script src="https://apis.google.com/js/api.js"></script>
+    
+  <script src="https://apis.google.com/js/api.js"></script>
     <script>
       // Function to clean up text and remove special characters
       function cleanText(text) {
@@ -1937,14 +1939,23 @@ function closeModal() {
 
       // Function to initiate voice search
       function startVoiceSearch() {
-        var recognition = new webkitSpeechRecognition() || SpeechRecognition();
-        recognition.onresult = function (event) {
-          // Get the recognized speech as the search query
-          var query = event.results[0][0].transcript;
-          searchYouTube(query);
-        };
+        // Disable the button with a 2-second delay
+        document.getElementById('voice-search-button').disabled = true;
+        setTimeout(function () {
+          var recognition = new webkitSpeechRecognition() || SpeechRecognition();
+          recognition.onresult = function (event) {
+            // Get the recognized speech as the search query
+            var query = event.results[0][0].transcript;
+            searchYouTube(query);
+          };
 
-        recognition.start();
+          recognition.onend = function () {
+            // Enable the button after recognition has started
+            document.getElementById('voice-search-button').disabled = false;
+          };
+
+          recognition.start();
+        }, 2000); // 2000 milliseconds (2 seconds) delay
       }
 
       // Function to perform a YouTube search and display only the first result
@@ -2004,7 +2015,5 @@ function closeModal() {
         });
       });
     </script>
-  
-</!doctype>
 
 
