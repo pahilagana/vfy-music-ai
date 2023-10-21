@@ -664,26 +664,22 @@ document.getElementById("vivekmasona").onclick = ()=>{
         //location.href= "https://vivekfy-dl-api.onrender.com/download?url=https://youtu.be/"+id;
     };
 
-    audio = document.getElementById("SAudio");
-  audio.play()
-  audio.addEventListener("ended", () => {
-    
-   document.getElementsByClassName("list")[Sid+1].click()
-   console.log('Next')
-});
-document.getElementById("nextButton").addEventListener("click", () => {
-    // Simulate a click on the next item in the playlist
-    var nextSongIndex = Sid + 1; // Calculate the index of the next song
-    var playlistItems = document.getElementsByClassName("list");
+    var audio = document.getElementById("SAudio");
+audio.addEventListener("error", function() {
+    setTimeout(function() {
+        var nextSongIndex = Sid + 1; // Calculate the index of the next song
+        var playlistItems = document.getElementsByClassName("list");
 
-    if (nextSongIndex < playlistItems.length) {
-        playlistItems[nextSongIndex].click(); // Play the next song
-        console.log('Manually went to the next song');
-    } else {
-        console.log('End of playlist');
-        // You may want to handle what happens when it's the end of the playlist.
-    }
-});	
+        if (nextSongIndex < playlistItems.length) {
+            playlistItems[nextSongIndex].click(); // Play the next song
+            console.log('Automatically went to the next song after an error.');
+        } else {
+            console.log('End of playlist');
+            // You may want to handle what happens when it's the end of the playlist.
+        }
+    }, 20000); // 20 seconds
+});
+
 	
 var audio = document.getElementById('SAudio');
 var fastForwardButton = document.getElementById('fastForwardButton');
