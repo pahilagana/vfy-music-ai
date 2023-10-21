@@ -863,28 +863,15 @@ document.getElementById("stop").onclick = function() {
     document.querySelector("#play i").className = "fa fa-play";
 };
 
-    // Existing code
-audio.src = data;
-audio.pause();
-var ids = localStorage.getItem("playPresent");
-
-// Check if the audio element exists
-if (audio) {
-  audio.pause();
-  audio.play();
-  document.querySelector("#play i").className = "fa fa-pause";
+    audio.src=data;
+     audio.pause();
+   var ids = localStorage.getItem("playPresent");
+   if(audio){
+     audio.pause();
+     audio.play();
+      document.querySelector("#play i").className = "fa fa-pause";
+   }
 }
-
-// Event listener for the "toggleButton"
-var toggleButton = document.getElementById("toggleButton");
-toggleButton.addEventListener("click", function() {
-  if (audio.paused) {
-    audio.play();
-  } else {
-    audio.pause();
-  }
-});
-
 </script></div>
 
 
