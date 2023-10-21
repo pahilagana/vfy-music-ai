@@ -405,7 +405,7 @@ background-color: transparent;
 
 	    
 
-	    
+	<button id="pipButton">PIP</button>    
 	    
 <h1>VFY
 <span id="Tube">Music<span></span></span></h1>
@@ -1851,7 +1851,30 @@ function closeModal() {
 
 
 
+  
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const videoPlayer = document.getElementById('videoPlayer');
+      const pipButton = document.getElementById('pipButton');
+
+      // Check if PIP is supported by the browser
+      if ('pictureInPictureEnabled' in document) {
+        pipButton.addEventListener('click', () => {
+          if (document.pictureInPictureElement) {
+            // Exit PIP
+            document.exitPictureInPicture();
+          } else {
+            // Request PIP
+            videoPlayer.requestPictureInPicture();
+          }
+        });
+      } else {
+        // PIP not supported
+        pipButton.disabled = true;
+      }
+    });
+  </script>
 
 
 
