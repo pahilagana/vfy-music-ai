@@ -1541,7 +1541,7 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
                     recognitionTimeout = setTimeout(function () {
                         recognition.stop();
                         speak("don't worry i am always here for you");
-                    }, 5000); // Automatically turn off after 1 second
+                    }, 10000); // Automatically turn off after 1 second
                 }, 1500); // Delay for 3 seconds before starting voice recognition
             }
             isVoiceRecognitionOn = !isVoiceRecognitionOn;
