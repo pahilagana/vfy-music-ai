@@ -35,7 +35,6 @@ op.src = '/effect/Click.mp3';
 </script>
 
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -580,10 +579,8 @@ $.get(
 	 videoSyndicated: 'true',
 	videoCategoryId: '10',
         videoDuration: 'short', // This filters for videos under 4 minutes
-        eventType: 'none', // Exclude live videos
-        //videoDuration: 'medium', // 'medium' ya 'long' as per your preference
-        //eventType: 'none' // 'none'
-	//videoEmbeddable: 'true', // Exclude live videos
+        // eventType: 'completed', // Exclude live videos
+         //videoEmbeddable: 'true', // Exclude live videos
         //videoType: 'video',
         //order: 'date', // Sort by date (newest first)
         //videoLicense: 'creativeCommon',
@@ -646,54 +643,41 @@ function loadSong(song,ind){
 }
 
 function play(id,Sid){
-      //data = "https://vivekfy.onrender.com/audio/"+id;
+     // data = "https://vivekfy.onrender.com/low-audio?url="+id;
      // data = "https://projectlounge.pw/ytdl/download?url=https://youtu.be/"+id+"&format=599";
      // data = "https://vivekmasona.000webhostapp.com/Play?vfy=https://youtu.be/"+id;
-     // data = "https://myserver-dev-atmq.2.ie-1.fl0.io/low-audio?url=https://youtu.be/"+id;
-       data = "https://myserver-dev-atmq.2.ie-1.fl0.io/audio?url=https://youtu.be/"+id;
+      data = "https://vivekmasona.2.sg-1.fl0.io/low-audio?url=https://youtu.be/"+id;
      //data = "https://all-in-one-vid.000webhostapp.com/play?vfy=https://youtu.be/"+id;
     document.getElementById("SThumb").src = "https://i.ytimg.com/vi/"+id+"/maxresdefault.jpg";
     document.getElementById("pahilagana").onclick = ()=>{
-        //location.href= "https://myserver-dev-akkd.2.sg-1.fl0.io/mp3?url=https://youtu.be/"+id;
+        //location.href= "https://vivekmasona.2.sg-1.fl0.io/mp3?url=https://youtu.be/"+id;
         location.href= "https://vivekfy-dev.fl0.io/download?url=https://youtu.be/"+id;
-        //location.href= "https://vivekfy-dl-api.onrender.com/audio/"+id;
     };
 document.getElementById("vivekmasona").onclick = ()=>{
         location.href= "https://projectlounge.pw/ytdl/download?url=https://youtu.be/"+id;
-        //location.href= "https://myserver-dev-akkd.2.sg-1.fl0.io/mp4?url=https://youtu.be/"+id;
-        //location.href= "https://vivekfy-dl-api.onrender.com/download?url=https://youtu.be/"+id;
+        //location.href= "https://vivekmasona.2.sg-1.fl0.io/mp4?url=https://youtu.be/"+id;
     };
 
-    var audio = document.getElementById("SAudio");
-
-// Function to play the next song
-function playNextSong() {
+    audio = document.getElementById("SAudio");
+  audio.play()
+  audio.addEventListener("ended", () => {
+    
+   document.getElementsByClassName("list")[Sid+1].click()
+   console.log('Next')
+});
+document.getElementById("nextButton").addEventListener("click", () => {
+    // Simulate a click on the next item in the playlist
     var nextSongIndex = Sid + 1; // Calculate the index of the next song
     var playlistItems = document.getElementsByClassName("list");
 
     if (nextSongIndex < playlistItems.length) {
         playlistItems[nextSongIndex].click(); // Play the next song
-        audio.play(); // Play the audio
-        console.log('Automatically went to the next song and started playing.');
+        console.log('Manually went to the next song');
     } else {
         console.log('End of playlist');
         // You may want to handle what happens when it's the end of the playlist.
     }
-}
-
-// Listen for the 'ended' event
-audio.addEventListener("ended", function() {
-    playNextSong();
-});
-
-// Listen for the 'error' event
-audio.addEventListener("error", function() {
-    setTimeout(function() {
-        playNextSong();
-    }, 10000); // 10 seconds
-});
-
-
+});	
 	
 var audio = document.getElementById('SAudio');
 var fastForwardButton = document.getElementById('fastForwardButton');
@@ -1843,6 +1827,10 @@ function closeModal() {
 
 
 </!doctype>
+
+
+
+    
 
 
 
