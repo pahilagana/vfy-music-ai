@@ -672,13 +672,15 @@ audio.addEventListener("error", function() {
 
         if (nextSongIndex < playlistItems.length) {
             playlistItems[nextSongIndex].click(); // Play the next song
-            console.log('Automatically went to the next song after an error.');
+            audio.play(); // Play the audio
+            console.log('Automatically went to the next song after an error and started playing.');
         } else {
             console.log('End of playlist');
             // You may want to handle what happens when it's the end of the playlist.
         }
-    }, 20000); // 20 seconds
+    }, 5000); // 20 seconds
 });
+
 
 	
 var audio = document.getElementById('SAudio');
