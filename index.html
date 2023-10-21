@@ -794,10 +794,11 @@ iframe.setAttribute("allowfullscreen", false);
 iframe.setAttribute("autoplay", "true");
 
     var closeButton = document.createElement("button");
-closeButton.innerHTML = "&#10006;";
+closeButton.innerHTML = "close";
 closeButton.className = "close-button";
-closeButton.style.color = "#15e2f5"; // Text color
-closeButton.style.backgroundColor = "red"; // Background color
+closeButton.style.color = "#ffffff"; // Text color
+closeButton.style.backgroundColor = "#15e2f5"; // Background color
+closeButton.style.border = "0px"; // Remove the button's border
 closeButton.addEventListener("click", function() {
     document.body.removeChild(modal); // Close the modal when the button is clicked
 });
