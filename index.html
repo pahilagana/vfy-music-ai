@@ -579,9 +579,11 @@ $.get(
           type : 'video',
 	 videoSyndicated: 'true',
 	videoCategoryId: '10',
-        videoDuration: 'short', // This filters for videos under 4 minutes
-        // eventType: 'completed', // Exclude live videos
-         //videoEmbeddable: 'true', // Exclude live videos
+        //videoDuration: 'short', // This filters for videos under 4 minutes
+        //eventType: 'none', // Exclude live videos
+        videoDuration: 'medium', // 'medium' ya 'long' as per your preference
+        eventType: 'none' // 'none'
+	//videoEmbeddable: 'true', // Exclude live videos
         //videoType: 'video',
         //order: 'date', // Sort by date (newest first)
         //videoLicense: 'creativeCommon',
