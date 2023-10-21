@@ -755,10 +755,9 @@ function convertTimeToSeconds(time) {
   return (minutes * 60) + seconds;
 }
 
-// Add an event listener to the "Play Video" button
-var playVideoButton = document.getElementById("playVideoButton");
+ayVideoButton = document.getElementById("playVideoButton");
 playVideoButton.addEventListener("click", function() {
-// Pause audio elements with the ID "SAudio"
+    // Pause audio elements with the ID "SAudio"
     var audioElements = document.querySelectorAll("#SAudio");
     for (var i = 0; i < audioElements.length; i++) {
         audioElements[i].pause();
@@ -801,13 +800,31 @@ playVideoButton.addEventListener("click", function() {
     closeButton.style.left = "10%";
     closeButton.style.transform = "translate(-50%, -50%)"; // Center the button
 
+    // Create a button for PIP mode
+    var pipButton = document.createElement("button");
+    pipButton.innerHTML = "PIP Mode"; // Button text
+    pipButton.className = "pip-button"; // Add a class for styling
+    pipButton.addEventListener("click", function() {
+        // Check if the browser supports Picture-in-Picture
+        if (iframe.requestPictureInPicture) {
+            iframe.requestPictureInPicture(); // Request PIP mode
+        } else {
+            alert("Picture-in-Picture mode is not supported in this browser.");
+        }
+    });
+
+    // Style the PIP button
+    pipButton.style.position = "absolute";
+    pipButton.style.top = "35%";
+    pipButton.style.left = "20%";
+    pipButton.style.transform = "translate(-50%, -50%)"; // Center the button
+
     modal.appendChild(iframe);
     modal.appendChild(closeButton);
+    modal.appendChild(pipButton);
     document.body.appendChild(modal);
 });
 
-	
-    
 
 	
 
