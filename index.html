@@ -690,14 +690,8 @@ audio.addEventListener("ended", function() {
 audio.addEventListener("error", function() {
     setTimeout(function() {
         playNextSong();
-    }, 10000); // 10 seconds
-}
-
-// Add event listener to a button with id "nextButton" to manually go to the next song
-document.getElementById("nextButton").addEventListener("click", function() {
-    playNextSong();
+    }, 10000); // 20 seconds
 });
-
 
 
 	
@@ -1849,7 +1843,6 @@ function closeModal() {
 
 
 </!doctype>
-
 
 
 
