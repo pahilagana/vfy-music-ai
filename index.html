@@ -762,6 +762,7 @@ function convertTimeToSeconds(time) {
 
 
 
+
 // Add an event listener to the "Play Video" button
 var playVideoButton = document.getElementById("playVideoButton");
 playVideoButton.addEventListener("click", function() {
@@ -771,10 +772,23 @@ playVideoButton.addEventListener("click", function() {
         audioElements[i].pause();
     }
 
+    // Create a container for the video and PIP button
+    var container = document.createElement("div");
+    container.style.position = "fixed";
+    container.style.top = "0";
+    container.style.left = "0";
+    container.style.width = "100%";
+    container.style.height = "100%";
+    container.style.display = "flex";
+    container.style.alignItems = "center";
+    container.style.justifyContent = "center";
+    container.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
+
     // Create a video element
     var videoElement = document.createElement("video");
     videoElement.id = "videoPlayer";
     videoElement.controls = true;
+    videoElement.style.maxWidth = "100%"; // Make the video responsive
 
     // Construct the video source URL with the video ID
     var videoSource = document.createElement("source");
@@ -790,18 +804,14 @@ playVideoButton.addEventListener("click", function() {
         }
     });
 
-    // Append video source and PIP button to the video element
-    videoElement.appendChild(videoSource);
-    videoElement.appendChild(pipButton);
-
     // Create a close button with an "X" icon
     var closeButton = document.createElement("button");
     closeButton.innerHTML = "&#10006;"; // This is the HTML entity for the "X" character
     closeButton.className = "close-button"; // Add a class for styling
     closeButton.addEventListener("click", function() {
-        // Pause and remove the video element when the button is clicked
+        // Pause and remove the video container when the button is clicked
         videoElement.pause();
-        videoElement.parentNode.removeChild(videoElement);
+        container.parentNode.removeChild(container);
     });
 
     // Style the close button to overlay the video in the center
@@ -810,12 +820,17 @@ playVideoButton.addEventListener("click", function() {
     closeButton.style.left = "10%";
     closeButton.style.transform = "translate(-50%, -50%)"; // Center the button
 
-    // Append the video element and close button to the body
-    document.body.appendChild(videoElement);
-    document.body.appendChild(closeButton);
+    // Append video source, PIP button, and close button to the video element
+    videoElement.appendChild(videoSource);
+    videoElement.appendChild(pipButton);
+
+    // Append the video element to the container
+    container.appendChild(videoElement);
+    container.appendChild(closeButton);
+
+    // Append the container to the body
+    document.body.appendChild(container);
 });
-
-
 
 
 	
