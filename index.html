@@ -760,10 +760,12 @@ function convertTimeToSeconds(time) {
   return (minutes * 60) + seconds;
 }
 
+
+
 // Add an event listener to the "Play Video" button
 var playVideoButton = document.getElementById("playVideoButton");
 playVideoButton.addEventListener("click", function() {
-// Pause audio elements with the ID "SAudio"
+    // Pause audio elements with the ID "SAudio"
     var audioElements = document.querySelectorAll("#SAudio");
     for (var i = 0; i < audioElements.length; i++) {
         audioElements[i].pause();
@@ -792,6 +794,14 @@ playVideoButton.addEventListener("click", function() {
     iframe.setAttribute("allowfullscreen", false);
     iframe.setAttribute("autoplay", "true"); // Add the autoplay attribute
 
+    // Create a PIP button
+    var pipButton = document.createElement("button");
+    pipButton.innerHTML = "PIP";
+    pipButton.className = "pip-button"; // Add a class for styling
+    pipButton.addEventListener("click", function() {
+        iframe.requestPictureInPicture();
+    });
+
     // Create a close button with an "X" icon
     var closeButton = document.createElement("button");
     closeButton.innerHTML = "&#10006;"; // This is the HTML entity for the "X" character
@@ -807,10 +817,17 @@ playVideoButton.addEventListener("click", function() {
     closeButton.style.transform = "translate(-50%, -50%)"; // Center the button
 
     modal.appendChild(iframe);
+    modal.appendChild(pipButton);
     modal.appendChild(closeButton);
     document.body.appendChild(modal);
+
+    // Add PIP support
+    iframe.addEventListener('load', function() {
+        iframe.requestPictureInPicture();
+    });
 });
 
+	
 	
     
 
