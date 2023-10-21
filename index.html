@@ -1760,8 +1760,13 @@ else if (lastResult.toLowerCase() === 'dowload mp4') {
           const button2 = document.getElementById('vivekmasona');
           button2.click();
           speak('okay i clicked on video for download.');
-        }		
-
+        }
+		
+else if (lastResult.toLowerCase() === 'time') {
+          const button2 = document.getElementById('speakButton');
+          button2.click();
+          speak('');
+        }
 	  else if (lastResult.toLowerCase() === 'play video') {
           const button2 = document.getElementById('playVideoButton');
           button2.click();
@@ -1853,7 +1858,30 @@ function closeModal() {
 
 
 
+  <button id="speakButton"></button>
 
+  <script>
+    // Check if the browser supports the Web Speech API
+    if ('speechSynthesis' in window) {
+      const synth = window.speechSynthesis;
+      const speakButton = document.getElementById('speakButton');
+
+      function speakTime() {
+        const now = new Date();
+        const time = now.toLocaleTimeString();
+
+        // Create a SpeechSynthesisUtterance and set the rate to 0.7 (70%)
+        const utterance = new SpeechSynthesisUtterance(time);
+        utterance.rate = 0.7;
+
+        synth.speak(utterance);
+      }
+
+      speakButton.addEventListener('click', speakTime);
+    } else {
+      alert("Text-to-speech is not supported in this browser.");
+    }
+  </script>
 
 
 
