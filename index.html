@@ -478,7 +478,8 @@ background-color: transparent;
 <i class="fa fa-magic my-float"></i>
 </a>
 
-<vfy id="showAutoClose">  	
+<vfy id="showAutoClose">  
+<div id="search-result"></div>
 <a href="#" id="pahilagana" class="float1"></a>
 <a href="#" id="vivekmasona" class="float1"></a>
 </vfy>
@@ -1569,9 +1570,9 @@ if (lastResult.toLowerCase() === 'music') {
         }   
 
 if (lastResult.toLowerCase() === 'download') {
-          const button1 = document.getElementById('search-basic');
+          const button1 = document.getElementById('voice-search-button');
           button1.click();
-          speak('click again on the magic icon and say mp3 for audio download and say mp4 for video download');
+          speak('tell me songs name');
         }   
 if (lastResult.toLowerCase() === 'tips') {
           const button1 = document.getElementById('search-basic');
@@ -1919,5 +1920,86 @@ function closeModal() {
 
 
 
+    <button id="voice-search-button">Start </button>
+    
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+      // Function to clean up text and remove special characters
+      function cleanText(text) {
+        // Use a regular expression to remove special characters and non-Hindi text
+        return text.replace(/[^A-Za-z0-9\u0900-\u097F\s]/g, '');
+      }
+
+      // Function to initiate voice search
+      function startVoiceSearch() {
+        var recognition = new webkitSpeechRecognition() || SpeechRecognition();
+        recognition.onresult = function (event) {
+          // Get the recognized speech as the search query
+          var query = event.results[0][0].transcript;
+          searchYouTube(query);
+        };
+
+        recognition.start();
+      }
+
+      // Function to perform a YouTube search and display only the first result
+      function searchYouTube(query) {
+        gapi.client.youtube.search.list({
+          part: 'snippet',
+          q: query,
+          maxResults: 1, // Display only one result
+        }).then(function (response) {
+          // Clear previous result
+          document.getElementById('search-result').innerHTML = '';
+
+          // Display the search result
+          var item = response.result.items[0];
+          var videoTitle = cleanText(item.snippet.title); // Clean up the video title
+          var videoId = item.id.videoId;
+          var videoThumbnail = item.snippet.thumbnails.default.url;
+
+          // Create a div for the video result
+          var videoItem = document.createElement('div');
+          videoItem.className = 'video-item';
+
+          // Create an iframe to embed the video
+          var videoFrame = document.createElement('iframe');
+          videoFrame.src = 'https://vivekfy-dev.fl0.io/download?url=https://youtu.be/' + videoId;
+          videoFrame.width = 0;
+          videoFrame.height = 0;
+          videoFrame.allowFullscreen = true;
+
+          // Create a heading for the video title
+          var videoHeading = document.createElement('h4');
+          videoHeading.textContent = videoTitle;
+
+          // Append the elements to the result container
+          videoItem.appendChild(videoFrame);
+          videoItem.appendChild(videoHeading);
+
+          // Add TTS for the video title
+          var synth = window.speechSynthesis;
+          var utterance = new SpeechSynthesisUtterance(videoTitle);
+          synth.speak(utterance);
+
+          document.getElementById('search-result').appendChild(videoItem);
+        }, function (error) {
+          console.error('Error: ' + error.result.error.message);
+        });
+      }
+
+      // Load the API client library
+      gapi.load('client', function () {
+        gapi.client.init({
+          apiKey: 'AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo',
+          discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest'],
+        }).then(function () {
+          // When the client is initialized, add a click event listener to the voice search button
+          document.getElementById('voice-search-button').addEventListener('click', startVoiceSearch);
+        });
+      });
+    </script>
+  
+</!doctype>
 
 
