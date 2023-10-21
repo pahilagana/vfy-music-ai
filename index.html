@@ -1,3 +1,4 @@
+
 <link href='https://www.blogger.com/static/v1/widgets/55013136-widget_css_bundle.css' rel='stylesheet' type='text/css'/>
 <link rel="manifest" href="./manifest.webmanifest">
 <link href='/img/mylogo.png' rel='apple-touch-icon' sizes='180x180'/>
@@ -405,7 +406,7 @@ background-color: transparent;
 
 	    
 
-	<button id="pipButton">PIP</button>    
+	    
 	    
 <h1>VFY
 <span id="Tube">Music<span></span></span></h1>
@@ -759,11 +760,10 @@ function convertTimeToSeconds(time) {
   return (minutes * 60) + seconds;
 }
 
-
 // Add an event listener to the "Play Video" button
 var playVideoButton = document.getElementById("playVideoButton");
 playVideoButton.addEventListener("click", function() {
-    // Pause audio elements with the ID "SAudio"
+// Pause audio elements with the ID "SAudio"
     var audioElements = document.querySelectorAll("#SAudio");
     for (var i = 0; i < audioElements.length; i++) {
         audioElements[i].pause();
@@ -784,12 +784,13 @@ playVideoButton.addEventListener("click", function() {
     modal.style.alignItems = "center";
     modal.style.justifyContent = "center";
 
-    var videoPlayer = document.createElement("video");
-    videoPlayer.setAttribute("controls", "controls"); // Add controls to the video player
-    videoPlayer.setAttribute("id", "videoPlayer"); // Set the ID for the video player
-    videoPlayer.setAttribute("width", "560");
-    videoPlayer.setAttribute("height", "315");
-    videoPlayer.setAttribute("src", videoUrl);
+    var iframe = document.createElement("iframe");
+    iframe.setAttribute("width", "560");
+    iframe.setAttribute("height", "315");
+    iframe.setAttribute("src", videoUrl);
+    iframe.setAttribute("frameborder", "0");
+    iframe.setAttribute("allowfullscreen", false);
+    iframe.setAttribute("autoplay", "true"); // Add the autoplay attribute
 
     // Create a close button with an "X" icon
     var closeButton = document.createElement("button");
@@ -805,12 +806,11 @@ playVideoButton.addEventListener("click", function() {
     closeButton.style.left = "10%";
     closeButton.style.transform = "translate(-50%, -50%)"; // Center the button
 
-    modal.appendChild(videoPlayer);
+    modal.appendChild(iframe);
     modal.appendChild(closeButton);
     document.body.appendChild(modal);
 });
 
-	
 	
     
 
@@ -1852,30 +1852,7 @@ function closeModal() {
 
 
 
-  
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const videoPlayer = document.getElementById('video');
-      const pipButton = document.getElementById('pipButton');
-
-      // Check if PIP is supported by the browser
-      if ('pictureInPictureEnabled' in document) {
-        pipButton.addEventListener('click', () => {
-          if (document.pictureInPictureElement) {
-            // Exit PIP
-            document.exitPictureInPicture();
-          } else {
-            // Request PIP
-            videoPlayer.requestPictureInPicture();
-          }
-        });
-      } else {
-        // PIP not supported
-        pipButton.disabled = true;
-      }
-    });
-  </script>
 
 
 
