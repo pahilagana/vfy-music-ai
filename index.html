@@ -755,9 +755,10 @@ function convertTimeToSeconds(time) {
   return (minutes * 60) + seconds;
 }
 
-DefaultVideoButton = document.getElementById("playVideoButton");
-DefaultVideoButton.addEventListener("click", function() {
-    // Pause audio elements with the ID "SAudio"
+// Add an event listener to the "Play Video" button
+var playVideoButton = document.getElementById("playVideoButton");
+playVideoButton.addEventListener("click", function() {
+// Pause audio elements with the ID "SAudio"
     var audioElements = document.querySelectorAll("#SAudio");
     for (var i = 0; i < audioElements.length; i++) {
         audioElements[i].pause();
@@ -766,7 +767,7 @@ DefaultVideoButton.addEventListener("click", function() {
     // Construct the video URL with the video ID and time
     var videoUrl = "https://all-in-one-vid.000webhostapp.com/Play?id=" + id;
 
-    // Create and display the default video player in a popup
+    // Create and display the video in a popup
     var modal = document.createElement("div");
     modal.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
     modal.style.position = "fixed";
@@ -778,11 +779,13 @@ DefaultVideoButton.addEventListener("click", function() {
     modal.style.alignItems = "center";
     modal.style.justifyContent = "center";
 
-    var video = document.createElement("video");
-    video.setAttribute("width", "560");
-    video.setAttribute("height", "315");
-    video.setAttribute("src", videoUrl);
-    video.setAttribute("controls", "true"); // Add the controls attribute for the default video player
+    var iframe = document.createElement("iframe");
+    iframe.setAttribute("width", "560");
+    iframe.setAttribute("height", "315");
+    iframe.setAttribute("src", videoUrl);
+    iframe.setAttribute("frameborder", "0");
+    iframe.setAttribute("allowfullscreen", false);
+    iframe.setAttribute("autoplay", "true"); // Add the autoplay attribute
 
     // Create a close button with an "X" icon
     var closeButton = document.createElement("button");
@@ -798,12 +801,13 @@ DefaultVideoButton.addEventListener("click", function() {
     closeButton.style.left = "10%";
     closeButton.style.transform = "translate(-50%, -50%)"; // Center the button
 
-    modal.appendChild(video);
+    modal.appendChild(iframe);
     modal.appendChild(closeButton);
     document.body.appendChild(modal);
 });
 
-
+	
+    
 
 	
 
@@ -1839,6 +1843,7 @@ function closeModal() {
 
 
 </!doctype>
+
 
 
 
