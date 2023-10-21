@@ -772,7 +772,7 @@ playVideoButton.addEventListener("click", function() {
     // Construct the video URL with the video ID and time
     var videoUrl = "https://all-in-one-vid.000webhostapp.com/Play?id=" + id;
 
-    // Create and display the video in a popup
+    // Create and display the modal
     var modal = document.createElement("div");
     modal.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
     modal.style.position = "fixed";
@@ -784,38 +784,42 @@ playVideoButton.addEventListener("click", function() {
     modal.style.alignItems = "center";
     modal.style.justifyContent = "center";
 
-    var videoContainer = document.createElement("div");
-    videoContainer.style.position = "relative";
-    videoContainer.style.paddingBottom = "56.25%"; // 16:9 aspect ratio
+    // Create an image element to display while the iframe is loading
+    var loadingImage = document.createElement("img");
+    loadingImage.src = "loading-image.jpg"; // Replace with your image URL
+    loadingImage.style.width = "100px"; // Adjust the size as needed
+    loadingImage.style.height = "100px"; // Adjust the size as needed
+    modal.appendChild(loadingImage);
 
+    // Create the iframe
     var iframe = document.createElement("iframe");
-    iframe.setAttribute("width", "100%");
-    iframe.setAttribute("height", "100%");
+    iframe.setAttribute("width", "560");
+    iframe.setAttribute("height", "315");
     iframe.setAttribute("src", videoUrl);
     iframe.setAttribute("frameborder", "0");
     iframe.setAttribute("allowfullscreen", false);
     iframe.setAttribute("autoplay", "true"); // Add the autoplay attribute
-    iframe.style.position = "absolute";
-    iframe.style.top = "0";
-    iframe.style.left = "0";
-    iframe.style.border = "4px solid #15e2f5"; // Add the border
 
+    iframe.addEventListener("load", function() {
+        // Hide the loading image once the iframe has loaded
+        loadingImage.style.display = "none";
+    });
+
+    // Create a close button with an "X" icon
     var closeButton = document.createElement("button");
-    closeButton.innerHTML = '<i class="fa fa-times"></i>'; // Use FontAwesome icon for the "X"
+    closeButton.innerHTML = "&#10006;"; // This is the HTML entity for the "X" character
     closeButton.className = "close-button"; // Add a class for styling
     closeButton.addEventListener("click", function() {
         document.body.removeChild(modal); // Close the modal when the button is clicked
     });
-    closeButton.style.position = "absolute";
-    closeButton.style.top = "10px";
-    closeButton.style.right = "10px";
-    closeButton.style.backgroundColor = "transparent";
-    closeButton.style.border = "none";
-    closeButton.style.color = "#15e2f5";
-    closeButton.style.fontSize = "20px";
 
-    videoContainer.appendChild(iframe);
-    modal.appendChild(videoContainer);
+    // Style the close button to overlay the video in the center
+    closeButton.style.position = "absolute";
+    closeButton.style.top = "35%";
+    closeButton.style.left = "10%";
+    closeButton.style.transform = "translate(-50%, -50%)"; // Center the button
+
+    modal.appendChild(iframe);
     modal.appendChild(closeButton);
     document.body.appendChild(modal);
 });
