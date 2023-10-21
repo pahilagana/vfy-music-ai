@@ -713,31 +713,27 @@ rewindButton.addEventListener('click', function () {
 });
 
 
-// Get a reference to the audio element
-var audio = document.getElementById('SAudio'); // Replace 'yourAudioElementId' with the actual ID of your audio element
 
-// Get a reference to the button element
-var button = document.getElementById('toggleButton');
+const audioPlayer = document.getElementById("SAudio");
+const toggleButton = document.getElementById("toggleButton");
 
-// Function to click the button after 1 second
-function clickButtonAfterDelay() {
-    setTimeout(function() {
-        button.click();
-    }, 1000); // 1000 milliseconds = 1 second
-}
+audioPlayer.addEventListener("timeupdate", () => {
+  const currentTime = audioPlayer.currentTime;
+  if (currentTime === 0) {
+    toggleButton.disabled = false;
+  } else {
+    toggleButton.disabled = true;
+  }
+});
 
-// Add a click event listener to the button
-button.addEventListener('click', function() {
-    // Check if the audio is currently playing
-    if (!audio.paused) {
-        // Pause the audio
-        audio.pause();
-        // Call the function to click the button after a delay
-        clickButtonAfterDelay();
-    } else {
-        // If audio is paused, play it
-        audio.play();
-    }
+toggleButton.addEventListener("click", () => {
+  // Yahan par aap button click ke event handler mein jo kuch karna chahte hain, woh code likhein.
+  // Example: Agar audio play/pause karna chahte hain to:
+  if (audioPlayer.paused) {
+    audioPlayer.play();
+  } else {
+    audioPlayer.pause();
+  }
 });
 
 
