@@ -11,7 +11,6 @@
 <meta content='#16E2F5' name='apple-mobile-web-app-status-bar-style'/>
 <meta content='width=device-width, user-scalable=no' name='viewport'>
 </meta>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
 <meta content='blogger' name='generator'/>
@@ -618,58 +617,34 @@ $.get(
     } 
 }
 
-$(document).ready(function() {
-            if ('Notification' in window) {
-                Notification.requestPermission();
-            }
-        });
+function getOutput(item,i){
+  var id = item.id.videoId;
+  var title = item.snippet.title;
+  var description = item.snippet.description;
+  var thumb = item.snippet.thumbnails.high.url;
+  var channelTitle = item.snippet.channelTitle;
+  var videoDate = item.snippet.publishedAt;
+ 
+ //Build our output:
+  var output =
+  '<ul data-role="listview" data-inset="true" id="myList">' +
+      '<li><a onclick="loadSong(this)" index="'+i+'" class="list" vid="'+id+'"><img src="'+thumb+'" alt="vivekfy.jpg" id="vfyy">VFY. '+title+'</a></li>' +
+  '</ul>';
 
-        function getOutput(item, i) {
-            var id = item.id.videoId;
-            var title = item.snippet.title;
-            var description = item.snippet.description;
-            var thumb = item.snippet.thumbnails.high.url;
-            var channelTitle = item.snippet.channelTitle;
-            var videoDate = item.snippet.publishedAt;
+  return output;
+}
 
-            var output =
-                '<ul data-role="listview" data-inset="true" id="myList">' +
-                '<li><a onclick="loadSong(this)" index="' + i + '" class="list" vid="' + id + '"><img src="' + thumb + '" alt="vivekfy.jpg" id="vfyy">VFY. ' + title + '</a></li>' +
-                '</ul>';
+function loadSong(song,ind){
+    
+  var id = $(song).attr("vid");
+ var indId = parseInt($(song).attr("index"));
+  var thumbnail = $(song).children('img').attr("src");
+  localStorage.setItem("playPresent",id);
+  localStorage.setItem("thumbnail",thumbnail);
+  $("#thumbnail").attr("src",thumbnail);
+  play(id,indId);
+}
 
-            return output;
-        }
-
-        function loadSong(song, ind) {
-            var id = $(song).attr("vid");
-            var indId = parseInt($(song).attr("index"));
-            var title = "VFY. " + $(song).text();
-            var thumbnail = $(song).children('img').attr("src");
-            localStorage.setItem("playPresent", id);
-            localStorage.setItem("thumbnail", thumbnail);
-            $("#thumbnail").attr("src", thumbnail);
-            play(id, indId);
-
-            showNotification(title, thumbnail);
-        }
-
-        function showNotification(title, thumbnail) {
-            if ('Notification' in window && Notification.permission === 'granted') {
-                var options = {
-                    body: "Audio is now playing",
-                    icon: thumbnail
-                };
-
-                var notification = new Notification(title, options);
-            }
-        }
-
-        // Mock the play function for demonstration purposes
-        function play(id, indId) {
-            // Your audio playback logic here
-            // This is just a mock function
-            console.log("Playing audio with ID: " + id);
-        }
 function play(id,Sid){
       //data = "https://vivekfy.onrender.com/audio/"+id;
      // data = "https://projectlounge.pw/ytdl/download?url=https://youtu.be/"+id+"&format=599";
@@ -743,7 +718,17 @@ rewindButton.addEventListener('click', function () {
 });
 
 
+const titleaudio = document.getElementById('SAudio');
 
+    audio.addEventListener('play', () => {
+      // Update the tab title when audio starts playing
+      document.title = 'VFY Music..      ' + audio.currentTime;
+    });
+
+    audio.addEventListener('pause', () => {
+      // Restore the original page title when audio is paused
+      document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
+    });	
 
 
 const audioPlayer = document.getElementById("SAudio");
