@@ -713,6 +713,28 @@ rewindButton.addEventListener('click', function () {
 });
 
 
+// Get a reference to the audio element
+var audio = document.getElementById('SAudio'); // Replace 'yourAudioElementId' with the actual ID of your audio element
+
+// Get a reference to the button element
+var button = document.getElementById('toggleButton');
+
+// Add a click event listener to the button
+button.addEventListener('click', function() {
+    // Check if the audio is currently playing
+    if (!audio.paused) {
+        // Pause the audio
+        audio.pause();
+    } else {
+        // If audio is paused, play it
+        audio.play();
+    }
+});
+
+
+
+	
+
 const titleaudio = document.getElementById('SAudio');
 
     audio.addEventListener('play', () => {
