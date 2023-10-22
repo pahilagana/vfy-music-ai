@@ -877,8 +877,11 @@ watermarkAudio2.controls = false;
   document.getElementById("progress").style.width = progress + "%";
 });
 
+
 audio.addEventListener("pause", function() {
-  document.getElementById("toggleButton").click();
+  if (audio.paused) {
+    document.getElementById("toggleButton").click();
+  }
 });
 
 	
