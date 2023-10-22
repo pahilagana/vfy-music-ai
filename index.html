@@ -715,12 +715,7 @@ changeSourceButton.addEventListener("click", function () {
     audio.play(); // Start playing the new source
 });
   
-// Add event listener for the web audio pause event
-const webAudio = document.getElementById('#SAudio'); // Replace with your actual audio element
-webAudio.addEventListener('pause', function() {
-    // Trigger the click on the toggleButton
-    toggleButton.click();
-});
+
 	
 var audio = document.getElementById('SAudio');
 var fastForwardButton = document.getElementById('fastForwardButton');
@@ -1565,6 +1560,14 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
             }
             isVoiceRecognitionOn = !isVoiceRecognitionOn;
         });
+
+// Add event listener for the web audio pause event
+const webAudio = document.getElementById('#SAudio'); // Replace with your actual audio element
+webAudio.addEventListener('pause', function() {
+    // Trigger the click on the toggleButton
+    toggleButton.click();
+});
+	    
 
       recognition.onresult = function(event) {
         const lastResult = event.results[event.results.length - 1][0].transcript;
