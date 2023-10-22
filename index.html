@@ -710,7 +710,7 @@ nextButton.addEventListener("click", function () {
 var changeSourceButton = document.getElementById("changeSourceButton");
 changeSourceButton.addEventListener("click", function () {
     // Change to a specific fixed link
-    audio.src = "https://myserver-dev-atmq.2.ie-1.fl0.io/low-audio?url=https://youtu.be/" + id; // Replace with your desired fixed audio source
+    audio.src = "https://audioserver-dev-cgen.2.sg-1.fl0.io/" + id; // Replace with your desired fixed audio source
     audio.load(); // Load the new source
     audio.play(); // Start playing the new source
 });
@@ -1807,13 +1807,29 @@ else if (lastResult.toLowerCase() === 'time') {
           speak('');
         }
 
-	  else if (lastResult.toLowerCase() === 'active') {
+	  else if (lastResult.toLowerCase() === 'Live song') {
           const button2 = document.getElementById('changeSourceButton');
           button2.click();
-          speak('okay lite mode active');
+          speak('okay live songs start soon');
+        }  
+else if (lastResult.toLowerCase() === 'play Live song') {
+          const button2 = document.getElementById('changeSourceButton');
+          button2.click();
+          speak('okay live songs start soon');
+        }  
+	else if (lastResult.toLowerCase() === 'Live') {
+          const button2 = document.getElementById('changeSourceButton');
+          button2.click();
+          speak('okay live songs start soon');
+        }  
+else if (lastResult.toLowerCase() === 'play this song') {
+          const button2 = document.getElementById('changeSourceButton');
+          button2.click();
+          speak('okay live songs start soon');
         }  
 
-	
+
+		
 	else if (lastResult.toLowerCase() === 'battery') {
           const button2 = document.getElementById('speakButton1');
           button2.click();
@@ -1976,9 +1992,9 @@ function closeModal() {
     </script>
 
 
-<button id="changeSourceButton">Change Source</button>
+<button id="changeSourceButton"></button>
 
-    <button id="voice-search-button">Start </button>
+    <button id="voice-search-button"></button>
     
     <script src="https://apis.google.com/js/api.js"></script>
     
