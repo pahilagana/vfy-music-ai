@@ -724,7 +724,16 @@ rewindButton.addEventListener('click', function () {
     }
 });
 
+const audio = document.getElementById('SAudio');
+        const pauseButton = document.getElementById('pauseButton');
 
+        pauseButton.addEventListener('click', function() {
+            if (!audio.paused) {
+                audio.pause();
+            }
+        });
+
+	
 const titleaudio = document.getElementById('SAudio');
 
     audio.addEventListener('play', () => {
@@ -2022,16 +2031,7 @@ function closeModal() {
 
 <button id="pauseButton">Pause</button>
 
-    <script>
-        const audio = document.getElementById('#SAudio');
-        const pauseButton = document.getElementById('pauseButton');
 
-        pauseButton.addEventListener('click', function() {
-            if (!audio.paused) {
-                audio.pause();
-            }
-        });
-    </script>
 
 	
 
