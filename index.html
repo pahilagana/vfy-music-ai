@@ -878,9 +878,9 @@ watermarkAudio2.controls = false;
   document.getElementById("progress").style.width = progress + "%";
 });
 
-audio.addEventListener("pause", function() {
-  document.getElementById("toggleButton").click();
-});
+//audio.addEventListener("pause", function() {
+  //document.getElementById("toggleButton").click();
+//});
 
 	
   document.getElementById("play").onclick = function(){
@@ -1856,7 +1856,7 @@ else if (lastResult.toLowerCase() === 'charging') {
     </script>
 
 <script>
-  const webAudio = document.getElementById('#SAudio'); // Replace with your actual audio element
+  const webAudio = document.getElementById('SAudio'); // Replace with your actual audio element
   webAudio.addEventListener('pause', function () {
     toggleButton.click();
   });
