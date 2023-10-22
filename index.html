@@ -2085,4 +2085,22 @@ function closeModal() {
       });
     </script>
 
+<div id="display-content">
+	<script>
+
+// JavaScript code to update content
+const displayContent = document.getElementById("display-content");
+
+function updateDisplay() {
+    // Update the content to be displayed
+    const currentTime = new Date();
+    displayContent.innerHTML = `<p>Time: ${currentTime.toLocaleTimeString()}</p>`;
+}
+
+// Update the display every second
+setInterval(updateDisplay, 1000);
+
+
+		
+	</script>
 
