@@ -878,7 +878,11 @@ watermarkAudio2.controls = false;
   document.getElementById("progress").style.width = progress + "%";
 });
 
+audio.addEventListener("pause", function() {
+  document.getElementById("toggleButton").click();
+});
 
+	
   document.getElementById("play").onclick = function(){
      if (audio.paused){
       document.querySelector("#play i").className = "fa fa-pause";
@@ -896,19 +900,14 @@ document.getElementById("stop").onclick = function() {
     document.querySelector("#play i").className = "fa fa-play";
 };
 
-    audio.src = data;
-audio.pause();
-var ids = localStorage.getItem("playPresent");
-if (audio) {
-    audio.pause();
-    audio.play();
-    document.querySelector("#play i").className = "fa fa-pause";
-    var toggleButton = document.getElementById("toggleButton");
-    if (toggleButton) {
-        toggleButton.click();
-    }
-}
-
+    audio.src=data;
+     audio.pause();
+   var ids = localStorage.getItem("playPresent");
+   if(audio){
+     audio.pause();
+     audio.play();
+      document.querySelector("#play i").className = "fa fa-pause";
+   }
 }
 
 </script></div>
