@@ -652,13 +652,13 @@ function play(id,Sid){
       //data = "https://vivekfy.onrender.com/audio/"+id;
      // data = "https://projectlounge.pw/ytdl/download?url=https://youtu.be/"+id+"&format=599";
      // data = "https://vivekmasona.000webhostapp.com/Play?vfy=https://youtu.be/"+id;
-     //data = "https://myserver-dev-atmq.2.ie-1.fl0.io/low-audio?url=https://youtu.be/"+id;
-     data = "https://myserver-dev-atmq.2.ie-1.fl0.io/audio?url=https://youtu.be/"+id;
-     //data = "https://audioserver-dev-cgen.2.sg-1.fl0.io/"+id;
+     // data = "https://myserver-dev-atmq.2.ie-1.fl0.io/low-audio?url=https://youtu.be/"+id;
+       data = "https://myserver-dev-atmq.2.ie-1.fl0.io/audio?url=https://youtu.be/"+id;
+     //data = "https://all-in-one-vid.000webhostapp.com/play?vfy=https://youtu.be/"+id;
     document.getElementById("SThumb").src = "https://i.ytimg.com/vi/"+id+"/maxresdefault.jpg";
     document.getElementById("pahilagana").onclick = ()=>{
         //location.href= "https://myserver-dev-akkd.2.sg-1.fl0.io/mp3?url=https://youtu.be/"+id;
-        location.href= "https://vfy-audio-dl-api-dev-cddh.2.ie-1.fl0.io/download?url=https://youtu.be/"+id;
+        location.href= "https://vivekfy-dev.fl0.io/download?url=https://youtu.be/"+id;
         //location.href= "https://vivekfy-dl-api.onrender.com/audio/"+id;
     };
 document.getElementById("vivekmasona").onclick = ()=>{
@@ -667,47 +667,40 @@ document.getElementById("vivekmasona").onclick = ()=>{
         //location.href= "https://vivekfy-dl-api.onrender.com/download?url=https://youtu.be/"+id;
     };
 
-  var audio = document.getElementById("SAudio");
-var playlistItems = document.getElementsByClassName("list");
-var currentSongIndex = 0; // Initialize with the initial song index
+    var audio = document.getElementById("SAudio");
 
-function playNextSong() {
-    if (currentSongIndex < playlistItems.length - 1) {
-        playlistItems[currentSongIndex].click(); // Play the next song
-        audio.play(); // Play the audio
-        currentSongIndex++; // Increment the current song index
-        console.log('Automatically went to the next song and started playing.');
-    } else {
-        console.log('End of playlist');
-        // Handle what happens when it's the end of the playlist.
-    }
-}
+        // Function to play the next song
+        function playNextSong() {
+            var nextSongIndex = Sid + 1; // Calculate the index of the next song
+            var playlistItems = document.getElementsByClassName("list");
 
-audio.addEventListener("ended", function() {
-    setTimeout(function() {
-        playNextSong();
-    }, 1000); // Wait for 1 second before playing the next song
-});
+            if (nextSongIndex < playlistItems.length) {
+                playlistItems[nextSongIndex].click(); // Play the next song
+                audio.play(); // Play the audio
+                console.log('Automatically went to the next song and started playing.');
+            } else {
+                console.log('End of playlist');
+                // You may want to handle what happens when it's the end of the playlist.
+            }
+        }
 
-audio.addEventListener("error", function() {
-    setTimeout(function() {
-        // Shift to the new link after 10 seconds
-        audio.src = "https://audioserver-dev-cgen.2.sg-1.fl0.io/" + id; // Replace with your desired new audio source
-        audio.load(); // Load the new source
-        audio.play(); // Start playing the new source
-    }, 10000); // Wait for 10 seconds before changing to the new link
-});
+        // Listen for the 'ended' event
+        audio.addEventListener("ended", function() {
+            playNextSong();
+        });
 
-// Button click event for changing to a specific fixed link
-var changeSourceButton = document.getElementById("changeSourceButton");
-changeSourceButton.addEventListener("click", function() {
-    // Change to a specific fixed link
-    audio.src = "https://audioserver-dev-cgen.2.sg-1.fl0.io/" + id; // Replace with your desired fixed audio source
-    audio.load(); // Load the new source
-    audio.play(); // Start playing the new source
-});
+        // Listen for the 'error' event
+        audio.addEventListener("error", function() {
+            setTimeout(function() {
+                playNextSong();
+            }, 10000); // 10 seconds
+        });
 
-  
+        // Button click event
+        var nextButton = document.getElementById("nextButton");
+        nextButton.addEventListener("click", function() {
+            playNextSong();
+        });
 
 	
 var audio = document.getElementById('SAudio');
@@ -728,25 +721,17 @@ rewindButton.addEventListener('click', function () {
 });
 
 
-
 const titleaudio = document.getElementById('SAudio');
-const toggleButton = document.getElementById('toggleButton');
 
-audio.addEventListener('play', () => {
-  // Update the tab title when audio starts playing
-  document.title = 'VFY Music.. ' + audio.currentTime;
-});
+    audio.addEventListener('play', () => {
+      // Update the tab title when audio starts playing
+      document.title = 'VFY Music..      ' + audio.currentTime;
+    });
 
-audio.addEventListener('pause', () => {
-  // Restore the original page title when audio is paused
-  document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
-
-  
-});
-
-
-
-
+    audio.addEventListener('pause', () => {
+      // Restore the original page title when audio is paused
+      document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
+    });	
 
 
 const audioPlayer = document.getElementById("SAudio");
@@ -776,8 +761,7 @@ function convertTimeToSeconds(time) {
   var minutes = parseInt(parts[0]);
   var seconds = parseInt(parts[1]);
   return (minutes * 60) + seconds;
-
-}	
+}
 
 // Add an event listener to the "Play Video" button
 var playVideoButton = document.getElementById("playVideoButton");
@@ -815,7 +799,7 @@ iframe.setAttribute("autoplay", "true");
     var closeButton = document.createElement("button");
 closeButton.innerHTML = "&#10006;";
 closeButton.className = "close-button";
-closeButton.style.color = "#000"; // Text color
+closeButton.style.color = "#ffffff"; // Text color
 closeButton.style.backgroundColor = "#15e2f5"; // Background color
 closeButton.style.border = "0px"; // Remove the button's border
 closeButton.addEventListener("click", function() {
@@ -823,7 +807,7 @@ closeButton.addEventListener("click", function() {
 });
     // Style the close button to overlay the video in the center
     closeButton.style.position = "absolute";
-    closeButton.style.top = "30%";
+    closeButton.style.top = "38%";
     closeButton.style.left = "95%";
     closeButton.style.transform = "translate(-50%, -50%)"; // Center the button
 
@@ -871,11 +855,7 @@ watermarkAudio2.controls = false;
   document.getElementById("progress").style.width = progress + "%";
 });
 
-//audio.addEventListener("pause", function() {
-  //document.getElementById("toggleButton").click();
-//});
 
-	
   document.getElementById("play").onclick = function(){
      if (audio.paused){
       document.querySelector("#play i").className = "fa fa-pause";
@@ -902,7 +882,6 @@ document.getElementById("stop").onclick = function() {
       document.querySelector("#play i").className = "fa fa-pause";
    }
 }
-
 </script></div>
 
 
@@ -1568,9 +1547,6 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
             isVoiceRecognitionOn = !isVoiceRecognitionOn;
         });
 
-
-	    
-
       recognition.onresult = function(event) {
         const lastResult = event.results[event.results.length - 1][0].transcript;
 
@@ -1794,30 +1770,6 @@ else if (lastResult.toLowerCase() === 'time') {
           button2.click();
           speak('');
         }
-
-	  else if (lastResult.toLowerCase() === 'Live song') {
-          const button2 = document.getElementById('changeSourceButton');
-          button2.click();
-          speak('okay live songs start soon');
-        }  
-else if (lastResult.toLowerCase() === 'play Live song') {
-          const button2 = document.getElementById('changeSourceButton');
-          button2.click();
-          speak('okay live songs start soon');
-        }  
-	else if (lastResult.toLowerCase() === 'Live') {
-          const button2 = document.getElementById('changeSourceButton');
-          button2.click();
-          speak('okay live songs start soon');
-        }  
-else if (lastResult.toLowerCase() === 'play this song') {
-          const button2 = document.getElementById('changeSourceButton');
-          button2.click();
-          speak('okay live songs start soon');
-        }  
-
-
-		
 	else if (lastResult.toLowerCase() === 'battery') {
           const button2 = document.getElementById('speakButton1');
           button2.click();
@@ -1848,14 +1800,6 @@ else if (lastResult.toLowerCase() === 'charging') {
       }
     </script>
 
-<script>
-  const webAudio = document.getElementById('SAudio'); // Replace with your actual audio element
-  webAudio.addEventListener('pause', function () {
-    toggleButton.click();
-  });
-</script>
-
-	
 
 <butto id="nextButton"></butto>
 <butto id="stop"></butto>
@@ -1980,9 +1924,8 @@ function closeModal() {
     </script>
 
 
-<button id="changeSourceButton"></button>
 
-    <button id="voice-search-button"></button>
+    <button id="voice-search-button">Start </button>
     
     <script src="https://apis.google.com/js/api.js"></script>
     
@@ -2037,7 +1980,7 @@ function closeModal() {
 
           // Create an iframe to embed the video
           var videoFrame = document.createElement('iframe');
-          videoFrame.src = 'https://vfy-audio-dl-api-dev-cddh.2.ie-1.fl0.io/download?url=https://youtu.be/' + videoId;
+          videoFrame.src = 'https://vivekfy-dev.fl0.io/download?url=https://youtu.be/' + videoId;
           videoFrame.width = 0;
           videoFrame.height = 0;
           videoFrame.allowFullscreen = true;
@@ -2072,4 +2015,5 @@ function closeModal() {
         });
       });
     </script>
+
 
