@@ -783,6 +783,10 @@ function convertTimeToSeconds(time) {
   var minutes = parseInt(parts[0]);
   var seconds = parseInt(parts[1]);
   return (minutes * 60) + seconds;
+var toggleButton = document.getElementById("toggleButton");
+    if (toggleButton) {
+        toggleButton.click();
+	
 }
 
 // Add an event listener to the "Play Video" button
@@ -902,9 +906,7 @@ if (audio) {
     audio.pause();
     audio.play();
     document.querySelector("#play i").className = "fa fa-pause";
-    var toggleButton = document.getElementById("toggleButton");
-    if (toggleButton) {
-        toggleButton.click();
+    
     }
 }
 
