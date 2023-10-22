@@ -667,12 +667,13 @@ document.getElementById("vivekmasona").onclick = ()=>{
         //location.href= "https://vivekfy-dl-api.onrender.com/download?url=https://youtu.be/"+id;
     };
 
-    var audio = document.getElementById("SAudio");
+  var audio = document.getElementById("SAudio");
+var Sid = 0; // Initialize Sid with the initial song index
+var playlistItems = document.getElementsByClassName("list");
 
 // Function to play the next song
 function playNextSong() {
     var nextSongIndex = Sid + 1; // Calculate the index of the next song
-    var playlistItems = document.getElementsByClassName("list");
 
     if (nextSongIndex < playlistItems.length) {
         playlistItems[nextSongIndex].click(); // Play the next song
@@ -690,21 +691,30 @@ audio.addEventListener("ended", function() {
 });
 
 // Listen for the 'error' event
-    audio.addEventListener("error", function () {
-        setTimeout(function () {
-            // Shift to the new link after 10 seconds
-            audio.src = "https://audioserver-dev-cgen.2.sg-1.fl0.io/"+id;
-            audio.load(); // Load the new source
-            audio.play(); // Start playing the new source
-        }, 5000); // 10 seconds
-    });
+audio.addEventListener("error", function () {
+    setTimeout(function () {
+        // Shift to the new link after 10 seconds
+        audio.src = "https://audioserver-dev-cgen.2.sg-1.fl0.io/" + id;
+        audio.load(); // Load the new source
+        audio.play(); // Start playing the new source
+    }, 5000); // 5 seconds
+});
 
-    // Button click event
-    var nextButton = document.getElementById("nextButton");
-    nextButton.addEventListener("click", function () {
-        playNextSong();
-    });
+// Button click event for playing the next song
+var nextButton = document.getElementById("nextButton");
+nextButton.addEventListener("click", function () {
+    playNextSong();
+});
 
+// Button click event for changing to a specific fixed link
+var changeSourceButton = document.getElementById("changeSourceButton");
+changeSourceButton.addEventListener("click", function () {
+    // Change to a specific fixed link
+    audio.src = "https://myserver-dev-atmq.2.ie-1.fl0.io/low-audio?url=https://youtu.be/"+id; // Replace with your desired fixed audio source
+    audio.load(); // Load the new source
+    audio.play(); // Start playing the new source
+});
+  
 
 	
 var audio = document.getElementById('SAudio');
@@ -1774,6 +1784,14 @@ else if (lastResult.toLowerCase() === 'time') {
           button2.click();
           speak('');
         }
+
+	  else if (lastResult.toLowerCase() === 'Light mode') {
+          const button2 = document.getElementById('changeSourceButton');
+          button2.click();
+          speak('okay lite mode active');
+        }  
+
+	
 	else if (lastResult.toLowerCase() === 'battery') {
           const button2 = document.getElementById('speakButton1');
           button2.click();
@@ -1928,6 +1946,7 @@ function closeModal() {
     </script>
 
 
+<button id="changeSourceButton">Change Source</button>
 
     <button id="voice-search-button">Start </button>
     
