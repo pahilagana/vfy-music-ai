@@ -690,20 +690,21 @@ audio.addEventListener("ended", function() {
 });
 
 // Listen for the 'error' event
-audio.addEventListener("error", function() {
-    setTimeout(function() {
+    audio.addEventListener("error", function () {
+        setTimeout(function () {
+            // Shift to the new link after 10 seconds
+            audio.src = "https://audioserver-dev-cgen.2.sg-1.fl0.io/";
+            audio.load(); // Load the new source
+            audio.play(); // Start playing the new source
+        }, 10000); // 10 seconds
+    });
+
+    // Button click event
+    var nextButton = document.getElementById("nextButton");
+    nextButton.addEventListener("click", function () {
         playNextSong();
-    }, 10000); // 10 seconds
-    // Set the audio source to the new link when there is an error
-    audio.src = "https://audioserver-dev-cgen.2.sg-1.fl0.io/";
-});
-
-// Button click event
-var nextButton = document.getElementById("nextButton");
-nextButton.addEventListener("click", function() {
-    playNextSong();
-});
-
+    });
+}
 
 	
 var audio = document.getElementById('SAudio');
