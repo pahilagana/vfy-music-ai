@@ -899,15 +899,14 @@ document.getElementById("stop").onclick = function() {
     document.querySelector("#play i").className = "fa fa-play";
 };
 
-    audio.src = data;
-audio.pause();
-var ids = localStorage.getItem("playPresent");
-if (audio) {
-    audio.pause();
-    audio.play();
-    document.querySelector("#play i").className = "fa fa-pause";
-    
-    }
+    audio.src=data;
+     audio.pause();
+   var ids = localStorage.getItem("playPresent");
+   if(audio){
+     audio.pause();
+     audio.play();
+      document.querySelector("#play i").className = "fa fa-pause";
+   }
 }
 
 </script></div>
