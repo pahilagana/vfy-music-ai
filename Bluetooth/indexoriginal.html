@@ -667,53 +667,46 @@ document.getElementById("vivekmasona").onclick = ()=>{
         //location.href= "https://vivekfy-dl-api.onrender.com/download?url=https://youtu.be/"+id;
     };
 
-  var audio = document.getElementById("SAudio");
-var Sid = 0; // Initialize Sid with the initial song index
+var audio = document.getElementById("SAudio");
 var playlistItems = document.getElementsByClassName("list");
+var currentSongIndex = 0; // Initialize with the initial song index
 
-// Function to play the next song
 function playNextSong() {
-    var nextSongIndex = Sid + 1; // Calculate the index of the next song
-
-    if (nextSongIndex < playlistItems.length) {
-        playlistItems[nextSongIndex].click(); // Play the next song
+    if (currentSongIndex < playlistItems.length - 1) {
+        playlistItems[currentSongIndex].click(); // Play the next song
         audio.play(); // Play the audio
+        currentSongIndex++; // Increment the current song index
         console.log('Automatically went to the next song and started playing.');
     } else {
         console.log('End of playlist');
-        // You may want to handle what happens when it's the end of the playlist.
+        // Handle what happens when it's the end of the playlist.
     }
 }
 
-// Listen for the 'ended' event
 audio.addEventListener("ended", function() {
-    playNextSong();
+    setTimeout(function() {
+        playNextSong();
+    }, 1000); // Wait for 1 second before playing the next song
 });
 
-// Listen for the 'error' event
-audio.addEventListener("error", function () {
-    setTimeout(function () {
+audio.addEventListener("error", function() {
+    setTimeout(function() {
         // Shift to the new link after 10 seconds
-        audio.src = "https://audioserver-dev-cgen.2.sg-1.fl0.io/" + id;
+        audio.src = "https://audioserver-dev-cgen.2.sg-1.fl0.io/" + id; // Replace with your desired new audio source
         audio.load(); // Load the new source
         audio.play(); // Start playing the new source
-    }, 5000); // 5 seconds
-});
-
-// Button click event for playing the next song
-var nextButton = document.getElementById("nextButton");
-nextButton.addEventListener("click", function () {
-    playNextSong();
+    }, 10000); // Wait for 10 seconds before changing to the new link
 });
 
 // Button click event for changing to a specific fixed link
 var changeSourceButton = document.getElementById("changeSourceButton");
-changeSourceButton.addEventListener("click", function () {
+changeSourceButton.addEventListener("click", function() {
     // Change to a specific fixed link
     audio.src = "https://audioserver-dev-cgen.2.sg-1.fl0.io/" + id; // Replace with your desired fixed audio source
     audio.load(); // Load the new source
     audio.play(); // Start playing the new source
 });
+
   
 
 	
