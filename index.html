@@ -736,16 +736,35 @@ rewindButton.addEventListener('click', function () {
 
 
 const titleaudio = document.getElementById('SAudio');
+const toggleButton = document.getElementById('toggleButton');
+let timeoutId;
 
-    audio.addEventListener('play', () => {
-      // Update the tab title when audio starts playing
-      document.title = 'VFY Music..      ' + audio.currentTime;
-    });
+audio.addEventListener('play', () => {
+  // Update the tab title when audio starts playing
+  document.title = 'VFY Music.. ' + audio.currentTime;
+});
 
-    audio.addEventListener('pause', () => {
-      // Restore the original page title when audio is paused
-      document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
-    });	
+audio.addEventListener('pause', () => {
+  // Restore the original page title when audio is paused
+  document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
+
+  // Set a timeout to click the toggleButton after 1 second
+  timeoutId = setTimeout(() => {
+    toggleButton.click();
+  }, 1000);
+});
+
+// Add a click event listener to the toggleButton
+toggleButton.addEventListener('click', () => {
+  // Your code to handle the button click event here
+  // For example, you can add code to perform some action when the button is clicked
+});
+
+// Clear the timeout if audio is played again before the 1-second delay
+audio.addEventListener('play', () => {
+  clearTimeout(timeoutId);
+});
+
 
 
 const audioPlayer = document.getElementById("SAudio");
