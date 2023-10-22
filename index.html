@@ -710,7 +710,7 @@ nextButton.addEventListener("click", function () {
 var changeSourceButton = document.getElementById("changeSourceButton");
 changeSourceButton.addEventListener("click", function () {
     // Change to a specific fixed link
-    audio.src = "https://audioserver-dev-cgen.2.sg-1.fl0.io/" + id; // Replace with your desired fixed audio source
+    audio.src = "https://myserver-dev-atmq.2.ie-1.fl0.io/low-audio?url=https://youtu.be/" + id; // Replace with your desired fixed audio source
     audio.load(); // Load the new source
     audio.play(); // Start playing the new source
 });
@@ -735,24 +735,17 @@ rewindButton.addEventListener('click', function () {
 });
 
 
-
 const titleaudio = document.getElementById('SAudio');
 
-audio.addEventListener('play', () => {
-  // Update the tab title when audio starts playing
-  document.title = 'VFY Music.. ' + audio.currentTime;
-});
+    audio.addEventListener('play', () => {
+      // Update the tab title when audio starts playing
+      document.title = 'VFY Music..      ' + audio.currentTime;
+    });
 
-audio.addEventListener('pause', () => {
-  // Restore the original page title when audio is paused
-  document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
-
-  
-});
-
-
-
-
+    audio.addEventListener('pause', () => {
+      // Restore the original page title when audio is paused
+      document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
+    });	
 
 
 const audioPlayer = document.getElementById("SAudio");
@@ -782,8 +775,7 @@ function convertTimeToSeconds(time) {
   var minutes = parseInt(parts[0]);
   var seconds = parseInt(parts[1]);
   return (minutes * 60) + seconds;
-
-}	
+}
 
 // Add an event listener to the "Play Video" button
 var playVideoButton = document.getElementById("playVideoButton");
@@ -821,7 +813,7 @@ iframe.setAttribute("autoplay", "true");
     var closeButton = document.createElement("button");
 closeButton.innerHTML = "&#10006;";
 closeButton.className = "close-button";
-closeButton.style.color = "#000"; // Text color
+closeButton.style.color = "#ffffff"; // Text color
 closeButton.style.backgroundColor = "#15e2f5"; // Background color
 closeButton.style.border = "0px"; // Remove the button's border
 closeButton.addEventListener("click", function() {
@@ -829,7 +821,7 @@ closeButton.addEventListener("click", function() {
 });
     // Style the close button to overlay the video in the center
     closeButton.style.position = "absolute";
-    closeButton.style.top = "30%";
+    closeButton.style.top = "38%";
     closeButton.style.left = "95%";
     closeButton.style.transform = "translate(-50%, -50%)"; // Center the button
 
@@ -878,13 +870,6 @@ watermarkAudio2.controls = false;
 });
 
 
-audio.addEventListener("pause", function() {
-  if (audio.paused) {
-    document.getElementById("toggleButton").click();
-  }
-});
-
-	
   document.getElementById("play").onclick = function(){
      if (audio.paused){
       document.querySelector("#play i").className = "fa fa-pause";
@@ -911,7 +896,6 @@ document.getElementById("stop").onclick = function() {
       document.querySelector("#play i").className = "fa fa-pause";
    }
 }
-
 </script></div>
 
 
@@ -1577,9 +1561,6 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
             isVoiceRecognitionOn = !isVoiceRecognitionOn;
         });
 
-
-	    
-
       recognition.onresult = function(event) {
         const lastResult = event.results[event.results.length - 1][0].transcript;
 
@@ -1804,29 +1785,13 @@ else if (lastResult.toLowerCase() === 'time') {
           speak('');
         }
 
-	  else if (lastResult.toLowerCase() === 'Live song') {
+	  else if (lastResult.toLowerCase() === 'active') {
           const button2 = document.getElementById('changeSourceButton');
           button2.click();
-          speak('okay live songs start soon');
-        }  
-else if (lastResult.toLowerCase() === 'play Live song') {
-          const button2 = document.getElementById('changeSourceButton');
-          button2.click();
-          speak('okay live songs start soon');
-        }  
-	else if (lastResult.toLowerCase() === 'Live') {
-          const button2 = document.getElementById('changeSourceButton');
-          button2.click();
-          speak('okay live songs start soon');
-        }  
-else if (lastResult.toLowerCase() === 'play this song') {
-          const button2 = document.getElementById('changeSourceButton');
-          button2.click();
-          speak('okay live songs start soon');
+          speak('okay lite mode active');
         }  
 
-
-		
+	
 	else if (lastResult.toLowerCase() === 'battery') {
           const button2 = document.getElementById('speakButton1');
           button2.click();
@@ -1857,14 +1822,6 @@ else if (lastResult.toLowerCase() === 'charging') {
       }
     </script>
 
-<script>
-  const webAudio = document.getElementById('#SAudio'); // Replace with your actual audio element
-  webAudio.addEventListener('pause', function () {
-    toggleButton.click();
-  });
-</script>
-
-	
 
 <butto id="nextButton"></butto>
 <butto id="stop"></butto>
@@ -1989,9 +1946,9 @@ function closeModal() {
     </script>
 
 
-<button id="changeSourceButton"></button>
+<button id="changeSourceButton">Change Source</button>
 
-    <button id="voice-search-button"></button>
+    <button id="voice-search-button">Start </button>
     
     <script src="https://apis.google.com/js/api.js"></script>
     
@@ -2081,4 +2038,5 @@ function closeModal() {
         });
       });
     </script>
+
 
