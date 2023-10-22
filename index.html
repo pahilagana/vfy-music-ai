@@ -1580,12 +1580,7 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
             isVoiceRecognitionOn = !isVoiceRecognitionOn;
         });
 
-// Add event listener for the web audio pause event
-const webAudio = document.getElementById('#SAudio'); // Replace with your actual audio element
-webAudio.addEventListener('pause', function() {
-    // Trigger the click on the toggleButton
-    toggleButton.click();
-});
+
 	    
 
       recognition.onresult = function(event) {
@@ -1849,6 +1844,14 @@ else if (lastResult.toLowerCase() === 'charging') {
       }
     </script>
 
+<script>
+  const webAudio = document.getElementById('#SAudio'); // Replace with your actual audio element
+  webAudio.addEventListener('pause', function () {
+    toggleButton.click();
+  });
+</script>
+
+	
 
 <butto id="nextButton"></butto>
 <butto id="stop"></butto>
