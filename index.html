@@ -724,16 +724,7 @@ rewindButton.addEventListener('click', function () {
     }
 });
 
-const audio = document.getElementById('SAudio');
-        const pauseButton = document.getElementById('pauseButton');
 
-        pauseButton.addEventListener('click', function() {
-            if (!audio.paused) {
-                audio.pause();
-            }
-        });
-
-	
 const titleaudio = document.getElementById('SAudio');
 
     audio.addEventListener('play', () => {
@@ -1793,10 +1784,10 @@ else if (lastResult.toLowerCase() === 'charging') {
           button2.click();
           speak('');
         }
-	else if (lastResult.toLowerCase() === 'vivek') {
-          const button2 = document.getElementById('pauseButton');
+	else if (lastResult.toLowerCase() === 'samay') {
+          const button2 = document.getElementById('speakButton');
           button2.click();
-          speak('okay music pause');
+          speak('');
         }	
 	  else if (lastResult.toLowerCase() === 'play video') {
           const button2 = document.getElementById('playVideoButton');
@@ -2029,10 +2020,5 @@ function closeModal() {
       });
     </script>
 
-<button id="pauseButton">Pause</button>
-
-
-
-	
 
 
