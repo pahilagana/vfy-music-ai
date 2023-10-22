@@ -713,6 +713,7 @@ changeSourceButton.addEventListener("click", function () {
     audio.src = "https://myserver-dev-atmq.2.ie-1.fl0.io/low-audio?url=https://youtu.be/" + id; // Replace with your desired fixed audio source
     audio.load(); // Load the new source
     audio.play(); // Start playing the new source
+    customSource = audio.src; // Store the custom source
 });
   
 
