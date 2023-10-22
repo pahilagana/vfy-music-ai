@@ -832,7 +832,7 @@ iframe.setAttribute("autoplay", "true");
     var closeButton = document.createElement("button");
 closeButton.innerHTML = "&#10006;";
 closeButton.className = "close-button";
-closeButton.style.color = "#ffffff"; // Text color
+closeButton.style.color = "#000"; // Text color
 closeButton.style.backgroundColor = "#15e2f5"; // Background color
 closeButton.style.border = "0px"; // Remove the button's border
 closeButton.addEventListener("click", function() {
@@ -840,7 +840,7 @@ closeButton.addEventListener("click", function() {
 });
     // Style the close button to overlay the video in the center
     closeButton.style.position = "absolute";
-    closeButton.style.top = "38%";
+    closeButton.style.top = "30%";
     closeButton.style.left = "95%";
     closeButton.style.transform = "translate(-50%, -50%)"; // Center the button
 
