@@ -1955,8 +1955,8 @@ z-index: 999999;
   <div class="modal-content">
     <span onclick="closeModal()" style="float: right;"></span>
 
-<div id="search-result"></div>
-	  
+<div id="search-result1"></div>
+<div id="search-result"></div>	  
     <audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
 
 	   
@@ -2056,7 +2056,7 @@ function closeModal() {
 
                 recognition.onend = function () {
                     // Enable the button after recognition has started
-                    document.getElementById('voice-search-button').disabled = false;
+                    document.getElementById('voice-search-button1').disabled = false;
                 };
 
                 recognition.start();
