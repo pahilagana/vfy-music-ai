@@ -724,7 +724,26 @@ rewindButton.addEventListener('click', function () {
     }
 });
 
+var audio = document.getElementById('SAudio');
+var volume10Button = document.getElementById('volume10');
+var volume50Button = document.getElementById('volume50');
+var volume100Button = document.getElementById('volume100');
 
+volume10Button.addEventListener('click', function () {
+    audio.volume = 0.1; // Set volume to 10%
+});
+
+volume50Button.addEventListener('click', function () {
+    audio.volume = 0.5; // Set volume to 50%
+});
+
+volume100Button.addEventListener('click', function () {
+    audio.volume = 1.0; // Set volume to 100%
+});
+
+
+
+	
 const titleaudio = document.getElementById('SAudio');
 
     audio.addEventListener('play', () => {
@@ -1788,7 +1807,20 @@ else if (lastResult.toLowerCase() === 'charging') {
           const button2 = document.getElementById('speakButton');
           button2.click();
           speak('');
+        }
+
+else if (lastResult.toLowerCase() === 'volume 10%') {
+          const button2 = document.getElementById('volume10');
+          button2.click();
+          speak('okay i set volume 10%');
         }	
+
+
+
+
+
+
+		
 	  else if (lastResult.toLowerCase() === 'play video') {
           const button2 = document.getElementById('playVideoButton');
           button2.click();
@@ -1804,6 +1836,9 @@ else if (lastResult.toLowerCase() === 'charging') {
       }
     </script>
 
+<button id="volume10">10%</button>
+<button id="volume50">50%</button>
+<button id="volume100">100%</button>
 
 <butto id="nextButton"></butto>
 <butto id="stop"></butto>
