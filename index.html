@@ -2028,12 +2028,10 @@ function closeModal() {
 
 
 
-    <button id="voice-search-button">Start </button>
+    
 	<button id="voice-search-button1">Start </button>
     
-    <script src="https://apis.google.com/js/api.js"></script>
     
-  <script src="https://apis.google.com/js/api.js"></script>
         <script src="https://apis.google.com/js/api.js"></script>
     <script>
         // Function to clean up text and remove special characters
@@ -2107,12 +2105,17 @@ function closeModal() {
                 discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest'],
             }).then(function () {
                 // When the client is initialized, add a click event listener to the voice search button
-                document.getElementById('voice-search-button').addEventListener('click', startVoiceSearch);
+                document.getElementById('voice-search-button1').addEventListener('click', startVoiceSearch);
             });
         });
     </script>
 
-<script>
+
+	
+	<button id="voice-search-button">Start </button>
+  <script src="https://apis.google.com/js/api.js"></script>
+	
+	<script>
       // Function to clean up text and remove special characters
       function cleanText(text) {
         // Use a regular expression to remove special characters and non-Hindi text
