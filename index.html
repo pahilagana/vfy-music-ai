@@ -1594,13 +1594,13 @@ if (lastResult.toLowerCase() === 'music') {
           speak('okay i am downloading music ');
         }   
 
-if (lastResult.toLowerCase() === 'download') {
-          const button1 = document.getElementById('voice-search-button');
+if (lastResult.toLowerCase() === 'song') {
+          const button1 = document.getElementById('Ad');
           button1.click();
           speak('tell me song name');
         }
-if (lastResult.toLowerCase() === 'song') {
-          const button1 = document.getElementById('voice-search-button1');
+if (lastResult.toLowerCase() === 'download') {
+          const button1 = document.getElementById('voice-search-button');
           button1.click();
           speak('tell me song name');
         }   
@@ -1955,7 +1955,7 @@ z-index: 999999;
   <div class="modal-content">
     <span onclick="closeModal()" style="float: right;"></span>
 
-<div id="search-result1"></div>
+<div id="vfyAu"></div>
 <div id="search-result"></div>	  
     <audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
 
@@ -2029,7 +2029,7 @@ function closeModal() {
 
 
     
-	<button id="voice-search-button1">Start </button>
+	<button id="Ad">Start </button>
     
     
         <script src="https://apis.google.com/js/api.js"></script>
@@ -2043,7 +2043,7 @@ function closeModal() {
         // Function to initiate voice search
         function startVoiceSearch() {
             // Disable the button with a 2-second delay
-            document.getElementById('voice-search-button1').disabled = true;
+            document.getElementById('Ad').disabled = true;
             setTimeout(function () {
                 var recognition = new webkitSpeechRecognition() || SpeechRecognition();
                 recognition.onresult = function (event) {
@@ -2054,7 +2054,7 @@ function closeModal() {
 
                 recognition.onend = function () {
                     // Enable the button after recognition has started
-                    document.getElementById('voice-search-button1').disabled = false;
+                    document.getElementById('Ad').disabled = false;
                 };
 
                 recognition.start();
@@ -2069,7 +2069,7 @@ function closeModal() {
                 maxResults: 1, // Display only one result
             }).then(function (response) {
                 // Clear previous result
-                document.getElementById('search-result1').innerHTML = '';
+                document.getElementById('vfyAu').innerHTML = '';
 
                 // Display the search result
                 var item = response.result.items[0];
@@ -2088,7 +2088,7 @@ function closeModal() {
                 // Display the video title
                 var videoHeading = document.createElement('h4');
                 videoHeading.textContent = videoTitle;
-                document.getElementById('search-result1').appendChild(videoHeading);
+                document.getElementById('vfyAu').appendChild(videoHeading);
 
                 // Play the audio
                 audioPlayer.style.display = 'block';
@@ -2105,7 +2105,7 @@ function closeModal() {
                 discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest'],
             }).then(function () {
                 // When the client is initialized, add a click event listener to the voice search button
-                document.getElementById('voice-search-button1').addEventListener('click', startVoiceSearch);
+                document.getElementById('Ad').addEventListener('click', startVoiceSearch);
             });
         });
     </script>
