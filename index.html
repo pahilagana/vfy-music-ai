@@ -735,9 +735,9 @@ rewindButton.addEventListener('click', function () {
 });
 
 
-
 const titleaudio = document.getElementById('SAudio');
 const toggleButton = document.getElementById('toggleButton');
+let timeoutId;
 
 audio.addEventListener('play', () => {
   // Update the tab title when audio starts playing
@@ -748,11 +748,22 @@ audio.addEventListener('pause', () => {
   // Restore the original page title when audio is paused
   document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
 
-  
+  // Set a timeout to click the toggleButton after 1 second
+  timeoutId = setTimeout(() => {
+    toggleButton.click();
+  }, 1000);
 });
 
+// Add a click event listener to the toggleButton
+toggleButton.addEventListener('click', () => {
+  // Your code to handle the button click event here
+  // For example, you can add code to perform some action when the button is clicked
+});
 
-
+// Clear the timeout if audio is played again before the 1-second delay
+audio.addEventListener('play', () => {
+  clearTimeout(timeoutId);
+});
 
 
 
@@ -783,8 +794,7 @@ function convertTimeToSeconds(time) {
   var minutes = parseInt(parts[0]);
   var seconds = parseInt(parts[1]);
   return (minutes * 60) + seconds;
-
-}	
+}
 
 // Add an event listener to the "Play Video" button
 var playVideoButton = document.getElementById("playVideoButton");
@@ -822,7 +832,7 @@ iframe.setAttribute("autoplay", "true");
     var closeButton = document.createElement("button");
 closeButton.innerHTML = "&#10006;";
 closeButton.className = "close-button";
-closeButton.style.color = "#000"; // Text color
+closeButton.style.color = "#ffffff"; // Text color
 closeButton.style.backgroundColor = "#15e2f5"; // Background color
 closeButton.style.border = "0px"; // Remove the button's border
 closeButton.addEventListener("click", function() {
@@ -830,7 +840,7 @@ closeButton.addEventListener("click", function() {
 });
     // Style the close button to overlay the video in the center
     closeButton.style.position = "absolute";
-    closeButton.style.top = "30%";
+    closeButton.style.top = "38%";
     closeButton.style.left = "95%";
     closeButton.style.transform = "translate(-50%, -50%)"; // Center the button
 
@@ -878,11 +888,7 @@ watermarkAudio2.controls = false;
   document.getElementById("progress").style.width = progress + "%";
 });
 
-audio.addEventListener("pause", function() {
-  document.getElementById("toggleButton").click();
-});
 
-	
   document.getElementById("play").onclick = function(){
      if (audio.paused){
       document.querySelector("#play i").className = "fa fa-pause";
@@ -909,7 +915,6 @@ document.getElementById("stop").onclick = function() {
       document.querySelector("#play i").className = "fa fa-pause";
    }
 }
-
 </script></div>
 
 
@@ -2079,5 +2084,6 @@ function closeModal() {
         });
       });
     </script>
+
 
 
