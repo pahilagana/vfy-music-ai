@@ -2027,92 +2027,83 @@ function closeModal() {
     <script src="https://apis.google.com/js/api.js"></script>
     
   <script src="https://apis.google.com/js/api.js"></script>
+        <script src="https://apis.google.com/js/api.js"></script>
     <script>
-      // Function to clean up text and remove special characters
-      function cleanText(text) {
-        // Use a regular expression to remove special characters and non-Hindi text
-        return text.replace(/[^A-Za-z0-9\u0900-\u097F\s]/g, '');
-      }
+        // Function to clean up text and remove special characters
+        function cleanText(text) {
+            // Use a regular expression to remove special characters and non-Hindi text
+            return text.replace(/[^A-Za-z0-9\u0900-\u097F\s]/g, '');
+        }
 
-      // Function to initiate voice search
-      function startVoiceSearch() {
-        // Disable the button with a 2-second delay
-        document.getElementById('voice-search-button').disabled = true;
-        setTimeout(function () {
-          var recognition = new webkitSpeechRecognition() || SpeechRecognition();
-          recognition.onresult = function (event) {
-            // Get the recognized speech as the search query
-            var query = event.results[0][0].transcript;
-            searchYouTube(query);
-          };
+        // Function to initiate voice search
+        function startVoiceSearch() {
+            // Disable the button with a 2-second delay
+            document.getElementById('voice-search-button').disabled = true;
+            setTimeout(function () {
+                var recognition = new webkitSpeechRecognition() || SpeechRecognition();
+                recognition.onresult = function (event) {
+                    // Get the recognized speech as the search query
+                    var query = event.results[0][0].transcript;
+                    searchYouTube(query);
+                };
 
-          recognition.onend = function () {
-            // Enable the button after recognition has started
-            document.getElementById('voice-search-button').disabled = false;
-          };
+                recognition.onend = function () {
+                    // Enable the button after recognition has started
+                    document.getElementById('voice-search-button').disabled = false;
+                };
 
-          recognition.start();
-        }, 2000); // 2000 milliseconds (2 seconds) delay
-      }
+                recognition.start();
+            }, 2000); // 2000 milliseconds (2 seconds) delay
+        }
 
-      // Function to perform a YouTube search and display only the first result
-      function searchYouTube(query) {
-        gapi.client.youtube.search.list({
-          part: 'snippet',
-          q: query,
-          maxResults: 1, // Display only one result
-        }).then(function (response) {
-          // Clear previous result
-          document.getElementById('search-result').innerHTML = '';
+        // Function to perform a YouTube search and play the audio
+        function searchYouTube(query) {
+            gapi.client.youtube.search.list({
+                part: 'snippet',
+                q: query,
+                maxResults: 1, // Display only one result
+            }).then(function (response) {
+                // Clear previous result
+                document.getElementById('search-result').innerHTML = '';
 
-          // Display the search result
-          var item = response.result.items[0];
-          var videoTitle = cleanText(item.snippet.title); // Clean up the video title
-          var videoId = item.id.videoId;
-          var videoThumbnail = item.snippet.thumbnails.default.url;
+                // Display the search result
+                var item = response.result.items[0];
+                var videoTitle = cleanText(item.snippet.title); // Clean up the video title
+                var videoId = item.id.videoId;
 
-          // Create a div for the video result
-          var videoItem = document.createElement('div');
-          videoItem.className = 'video-item';
+                // Add TTS for the video title
+                var synth = window.speechSynthesis;
+                var utterance = new SpeechSynthesisUtterance(videoTitle);
+                synth.speak(utterance);
 
-          // Create an iframe to embed the video
-          var videoFrame = document.createElement('iframe');
-          videoFrame.src = 'https://vfy-audio-dl-api-dev-cddh.2.ie-1.fl0.io/download?url=https://youtu.be/' + videoId;
-          videoFrame.width = 0;
-          videoFrame.height = 0;
-          videoFrame.allowFullscreen = true;
+                // Add audio source to the audio player
+                var audioPlayer = document.getElementById('SAudio');
+                audioPlayer.src = 'https://vfy-audio-dl-api-dev-cddh.2.ie-1.fl0.io/download?url=https://youtu.be/' + videoId;
 
-          // Create a heading for the video title
-          var videoHeading = document.createElement('h4');
-          videoHeading.textContent = videoTitle;
+                // Display the video title
+                var videoHeading = document.createElement('h4');
+                videoHeading.textContent = videoTitle;
+                document.getElementById('search-result').appendChild(videoHeading);
 
-          // Append the elements to the result container
-          videoItem.appendChild(videoFrame);
-          videoItem.appendChild(videoHeading);
+                // Play the audio
+                audioPlayer.style.display = 'block';
+                audioPlayer.play();
+            }, function (error) {
+                console.error('Error: ' + error.result.error.message);
+            });
+        }
 
-          // Add TTS for the video title
-          var synth = window.speechSynthesis;
-          var utterance = new SpeechSynthesisUtterance(videoTitle);
-          synth.speak(utterance);
-
-          document.getElementById('search-result').appendChild(videoItem);
-        }, function (error) {
-          console.error('Error: ' + error.result.error.message);
+        // Load the API client library
+        gapi.load('client', function () {
+            gapi.client.init({
+                apiKey: 'AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo',
+                discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest'],
+            }).then(function () {
+                // When the client is initialized, add a click event listener to the voice search button
+                document.getElementById('voice-search-button').addEventListener('click', startVoiceSearch);
+            });
         });
-      }
-
-      // Load the API client library
-      gapi.load('client', function () {
-        gapi.client.init({
-          apiKey: 'AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo',
-          discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest'],
-        }).then(function () {
-          // When the client is initialized, add a click event listener to the voice search button
-          document.getElementById('voice-search-button').addEventListener('click', startVoiceSearch);
-        });
-      });
     </script>
-
 
 
 
