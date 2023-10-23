@@ -514,7 +514,7 @@ background-color: transparent;
 
 
 
-
+<li><a id="previousButton"><i class="fa fa-arrow-left" aria-hidden="true"></i></a></li>
  <li><a id="stop"><i class="fa fa-stop" aria-hidden="true"></i></a></li>
       <li><a id="play"><i class="fa fa-play" aria-hidden="true"></i></a></li>
 <li><a id="nextButton"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></li>
@@ -699,11 +699,18 @@ audio.addEventListener("ended", function() {
         }, 5000); // 10 seconds
     });
 
-    // Button click event
-    var nextButton = document.getElementById("nextButton");
-    nextButton.addEventListener("click", function () {
-        playNextSong();
-    });
+    // Button click event for next song
+var nextButton = document.getElementById("nextButton");
+nextButton.addEventListener("click", function () {
+    playNextSong();
+});
+
+// Button click event for previous song
+var previousButton = document.getElementById("previousButton");
+previousButton.addEventListener("click", function () {
+    playPreviousSong();
+});
+
 
 
 	
