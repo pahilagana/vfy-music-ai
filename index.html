@@ -667,13 +667,12 @@ document.getElementById("vivekmasona").onclick = ()=>{
         //location.href= "https://vivekfy-dl-api.onrender.com/download?url=https://youtu.be/"+id;
     };
 
-  var audio = document.getElementById("SAudio");
-var Sid = 0; // Initialize Sid with the initial song index
-var playlistItems = document.getElementsByClassName("list");
+    var audio = document.getElementById("SAudio");
 
 // Function to play the next song
 function playNextSong() {
     var nextSongIndex = Sid + 1; // Calculate the index of the next song
+    var playlistItems = document.getElementsByClassName("list");
 
     if (nextSongIndex < playlistItems.length) {
         playlistItems[nextSongIndex].click(); // Play the next song
@@ -691,30 +690,21 @@ audio.addEventListener("ended", function() {
 });
 
 // Listen for the 'error' event
-audio.addEventListener("error", function () {
-    setTimeout(function () {
-        // Shift to the new link after 10 seconds
-        audio.src = "https://audioserver-dev-cgen.2.sg-1.fl0.io/" + id;
-        audio.load(); // Load the new source
-        audio.play(); // Start playing the new source
-    }, 5000); // 5 seconds
-});
+    audio.addEventListener("error", function () {
+        setTimeout(function () {
+            // Shift to the new link after 10 seconds
+            audio.src = "https://audioserver-dev-cgen.2.sg-1.fl0.io/"+id;
+            audio.load(); // Load the new source
+            audio.play(); // Start playing the new source
+        }, 5000); // 10 seconds
+    });
 
-// Button click event for playing the next song
-var nextButton = document.getElementById("nextButton");
-nextButton.addEventListener("click", function () {
-    playNextSong();
-});
+    // Button click event
+    var nextButton = document.getElementById("nextButton");
+    nextButton.addEventListener("click", function () {
+        playNextSong();
+    });
 
-// Button click event for changing to a specific fixed link
-var changeSourceButton = document.getElementById("changeSourceButton");
-changeSourceButton.addEventListener("click", function () {
-    // Change to a specific fixed link
-    audio.src = "https://myserver-dev-atmq.2.ie-1.fl0.io/low-audio?url=https://youtu.be/" + id; // Replace with your desired fixed audio source
-    audio.load(); // Load the new source
-    audio.play(); // Start playing the new source
-});
-  
 
 	
 var audio = document.getElementById('SAudio');
@@ -736,35 +726,16 @@ rewindButton.addEventListener('click', function () {
 
 
 const titleaudio = document.getElementById('SAudio');
-const toggleButton = document.getElementById('toggleButton');
-let timeoutId;
 
-audio.addEventListener('play', () => {
-  // Update the tab title when audio starts playing
-  document.title = 'VFY Music.. ' + audio.currentTime;
-});
+    audio.addEventListener('play', () => {
+      // Update the tab title when audio starts playing
+      document.title = 'VFY Music..      ' + audio.currentTime;
+    });
 
-audio.addEventListener('pause', () => {
-  // Restore the original page title when audio is paused
-  document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
-
-  // Set a timeout to click the toggleButton after 1 second
-  timeoutId = setTimeout(() => {
-    toggleButton.click();
-  }, 1000);
-});
-
-// Add a click event listener to the toggleButton
-toggleButton.addEventListener('click', () => {
-  // Your code to handle the button click event here
-  // For example, you can add code to perform some action when the button is clicked
-});
-
-// Clear the timeout if audio is played again before the 1-second delay
-audio.addEventListener('play', () => {
-  clearTimeout(timeoutId);
-});
-
+    audio.addEventListener('pause', () => {
+      // Restore the original page title when audio is paused
+      document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
+    });	
 
 
 const audioPlayer = document.getElementById("SAudio");
@@ -1580,9 +1551,6 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
             isVoiceRecognitionOn = !isVoiceRecognitionOn;
         });
 
-
-	    
-
       recognition.onresult = function(event) {
         const lastResult = event.results[event.results.length - 1][0].transcript;
 
@@ -1806,14 +1774,6 @@ else if (lastResult.toLowerCase() === 'time') {
           button2.click();
           speak('');
         }
-
-	  else if (lastResult.toLowerCase() === 'active') {
-          const button2 = document.getElementById('changeSourceButton');
-          button2.click();
-          speak('okay lite mode active');
-        }  
-
-	
 	else if (lastResult.toLowerCase() === 'battery') {
           const button2 = document.getElementById('speakButton1');
           button2.click();
@@ -1844,14 +1804,6 @@ else if (lastResult.toLowerCase() === 'charging') {
       }
     </script>
 
-<script>
-  const webAudio = document.getElementById('#SAudio'); // Replace with your actual audio element
-  webAudio.addEventListener('pause', function () {
-    toggleButton.click();
-  });
-</script>
-
-	
 
 <butto id="nextButton"></butto>
 <butto id="stop"></butto>
@@ -1976,7 +1928,6 @@ function closeModal() {
     </script>
 
 
-<button id="changeSourceButton">Change Source</button>
 
     <button id="voice-search-button">Start </button>
     
@@ -2068,6 +2019,7 @@ function closeModal() {
         });
       });
     </script>
+
 
 
 
