@@ -1863,6 +1863,16 @@ else if (lastResult.toLowerCase() === 'volume full') {
           button2.click();
           speak('okay i set volume 100%');
         }	
+	else if (lastResult.toLowerCase() === 'full volume') {
+          const button2 = document.getElementById('volume100');
+          button2.click();
+          speak('okay i set volume full');
+        }
+	else if (lastResult.toLowerCase() === 'full sound') {
+          const button2 = document.getElementById('volume100');
+          button2.click();
+          speak('okay i set volume full');
+        }
 	else if (lastResult.toLowerCase() === 'sound full') {
           const button2 = document.getElementById('volume100');
           button2.click();
