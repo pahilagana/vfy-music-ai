@@ -1594,11 +1594,17 @@ if (lastResult.toLowerCase() === 'music') {
           speak('okay i am downloading music ');
         }   
 
-if (lastResult.toLowerCase() === 'song') {
+if (lastResult.toLowerCase() === 'play song') {
           const button1 = document.getElementById('AdAudio');
           button1.click();
           speak('tell me song name');
         }
+if (lastResult.toLowerCase() === 'play') {
+          const button1 = document.getElementById('AdAudio');
+          button1.click();
+          speak('tell me song name');
+        }
+	      
 if (lastResult.toLowerCase() === 'download') {
           const button1 = document.getElementById('AdVideo');
           button1.click();
@@ -1628,7 +1634,7 @@ if (lastResult.toLowerCase() === 'start') {
           speak('okay music start');
         }   
 
-	if (lastResult.toLowerCase() === 'play') {
+	if (lastResult.toLowerCase() === 'chalu') {
           const button1 = document.getElementById('play');
           button1.click();
           speak('okay music play');
@@ -1848,7 +1854,7 @@ else if (lastResult.toLowerCase() === 'volume 50%') {
           speak('okay i set volume 50%');
         }
 	
-else if (lastResult.toLowerCase() === 'medium sound') {
+else if (lastResult.toLowerCase() === 'medium') {
           const button2 = document.getElementById('volume50');
           button2.click();
           speak('okay i set volume 50%');
