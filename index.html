@@ -416,8 +416,7 @@ background-color: transparent;
 
 
 	    
-<div id="songTitle"></div>
-	    
+
 	    
 <h1>VFY
 <span id="Tube">Music<span></span></span></h1>
@@ -668,14 +667,7 @@ function loadSong(song, ind) {
     localStorage.setItem("thumbnail", thumbnail);
     $("#thumbnail").attr("src", thumbnail);
 
-// Assuming you have the title of the current song in a variable called "currentSongTitle"
-    var currentSongTitle = "Title of the Currently Playing Song"; // Replace this with the actual title
 
-    // Display the current song's title in the "song title" div
-    $("#songTitle").text(currentSongTitle);
-}
-
-	
 // Set the profile ID
     localStorage.setItem("profileID", id);
     $("#profileID").text("Profile ID: " + id);
