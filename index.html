@@ -416,8 +416,8 @@ background-color: transparent;
 
 
 	    
-<div id="songTitle"></div>
-
+<<div id="songTitle"></div>
+<div id="currentTime"></div>
 	    
 	    
 <h1>VFY
@@ -678,16 +678,27 @@ function loadSong(song, ind) {
     $("#profileThumbnail").data("videoId", id);
 
 	play(id, indId);
+	}
 
-// Assuming you have the title of the current song in a variable called "currentSongTitle"
-    var currentSongTitle = "+title; // Replace this with the actual title
+// Replace these variables with your actual song title and current time retrieval logic
+    var currentSongTitle = "Title of the Currently Playing Song";
+    var currentTime = getCurrentPlaybackTime();
 
-    // Display the current song's title in the "song title" div
-    $("#songTitle").text(currentSongTitle);
+    // Display the current song's title and current time in the "songTitle" and "currentTime" divs
+    $("#songTitle").text("Currently Playing: " + currentSongTitle);
+    $("#currentTime").text("Current Time: " + currentTime);
+}
 
+// Function to get the current playback time (replace with your own logic)
+function getCurrentPlaybackTime() {
+    // Replace this with your own code to retrieve the current time
+    // For example, if you have a video or audio element:
+    // return document.getElementById("yourAudioOrVideoElementID").currentTime;
+    return "00:03:25"; // Replace with the actual current time
+}
 
 	
-}
+
 
 function play(id,Sid){
       //data = "https://vivekfy.onrender.com/audio/"+id;
