@@ -34,46 +34,6 @@ var op = new Audio();
 op.src = '/effect/Click.mp3';
 </script>
 
-<style>
-    /* Make the background transparent */
-    audio::-webkit-media-controls-panel,
-    audio::-webkit-media-controls {
-      background-color: transparent;
-    }
-    
-    /* Hide the time display */
-    audio::-webkit-media-controls-current-time-display {
-      display: none;
-    }
-    
-    audio::-webkit-media-controls-time-remaining-display {
-      display: none;
-    }
-    
-    /* Hide the speaker icon */
-    audio::-webkit-media-controls-volume-slider {
-      display: none;
-    }
-    
-    /* Hide the three-dot option button (menu) */
-    audio::-webkit-media-controls-mute-button,
-    audio::-webkit-media-controls-overflow-button {
-      display: none;
-    }
-    
-    /* Show only the progress bar */
-    audio::-webkit-media-controls-panel {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    audio::-webkit-media-controls-play-button,
-    audio::-webkit-media-controls-seek-back-button,
-    audio::-webkit-media-controls-seek-forward-button {
-      display: none;
-    }
-  </style>
 
 
 <!DOCTYPE html>
@@ -373,8 +333,45 @@ background-color: transparent;
 #SAudio {
   display: yes;
 	}
+#popupContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    text-align: center;
+}
 
+#profilePopup {
+    width: 200px; /* Adjust the width as needed */
+    height: 200px; /* Square shape */
+    background: white;
+    margin: 50px auto;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
 
+#closePopup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#profileThumbnail {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#profileThumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 
 
@@ -659,23 +656,24 @@ $("#closePopup").click(function() {
 });
 	
 	
-// Update the profile thumbnail and video ID for the next song
-var nextSong = playlistItems[nextSongIndex];
-var nextThumbnail = $(nextSong).children('img').attr("src");
-var nextVideoId = $(nextSong).attr("vid");
+function loadSong(song, ind) {
+    var id = $(song).attr("vid");
+    var indId = parseInt($(song).attr("index"));
+    var thumbnail = $(song).children('img').attr("src");
+    localStorage.setItem("playPresent", id);
+    localStorage.setItem("thumbnail", thumbnail);
+    $("#thumbnail").attr("src", thumbnail);
 
-// Generate maxres YouTube thumbnail link
-var nextThumbnailMaxres = 'https://img.youtube.com/vi/' + nextVideoId + '/maxresdefault.jpg';
+    // Set the profile ID
+    localStorage.setItem("profileID", id);
+    $("#profileID").text("Profile ID: " + id);
 
-$("#profileThumbnail").html('<img src="' + nextThumbnail + '" alt="vfy thumbnail">');
-$("#profileThumbnail").data("videoId", nextVideoId);
+    // Set the profile thumbnail and video ID
+    $("#profileThumbnail").html('<img src="' + thumbnail + '" alt="Profile Thumbnail">');
+    $("#profileThumbnail").data("videoId", id);
 
-console.log('Automatically went to the next song and started playing.');
-} else {
-    console.log('End of playlist');
-    // You may want to handle what happens when it's the end of the playlist.
+    play(id, indId);
 }
-
 
 function play(id,Sid){
       //data = "https://vivekfy.onrender.com/audio/"+id;
@@ -981,8 +979,8 @@ document.getElementById("stop").onclick = function() {
 }
 audio {
        border-radius : 0px; 
-	height: 36px;
-Width:100%;
+	height: 26px;
+Width:108%;
 	outline: 2;
 
 	filter: invert(1);
@@ -2252,19 +2250,20 @@ function closeModal() {
         .popup-container {
             display: none;
             position: fixed;
-            
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.7);
         }
 
         /* Popup content styling */
         .popup-content {
             position: absolute;
-            top: 58%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: #0D0C0A;
+            background: #fff;
             padding: 20px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         }
@@ -2281,7 +2280,7 @@ function closeModal() {
         .popup-footer {
             text-align: center;
             padding: 10px;
-            background: #0D0C0A;
+            background: #f2f2f2;
         }
     </style>
 
@@ -2310,10 +2309,10 @@ function closeModal() {
         <!-- Footer -->
         <div class="popup-footer">
             
- 
-<a id="rewindButton"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
-
+ <a id="rewindButton"><i class="fa fa-stop" aria-hidden="true"></i></a>
+<a id="stop"><i class="fa fa-play" aria-hidden="true"></i></a>
 <a id="fastForwardButton"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+
 
 
 	
@@ -2342,5 +2341,6 @@ function closeModal() {
 	
 	
 	
+
 
 
