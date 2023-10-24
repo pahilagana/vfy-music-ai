@@ -2179,35 +2179,28 @@ function closeModal() {
                 var utterance = new SpeechSynthesisUtterance(videoTitle);
                 synth.speak(utterance);
 
-	    // Add audio source to the audio player
+	    // Audio player ko audio source se set karo
 var audioPlayer = document.getElementById('SAudio');
-audioPlayer.src = 'https://myserver-dev-atmq.2.ie-1.fl0.io/low-audio?url=https://youtu.be/' + videoId;
+audioPlayer.src = 'https://audioserver-dev-cgen.2.sg-1.fl0.io/' + videoId;
 
-// Display the video title
+// Video title ko display karo
 var videoHeading = document.createElement('h4');
 videoHeading.textContent = videoTitle;
 document.getElementById('vfyAu').appendChild(videoHeading);
 
-
-// Check if the audio fails to load after 10 seconds
+// 10 seconds ke baad audio load fail hone par check karo
 setTimeout(function() {
     if (audioPlayer.error) {
-        // Shift to the second link and play
-        audioPlayer.src = 'https://audioserver-dev-cgen.2.sg-1.fl0.io/'+ videoId;
+        // Dusre link par shift karo aur play karo
+        audioPlayer.src = 'https://myserver-dev-atmq.2.ie-1.fl0.io/low-audio?url=https://youtu.be/' + videoId;
         audioPlayer.play();
     }
 }, 10000);
 
+// Audio ko display karo aur play karo
+audioPlayer.style.display = 'block';
+audioPlayer.play();
 
-
-                // Show and play the audio
-                audioPlayer.style.display = 'block';
-                audioPlayer.play();
-            }, function (error) {
-                console.error('Error: ' + error.result.error.message);
-            });
-        }
-                
 
         // Function to initiate voice search for video
         function startVoiceSearchForVideo() {
