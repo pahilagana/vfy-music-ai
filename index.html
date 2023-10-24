@@ -669,16 +669,6 @@ function loadSong(song, ind) {
     localStorage.setItem("thumbnail", thumbnail);
     $("#thumbnail").attr("src", thumbnail);
 
-    // Set the profile ID
-    localStorage.setItem("profileID", id);
-    $("#profileID").text("Profile ID: " + id);
-
-    // Set the profile thumbnail and video ID
-    $("#profileThumbnail").html('<img src="' + thumbnail + '" alt="Profile Thumbnail">');
-    $("#profileThumbnail").data("videoId", id);
-
-	play(id, indId);
-	
 
 // Replace these variables with your actual song title and current time retrieval logic
     var currentSongTitle = "Title of the Currently Playing Song";
@@ -696,6 +686,22 @@ function getCurrentPlaybackTime() {
     // return document.getElementById("yourAudioOrVideoElementID").currentTime;
     return "00:03:25"; // Replace with the actual current time
 }
+
+
+
+
+	
+    // Set the profile ID
+    localStorage.setItem("profileID", id);
+    $("#profileID").text("Profile ID: " + id);
+
+    // Set the profile thumbnail and video ID
+    $("#profileThumbnail").html('<img src="' + thumbnail + '" alt="Profile Thumbnail">');
+    $("#profileThumbnail").data("videoId", id);
+
+	play(id, indId);
+	
+
 
 }	
 
