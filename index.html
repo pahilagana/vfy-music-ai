@@ -2132,82 +2132,146 @@ function closeModal() {
     <iframe id="video-player" width="0" height="0" style="display: none" allowfullscreen></iframe>
 
     <script>
-    // Function to clean up text and remove special characters
-    function cleanText(text) {
-        // Use a regular expression to remove special characters and non-Hindi text
-        return text.replace(/[^A-Za-z0-9\u0900-\u097F\s]/g, '');
-    }
+        // Function to clean up text and remove special characters
+        function cleanText(text) {
+            // Use a regular expression to remove special characters and non-Hindi text
+            return text.replace(/[^A-Za-z0-9\u0900-\u097F\s]/g, '');
+        }
 
-    // Function to initiate voice search for audio
-    function startVoiceSearchForAudio() {
-        // Disable the audio button with a 2-second delay
-        document.getElementById('AdAudio').disabled = true;
-        setTimeout(function () {
-            var recognition = new webkitSpeechRecognition() || SpeechRecognition();
-            recognition.onresult = function (event) {
-                // Get the recognized speech as the search query
-                var query = event.results[0][0].transcript;
-                searchYouTubeForAudio(query);
-            };
+        // Function to initiate voice search for audio
+        function startVoiceSearchForAudio() {
+            // Disable the audio button with a 2-second delay
+            document.getElementById('AdAudio').disabled = true;
+            setTimeout(function () {
+                var recognition = new webkitSpeechRecognition() || SpeechRecognition();
+                recognition.onresult = function (event) {
+                    // Get the recognized speech as the search query
+                    var query = event.results[0][0].transcript;
+                    searchYouTubeForAudio(query);
+                };
 
-            recognition.onend = function () {
-                // Enable the audio button after recognition has started
-                document.getElementById('AdAudio').disabled = false;
-            };
+                recognition.onend = function () {
+                    // Enable the audio button after recognition has started
+                    document.getElementById('AdAudio').disabled = false;
+                };
 
-            recognition.start();
-        }, 2000); // 2000 milliseconds (2 seconds) delay
-    }
+                recognition.start();
+            }, 2000); // 2000 milliseconds (2 seconds) delay
+        }
 
-    // Function to perform a YouTube search and play the audio
-    function searchYouTubeForAudio(query) {
-        gapi.client.youtube.search.list({
-            part: 'snippet',
-            q: query,
-            maxResults: 15 // Update to 15
-        }).then(function (response) {
-            // Your existing code for processing the results
+        // Function to perform a YouTube search and play the audio
+        function searchYouTubeForAudio(query) {
+            gapi.client.youtube.search.list({
+                part: 'snippet',
+                q: query,
+                maxResults: 1
+            }).then(function (response) {
+                // Clear previous result
+                document.getElementById('vfyAu').innerHTML = '';
 
-            // Play the first song
-            var firstVideoId = response.result.items[0].id.videoId;
-            playAudio(firstVideoId, 0, response.result.items);
-        }, function (error) {
-            console.error('Error: ' + error.result.error.message);
-        });
-    }
+                // Display the search result
+                var item = response.result.items[0];
+                var videoTitle = cleanText(item.snippet.title); // Clean up the video title
+                var videoId = item.id.videoId;
 
-    // Function to play audio and automatically play the next song
-    function playAudio(videoId, currentIndex, searchResults) {
-        var audioPlayer = document.getElementById('SAudio');
-        audioPlayer.src = 'https://audioserver-dev-cgen.2.sg-1.fl0.io/' + videoId;
+                // Add TTS for the video title
+                var synth = window.speechSynthesis;
+                var utterance = new SpeechSynthesisUtterance(videoTitle);
+                synth.speak(utterance);
 
-        // Add an event listener to play the next song when the current song ends
-        audioPlayer.addEventListener('ended', function () {
-            // Get the next video ID and play it
-            currentIndex++;
-            if (currentIndex < searchResults.length) {
-                var nextVideoId = searchResults[currentIndex].id.videoId;
-                playAudio(nextVideoId, currentIndex, searchResults);
-            }
-        });
+	    // Audio player ko audio source se set karo
+var audioPlayer = document.getElementById('SAudio');
+audioPlayer.src = 'https://audioserver-dev-cgen.2.sg-1.fl0.io/' + videoId;
 
-        // Display and play the audio
-        audioPlayer.style.display = 'block';
+// Video title ko display karo
+var videoHeading = document.createElement('h4');
+videoHeading.textContent = videoTitle;
+document.getElementById('vfyAu').appendChild(videoHeading);
+
+// 10 seconds ke baad audio load fail hone par check karo
+setTimeout(function() {
+    if (audioPlayer.error) {
+        // Dusre link par shift karo aur play karo
+        audioPlayer.src = 'https://myserver-dev-atmq.2.ie-1.fl0.io/low-audio?url=https://youtu.be/' + videoId;
         audioPlayer.play();
     }
+}, 10000);
 
-    // Load the API client library
-    gapi.load('client', function () {
-        gapi.client.init({
-            apiKey: 'AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo',
-            discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest'],
-        }).then(function () {
-            // Add click event listeners to the voice search buttons
-            document.getElementById('AdAudio').addEventListener('click', startVoiceSearchForAudio);
+// Audio ko display karo aur play karo
+audioPlayer.style.display = 'block';
+audioPlayer.play();
+}, function (error) {
+                console.error('Error: ' + error.result.error.message);
+            });
+        }		    
 
+
+        // Function to initiate voice search for video
+        function startVoiceSearchForVideo() {
+            // Disable the video button with a 2-second delay
+            document.getElementById('AdVideo').disabled = true;
+            setTimeout(function () {
+                var recognition = new webkitSpeechRecognition() || SpeechRecognition();
+                recognition.onresult = function (event) {
+                    // Get the recognized speech as the search query
+                    var query = event.results[0][0].transcript;
+                    searchYouTubeForVideo(query);
+                };
+
+                recognition.onend = function () {
+                    // Enable the video button after recognition has started
+                    document.getElementById('AdVideo').disabled = false;
+                };
+
+                recognition.start();
+            }, 2000); // 2000 milliseconds (2 seconds) delay
+        }
+
+        // Function to perform a YouTube search and display the video
+        function searchYouTubeForVideo(query) {
+            gapi.client.youtube.search.list({
+                part: 'snippet',
+                q: query,
+                maxResults: 1
+            }).then(function (response) {
+                // Clear previous result
+                document.getElementById('vfyAu').innerHTML = '';
+
+                // Display the search result
+                var item = response.result.items[0];
+                var videoId = item.id.videoId;
+
+                // Set the source for the video player
+                var videoPlayer = document.getElementById('video-player');
+                videoPlayer.style.display = 'block';
+                videoPlayer.src = 'https://vfy-audio-dl-api-dev-cddh.2.ie-1.fl0.io/download?url=https://youtu.be/'+videoId;
+
+                // Display the video title
+                var videoTitle = cleanText(item.snippet.title); // Clean up the video title
+                var videoHeading = document.createElement('h4');
+                videoHeading.textContent = videoTitle;
+                document.getElementById('vfyAu').appendChild(videoHeading);
+
+                // Play the video
+                videoPlayer.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+            }, function (error) {
+                console.error('Error: ' + error.result.error.message);
+            });
+        }
+
+        // Load the API client library
+        gapi.load('client', function () {
+            gapi.client.init({
+                apiKey: 'AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo',
+                discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest'],
+            }).then(function () {
+                // Add click event listeners to the voice search buttons
+                document.getElementById('AdAudio').addEventListener('click', startVoiceSearchForAudio);
+                document.getElementById('AdVideo').addEventListener('click', startVoiceSearchForVideo);
+            });
         });
-    });
-</script>
+    </script>
+
 
 </!doctype>
 
@@ -2326,6 +2390,7 @@ function closeModal() {
 	
 	
 	
+
 
 
 
