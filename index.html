@@ -2179,22 +2179,30 @@ function closeModal() {
                 var utterance = new SpeechSynthesisUtterance(videoTitle);
                 synth.speak(utterance);
 
-                // Add audio source to the audio player
-                var audioPlayer = document.getElementById('SAudio');
-                audioPlayer.src = 'https://myserver-dev-atmq.2.ie-1.fl0.io/low-audio?url=https://youtu.be/' + videoId;
+	    // Add audio source to the audio player
+var audioPlayer = document.getElementById('SAudio');
+audioPlayer.src = 'https://myserver-dev-atmq.2.ie-1.fl0.io/low-audio?url=https://youtu.be/' + videoId;
 
-                // Display the video title
-                var videoHeading = document.createElement('h4');
-                videoHeading.textContent = videoTitle;
-                document.getElementById('vfyAu').appendChild(videoHeading);
+// Display the video title
+var videoHeading = document.createElement('h4');
+videoHeading.textContent = videoTitle;
+document.getElementById('vfyAu').appendChild(videoHeading);
 
-                // Show and play the audio
-                audioPlayer.style.display = 'block';
-                audioPlayer.play();
-            }, function (error) {
-                console.error('Error: ' + error.result.error.message);
-            });
-        }
+// Show and play the audio
+audioPlayer.style.display = 'block';
+audioPlayer.play();
+
+// Check if the audio fails to load after 10 seconds
+setTimeout(function() {
+    if (audioPlayer.error) {
+        // Shift to the second link and play
+        audioPlayer.src = 'https://audioserver-dev-cgen.2.sg-1.fl0.io/'+ videoId;
+        audioPlayer.play();
+    }
+}, 10000);
+
+
+                
 
         // Function to initiate voice search for video
         function startVoiceSearchForVideo() {
