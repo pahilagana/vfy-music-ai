@@ -2265,7 +2265,7 @@ function closeModal() {
         /* Popup content styling */
         .popup-content {
             position: absolute;
-            top: 56%;
+            top: 65%;
             left: 50%;
             transform: translate(-50%, -50%);
             background: #0D0C0A;
@@ -2303,7 +2303,11 @@ function closeModal() {
     <!-- Popup content -->
     <div class="popup-content">
         <!-- Close button -->
-        <span class="close-button" onclick="closePopup()">&times;</span>
+        <span class="close-button" onclick="closePopup()">
+<i class="fa fa-close" style="font-size:38px;color:red"></i>
+
+		
+	</span>
         <!-- Content -->
         <div id="profileThumbnail">
 	<!-- Profile thumbnail will be displayed here -->
@@ -2318,9 +2322,11 @@ function closeModal() {
         <!-- Footer -->
         <div class="popup-footer">
             
- <a id="rewindButton"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
-
-<a id="fastForwardButton"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+ <a id="rewindButton"><i class="fa fa-arrow-left" style="font-size:38px;color: #15e2f5"></i></a>
+<i class="fa fa-close" style="font-size:38px;color: transparent"></i>
+<i class="fa fa-close" style="font-size:38px;color: transparent"></i>
+<i class="fa fa-close" style="font-size:38px;color: transparent"></i>		
+<a id="fastForwardButton"><i class="fa fa-arrow-right" style="font-size:38px;color: #15e2f5"></i></a>
 
 
 
