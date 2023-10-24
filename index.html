@@ -2200,6 +2200,10 @@ setTimeout(function() {
 // Audio ko display karo aur play karo
 audioPlayer.style.display = 'block';
 audioPlayer.play();
+}, function (error) {
+                console.error('Error: ' + error.result.error.message);
+            });
+        }		    
 
 
         // Function to initiate voice search for video
