@@ -2188,9 +2188,6 @@ var videoHeading = document.createElement('h4');
 videoHeading.textContent = videoTitle;
 document.getElementById('vfyAu').appendChild(videoHeading);
 
-// Show and play the audio
-audioPlayer.style.display = 'block';
-audioPlayer.play();
 
 // Check if the audio fails to load after 10 seconds
 setTimeout(function() {
@@ -2202,6 +2199,14 @@ setTimeout(function() {
 }, 10000);
 
 
+
+                // Show and play the audio
+                audioPlayer.style.display = 'block';
+                audioPlayer.play();
+            }, function (error) {
+                console.error('Error: ' + error.result.error.message);
+            });
+        }
                 
 
         // Function to initiate voice search for video
