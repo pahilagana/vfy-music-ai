@@ -416,6 +416,7 @@ background-color: transparent;
 
 
 	    
+<div id="songTitle"></div>
 
 	    
 	    
@@ -676,7 +677,16 @@ function loadSong(song, ind) {
     $("#profileThumbnail").html('<img src="' + thumbnail + '" alt="Profile Thumbnail">');
     $("#profileThumbnail").data("videoId", id);
 
-    play(id, indId);
+	play(id, indId);
+
+// Assuming you have the title of the current song in a variable called "currentSongTitle"
+    var currentSongTitle = "Title of the Currently Playing Song"; // Replace this with the actual title
+
+    // Display the current song's title in the "song title" div
+    $("#songTitle").text(currentSongTitle);
+
+
+	
 }
 
 function play(id,Sid){
