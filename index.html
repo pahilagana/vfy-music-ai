@@ -669,6 +669,14 @@ function loadSong(song, ind) {
     localStorage.setItem("thumbnail", thumbnail);
     $("#thumbnail").attr("src", thumbnail);
 
+// Assuming you have the title of the current song in a variable called "currentSongTitle"
+    var currentSongTitle = "Title of the Currently Playing Song"; // Replace this with the actual title
+
+    // Display the current song's title in the "song title" div
+    $("#songTitle").text(currentSongTitle);
+}
+
+	
 // Set the profile ID
     localStorage.setItem("profileID", id);
     $("#profileID").text("Profile ID: " + id);
@@ -679,12 +687,7 @@ function loadSong(song, ind) {
 
 	play(id, indId);
 	}	
-// Assuming you have the title of the current song in a variable called "currentSongTitle"
-    var currentSongTitle = "Title of the Currently Playing Song"; // Replace this with the actual title
 
-    // Display the current song's title in the "song title" div
-    $("#songTitle").text(currentSongTitle);
-}
 
 function play(id,Sid){
       //data = "https://vivekfy.onrender.com/audio/"+id;
