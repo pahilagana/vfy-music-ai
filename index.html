@@ -659,24 +659,23 @@ $("#closePopup").click(function() {
 });
 	
 	
-function loadSong(song, ind) {
-    var id = $(song).attr("vid");
-    var indId = parseInt($(song).attr("index"));
-    var thumbnail = $(song).children('img').attr("src");
-    localStorage.setItem("playPresent", id);
-    localStorage.setItem("thumbnail", thumbnail);
-    $("#thumbnail").attr("src", thumbnail);
+// Update the profile thumbnail and video ID for the next song
+var nextSong = playlistItems[nextSongIndex];
+var nextThumbnail = $(nextSong).children('img').attr("src");
+var nextVideoId = $(nextSong).attr("vid");
 
-    // Set the profile ID
-    localStorage.setItem("profileID", id);
-    $("#profileID").text("Profile ID: " + id);
+// Generate maxres YouTube thumbnail link
+var nextThumbnailMaxres = 'https://img.youtube.com/vi/' + nextVideoId + '/maxresdefault.jpg';
 
-    // Set the profile thumbnail and video ID
-    $("#profileThumbnail").html('<img src="' + thumbnail + '" alt="Profile Thumbnail">');
-    $("#profileThumbnail").data("videoId", id);
+$("#profileThumbnail").html('<img src="' + nextThumbnail + '" alt="vfy thumbnail">');
+$("#profileThumbnail").data("videoId", nextVideoId);
 
-    play(id, indId);
+console.log('Automatically went to the next song and started playing.');
+} else {
+    console.log('End of playlist');
+    // You may want to handle what happens when it's the end of the playlist.
 }
+
 
 function play(id,Sid){
       //data = "https://vivekfy.onrender.com/audio/"+id;
