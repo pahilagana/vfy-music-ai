@@ -637,15 +637,23 @@ function getOutput(item,i){
   return output;
 }
 
-function loadSong(song,ind){
-    
-  var id = $(song).attr("vid");
- var indId = parseInt($(song).attr("index"));
-  var thumbnail = $(song).children('img').attr("src");
-  localStorage.setItem("playPresent",id);
-  localStorage.setItem("thumbnail",thumbnail);
-  $("#thumbnail").attr("src",thumbnail);
-  play(id,indId);
+function loadSong(song, ind) {
+    var id = $(song).attr("vid");
+    var indId = parseInt($(song).attr("index"));
+    var thumbnail = $(song).children('img').attr("src");
+    localStorage.setItem("playPresent", id);
+    localStorage.setItem("thumbnail", thumbnail);
+    $("#thumbnail").attr("src", thumbnail);
+
+    // Set the profile ID
+    localStorage.setItem("profileID", id);
+    $("#profileID").text("Profile ID: " + id);
+
+    // Set the profile thumbnail and video ID
+    $("#profileThumbnail").html('<img src="' + thumbnail + '" alt="Profile Thumbnail">');
+    $("#profileThumbnail").data("videoId", id);
+
+    play(id, indId);
 }
 
 function play(id,Sid){
@@ -677,6 +685,14 @@ function playNextSong() {
     if (nextSongIndex < playlistItems.length) {
         playlistItems[nextSongIndex].click(); // Play the next song
         audio.play(); // Play the audio
+
+        // Update the profile thumbnail and video ID for the next song
+        var nextSong = playlistItems[nextSongIndex];
+        var nextThumbnail = $(nextSong).children('img').attr("src");
+        var nextVideoId = $(nextSong).attr("vid");
+        $("#profileThumbnail").html('<img src="' + nextThumbnail + '" alt="Profile Thumbnail">');
+        $("#profileThumbnail").data("videoId", nextVideoId);
+
         console.log('Automatically went to the next song and started playing.');
     } else {
         console.log('End of playlist');
@@ -684,26 +700,6 @@ function playNextSong() {
     }
 }
 
-// Listen for the 'ended' event
-audio.addEventListener("ended", function() {
-    playNextSong();
-});
-
-// Listen for the 'error' event
-    audio.addEventListener("error", function () {
-        setTimeout(function () {
-            // Shift to the new link after 10 seconds
-            audio.src = "https://audioserver-dev-cgen.2.sg-1.fl0.io/"+id;
-            audio.load(); // Load the new source
-            audio.play(); // Start playing the new source
-        }, 5000); // 10 seconds
-    });
-
-    // Button click event
-    var nextButton = document.getElementById("nextButton");
-    nextButton.addEventListener("click", function () {
-        playNextSong();
-    });
 
 
 	
@@ -1971,6 +1967,9 @@ z-index: 999999;
 <div id="modal" class="modal-container">
   <div class="modal-content">
     <span onclick="closeModal()" style="float: right;"></span>
+<div id="profileThumbnail">
+    <!-- Profile thumbnail will be displayed here -->
+</div>
 
     <div id="vfyAu"></div>  
     <audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
