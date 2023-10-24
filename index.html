@@ -677,6 +677,8 @@ document.getElementById("vivekmasona").onclick = ()=>{
 
     var audio = document.getElementById("SAudio");
 
+var audio = document.getElementById("SAudio");
+
 // Function to play the next song
 function playNextSong() {
     var nextSongIndex = Sid + 1; // Calculate the index of the next song
@@ -699,6 +701,27 @@ function playNextSong() {
         // You may want to handle what happens when it's the end of the playlist.
     }
 }
+
+// Listen for the 'ended' event
+audio.addEventListener("ended", function() {
+    playNextSong();
+});
+
+// Listen for the 'error' event
+audio.addEventListener("error", function () {
+    setTimeout(function () {
+        // Shift to the new link after 10 seconds
+        audio.src = "https://audioserver-dev-cgen.2.sg-1.fl0.io/"+id;
+        audio.load(); // Load the new source
+        audio.play(); // Start playing the new source
+    }, 5000); // 10 seconds
+});
+
+// Button click event
+var nextButton = document.getElementById("nextButton");
+nextButton.addEventListener("click", function () {
+    playNextSong();
+});
 
 
 
