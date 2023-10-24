@@ -34,6 +34,46 @@ var op = new Audio();
 op.src = '/effect/Click.mp3';
 </script>
 
+<style>
+    /* Make the background transparent */
+    audio::-webkit-media-controls-panel,
+    audio::-webkit-media-controls {
+      background-color: transparent;
+    }
+    
+    /* Hide the time display */
+    audio::-webkit-media-controls-current-time-display {
+      display: none;
+    }
+    
+    audio::-webkit-media-controls-time-remaining-display {
+      display: none;
+    }
+    
+    /* Hide the speaker icon */
+    audio::-webkit-media-controls-volume-slider {
+      display: none;
+    }
+    
+    /* Hide the three-dot option button (menu) */
+    audio::-webkit-media-controls-mute-button,
+    audio::-webkit-media-controls-overflow-button {
+      display: none;
+    }
+    
+    /* Show only the progress bar */
+    audio::-webkit-media-controls-panel {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    audio::-webkit-media-controls-play-button,
+    audio::-webkit-media-controls-seek-back-button,
+    audio::-webkit-media-controls-seek-forward-button {
+      display: none;
+    }
+  </style>
 
 
 <!DOCTYPE html>
@@ -2225,7 +2265,7 @@ function closeModal() {
         /* Popup content styling */
         .popup-content {
             position: absolute;
-            top: 60%;
+            top: 56%;
             left: 50%;
             transform: translate(-50%, -50%);
             background: #fff;
@@ -2274,8 +2314,8 @@ function closeModal() {
         <!-- Footer -->
         <div class="popup-footer">
             
- <a id="rewindButton"><i class="fa fa-stop" aria-hidden="true"></i></a>
-<a id="stop"><i class="fa fa-play" aria-hidden="true"></i></a>
+ <a id="rewindButton"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+
 <a id="fastForwardButton"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
 
 
