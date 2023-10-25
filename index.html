@@ -2242,31 +2242,33 @@ audioPlayer.play();
                 var videoId = item.id.videoId;
 
                 // Set the source for the video player
-var videoPlayer = document.getElementById('video-player');
-videoPlayer.style.display = 'block';
-videoPlayer.src = 'https://vfy-audio-dl-api-dev-cddh.2.ie-1.fl0.io/download?url=https://youtu.be/' + videoId;
+                var videoPlayer = document.getElementById('video-player');
+                videoPlayer.style.display = 'block';
+                videoPlayer.src = 'https://vfy-audio-dl-api-dev-cddh.2.ie-1.fl0.io/download?url=https://youtu.be/'+videoId;
 
-// Display the video title
-var videoTitle = cleanText(item.snippet.title); // Clean up the video title
-var videoHeading = document.createElement('h4');
-videoHeading.textContent = videoTitle;
-document.getElementById('vfyAu').appendChild(videoHeading);
+                // Display the video title
+                var videoTitle = cleanText(item.snippet.title); // Clean up the video title
+                var videoHeading = document.createElement('h4');
+                videoHeading.textContent = videoTitle;
+                document.getElementById('vfyAu').appendChild(videoHeading);
+                
+                
+                // Display the thumbnail
+                var thumbnailUrl = item.snippet.thumbnails.default.url; // You can choose the desired thumbnail size
 
-// Create an audio element for the watermark sound
-var watermarkSound = new Audio('/effect/ok.mp3');
+                // Set the thumbnail in the "song-thumbnail" div
+                var songThumbnailDiv = document.getElementById('song-thumbnail');
+                songThumbnailDiv.innerHTML = '<img src="' + thumbnailUrl + '" alt="Thumbnail">';
+                
+                
 
-// Add an event listener to play the watermark sound when the video is ready
-videoPlayer.addEventListener('canplay', function() {
-    watermarkSound.play();
-    // You can add additional logic here to position the watermark sound, control its volume, etc.
-});
-
-// Play the video
+                // Play the video
                 videoPlayer.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
             }, function (error) {
                 console.error('Error: ' + error.result.error.message);
             });
         }
+
         // Load the API client library
         gapi.load('client', function () {
             gapi.client.init({
@@ -2354,7 +2356,9 @@ videoPlayer.addEventListener('canplay', function() {
         <div id="profileThumbnail">
 	<!-- Profile thumbnail will be displayed here -->
         </div>
-<div id="vfyAu"></div>  
+<div id="song-thumbnail"></div>
+	    
+ <div id="vfyAu"></div>  
 
 <audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
 
