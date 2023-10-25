@@ -2175,7 +2175,7 @@ function closeModal() {
                 var videoId = item.id.videoId;
                 
                 // Display the thumbnail
-                var thumbnailUrl = item.snippet.thumbnails.default.url; // You can choose the desired thumbnail size
+                var thumbnailUrl = item.snippet.thumbnails.maxres.url;
 
                 // Set the thumbnail in the "song-thumbnail" div
                 var songThumbnailDiv = document.getElementById('thumbnail');
@@ -2263,7 +2263,7 @@ audioPlayer.play();
                 
                 
                 // Display the thumbnail
-                var thumbnailUrl = item.snippet.thumbnails.default.url; // You can choose the desired thumbnail size
+                var thumbnailUrl = item.snippet.thumbnails.maxres.url;
 
                 // Set the thumbnail in the "song-thumbnail" div
                 var songThumbnailDiv = document.getElementById('song-thumbnail');
