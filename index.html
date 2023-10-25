@@ -2174,13 +2174,11 @@ function closeModal() {
                 var videoTitle = cleanText(item.snippet.title); // Clean up the video title
                 var videoId = item.id.videoId;
                 
-                // Display the thumbnail
-                var thumbnailUrl = item.snippet.thumbnails.maxres.url;
+                var thumbnailUrl = item.snippet.thumbnails.high.url; // Use 'high' for HD size
 
-                // Set the thumbnail in the "song-thumbnail" div
-                var songThumbnailDiv = document.getElementById('thumbnail');
-                songThumbnailDiv.innerHTML = '<img src="' + thumbnailUrl + '" alt="Thumbnail">';
-                
+var songThumbnailDiv = document.getElementById('thumbnail');
+songThumbnailDiv.innerHTML = '<img src="' + thumbnailUrl + '" alt="Thumbnail">';
+
                 
 
                 // Add TTS for the video title
@@ -2262,13 +2260,11 @@ audioPlayer.play();
                 document.getElementById('vfyAu').appendChild(videoHeading);
                 
                 
-                // Display the thumbnail
-                var thumbnailUrl = item.snippet.thumbnails.maxres.url;
+                var thumbnailUrl = item.snippet.thumbnails.high.url; // Use 'high' for HD size
 
-                // Set the thumbnail in the "song-thumbnail" div
-                var songThumbnailDiv = document.getElementById('song-thumbnail');
-                songThumbnailDiv.innerHTML = '<img src="' + thumbnailUrl + '" alt="Thumbnail">';
-                
+var songThumbnailDiv = document.getElementById('song-thumbnail');
+songThumbnailDiv.innerHTML = '<img src="' + thumbnailUrl + '" alt="Thumbnail">';
+
                 
 
                 // Play the video
