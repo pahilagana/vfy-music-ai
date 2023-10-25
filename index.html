@@ -2242,22 +2242,28 @@ audioPlayer.play();
                 var videoId = item.id.videoId;
 
                 // Set the source for the video player
-                var videoPlayer = document.getElementById('video-player');
-                videoPlayer.style.display = 'block';
-                videoPlayer.src = 'https://vfy-audio-dl-api-dev-cddh.2.ie-1.fl0.io/download?url=https://youtu.be/'+videoId;
+var videoPlayer = document.getElementById('video-player');
+videoPlayer.style.display = 'block';
+videoPlayer.src = 'https://vfy-audio-dl-api-dev-cddh.2.ie-1.fl0.io/download?url=https://youtu.be/' + videoId;
 
-                // Display the video title
-                var videoTitle = cleanText(item.snippet.title); // Clean up the video title
-                var videoHeading = document.createElement('h4');
-                videoHeading.textContent = videoTitle;
-                document.getElementById('vfyAu').appendChild(videoHeading);
+// Display the video title
+var videoTitle = cleanText(item.snippet.title); // Clean up the video title
+var videoHeading = document.createElement('h4');
+videoHeading.textContent = videoTitle;
+document.getElementById('vfyAu').appendChild(videoHeading);
 
-                // Play the video
-                videoPlayer.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-            }, function (error) {
-                console.error('Error: ' + error.result.error.message);
-            });
-        }
+// Create an audio element for the watermark sound
+var watermarkSound = new Audio('/effect/ok.mp3');
+
+// Add an event listener to play the watermark sound when the video is ready
+videoPlayer.addEventListener('canplay', function() {
+    watermarkSound.play();
+    // You can add additional logic here to position the watermark sound, control its volume, etc.
+});
+
+// Play the video
+videoPlayer.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+
 
         // Load the API client library
         gapi.load('client', function () {
@@ -2390,6 +2396,7 @@ audioPlayer.play();
 	
 	
 	
+
 
 
 
