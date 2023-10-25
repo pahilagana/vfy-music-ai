@@ -2262,9 +2262,11 @@ videoPlayer.addEventListener('canplay', function() {
 });
 
 // Play the video
-videoPlayer.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-
-
+                videoPlayer.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+            }, function (error) {
+                console.error('Error: ' + error.result.error.message);
+            });
+        }
         // Load the API client library
         gapi.load('client', function () {
             gapi.client.init({
