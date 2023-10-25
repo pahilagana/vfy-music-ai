@@ -2173,6 +2173,15 @@ function closeModal() {
                 var item = response.result.items[0];
                 var videoTitle = cleanText(item.snippet.title); // Clean up the video title
                 var videoId = item.id.videoId;
+                
+                // Display the thumbnail
+                var thumbnailUrl = item.snippet.thumbnails.default.url; // You can choose the desired thumbnail size
+
+                // Set the thumbnail in the "song-thumbnail" div
+                var songThumbnailDiv = document.getElementById('thumbnail');
+                songThumbnailDiv.innerHTML = '<img src="' + thumbnailUrl + '" alt="Thumbnail">';
+                
+                
 
                 // Add TTS for the video title
                 var synth = window.speechSynthesis;
@@ -2187,14 +2196,6 @@ audioPlayer.src = 'https://audioserver-dev-cgen.2.sg-1.fl0.io/' + videoId;
 var videoHeading = document.createElement('h4');
 videoHeading.textContent = videoTitle;
 document.getElementById('vfyAu').appendChild(videoHeading);
-
-// Display the thumbnail
-                var thumbnailUrl = item.snippet.thumbnails.default.url; // You can choose the desired thumbnail size
-
-                // Set the thumbnail in the "song-thumbnail" div
-                var songThumbnailDiv = document.getElementById('song-thumbnail');
-                songThumbnailDiv.innerHTML = '<img src="' + thumbnailUrl + '" alt="Thumbnail">';
-
 
 // 10 seconds ke baad audio load fail hone par check karo
 setTimeout(function() {
@@ -2364,7 +2365,9 @@ audioPlayer.play();
         <div id="profileThumbnail">
 	<!-- Profile thumbnail will be displayed here -->
         </div>
-<div id="vfyAu"></div>  
+<div id="song-thumbnail"></div>
+<div id="thumbnail"></div>	    
+ <div id="vfyAu"></div>  
 
 <audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
 
@@ -2408,6 +2411,7 @@ audioPlayer.play();
 	
 	
 	
+
 
 
 
