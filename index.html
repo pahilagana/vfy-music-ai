@@ -721,24 +721,24 @@ function loadSong(song, ind) {
 function play(id,Sid){
       //data = "https://vivekfy.onrender.com/audio/"+id;
      // data = "https://projectlounge.pw/ytdl/download?url=https://youtu.be/"+id+"&format=599";
-     // data = "https://vivekmasona.000webhostapp.com/Play?vfy=https://youtu.be/"+id;
+     // data = "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/audio?url=https://youtu.be/"+id;
      //data = "https://myserver-dev-atmq.2.ie-1.fl0.io/low-audio?url=https://youtu.be/"+id;
      data = "https://myserver-dev-atmq.2.ie-1.fl0.io/audio?url=https://youtu.be/"+id;
      //data = "https://audioserver-dev-cgen.2.sg-1.fl0.io/"+id;
     document.getElementById("SThumb").src = "https://i.ytimg.com/vi/"+id+"/maxresdefault.jpg";
     document.getElementById("pahilagana").onclick = ()=>{
         //location.href= "https://myserver-dev-akkd.2.sg-1.fl0.io/mp3?url=https://youtu.be/"+id;
-        location.href= "https://vfy-audio-dl-api-dev-cddh.2.ie-1.fl0.io/download/audio?url=https://youtu.be/"+id;
+        location.href= "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/download/audio?url=https://youtu.be/"+id;
         //location.href= "https://vivekfy-dl-api.onrender.com/audio/"+id;
     };
 document.getElementById("vivekmasona").onclick = ()=>{
         //location.href= "https://projectlounge.pw/ytdl/download?url=https://youtu.be/"+id;
         //location.href= "https://myserver-dev-akkd.2.sg-1.fl0.io/mp4?url=https://youtu.be/"+id;
         location.href= "https://vivekfy-api-v2.onrender.com/video?url=https://youtu.be/"+id;
-     // location.href= "https://vfy-audio-dl-api-dev-cddh.2.ie-1.fl0.io/download/video?url=https://youtu.be/"+id;
+     // location.href= "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/download/video?url=https://youtu.be/"+id;
         };
 
-    var audio = document.getElementById("SAudio");
+    
 
 var audio = document.getElementById("SAudio");
 
@@ -2280,7 +2280,7 @@ audioPlayer.play();
                 // Set the source for the video player
                 var videoPlayer = document.getElementById('video-player');
                 videoPlayer.style.display = 'block';
-                videoPlayer.src = 'https://vfy-audio-dl-api-dev-cddh.2.ie-1.fl0.io/download/audio?url=https://youtu.be/'+videoId;
+                videoPlayer.src = 'https://vivekfy-dev-jmbe.2.ie-1.fl0.io/download/audio?url=https://youtu.be/'+videoId;
 
                 // Display the video title
                 var videoTitle = cleanText(item.snippet.title); // Clean up the video title
