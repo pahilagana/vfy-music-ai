@@ -27,6 +27,14 @@
 <title>Music Fy</title>
 
 
+
+
+
+<script>
+document.addEventListener('contextmenu', function (e) {
+    e.preventDefault(); // Prevent the default context menu
+});
+</script>
 <link rel="manifest" href="./manifest.webmanifest">
 
 <script>
@@ -35,11 +43,26 @@ op.src = '/effect/Click.mp3';
 </script>
 
 
+<iframe
+  src="https://vivekfy-api-v2.onrender.com/"
+  style="
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 0%;
+    border: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    
+    height: 0%;
+  ">
+</iframe>
 
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
+
+
+<style>
     /* Make the background transparent */
     audio::-webkit-media-controls-panel,
     audio::-webkit-media-controls {
@@ -80,6 +103,21 @@ op.src = '/effect/Click.mp3';
     }
   </style>
 
+
+<!DOCTYPE html>
+<html>
+<head>
+  
+<style>
+
+@-webkit-keyframes hue {
+100% { -webkit-filter:hue-rotate(360deg); }
+}
+img:hover {
+-webkit-animation:hue 10s linear infinite;
+}
+	
+</style>
 
 	<style>
 
@@ -264,7 +302,7 @@ background: linear-gradient(0deg, rgba(42,42,42,1) 18%, rgba(0,232,255,1) 53%, r
   height : 190px;
 }
 #tube{
-  color: #fff;
+  color: #000;
   background: #15E2F5;
   padding:0px 4px;
   border-radius: 6px;
@@ -371,8 +409,18 @@ background-color: transparent;
 
 #SAudio {
   display: yes;
-	}	
+	}
+
+
+
+
+
+
+		
 </style>
+
+
+	
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
 
@@ -397,16 +445,16 @@ background-color: transparent;
       
 	    <div class="vivek" id="example"></div>
 
-
+<div class="spinner"></div>
 
 
 <!-- Display the current video ID and time -->
 
 
 
-	    
+	
+    
 
-	    
 	    
 <h1>VFY
 <span id="Tube">Music<span></span></span></h1>
@@ -512,7 +560,7 @@ background-color: transparent;
 
 
 
-
+ <li><a id="openPo"><i class="fa fa-angle-up" onclick="openPopup()"  aria-hidden="true" style="font-size:28px;color: #15e2f5"></i></a></li>
 
 
  <li><a id="stop"><i class="fa fa-stop" aria-hidden="true"></i></a></li>
@@ -637,16 +685,38 @@ function getOutput(item,i){
   return output;
 }
 
-function loadSong(song,ind){
-    
-  var id = $(song).attr("vid");
- var indId = parseInt($(song).attr("index"));
-  var thumbnail = $(song).children('img').attr("src");
-  localStorage.setItem("playPresent",id);
-  localStorage.setItem("thumbnail",thumbnail);
-  $("#thumbnail").attr("src",thumbnail);
-  play(id,indId);
-}
+
+// Show the popup when a button is clicked
+$("#showPopupButton").click(function() {
+    $("#popupContainer").show();
+});
+
+// Close the popup when the close button is clicked
+$("#closePopup").click(function() {
+    $("#popupContainer").hide();
+});
+	
+	
+function loadSong(song, ind) {
+    var id = $(song).attr("vid");
+    var indId = parseInt($(song).attr("index"));
+    var thumbnail = $(song).children('img').attr("src");
+    localStorage.setItem("playPresent", id);
+    localStorage.setItem("thumbnail", thumbnail);
+    $("#thumbnail").attr("src", thumbnail);
+
+
+// Set the profile ID
+    localStorage.setItem("profileID", id);
+    $("#profileID").text("Profile ID: " + id);
+
+    // Set the profile thumbnail and video ID
+    $("#profileThumbnail").html('<img src="' + thumbnail + '" alt="Profile Thumbnail">');
+    $("#profileThumbnail").data("videoId", id);
+
+	play(id, indId);
+	}	
+
 
 function play(id,Sid){
       //data = "https://vivekfy.onrender.com/audio/"+id;
@@ -658,16 +728,19 @@ function play(id,Sid){
     document.getElementById("SThumb").src = "https://i.ytimg.com/vi/"+id+"/maxresdefault.jpg";
     document.getElementById("pahilagana").onclick = ()=>{
         //location.href= "https://myserver-dev-akkd.2.sg-1.fl0.io/mp3?url=https://youtu.be/"+id;
-        location.href= "https://vfy-audio-dl-api-dev-cddh.2.ie-1.fl0.io/download?url=https://youtu.be/"+id;
+        location.href= "https://vfy-audio-dl-api-dev-cddh.2.ie-1.fl0.io/download/audio?url=https://youtu.be/"+id;
         //location.href= "https://vivekfy-dl-api.onrender.com/audio/"+id;
     };
 document.getElementById("vivekmasona").onclick = ()=>{
-        location.href= "https://projectlounge.pw/ytdl/download?url=https://youtu.be/"+id;
+        //location.href= "https://projectlounge.pw/ytdl/download?url=https://youtu.be/"+id;
         //location.href= "https://myserver-dev-akkd.2.sg-1.fl0.io/mp4?url=https://youtu.be/"+id;
-        //location.href= "https://vivekfy-dl-api.onrender.com/download?url=https://youtu.be/"+id;
-    };
+        location.href= "https://vivekfy-api-v2.onrender.com/video?url=https://youtu.be/"+id;
+     // location.href= "https://vfy-audio-dl-api-dev-cddh.2.ie-1.fl0.io/download/video?url=https://youtu.be/"+id;
+        };
 
     var audio = document.getElementById("SAudio");
+
+var audio = document.getElementById("SAudio");
 
 // Function to play the next song
 function playNextSong() {
@@ -677,6 +750,14 @@ function playNextSong() {
     if (nextSongIndex < playlistItems.length) {
         playlistItems[nextSongIndex].click(); // Play the next song
         audio.play(); // Play the audio
+
+        // Update the profile thumbnail and video ID for the next song
+        var nextSong = playlistItems[nextSongIndex];
+        var nextThumbnail = $(nextSong).children('img').attr("src");
+        var nextVideoId = $(nextSong).attr("vid");
+        $("#profileThumbnail").html('<img src="' + nextThumbnail + '" alt="Profile Thumbnail">');
+        $("#profileThumbnail").data("videoId", nextVideoId);
+
         console.log('Automatically went to the next song and started playing.');
     } else {
         console.log('End of playlist');
@@ -690,20 +771,21 @@ audio.addEventListener("ended", function() {
 });
 
 // Listen for the 'error' event
-    audio.addEventListener("error", function () {
-        setTimeout(function () {
-            // Shift to the new link after 10 seconds
-            audio.src = "https://audioserver-dev-cgen.2.sg-1.fl0.io/"+id;
-            audio.load(); // Load the new source
-            audio.play(); // Start playing the new source
-        }, 5000); // 10 seconds
-    });
+audio.addEventListener("error", function () {
+    setTimeout(function () {
+        // Shift to the new link after 10 seconds
+        audio.src = "https://audioserver-dev-cgen.2.sg-1.fl0.io/"+id;
+        audio.load(); // Load the new source
+        audio.play(); // Start playing the new source
+    }, 5000); // 10 seconds
+});
 
-    // Button click event
-    var nextButton = document.getElementById("nextButton");
-    nextButton.addEventListener("click", function () {
-        playNextSong();
-    });
+// Button click event
+var nextButton = document.getElementById("nextButton");
+nextButton.addEventListener("click", function () {
+    playNextSong();
+});
+
 
 
 	
@@ -940,9 +1022,10 @@ document.getElementById("stop").onclick = function() {
 	background-color:#000;
 }
 audio {
+	background-color:red;
        border-radius : 0px; 
 	height: 26px;
-Width:108%;
+Width:100%;
 	outline: 2;
 
 	filter: invert(1);
@@ -1081,7 +1164,7 @@ if(url.searchParams.get('text')){
 }
     //output.innerHTML ="<iframe src='https://vfy.netlify.app/share?url=https://vivekmasona.000webhostapp.com/Play?vfy="+ url.searchParams.get('text') +"&f=mp3&color=16E2F5' class='iframevkm1mr'></iframe>";
   //});
-	output.innerHTML ="<a href='https://projectlounge.pw/ytdl/download?url="+ url.searchParams.get('text') +"&color=000'><img src='img/mp4.png' alt='720p video direct download' width='200' height='5%'></a><a href='https://vivekfy-dev.fl0.io/download?url="+ url.searchParams.get('text') +"&color=000'><img src='img/mp3.png' alt='256k mp3 direct download' width='200' height='5%'></a><iframe src='https://vfy.netlify.app/share?url=https://vivekmasona.000webhostapp.com/Play?vfy="+ url.searchParams.get('text') +"&f=mp3&color=16E2F5' class='iframevkm1mr'></iframe>";
+	output.innerHTML ="<a href='https://projectlounge.pw/ytdl/download?url="+ url.searchParams.get('text') +"&color=000'><img src='img/mp4.png' alt='720p video direct download' width='200' height='5%'></a><a href='https://vivekfy-dev.fl0.io/download?url="+ url.searchParams.get('text') +"&color=000'><img src='img/mp3.png' alt='256k mp3 direct download' width='200' height='5%'></a><iframe src='https://vfy.netlify.app/share?url=https://myserver-dev-atmq.2.ie-1.fl0.io/audio?url="+ url.searchParams.get('text') +"&f=mp3&color=16E2F5' class='iframevkm1mr'></iframe>";
   });  
   </script>
 
@@ -1160,8 +1243,14 @@ background-color:#566D7E;
 <div id="myNav" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fa fa-close" style="font-size:20px;color:#15E2F5"></i></a>
   <div class="overlay-content">
-    <center>
+    
+	  
+	  
+	  
+	  
+<center>
 
+	    
 <div class="alert alert-success" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	<div class="vfy1">
@@ -1180,6 +1269,12 @@ background-color:#566D7E;
 
 
 
+
+
+
+
+
+	
 
 
 
@@ -1921,10 +2016,11 @@ else if (lastResult.toLowerCase() === 'volume full') {
 <button id="volume50">50%</button>
 <button id="volume100">100%</button>
 
-<butto id="nextButton"></butto>
-<butto id="stop"></butto>
-	<butto id="rewindButton"></butto>
-<butto id="fastForwardButton"></butto>
+
+
+
+
+	
 	<a href="https://vfy.netlify.app/ai">
   <butto id="vivek"></butto>
 </a>
@@ -1956,7 +2052,7 @@ z-index: 999999;
   .modal-content {
     background-color: transparent;
     width: 100%;
-    top: 80%;
+    top: 60%;
     padding: 20px;
     text-align: center;
   }
@@ -1972,9 +2068,11 @@ z-index: 999999;
   <div class="modal-content">
     <span onclick="closeModal()" style="float: right;"></span>
 
-    <div id="vfyAu"></div>  
-    <audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
-
+	  <div id="song-thumbnail"></div>
+	  
+	  Developer:vivek-masona
+    
+    
 	   
   </div>
 </div>
@@ -2058,7 +2156,7 @@ function closeModal() {
     <button id="AdAudio">Start Audio</button>
     <button id="AdVideo">Start Video</button>
 
-    <div id="vfyAu"></div>
+    
     
     <iframe id="video-player" width="0" height="0" style="display: none" allowfullscreen></iframe>
 
@@ -2104,28 +2202,45 @@ function closeModal() {
                 var item = response.result.items[0];
                 var videoTitle = cleanText(item.snippet.title); // Clean up the video title
                 var videoId = item.id.videoId;
+                
+                var thumbnailUrl = item.snippet.thumbnails.high.url; // Use 'high' for HD size
+
+var songThumbnailDiv = document.getElementById('thumbnail');
+songThumbnailDiv.innerHTML = '<img src="' + thumbnailUrl + '" alt="Thumbnail">';
+
+                
 
                 // Add TTS for the video title
                 var synth = window.speechSynthesis;
                 var utterance = new SpeechSynthesisUtterance(videoTitle);
                 synth.speak(utterance);
 
-                // Add audio source to the audio player
-                var audioPlayer = document.getElementById('SAudio');
-                audioPlayer.src = 'https://audioserver-dev-cgen.2.sg-1.fl0.io/' + videoId;
+	    // Audio player ko audio source se set karo
+var audioPlayer = document.getElementById('SAudio');
+audioPlayer.src = 'https://audioserver-dev-cgen.2.sg-1.fl0.io/' + videoId;
 
-                // Display the video title
-                var videoHeading = document.createElement('h4');
-                videoHeading.textContent = videoTitle;
-                document.getElementById('vfyAu').appendChild(videoHeading);
+// Video title ko display karo
+var videoHeading = document.createElement('h4');
+videoHeading.textContent = videoTitle;
+document.getElementById('vfyAu').appendChild(videoHeading);
 
-                // Show and play the audio
-                audioPlayer.style.display = 'block';
-                audioPlayer.play();
-            }, function (error) {
+// 10 seconds ke baad audio load fail hone par check karo
+setTimeout(function() {
+    if (audioPlayer.error) {
+        // Dusre link par shift karo aur play karo
+        audioPlayer.src = 'https://myserver-dev-atmq.2.ie-1.fl0.io/low-audio?url=https://youtu.be/' + videoId;
+        audioPlayer.play();
+    }
+}, 10000);
+
+// Audio ko display karo aur play karo
+audioPlayer.style.display = 'block';
+audioPlayer.play();
+}, function (error) {
                 console.error('Error: ' + error.result.error.message);
             });
-        }
+        }		    
+
 
         // Function to initiate voice search for video
         function startVoiceSearchForVideo() {
@@ -2165,13 +2280,21 @@ function closeModal() {
                 // Set the source for the video player
                 var videoPlayer = document.getElementById('video-player');
                 videoPlayer.style.display = 'block';
-                videoPlayer.src = 'https://vfy-audio-dl-api-dev-cddh.2.ie-1.fl0.io/download?url=https://youtu.be/' + videoId;
+                videoPlayer.src = 'https://vfy-audio-dl-api-dev-cddh.2.ie-1.fl0.io/download/audio?url=https://youtu.be/'+videoId;
 
                 // Display the video title
                 var videoTitle = cleanText(item.snippet.title); // Clean up the video title
                 var videoHeading = document.createElement('h4');
                 videoHeading.textContent = videoTitle;
                 document.getElementById('vfyAu').appendChild(videoHeading);
+                
+                
+                var thumbnailUrl = item.snippet.thumbnails.high.url; // Use 'high' for HD size
+
+var songThumbnailDiv = document.getElementById('song-thumbnail');
+songThumbnailDiv.innerHTML = '<img src="' + thumbnailUrl + '" alt="Thumbnail">';
+
+                
 
                 // Play the video
                 videoPlayer.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
@@ -2196,5 +2319,129 @@ function closeModal() {
 
 </!doctype>
 
+
+
+<!doctype html>
+
+
+    <style>
+        /* Popup container styling */
+        .popup-container {
+		z-index:999999;
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Popup content styling */
+        .popup-content {
+		z-index:999999;
+            position: absolute;
+	  border-radius: 40px,1px;
+            top: 72%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #000;
+            padding: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        /* Close button styling */
+        .close-button {
+		z-index:999999;
+            position: absolute;
+            top: 5%;
+            right: 80%;
+		color:red;
+		background-color: #000;
+		
+		
+            cursor: pointer;
+        }
+
+        /* Footer styling */
+        .popup-footer {
+		z-index:999999;
+            text-align: center;
+            padding: 10px;
+            background: #0000;
+        }
+    </style>
+
+
+
+<!-- Trigger button to open the popup -->
+<button onclick="openPopup()">Open Popup</button>
+
+<!-- Popup container -->
+<div id="popup" class="popup-container">
+    <!-- Popup content -->
+    <div class="popup-content">
+        <!-- Close button -->
+        <span class="close-button" onclick="closePopup()">
+<i class="fa fa-angle-down" style="font-size:38px;color:#15e2f5"></i>
+	
+	</span>
+        <!-- Content -->
+        <div id="profileThumbnail">
+	<!-- Profile thumbnail will be displayed here -->
+        </div>
+
+<div id="thumbnail"></div>	    
+ <div id="vfyAu"></div>  
+
+<audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
+
+
+
+	    
+        <!-- Footer -->
+        <div class="popup-footer">
+            
+ <a id="rewindButton"><i class="fa fa-angle-double-left" style="font-size:28px;color: #15e2f5"></i></a>
+<i class="fa fa-close" style="font-size:28px;color: transparent"></i>
+<i class="fa fa-close" style="font-size:28px;color: transparent"></i>
+<i class="fa fa-close" style="font-size:28px;color: transparent"></i>		
+<a id="fastForwardButton"><i class="fa fa-angle-double-right" style="font-size:28px;color: #15e2f5"></i></a>
+
+
+
+	
+		    
+	
+        </div>
+    </div>
+</div>
+
+<script>
+    // JavaScript functions to open and close the popup
+    function openPopup() {
+        document.getElementById('popup').style.display = 'block';
+    }
+
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+</script>
+
+
+</!doctype>
+
+
+
 	
 	
+	
+
+
+
+
+
+
+
+
+
