@@ -487,7 +487,7 @@ color:#fff;
 		      
 		      
 <div>
-<img src="https://i.ytimg.com/vi/9KYG0L4PYNc/maxresdefault.jpg" onclick="searchHindiSongs()"
+<img src="https://i.ytimg.com/vi/9KYG0L4PYNc/maxresdefault.jpg" onclick="searchTrendingSongs()"
               alt="vfy"
               width="100%"
             />
@@ -530,7 +530,7 @@ color:#fff;
 
 
 <div>
-<img src="https://i.ytimg.com/vi/Fe_aRh7zjqo/maxresdefault.jpg" onclick="searchHindiSongs()"
+<img src="https://i.ytimg.com/vi/Fe_aRh7zjqo/maxresdefault.jpg" onclick="searchSadSongs()"
               alt="vivekfy"
               width="100%"
             /></a>
@@ -1221,12 +1221,21 @@ function searchOldvsnewSongs() {
     $(".search-bar").val(query); // Query input field mein set karen
     search(); // Search function ko call karen
 }	
-function searchBhaktihindiSongs() {
+function searchBhaktibhojpuriSongs() {
     var query = "bhakti hindi songs"; // Hindi songs ke liye query
     $(".search-bar").val(query); // Query input field mein set karen
     search(); // Search function ko call karen
-}	
-	
+}
+function searchSadSongs() {
+    var query = "Sad song"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}		
+function searchTrendingSongs() {
+    var query = "New Terending hindi songs"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}		
 	
 </script>
 
