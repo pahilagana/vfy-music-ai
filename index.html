@@ -574,6 +574,20 @@ color:#fff;
   </div>   
  
 <script>
+$(document).ready(function() {
+  // Get the search query from the URL
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const query = urlParams.get('query');
+
+  if (query) {
+    // If a query is present in the URL, set it in the search bar
+    $(".search-bar").val(query);
+    // Trigger the search function with the query
+    search();
+  }
+});
+
 $(document).on('swipeleft', '.ui-page', function(event){    
     if(event.handled !== true) // This will prevent event triggering more then once
     {    
