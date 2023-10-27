@@ -43,14 +43,16 @@ op.src = '/effect/Click.mp3';
 
 
 <script>
-    // Check if the cookie exists
-if (document.cookie.indexOf("refreshed=true") === -1) {
-  // If the cookie doesn't exist, set it and refresh the page
-  //document.cookie = "refreshed=true";
+    // Check if the webpage has been refreshed before
+if (!localStorage.getItem("refreshed")) {
+  // Set the "refreshed" flag in local storage
+  localStorage.setItem("refreshed", "true");
+  // Refresh the page after 2 seconds
   setTimeout(function() {
     location.reload();
   }, 2000);
 }
+
   </script>
 
 
