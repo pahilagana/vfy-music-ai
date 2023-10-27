@@ -2075,14 +2075,7 @@ z-index: 999999;
 
 
 
-<!-- Popup container -->
-<div id="popup" class="popup-container">
-    <!-- Popup content -->
-    <div class="popup-content">
-        <!-- Close button -->
-        <span class="close-button" onclick="closePopup()">
-<i class="fa fa-angle-down" style="font-size:38px;color:#15e2f5"></i>
-	</span>
+
         <!-- Content -->
         <div id="profileThumbnail">
 	<!-- Profile thumbnail will be displayed here -->
@@ -2098,8 +2091,8 @@ z-index: 999999;
 <i class="fa fa-close" style="font-size:28px;color: transparent"></i>		
 <a id="fastForwardButton"><i class="fa fa-angle-double-right" style="font-size:28px;color: #15e2f5"></i></a>
 </div>
-    </div>
-</div>
+
+
 <!-- Popup container -->
 
 
@@ -2412,7 +2405,20 @@ songThumbnailDiv.innerHTML = '<img src="' + thumbnailUrl + '" alt="Thumbnail">';
 <!-- Trigger button to open the popup -->
 <button onclick="openPopup()">Open Popup</button>
 
+<!-- Popup container -->
+<div id="popup" class="popup-container">
+    <!-- Popup content -->
+    <div class="popup-content">
 
+vivek
+	    
+        <!-- Close button -->
+        <span class="close-button" onclick="closePopup()">
+<i class="fa fa-angle-down" style="font-size:38px;color:#15e2f5"></i>
+	</span>
+	  
+    </div>
+</div>
 	
 
 <script>
