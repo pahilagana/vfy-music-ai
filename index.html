@@ -520,11 +520,11 @@ background-color: transparent;
 	
 <center><div id="custom-time-container">
 
-  <marquee>
+
 <div id="vfytitle"></div> 
 
 	  
-  </marquee>
+
 	
       <span id="current-time">0:00</span> / <span id="total-time">0:00</span>
     </div>
@@ -704,11 +704,12 @@ function loadSong(song, ind) {
     $("#profileThumbnail").html('<img src="' + thumbnail + '" alt="Profile Thumbnail">');
     $("#profileThumbnail").data("videoId", id);
 
-    // Set the title text to the specific div with ID "vfytitle"
-    $("#vfytitle").text(title);
+    // Set the title text to the marquee div with ID "vfytitle"
+    $("#vfytitle").html('<marquee behavior="scroll" direction="left">' + title + '</marquee>');
 
     play(id, indId);
 }
+
 
 
 
