@@ -44,13 +44,16 @@ op.src = '/effect/Click.mp3';
 
 <script>
     // Check if the webpage has been refreshed before
-if (!localStorage.getItem("refreshed")) {
-  // Set the "refreshed" flag in local storage
-  localStorage.setItem("refreshed", "true");
+if (!sessionStorage.getItem("refreshed")) {
+  // Set the "refreshed" flag in session storage
+  sessionStorage.setItem("refreshed", "true");
   // Refresh the page after 2 seconds
   setTimeout(function() {
     location.reload();
   }, 2000);
+} else {
+  // If it's a revisit, refresh the page immediately
+  location.reload();
 }
 
   </script>
