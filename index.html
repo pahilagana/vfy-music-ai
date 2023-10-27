@@ -550,7 +550,7 @@ color:#fff;
 ></div>
 
 <div>
-<img src="https://i.ytimg.com/vi/9S0Ws-lQJsI/maxresdefault.jpg"
+<img src="https://i.ytimg.com/vi/9S0Ws-lQJsI/maxresdefault.jpg" 
               alt="vivekfy"
               width="100%"
             />
@@ -590,7 +590,7 @@ color:#fff;
 ></div>	
 
 <div>
-<img src="https://i.ytimg.com/vi/oJOKRI3ThwA/maxresdefault.jpg"
+<img src="https://i.ytimg.com/vi/oJOKRI3ThwA/maxresdefault.jpg" onclick="searchBhojpuriSongs()"
               alt="vfy"
               width="100%"
             />
@@ -1192,10 +1192,15 @@ document.getElementById("stop").onclick = function() {
     }
   }
 function searchHindiSongs() {
-    var query = "Hindi Songs"; // Hindi songs ke liye query
+    var query = "Latest release hindi songs"; // Hindi songs ke liye query
     $(".search-bar").val(query); // Query input field mein set karen
     search(); // Search function ko call karen
 }
+function searchBhojpuriSongs() {
+    var query = "new bhojpuri songs"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}	
 
 
 
