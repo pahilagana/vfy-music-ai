@@ -2069,6 +2069,43 @@ z-index: 999999;
 	  <div id="song-thumbnail"></div>
 	  
 	  Developer:vivek-masona
+
+
+
+
+
+
+<!-- Popup container -->
+<div id="popup" class="popup-container">
+    <!-- Popup content -->
+    <div class="popup-content">
+        <!-- Close button -->
+        <span class="close-button" onclick="closePopup()">
+<i class="fa fa-angle-down" style="font-size:38px;color:#15e2f5"></i>
+	</span>
+        <!-- Content -->
+        <div id="profileThumbnail">
+	<!-- Profile thumbnail will be displayed here -->
+        </div>
+<div id="thumbnail"></div>	    
+ <div id="vfyAu"></div>  
+
+<audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
+<div class="popup-footer">
+<a id="rewindButton"><i class="fa fa-angle-double-left" style="font-size:28px;color: #15e2f5"></i></a>
+<i class="fa fa-close" style="font-size:28px;color: transparent"></i>
+<i class="fa fa-close" style="font-size:28px;color: transparent"></i>
+<i class="fa fa-close" style="font-size:28px;color: transparent"></i>		
+<a id="fastForwardButton"><i class="fa fa-angle-double-right" style="font-size:28px;color: #15e2f5"></i></a>
+</div>
+    </div>
+</div>
+<!-- Popup container -->
+
+
+
+
+	  
     
     
 	   
@@ -2375,45 +2412,8 @@ songThumbnailDiv.innerHTML = '<img src="' + thumbnailUrl + '" alt="Thumbnail">';
 <!-- Trigger button to open the popup -->
 <button onclick="openPopup()">Open Popup</button>
 
-<!-- Popup container -->
-<div id="popup" class="popup-container">
-    <!-- Popup content -->
-    <div class="popup-content">
-        <!-- Close button -->
-        <span class="close-button" onclick="closePopup()">
-<i class="fa fa-angle-down" style="font-size:38px;color:#15e2f5"></i>
-	
-	</span>
-        <!-- Content -->
-        <div id="profileThumbnail">
-	<!-- Profile thumbnail will be displayed here -->
-        </div>
-
-<div id="thumbnail"></div>	    
- <div id="vfyAu"></div>  
-
-<audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
-
-
-
-	    
-        <!-- Footer -->
-        <div class="popup-footer">
-            
- <a id="rewindButton"><i class="fa fa-angle-double-left" style="font-size:28px;color: #15e2f5"></i></a>
-<i class="fa fa-close" style="font-size:28px;color: transparent"></i>
-<i class="fa fa-close" style="font-size:28px;color: transparent"></i>
-<i class="fa fa-close" style="font-size:28px;color: transparent"></i>		
-<a id="fastForwardButton"><i class="fa fa-angle-double-right" style="font-size:28px;color: #15e2f5"></i></a>
-
-
 
 	
-		    
-	
-        </div>
-    </div>
-</div>
 
 <script>
     // JavaScript functions to open and close the popup
