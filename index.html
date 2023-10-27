@@ -438,7 +438,7 @@ background-color: transparent;
 
 
 	
-    
+   <div id="title"></div> 
 
 	    
 <h1>VFY
@@ -687,8 +687,7 @@ function loadSong(song, ind) {
     localStorage.setItem("thumbnail", thumbnail);
     $("#thumbnail").attr("src", thumbnail);
 
-
-// Set the profile ID
+    // Set the profile ID
     localStorage.setItem("profileID", id);
     $("#profileID").text("Profile ID: " + id);
 
@@ -696,8 +695,14 @@ function loadSong(song, ind) {
     $("#profileThumbnail").html('<img src="' + thumbnail + '" alt="Profile Thumbnail">');
     $("#profileThumbnail").data("videoId", id);
 
-	play(id, indId);
-	}	
+    // Create a div ID for the current playing song's title
+    var titleDivId = "currentSongTitle_" + indId; // Assuming indId is unique for each song
+    $("#currentSongTitle").attr("id", titleDivId); // Set the ID for the title div
+    $("#currentSongTitle").text("Current Playing Song Title: " + title);
+
+    play(id, indId);
+}
+
 
 
 function play(id,Sid){
