@@ -453,7 +453,7 @@ background-color: transparent;
  
 	     
 	    
-	   <button onclick="search()" data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button>
+	   <button  onclick="speakSearchText()" data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button>
 	    
 	    
 	    
@@ -1599,7 +1599,7 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 
       // Select a male voice, if available
       const voices = window.speechSynthesis.getVoices();
-      let maleVoice = voices.find(voice => voice.name === 'Prabhat');
+      let maleVoice = voices.find(voice => voice.name === 'vivek');
       if (maleVoice) {
         utterance.voice = maleVoice;
       } else {
