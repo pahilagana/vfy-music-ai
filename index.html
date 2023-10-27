@@ -491,7 +491,7 @@ color:#fff;
 		      
 		      
 <div>
-<img src="https://i.ytimg.com/vi/9KYG0L4PYNc/maxresdefault.jpg"
+<img src="https://i.ytimg.com/vi/9KYG0L4PYNc/maxresdefault.jpg" onclick="searchHindiSongs()"
               alt="vfy"
               width="100%"
             />
@@ -1194,6 +1194,15 @@ document.getElementById("stop").onclick = function() {
 
     }
   }
+function searchHindiSongs() {
+    var query = "Hindi Songs"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}
+
+
+
+	
 </script>
 
 <style>html {
