@@ -508,7 +508,7 @@ color:#fff;
 
 
 <div>
-<img src="https://i.ytimg.com/vi/5oExKMYIE9U/maxresdefault.jpg"
+<img src="https://i.ytimg.com/vi/5oExKMYIE9U/maxresdefault.jpg" onclick="searchHindiSongs()"
               alt="vfy"
               width="100%"
             />
@@ -530,7 +530,7 @@ color:#fff;
 
 
 <div>
-<img src="https://i.ytimg.com/vi/Fe_aRh7zjqo/maxresdefault.jpg"
+<img src="https://i.ytimg.com/vi/Fe_aRh7zjqo/maxresdefault.jpg" onclick="searchHindiSongs()"
               alt="vivekfy"
               width="100%"
             /></a>
@@ -550,7 +550,7 @@ color:#fff;
 ></div>
 
 <div>
-<img src="https://i.ytimg.com/vi/9S0Ws-lQJsI/maxresdefault.jpg" 
+<img src="https://i.ytimg.com/vi/9S0Ws-lQJsI/maxresdefault.jpg" onclick="searchLofiSongs()"
               alt="vivekfy"
               width="100%"
             />
@@ -570,7 +570,7 @@ color:#fff;
 ></div>
 		      
 <div>
-<img src="https://i.ytimg.com/vi/VVfG5WTB4hk/maxresdefault.jpg"
+<img src="https://i.ytimg.com/vi/VVfG5WTB4hk/maxresdefault.jpg" onclick="searchBhaktibhojpuriSongs()"
               alt="vivekfy"
               width="100%"
             />
@@ -611,7 +611,7 @@ color:#fff;
 
 		      
 <div>
-<img src="https://i.ytimg.com/vi/6GxXehkPyBs/maxresdefault.jpg"
+<img src="https://i.ytimg.com/vi/6GxXehkPyBs/maxresdefault.jpg" onclick="searchOldvsnewSongs()"
               alt="vfy"
               width="100%"
             />
@@ -1201,9 +1201,32 @@ function searchBhojpuriSongs() {
     $(".search-bar").val(query); // Query input field mein set karen
     search(); // Search function ko call karen
 }	
-
-
-
+function searchBhaktiSongs() {
+    var query = "bhojpuri bhakti songs"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}	
+function searchChhathSongs() {
+    var query = "Bhojpuri chhath geet"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}	
+function searchLofiSongs() {
+    var query = "new lofi remix song"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}	
+function searchOldvsnewSongs() {
+    var query = "old vs new"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}	
+function searchBhaktihindiSongs() {
+    var query = "bhakti hindi songs"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}	
+	
 	
 </script>
 
