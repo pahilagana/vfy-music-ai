@@ -1017,18 +1017,21 @@ volume100Button.addEventListener('click', function () {
 
 
 const audio = document.getElementById('SAudio');
+const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
 const profileThumbnailElement = document.getElementById('profileThumbnail'); // Assuming the image is displayed in an element with ID 'profileThumbnail'
 
 audio.addEventListener('play', () => {
   // Update the tab title when audio starts playing
-  const profileImageAltText = profileThumbnailElement.alt; // Get the alt text of the image
-  document.title = profileImageAltText + ' is playing audio';
+  const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
+  //const profileImageAltText = profileThumbnailElement.alt; // Get the alt text of the image
+  document.title = songTitle + ' - ' + profileImageAltText + ' - ' + audio.currentTime + ' seconds';
 });
 
 audio.addEventListener('pause', () => {
   // Restore the original page title when audio is paused
   document.title = 'Your Original Title Here';
 });
+
 
 
 
