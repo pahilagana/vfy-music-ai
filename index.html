@@ -1783,20 +1783,7 @@ div.vfy1 {
 
     
 
-    <script>
-   // Check if a flag is set in local storage
-   if (localStorage.getItem("audioPlayedToday") !== "true") {
-     // Set a timeout for 5 minutes
-     setTimeout(function () {
-       // Play the audio after the 5-minute delay
-       var audio = new Audio('/effect/Welcome.mp3');
-       audio.play();
-
-       // Set the flag in local storage to mark that audio has been played today
-       localStorage.setItem("audioPlayedToday", "true");
-     }, 5 * 60 * 1000); // 5 minutes in milliseconds
-   }
-</script>
+    
 
 
 </!doctype>
@@ -1831,7 +1818,7 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
   <script>
     const disconnectAudio = document.getElementById("disconnectAudio");
     const connectAudio = document.getElementById("connectAudio");
-    const internetCheckInterval = 5000; // Check every 5 seconds (adjust as needed)
+    const internetCheckInterval = 1000; // Check every 5 seconds (adjust as needed)
     let wasOnline = true;
 
     function checkInternetConnection() {
