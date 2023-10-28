@@ -1018,29 +1018,27 @@ volume100Button.addEventListener('click', function () {
 
 	
 const titleaudio = document.getElementById('SAudio');
-const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
-const thumbnailElement = document.getElementById('profileThumbnail'); // Assuming the thumbnail is in an element with ID 'profileThumbnail'
+const songTitleElement = document.getElementById('vfytitle');
+const thumbnailElement = document.getElementById('profileThumbnail');
 
-let originalTitle = document.title; // Store the original title when the page loads
+let originalTitle = document.title;
 
 audio.addEventListener('play', () => {
-  // Update the tab title when audio starts playing
-  const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
-  const thumbnailURL = thumbnailElement.getAttribute('src'); // Get the thumbnail URL from the 'profileThumbnail' element
+  const songTitle = songTitleElement.textContent;
+  const thumbnailURL = thumbnailElement.getAttribute('src'); // Assuming the 'src' attribute contains the thumbnail URL
 
-  // Create a notification with song title, current time, and thumbnail
   const notification = new Notification(songTitle, {
-    body: `Current Time: ${audio.currentTime} seconds`,
-    icon: thumbnailURL // Set the thumbnail as the notification icon
+    icon: thumbnailURL, // Set the thumbnail URL as the notification icon
   });
 
-  document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
+  // Update the tab title when audio starts playing
+  document.title = 'Now Playing';
 });
 
 audio.addEventListener('pause', () => {
-  // Restore the original page title when audio is paused
   document.title = originalTitle;
 });
+
 
 
 
