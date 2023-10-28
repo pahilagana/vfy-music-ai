@@ -900,8 +900,7 @@ function loadSong(song, ind) {
     $("#profileThumbnail").data("videoId", id);
 
     // Set the title text to the marquee div with ID "vfytitle"
-    $("#vfytitle").html('<marquee behavior="alternate" scrollamount="4" onmousedown="this.stop();" onmouseup="this.start();"><h4>
-<p style="font-size:25px; font-family:; color: #ffffff; text-shadow: 2px 2px 4px #000000;">' + title + '</marquee>');
+    $("#vfytitle").html('<marquee behavior="alternate" scrollamount="4" onmousedown="this.stop();" onmouseup="this.start();">' + title + '</marquee>');
 
     play(id, indId);
 }
