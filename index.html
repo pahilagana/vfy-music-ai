@@ -1170,6 +1170,34 @@ document.getElementById("stop").onclick = function() {
       document.querySelector("#play i").className = "fa fa-pause";
    }
 }
+
+
+if (Notification.permission === "granted") {
+        if (currentNotification) {
+            currentNotification.title = title;
+            currentNotification.body = "Now playing...";
+            currentNotification.icon = thumbnail;
+        } else {
+            currentNotification = new Notification(title, {
+                body: "Now playing...",
+                icon: thumbnail
+            });
+
+            setTimeout(function () {
+                currentNotification.close();
+                currentNotification = null;
+            }, 5000);
+        }
+    }
+
+    play(id, indId);
+}
+
+
+	
+
+	
+
 </script></div>
 
 
