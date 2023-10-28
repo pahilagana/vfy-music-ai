@@ -1018,28 +1018,18 @@ volume100Button.addEventListener('click', function () {
 
 	
 const titleaudio = document.getElementById('SAudio');
-const songTitleElement = document.getElementById('vfytitle');
-const thumbnailElement = document.getElementById('profileThumbnail');
-
-let originalTitle = document.title;
+const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
 
 audio.addEventListener('play', () => {
-  const songTitle = songTitleElement.textContent;
-  const thumbnailURL = thumbnailElement.getAttribute('src'); // Assuming the 'src' attribute contains the thumbnail URL
-
-  const notification = new Notification(songTitle, {
-    icon: thumbnailURL, // Set the thumbnail URL as the notification icon
-  });
-
   // Update the tab title when audio starts playing
-  document.title = 'Now Playing';
+  const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
+  document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
 });
 
 audio.addEventListener('pause', () => {
-  document.title = originalTitle;
+  // Restore the original page title when audio is paused
+  document.title = 'Your Original Title Here';
 });
-
-
 
 
 
@@ -2426,8 +2416,8 @@ function closeModal() {
 
 
 
-    <button id="AdAudio"></button>
-    <button id="AdVideo"></button>
+    <button id="AdAudio">Start Audio</button>
+    <button id="AdVideo">Start Video</button>
 
     
     
@@ -2648,7 +2638,7 @@ songThumbnailDiv.innerHTML = '<img src="' + thumbnailUrl + '" alt="Thumbnail">';
 
 
 <!-- Trigger button to open the popup -->
-<button onclick="openPopup()"></button>
+<button onclick="openPopup()">Open Popup</button>
 
 <!-- Popup container -->
 <div id="popup" class="popup-container">
