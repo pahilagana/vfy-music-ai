@@ -787,6 +787,10 @@ $(document).on('swiperight', '.ui-page', function(event){
     }
     return false;            
 });
+  // Notification Setup (Notification permission check)
+  if (Notification.permission !== "granted") {
+      Notification.requestPermission();
+  }
 
 function search(){
   //Get Form input
@@ -876,6 +880,31 @@ $("#showPopupButton").click(function() {
 $("#closePopup").click(function() {
     $("#popupContainer").hide();
 });
+function loadSong(song,ind){
+    
+  var id = $(song).attr("vid");
+  var indId = parseInt($(song).attr("index"));
+  var thumbnail = $(song).children('img').attr("src");
+  localStorage.setItem("playPresent",id);
+  localStorage.setItem("thumbnail",thumbnail);
+  $("#thumbnail").attr("src",thumbnail);
+  
+  // Notification wala code yahan se shuru hota hai
+  if (Notification.permission === "granted") {
+    var title = $(song).text();
+    var notification = new Notification(title, {
+      body: "Now playing...",
+      icon: thumbnail
+    });
+
+    // Close the notification after a few seconds (adjust the timeout as needed)
+    setTimeout(function () {
+      notification.close();
+    }, 5000);
+  }
+  
+  play(id,indId);
+}
 	
 	
 function loadSong(song, ind) {
@@ -1172,26 +1201,6 @@ document.getElementById("stop").onclick = function() {
 }
 
 
-if (Notification.permission === "granted") {
-        if (currentNotification) {
-            currentNotification.title = title;
-            currentNotification.body = "Now playing...";
-            currentNotification.icon = thumbnail;
-        } else {
-            currentNotification = new Notification(title, {
-                body: "Now playing...",
-                icon: thumbnail
-            });
-
-            setTimeout(function () {
-                currentNotification.close();
-                currentNotification = null;
-            }, 5000);
-        }
-    }
-
-    play(id, indId);
-}
 
 
 	
