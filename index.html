@@ -1029,13 +1029,7 @@ audio.addEventListener('play', () => {
     icon: 'https://source.unsplash.com/random/1000x1000/?girl', // Ismein apne image ka link daalein
   };
 
-  if ('Notification' in window) {
-    Notification.requestPermission().then(function (permission) {
-      if (permission === 'granted') {
-        new Notification('VFY Music', notificationOptions);
-      }
-    });
-  }
+  
 });
 
 audio.addEventListener('pause', () => {
