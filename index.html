@@ -414,6 +414,9 @@ background-color: transparent;
 color:#fff;
 
 }
+
+
+
 		
 </style>
 
@@ -787,10 +790,6 @@ $(document).on('swiperight', '.ui-page', function(event){
     }
     return false;            
 });
-  // Notification Setup (Notification permission check)
-  if (Notification.permission !== "granted") {
-      Notification.requestPermission();
-  }
 
 function search(){
   //Get Form input
@@ -880,16 +879,15 @@ $("#showPopupButton").click(function() {
 $("#closePopup").click(function() {
     $("#popupContainer").hide();
 });
-function loadSong(song,ind){
-    
-  var id = $(song).attr("vid");
-  var indId = parseInt($(song).attr("index"));
-  var thumbnail = $(song).children('img').attr("src");
-  var title = $(song).text(); // Get the title text
-  localStorage.setItem("playPresent",id);
-  localStorage.setItem("thumbnail",thumbnail);
-  $("#thumbnail").attr("src",thumbnail);
-  localStorage.setItem("playPresent", id);
+	
+	
+function loadSong(song, ind) {
+    var id = $(song).attr("vid");
+    var indId = parseInt($(song).attr("index"));
+    var thumbnail = $(song).children('img').attr("src");
+    var title = $(song).text(); // Get the title text
+
+    localStorage.setItem("playPresent", id);
     localStorage.setItem("thumbnail", thumbnail);
     $("#thumbnail").attr("src", thumbnail);
 
@@ -903,31 +901,10 @@ function loadSong(song,ind){
 
     // Set the title text to the marquee div with ID "vfytitle"
     $("#vfytitle").html('<marquee behavior="alternate" scrollamount="4" onmousedown="this.stop();" onmouseup="this.start();">' + title + '</marquee>');
-play(id,indId);
+
+    play(id, indId);
 }
-  // Notification wala code yahan se shuru hota hai
-  if (Notification.permission === "granted") {
-    var title = $(song).text();
-    var notification = new Notification(title, {
-      body: "Now playing...",
-      icon: thumbnail
-    });
 
-    // Close the notification after a few seconds (adjust the timeout as needed)
-    setTimeout(function () {
-      notification.close();
-    }, 5000);
-  }
-  
-  play(id,indId);
-}
-	
-	
-
-    
-
-    
-    
 
 
 
@@ -978,8 +955,6 @@ function playNextSong() {
         // You may want to handle what happens when it's the end of the playlist.
     }
 }
-
-
 
 // Listen for the 'ended' event
 audio.addEventListener("ended", function() {
@@ -1042,7 +1017,17 @@ volume100Button.addEventListener('click', function () {
 
 
 	
+const titleaudio = document.getElementById('SAudio');
 
+    audio.addEventListener('play', () => {
+      // Update the tab title when audio starts playing
+      document.title = 'VFY Music..      ' + audio.currentTime;
+    });
+
+    audio.addEventListener('pause', () => {
+      // Restore the original page title when audio is paused
+      document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
+    });	
 
 
 
@@ -1196,14 +1181,6 @@ document.getElementById("stop").onclick = function() {
       document.querySelector("#play i").className = "fa fa-pause";
    }
 }
-
-
-
-
-	
-
-	
-
 </script></div>
 
 
