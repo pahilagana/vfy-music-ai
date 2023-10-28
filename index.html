@@ -885,10 +885,25 @@ function loadSong(song,ind){
   var id = $(song).attr("vid");
   var indId = parseInt($(song).attr("index"));
   var thumbnail = $(song).children('img').attr("src");
+  var title = $(song).text(); // Get the title text
   localStorage.setItem("playPresent",id);
   localStorage.setItem("thumbnail",thumbnail);
   $("#thumbnail").attr("src",thumbnail);
-  
+  localStorage.setItem("playPresent", id);
+    localStorage.setItem("thumbnail", thumbnail);
+    $("#thumbnail").attr("src", thumbnail);
+
+    // Set the profile ID
+    localStorage.setItem("profileID", id);
+    $("#profileID").text("Profile ID: " + id);
+
+    // Set the profile thumbnail and video ID
+    $("#profileThumbnail").html('<img src="' + thumbnail + '" alt="Profile Thumbnail">');
+    $("#profileThumbnail").data("videoId", id);
+
+    // Set the title text to the marquee div with ID "vfytitle"
+    $("#vfytitle").html('<marquee behavior="alternate" scrollamount="4" onmousedown="this.stop();" onmouseup="this.start();">' + title + '</marquee>');
+
   // Notification wala code yahan se shuru hota hai
   if (Notification.permission === "granted") {
     var title = $(song).text();
@@ -907,30 +922,11 @@ function loadSong(song,ind){
 }
 	
 	
-function loadSong(song, ind) {
-    var id = $(song).attr("vid");
-    var indId = parseInt($(song).attr("index"));
-    var thumbnail = $(song).children('img').attr("src");
-    var title = $(song).text(); // Get the title text
 
-    localStorage.setItem("playPresent", id);
-    localStorage.setItem("thumbnail", thumbnail);
-    $("#thumbnail").attr("src", thumbnail);
+    
 
-    // Set the profile ID
-    localStorage.setItem("profileID", id);
-    $("#profileID").text("Profile ID: " + id);
-
-    // Set the profile thumbnail and video ID
-    $("#profileThumbnail").html('<img src="' + thumbnail + '" alt="Profile Thumbnail">');
-    $("#profileThumbnail").data("videoId", id);
-
-    // Set the title text to the marquee div with ID "vfytitle"
-    $("#vfytitle").html('<marquee behavior="alternate" scrollamount="4" onmousedown="this.stop();" onmouseup="this.start();">' + title + '</marquee>');
-
-    play(id, indId);
-}
-
+    
+    
 
 
 
