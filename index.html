@@ -1019,17 +1019,29 @@ volume100Button.addEventListener('click', function () {
 	
 const titleaudio = document.getElementById('SAudio');
 const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
+const thumbnailElement = document.getElementById('profileThumbnail'); // Assuming the thumbnail is in an element with ID 'profileThumbnail'
+
+let originalTitle = document.title; // Store the original title when the page loads
 
 audio.addEventListener('play', () => {
   // Update the tab title when audio starts playing
   const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
+  const thumbnailURL = thumbnailElement.getAttribute('src'); // Get the thumbnail URL from the 'profileThumbnail' element
+
+  // Create a notification with song title, current time, and thumbnail
+  const notification = new Notification(songTitle, {
+    body: `Current Time: ${audio.currentTime} seconds`,
+    icon: thumbnailURL // Set the thumbnail as the notification icon
+  });
+
   document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
 });
 
 audio.addEventListener('pause', () => {
   // Restore the original page title when audio is paused
-  document.title = 'Your Original Title Here';
+  document.title = originalTitle;
 });
+
 
 
 
