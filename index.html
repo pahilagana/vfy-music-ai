@@ -1017,26 +1017,17 @@ volume100Button.addEventListener('click', function () {
 
 
 	
-const audio = document.getElementById('SAudio');
+const titleaudio = document.getElementById('SAudio');
 
-audio.addEventListener('play', () => {
-  // Update the tab title when audio starts playing
-  document.title = 'VFY Music..      ' + audio.currentTime;
+    audio.addEventListener('play', () => {
+      // Update the tab title when audio starts playing
+      document.title = 'VFY Music..      ' + audio.currentTime;
+    });
 
-  // Create a notification with an image
-  const notificationOptions = {
-    body: 'Now Playing: VFY Music',
-    icon: 'https://source.unsplash.com/random/1000x1000/?girl', // Ismein apne image ka link daalein
-  };
-
-  
-});
-
-audio.addEventListener('pause', () => {
-  // Restore the original page title when audio is paused
-  document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
-});
-
+    audio.addEventListener('pause', () => {
+      // Restore the original page title when audio is paused
+      document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
+    });	
 
 
 
