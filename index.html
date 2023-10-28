@@ -1017,19 +1017,31 @@ volume100Button.addEventListener('click', function () {
 
 
 	
-const titleaudio = document.getElementById('SAudio');
-const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
+const titleAudio = document.getElementById('SAudio');
+const songTitleElement = document.getElementById('vfytitle');
+const songThumbnailElement = document.getElementById('SThumb'); // Assuming the image is displayed in an element with ID 'SThumb'
 
-audio.addEventListener('play', () => {
-  // Update the tab title when audio starts playing
-  const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
-  document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
+titleAudio.addEventListener('play', () => {
+  const songTitle = songTitleElement.textContent;
+  const songThumbnailSrc = songThumbnailElement.src; // Get the image source from the 'SThumb' element
+
+  const options = {
+    body: songTitle,
+    image: songThumbnailSrc, // Set the image for the notification
+  };
+
+  // Create and show the notification
+  if (Notification.permission === 'granted') {
+    new Notification('Now Playing', options);
+  }
+
+  document.title = songTitle + ' - ' + titleAudio.currentTime + ' seconds';
 });
 
-audio.addEventListener('pause', () => {
-  // Restore the original page title when audio is paused
-  document.title = 'VIVEKFY-AI';
+titleAudio.addEventListener('pause', () => {
+  document.title = 'Your Original Title Here';
 });
+
 
 
 
@@ -1831,7 +1843,7 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
   <script>
     const disconnectAudio = document.getElementById("disconnectAudio");
     const connectAudio = document.getElementById("connectAudio");
-    const internetCheckInterval = 5000; // Check every 5 seconds (adjust as needed)
+    const internetCheckInterval = 1000; // Check every 5 seconds (adjust as needed)
     let wasOnline = true;
 
     function checkInternetConnection() {
@@ -2255,9 +2267,9 @@ else if (lastResult.toLowerCase() === 'volume full') {
       }
     </script>
 
-<button id="volume10">10%</button>
-<button id="volume50">50%</button>
-<button id="volume100">100%</button>
+<button id="volume10"></button>
+<button id="volume50"></button>
+<button id="volume100"></button>
 
 
 
@@ -2416,8 +2428,8 @@ function closeModal() {
 
 
 
-    <button id="AdAudio">Start Audio</button>
-    <button id="AdVideo">Start Video</button>
+    <button id="AdAudio"></button>
+    <button id="AdVideo"></button>
 
     
     
