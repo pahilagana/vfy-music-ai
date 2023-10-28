@@ -30,6 +30,8 @@
 
 /* Style the unordered list */
 #myList {
+  list/* Style the unordered list */
+#myList {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -38,25 +40,27 @@
 /* Style each list item */
 #myList li {
   display: flex;
+  flex-direction: column; /* Stack thumbnail and title vertically */
   border: 1px solid #ccc;
   margin: 10px;
   padding: 10px;
   background-color: #fff;
   transition: background-color 0.3s;
+  align-items: center; /* Center the content horizontally */
 }
 
 /* Style the thumbnail image */
 #myList li img {
-  max-width: 100px;
-  max-height: 75px;
-  margin-right: 10px;
+  max-width: 100%;
+  max-height: auto; /* Maintain aspect ratio */
 }
 
 /* Style the video title and additional info */
 #myList li .list {
-  flex: 1;
+  text-align: center;
   text-decoration: none;
   color: #333;
+  margin-top: 10px; /* Add some space between thumbnail and title */
 }
 
 /* Hover effect for list items */
