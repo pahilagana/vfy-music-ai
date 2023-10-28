@@ -903,7 +903,8 @@ function loadSong(song,ind){
 
     // Set the title text to the marquee div with ID "vfytitle"
     $("#vfytitle").html('<marquee behavior="alternate" scrollamount="4" onmousedown="this.stop();" onmouseup="this.start();">' + title + '</marquee>');
-
+play(id,indId);
+}
   // Notification wala code yahan se shuru hota hai
   if (Notification.permission === "granted") {
     var title = $(song).text();
