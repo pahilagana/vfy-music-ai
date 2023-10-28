@@ -140,33 +140,7 @@ box-opacity: 0.5;
   }
 }
 </style>
-<style>
 
-*{padding:0;margin:0;}
-
-body{
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:18px;
-	background-color:#CCC;
-}
-
-.float{
-	position:fixed;
-	z-index:99999;
-	width:28px;
-	height:28px;
-	bottom:20.8%;
-	right:12%;
-	background-color:#1f1f1f;	
-	color:yellow;
-	border-radius:50px;
-	text-align:center;
-	box-shadow: 0px 0px 4px 4px #15e2f5;
-}
-
-.my-float{
-	margin-top:4px;
-}</style>
 
 
 <div class="fixed">
@@ -2594,91 +2568,7 @@ songThumbnailDiv.innerHTML = '<img src="' + thumbnailUrl + '" alt="Thumbnail">';
 
 
 
-<!doctype html>
 
-
-    <style>
-        /* Popup container styling */
-        .popup-container {
-		z-index:999999;
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-        }
-
-        /* Popup content styling */
-        .popup-content {
-		z-index:999999;
-            position: absolute;
-	  border-radius: 40px,1px;
-            top: 72%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #000;
-            padding: 20px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        }
-
-        /* Close button styling */
-        .close-button {
-		z-index:999999;
-            position: absolute;
-            top: 5%;
-            right: 80%;
-		color:red;
-		background-color: #000;
-		
-		
-            cursor: pointer;
-        }
-
-        /* Footer styling */
-        .popup-footer {
-		z-index:999999;
-            text-align: center;
-            padding: 10px;
-            background: #0000;
-        }
-    </style>
-
-
-
-<!-- Trigger button to open the popup -->
-<button onclick="openPopup()">Open Popup</button>
-
-<!-- Popup container -->
-<div id="popup" class="popup-container">
-    <!-- Popup content -->
-    <div class="popup-content">
-
-vivek
-	    
-        <!-- Close button -->
-        <span class="close-button" onclick="closePopup()">
-<i class="fa fa-angle-down" style="font-size:38px;color:#15e2f5"></i>
-	</span>
-	  
-    </div>
-</div>
-	
-
-<script>
-    // JavaScript functions to open and close the popup
-    function openPopup() {
-        document.getElementById('popup').style.display = 'block';
-    }
-
-    function closePopup() {
-        document.getElementById('popup').style.display = 'none';
-    }
-</script>
-
-
-</!doctype>
 
 
 
