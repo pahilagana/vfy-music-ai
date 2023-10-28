@@ -1014,17 +1014,26 @@ volume100Button.addEventListener('click', function () {
 
 
 	
-const titleaudio = document.getElementById('SAudio');
+if (Notification.permission === "granted") {
+        if (currentNotification) {
+            currentNotification.title = title;
+            currentNotification.body = "Now playing...";
+            currentNotification.icon = thumbnail;
+        } else {
+            currentNotification = new Notification(title, {
+                body: "Now playing...",
+                icon: thumbnail
+            });
 
-    audio.addEventListener('play', () => {
-      // Update the tab title when audio starts playing
-      document.title = 'VFY Music..      ' + audio.currentTime;
-    });
+            setTimeout(function () {
+                currentNotification.close();
+                currentNotification = null;
+            }, 5000);
+        }
+    }
 
-    audio.addEventListener('pause', () => {
-      // Restore the original page title when audio is paused
-      document.title = 'OYE GANPAT BAJA NA KAYE KO BAND KIYA BE';
-    });	
+    play(id, indId);
+}
 
 
 
