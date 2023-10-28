@@ -953,6 +953,30 @@ function playNextSong() {
     }
 }
 
+
+if (Notification.permission === "granted") {
+        if (currentNotification) {
+            currentNotification.title = title;
+            currentNotification.body = "Now playing...";
+            currentNotification.icon = thumbnail;
+        } else {
+            currentNotification = new Notification(title, {
+                body: "Now playing...",
+                icon: thumbnail
+            });
+
+            setTimeout(function () {
+                currentNotification.close();
+                currentNotification = null;
+            }, 5000);
+        }
+    }
+
+    play(id, indId);
+}
+
+	
+
 // Listen for the 'ended' event
 audio.addEventListener("ended", function() {
     playNextSong();
@@ -1014,26 +1038,7 @@ volume100Button.addEventListener('click', function () {
 
 
 	
-if (Notification.permission === "granted") {
-        if (currentNotification) {
-            currentNotification.title = title;
-            currentNotification.body = "Now playing...";
-            currentNotification.icon = thumbnail;
-        } else {
-            currentNotification = new Notification(title, {
-                body: "Now playing...",
-                icon: thumbnail
-            });
 
-            setTimeout(function () {
-                currentNotification.close();
-                currentNotification = null;
-            }, 5000);
-        }
-    }
-
-    play(id, indId);
-}
 
 
 
