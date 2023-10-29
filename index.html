@@ -33,19 +33,21 @@
 
 
 
+<style>
 
+#footer {
+    position: fixed;
+    bottom: -100px; /* Footer initially hidden */
+    left: 0;
+    right: 0;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    transition: bottom 0.3s ease-in-out; /* Transition effect for smooth animation */
+}
 
-<script>
-document.body.addEventListener('click', function() {
-    var footer = document.getElementById('foot');
-    if (footer.style.display === 'none') {
-        footer.style.display = 'block';
-    } else {
-        footer.style.display = 'none';
-    }
-});
-</script>
-
+</style>
 
 
 <script>
