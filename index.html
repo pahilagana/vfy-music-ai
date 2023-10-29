@@ -467,6 +467,15 @@ color:#000;
      <input type="search"  name="search" onclick="startDictation()"  id="search-basic" class="search-bar"placeholder="VIVEKFY: Type songs name artists...."/>
      <button  onclick="search(),speakSearchText()" data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button>
 	    
+
+<button id="downloadButton">Download Audio</button>
+  <progress id="downloadProgress" value="0" max="100"></progress>
+  <p id="progressText">0%</p>
+
+
+
+
+
 	    
 	    
    <div id="autocomplete-results"></div>
@@ -2785,4 +2794,62 @@ $(document).ready(function() {
 
 
 
+
+
+  
+
+  <script>
+    function downloadAndSaveAudio() {
+      const downloadButton = document.querySelector('#downloadButton');
+      const progress = document.querySelector('#downloadProgress');
+      const progressText = document.querySelector('#progressText');
+
+      downloadButton.addEventListener('click', () => {
+        // Extract audio name from "vfytitle" element
+        const audioName = document.querySelector('#vfytitle').textContent;
+
+        // Extract download link from "vivekmasona" element
+        const downloadLink = document.querySelector('#vivekmasona').getAttribute('href');
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', downloadLink, true);
+        xhr.responseType = 'blob';
+
+        xhr.onprogress = (e) => {
+          if (e.lengthComputable) {
+            const loaded = e.loaded;
+            const total = e.total;
+            const percentage = (loaded / total) * 100;
+            progress.value = percentage;
+            progressText.textContent = percentage.toFixed(2) + '%';
+          }
+        };
+
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            const blob = xhr.response;
+            const a = document.createElement('a');
+            a.href = window.URL.createObjectURL(blob);
+            a.download = audioName + '.mp3';
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(a.href);
+            document.body.removeChild(a);
+          }
+        };
+
+        xhr.send();
+      });
+    }
+
+    // Call the function to set up the operation
+    downloadAndSaveAudio();
+  </script>
+
+
+
+
+
+	
 
