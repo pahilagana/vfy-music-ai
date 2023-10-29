@@ -467,17 +467,6 @@ color:#000;
      <input type="search"  name="search" onclick="startDictation()"  id="search-basic" class="search-bar"placeholder="VIVEKFY: Type songs name artists...."/>
      <button  onclick="search(),speakSearchText()" data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button>
 	    
-
-<button id="pahilagana">Download Audio</button>
-  <progress id="downloadProgress" value="0" max="100"></progress>
-  <p id="progressText">0%</p>
-
-
-
-
-
-	    
-	    
    <div id="autocomplete-results"></div>
 
     
@@ -2799,55 +2788,7 @@ $(document).ready(function() {
 
   
 
-  <script>
-    document.getElementById("pahilagana").onclick = () => {
-      // Video ID from your music player
-      const videoID = getVideoIDFromMusicPlayer(); // Replace with your method to get video ID
 
-      // Song name from "vfytitle" element
-      const songName = document.querySelector('#vfytitle').textContent;
-
-      const downloadLink = "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/download/audio?url=https://youtu.be/" + videoID;
-
-      const progress = document.querySelector('#downloadProgress');
-      const progressText = document.querySelector('#progressText');
-
-      const xhr = new XMLHttpRequest();
-      xhr.open('GET', downloadLink, true);
-      xhr.responseType = 'blob';
-
-      xhr.onprogress = (e) => {
-        if (e.lengthComputable) {
-          const loaded = e.loaded;
-          const total = e.total;
-          const percentage = (loaded / total) * 100;
-          progress.value = percentage;
-          progressText.textContent = percentage.toFixed(2) + '%';
-        }
-      };
-
-      xhr.onload = () => {
-        if (xhr.status === 200) {
-          const blob = xhr.response;
-          const a = document.createElement('a');
-          a.href = window.URL.createObjectURL(blob);
-          a.download = songName + '.mp3';
-          a.style.display = 'none';
-          document.body.appendChild(a);
-          a.click();
-          window.URL.revokeObjectURL(a.href);
-          document.body.removeChild(a);
-        }
-      };
-
-      xhr.send();
-    };
-
-    function getVideoIDFromMusicPlayer() {
-      // Implement your method to get video ID from your music player here
-      return "your_video_id_here"; // Replace with actual video ID
-    }
-  </script>
 
 
 
