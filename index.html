@@ -1034,14 +1034,14 @@ volume100Button.addEventListener('click', function () {
 const audio = document.getElementById('SAudio');
 const songTitleElement = document.getElementById('vfytitle');
 const posterElement = document.getElementById('profileThumbnail');
-
+});
 audio.addEventListener('play', () => {
   const songTitle = songTitleElement.textContent;
   const posterURL = posterElement.getAttribute('src');
   document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
   posterElement.style.display = 'block'; // Show the poster element
   posterElement.setAttribute('src', posterURL); // Set the poster image
-//});
+});
 
 audio.addEventListener('pause', () => {
   document.title = 'VIVEKFY-AI';
