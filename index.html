@@ -2703,6 +2703,7 @@ for (let i = 0; i < 5; i++) {
 $(document).ready(function() {
   var searchField = $("input.search-bar");
   var autocompleteResults = $("#autocomplete-results");
+  var searchButton = $("#search-btn");
 
   // Initialize autocomplete for the input field with the "search-bar" class
   searchField.autocomplete({
@@ -2739,24 +2740,23 @@ $(document).ready(function() {
 
   // Handle clicks on autocomplete suggestions for manual search
   autocompleteResults.on("click", ".autocomplete-suggestion", function() {
-    searchField.val($(this).text());
-    hideAutocompleteResults();
+    var suggestionText = $(this).text();
+    searchField.val(suggestionText);
+    triggerSearch();
   });
 
-  // Listen for "Enter" key press to disable autocomplete
-  searchField.keypress(function(event) {
-    if (event.which === 13) {
-      // "Enter" key pressed, disable autocomplete
-      searchField.autocomplete("disable");
-    }
+  // Handle the click on the search button
+  searchButton.click(function() {
+    triggerSearch();
   });
 
-  function hideAutocompleteResults() {
-    // Hide autocomplete results after 2 seconds
-    setTimeout(function() {
-      autocompleteResults.empty();
-    }, 200);
+  function triggerSearch() {
+    // Implement your search functionality here
+    var searchTerm = searchField.val();
+    console.log("Search triggered for: " + searchTerm);
+
+    // Clear autocomplete results
+    autocompleteResults.empty();
   }
 });
 </script>
-
