@@ -1033,17 +1033,23 @@ volume100Button.addEventListener('click', function () {
 	
 const titleaudio = document.getElementById('SAudio');
 const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
+const posterElement = document.getElementById('profileThumbnail'); // Assuming the poster is displayed in an element with ID 'profileThumbnail'
 
 audio.addEventListener('play', () => {
-  // Update the tab title when audio starts playing
+  // Update the tab title and poster when audio starts playing
   const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
+  const posterURL = posterElement.getAttribute('src'); // Get the poster URL from the 'profileThumbnail' element
   document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
+  // You can use the posterURL as needed, for example, to update an image on your page
 });
 
 audio.addEventListener('pause', () => {
   // Restore the original page title when audio is paused
   document.title = 'VIVEKFY-AI';
+  // You can also reset the poster if needed
+  // posterElement.setAttribute('src', 'original_poster_url');
 });
+
 
 
 
