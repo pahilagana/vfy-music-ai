@@ -27,6 +27,60 @@
 
 
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+$(document).ready(function() {
+  var searchField = $("input.search-bar");
+
+  // Initialize autocomplete for the input field with the "search-bar" class
+  searchField.autocomplete({
+    minLength: 1,
+    source: function(request, response) {
+      var term = request.term;
+      var s = {
+        client: "youtube",
+        ds: "yt"
+      }; // You can choose the appropriate client and ds here
+
+      $.ajax({
+        url: "//clients1.google.com/complete/search",
+        dataType: "jsonp",
+        data: {
+          q: term,
+          nolabels: "t",
+          client: s.client,
+          ds: s.ds
+        },
+        success: function(r) {
+          var data = r[1].map(function(item) {
+            return item[0];
+          });
+
+          // Display autocomplete results in the specified div
+          $("#autocomplete-results").empty();
+          $.each(data, function(index, value) {
+            $("#autocomplete-results").append("<p class='autocomplete-suggestion'>" + value + "</p>");
+          });
+        }
+      });
+    }
+  });
+
+  // Handle clicks on autocomplete suggestions for manual search
+  $("#autocomplete-results").on("click", ".autocomplete-suggestion", function() {
+    searchField.val($(this).text());
+  });
+});
+</script>	
+
+
+
+
+
+
+
+
 
 
 <script>
