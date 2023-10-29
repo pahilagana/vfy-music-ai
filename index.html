@@ -434,13 +434,10 @@ color:#fff;
     
     </div>
     <div data-role="main" class="ui-content">
-
-<div class="search-bar">
-	    
      <input type="search"  name="search" onclick="startDictation()"  id="search-basic" class="search-bar"placeholder="VIVEKFY: Type songs name artists...."/>
      
 	    
-</div>  
+	   
  
 	     
 	    
@@ -2695,24 +2692,6 @@ for (let i = 0; i < 5; i++) {
 }</script>
 
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-
-<script>$("search-bar input").autocomplete({
-    source: function (request, response) {
-        $.ajax({
-            url: 'https://suggestqueries.google.com/complete/search?client=chrome&hl=tr&q=' + request.term,
-            type: 'GET',
-            dataType: 'jsonp',
-            success: function (data) {
-                response(data[1]);
-            }
-        });
-    },
-    minLength: 2
-});</script>
 
 
 
