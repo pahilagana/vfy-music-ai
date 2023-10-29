@@ -33,22 +33,9 @@
 
 
 
-<style>
 
-#foot {
-    position: fixed;
-    width:100%;
-    bottom: -100px; /* Footer initially hidden */
-    left: 0;
-    right: 0;
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-    transition: bottom 0.3s ease-in-out; /* Transition effect for smooth animation */
-}
 
-</style>
+
 
 
 <script>
@@ -279,11 +266,7 @@ background-color: #212F3D;
   
 }
 	
-#foot {
-    position: fixed;
-    bottom: 0;
-    z-index: 999; /* Aap value ko adjust kar sakte hain */
-}
+
 
 #foot{
 box-shadow: 0 0 15px #1abc9c;	
@@ -368,7 +351,14 @@ Color;#15E2F5;
   font-size:50px;
   text-shadow: 1px 2px 5px #04B2A7;
 }
-
+#caption{
+  font-size : 0px;
+color:#252525;
+  text-align : center;
+  display : block;
+  margin : auto;
+  margin-top : 4px;
+}
 .list{
 margin-top : 14px;
 width: 100%;	
@@ -679,7 +669,7 @@ color:#fff;
 
     </div>
     </div>
-  <div data-position="fixed" id="foot" >
+  <div data-role="footer" data-position="fixed" data-id="main-footer" id="foot">
 <center>
 <b hidden='' id='vivek_maurya'><img src="/img/add.png" alt="vivekfy application" width="100%" height="100%" z-index="9999"/>
 </b>
