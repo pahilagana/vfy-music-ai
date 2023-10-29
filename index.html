@@ -2743,10 +2743,7 @@ $(document).ready(function() {
           autocompleteResults.empty();
           $.each(data, function(index, value) {
             autocompleteResults.append("<p class='autocomplete-suggestion'>" + value + "</p>");
-          // Hide autocomplete results after 2 seconds (2000 milliseconds)
-          setTimeout(function() {
-            autocompleteResults.empty();
-          }, 2000);
+          });
         }
       });
     }
@@ -2774,5 +2771,6 @@ $(document).ready(function() {
   }
 });
 </script>
+
 
 
