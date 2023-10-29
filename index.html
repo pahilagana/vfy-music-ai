@@ -2688,7 +2688,7 @@ for (let i = 0; i < 5; i++) {
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  	<script>
+  <script>
 $(document).ready(function() {
   var searchField = $("input.search-bar");
 
@@ -2723,18 +2723,12 @@ $(document).ready(function() {
           });
         }
       });
-    },
-    select: function(event, ui) {
-      // Handle the selection event, e.g., trigger form submission
-      searchField.val(ui.item.label);
-      $("form#search-form").submit();
     }
   });
 
-  // Handle clicks on autocomplete suggestions for automatic search
+  // Handle clicks on autocomplete suggestions for manual search
   $("#autocomplete-results").on("click", ".autocomplete-suggestion", function() {
     searchField.val($(this).text());
-    $("form#search-form").submit();
   });
 });
-</script>
+</script>	
