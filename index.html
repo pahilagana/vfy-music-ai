@@ -2699,7 +2699,9 @@ for (let i = 0; i < 5; i++) {
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
+ 
+	
+	<script>
 $(document).ready(function() {
   var searchField = $("input.search-bar");
   var autocompleteResults = $("#autocomplete-results");
@@ -2721,6 +2723,17 @@ $(document).ready(function() {
           nolabels: "t",
           client: s.client,
           ds: s.ds
+        },
+        success: function(r) {
+          var data = r[1].map(function(item) {
+            return item[0];
+          });
+
+          // Display autocomplete results in the specified div
+          autocompleteResults.empty();
+          $.each(data, function(index, value) {
+            autocompleteResults.append("<p class='autocomplete-suggestion'>" + value + "</p>");
+          });
         }
       });
     }
@@ -2732,6 +2745,14 @@ $(document).ready(function() {
     hideAutocompleteResults();
   });
 
+  // Listen for "Enter" key press to disable autocomplete
+  searchField.keypress(function(event) {
+    if (event.which === 13) {
+      // "Enter" key pressed, disable autocomplete
+      searchField.autocomplete("disable");
+    }
+  });
+
   function hideAutocompleteResults() {
     // Hide autocomplete results after 2 seconds
     setTimeout(function() {
@@ -2740,3 +2761,4 @@ $(document).ready(function() {
   }
 });
 </script>
+
