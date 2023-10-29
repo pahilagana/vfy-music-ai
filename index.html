@@ -198,57 +198,6 @@ background: radial-gradient(circle, rgba(63,181,219,1) 0%, rgba(32,53,58,1) 100%
 
 	
 
-<!-- Include jQuery and jQuery UI for autocomplete -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-
-
-<script>
-$(document).ready(function() {
-  // Initialize autocomplete for the input field with the "autocomplete" class
-  $("input.autocomplete").autocomplete({
-    minLength: 1,
-    source: function(request, response) {
-      var term = request.term;
-      var s = {
-        client: "youtube",
-        ds: "yt"
-      }; // You can choose the appropriate client and ds here
-
-      $.ajax({
-        url: "//clients1.google.com/complete/search",
-        dataType: "jsonp",
-        data: {
-          q: term,
-          nolabels: "t",
-          client: s.client,
-          ds: s.ds
-        },
-        success: function(r) {
-          var data = r[1].map(function(item) {
-            return item[0];
-          });
-          response(data);
-        }
-      });
-    },
-    select: function(event, ui) {
-      // Handle the selection event, e.g., trigger form submission
-      $("form#search-form").submit();
-    }
-  });
-});
-</script>
-
-
-
-
-
-	
-
-
 
 
 
@@ -485,15 +434,11 @@ color:#fff;
     
     </div>
     <div data-role="main" class="ui-content">
-
-<form id="search-form">
-
-	    
      <input type="search"  name="search" onclick="startDictation()"  id="search-basic" class="search-bar"placeholder="VIVEKFY: Type songs name artists...."/>
      <button  onclick="search(),speakSearchText()" data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button>
 	    
 	    
-</form>    
+	    
    
 
     
@@ -2743,5 +2688,5 @@ for (let i = 0; i < 5; i++) {
 
 
 
-  
-  
+
+
