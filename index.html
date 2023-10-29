@@ -443,10 +443,13 @@ color:#fff;
     
     </div>
     <div data-role="main" class="ui-content">
-  <input type="search" name="search" id="search-basic" class="search-bar" placeholder="VIVEKFY: Type song names, artists...."/>
-  <button onclick="speakSearchText()" data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button>
-  <div id="autocomplete-results"></div>
-</div>
+     <input type="search"  name="search" onclick="startDictation()"  id="search-basic" class="search-bar"placeholder="VIVEKFY: Type songs name artists...."/>
+     <button  onclick="search(),speakSearchText()" data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button>
+	    
+	    
+	    
+   <div id="autocomplete-results"></div>
+
     
     </div> 
 	 
@@ -2700,7 +2703,6 @@ for (let i = 0; i < 5; i++) {
 $(document).ready(function() {
   var searchField = $("input.search-bar");
   var autocompleteResults = $("#autocomplete-results");
-  var searchButton = $("#search-btn");
 
   // Initialize autocomplete for the input field with the "search-bar" class
   searchField.autocomplete({
@@ -2737,23 +2739,25 @@ $(document).ready(function() {
 
   // Handle clicks on autocomplete suggestions for manual search
   autocompleteResults.on("click", ".autocomplete-suggestion", function() {
-    var suggestionText = $(this).text();
-    searchField.val(suggestionText);
-    triggerSearch();
+    searchField.val($(this).text());
+    hideAutocompleteResults();
   });
 
-  // Handle the click on the search button
-  searchButton.click(function() {
-    triggerSearch();
+  // Listen for "Enter" key press to disable autocomplete
+  searchField.keypress(function(event) {
+    if (event.which === 13) {
+      // "Enter" key pressed, disable autocomplete
+      searchField.autocomplete("disable");
+    }
   });
 
-  function triggerSearch() {
-    // Implement your search functionality here
-    var searchTerm = searchField.val();
-    console.log("Search triggered for: " + searchTerm);
-
-    // Clear autocomplete results
-    autocompleteResults.empty();
+  function hideAutocompleteResults() {
+    // Hide autocomplete results after 2 seconds
+    setTimeout(function() {
+      autocompleteResults.empty();
+    }, 2000);
   }
 });
 </script>
+
+
