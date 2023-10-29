@@ -2745,7 +2745,7 @@ $(document).ready(function() {
 
   // Listen for "Enter" key press to disable autocomplete
   searchField.keypress(function(event) {
-    if (event.which === 13) {
+    if (event.which === 8) {
       // "Enter" key pressed, disable autocomplete
       searchField.autocomplete("disable");
     }
@@ -2755,7 +2755,7 @@ $(document).ready(function() {
     // Hide autocomplete results after 2 seconds
     setTimeout(function() {
       autocompleteResults.empty();
-    }, 2000);
+    }, 20);
   }
 });
 </script>
