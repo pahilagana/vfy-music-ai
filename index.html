@@ -2721,17 +2721,6 @@ $(document).ready(function() {
           nolabels: "t",
           client: s.client,
           ds: s.ds
-        },
-        success: function(r) {
-          var data = r[1].map(function(item) {
-            return item[0];
-          });
-
-          // Display autocomplete results in the specified div
-          autocompleteResults.empty();
-          $.each(data, function(index, value) {
-            autocompleteResults.append("<p class='autocomplete-suggestion'>" + value + "</p>");
-          });
         }
       });
     }
