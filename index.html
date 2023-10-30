@@ -2518,7 +2518,12 @@ playButton.addEventListener('click', () => {
             const button1 = document.getElementById('pahilagana');
             button1.click();
             playAudio('/sound/audio.mp3'); // Replace with the appropriate audio URL
-        }    
+        } 
+	if (lastResult.toLowerCase() === 'video download') {
+            const button1 = document.getElementById('vivekmasona');
+            button1.click();
+            playAudio('/sound/videodownload.mp3'); // Replace with the appropriate audio URL
+        }       
     };
 
     // Function to play audio from a given URL
