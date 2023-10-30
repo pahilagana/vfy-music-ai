@@ -2467,7 +2467,7 @@ playButton.addEventListener('click', () => {
         if (isVoiceRecognitionOn) {
             recognition.stop();
             clearTimeout(recognitionTimeout);
-            playAudio("audio.mp3"); // Replace 'audio.mp3' with your audio file URL
+            playAudio("/sound/again.mp3"); // Replace 'audio.mp3' with your audio file URL
         } else {
             playAudio("/sound/assistant.mp3"); // Replace with the appropriate audio URL
             setTimeout(function () {
