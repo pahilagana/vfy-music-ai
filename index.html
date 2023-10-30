@@ -2689,21 +2689,36 @@ playButton.addEventListener('click', () => {
             button1.click();
             playAudio('/sound/forward.mp3'); // Replace with the appropriate audio URL
         }
-	if (lastResult.toLowerCase() === 'skip') {
-            const button1 = document.getElementById('fastForwardButton');
+	if (lastResult.toLowerCase() === 'backward') {
+            const button1 = document.getElementById('rewindButton');
             button1.click();
-            playAudio('/sound/forward.mp3'); // Replace with the appropriate audio URL
+            playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
         } 
-	  if (lastResult.toLowerCase() === 'song skip') {
-            const button1 = document.getElementById('fastForwardButton');
+	  if (lastResult.toLowerCase() === 'rewind') {
+            const button1 = document.getElementById('rewindButton');
             button1.click();
-            playAudio('/sound/forward.mp3'); // Replace with the appropriate audio URL
+            playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
         } 
-	if (lastResult.toLowerCase() === 'song skip') {
-            const button1 = document.getElementById('fastForwardButton');
+	if (lastResult.toLowerCase() === 'song rewind') {
+            const button1 = document.getElementById('rewindButton');
             button1.click();
-            playAudio('/sound/forward.mp3'); // Replace with the appropriate audio URL
-        }       
+            playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
+        } 
+	 if (lastResult.toLowerCase() === 'rewind song') {
+            const button1 = document.getElementById('rewindButton');
+            button1.click();
+            playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
+        }
+	 if (lastResult.toLowerCase() === 'backward song') {
+            const button1 = document.getElementById('rewindButton');
+            button1.click();
+            playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
+        }  
+	  if (lastResult.toLowerCase() === 'song backward') {
+            const button1 = document.getElementById('rewindButton');
+            button1.click();
+            playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
+        }  
     };
 
     // Function to play audio from a given URL
@@ -2714,7 +2729,7 @@ playButton.addEventListener('click', () => {
 </script>
  
 	
-
+rewindButton
 
 <button id="volume10">10%</button>
 <button id="volume50">50%</button>
