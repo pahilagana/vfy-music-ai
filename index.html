@@ -2127,15 +2127,15 @@ else if (lastResult.toLowerCase() === 'dowload mp4') {
           button2.click();
           speak('okay i clicked on mp4 download');
         }    
-		else if (lastResult.toLowerCase() === 'android app') {
-          const button2 = document.getElementById('vivek_maurya');
+		else if (lastResult.toLowerCase() === 'your developer name') {
+          const button2 = document.getElementById('dev');
           button2.click();
-          speak('okay click install button for Android apk installation');
+          speak('');
         }    
 		else if (lastResult.toLowerCase() === 'developer') {
-          const button2 = document.getElementById('developer');
+          const button2 = document.getElementById('dev');
           button2.click();
-          speak('vivek verma is bhi faai developer');
+          speak('');
         }    	
 	else if (lastResult.toLowerCase() === 'video') {
           const button2 = document.getElementById('playVideoButton');
@@ -2778,6 +2778,28 @@ $(document).ready(function() {
   }
 });
 </script>
+
+<button id="dev"></button>
+<script>
+// JavaScript code
+const playButton = document.getElementById('dev');
+
+let audioElement; // Declare the audio element variable
+
+playButton.addEventListener('click', () => {
+    if (!audioElement) {
+        audioElement = new Audio('/sound/dev.mp3'); // Create the audio element if it doesn't exist
+    }
+
+    if (audioElement.paused) {
+        audioElement.play();
+        playButton.innerHTML = 'Pause';
+    } else {
+        audioElement.pause();
+        playButton.innerHTML = 'Play';
+    }
+});</script>
+	
 
 
 
