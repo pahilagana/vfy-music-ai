@@ -2598,7 +2598,22 @@ playButton.addEventListener('click', () => {
             const button1 = document.getElementById('AdAudio');
             button1.click();
             playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
-        }       
+        }
+	  if (lastResult.toLowerCase() === 'download') {
+            const button1 = document.getElementById('AdVideo');
+            button1.click();
+            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
+        }
+	  if (lastResult.toLowerCase() === 'extract') {
+            const button1 = document.getElementById('AdVideo');
+            button1.click();
+            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
+        } 
+	 if (lastResult.toLowerCase() === 'save') {
+            const button1 = document.getElementById('AdVideo');
+            button1.click();
+            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
+        }     
     };
 
     // Function to play audio from a given URL
