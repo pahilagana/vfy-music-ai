@@ -2474,7 +2474,7 @@ playButton.addEventListener('click', () => {
                 recognition.start();
                 recognitionTimeout = setTimeout(function () {
                     recognition.stop();
-                    playAudio("always_here_for_you.mp3"); // Replace with the appropriate audio URL
+                    playAudio("/sound/always.mp3"); // Replace with the appropriate audio URL
                 }, 10000); // Automatically turn off after 10 seconds
             }, 4000); // Delay for 3 seconds before starting voice recognition
         }
