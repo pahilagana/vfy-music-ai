@@ -2763,7 +2763,12 @@ playButton.addEventListener('click', () => {
             const button1 = document.getElementById('stop');
             button1.click();
             playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
-        }       
+        }
+	  if (lastResult.toLowerCase() === 'play') {
+            const button1 = document.getElementById('play');
+            button1.click();
+            playAudio('/sound/play.mp3'); // Replace with the appropriate audio URL
+        }  
     };
 
     // Function to play audio from a given URL
