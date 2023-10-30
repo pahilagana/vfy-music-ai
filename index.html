@@ -2623,7 +2623,42 @@ playButton.addEventListener('click', () => {
             const button1 = document.getElementById('AdVideo');
             button1.click();
             playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
-        }     
+        }
+	 if (lastResult.toLowerCase() === 'volume down') {
+            const button1 = document.getElementById('volume10');
+            button1.click();
+            playAudio('/sound/vdown.mp3'); // Replace with the appropriate audio URL
+        }
+	  if (lastResult.toLowerCase() === 'volume decrease') {
+            const button1 = document.getElementById('volume10');
+            button1.click();
+            playAudio('/sound/vdown.mp3'); // Replace with the appropriate audio URL
+        }
+	   if (lastResult.toLowerCase() === 'decrease sound') {
+            const button1 = document.getElementById('volume10');
+            button1.click();
+            playAudio('/sound/vdown.mp3'); // Replace with the appropriate audio URL
+        } 
+	 if (lastResult.toLowerCase() === 'volume increase') {
+            const button1 = document.getElementById('volume100');
+            button1.click();
+            playAudio('/sound/vfull.mp3'); // Replace with the appropriate audio URL
+	}
+	 if (lastResult.toLowerCase() === 'volume full') {
+            const button1 = document.getElementById('volume100');
+            button1.click();
+            playAudio('/sound/vfull.mp3'); // Replace with the appropriate audio URL
+        }
+	 if (lastResult.toLowerCase() === 'sound full') {
+            const button1 = document.getElementById('volume100');
+            button1.click();
+            playAudio('/sound/vfull.mp3'); // Replace with the appropriate audio URL
+        } 
+	  if (lastResult.toLowerCase() === 'full sound') {
+            const button1 = document.getElementById('volume100');
+            button1.click();
+            playAudio('/sound/vfull.mp3'); // Replace with the appropriate audio URL
+        }         
     };
 
     // Function to play audio from a given URL
