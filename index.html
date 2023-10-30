@@ -1888,60 +1888,6 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 
 
 
-<button id="pahilagana"></button>
-    <button id="vivekmasona"></button>
-
-   
-   <script>
-    let isVoiceRecognitionOn = false;
-    let recognitionTimeout;
-    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-    recognition.lang = 'en-US';
-    recognition.interimResults = false;
-
-    const toggleButton = document.getElementById('toggleButton');
-
-    toggleButton.addEventListener('click', function () {
-        if (isVoiceRecognitionOn) {
-            recognition.stop();
-            clearTimeout(recognitionTimeout);
-            playAudio("audio.mp3"); // Replace 'audio.mp3' with your audio file URL
-        } else {
-            playAudio("/sound/assistant.mp3"); // Replace with the appropriate audio URL
-            setTimeout(function () {
-                recognition.start();
-                recognitionTimeout = setTimeout(function () {
-                    recognition.stop();
-                    playAudio("always_here_for_you.mp3"); // Replace with the appropriate audio URL
-                }, 10000); // Automatically turn off after 10 seconds
-            }, 3000); // Delay for 3 seconds before starting voice recognition
-        }
-        isVoiceRecognitionOn = !isVoiceRecognitionOn;
-    });
-
-    recognition.onresult = function(event) {
-        const lastResult = event.results[event.results.length - 1][0].transcript;
-
-        if (lastResult.toLowerCase() === 'mp3') {
-            const button1 = document.getElementById('pahilagana');
-            button1.click();
-            playAudio('clicked_on_mp3.mp3'); // Replace with the appropriate audio URL
-        }
-    };
-
-    // Function to play audio from a given URL
-    function playAudio(audioURL) {
-        const audio = new Audio(audioURL);
-        audio.play();
-    }
-</script>
- 
-	
-
-
-<button id="volume10">10%</button>
-<button id="volume50">50%</button>
-<button id="volume100">100%</button>
 
 
 
@@ -2504,5 +2450,59 @@ playButton.addEventListener('click', () => {
 });</script>	
 	
 
+<button id="pahilagana"></button>
+    <button id="vivekmasona"></button>
+
+   
+   <script>
+    let isVoiceRecognitionOn = false;
+    let recognitionTimeout;
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+
+    const toggleButton = document.getElementById('toggleButton');
+
+    toggleButton.addEventListener('click', function () {
+        if (isVoiceRecognitionOn) {
+            recognition.stop();
+            clearTimeout(recognitionTimeout);
+            playAudio("audio.mp3"); // Replace 'audio.mp3' with your audio file URL
+        } else {
+            playAudio("/sound/assistant.mp3"); // Replace with the appropriate audio URL
+            setTimeout(function () {
+                recognition.start();
+                recognitionTimeout = setTimeout(function () {
+                    recognition.stop();
+                    playAudio("always_here_for_you.mp3"); // Replace with the appropriate audio URL
+                }, 10000); // Automatically turn off after 10 seconds
+            }, 4000); // Delay for 3 seconds before starting voice recognition
+        }
+        isVoiceRecognitionOn = !isVoiceRecognitionOn;
+    });
+
+    recognition.onresult = function(event) {
+        const lastResult = event.results[event.results.length - 1][0].transcript;
+
+        if (lastResult.toLowerCase() === 'mp3') {
+            const button1 = document.getElementById('pahilagana');
+            button1.click();
+            playAudio('clicked_on_mp3.mp3'); // Replace with the appropriate audio URL
+        }
+    };
+
+    // Function to play audio from a given URL
+    function playAudio(audioURL) {
+        const audio = new Audio(audioURL);
+        audio.play();
+    }
+</script>
+ 
+	
+
+
+<button id="volume10">10%</button>
+<button id="volume50">50%</button>
+<button id="volume100">100%</button>
 
 
