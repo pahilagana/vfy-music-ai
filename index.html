@@ -2405,49 +2405,7 @@ $(document).ready(function() {
 });
 </script>
 
-<button id="dev"></button>
-	
-<script>
-// JavaScript code
-const playButton = document.getElementById('dev');
 
-
-let audioElement; // Declare the audio element variable
-
-playButton.addEventListener('click', () => {
-    if (!audioElement) {
-        audioElement = new Audio('/sound/dev.mp3'); // Create the audio element if it doesn't exist
-    }
-
-    if (audioElement.paused) {
-        audioElement.play();
-        playButton.innerHTML = 'Pause';
-    } else {
-        audioElement.pause();
-        playButton.innerHTML = 'Play';
-    }
-});</script>
-
-<script>
-// JavaScript code
-const playButton = document.getElementById('sr');
-
-
-let audioElement; // Declare the audio element variable
-
-playButton.addEventListener('click', () => {
-    if (!audioElement) {
-        audioElement = new Audio('/sound/result.mp3'); // Create the audio element if it doesn't exist
-    }
-
-    if (audioElement.paused) {
-        audioElement.play();
-        playButton.innerHTML = 'Pause';
-    } else {
-        audioElement.pause();
-        playButton.innerHTML = 'Play';
-    }
-});</script>	
 	
 
 <button id="pahilagana"></button>
