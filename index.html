@@ -1891,379 +1891,63 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 <button id="pahilagana"></button>
     <button id="vivekmasona"></button>
 
-    <script>
-        let isVoiceRecognitionOn = false;
-        let recognitionTimeout;
-        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-        recognition.lang = 'en-US';
-        recognition.interimResults = false;
+   <script>
+    let isVoiceRecognitionOn = false;
+    let recognitionTimeout;
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
 
-        const toggleButton = document.getElementById('toggleButton');
+    const toggleButton = document.getElementById('toggleButton');
 
-        toggleButton.addEventListener('click', function () {
-            if (isVoiceRecognitionOn) {
-                recognition.stop();
-                clearTimeout(recognitionTimeout);
-                speak("Please click again");
-            } else {
-                speak("sir how can i help you"); // Speech is not delayed
-                setTimeout(function () {
-                    recognition.start();
-                    recognitionTimeout = setTimeout(function () {
-                        recognition.stop();
-                        speak("don't worry i am always here for you");
-                    }, 10000); // Automatically turn off after 1 second
-                }, 1500); // Delay for 3 seconds before starting voice recognition
-            }
-            isVoiceRecognitionOn = !isVoiceRecognitionOn;
-        });
+    toggleButton.addEventListener('click', function () {
+        if (isVoiceRecognitionOn) {
+            recognition.stop();
+            clearTimeout(recognitionTimeout);
+            playAudio("audio_link.mp3"); // Replace 'audio_link.mp3' with your audio link
+        } else {
+            playAudio("/sound/assistant.mp3"); // Replace with the appropriate audio link
+            setTimeout(function () {
+                recognition.start();
+                recognitionTimeout = setTimeout(function () {
+                    recognition.stop();
+                    playAudio("audio_link.mp3"); // Replace with the appropriate audio link
+                }, 10000); // Automatically turn off after 10 seconds
+            }, 3000); // Delay for 3 seconds before starting voice recognition
+        }
+        isVoiceRecognitionOn = !isVoiceRecognitionOn;
+    });
 
-      recognition.onresult = function(event) {
+    recognition.onresult = function(event) {
         const lastResult = event.results[event.results.length - 1][0].transcript;
 
         if (lastResult.toLowerCase() === 'mp3') {
-          const button1 = document.getElementById('pahilagana');
-          button1.click();
-          speak('okay i clicked on mp3');
+            const button1 = document.getElementById('pahilagana');
+            button1.click();
+            playAudio('clicked_on_mp3.mp3'); // Replace with the appropriate audio link
         }
-	    if (lastResult.toLowerCase() === 'download mp3') {
-          const button1 = document.getElementById('pahilagana');
-          button1.click();
-          speak('okay i clicked on mp3 ');
-        }  
-if (lastResult.toLowerCase() === 'music') {
-          const button1 = document.getElementById('pahilagana');
-          button1.click();
-          speak('okay i am downloading music ');
-        }  
-	    if (lastResult.toLowerCase() === 'download music') {
-          const button1 = document.getElementById('pahilagana');
-          button1.click();
-          speak('okay i am downloading music ');
-        }   
+        if (lastResult.toLowerCase() === 'download mp3') {
+            const button1 = document.getElementById('pahilagana');
+            button1 click();
+            playAudio('downloaded_mp3.mp3'); // Replace with the appropriate audio link
+        }
+        if (lastResult.toLowerCase() === 'music') {
+            const button1 = document.getElementById('pahilagana');
+            button1.click();
+            playAudio('music.mp3'); // Replace with the appropriate audio link
+        }
+        // Add more voice command conditions and actions here
+    };
 
-if (lastResult.toLowerCase() === 'play song') {
-          const button1 = document.getElementById('AdAudio');
-          button1.click();
-          speak('tell me song name');
-        }
-if (lastResult.toLowerCase() === 'play') {
-          const button1 = document.getElementById('AdAudio');
-          button1.click();
-          speak('tell me  name');
-        }
-	if (lastResult.toLowerCase() === 'bews') {
-          const button1 = document.getElementById('AdAudio');
-          button1.click();
-          speak('tell me channel name');
-        } 
-	      
-	if (lastResult.toLowerCase() === 'bhakti song') {
-          const button1 = document.getElementById('AdAudio');
-          button1.click();
-          speak('please say todays bhakti song');
-        }
-	      
-if (lastResult.toLowerCase() === 'download') {
-          const button1 = document.getElementById('AdVideo');
-          button1.click();
-          speak('tell me song name');
-        }   
-	    
-if (lastResult.toLowerCase() === 'tips') {
-          const button1 = document.getElementById('search-basic');
-          button1.click();
-          speak('click again on the magic icon and say mp3 for audio download and say mp4 for video download');
-        }   
-	      
-	      
-	    if (lastResult.toLowerCase() === 'music download') {
-          const button1 = document.getElementById('pahilagana');
-          button1.click();
-          speak('okay music downloading activete');
-        }   
-if (lastResult.toLowerCase() === 'back') {
-          const button1 = document.getElementById('rewindButton');
-          button1.click();
-          speak('okay music 5 second back');
-        }   
-if (lastResult.toLowerCase() === 'start') {
-          const button1 = document.getElementById('play');
-          button1.click();
-          speak('okay music start');
-        }   
-
-	if (lastResult.toLowerCase() === 'chalu') {
-          const button1 = document.getElementById('play');
-          button1.click();
-          speak('okay music play');
-        }
-	      if (lastResult.toLowerCase() === 'stop') {
-          const button1 = document.getElementById('stop');
-          button1.click();
-          speak('okay music stoped');
-	      }
-	      if (lastResult.toLowerCase() === 'stop music') {
-          const button1 = document.getElementById('stop');
-          button1.click();
-          speak('okay music stoped');
-	      }
-	      if (lastResult.toLowerCase() === 'stop song') {
-          const button1 = document.getElementById('stop');
-          button1.click();
-          speak('okay song stoped');
-	      }
-	      if (lastResult.toLowerCase() === 'song stop') {
-          const button1 = document.getElementById('stop');
-          button1.click();
-          speak('okay song stoped');
-	      }
-	      if (lastResult.toLowerCase() === 'video mode') {
-          const button1 = document.getElementById('vivek');
-          button1.click();
-          speak('okay video mode on');
-	      }
-	      if (lastResult.toLowerCase() === 'music stop') {
-          const button1 = document.getElementById('stop');
-          button1.click();
-          speak('okay music stoped');
-	      }
-	      if (lastResult.toLowerCase() === 'band') {
-          const button1 = document.getElementById('stop');
-          button1.click();
-          speak('okay song stoped');
-	      }
-	      if (lastResult.toLowerCase() === 'cancle') {
-          const button1 = document.getElementById('stop');
-          button1.click();
-          speak('okay music cancle');
-	      }
-if (lastResult.toLowerCase() === 'piche') {
-          const button1 = document.getElementById('rewindButton');
-          button1.click();
-          speak('okay music 5 second back');
-        } 
-if (lastResult.toLowerCase() === 'rewind') {
-          const button1 = document.getElementById('rewindButton');
-          button1.click();
-          speak('okay music 5 second back');
-        }   
-	   if (lastResult.toLowerCase() === 'song next') {
-          const button1 = document.getElementById('nextButton');
-          button1.click();
-          speak('okay i selected next song');
-        }   
-	      
-	 if (lastResult.toLowerCase() === 'next song') {
-          const button1 = document.getElementById('nextButton');
-          button1.click();
-          speak('okay i selected next song');
-        }
-if (lastResult.toLowerCase() === 'next') {
-          const button1 = document.getElementById('nextButton');
-          button1.click();
-          speak('okay i selected next song');
+    // Function to play audio from a given URL
+    function playAudio(audioURL) {
+        const audio = new Audio(audioURL);
+        audio.play();
+    }
+</script>
+    
 	
-        }
 
-	   if (lastResult.toLowerCase() === 'change') {
-          const button1 = document.getElementById('nextButton');
-          button1.click();
-          speak('okay song change');
-        }   
-if (lastResult.toLowerCase() === 'change song') {
-          const button1 = document.getElementById('nextButton');
-          button1.click();
-          speak('okay song change');
-        }
-	   if (lastResult.toLowerCase() === 'song change') {
-          const button1 = document.getElementById('nextButton');
-          button1.click();
-          speak('okay song change');
-        }   
-	    
-if (lastResult.toLowerCase() === 'forward') {
-          const button1 = document.getElementById('fastForwardButton');
-          button1.click();
-          speak('okay music 20 second forward');
-        }
-	    
-	     if (lastResult.toLowerCase() === 'gana') {
-          const button1 = document.getElementById('pahilagana');
-          button1.click();
-          speak('okay i am downloading song');
-        }     
-	      
-	    if (lastResult.toLowerCase() === 'mp3 download') {
-          const button1 = document.getElementById('pahilagana');
-          button1.click();
-          speak('okay mp3 downloading');
-        }    
-	
-	if (lastResult.toLowerCase() === 'audio') {
-          const button1 = document.getElementById('pahilagana');
-          button1.click();
-          speak('okay i clicked on audio download');
-        }
-	if (lastResult.toLowerCase() === 'audio download') {
-          const button1 = document.getElementById('pahilagana');
-          button1.click();
-          speak('okay i clicked on audio for download');
-        }
-
-	if (lastResult.toLowerCase() === 'download audio') {
-          const button1 = document.getElementById('pahilagana');
-          button1.click();
-          speak('okay i clicked on audio for download');
-        }		
-	else if (lastResult.toLowerCase() === 'mp4') {
-          const button2 = document.getElementById('vivekmasona');
-          button2.click();
-          speak('okay i clicked on mp4 download');
-        }
-		
-else if (lastResult.toLowerCase() === 'dowload mp4') {
-          const button2 = document.getElementById('vivekmasona');
-          button2.click();
-          speak('okay i clicked on mp4 download');
-        }
-
-	else if (lastResult.toLowerCase() === 'mp4 download') {
-          const button2 = document.getElementById('vivekmasona');
-          button2.click();
-          speak('okay i clicked on mp4 download');
-        }    
-		else if (lastResult.toLowerCase() === 'your developer name') {
-          const button2 = document.getElementById('dev');
-          button2.click();
-          speak('');
-        }    
-		else if (lastResult.toLowerCase() === 'developer') {
-          const button2 = document.getElementById('dev');
-          button2.click();
-          speak('');
-        }    	
-	else if (lastResult.toLowerCase() === 'video') {
-          const button2 = document.getElementById('playVideoButton');
-          button2.click();
-          speak('okay stop audio then play video');
-        }    		
-		else if (lastResult.toLowerCase() === 'video download') {
-          const button2 = document.getElementById('vivekmasona');
-          button2.click();
-          speak('okay i clicked on video for download.');
-        }
-	else if (lastResult.toLowerCase() === 'download video') {
-          const button2 = document.getElementById('vivekmasona');
-          button2.click();
-          speak('okay i clicked on video for download.');
-        }
-		
-else if (lastResult.toLowerCase() === 'time') {
-          const button2 = document.getElementById('speakButton');
-          button2.click();
-          speak('');
-        }
-	else if (lastResult.toLowerCase() === 'battery') {
-          const button2 = document.getElementById('speakButton1');
-          button2.click();
-          speak('');
-        }
-else if (lastResult.toLowerCase() === 'charging') {
-          const button2 = document.getElementById('speakButton1');
-          button2.click();
-          speak('');
-        }
-	else if (lastResult.toLowerCase() === 'samay') {
-          const button2 = document.getElementById('speakButton');
-          button2.click();
-          speak('');
-        }
-
-else if (lastResult.toLowerCase() === 'sound 10') {
-          const button2 = document.getElementById('volume10');
-          button2.click();
-          speak('okay i set volume 10%');
-        }	
-
-else if (lastResult.toLowerCase() === 'volume 10%') {
-          const button2 = document.getElementById('volume10');
-          button2.click();
-          speak('okay i set volume 10%');
-        }	
-else if (lastResult.toLowerCase() === 'volume down') {
-          const button2 = document.getElementById('volume10');
-          button2.click();
-          speak('okay i set volume 10%');
-        }	
-else if (lastResult.toLowerCase() === 'sound kam karo') {
-          const button2 = document.getElementById('volume10');
-          button2.click();
-          speak('okay i set volume 10%');
-        }	
-else if (lastResult.toLowerCase() === 'volume decrease') {
-          const button2 = document.getElementById('volume10');
-          button2.click();
-          speak('okay i set volume 10%');
-        }	
-	    
-else if (lastResult.toLowerCase() === 'volume 50%') {
-          const button2 = document.getElementById('volume50');
-          button2.click();
-          speak('okay i set volume 50%');
-        }
-	
-else if (lastResult.toLowerCase() === 'medium') {
-          const button2 = document.getElementById('volume50');
-          button2.click();
-          speak('okay i set volume 50%');
-        }	
-else if (lastResult.toLowerCase() === 'volume up') {
-          const button2 = document.getElementById('volume50');
-          button2.click();
-          speak('okay i set volume 50%');
-        }
-	
-else if (lastResult.toLowerCase() === 'volume increase') {
-          const button2 = document.getElementById('volume50');
-          button2.click();
-          speak('okay i set volume 50%');
-        }	
-else if (lastResult.toLowerCase() === 'volume full') {
-          const button2 = document.getElementById('volume100');
-          button2.click();
-          speak('okay i set volume 100%');
-        }	
-	else if (lastResult.toLowerCase() === 'full volume') {
-          const button2 = document.getElementById('volume100');
-          button2.click();
-          speak('okay i set volume full');
-        }
-	else if (lastResult.toLowerCase() === 'full sound') {
-          const button2 = document.getElementById('volume100');
-          button2.click();
-          speak('okay i set volume full');
-        }
-	else if (lastResult.toLowerCase() === 'sound full') {
-          const button2 = document.getElementById('volume100');
-          button2.click();
-          speak('okay i set volume full');
-        }	
-		
-	  else if (lastResult.toLowerCase() === 'play video') {
-          const button2 = document.getElementById('playVideoButton');
-          button2.click();
-          speak('okay video playing');
-        }    
-      };
-
-      // Function to add text-to-speech
-      function speak(text) {
-        const synth = window.speechSynthesis;
-        const utterance = new SpeechSynthesisUtterance(text);
-        synth.speak(utterance);
-      }
-    </script>
 
 <button id="volume10">10%</button>
 <button id="volume50">50%</button>
