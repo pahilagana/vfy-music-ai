@@ -463,7 +463,7 @@ color:#fff;
     </div>
     <div data-role="main" class="ui-content">
      <input type="search"  name="search" onclick="startDictation()"  id="search-basic" class="search-bar"placeholder="VIVEKFY: Type songs name artists...."/>
-     <button  onclick="search(),speakSearchText()" data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button>
+     <button  onclick="search(),speakSearchText()" data-role="button" id="sr" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button>
 	    
 	    
 	    
@@ -2780,9 +2780,11 @@ $(document).ready(function() {
 </script>
 
 <button id="dev"></button>
+	<button id="sr"></button>
 <script>
 // JavaScript code
 const playButton = document.getElementById('dev');
+
 
 let audioElement; // Declare the audio element variable
 
@@ -2799,6 +2801,27 @@ playButton.addEventListener('click', () => {
         playButton.innerHTML = 'Play';
     }
 });</script>
+
+<script>
+// JavaScript code
+const playButton = document.getElementById('sr');
+
+
+let audioElement; // Declare the audio element variable
+
+playButton.addEventListener('click', () => {
+    if (!audioElement) {
+        audioElement = new Audio('/sound/resul.mp3'); // Create the audio element if it doesn't exist
+    }
+
+    if (audioElement.paused) {
+        audioElement.play();
+        playButton.innerHTML = 'Pause';
+    } else {
+        audioElement.pause();
+        playButton.innerHTML = 'Play';
+    }
+});</script>	
 	
 
 
