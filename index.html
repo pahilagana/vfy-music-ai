@@ -31,18 +31,17 @@
 
 
 
+
+
+
 <style>
-#vfytitle {
-  font-family: 'Cutive Mono', sans-serif; /* Bongee font ka naam yahan set karein */
-  font-size: 20px; /* Font size ko apne pasandeeda size par set karein */
-  color: #5d95d7; /* Font color ko apne pasandeeda rang par set karein */
-  /* Aur kuch aur styling aap jaise chahe waise kar sakte hain */
-}
+  #vfytitle {
+    font-size: 25px; /* Font size ko 25 pixels par set kiya gaya hai */
+    font-family: 'bongee', sans-serif; /* Apne pasandeeda font ka naam yahan set karein */
+    color: #ffffff; /* Font color ko white (#ffffff) par set kiya gaya hai */
+    text-shadow: 2px 2px 4px #000000; /* Text shadow ko 2px horizontal, 2px vertical, 4px blur, aur black color (#000000) par set kiya gaya hai */
+  }
 </style>
-
-
-
-
 
 
 
@@ -273,12 +272,11 @@ Background-color:#000;
   text-align: center;
   
 color:#15e2f5;
-background: rgb(122,164,212);
-background: radial-gradient(circle, rgba(122,164,212,1) 0%, rgba(0,0,0,1) 100%); 
+background-color: #212F3D;
+	
+  
 }
-
-
-		
+	
 #foot {
     position: fixed;
     bottom: 0;
@@ -415,7 +413,7 @@ background-color: transparent;
 
 
 #vfytitle {
-color:#000;
+color:#fff;
 
 }
 
@@ -466,6 +464,8 @@ color:#000;
     <div data-role="main" class="ui-content">
      <input type="search"  name="search" onclick="startDictation()"  id="search-basic" class="search-bar"placeholder="VIVEKFY: Type songs name artists...."/>
      <button  onclick="search(),speakSearchText()" data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button>
+	    
+	    
 	    
    <div id="autocomplete-results"></div>
 
@@ -714,15 +714,13 @@ color:#000;
 <center><div id="custom-time-container">
 
 
-
+<div id="vfytitle"></div> 
 
 	  
 
 	
       <span id="current-time">0:00</span> / <span id="total-time">0:00</span>
-    <div id="vfytitle"></div> 
-
-</div>
+    </div>
 </center>
 </butto>  
 
@@ -938,9 +936,9 @@ function play(id,Sid){
     };
 document.getElementById("vivekmasona").onclick = ()=>{
         //location.href= "https://projectlounge.pw/ytdl/download?url=https://youtu.be/"+id;
-       // location.href= "https://vfy-api.onrender.com/download/video?url="+id;
-        //location.href= "https://vivekfy-api-v2.onrender.com/video?url=https://youtu.be/"+id;
-     location.href= "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/download/video?url=https://youtu.be/"+id;
+        //location.href= "https://myserver-dev-akkd.2.sg-1.fl0.io/mp4?url=https://youtu.be/"+id;
+        location.href= "https://vivekfy-api-v2.onrender.com/video?url=https://youtu.be/"+id;
+     // location.href= "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/download/video?url=https://youtu.be/"+id;
         };
 
     
@@ -1031,22 +1029,19 @@ volume100Button.addEventListener('click', function () {
 
 
 	
-const audio = document.getElementById('SAudio');
-    const songTitleElement = document.getElementById('vfytitle');
-    const posterElement = document.getElementById('profileThumbnail');
+const titleaudio = document.getElementById('SAudio');
+const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
 
-    audio.addEventListener('play', () => {
-      const songTitle = songTitleElement.textContent;
-      const posterURL = posterElement.getAttribute('src');
-      document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
-      posterElement.style.opacity = '1'; // Show the poster with full opacity
-    });
+audio.addEventListener('play', () => {
+  // Update the tab title when audio starts playing
+  const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
+  document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
+});
 
-    audio.addEventListener('pause', () => {
-      document.title = 'VIVEKFY-AI';
-      posterElement.style.opacity = '0'; // Hide the poster by making it transparent
-    });
-
+audio.addEventListener('pause', () => {
+  // Restore the original page title when audio is paused
+  document.title = 'VIVEKFY-AI';
+});
 
 
 
@@ -2786,13 +2781,3 @@ $(document).ready(function() {
 
 
 
-
-
-
-  
-
-
-
-
-
-  
