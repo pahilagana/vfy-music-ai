@@ -1891,6 +1891,7 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 <button id="pahilagana"></button>
     <button id="vivekmasona"></button>
 
+   
    <script>
     let isVoiceRecognitionOn = false;
     let recognitionTimeout;
@@ -1904,14 +1905,14 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
         if (isVoiceRecognitionOn) {
             recognition.stop();
             clearTimeout(recognitionTimeout);
-            playAudio("audio_link.mp3"); // Replace 'audio_link.mp3' with your audio link
+            playAudio("audio.mp3"); // Replace 'audio.mp3' with your audio file URL
         } else {
-            playAudio("/sound/assistant.mp3"); // Replace with the appropriate audio link
+            playAudio("/sound/assistant.mp3"); // Replace with the appropriate audio URL
             setTimeout(function () {
                 recognition.start();
                 recognitionTimeout = setTimeout(function () {
                     recognition.stop();
-                    playAudio("audio_link.mp3"); // Replace with the appropriate audio link
+                    playAudio("always_here_for_you.mp3"); // Replace with the appropriate audio URL
                 }, 10000); // Automatically turn off after 10 seconds
             }, 3000); // Delay for 3 seconds before starting voice recognition
         }
@@ -1924,19 +1925,8 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
         if (lastResult.toLowerCase() === 'mp3') {
             const button1 = document.getElementById('pahilagana');
             button1.click();
-            playAudio('clicked_on_mp3.mp3'); // Replace with the appropriate audio link
+            playAudio('clicked_on_mp3.mp3'); // Replace with the appropriate audio URL
         }
-        if (lastResult.toLowerCase() === 'download mp3') {
-            const button1 = document.getElementById('pahilagana');
-            button1 click();
-            playAudio('downloaded_mp3.mp3'); // Replace with the appropriate audio link
-        }
-        if (lastResult.toLowerCase() === 'music') {
-            const button1 = document.getElementById('pahilagana');
-            button1.click();
-            playAudio('music.mp3'); // Replace with the appropriate audio link
-        }
-        // Add more voice command conditions and actions here
     };
 
     // Function to play audio from a given URL
@@ -1945,7 +1935,7 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
         audio.play();
     }
 </script>
-    
+ 
 	
 
 
