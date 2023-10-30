@@ -2673,7 +2673,37 @@ playButton.addEventListener('click', () => {
             const button1 = document.getElementById('nextButton');
             button1.click();
             playAudio('/sound/nextsong.mp3'); // Replace with the appropriate audio URL
-        }    
+        }
+	 if (lastResult.toLowerCase() === 'forward') {
+            const button1 = document.getElementById('fastForwardButton');
+            button1.click();
+            playAudio('/sound/forward.mp3'); // Replace with the appropriate audio URL
+        }
+	  if (lastResult.toLowerCase() === 'song forward') {
+            const button1 = document.getElementById('fastForwardButton');
+            button1.click();
+            playAudio('/sound/forward.mp3'); // Replace with the appropriate audio URL
+        }
+	 if (lastResult.toLowerCase() === 'forward song') {
+            const button1 = document.getElementById('fastForwardButton');
+            button1.click();
+            playAudio('/sound/forward.mp3'); // Replace with the appropriate audio URL
+        }
+	if (lastResult.toLowerCase() === 'skip') {
+            const button1 = document.getElementById('fastForwardButton');
+            button1.click();
+            playAudio('/sound/forward.mp3'); // Replace with the appropriate audio URL
+        } 
+	  if (lastResult.toLowerCase() === 'song skip') {
+            const button1 = document.getElementById('fastForwardButton');
+            button1.click();
+            playAudio('/sound/forward.mp3'); // Replace with the appropriate audio URL
+        } 
+	if (lastResult.toLowerCase() === 'song skip') {
+            const button1 = document.getElementById('fastForwardButton');
+            button1.click();
+            playAudio('/sound/forward.mp3'); // Replace with the appropriate audio URL
+        }       
     };
 
     // Function to play audio from a given URL
