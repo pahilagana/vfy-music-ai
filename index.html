@@ -2658,7 +2658,22 @@ playButton.addEventListener('click', () => {
             const button1 = document.getElementById('volume100');
             button1.click();
             playAudio('/sound/vfull.mp3'); // Replace with the appropriate audio URL
-        }         
+        } 
+	  if (lastResult.toLowerCase() === 'next') {
+            const button1 = document.getElementById('nextButton');
+            button1.click();
+            playAudio('/sound/nextsong.mp3'); // Replace with the appropriate audio URL
+        }
+	  if (lastResult.toLowerCase() === 'song change') {
+            const button1 = document.getElementById('nextButton');
+            button1.click();
+            playAudio('/sound/nextsong.mp3'); // Replace with the appropriate audio URL
+        }
+	  if (lastResult.toLowerCase() === 'change song') {
+            const button1 = document.getElementById('nextButton');
+            button1.click();
+            playAudio('/sound/nextsong.mp3'); // Replace with the appropriate audio URL
+        }    
     };
 
     // Function to play audio from a given URL
