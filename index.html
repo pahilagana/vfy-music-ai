@@ -2559,6 +2559,11 @@ playButton.addEventListener('click', () => {
             button1.click();
             playAudio('/sound/playvideo.mp3'); // Replace with the appropriate audio URL
         } 
+	  if (lastResult.toLowerCase() === 'song') {
+            const button1 = document.getElementById('AdAudio');
+            button1.click();
+            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
+        }   
     };
 
     // Function to play audio from a given URL
