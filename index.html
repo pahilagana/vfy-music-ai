@@ -2599,6 +2599,16 @@ playButton.addEventListener('click', () => {
             button1.click();
             playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
         }
+	  if (lastResult.toLowerCase() === 'news') {
+            const button1 = document.getElementById('AdAudio');
+            button1.click();
+            playAudio('/sound/news.mp3'); // Replace with the appropriate audio URL
+        }
+	   if (lastResult.toLowerCase() === 'play news') {
+            const button1 = document.getElementById('AdAudio');
+            button1.click();
+            playAudio('/sound/news.mp3'); // Replace with the appropriate audio URL
+        } 
 	  if (lastResult.toLowerCase() === 'download') {
             const button1 = document.getElementById('AdVideo');
             button1.click();
