@@ -1603,10 +1603,7 @@ document.getElementById("stop").onclick = function() {
       recognition.start();
     }
 
-    document.getElementById('search-btn').addEventListener('click', function() {
-      // Handle the click event for the search button here.
-      alert("Search button clicked");
-    });
+    
 
 	
 function searchHindiSongs() {
@@ -1659,7 +1656,13 @@ function searchPawanSongs() {
     $(".search-bar").val(query); // Query input field mein set karen
     search(); // Search function ko call karen
 }		
-	
+
+document.getElementById('search-btn').addEventListener('click', function() {
+      // Handle the click event for the search button here.
+      alert("Search button clicked");
+    });
+
+
 </script>
 
 
