@@ -1578,35 +1578,37 @@ document.getElementById("stop").onclick = function() {
 
 
 <script>
+    fu  <script>
+    var recognition = new webkitSpeechRecognition();
+
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = "en-US";
+
+    recognition.onstart = function() {
+      // Voice recognition started, you can add any initialization here.
+    };
+
+    recognition.onresult = function(e) {
+      var result = e.results[0][0].transcript;
+      document.getElementById('search-basic').value = result;
+      document.getElementById('search-btn').click();
+    };
+
+    recognition.onerror = function(e) {
+      // Handle recognition errors here if needed.
+    };
+
     function startDictation() {
-      if (window.hasOwnProperty('webkitSpeechRecognition')) {
-        var recognition = new webkitSpeechRecognition();
-
-        recognition.continuous = false;
-        recognition.interimResults = false;
-        recognition.lang = "en-US";
-        recognition.start();
-
-        recognition.onresult = function(e) {
-          var searchText = e.results[0][0].transcript;
-          document.getElementById('search-basic').value = searchText;
-
-          // Trigger the 'search' function when the search box is filled.
-          // Assuming your search function is named 'oneClickSearch'.
-          oneClickSearch();
-        };
-
-        recognition.onerror = function(e) {
-          recognition.stop();
-        }
-      }
+      recognition.start();
     }
 
-    function oneClickSearch() {
-      // Perform the search or submit the form when the search box is filled.
-      // Assuming you have a function to handle the search here.
-      document.getElementById('search-basic').form.submit();
-    }
+    document.getElementById('search-btn').addEventListener('click', function() {
+      // Handle the click event for the search button here.
+      alert("Search button clicked");
+    });
+
+	
 function searchHindiSongs() {
     var query = "Latest release hindi songs"; // Hindi songs ke liye query
     $(".search-bar").val(query); // Query input field mein set karen
