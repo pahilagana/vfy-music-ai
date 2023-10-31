@@ -908,6 +908,8 @@ $("#closePopup").click(function() {
 	
 	
 function loadSong(song, ind) {
+
+function loadSong(song, ind) {
     var id = $(song).attr("vid");
     var indId = parseInt($(song).attr("index"));
     var thumbnail = $(song).children('img').attr("src");
@@ -926,11 +928,29 @@ function loadSong(song, ind) {
     $("#profileThumbnail").data("videoId", id);
 
     // Set the title text to the marquee div with ID "vfytitle"
-    $("#vfytitle").html('<marquee behavior="alternate" scrollamount="4" onmousedown="this.stop();" onmouseup="this.start();">' + title + '</marquee>');
+    $("#vfytitle").html('<marquee behavior="alternate" scrollamount="4" onmousedown="this.stop();" onmouseup="this.start();">' + title + '</marquee');
 
+    // Play the audio
     play(id, indId);
-}
 
+    // Create a notification when the audio starts playing
+    var options = {
+        body: title, // Use the song title as the notification body
+        icon: thumbnail // Use the thumbnail as the notification icon
+    };
+
+    if (Notification.permission === "granted") {
+        // If the user has granted notification permissions
+        var notification = new Notification("Now Playing", options);
+    } else if (Notification.permission !== "denied") {
+        // If the user hasn't decided on notifications, request permission
+        Notification.requestPermission().then(function (permission) {
+            if (permission === "granted") {
+                var notification = new Notification("Now Playing", options);
+            }
+        });
+    }
+}
 
 
 
@@ -1043,28 +1063,6 @@ volume100Button.addEventListener('click', function () {
 
 
 	
-const audio = document.getElementById('SAudio');
-const songTitleElement = document.getElementById('vfytitle');
-const thumbnailElement = document.getElementById('profileThumbnail'); // Assuming the thumbnail is stored in an element with ID 'profileThumbnail'
-
-audio.addEventListener('play', () => {
-  // Update the tab title and show the thumbnail in the notification when audio starts playing
-  const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
-  const thumbnailSrc = thumbnailElement.getAttribute('src'); // Get the thumbnail source from the 'profileThumbnail' element
-
-  // Create a notification
-  const notification = new Notification(songTitle, {
-    body: audio.currentTime + ' seconds',
-    icon: thumbnailSrc, // Set the thumbnail as the icon
-  });
-
-  document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
-//});
-
-//audio.addEventListener('pause', () => {
-  // Restore the original page title when audio is paused
- // document.title = 'VIVEKFY-AI';
-});
 
 
 
