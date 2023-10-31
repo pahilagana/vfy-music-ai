@@ -2764,6 +2764,15 @@ $(document).ready(function() {
     searchField.val($(this).text());
     hideAutocompleteResults();
   });
+// Handle clicks on autocomplete suggestions for manual search
+autocompleteResults.on("click", ".autocomplete-suggestion", function() {
+  var suggestion = $(this).text();
+  searchField.val(suggestion);
+  hideAutocompleteResults();
+
+  // Programmatically trigger a click on the search button
+  $("#search-btn").click();
+});
 
   // Listen for "Enter" key press to disable autocomplete
   searchField.keypress(function(event) {
