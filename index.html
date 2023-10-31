@@ -1578,41 +1578,83 @@ document.getElementById("stop").onclick = function() {
 
 
 <script>
-    var recognition = new webkitSpeechRecognition();
+  function startDictation() {
 
-    recognition.continuous = false;
-    recognition.interimResults = false;
-    recognition.lang = "en-US";
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
 
-    recognition.onstart = function() {
-      // Voice recognition started, you can add any initialization here.
-    };
+      var recognition = new webkitSpeechRecognition();
 
-    recognition.onresult = function(e) {
-      var result = e.results[0][0].transcript;
-      document.getElementById('search-basic').value = result;
-      document.getElementById('search-btn').click();
-    };
+      recognition.continuous = false;
+      recognition.interimResults = false;
 
-    recognition.onerror = function(e) {
-      // Handle recognition errors here if needed.
-    };
-
-    function startDictation() {
+      recognition.lang = "en-US";
       recognition.start();
+
+      recognition.onresult = function(e) {
+        document.getElementById('search-basic').value
+                                 = e.results[0][0].transcript;
+        recognition.stop();
+        document.getElementById('search-btn').submit();
+      };
+
+      recognition.onerror = function(e) {
+        recognition.stop();
+      }
+
     }
-
-    document.getElementById('start-voice-recognition').addEventListener('click', function() {
-      // Start voice recognition when the "Start Voice Recognition" button is clicked.
-      startDictation();
-    });
-
-    document.getElementById('search-btn').addEventListener('click', function() {
-      // Handle the click event for the search button here.
-      alert("Custom click event for the search button");
-      // Add your custom logic here when the button is clicked.
-    });
-  </script>
+  }
+function searchHindiSongs() {
+    var query = "Latest release hindi songs"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}
+function searchBhojpuriSongs() {
+    var query = "new bhojpuri songs"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}	
+function searchBhaktiSongs() {
+    var query = "hindi bhakti songs"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}	
+function searchChhathSongs() {
+    var query = "Bhojpuri chhath geet"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}	
+function searchLofiSongs() {
+    var query = "new lofi remix song"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}	
+function searchOldvsnewSongs() {
+    var query = "old vs new"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}	
+function searchBhaktibhojpuriSongs() {
+    var query = "new bhojpuri bhakti songs"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}
+function searchSadSongs() {
+    var query = "Sad song"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}		
+function searchTrendingSongs() {
+    var query = "New Terending hindi songs"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}
+function searchPawanSongs() {
+    var query = "pawan singh song"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}		
+	
+</script>
 
 
 
@@ -2751,5 +2793,6 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 
 
 	
+
 
 
