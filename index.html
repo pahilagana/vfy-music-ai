@@ -908,8 +908,6 @@ $("#closePopup").click(function() {
 	
 	
 function loadSong(song, ind) {
-
-function loadSong(song, ind) {
     var id = $(song).attr("vid");
     var indId = parseInt($(song).attr("index"));
     var thumbnail = $(song).children('img').attr("src");
@@ -928,18 +926,11 @@ function loadSong(song, ind) {
     $("#profileThumbnail").data("videoId", id);
 
     // Set the title text to the marquee div with ID "vfytitle"
-    $("#vfytitle").html('<marquee behavior="alternate" scrollamount="4" onmousedown="this.stop();" onmouseup="this.start();">' + title + '</marquee');
+    $("#vfytitle").html('<marquee behavior="alternate" scrollamount="4" onmousedown="this.stop();" onmouseup="this.start();">' + title + '</marquee>');
 
-    // Play the audio
     play(id, indId);
+}
 
-    // Create a notification when the audio starts playing
-    var options = {
-        body: title, // Use the song title as the notification body
-        icon: thumbnail // Use the thumbnail as the notification icon
-    };
-
-    
 
 
 
@@ -1052,7 +1043,19 @@ volume100Button.addEventListener('click', function () {
 
 
 	
+const titleaudio = document.getElementById('SAudio');
+const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
 
+audio.addEventListener('play', () => {
+  // Update the tab title when audio starts playing
+  const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
+  document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
+});
+
+audio.addEventListener('pause', () => {
+  // Restore the original page title when audio is paused
+  document.title = 'VIVEKFY-AI';
+});
 
 
 
@@ -2793,6 +2796,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 
 
 	
+
 
 
 
