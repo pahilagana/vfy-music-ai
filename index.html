@@ -557,6 +557,26 @@ color:#fff;
 ></div>	
 
 <div>
+<img src="https://i.ytimg.com/vi/A7kGr1DQhkM/maxresdefault.jpg" onclick="searchKhesariSongs()"
+              alt="vfy"
+              width="100%"
+            />
+            <section>
+              <img
+                src="/img/logo.png"
+                alt="Vivekfy"
+                width="10%"
+              />
+              <div>
+                <p>khesari lal yadav New Songs </p>
+                <small>VFY</small><br />
+                <small>Music Player</small>
+              </div>
+            </img
+></section></img
+></div>		
+
+<div>
 <img src="https://i.ytimg.com/vi/5oExKMYIE9U/maxresdefault.jpg" onclick="searchHindiSongs()"
               alt="vfy"
               width="100%"
@@ -1650,6 +1670,11 @@ function searchTrendingSongs() {
 }
 function searchPawanSongs() {
     var query = "pawan singh song"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}
+function searchKhesariSongs() {
+    var query = "khesarilal new song"; // Hindi songs ke liye query
     $(".search-bar").val(query); // Query input field mein set karen
     search(); // Search function ko call karen
 }		
