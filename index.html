@@ -1220,7 +1220,7 @@ document.getElementById("stop").onclick = function() {
             clearTimeout(recognitionTimeout);
             playAudio("/sound/again.mp3"); // Replace 'audio.mp3' with your audio file URL
         } else {
-            playAudio("/sound/assistant.mp3"); // Replace with the appropriate audio URL
+            playAudio("/sound/help.mp3"); // Replace with the appropriate audio URL
             setTimeout(function () {
                 recognition.start();
                 recognitionTimeout = setTimeout(function () {
@@ -1300,7 +1300,7 @@ document.getElementById("stop").onclick = function() {
             button1.click();
             playAudio('/sound/playvideo.mp3'); // Replace with the appropriate audio URL
         }
-    if (lastResult.toLowerCase() === 'video play') {
+         if (lastResult.toLowerCase() === 'video play') {
             const button1 = document.getElementById('playVideoButton');
             button1.click();
             playAudio('/sound/playvideo.mp3'); // Replace with the appropriate audio URL
