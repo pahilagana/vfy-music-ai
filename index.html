@@ -1578,31 +1578,35 @@ document.getElementById("stop").onclick = function() {
 
 
 <script>
-  function startDictation() {
+    function startDictation() {
+      if (window.hasOwnProperty('webkitSpeechRecognition')) {
+        var recognition = new webkitSpeechRecognition();
 
-    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.lang = "en-US";
+        recognition.start();
 
-      var recognition = new webkitSpeechRecognition();
+        recognition.onresult = function(e) {
+          var searchText = e.results[0][0].transcript;
+          document.getElementById('search-basic').value = searchText;
 
-      recognition.continuous = false;
-      recognition.interimResults = false;
+          // Trigger the 'search' function when the search box is filled.
+          // Assuming your search function is named 'oneClickSearch'.
+          oneClickSearch();
+        };
 
-      recognition.lang = "en-US";
-      recognition.start();
-
-      recognition.onresult = function(e) {
-        document.getElementById('search-basic').value
-                                 = e.results[0][0].transcript;
-        recognition.stop();
-        document.getElementById('search-btn').submit();
-      };
-
-      recognition.onerror = function(e) {
-        recognition.stop();
+        recognition.onerror = function(e) {
+          recognition.stop();
+        }
       }
-
     }
-  }
+
+    function oneClickSearch() {
+      // Perform the search or submit the form when the search box is filled.
+      // Assuming you have a function to handle the search here.
+      document.getElementById('search-basic').form.submit();
+    }
 function searchHindiSongs() {
     var query = "Latest release hindi songs"; // Hindi songs ke liye query
     $(".search-bar").val(query); // Query input field mein set karen
