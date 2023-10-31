@@ -218,360 +218,6 @@ background: radial-gradient(circle, rgba(63,181,219,1) 0%, rgba(32,53,58,1) 100%
 
 	
 
-<button id="pahilagana"></button>
-    <button id="vivekmasona"></button>
-
-   
-   <script>
-    let isVoiceRecognitionOn = false;
-    let recognitionTimeout;
-    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-    recognition.lang = 'en-US';
-    recognition.interimResults = false;
-
-    const toggleButton = document.getElementById('toggleButton');
-
-    toggleButton.addEventListener('click', function () {
-        if (isVoiceRecognitionOn) {
-            recognition.stop();
-            clearTimeout(recognitionTimeout);
-            playAudio("/sound/again.mp3"); // Replace 'audio.mp3' with your audio file URL
-        } else {
-            playAudio("/sound/assistant.mp3"); // Replace with the appropriate audio URL
-            setTimeout(function () {
-                recognition.start();
-                recognitionTimeout = setTimeout(function () {
-                    recognition.stop();
-                    playAudio("/sound/always.mp3"); // Replace with the appropriate audio URL
-                }, 10000); // Automatically turn off after 10 seconds
-            }, 4000); // Delay for 3 seconds before starting voice recognition
-        }
-        isVoiceRecognitionOn = !isVoiceRecognitionOn;
-    });
-
-    recognition.onresult = function(event) {
-        const lastResult = event.results[event.results.length - 1][0].transcript;
-
-        if (lastResult.toLowerCase() === 'mp3') {
-            const button1 = document.getElementById('pahilagana');
-            button1.click();
-            playAudio('/sound/audio.mp3'); // Replace with the appropriate audio URL
-        }
-	 if (lastResult.toLowerCase() === 'dowload mp3') {
-            const button1 = document.getElementById('pahilagana');
-            button1.click();
-            playAudio('/sound/audio.mp3'); // Replace with the appropriate audio URL
-        } 
-	 if (lastResult.toLowerCase() === 'mp3 download') {
-            const button1 = document.getElementById('pahilagana');
-            button1.click();
-            playAudio('/sound/audio.mp3'); // Replace with the appropriate audio URL
-        } 
-	if (lastResult.toLowerCase() === 'download this song') {
-            const button1 = document.getElementById('pahilagana');
-            button1.click();
-            playAudio('/sound/audio.mp3'); // Replace with the appropriate audio URL
-        } 
-	 if (lastResult.toLowerCase() === 'audio') {
-            const button1 = document.getElementById('pahilagana');
-            button1.click();
-            playAudio('/sound/audio.mp3'); // Replace with the appropriate audio URL
-        }
-	 if (lastResult.toLowerCase() === 'audio download') {
-            const button1 = document.getElementById('pahilagana');
-            button1.click();
-            playAudio('/sound/audio.mp3'); // Replace with the appropriate audio URL
-        }
-	if (lastResult.toLowerCase() === 'dowload audio') {
-            const button1 = document.getElementById('pahilagana');
-            button1.click();
-            playAudio('/sound/audio.mp3'); // Replace with the appropriate audio URL
-        } 
-	if (lastResult.toLowerCase() === 'video download') {
-            const button1 = document.getElementById('vivekmasona');
-            button1.click();
-            playAudio('/sound/videodownload .mp3'); // Replace with the appropriate audio URL
-        }
-	 if (lastResult.toLowerCase() === 'download video') {
-            const button1 = document.getElementById('vivekmasona');
-            button1.click();
-            playAudio('/sound/videodownload .mp3'); // Replace with the appropriate audio URL
-        } 
-	if (lastResult.toLowerCase() === 'mp4') {
-            const button1 = document.getElementById('vivekmasona');
-            button1.click();
-            playAudio('/sound/videodownload .mp3'); // Replace with the appropriate audio URL
-        } 
-	 if (lastResult.toLowerCase() === 'mp4 download') {
-            const button1 = document.getElementById('vivekmasona');
-            button1.click();
-            playAudio('/sound/videodownload .mp3'); // Replace with the appropriate audio URL
-        } 
-	 if (lastResult.toLowerCase() === 'download mp4') {
-            const button1 = document.getElementById('vivekmasona');
-            button1.click();
-            playAudio('/sound/videodownload .mp3'); // Replace with the appropriate audio URL
-        } 
-         if (lastResult.toLowerCase() === 'play video') {
-            const button1 = document.getElementById('playVideoButton');
-            button1.click();
-            playAudio('/sound/playvideo.mp3'); // Replace with the appropriate audio URL
-        }
-    if (lastResult.toLowerCase() === 'video play') {
-            const button1 = document.getElementById('playVideoButton');
-            button1.click();
-            playAudio('/sound/playvideo.mp3'); // Replace with the appropriate audio URL
-        }
-	   if (lastResult.toLowerCase() === 'video') {
-            const button1 = document.getElementById('playVideoButton');
-            button1.click();
-            playAudio('/sound/playvideo.mp3'); // Replace with the appropriate audio URL
-        } 
-	  if (lastResult.toLowerCase() === 'song') {
-            const button1 = document.getElementById('AdAudio');
-            button1.click();
-            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
-        } 
-	  if (lastResult.toLowerCase() === 'play song') {
-            const button1 = document.getElementById('AdAudio');
-            button1.click();
-            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
-        }
-	 if (lastResult.toLowerCase() === 'song play') {
-            const button1 = document.getElementById('AdAudio');
-            button1.click();
-            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
-        } 
-	 if (lastResult.toLowerCase() === 'audio start') {
-            const button1 = document.getElementById('AdAudio');
-            button1.click();
-            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
-        } 
-	 if (lastResult.toLowerCase() === 'start audio') {
-            const button1 = document.getElementById('AdAudio');
-            button1.click();
-            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
-        } 
-	 if (lastResult.toLowerCase() === 'audio') {
-            const button1 = document.getElementById('AdAudio');
-            button1.click();
-            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
-        } 
-	 if (lastResult.toLowerCase() === 'audio play') {
-            const button1 = document.getElementById('AdAudio');
-            button1.click();
-            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
-        }
-	if (lastResult.toLowerCase() === 'play audio') {
-            const button1 = document.getElementById('AdAudio');
-            button1.click();
-            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
-        }
-	  if (lastResult.toLowerCase() === 'news') {
-            const button1 = document.getElementById('AdAudio');
-            button1.click();
-            playAudio('/sound/news.mp3'); // Replace with the appropriate audio URL
-        }
-	   if (lastResult.toLowerCase() === 'play news') {
-            const button1 = document.getElementById('AdAudio');
-            button1.click();
-            playAudio('/sound/news.mp3'); // Replace with the appropriate audio URL
-        } 
-	  if (lastResult.toLowerCase() === 'download') {
-            const button1 = document.getElementById('AdVideo');
-            button1.click();
-            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
-        }
-	  if (lastResult.toLowerCase() === 'extract') {
-            const button1 = document.getElementById('AdVideo');
-            button1.click();
-            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
-        } 
-	 if (lastResult.toLowerCase() === 'save') {
-            const button1 = document.getElementById('AdVideo');
-            button1.click();
-            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
-        }
-	 if (lastResult.toLowerCase() === 'volume down') {
-            const button1 = document.getElementById('volume10');
-            button1.click();
-            playAudio('/sound/vdown.mp3'); // Replace with the appropriate audio URL
-        }
-	  if (lastResult.toLowerCase() === 'volume decrease') {
-            const button1 = document.getElementById('volume10');
-            button1.click();
-            playAudio('/sound/vdown.mp3'); // Replace with the appropriate audio URL
-        }
-	   if (lastResult.toLowerCase() === 'decrease sound') {
-            const button1 = document.getElementById('volume10');
-            button1.click();
-            playAudio('/sound/vdown.mp3'); // Replace with the appropriate audio URL
-        } 
-	 if (lastResult.toLowerCase() === 'volume increase') {
-            const button1 = document.getElementById('volume100');
-            button1.click();
-            playAudio('/sound/vfull.mp3'); // Replace with the appropriate audio URL
-	}
-	 if (lastResult.toLowerCase() === 'volume full') {
-            const button1 = document.getElementById('volume100');
-            button1.click();
-            playAudio('/sound/vfull.mp3'); // Replace with the appropriate audio URL
-        }
-	 if (lastResult.toLowerCase() === 'sound full') {
-            const button1 = document.getElementById('volume100');
-            button1.click();
-            playAudio('/sound/vfull.mp3'); // Replace with the appropriate audio URL
-        } 
-	  if (lastResult.toLowerCase() === 'full sound') {
-            const button1 = document.getElementById('volume100');
-            button1.click();
-            playAudio('/sound/vfull.mp3'); // Replace with the appropriate audio URL
-        } 
-	  if (lastResult.toLowerCase() === 'next') {
-            const button1 = document.getElementById('nextButton');
-            button1.click();
-            playAudio('/sound/nextsong.mp3'); // Replace with the appropriate audio URL
-        }
-	  if (lastResult.toLowerCase() === 'song change') {
-            const button1 = document.getElementById('nextButton');
-            button1.click();
-            playAudio('/sound/nextsong.mp3'); // Replace with the appropriate audio URL
-        }
-	  if (lastResult.toLowerCase() === 'change song') {
-            const button1 = document.getElementById('nextButton');
-            button1.click();
-            playAudio('/sound/nextsong.mp3'); // Replace with the appropriate audio URL
-        }
-	 if (lastResult.toLowerCase() === 'forward') {
-            const button1 = document.getElementById('fastForwardButton');
-            button1.click();
-            playAudio('/sound/forward.mp3'); // Replace with the appropriate audio URL
-        }
-	  if (lastResult.toLowerCase() === 'song forward') {
-            const button1 = document.getElementById('fastForwardButton');
-            button1.click();
-            playAudio('/sound/forward.mp3'); // Replace with the appropriate audio URL
-        }
-	 if (lastResult.toLowerCase() === 'forward song') {
-            const button1 = document.getElementById('fastForwardButton');
-            button1.click();
-            playAudio('/sound/forward.mp3'); // Replace with the appropriate audio URL
-        }
-	if (lastResult.toLowerCase() === 'backward') {
-            const button1 = document.getElementById('rewindButton');
-            button1.click();
-            playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
-        } 
-	  if (lastResult.toLowerCase() === 'rewind') {
-            const button1 = document.getElementById('rewindButton');
-            button1.click();
-            playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
-        } 
-	if (lastResult.toLowerCase() === 'song rewind') {
-            const button1 = document.getElementById('rewindButton');
-            button1.click();
-            playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
-        } 
-	 if (lastResult.toLowerCase() === 'rewind song') {
-            const button1 = document.getElementById('rewindButton');
-            button1.click();
-            playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
-        }
-	 if (lastResult.toLowerCase() === 'backward song') {
-            const button1 = document.getElementById('rewindButton');
-            button1.click();
-            playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
-        }  
-	  if (lastResult.toLowerCase() === 'song backward') {
-            const button1 = document.getElementById('rewindButton');
-            button1.click();
-            playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
-        }
-	  if (lastResult.toLowerCase() === 'stop') {
-            const button1 = document.getElementById('stop');
-            button1.click();
-            playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
-        } 
-	 if (lastResult.toLowerCase() === 'song stop') {
-            const button1 = document.getElementById('stop');
-            button1.click();
-            playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
-        }
-	 if (lastResult.toLowerCase() === 'stop song') {
-            const button1 = document.getElementById('stop');
-            button1.click();
-            playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
-        } 
-	if (lastResult.toLowerCase() === 'music stop') {
-            const button1 = document.getElementById('stop');
-            button1.click();
-            playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
-        }
-	 if (lastResult.toLowerCase() === 'stop music') {
-            const button1 = document.getElementById('stop');
-            button1.click();
-            playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
-        } 
-	  if (lastResult.toLowerCase() === 'audio stop') {
-            const button1 = document.getElementById('stop');
-            button1.click();
-            playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
-        }
-	 if (lastResult.toLowerCase() === 'stop audio') {
-            const button1 = document.getElementById('stop');
-            button1.click();
-            playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
-        }
-	 if (lastResult.toLowerCase() === 'stop mp3') {
-            const button1 = document.getElementById('stop');
-            button1.click();
-            playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
-        }
-	if (lastResult.toLowerCase() === 'mp3 stop') {
-            const button1 = document.getElementById('stop');
-            button1.click();
-            playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
-        }
-	  if (lastResult.toLowerCase() === 'play') {
-            const button1 = document.getElementById('play');
-            button1.click();
-            playAudio('/sound/play.mp3'); // Replace with the appropriate audio URL
-        } 
-	 if (lastResult.toLowerCase() === 'developer') {
-            const button1 = document.getElementById('developer');
-            button1.click();
-            playAudio('/sound/vivek.mp3'); // Replace with the appropriate audio URL
-        }
-	  if (lastResult.toLowerCase() === 'developer name') {
-            const button1 = document.getElementById('developer');
-            button1.click();
-            playAudio('/sound/vivek.mp3'); // Replace with the appropriate audio URL
-        }
-	 if (lastResult.toLowerCase() === 'your father') {
-            const button1 = document.getElementById('developer');
-            button1.click();
-            playAudio('/sound/vivek.mp3'); // Replace with the appropriate audio URL
-        } 
-	 if (lastResult.toLowerCase() === 'what is your father name') {
-            const button1 = document.getElementById('developer');
-            button1.click();
-            playAudio('/sound/vivek.mp3'); // Replace with the appropriate audio URL
-        }   
-    };
-
-    // Function to play audio from a given URL
-    function playAudio(audioURL) {
-        const audio = new Audio(audioURL);
-        audio.play();
-    }
-</script>
- 
-	
-
-<div id="developer"></div>
-<button id="volume10">10%</button>
-<button id="volume50">50%</button>
-<button id="volume100">100%</button>
 
 
 
@@ -1554,6 +1200,368 @@ document.getElementById("stop").onclick = function() {
 </script></div>
 
 
+<button id="pahilagana"></button>
+    <button id="vivekmasona"></button>
+
+   
+   <script>
+    let isVoiceRecognitionOn = false;
+    let recognitionTimeout;
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+
+    const toggleButton = document.getElementById('toggleButton');
+
+    toggleButton.addEventListener('click', function () {
+        if (isVoiceRecognitionOn) {
+            recognition.stop();
+            clearTimeout(recognitionTimeout);
+            playAudio("/sound/again.mp3"); // Replace 'audio.mp3' with your audio file URL
+        } else {
+            playAudio("/sound/assistant.mp3"); // Replace with the appropriate audio URL
+            setTimeout(function () {
+                recognition.start();
+                recognitionTimeout = setTimeout(function () {
+                    recognition.stop();
+                    playAudio("/sound/always.mp3"); // Replace with the appropriate audio URL
+                }, 10000); // Automatically turn off after 10 seconds
+            }, 4000); // Delay for 3 seconds before starting voice recognition
+        }
+        isVoiceRecognitionOn = !isVoiceRecognitionOn;
+    });
+
+    recognition.onresult = function(event) {
+        const lastResult = event.results[event.results.length - 1][0].transcript;
+
+        if (lastResult.toLowerCase() === 'mp3') {
+            const button1 = document.getElementById('pahilagana');
+            button1.click();
+            playAudio('/sound/audio.mp3'); // Replace with the appropriate audio URL
+        }
+	 if (lastResult.toLowerCase() === 'dowload mp3') {
+            const button1 = document.getElementById('pahilagana');
+            button1.click();
+            playAudio('/sound/audio.mp3'); // Replace with the appropriate audio URL
+        } 
+	 if (lastResult.toLowerCase() === 'mp3 download') {
+            const button1 = document.getElementById('pahilagana');
+            button1.click();
+            playAudio('/sound/audio.mp3'); // Replace with the appropriate audio URL
+        } 
+	if (lastResult.toLowerCase() === 'download this song') {
+            const button1 = document.getElementById('pahilagana');
+            button1.click();
+            playAudio('/sound/audio.mp3'); // Replace with the appropriate audio URL
+        } 
+	 if (lastResult.toLowerCase() === 'audio') {
+            const button1 = document.getElementById('pahilagana');
+            button1.click();
+            playAudio('/sound/audio.mp3'); // Replace with the appropriate audio URL
+        }
+	 if (lastResult.toLowerCase() === 'audio download') {
+            const button1 = document.getElementById('pahilagana');
+            button1.click();
+            playAudio('/sound/audio.mp3'); // Replace with the appropriate audio URL
+        }
+	if (lastResult.toLowerCase() === 'dowload audio') {
+            const button1 = document.getElementById('pahilagana');
+            button1.click();
+            playAudio('/sound/audio.mp3'); // Replace with the appropriate audio URL
+        } 
+	if (lastResult.toLowerCase() === 'video download') {
+            const button1 = document.getElementById('vivekmasona');
+            button1.click();
+            playAudio('/sound/videodownload .mp3'); // Replace with the appropriate audio URL
+        }
+	 if (lastResult.toLowerCase() === 'download video') {
+            const button1 = document.getElementById('vivekmasona');
+            button1.click();
+            playAudio('/sound/videodownload .mp3'); // Replace with the appropriate audio URL
+        } 
+	if (lastResult.toLowerCase() === 'mp4') {
+            const button1 = document.getElementById('vivekmasona');
+            button1.click();
+            playAudio('/sound/videodownload .mp3'); // Replace with the appropriate audio URL
+        } 
+	 if (lastResult.toLowerCase() === 'mp4 download') {
+            const button1 = document.getElementById('vivekmasona');
+            button1.click();
+            playAudio('/sound/videodownload .mp3'); // Replace with the appropriate audio URL
+        } 
+	 if (lastResult.toLowerCase() === 'download mp4') {
+            const button1 = document.getElementById('vivekmasona');
+            button1.click();
+            playAudio('/sound/videodownload .mp3'); // Replace with the appropriate audio URL
+        } 
+         if (lastResult.toLowerCase() === 'play video') {
+            const button1 = document.getElementById('playVideoButton');
+            button1.click();
+            playAudio('/sound/playvideo.mp3'); // Replace with the appropriate audio URL
+        }
+    if (lastResult.toLowerCase() === 'video play') {
+            const button1 = document.getElementById('playVideoButton');
+            button1.click();
+            playAudio('/sound/playvideo.mp3'); // Replace with the appropriate audio URL
+        }
+	   if (lastResult.toLowerCase() === 'video') {
+            const button1 = document.getElementById('playVideoButton');
+            button1.click();
+            playAudio('/sound/playvideo.mp3'); // Replace with the appropriate audio URL
+        } 
+	  if (lastResult.toLowerCase() === 'song') {
+            const button1 = document.getElementById('AdAudio');
+            button1.click();
+            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
+        } 
+	  if (lastResult.toLowerCase() === 'play song') {
+            const button1 = document.getElementById('AdAudio');
+            button1.click();
+            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
+        }
+	 if (lastResult.toLowerCase() === 'song play') {
+            const button1 = document.getElementById('AdAudio');
+            button1.click();
+            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
+        } 
+	 if (lastResult.toLowerCase() === 'audio start') {
+            const button1 = document.getElementById('AdAudio');
+            button1.click();
+            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
+        } 
+	 if (lastResult.toLowerCase() === 'start audio') {
+            const button1 = document.getElementById('AdAudio');
+            button1.click();
+            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
+        } 
+	 if (lastResult.toLowerCase() === 'audio') {
+            const button1 = document.getElementById('AdAudio');
+            button1.click();
+            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
+        } 
+	 if (lastResult.toLowerCase() === 'audio play') {
+            const button1 = document.getElementById('AdAudio');
+            button1.click();
+            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
+        }
+	if (lastResult.toLowerCase() === 'play audio') {
+            const button1 = document.getElementById('AdAudio');
+            button1.click();
+            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
+        }
+	  if (lastResult.toLowerCase() === 'news') {
+            const button1 = document.getElementById('AdAudio');
+            button1.click();
+            playAudio('/sound/news.mp3'); // Replace with the appropriate audio URL
+        }
+	   if (lastResult.toLowerCase() === 'play news') {
+            const button1 = document.getElementById('AdAudio');
+            button1.click();
+            playAudio('/sound/news.mp3'); // Replace with the appropriate audio URL
+        } 
+	  if (lastResult.toLowerCase() === 'download') {
+            const button1 = document.getElementById('AdVideo');
+            button1.click();
+            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
+        }
+	  if (lastResult.toLowerCase() === 'extract') {
+            const button1 = document.getElementById('AdVideo');
+            button1.click();
+            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
+        } 
+	 if (lastResult.toLowerCase() === 'save') {
+            const button1 = document.getElementById('AdVideo');
+            button1.click();
+            playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
+        }
+	 if (lastResult.toLowerCase() === 'volume down') {
+            const button1 = document.getElementById('volume10');
+            button1.click();
+            playAudio('/sound/vdown.mp3'); // Replace with the appropriate audio URL
+        }
+	  if (lastResult.toLowerCase() === 'volume decrease') {
+            const button1 = document.getElementById('volume10');
+            button1.click();
+            playAudio('/sound/vdown.mp3'); // Replace with the appropriate audio URL
+        }
+	   if (lastResult.toLowerCase() === 'decrease sound') {
+            const button1 = document.getElementById('volume10');
+            button1.click();
+            playAudio('/sound/vdown.mp3'); // Replace with the appropriate audio URL
+        } 
+	 if (lastResult.toLowerCase() === 'volume increase') {
+            const button1 = document.getElementById('volume100');
+            button1.click();
+            playAudio('/sound/vfull.mp3'); // Replace with the appropriate audio URL
+	}
+	 if (lastResult.toLowerCase() === 'volume full') {
+            const button1 = document.getElementById('volume100');
+            button1.click();
+            playAudio('/sound/vfull.mp3'); // Replace with the appropriate audio URL
+        }
+	 if (lastResult.toLowerCase() === 'sound full') {
+            const button1 = document.getElementById('volume100');
+            button1.click();
+            playAudio('/sound/vfull.mp3'); // Replace with the appropriate audio URL
+        } 
+	  if (lastResult.toLowerCase() === 'full sound') {
+            const button1 = document.getElementById('volume100');
+            button1.click();
+            playAudio('/sound/vfull.mp3'); // Replace with the appropriate audio URL
+        } 
+	  if (lastResult.toLowerCase() === 'next') {
+            const button1 = document.getElementById('nextButton');
+            button1.click();
+            playAudio('/sound/nextsong.mp3'); // Replace with the appropriate audio URL
+        }
+	  if (lastResult.toLowerCase() === 'song change') {
+            const button1 = document.getElementById('nextButton');
+            button1.click();
+            playAudio('/sound/nextsong.mp3'); // Replace with the appropriate audio URL
+        }
+	  if (lastResult.toLowerCase() === 'change song') {
+            const button1 = document.getElementById('nextButton');
+            button1.click();
+            playAudio('/sound/nextsong.mp3'); // Replace with the appropriate audio URL
+        }
+	 if (lastResult.toLowerCase() === 'forward') {
+            const button1 = document.getElementById('fastForwardButton');
+            button1.click();
+            playAudio('/sound/forward.mp3'); // Replace with the appropriate audio URL
+        }
+	  if (lastResult.toLowerCase() === 'song forward') {
+            const button1 = document.getElementById('fastForwardButton');
+            button1.click();
+            playAudio('/sound/forward.mp3'); // Replace with the appropriate audio URL
+        }
+	 if (lastResult.toLowerCase() === 'forward song') {
+            const button1 = document.getElementById('fastForwardButton');
+            button1.click();
+            playAudio('/sound/forward.mp3'); // Replace with the appropriate audio URL
+        }
+	if (lastResult.toLowerCase() === 'backward') {
+            const button1 = document.getElementById('rewindButton');
+            button1.click();
+            playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
+        } 
+	  if (lastResult.toLowerCase() === 'rewind') {
+            const button1 = document.getElementById('rewindButton');
+            button1.click();
+            playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
+        } 
+	if (lastResult.toLowerCase() === 'song rewind') {
+            const button1 = document.getElementById('rewindButton');
+            button1.click();
+            playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
+        } 
+	 if (lastResult.toLowerCase() === 'rewind song') {
+            const button1 = document.getElementById('rewindButton');
+            button1.click();
+            playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
+        }
+	 if (lastResult.toLowerCase() === 'backward song') {
+            const button1 = document.getElementById('rewindButton');
+            button1.click();
+            playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
+        }  
+	  if (lastResult.toLowerCase() === 'song backward') {
+            const button1 = document.getElementById('rewindButton');
+            button1.click();
+            playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
+        }
+	  if (lastResult.toLowerCase() === 'stop') {
+            const button1 = document.getElementById('stop');
+            button1.click();
+            playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
+        } 
+	 if (lastResult.toLowerCase() === 'song stop') {
+            const button1 = document.getElementById('stop');
+            button1.click();
+            playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
+        }
+	 if (lastResult.toLowerCase() === 'stop song') {
+            const button1 = document.getElementById('stop');
+            button1.click();
+            playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
+        } 
+	if (lastResult.toLowerCase() === 'music stop') {
+            const button1 = document.getElementById('stop');
+            button1.click();
+            playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
+        }
+	 if (lastResult.toLowerCase() === 'stop music') {
+            const button1 = document.getElementById('stop');
+            button1.click();
+            playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
+        } 
+	  if (lastResult.toLowerCase() === 'audio stop') {
+            const button1 = document.getElementById('stop');
+            button1.click();
+            playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
+        }
+	 if (lastResult.toLowerCase() === 'stop audio') {
+            const button1 = document.getElementById('stop');
+            button1.click();
+            playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
+        }
+	 if (lastResult.toLowerCase() === 'stop mp3') {
+            const button1 = document.getElementById('stop');
+            button1.click();
+            playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
+        }
+	if (lastResult.toLowerCase() === 'mp3 stop') {
+            const button1 = document.getElementById('stop');
+            button1.click();
+            playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
+        }
+	  if (lastResult.toLowerCase() === 'play') {
+            const button1 = document.getElementById('play');
+            button1.click();
+            playAudio('/sound/play.mp3'); // Replace with the appropriate audio URL
+        } 
+	 if (lastResult.toLowerCase() === 'developer') {
+            const button1 = document.getElementById('developer');
+            button1.click();
+            playAudio('/sound/vivek.mp3'); // Replace with the appropriate audio URL
+        }
+	  if (lastResult.toLowerCase() === 'developer name') {
+            const button1 = document.getElementById('developer');
+            button1.click();
+            playAudio('/sound/vivek.mp3'); // Replace with the appropriate audio URL
+        }
+	 if (lastResult.toLowerCase() === 'your father') {
+            const button1 = document.getElementById('developer');
+            button1.click();
+            playAudio('/sound/vivek.mp3'); // Replace with the appropriate audio URL
+        } 
+	 if (lastResult.toLowerCase() === 'what is your father name') {
+            const button1 = document.getElementById('developer');
+            button1.click();
+            playAudio('/sound/vivek.mp3'); // Replace with the appropriate audio URL
+        }   
+    };
+
+    // Function to play audio from a given URL
+    function playAudio(audioURL) {
+        const audio = new Audio(audioURL);
+        audio.play();
+    }
+</script>
+ 
+	
+
+<div id="developer"></div>
+<button id="volume10">10%</button>
+<button id="volume50">50%</button>
+<button id="volume100">100%</button>
+
+
+
+
+
+
+
+
 <script>
   function startDictation() {
 
@@ -1632,6 +1640,12 @@ function searchPawanSongs() {
 }		
 	
 </script>
+
+
+
+
+
+
 
 <style>html {
 	background-color:#000;
