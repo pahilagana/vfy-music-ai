@@ -460,7 +460,7 @@ color:#fff;
 
 	    
         <a href="#" class="ui-btn ui-corner-all ui-shadow" onclick="openNav()"><i class='fa fa-sliders' style='font-size:18px;color:#16E2F5'></i></i></a>
-	   <a id="start-voice-recognition"><i class="fa fa-microphone"  aria-hidden="true" style="font-size:19px;color:#15e2f5"></i></a>
+	   <a id="fastForwardButto"><i class="fa fa-microphone" onclick="startDictation()" aria-hidden="true" style="font-size:19px;color:#15e2f5"></i></a>
       
 	    <div class="vivek" id="example"></div>
 
@@ -478,8 +478,8 @@ color:#fff;
     
     </div>
     <div data-role="main" class="ui-content">
-     <input type="search"  name="search" id="start-voice-recognition"  id="search-basic" class="search-bar"placeholder="VIVEKFY: Type songs name artists...."/>
- <button onclick="search(),speakSearchText()" data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button>
+     <input type="search"  name="search" onclick="startDictation()"  id="search-basic" class="search-bar"placeholder="VIVEKFY: Type songs name artists...."/>
+ <sr id="sr"> <button onclick="search(),speakSearchText()" data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button></sr>
 	    
 	    
 	    
@@ -1573,47 +1573,36 @@ document.getElementById("stop").onclick = function() {
 
 
 
+
+
+
+
 <script>
-    var recognition = new webkitSpeechRecognition();
+  function startDictation() {
 
-    recognition.continuous = false;
-    recognition.interimResults = false;
-    recognition.lang = "en-US";
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
 
-    recognition.onstart = function() {
-      // Voice recognition started, you can add any initialization here.
-    };
+      var recognition = new webkitSpeechRecognition();
 
-    recognition.onresult = function(e) {
-      var result = e.results[0][0].transcript;
-      document.getElementById('search-basic').value = result;
-      document.getElementById('search-btn').click();
-    };
+      recognition.continuous = false;
+      recognition.interimResults = false;
 
-    recognition.onerror = function(e) {
-      // Handle recognition errors here if needed.
-    };
-
-    function startDictation() {
+      recognition.lang = "en-US";
       recognition.start();
+
+      recognition.onresult = function(e) {
+        document.getElementById('search-basic').value
+                                 = e.results[0][0].transcript;
+        recognition.stop();
+        document.getElementById('search-btn').submit();
+      };
+
+      recognition.onerror = function(e) {
+        recognition.stop();
+      }
+
     }
-
-    document.getElementById('start-voice-recognition').addEventListener('click', function() {
-      // Start voice recognition when the "Start Voice Recognition" button is clicked.
-      startDictation();
-    });
-
-    document.getElementById('search-btn').addEventListener('click', function() {
-      // Handle the click event for the search button here.
-      alert("Custom click event for the search button");
-      // Add your custom logic here when the button is clicked.
-    });
-  </script>
-
-
-
-<script>
-
+  }
 function searchHindiSongs() {
     var query = "Latest release hindi songs"; // Hindi songs ke liye query
     $(".search-bar").val(query); // Query input field mein set karen
@@ -2787,7 +2776,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 
   // Listen for "Enter" key press to disable autocomplete
   searchField.keypress(function(event) {
-    if (event.which === 8) {
+    if (event.which === 13) {
       // "Enter" key pressed, disable autocomplete
       searchField.autocomplete("disable");
     }
