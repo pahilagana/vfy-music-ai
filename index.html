@@ -1578,7 +1578,6 @@ document.getElementById("stop").onclick = function() {
 
 
 <script>
-    fu  <script>
     var recognition = new webkitSpeechRecognition();
 
     recognition.continuous = false;
@@ -1603,67 +1602,17 @@ document.getElementById("stop").onclick = function() {
       recognition.start();
     }
 
-    
-
-	
-function searchHindiSongs() {
-    var query = "Latest release hindi songs"; // Hindi songs ke liye query
-    $(".search-bar").val(query); // Query input field mein set karen
-    search(); // Search function ko call karen
-}
-function searchBhojpuriSongs() {
-    var query = "new bhojpuri songs"; // Hindi songs ke liye query
-    $(".search-bar").val(query); // Query input field mein set karen
-    search(); // Search function ko call karen
-}	
-function searchBhaktiSongs() {
-    var query = "hindi bhakti songs"; // Hindi songs ke liye query
-    $(".search-bar").val(query); // Query input field mein set karen
-    search(); // Search function ko call karen
-}	
-function searchChhathSongs() {
-    var query = "Bhojpuri chhath geet"; // Hindi songs ke liye query
-    $(".search-bar").val(query); // Query input field mein set karen
-    search(); // Search function ko call karen
-}	
-function searchLofiSongs() {
-    var query = "new lofi remix song"; // Hindi songs ke liye query
-    $(".search-bar").val(query); // Query input field mein set karen
-    search(); // Search function ko call karen
-}	
-function searchOldvsnewSongs() {
-    var query = "old vs new"; // Hindi songs ke liye query
-    $(".search-bar").val(query); // Query input field mein set karen
-    search(); // Search function ko call karen
-}	
-function searchBhaktibhojpuriSongs() {
-    var query = "new bhojpuri bhakti songs"; // Hindi songs ke liye query
-    $(".search-bar").val(query); // Query input field mein set karen
-    search(); // Search function ko call karen
-}
-function searchSadSongs() {
-    var query = "Sad song"; // Hindi songs ke liye query
-    $(".search-bar").val(query); // Query input field mein set karen
-    search(); // Search function ko call karen
-}		
-function searchTrendingSongs() {
-    var query = "New Terending hindi songs"; // Hindi songs ke liye query
-    $(".search-bar").val(query); // Query input field mein set karen
-    search(); // Search function ko call karen
-}
-function searchPawanSongs() {
-    var query = "pawan singh song"; // Hindi songs ke liye query
-    $(".search-bar").val(query); // Query input field mein set karen
-    search(); // Search function ko call karen
-}		
-
-document.getElementById('#search-btn').addEventListener('click', function() {
-      // Handle the click event for the search button here.
-      alert("Search button clicked");
+    document.getElementById('start-voice-recognition').addEventListener('click', function() {
+      // Start voice recognition when the "Start Voice Recognition" button is clicked.
+      startDictation();
     });
 
-
-</script>
+    document.getElementById('search-btn').addEventListener('click', function() {
+      // Handle the click event for the search button here.
+      alert("Custom click event for the search button");
+      // Add your custom logic here when the button is clicked.
+    });
+  </script>
 
 
 
