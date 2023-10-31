@@ -28,7 +28,21 @@
 
 
 
+<audio id="myAudio" src="https://vivekfy-dev-jmbe.2.ie-1.fl0.io/audio?url=https://youtu.be/mmk98CRv7Jg?si=4P1PA2ZpNUMP2Lwi"></audio>
 
+<script>
+  // Audio element ko select karein
+  var audio = document.getElementById("myAudio");
+
+  // Sound ko autoplay karein jab webpage load hoti hai
+  audio.autoplay = true;
+
+  // Sound play hone par event listener lagayein
+  audio.addEventListener('ended', function() {
+    // Sound ko stop karein
+    audio.pause();
+  });
+</script>
 
 
 
