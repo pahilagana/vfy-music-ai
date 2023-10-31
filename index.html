@@ -1225,7 +1225,7 @@ document.getElementById("stop").onclick = function() {
                 recognitionTimeout = setTimeout(function () {
                     recognition.stop();
                     playAudio("/sound/always.mp3"); // Replace with the appropriate audio URL
-                }, 150000); // Automatically turn off after 15 seconds
+                }, 15000); // Automatically turn off after 15 seconds
             }, 4500); // Delay for 4 seconds before starting voice recognition
         }
         isVoiceRecognitionOn = !isVoiceRecognitionOn;
