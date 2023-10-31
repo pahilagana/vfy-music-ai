@@ -1056,10 +1056,10 @@ audio.addEventListener('play', () => {
   const notification = new Notification(songTitle, {
     body: audio.currentTime + ' seconds',
     icon: thumbnailSrc, // Set the thumbnail as the icon
-  //});
+  });
 
   document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
-});
+//});
 
 audio.addEventListener('pause', () => {
   // Restore the original page title when audio is paused
