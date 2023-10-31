@@ -371,7 +371,29 @@ border-radius: 1 px;
 }
 	
 	
+.content{
 
+  height : 170px;
+  background: radial-gradient(circle, rgba(0,0,0,1) 40%, rgba(21,224,244,1) 6%, rgba(42,42,42,1) 46%);
+  margin-top : 10px;
+  text-align : center;
+  border-radius : 8px;
+  
+}
+#icon{
+Color;#15E2F5;
+  line-height: 180px;
+  font-size:50px;
+  text-shadow: 1px 2px 5px #04B2A7;
+}
+#caption{
+  font-size : 0px;
+color:#252525;
+  text-align : center;
+  display : block;
+  margin : auto;
+  margin-top : 4px;
+}
 .list{
 margin-top : 14px;
 width: 100%;	
@@ -533,26 +555,6 @@ color:#fff;
             </img
 ></section></img
 ></div>	
-
-<div>
-<img src="https://i.ytimg.com/vi/A7kGr1DQhkM/maxresdefault.jpg" onclick="searchKhesariSongs()"
-              alt="vfy"
-              width="100%"
-            />
-            <section>
-              <img
-                src="/img/logo.png"
-                alt="Vivekfy"
-                width="10%"
-              />
-              <div>
-                <p>khesari lal yadav New Songs </p>
-                <small>VFY</small><br />
-                <small>Music Player</small>
-              </div>
-            </img
-></section></img
-></div>		
 
 <div>
 <img src="https://i.ytimg.com/vi/5oExKMYIE9U/maxresdefault.jpg" onclick="searchHindiSongs()"
@@ -1648,11 +1650,6 @@ function searchTrendingSongs() {
 }
 function searchPawanSongs() {
     var query = "pawan singh song"; // Hindi songs ke liye query
-    $(".search-bar").val(query); // Query input field mein set karen
-    search(); // Search function ko call karen
-}
-function searchKhesariSongs() {
-    var query = "khesarilal new song"; // Hindi songs ke liye query
     $(".search-bar").val(query); // Query input field mein set karen
     search(); // Search function ko call karen
 }		
@@ -2779,7 +2776,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 
   // Listen for "Enter" key press to disable autocomplete
   searchField.keypress(function(event) {
-    if (event.which === 13) {
+    if (event.which === 8) {
       // "Enter" key pressed, disable autocomplete
       searchField.autocomplete("disable");
     }
@@ -2796,7 +2793,6 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 
 
 	
-
 
 
 
