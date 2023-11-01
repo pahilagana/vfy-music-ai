@@ -471,6 +471,7 @@ color:#fff;
 
   
 
+
 	    
 <h1>VFY
 <span id="Tube">Music<span></span></span></h1>
@@ -1042,45 +1043,21 @@ volume100Button.addEventListener('click', function () {
 });
 
 
-const titleAudio = document.getElementById('SAudio');
-const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
-const videoThumbnail = document.getElementById('SThumb'); // Assuming the video thumbnail is in an element with ID 'SThumb'
-
-titleAudio.addEventListener('play', () => {
-  // Update the tab title when audio starts playing
-  const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
-  document.title = songTitle + ' - ' + titleAudio.currentTime + ' seconds';
-});
-
-titleAudio.addEventListener('pause', () => {
-  // Restore the original page title when audio is paused
-  document.title = 'VIVEKFY-AI';
-
-  // Get the thumbnail image source from the 'SThumb' element
-  const thumbnailSrc = videoThumbnail.src;
-
-  // Check if the Notification API is available in the browser
-  if ('Notification' in window) {
-    // Request permission to show notifications
-    Notification.requestPermission().then((permission) => {
-      if (permission === 'granted') {
-        // Create a new notification with the image as the icon
-        const notification = new Notification('Notification Title', {
-          body: 'Notification Body Text',
-          icon: thumbnailSrc,
-        });
-
-        // Add an event listener for when the notification is clicked
-        notification.addEventListener('click', () => {
-          // Handle the click event if needed
-        });
-      }
-    });
-  }
-});
-
 
 	
+const titleaudio = document.getElementById('SAudio');
+const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
+
+audio.addEventListener('play', () => {
+  // Update the tab title when audio starts playing
+  const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
+  document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
+});
+
+audio.addEventListener('pause', () => {
+  // Restore the original page title when audio is paused
+  document.title = 'VIVEKFY-AI';
+});
 
 
 
@@ -2342,8 +2319,7 @@ z-index: 999999;
     <span onclick="closeModal()" style="float: right;"></span>
 
 	  <div id="song-thumbnail"></div>
-	 <div id="profileThumbnail"></div>
-	 
+	 <div id="profileThumbnail">
 	<!-- Profile thumbnail will be displayed here -->
         </div>
 <div id="thumbnail"></div>	    
