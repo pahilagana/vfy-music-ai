@@ -1045,9 +1045,7 @@ volume100Button.addEventListener('click', function () {
 const titleAudio = document.getElementById('SAudio');
 const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
 const profileThumbnailDiv = document.getElementById('profileThumbnail'); // Assuming the poster image is in a div with ID 'profileThumbnail'
-
-// Replace 'your_video_id' with the actual video ID that you want to set
-const videoId = 'your_video_id';
+const videoThumbnail = document.getElementById('SThumb'); // Assuming the video thumbnail is in an element with ID 'SThumb'
 
 titleAudio.addEventListener('play', () => {
   // Update the tab title when audio starts playing
@@ -1059,9 +1057,11 @@ titleAudio.addEventListener('pause', () => {
   // Restore the original page title when audio is paused
   document.title = 'VIVEKFY-AI';
 
-  // Set the image for the 'profileThumbnail' div based on the 'videoId'
-  profileThumbnailDiv.style.backgroundImage = `url(https://i.ytimg.com/vi/"+id+"/maxresdefault.jpg)`;
+  // Set the image for the 'profileThumbnail' div based on the 'SThumb' element's source
+  const thumbnailSrc = videoThumbnail.src; // Get the source of the 'SThumb' element
+  profileThumbnailDiv.style.backgroundImage = `url(${thumbnailSrc})`;
 });
+
 
 	
 
