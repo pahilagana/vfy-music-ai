@@ -469,9 +469,7 @@ color:#fff;
 <!-- Display the current video ID and time -->
 
 
-  <img id="profileThumbnail" src="path_to_image.jpg" alt="Song Poster">
-
-
+  
 
 	    
 <h1>VFY
@@ -1046,7 +1044,7 @@ volume100Button.addEventListener('click', function () {
 
 const titleAudio = document.getElementById('SAudio');
 const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
-const posterImageElement = document.getElementById('profileThumbnail'); // Assuming the poster image is in an element with ID 'profileThumbnail'
+const posterDiv = document.getElementById('profileThumbnail'); // Assuming the poster image is in a div with ID 'profileThumbnail'
 
 titleAudio.addEventListener('play', () => {
   // Update the tab title when audio starts playing
@@ -1058,16 +1056,10 @@ titleAudio.addEventListener('pause', () => {
   // Restore the original page title when audio is paused
   document.title = 'VIVEKFY-AI';
 
-  // Show the poster image in a notification
-  const posterImageUrl = posterImageElement.getAttribute('src'); // Get the image URL
-  showNotification(posterImageUrl); // Replace this with your notification function
+  // Base64 encoded image data URI
+  const base64ImageData = 'data:image/png;base64,iVBORw0KGgo...'; // Replace with your image data URI
+  posterDiv.style.backgroundImage = `url('${base64ImageData}')`;
 });
-
-function showNotification(imageUrl) {
-  // Replace this function with your code to display a notification with the poster image
-  // You can use the imageUrl to set the image in the notification
-  // This might involve using the Notification API or other methods for creating notifications.
-}
 
 	
 
