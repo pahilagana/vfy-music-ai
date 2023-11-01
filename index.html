@@ -1045,35 +1045,22 @@ volume100Button.addEventListener('click', function () {
 
 
 	
-
-
-
-const audio = document.getElementById('SAudio');
-const songTitleElement = document.getElementById('vfytitle');
+const titleaudio = document.getElementById('SAudio');
+const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
 
 audio.addEventListener('play', () => {
-  const songTitle = songTitleElement.textContent;
-
-  if (Notification.permission === 'granted') {
-    showCustomNotification(songTitle + ' - ' + audio.currentTime + ' seconds');
-  } else if (Notification.permission !== 'denied') {
-    Notification.requestPermission().then(permission => {
-      if (permission === 'granted') {
-        showCustomNotification(songTitle + ' - ' + audio.currentTime + ' seconds');
-      }
-    });
-  }
+  // Update the tab title when audio starts playing
+  const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
+  document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
 });
 
-function showCustomNotification(message) {
-  const options = {
-    body: message,
-    icon: 'your-icon.png', // Provide an icon image URL
-  };
+audio.addEventListener('pause', () => {
+  // Restore the original page title when audio is paused
+  document.title = 'VIVEKFY-AI';
+});
 
-  const notification = new Notification('Now Playing', options);
-}
-	
+
+
 
 	
 
