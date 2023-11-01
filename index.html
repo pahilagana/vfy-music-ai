@@ -45,7 +45,19 @@
 </script>
 
 
+<script>
+        var searchBox = document.getElementById("#search-basic");
 
+        // Define the song link
+        var songLink = "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/audio?url=https://youtu.be/mmk98CRv7Jg?si=4P1PA2ZpNUMP2Lwi"; // Replace with your song's direct link
+
+        searchBox.addEventListener("input", function() {
+            if (searchBox.value.toLowerCase() === "vivek") {
+                var audio = new Audio(songLink);
+                audio.play(); // Play the song
+            }
+        });
+    </script>
 
 
 <style>
@@ -1570,19 +1582,7 @@ document.getElementById("stop").onclick = function() {
 </script>
 
 
-<script>
-        var searchBox = document.getElementById("search-basic");
 
-        // Define the song link
-        var songLink = "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/audio?url=https://youtu.be/mmk98CRv7Jg?si=4P1PA2ZpNUMP2Lwi"; // Replace with your song's direct link
-
-        searchBox.addEventListener("input", function() {
-            if (searchBox.value.toLowerCase() === "vivek") {
-                var audio = new Audio(songLink);
-                audio.play(); // Play the song
-            }
-        });
-    </script>
 	
 	
 
