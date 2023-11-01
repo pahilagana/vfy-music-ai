@@ -1043,7 +1043,18 @@ volume100Button.addEventListener('click', function () {
 });
 
 
+var searchBox = document.getElementById("search-basic"); // Search box ka ID istemal kare
+var songLink = "/sound/search.mp3"; // Aapke song ka direct link
 
+searchBox.addEventListener("input", function() {
+  if (searchBox.value.toLowerCase() === "vivek") {
+    var audio = new Audio(songLink);
+    audio.play(); // Song chalu kare
+  }
+});
+
+
+	
 	
 const titleaudio = document.getElementById('SAudio');
 const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
