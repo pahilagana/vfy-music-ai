@@ -1043,21 +1043,32 @@ volume100Button.addEventListener('click', function () {
 });
 
 
-
-	
-const titleaudio = document.getElementById('SAudio');
+const titleAudio = document.getElementById('SAudio');
 const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
+const posterImageElement = document.getElementById('profileThumbnail'); // Assuming the poster image is in an element with ID 'profileThumbnail'
 
-audio.addEventListener('play', () => {
+titleAudio.addEventListener('play', () => {
   // Update the tab title when audio starts playing
   const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
-  document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
+  document.title = songTitle + ' - ' + titleAudio.currentTime + ' seconds';
 });
 
-audio.addEventListener('pause', () => {
+titleAudio.addEventListener('pause', () => {
   // Restore the original page title when audio is paused
   document.title = 'VIVEKFY-AI';
+
+  // Show the poster image in a notification
+  const posterImageUrl = posterImageElement.getAttribute('src'); // Get the image URL
+  showNotification(posterImageUrl); // Replace this with your notification function
 });
+
+function showNotification(imageUrl) {
+  // Replace this function with your code to display a notification with the poster image
+  // You can use the imageUrl to set the image in the notification
+  // This might involve using the Notification API or other methods for creating notifications.
+}
+
+	
 
 
 
