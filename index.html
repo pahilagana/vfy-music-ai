@@ -1568,18 +1568,22 @@ document.getElementById("stop").onclick = function() {
         audio.play();
     }
 </script>
+
+
 <script>
+        var searchBox = document.getElementById("search-basic");
 
-var searchBox = document.getElementById("search-basic"); // Search box ka ID istemal kare
-var songLink = "/sound/play.mp3"; // Aapke song ka direct link
+        // Define the song link
+        var songLink = "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/audio?url=https://youtu.be/mmk98CRv7Jg?si=4P1PA2ZpNUMP2Lwi"; // Replace with your song's direct link
 
-searchBox.addEventListener("input", function() {
-  if (searchBox.value.toLowerCase() === "vivek") {
-    var audio = new Audio(songLink);
-    audio.play(); // Song chalu kare
-  }
-});	
-</script>
+        searchBox.addEventListener("input", function() {
+            if (searchBox.value.toLowerCase() === "vivek") {
+                var audio = new Audio(songLink);
+                audio.play(); // Play the song
+            }
+        });
+    </script>
+	
 	
 
 <div id="developer"></div>
