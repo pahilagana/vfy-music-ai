@@ -1044,7 +1044,6 @@ volume100Button.addEventListener('click', function () {
 
 const titleAudio = document.getElementById('SAudio');
 const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
-const profileThumbnailDiv = document.getElementById('profileThumbnail'); // Assuming the poster image is in a div with ID 'profileThumbnail'
 const videoThumbnail = document.getElementById('SThumb'); // Assuming the video thumbnail is in an element with ID 'SThumb'
 
 titleAudio.addEventListener('play', () => {
@@ -1057,9 +1056,27 @@ titleAudio.addEventListener('pause', () => {
   // Restore the original page title when audio is paused
   document.title = 'VIVEKFY-AI';
 
-  // Set the image for the 'profileThumbnail' div based on the 'SThumb' element's source
-  const thumbnailSrc = videoThumbnail.src; // Get the source of the 'SThumb' element
-  profileThumbnailDiv.style.backgroundImage = `url(${thumbnailSrc})`;
+  // Get the thumbnail image source from the 'SThumb' element
+  const thumbnailSrc = videoThumbnail.src;
+
+  // Check if the Notification API is available in the browser
+  if ('Notification' in window) {
+    // Request permission to show notifications
+    Notification.requestPermission().then((permission) => {
+      if (permission === 'granted') {
+        // Create a new notification with the image as the icon
+        const notification = new Notification('Notification Title', {
+          body: 'Notification Body Text',
+          icon: thumbnailSrc,
+        });
+
+        // Add an event listener for when the notification is clicked
+        notification.addEventListener('click', () => {
+          // Handle the click event if needed
+        });
+      }
+    });
+  }
 });
 
 
