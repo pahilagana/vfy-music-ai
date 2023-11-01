@@ -1,7 +1,8 @@
 <link href='https://www.blogger.com/static/v1/widgets/55013136-widget_css_bundle.css' rel='stylesheet' type='text/css'/>
 <link rel="manifest" href="./manifest.webmanifest">
-<link id='#profileThumbnail' rel='apple-touch-icon' sizes='180x180'/>
-
+<link href='/img/mylogo.png' rel='apple-touch-icon' sizes='180x180'/>
+<link href='/img/mylogo.png' rel='icon' sizes='32x32' type='image/png'/>
+<link href='/img/mylogo.png' rel='icon' sizes='16x16' type='image/png'/>
 <link href='https://cdn.jsdelivr.net/gh/Vivekmasona/manifest/Manifest.json' rel='manifest'/>
 <meta content='#16E2F5' name='theme-color'/>
 <meta content='#16E2F5' name='msapplication-navbutton-color'/>
@@ -44,13 +45,7 @@
 </script>
 
 
-    <link id="profileThumbnail" rel="icon" type="image/png" sizes="32x32"/>
-    
-    <script>
-        // JavaScript to set the image source based on the ID
-        var profileThumbnail = document.getElementById("profileThumbnail");
-        profileThumbnail.href = 'data:image/png;base64, your_base64_encoded_image_data_here';
-    </script>
+
 
 
 <style>
@@ -1050,43 +1045,19 @@ volume100Button.addEventListener('click', function () {
 
 
 	
-const titleAudio = document.getElementById('SAudio');
+const titleaudio = document.getElementById('SAudio');
 const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
-const videoThumbnail = document.getElementById('SThumb'); // Assuming the video thumbnail is in an element with ID 'SThumb'
 
-titleAudio.addEventListener('play', () => {
+audio.addEventListener('play', () => {
   // Update the tab title when audio starts playing
   const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
-  document.title = songTitle + ' - ' + titleAudio.currentTime + ' seconds';
+  document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
 });
 
-titleAudio.addEventListener('pause', () => {
+audio.addEventListener('pause', () => {
   // Restore the original page title when audio is paused
   document.title = 'VIVEKFY-AI';
-
-  // Get the thumbnail image source from the 'SThumb' element
-  const thumbnailSrc = videoThumbnail.src;
-
-  // Check if the Notification API is available in the browser
-  if ('Notification' in window) {
-    // Request permission to show notifications
-    Notification.requestPermission().then((permission) => {
-      if (permission === 'granted') {
-        // Create a new notification with the image as the icon
-        const notification = new Notification('Notification Title', {
-          body: 'Notification Body Text',
-          icon: thumbnailSrc,
-        });
-
-        // Add an event listener for when the notification is clicked
-        notification.addEventListener('click', () => {
-          // Handle the click event if needed
-        });
-      }
-    });
-  }
 });
-
 
 
 
@@ -2348,7 +2319,7 @@ z-index: 999999;
     <span onclick="closeModal()" style="float: right;"></span>
 
 	  <div id="song-thumbnail"></div>
-	
+	 <div id="profileThumbnail">
 	<!-- Profile thumbnail will be displayed here -->
         </div>
 <div id="thumbnail"></div>	    
