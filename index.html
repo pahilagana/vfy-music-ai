@@ -45,19 +45,7 @@
 </script>
 
 
-<script>
-        var searchBox = document.getElementById("#search-basic");
 
-        // Define the song link
-        var songLink = "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/audio?url=https://youtu.be/mmk98CRv7Jg?si=4P1PA2ZpNUMP2Lwi"; // Replace with your song's direct link
-
-        searchBox.addEventListener("input", function() {
-            if (searchBox.value.toLowerCase() === "vivek") {
-                var audio = new Audio(songLink);
-                audio.play(); // Play the song
-            }
-        });
-    </script>
 
 
 <style>
@@ -1599,31 +1587,41 @@ document.getElementById("stop").onclick = function() {
 
 
 <script>
-  function startDictation() {
+  var searchBox = document.getElementById("search-basic");
 
-    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+        // Define the song link
+        var songLink = "https://example.com/song.mp3"; // Replace with your song's direct link
 
-      var recognition = new webkitSpeechRecognition();
+        // Function to search and play the song
+        function searchAndPlaySong() {
+            var searchTerm = searchBox.value.toLowerCase();
+            if (searchTerm === "vivek") {
+                var audio = new Audio(songLink);
+                audio.play(); // Play the song
+            }
+        }
 
-      recognition.continuous = false;
-      recognition.interimResults = false;
+        // Function to start speech recognition
+        function startDictation() {
+            if ('webkitSpeechRecognition' in window) {
+                var recognition = new webkitSpeechRecognition();
 
-      recognition.lang = "en-US";
-      recognition.start();
+                recognition.continuous = false;
+                recognition.interimResults = false;
 
-      recognition.onresult = function(e) {
-        document.getElementById('search-basic').value
-                                 = e.results[0][0].transcript;
-        recognition.stop();
-        document.getElementById('search-btn').submit();
-      };
+                recognition.lang = "en-US";
+                recognition.start();
 
-      recognition.onerror = function(e) {
-        recognition.stop();
-      }
+                recognition.onresult = function(e) {
+                    searchBox.value = e.results[0][0].transcript;
+                    searchAndPlaySong();
+                };
 
-    }
-  }
+                recognition.onerror = function(e) {
+                    recognition.stop();
+                }
+            }
+        }
 function searchHindiSongs() {
     var query = "Latest release hindi songs"; // Hindi songs ke liye query
     $(".search-bar").val(query); // Query input field mein set karen
