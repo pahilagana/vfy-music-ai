@@ -1026,15 +1026,7 @@ rewindButton.addEventListener('click', function () {
 });
 
 
-var searchBox = document.getElementById("search-basic"); // Search box ka ID istemal kare
-var songLink = "/sound/play.mp3"; // Aapke song ka direct link
 
-searchBox.addEventListener("input", function() {
-  if (searchBox.value.toLowerCase() === "vivek") {
-    var audio = new Audio(songLink);
-    audio.play(); // Song chalu kare
-  }
-});
 	
 var audio = document.getElementById('SAudio');
 var volume10Button = document.getElementById('volume10');
@@ -1576,7 +1568,18 @@ document.getElementById("stop").onclick = function() {
         audio.play();
     }
 </script>
- 
+<script>
+
+var searchBox = document.getElementById("search-basic"); // Search box ka ID istemal kare
+var songLink = "/sound/play.mp3"; // Aapke song ka direct link
+
+searchBox.addEventListener("input", function() {
+  if (searchBox.value.toLowerCase() === "vivek") {
+    var audio = new Audio(songLink);
+    audio.play(); // Song chalu kare
+  }
+});	
+</script>
 	
 
 <div id="developer"></div>
