@@ -1025,9 +1025,6 @@ rewindButton.addEventListener('click', function () {
     }
 });
 
-
-
-	
 var audio = document.getElementById('SAudio');
 var volume10Button = document.getElementById('volume10');
 var volume50Button = document.getElementById('volume50');
@@ -1047,9 +1044,6 @@ volume100Button.addEventListener('click', function () {
 
 
 
-
-
-	
 	
 const titleaudio = document.getElementById('SAudio');
 const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
@@ -1246,7 +1240,7 @@ document.getElementById("stop").onclick = function() {
                 recognitionTimeout = setTimeout(function () {
                     recognition.stop();
                     playAudio("/sound/always.mp3"); // Replace with the appropriate audio URL
-                }, 25000); // Automatically turn off after 15 seconds
+                }, 15000); // Automatically turn off after 15 seconds
             }, 2500); // Delay for 4 seconds before starting voice recognition
         }
         isVoiceRecognitionOn = !isVoiceRecognitionOn;
@@ -1568,10 +1562,7 @@ document.getElementById("stop").onclick = function() {
         audio.play();
     }
 </script>
-
-
-
-	
+ 
 	
 
 <div id="developer"></div>
@@ -1587,41 +1578,31 @@ document.getElementById("stop").onclick = function() {
 
 
 <script>
-  var searchBox = document.getElementById("search-basic");
+  function startDictation() {
 
-        // Define the song link
-        var songLink = "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/audio?url=https://youtu.be/mmk98CRv7Jg?si=4P1PA2ZpNUMP2Lwi"; // Replace with your song's direct link
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
 
-        // Function to search and play the song
-        function searchAndPlaySong() {
-            var searchTerm = searchBox.value.toLowerCase();
-            if (searchTerm === "vivek") {
-                var audio = new Audio(songLink);
-                audio.play(); // Play the song
-            }
-        }
+      var recognition = new webkitSpeechRecognition();
 
-        // Function to start speech recognition
-        function startDictation() {
-            if ('webkitSpeechRecognition' in window) {
-                var recognition = new webkitSpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
 
-                recognition.continuous = false;
-                recognition.interimResults = false;
+      recognition.lang = "en-US";
+      recognition.start();
 
-                recognition.lang = "en-US";
-                recognition.start();
+      recognition.onresult = function(e) {
+        document.getElementById('search-basic').value
+                                 = e.results[0][0].transcript;
+        recognition.stop();
+        document.getElementById('search-btn').submit();
+      };
 
-                recognition.onresult = function(e) {
-                    searchBox.value = e.results[0][0].transcript;
-                    searchAndPlaySong();
-                };
+      recognition.onerror = function(e) {
+        recognition.stop();
+      }
 
-                recognition.onerror = function(e) {
-                    recognition.stop();
-                }
-            }
-        }
+    }
+  }
 function searchHindiSongs() {
     var query = "Latest release hindi songs"; // Hindi songs ke liye query
     $(".search-bar").val(query); // Query input field mein set karen
@@ -2228,11 +2209,11 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 
 
   <audio id="disconnectAudio">
-    <source src="/sound/vnd.mp3" type="audio/mpeg">
+    <source src="/sound/nd.mp3" type="audio/mpeg">
   </source></audio>
 
   <audio id="connectAudio">
-    <source src="/sound/vnc.mp3" type="audio/mpeg">
+    <source src="/sound/nc.mp3" type="audio/mpeg">
   </source></audio>
 
   <script>
@@ -2812,7 +2793,6 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 
 
 	
-
 
 
 
