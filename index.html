@@ -48,7 +48,7 @@
 <script>
 // JavaScript
 const image = document.getElementById('SThumb');
-const playButton = document.getElementById('play');
+const playButton = document.getElementById('playButton');
 let isRotating = false;
 
 playButton.addEventListener('click', function () {
@@ -164,7 +164,24 @@ img:hover {
 
 
 
-	
+
+	<style>
+
+#SThumb {
+  width: 100px;
+  
+	width: 100px;
+            height: 100px;
+            border-radius: 50%;
+
+animation: spin 4s linear infinite;
+box-shadow: 0 0 20px #000;
+box-opacity: 0.5;	
+}
+
+
+}
+</style>	
 
 
 
