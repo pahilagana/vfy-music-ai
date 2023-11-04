@@ -188,19 +188,14 @@ img:hover {
 
 
 
-  
 <div class="fixed">
         <b href="" class="button ">
             <div class="buttonDiv bg-b-blue">
-
- <img id="SThumb" src="/img/logo.png"  alt="developer vivek masona" width="60" height="60" border="0" border-color="#15E2F5" style="border-radius: 200px;" href="#modal-full" uk-toggle>
- 
+ <img id="SThumb" src="/img/logo.png"  alt="developer vivek masona" width="60" height="60" border="0" border-color="#15E2F5" style="border-radius: 200px;">
+      
             </div>
         </b></div>
 
-	
-<but class="uk-button uk-button-default uk-border-pill" >       
-		       </but>  
 <style>*
 
 .fixed
@@ -250,8 +245,8 @@ background: radial-gradient(circle, rgba(63,181,219,1) 0%, rgba(32,53,58,1) 100%
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/css/uikit.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/js/uikit.min.js"></script>
+
+
 
 
 
@@ -1254,104 +1249,6 @@ document.getElementById("stop").onclick = function() {
    }
 }
 </script></div>
-
-
-<script>
-
-// Get references to the HTML elements
-const audio = document.getElementById('SAudio');
-const playButton = document.getElementById('play');
-const pauseButton = document.getElementById('pause');
-const stopButton = document.getElementById('stop');
-const nextButton = document.getElementById('next');
-const seekBar = document.getElementById('seek');
-
-// Event listeners for the play, pause, and stop buttons
-playButton.addEventListener('click', () => {
-    audio.play();
-});
-
-pauseButton.addEventListener('click', () => {
-    audio.pause();
-});
-
-stopButton.addEventListener('click', () => {
-    audio.pause();
-    audio.currentTime = 0;
-});
-
-// You can add logic for the "Next" button to change the audio track
-
-// Event listener for the seek bar
-seekBar.addEventListener('input', () => {
-    audio.currentTime = seekBar.value;
-});
-
-// Update the seek bar as the audio plays
-audio.addEventListener('timeupdate', () => {
-    seekBar.value = audio.currentTime;
-});
-
-// Handle the end of the audio (e.g., go to the next track if needed)
-audio.addEventListener('ended', () => {
-    // Implement logic to play the next track
-});</script>
-
-
-<script>on(document, 'click', () => { modal.hide(); });</script>
-
-
-<div id="modal-full" class="uk-modal-full" uk-modal>
-    <div class="uk-modal-dialog">
-        <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
-
-
-
-
-    
-    <div class="audio-player">
-        <img class="cover1" src="https://i.ibb.co/6Wz0CC1/Chaleya-DJ-Dharak-Jawan-Shah-Rukh-Khan-Nayanthara-Arijit-Singh-Shilpa-Rao-png.jpg" alt="Music Cover" />
-        <audio id="audio" >
-            <source src="https://vivekfy-dev-jmbe.2.ie-1.fl0.io/audio?url=https://youtu.be/mmk98CRv7Jg?si=4P1PA2ZpNUMP2Lwi" type="audio/mpeg">
-        </source></audio>
-        <div class="controls">
-            <button id="play"><i class="fa fa-play fa-2x"></i> </button>
-            <button id="pause"><i class="fa fa-pause fa-2x"></i> </button>
-            <button id="stop"><i class="fa fa-stop fa-2x"></i> </button>
-            <button id="next"><i class="fa fa-forward fa-2x"></i> </button>
-        </div>
-        <input type="range" id="seek" value="0" />
-    </div>
-        </div></div></!doctype>
-    
-
-
-
-
-
-
-
-
-    
-
-
-
-  
-
-
-
-        
-
-
-            
-        
-    
-
-
-
-
-
-	
 
 
 <button id="pahilagana"></button>
@@ -2932,74 +2829,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 
 
 	
-<style>
-
-body {
 
 
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    
-}
-</style><style>
-.audio-player {
-background-color: red;
-	z-index:999999;
-    text-align: center;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 90%;
-    height: 100%;
-    
-}
-
-.cover1 {
-	z-index:999999;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%; /* Make the cover image circular */
-    margin-bottom: 100px; /* Add space below the cover */
-}
-
-.controls {
-	z-index:999999;
-    margin-top: 20px;
-}
-
-.button-container {
-	z-index:999999;
-    background-color: yellow; /* Set a yellow background color below the button */
-    text-align: center;
-    width: 110%;
-    margin-bottom: 100px; /* Add space below the buttons */
-}
-
-button {
-	z-index:999999;
-    background-color: white; /* Set a white background for the button */
-    color: red; /* Set red text color for the button */
-    padding: 10px 20px;
-    margin: 5px;
-    border: none;
-    cursor: pointer;
-    border-radius: 0; /* Remove button border radius */
-}
-
-input[type="range"] {
-	z-index:999999;
-    width: 100%;
-    margin-bottom: 100px; /* Add space below the seek bar */
-}</style>
 
 
-<!doctype html>
-
-
-    
