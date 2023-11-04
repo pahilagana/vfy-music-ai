@@ -1256,6 +1256,76 @@ document.getElementById("stop").onclick = function() {
 </script></div>
 
 
+<script>
+
+// Get references to the HTML elements
+const audio = document.getElementById('SAudio');
+const playButton = document.getElementById('play');
+const pauseButton = document.getElementById('pause');
+const stopButton = document.getElementById('stop');
+const nextButton = document.getElementById('next');
+const seekBar = document.getElementById('seek');
+
+// Event listeners for the play, pause, and stop buttons
+playButton.addEventListener('click', () => {
+    audio.play();
+});
+
+pauseButton.addEventListener('click', () => {
+    audio.pause();
+});
+
+stopButton.addEventListener('click', () => {
+    audio.pause();
+    audio.currentTime = 0;
+});
+
+// You can add logic for the "Next" button to change the audio track
+
+// Event listener for the seek bar
+seekBar.addEventListener('input', () => {
+    audio.currentTime = seekBar.value;
+});
+
+// Update the seek bar as the audio plays
+audio.addEventListener('timeupdate', () => {
+    seekBar.value = audio.currentTime;
+});
+
+// Handle the end of the audio (e.g., go to the next track if needed)
+audio.addEventListener('ended', () => {
+    // Implement logic to play the next track
+});</script>
+
+
+<script>on(document, 'click', () => { modal.hide(); });</script>
+
+
+
+
+
+    
+
+
+
+  
+
+
+
+        
+
+
+            
+        
+    
+
+
+
+
+
+	
+
+
 <button id="pahilagana"></button>
     <button id="vivekmasona"></button>
 
@@ -2930,71 +3000,6 @@ input[type="range"] {
     
 
 
-
-
-
-<script>
-
-// Get references to the HTML elements
-const audio = document.getElementById('audio');
-const playButton = document.getElementById('play');
-const pauseButton = document.getElementById('pause');
-const stopButton = document.getElementById('stop');
-const nextButton = document.getElementById('next');
-const seekBar = document.getElementById('seek');
-
-// Event listeners for the play, pause, and stop buttons
-playButton.addEventListener('click', () => {
-    audio.play();
-});
-
-pauseButton.addEventListener('click', () => {
-    audio.pause();
-});
-
-stopButton.addEventListener('click', () => {
-    audio.pause();
-    audio.currentTime = 0;
-});
-
-// You can add logic for the "Next" button to change the audio track
-
-// Event listener for the seek bar
-seekBar.addEventListener('input', () => {
-    audio.currentTime = seekBar.value;
-});
-
-// Update the seek bar as the audio plays
-audio.addEventListener('timeupdate', () => {
-    seekBar.value = audio.currentTime;
-});
-
-// Handle the end of the audio (e.g., go to the next track if needed)
-audio.addEventListener('ended', () => {
-    // Implement logic to play the next track
-});</script>
-
-
-<script>on(document, 'click', () => { modal.hide(); });</script>
-
-
-
-
-
-    
-
-
-
-  
-
-
-
-        
-
-
-            
-        
-    
 
 
 
