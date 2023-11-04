@@ -152,22 +152,25 @@ img:hover {
 
 	<style>
 
-/* Add your existing CSS styles here */
-
 #SThumb {
   width: 100px;
-  
-	width: 100px;
-            height: 100px;
-            border-radius: 50%;
-
-animation: spin 4s linear infinite;
-box-shadow: 0 0 20px #000;
-box-opacity: 0.5;	
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #000;
+  box-opacity: 0.5;
 }
 
 .rotate {
-  animation: rotation 2s linear infinite;
+  animation: spin 2s linear infinite, rotation 2s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes rotation {
@@ -178,6 +181,7 @@ box-opacity: 0.5;
     transform: rotate(360deg);
   }
 }
+
 
 </style>	
 
