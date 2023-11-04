@@ -1176,26 +1176,38 @@ closeButton.addEventListener("click", function() {
 const mainAudio = document.getElementById('SAudio');
 const watermarkAudio1 = document.getElementById('watermarkAudio1');
 const watermarkAudio2 = document.getElementById('watermarkAudio2');
+const coverImage = document.getElementById('SThumb');
 
-// When the main audio is loaded, start playing the first watermark audio.
+// When the main audio is loaded, start playing the first watermark audio and rotate the cover.
 mainAudio.addEventListener('loadedmetadata', () => {
     watermarkAudio1.play();
+    coverImage.classList.add('rotate'); // Add the "rotate" class
 });
 
 // Listen for the 'ended' event on the main audio to start playing the second watermark audio.
 mainAudio.addEventListener('ended', () => {
     watermarkAudio2.play();
-//});
+    coverImage.classList.remove('rotate'); // Remove the "rotate" class
+});
+
+// When the main audio plays, start the rotation.
+mainAudio.addEventListener('play', () => {
+    coverImage.classList.add('rotate');
+});
+
+// When the main audio pauses or is manually paused, stop the rotation.
+mainAudio.addEventListener('pause', () => {
+    coverImage.classList.remove('rotate');
+});
 
 // Adjust the volume of the watermark audios as needed.
-watermarkAudio1.volume = 1; // Adjust the volume as needed (0.2 means 20% of the main audio volume).
-watermarkAudio2.volume = 1; // Adjust the volume as needed (0.2 means 20% of the main audio volume).
-
-// To synchronize the playback of both watermark audios, you may need to handle events like 'play', 'pause', and 'timeupdate'.
+watermarkAudio1.volume = 0.2; // Adjust the volume as needed (0.2 means 20% of the main audio volume).
+watermarkAudio2.volume = 0.2; // Adjust the volume as needed (0.2 means 20% of the main audio volume).
 
 // To hide the watermark audio player controls, you can style it or set 'controls' attribute to false for both watermark audio elements.
 watermarkAudio1.controls = false;
 watermarkAudio2.controls = false;
+
 
  });
 	
