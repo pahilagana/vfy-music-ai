@@ -45,22 +45,7 @@
 </script>
 
 
-<script>
-// JavaScript
-const image = document.getElementById('SThumb');
-const playButton = document.getElementById('playButton');
-let isRotating = false;
 
-playButton.addEventListener('click', function () {
-  if (isRotating) {
-    image.classList.remove('rotate');
-    isRotating = false;
-  } else {
-    image.classList.add('rotate');
-    isRotating = true;
-  }
-});
-</script>
 
 
 <style>
@@ -167,26 +152,27 @@ img:hover {
 
 	<style>
 
-#SThumb {
-  width: 100px;
-  
-	width: 100px;
-            height: 100px;
-            border-radius: 50%;
+/* Add your existing CSS styles here */
 
-animation: spin 4s linear infinite;
-box-shadow: 0 0 20px #000;
-box-opacity: 0.5;	
+.SThumb {
+  width: 200px;
+  height: 200px;
+  /* Add other styling for your song cover here */
 }
-@keyframes spin {
-  0% {
+
+.rotate {
+  animation: rotation 2s linear infinite;
+}
+
+@keyframes rotation {
+  from {
     transform: rotate(0deg);
   }
-  100% {
+  to {
     transform: rotate(360deg);
   }
-
 }
+
 </style>	
 
 
@@ -1212,16 +1198,18 @@ watermarkAudio2.controls = false;
 });
 
 
-  document.getElementById("play").onclick = function(){
-     if (audio.paused){
-      document.querySelector("#play i").className = "fa fa-pause";
-         audio.play();
-     }
-    else {
-         audio.pause();
-         document.querySelector("#play i").className = "fa fa-play";
-     }
-  };
+  document.getElementById("play").onclick = function () {
+  if (audio.paused) {
+    document.querySelector("#play i").className = "fa fa-pause";
+    audio.play();
+    document.getElementById("SThumb").classList.add("rotate"); // Add the "rotate" class
+  } else {
+    audio.pause();
+    document.querySelector("#play i").className = "fa fa-play";
+    document.getElementById("SThumb").classList.remove("rotate"); // Remove the "rotate" class
+  }
+};
+
 // Add the following code for the "Stop" button
 document.getElementById("stop").onclick = function() {
     audio.pause();
