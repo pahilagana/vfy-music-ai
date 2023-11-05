@@ -2353,10 +2353,13 @@ z-index: 999999;
 <div id="modal" class="modal-container">
   <div class="modal-content">
     <span onclick="closeModal()" style="float: right;"></span>
-
-
+<div id="song-thumbnail"></div>
+	 <div id="profileThumbnail">
+<div id="thumbnail"></div>
 <div class="audio-player">
-        <div id="thumbnail"></div>	        <audio id="audio" >
+	<audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
+
+        <audio id="audio" >
             <source src="" type="audio/mpeg">
         </source></audio>
         <div class="controls">
@@ -2365,8 +2368,7 @@ z-index: 999999;
             <button id="stop"><i class="fa fa-stop fa-2x"></i> </button>
             <button id="next"><i class="fa fa-forward fa-2x"></i> </button>
         </div>
-        <audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
-
+        
  </div>
 
 
@@ -2376,8 +2378,7 @@ z-index: 999999;
 
 	  
 
-	  <div id="song-thumbnail"></div>
-	 <div id="profileThumbnail">
+	  
 	<!-- Profile thumbnail will be displayed here -->
         </div>
     
@@ -2864,7 +2865,7 @@ body {
     
 }
 </style><style>
-.audio-player1 {
+.audio-player {
     text-align: center;
     padding: 20px;
     display: flex;
@@ -2876,14 +2877,14 @@ body {
     
 }
 
-.cover1 {
+profileThumbnail {
     width: 200px;
     height: 200px;
     border-radius: 50%; /* Make the cover image circular */
     margin-bottom: 100px; /* Add space below the cover */
 }
 
-.controls1 {
+.controls {
     margin-top: 20px;
 }
 
