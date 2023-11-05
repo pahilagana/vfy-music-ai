@@ -2356,8 +2356,7 @@ z-index: 999999;
 
 
 <div class="audio-player">
-        <img class="cover1" src="https://i.ibb.co/6Wz0CC1/Chaleya-DJ-Dharak-Jawan-Shah-Rukh-Khan-Nayanthara-Arijit-Singh-Shilpa-Rao-png.jpg" alt="Music Cover" />
-        <audio id="audio" >
+        <div id="thumbnail"></div>	        <audio id="audio" >
             <source src="" type="audio/mpeg">
         </source></audio>
         <div class="controls">
@@ -2366,8 +2365,9 @@ z-index: 999999;
             <button id="stop"><i class="fa fa-stop fa-2x"></i> </button>
             <button id="next"><i class="fa fa-forward fa-2x"></i> </button>
         </div>
-        <input type="range" id="seek" value="0" />
-    </div>
+        <audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
+
+ </div>
 
 
 
@@ -2380,11 +2380,10 @@ z-index: 999999;
 	 <div id="profileThumbnail">
 	<!-- Profile thumbnail will be displayed here -->
         </div>
-<div id="thumbnail"></div>	    
+    
  <div id="vfyAu"></div>  
 
-<audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
-<div class="popup-footer">
+	  <div class="popup-footer">
 <a id="rewindButton"><i class="fa fa-angle-double-left" style="font-size:28px;color: #15e2f5"></i></a>
 <i class="fa fa-close" style="font-size:28px;color: transparent"></i>
 <i class="fa fa-close" style="font-size:28px;color: transparent"></i>
@@ -2884,7 +2883,7 @@ body {
     margin-bottom: 100px; /* Add space below the cover */
 }
 
-.controls {
+.controls1 {
     margin-top: 20px;
 }
 
@@ -2903,12 +2902,7 @@ button {
     border: none;
     cursor: pointer;
     border-radius: 0; /* Remove button border radius */
-}
-
-input[type="range"] {
-    width: 100%;
-    margin-bottom: 100px; /* Add space below the seek bar */
-}</style>
+</style>
 
 
 <!doctype html>
