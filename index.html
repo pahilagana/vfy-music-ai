@@ -2354,6 +2354,28 @@ z-index: 999999;
   <div class="modal-content">
     <span onclick="closeModal()" style="float: right;"></span>
 
+
+<div class="audio-player">
+        <img class="cover1" src="https://i.ibb.co/6Wz0CC1/Chaleya-DJ-Dharak-Jawan-Shah-Rukh-Khan-Nayanthara-Arijit-Singh-Shilpa-Rao-png.jpg" alt="Music Cover" />
+        <audio id="audio" >
+            <source src="" type="audio/mpeg">
+        </source></audio>
+        <div class="controls">
+            <button id="play"><i class="fa fa-play fa-2x"></i> </button>
+            <button id="pause"><i class="fa fa-pause fa-2x"></i> </button>
+            <button id="stop"><i class="fa fa-stop fa-2x"></i> </button>
+            <button id="next"><i class="fa fa-forward fa-2x"></i> </button>
+        </div>
+        <input type="range" id="seek" value="0" />
+    </div>
+
+
+
+
+
+
+	  
+
 	  <div id="song-thumbnail"></div>
 	 <div id="profileThumbnail">
 	<!-- Profile thumbnail will be displayed here -->
@@ -2829,7 +2851,77 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 
 
 	
+<style>
+
+body {
+
+background-image: url('https://i.ibb.co/tCfNkKf/Polish-20231104-122456771.png'); /* Set the background image */
+    background-size: cover;
+    filter: blur(0px); /* Apply a blur effect to the background image */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    
+}
+</style><style>
+.audio-player {
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 100%;
+    
+}
+
+.cover1 {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; /* Make the cover image circular */
+    margin-bottom: 100px; /* Add space below the cover */
+}
+
+.controls {
+    margin-top: 20px;
+}
+
+.button-container {
+    background-color: yellow; /* Set a yellow background color below the button */
+    text-align: center;
+    width: 110%;
+    margin-bottom: 100px; /* Add space below the buttons */
+}
+
+button {
+    background-color: white; /* Set a white background for the button */
+    color: red; /* Set red text color for the button */
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 0; /* Remove button border radius */
+}
+
+input[type="range"] {
+    width: 100%;
+    margin-bottom: 100px; /* Add space below the seek bar */
+}</style>
 
 
+<!doctype html>
 
+
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+
+
+    
+    
+
+</!doctype>
 
