@@ -1057,23 +1057,18 @@ volume100butto.addEventListener('click', function () {
 
 	
 const titleaudio = document.getElementById('SAudio');
-const songTitleElement = document.getElementById('vfytitle');
-const thumbnailElement = document.getElementById('profileThumbnail');
+const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
 
 audio.addEventListener('play', () => {
-  const songTitle = songTitleElement.textContent;
-  const thumbnailSrc = thumbnailElement.getAttribute('src'); // Get the thumbnail image source
+  // Update the tab title when audio starts playing
+  const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
   document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
-  // You can also update the thumbnail image source if needed
-  thumbnailElement.setAttribute('src', 'new_thumbnail_image_url');
 });
 
 audio.addEventListener('pause', () => {
+  // Restore the original page title when audio is paused
   document.title = 'VIVEKFY-AI';
-  // You can reset the thumbnail image source if needed
-  thumbnailElement.setAttribute('src', 'original_thumbnail_image_url');
 });
-
 
 
 
