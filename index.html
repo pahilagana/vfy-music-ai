@@ -5,7 +5,7 @@
 <link href='/img/mylogo.png' rel='icon' sizes='16x16' type='image/png'/>
 <link href='https://cdn.jsdelivr.net/gh/Vivekmasona/manifest/Manifest.json' rel='manifest'/>
 <meta content='#16E2F5' name='theme-color'/>
-<meta content='#16E2F5' name='msapplication-navbutton-color'/>
+<meta content='#16E2F5' name='msapplication-navbutto-color'/>
 <meta content='yes' name='apple-mobile-web-app-capable'/>
 <meta content='#16E2F5' name='apple-mobile-web-app-status-bar-style'/>
 <meta content='width=device-width, user-scalable=no' name='viewport'>
@@ -111,9 +111,9 @@ if (!sessionStorage.getItem("refreshed")) {
       display: none;
     }
     
-    /* Hide the three-dot option button (menu) */
-    audio::-webkit-media-controls-mute-button,
-    audio::-webkit-media-controls-overflow-button {
+    /* Hide the three-dot option butto (menu) */
+    audio::-webkit-media-controls-mute-butto,
+    audio::-webkit-media-controls-overflow-butto {
       display: none;
     }
     
@@ -124,9 +124,9 @@ if (!sessionStorage.getItem("refreshed")) {
       align-items: center;
     }
     
-    audio::-webkit-media-controls-play-button,
-    audio::-webkit-media-controls-seek-back-button,
-    audio::-webkit-media-controls-seek-forward-button {
+    audio::-webkit-media-controls-play-butto,
+    audio::-webkit-media-controls-seek-back-butto,
+    audio::-webkit-media-controls-seek-forward-butto {
       display: none;
     }
   </style>
@@ -189,8 +189,8 @@ img:hover {
 
 
 <div class="fixed">
-        <b href="" class="button ">
-            <div class="buttonDiv bg-b-blue">
+        <b href="" class="butto ">
+            <div class="buttoDiv bg-b-blue">
  <img id="SThumb" src="/img/logo.png"  alt="developer vivek masona" width="60" height="60" border="0" border-color="#15E2F5" style="border-radius: 200px;">
       
             </div>
@@ -207,7 +207,7 @@ img:hover {
     height:200px;
     z-index:999;
 }
-.button 
+.butto 
 {
 display: block;
 border: 0;
@@ -221,13 +221,13 @@ width: 130px;
 font-size: 16px;
 border-radius: 20px 0 0 20px;
 }
-.buttonDiv 
+.buttoDiv 
 {
 
 border-radius: 50px 0 0 50px;
 }
 
-/* Button Css */
+/* butto Css */
 .bg-b-blue
 {
     
@@ -490,7 +490,7 @@ color:#fff;
     </div>
     <div data-role="main" class="ui-content">
      <input type="search"  name="search" onclick="startDictation()"  id="search-basic" class="search-bar"placeholder="VIVEKFY: Type songs name artists...."/>
- <sr id="sr"> <button onclick="search(),speakSearchText()" data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button></sr>
+ <sr id="sr"> <butto onclick="search(),speakSearchText()" data-role="butto" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</butto></sr>
 	    
 	    
 	    
@@ -780,12 +780,12 @@ color:#fff;
 
 
 
- <li><a id="toggleButton"><i class="fa fa-magic"   aria-hidden="true" style="font-size:28px;color: #15e2f5"></i></a></li>
+ <li><a id="togglebutto"><i class="fa fa-magic"   aria-hidden="true" style="font-size:28px;color: #15e2f5"></i></a></li>
 
 
  <li><a id="stop"><i class="fa fa-stop" aria-hidden="true"></i></a></li>
       <li><a id="play"><i class="fa fa-play" aria-hidden="true"></i></a></li>
-<li><a id="nextButton"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></li>
+<li><a id="nextbutto"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></li>
 
 	 
 	    
@@ -920,12 +920,12 @@ function getOutput(item,i){
 }
 
 
-// Show the popup when a button is clicked
-$("#showPopupButton").click(function() {
+// Show the popup when a butto is clicked
+$("#showPopupbutto").click(function() {
     $("#popupContainer").show();
 });
 
-// Close the popup when the close button is clicked
+// Close the popup when the close butto is clicked
 $("#closePopup").click(function() {
     $("#popupContainer").hide();
 });
@@ -1021,9 +1021,9 @@ audio.addEventListener("error", function () {
     }, 5000); // 10 seconds
 });
 
-// Button click event
-var nextButton = document.getElementById("nextButton");
-nextButton.addEventListener("click", function () {
+// butto click event
+var nextbutto = document.getElementById("nextbutto");
+nextbutto.addEventListener("click", function () {
     playNextSong();
 });
 
@@ -1031,15 +1031,15 @@ nextButton.addEventListener("click", function () {
 
 	
 var audio = document.getElementById('SAudio');
-var fastForwardButton = document.getElementById('fastForwardButton');
+var fastForwardbutto = document.getElementById('fastForwardbutto');
 
-fastForwardButton.addEventListener('click', function () {
+fastForwardbutto.addEventListener('click', function () {
     audio.currentTime += 10;
 });
 var audio = document.getElementById('SAudio');
-var rewindButton = document.getElementById('rewindButton');
+var rewindbutto = document.getElementById('rewindbutto');
 
-rewindButton.addEventListener('click', function () {
+rewindbutto.addEventListener('click', function () {
     if (audio.currentTime >= 5) {
         audio.currentTime -= 5;
     } else {
@@ -1048,19 +1048,19 @@ rewindButton.addEventListener('click', function () {
 });
 
 var audio = document.getElementById('SAudio');
-var volume10Button = document.getElementById('volume10');
-var volume50Button = document.getElementById('volume50');
-var volume100Button = document.getElementById('volume100');
+var volume10butto = document.getElementById('volume10');
+var volume50butto = document.getElementById('volume50');
+var volume100butto = document.getElementById('volume100');
 
-volume10Button.addEventListener('click', function () {
+volume10butto.addEventListener('click', function () {
     audio.volume = 0.1; // Set volume to 10%
 });
 
-volume50Button.addEventListener('click', function () {
+volume50butto.addEventListener('click', function () {
     audio.volume = 0.5; // Set volume to 50%
 });
 
-volume100Button.addEventListener('click', function () {
+volume100butto.addEventListener('click', function () {
     audio.volume = 1.0; // Set volume to 100%
 });
 
@@ -1115,9 +1115,9 @@ function convertTimeToSeconds(time) {
   return (minutes * 60) + seconds;
 }
 
-// Add an event listener to the "Play Video" button
-var playVideoButton = document.getElementById("playVideoButton");
-playVideoButton.addEventListener("click", function() {
+// Add an event listener to the "Play Video" butto
+var playVideobutto = document.getElementById("playVideobutto");
+playVideobutto.addEventListener("click", function() {
 // Pause audio elements with the ID "SAudio"
     var audioElements = document.querySelectorAll("#SAudio");
     for (var i = 0; i < audioElements.length; i++) {
@@ -1148,23 +1148,23 @@ iframe.style.border = "0px solid #15e2f5"; // Add a 4px border around the iframe
 iframe.setAttribute("allowfullscreen", false);
 iframe.setAttribute("autoplay", "true");
 
-    var closeButton = document.createElement("button");
-closeButton.innerHTML = "&#10006;";
-closeButton.className = "close-button";
-closeButton.style.color = "#ffffff"; // Text color
-closeButton.style.backgroundColor = "#15e2f5"; // Background color
-closeButton.style.border = "0px"; // Remove the button's border
-closeButton.addEventListener("click", function() {
-    document.body.removeChild(modal); // Close the modal when the button is clicked
+    var closebutto = document.createElement("butto");
+closebutto.innerHTML = "&#10006;";
+closebutto.className = "close-butto";
+closebutto.style.color = "#ffffff"; // Text color
+closebutto.style.backgroundColor = "#15e2f5"; // Background color
+closebutto.style.border = "0px"; // Remove the butto's border
+closebutto.addEventListener("click", function() {
+    document.body.removeChild(modal); // Close the modal when the butto is clicked
 });
-    // Style the close button to overlay the video in the center
-    closeButton.style.position = "absolute";
-    closeButton.style.top = "38%";
-    closeButton.style.left = "95%";
-    closeButton.style.transform = "translate(-50%, -50%)"; // Center the button
+    // Style the close butto to overlay the video in the center
+    closebutto.style.position = "absolute";
+    closebutto.style.top = "38%";
+    closebutto.style.left = "95%";
+    closebutto.style.transform = "translate(-50%, -50%)"; // Center the butto
 
     modal.appendChild(iframe);
-    modal.appendChild(closeButton);
+    modal.appendChild(closebutto);
     document.body.appendChild(modal);
 });
 
@@ -1232,7 +1232,7 @@ watermarkAudio2.controls = false;
   }
 };
 
-// Add the following code for the "Stop" button
+// Add the following code for the "Stop" butto
 document.getElementById("stop").onclick = function() {
     audio.pause();
     audio.currentTime = 0; // Rewind the audio to the beginning
@@ -1251,8 +1251,8 @@ document.getElementById("stop").onclick = function() {
 </script></div>
 
 
-<button id="pahilagana"></button>
-    <button id="vivekmasona"></button>
+<butto id="pahilagana"></butto>
+    <butto id="vivekmasona"></butto>
 
    
    <script>
@@ -1262,9 +1262,9 @@ document.getElementById("stop").onclick = function() {
     recognition.lang = 'en-US';
     recognition.interimResults = false;
 
-    const toggleButton = document.getElementById('toggleButton');
+    const togglebutto = document.getElementById('togglebutto');
 
-    toggleButton.addEventListener('click', function () {
+    togglebutto.addEventListener('click', function () {
         if (isVoiceRecognitionOn) {
             recognition.stop();
             clearTimeout(recognitionTimeout);
@@ -1286,308 +1286,308 @@ document.getElementById("stop").onclick = function() {
         const lastResult = event.results[event.results.length - 1][0].transcript;
 
         if (lastResult.toLowerCase() === 'mp3') {
-            const button1 = document.getElementById('pahilagana');
-            button1.click();
+            const butto1 = document.getElementById('pahilagana');
+            butto1.click();
             playAudio('/sound/audio.mp3'); // Replace with the appropriate audio URL
         }
 	 if (lastResult.toLowerCase() === 'dowload mp3') {
-            const button1 = document.getElementById('pahilagana');
-            button1.click();
+            const butto1 = document.getElementById('pahilagana');
+            butto1.click();
             playAudio('/sound/audio.mp3'); // Replace with the appropriate audio URL
         } 
 	 if (lastResult.toLowerCase() === 'mp3 download') {
-            const button1 = document.getElementById('pahilagana');
-            button1.click();
+            const butto1 = document.getElementById('pahilagana');
+            butto1.click();
             playAudio('/sound/audio.mp3'); // Replace with the appropriate audio URL
         } 
 	if (lastResult.toLowerCase() === 'download this song') {
-            const button1 = document.getElementById('pahilagana');
-            button1.click();
+            const butto1 = document.getElementById('pahilagana');
+            butto1.click();
             playAudio('/sound/audio.mp3'); // Replace with the appropriate audio URL
         } 
 	 if (lastResult.toLowerCase() === 'audio') {
-            const button1 = document.getElementById('pahilagana');
-            button1.click();
+            const butto1 = document.getElementById('pahilagana');
+            butto1.click();
             playAudio('/sound/audio.mp3'); // Replace with the appropriate audio URL
         }
 	 if (lastResult.toLowerCase() === 'audio download') {
-            const button1 = document.getElementById('pahilagana');
-            button1.click();
+            const butto1 = document.getElementById('pahilagana');
+            butto1.click();
             playAudio('/sound/audio.mp3'); // Replace with the appropriate audio URL
         }
 	if (lastResult.toLowerCase() === 'dowload audio') {
-            const button1 = document.getElementById('pahilagana');
-            button1.click();
+            const butto1 = document.getElementById('pahilagana');
+            butto1.click();
             playAudio('/sound/audio.mp3'); // Replace with the appropriate audio URL
         } 
 	if (lastResult.toLowerCase() === 'video download') {
-            const button1 = document.getElementById('vivekmasona');
-            button1.click();
+            const butto1 = document.getElementById('vivekmasona');
+            butto1.click();
             playAudio('/sound/videodownload .mp3'); // Replace with the appropriate audio URL
         }
 	 if (lastResult.toLowerCase() === 'download video') {
-            const button1 = document.getElementById('vivekmasona');
-            button1.click();
+            const butto1 = document.getElementById('vivekmasona');
+            butto1.click();
             playAudio('/sound/videodownload .mp3'); // Replace with the appropriate audio URL
         } 
 	if (lastResult.toLowerCase() === 'mp4') {
-            const button1 = document.getElementById('vivekmasona');
-            button1.click();
+            const butto1 = document.getElementById('vivekmasona');
+            butto1.click();
             playAudio('/sound/videodownload .mp3'); // Replace with the appropriate audio URL
         } 
 	 if (lastResult.toLowerCase() === 'mp4 download') {
-            const button1 = document.getElementById('vivekmasona');
-            button1.click();
+            const butto1 = document.getElementById('vivekmasona');
+            butto1.click();
             playAudio('/sound/videodownload .mp3'); // Replace with the appropriate audio URL
         } 
 	 if (lastResult.toLowerCase() === 'download mp4') {
-            const button1 = document.getElementById('vivekmasona');
-            button1.click();
+            const butto1 = document.getElementById('vivekmasona');
+            butto1.click();
             playAudio('/sound/videodownload .mp3'); // Replace with the appropriate audio URL
         } 
          if (lastResult.toLowerCase() === 'play video') {
-            const button1 = document.getElementById('playVideoButton');
-            button1.click();
+            const butto1 = document.getElementById('playVideobutto');
+            butto1.click();
             playAudio('/sound/playvideo.mp3'); // Replace with the appropriate audio URL
         }
          if (lastResult.toLowerCase() === 'video play') {
-            const button1 = document.getElementById('playVideoButton');
-            button1.click();
+            const butto1 = document.getElementById('playVideobutto');
+            butto1.click();
             playAudio('/sound/playvideo.mp3'); // Replace with the appropriate audio URL
         }
 	   if (lastResult.toLowerCase() === 'video') {
-            const button1 = document.getElementById('playVideoButton');
-            button1.click();
+            const butto1 = document.getElementById('playVideobutto');
+            butto1.click();
             playAudio('/sound/playvideo.mp3'); // Replace with the appropriate audio URL
         } 
 	  if (lastResult.toLowerCase() === 'song') {
-            const button1 = document.getElementById('AdAudio');
-            button1.click();
+            const butto1 = document.getElementById('AdAudio');
+            butto1.click();
             playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
         } 
 	  if (lastResult.toLowerCase() === 'play song') {
-            const button1 = document.getElementById('AdAudio');
-            button1.click();
+            const butto1 = document.getElementById('AdAudio');
+            butto1.click();
             playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
         }
 	 if (lastResult.toLowerCase() === 'song play') {
-            const button1 = document.getElementById('AdAudio');
-            button1.click();
+            const butto1 = document.getElementById('AdAudio');
+            butto1.click();
             playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
         } 
 	 if (lastResult.toLowerCase() === 'audio start') {
-            const button1 = document.getElementById('AdAudio');
-            button1.click();
+            const butto1 = document.getElementById('AdAudio');
+            butto1.click();
             playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
         } 
 	 if (lastResult.toLowerCase() === 'start audio') {
-            const button1 = document.getElementById('AdAudio');
-            button1.click();
+            const butto1 = document.getElementById('AdAudio');
+            butto1.click();
             playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
         } 
 	 if (lastResult.toLowerCase() === 'audio') {
-            const button1 = document.getElementById('AdAudio');
-            button1.click();
+            const butto1 = document.getElementById('AdAudio');
+            butto1.click();
             playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
         } 
 	 if (lastResult.toLowerCase() === 'audio play') {
-            const button1 = document.getElementById('AdAudio');
-            button1.click();
+            const butto1 = document.getElementById('AdAudio');
+            butto1.click();
             playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
         }
 	if (lastResult.toLowerCase() === 'play audio') {
-            const button1 = document.getElementById('AdAudio');
-            button1.click();
+            const butto1 = document.getElementById('AdAudio');
+            butto1.click();
             playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
         }
 	  if (lastResult.toLowerCase() === 'news') {
-            const button1 = document.getElementById('AdAudio');
-            button1.click();
+            const butto1 = document.getElementById('AdAudio');
+            butto1.click();
             playAudio('/sound/news.mp3'); // Replace with the appropriate audio URL
         }
 	   if (lastResult.toLowerCase() === 'play news') {
-            const button1 = document.getElementById('AdAudio');
-            button1.click();
+            const butto1 = document.getElementById('AdAudio');
+            butto1.click();
             playAudio('/sound/news.mp3'); // Replace with the appropriate audio URL
         } 
 	  if (lastResult.toLowerCase() === 'download') {
-            const button1 = document.getElementById('AdVideo');
-            button1.click();
+            const butto1 = document.getElementById('AdVideo');
+            butto1.click();
             playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
         }
 	  if (lastResult.toLowerCase() === 'extract') {
-            const button1 = document.getElementById('AdVideo');
-            button1.click();
+            const butto1 = document.getElementById('AdVideo');
+            butto1.click();
             playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
         } 
 	 if (lastResult.toLowerCase() === 'save') {
-            const button1 = document.getElementById('AdVideo');
-            button1.click();
+            const butto1 = document.getElementById('AdVideo');
+            butto1.click();
             playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
         }
 	 if (lastResult.toLowerCase() === 'volume down') {
-            const button1 = document.getElementById('volume10');
-            button1.click();
+            const butto1 = document.getElementById('volume10');
+            butto1.click();
             playAudio('/sound/vdown.mp3'); // Replace with the appropriate audio URL
         }
 	  if (lastResult.toLowerCase() === 'volume decrease') {
-            const button1 = document.getElementById('volume10');
-            button1.click();
+            const butto1 = document.getElementById('volume10');
+            butto1.click();
             playAudio('/sound/vdown.mp3'); // Replace with the appropriate audio URL
         }
 	   if (lastResult.toLowerCase() === 'decrease sound') {
-            const button1 = document.getElementById('volume10');
-            button1.click();
+            const butto1 = document.getElementById('volume10');
+            butto1.click();
             playAudio('/sound/vdown.mp3'); // Replace with the appropriate audio URL
         } 
 	 if (lastResult.toLowerCase() === 'volume increase') {
-            const button1 = document.getElementById('volume100');
-            button1.click();
+            const butto1 = document.getElementById('volume100');
+            butto1.click();
             playAudio('/sound/vfull.mp3'); // Replace with the appropriate audio URL
 	}
 	 if (lastResult.toLowerCase() === 'volume full') {
-            const button1 = document.getElementById('volume100');
-            button1.click();
+            const butto1 = document.getElementById('volume100');
+            butto1.click();
             playAudio('/sound/vfull.mp3'); // Replace with the appropriate audio URL
         }
 	 if (lastResult.toLowerCase() === 'sound full') {
-            const button1 = document.getElementById('volume100');
-            button1.click();
+            const butto1 = document.getElementById('volume100');
+            butto1.click();
             playAudio('/sound/vfull.mp3'); // Replace with the appropriate audio URL
         } 
 	  if (lastResult.toLowerCase() === 'full sound') {
-            const button1 = document.getElementById('volume100');
-            button1.click();
+            const butto1 = document.getElementById('volume100');
+            butto1.click();
             playAudio('/sound/vfull.mp3'); // Replace with the appropriate audio URL
         } 
 	  if (lastResult.toLowerCase() === 'next') {
-            const button1 = document.getElementById('nextButton');
-            button1.click();
+            const butto1 = document.getElementById('nextbutto');
+            butto1.click();
             playAudio('/sound/nextsong.mp3'); // Replace with the appropriate audio URL
         }
 	  if (lastResult.toLowerCase() === 'song change') {
-            const button1 = document.getElementById('nextButton');
-            button1.click();
+            const butto1 = document.getElementById('nextbutto');
+            butto1.click();
             playAudio('/sound/nextsong.mp3'); // Replace with the appropriate audio URL
         }
 	  if (lastResult.toLowerCase() === 'change song') {
-            const button1 = document.getElementById('nextButton');
-            button1.click();
+            const butto1 = document.getElementById('nextbutto');
+            butto1.click();
             playAudio('/sound/nextsong.mp3'); // Replace with the appropriate audio URL
         }
 	 if (lastResult.toLowerCase() === 'forward') {
-            const button1 = document.getElementById('fastForwardButton');
-            button1.click();
+            const butto1 = document.getElementById('fastForwardbutto');
+            butto1.click();
             playAudio('/sound/forward.mp3'); // Replace with the appropriate audio URL
         }
 	  if (lastResult.toLowerCase() === 'song forward') {
-            const button1 = document.getElementById('fastForwardButton');
-            button1.click();
+            const butto1 = document.getElementById('fastForwardbutto');
+            butto1.click();
             playAudio('/sound/forward.mp3'); // Replace with the appropriate audio URL
         }
 	 if (lastResult.toLowerCase() === 'forward song') {
-            const button1 = document.getElementById('fastForwardButton');
-            button1.click();
+            const butto1 = document.getElementById('fastForwardbutto');
+            butto1.click();
             playAudio('/sound/forward.mp3'); // Replace with the appropriate audio URL
         }
 	if (lastResult.toLowerCase() === 'backward') {
-            const button1 = document.getElementById('rewindButton');
-            button1.click();
+            const butto1 = document.getElementById('rewindbutto');
+            butto1.click();
             playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
         } 
 	  if (lastResult.toLowerCase() === 'rewind') {
-            const button1 = document.getElementById('rewindButton');
-            button1.click();
+            const butto1 = document.getElementById('rewindbutto');
+            butto1.click();
             playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
         } 
 	if (lastResult.toLowerCase() === 'song rewind') {
-            const button1 = document.getElementById('rewindButton');
-            button1.click();
+            const butto1 = document.getElementById('rewindbutto');
+            butto1.click();
             playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
         } 
 	 if (lastResult.toLowerCase() === 'rewind song') {
-            const button1 = document.getElementById('rewindButton');
-            button1.click();
+            const butto1 = document.getElementById('rewindbutto');
+            butto1.click();
             playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
         }
 	 if (lastResult.toLowerCase() === 'backward song') {
-            const button1 = document.getElementById('rewindButton');
-            button1.click();
+            const butto1 = document.getElementById('rewindbutto');
+            butto1.click();
             playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
         }  
 	  if (lastResult.toLowerCase() === 'song backward') {
-            const button1 = document.getElementById('rewindButton');
-            button1.click();
+            const butto1 = document.getElementById('rewindbutto');
+            butto1.click();
             playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
         }
 	  if (lastResult.toLowerCase() === 'stop') {
-            const button1 = document.getElementById('stop');
-            button1.click();
+            const butto1 = document.getElementById('stop');
+            butto1.click();
             playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
         } 
 	 if (lastResult.toLowerCase() === 'song stop') {
-            const button1 = document.getElementById('stop');
-            button1.click();
+            const butto1 = document.getElementById('stop');
+            butto1.click();
             playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
         }
 	 if (lastResult.toLowerCase() === 'stop song') {
-            const button1 = document.getElementById('stop');
-            button1.click();
+            const butto1 = document.getElementById('stop');
+            butto1.click();
             playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
         } 
 	if (lastResult.toLowerCase() === 'music stop') {
-            const button1 = document.getElementById('stop');
-            button1.click();
+            const butto1 = document.getElementById('stop');
+            butto1.click();
             playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
         }
 	 if (lastResult.toLowerCase() === 'stop music') {
-            const button1 = document.getElementById('stop');
-            button1.click();
+            const butto1 = document.getElementById('stop');
+            butto1.click();
             playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
         } 
 	  if (lastResult.toLowerCase() === 'audio stop') {
-            const button1 = document.getElementById('stop');
-            button1.click();
+            const butto1 = document.getElementById('stop');
+            butto1.click();
             playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
         }
 	 if (lastResult.toLowerCase() === 'stop audio') {
-            const button1 = document.getElementById('stop');
-            button1.click();
+            const butto1 = document.getElementById('stop');
+            butto1.click();
             playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
         }
 	 if (lastResult.toLowerCase() === 'stop mp3') {
-            const button1 = document.getElementById('stop');
-            button1.click();
+            const butto1 = document.getElementById('stop');
+            butto1.click();
             playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
         }
 	if (lastResult.toLowerCase() === 'mp3 stop') {
-            const button1 = document.getElementById('stop');
-            button1.click();
+            const butto1 = document.getElementById('stop');
+            butto1.click();
             playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
         }
 	  if (lastResult.toLowerCase() === 'play') {
-            const button1 = document.getElementById('play');
-            button1.click();
+            const butto1 = document.getElementById('play');
+            butto1.click();
             playAudio('/sound/play.mp3'); // Replace with the appropriate audio URL
         } 
 	 if (lastResult.toLowerCase() === 'developer') {
-            const button1 = document.getElementById('developer');
-            button1.click();
+            const butto1 = document.getElementById('developer');
+            butto1.click();
             playAudio('/sound/vivek.mp3'); // Replace with the appropriate audio URL
         }
 	  if (lastResult.toLowerCase() === 'developer name') {
-            const button1 = document.getElementById('developer');
-            button1.click();
+            const butto1 = document.getElementById('developer');
+            butto1.click();
             playAudio('/sound/vivek.mp3'); // Replace with the appropriate audio URL
         }
 	 if (lastResult.toLowerCase() === 'your father') {
-            const button1 = document.getElementById('developer');
-            button1.click();
+            const butto1 = document.getElementById('developer');
+            butto1.click();
             playAudio('/sound/vivek.mp3'); // Replace with the appropriate audio URL
         } 
 	 if (lastResult.toLowerCase() === 'what is your father name') {
-            const button1 = document.getElementById('developer');
-            button1.click();
+            const butto1 = document.getElementById('developer');
+            butto1.click();
             playAudio('/sound/vivek.mp3'); // Replace with the appropriate audio URL
         }   
     };
@@ -1602,9 +1602,9 @@ document.getElementById("stop").onclick = function() {
 	
 
 <div id="developer"></div>
-<button id="volume10">10%</button>
-<button id="volume50">50%</button>
-<button id="volume100">100%</button>
+<butto id="volume10">10%</butto>
+<butto id="volume50">50%</butto>
+<butto id="volume100">100%</butto>
 
 
 
@@ -1932,7 +1932,7 @@ background-color:#566D7E;
 
 	    
 <div class="alert alert-success" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <butto type="butto" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></butto>
 	<div class="vfy1">
   <strong><div id="share_titlevkm1m">
 </div>
@@ -1975,7 +1975,7 @@ function closeNav() {
 	
 </script>
 <script>/*<![CDATA[*/ 
-  const installButton = document.getElementById("vivek_maurya");window.addEventListener("beforeinstallprompt", e => {e.preventDefault();deferredPrompt = e;installButton.hidden = false;installButton.addEventListener("click", installApp);});function installApp() {deferredPrompt.prompt();installButton.disabled = true;deferredPrompt.userChoice.then(choiceResult => {if (choiceResult.outcome === "accepted") {installButton.hidden = true;} else {}installButton.disabled = false;deferredPrompt = null;});}window.addEventListener("appinstalled", evt => {console.log("appinstalled fired", evt);});
+  const installbutto = document.getElementById("vivek_maurya");window.addEventListener("beforeinstallprompt", e => {e.preventDefault();deferredPrompt = e;installbutto.hidden = false;installbutto.addEventListener("click", installApp);});function installApp() {deferredPrompt.prompt();installbutto.disabled = true;deferredPrompt.userChoice.then(choiceResult => {if (choiceResult.outcome === "accepted") {installbutto.hidden = true;} else {}installbutto.disabled = false;deferredPrompt = null;});}window.addEventListener("appinstalled", evt => {console.log("appinstalled fired", evt);});
   /*]]>*/</script>
 <script>
     if ('serviceWorker' in navigator) {
@@ -1998,7 +1998,7 @@ $('#showAutoClose').click( function (){
       eleWrapper: '#example',
       msg: 'VFY:-Your Download Is In Process.',
       theme: 'success',
-      closeButton: false,
+      closebutto: false,
       autoClose: true
     } 
   );
@@ -2060,7 +2060,7 @@ function toastCaseValidation(option){
   var finalOption={};
   var toastmsg;
   var themeIco;
-  var closeBtn =  '<button type="button" class="hs-close">&#10006;</button>';
+  var closeBtn =  '<butto type="butto" class="hs-close">&#10006;</butto>';
   switch(option.theme) {
     case 'error':
       themeIco = '<svg aria-hidden="true" focusable="false"  xmlns="http://www.w3.org/2000/svg" width="1.875em" height="1.875em" viewBox="0 0 30 30"> <circle fill="none" stroke="#fff" stroke-width="2"  cx="50%" cy="50%" r="13" stroke-dasharray="100"> <animate attributeName="stroke-dashoffset" from="100" to="0" dur="0.9s" /> </circle> <line fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"  x1="10.5" y1="10.5" x2="19.5" y2="19.5" stroke-dasharray="100"> <animate attributeName="stroke-dashoffset"  from="100" to="0" dur="4s" /> </line> <line fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"  x1="19.5" y1="10.5" x2="10.5" y2="19.5" stroke-dasharray="100"> <animate attributeName="stroke-dashoffset"  from="100" to="0" dur="4s" /> </line> </svg>';
@@ -2074,7 +2074,7 @@ function toastCaseValidation(option){
     default:
       themeIco = '<svg aria-hidden="true" focusable="false"  xmlns="http://www.w3.org/2000/svg" width="1.875em" height="1.875em" viewBox="0 0 30 30"> <circle fill="none" stroke="#fff" stroke-width="2" cx="50%" cy="50%" r="13" stroke-dasharray="100"> <animate attributeName="stroke-dashoffset" from="100" to="0" dur="0.9s" /> </circle> <line fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" x1="15" y1="9" x2="15" y2="9" stroke-dasharray="100"> <animate attributeName="stroke-dashoffset"  from="100" to="0" dur="6s" /> </line> <line fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" x1="15" y1="15" x2="15" y2="22" stroke-dasharray="100"> <animate attributeName="stroke-dashoffset"  from="100" to="0" dur="6s" /> </line> </svg>';
   }
-  if(option.closeButton == false){
+  if(option.closebutto == false){
     closeBtn = '';
   }
   
@@ -2317,7 +2317,7 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 	
  <butto id="developer"></butto>
 
-<butto id="playVideoButton"></butto>
+<butto id="playVideobutto"></butto>
 
 
 <style>
@@ -2363,11 +2363,11 @@ z-index: 999999;
 
 <audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
 <div class="popup-footer">
-<a id="rewindButton"><i class="fa fa-angle-double-left" style="font-size:28px;color: #15e2f5"></i></a>
+<a id="rewindbutto"><i class="fa fa-angle-double-left" style="font-size:28px;color: #15e2f5"></i></a>
 <i class="fa fa-close" style="font-size:28px;color: transparent"></i>
 <i class="fa fa-close" style="font-size:28px;color: transparent"></i>
 <i class="fa fa-close" style="font-size:28px;color: transparent"></i>		
-<a id="fastForwardButton"><i class="fa fa-angle-double-right" style="font-size:28px;color: #15e2f5"></i></a>
+<a id="fastForwardbutto"><i class="fa fa-angle-double-right" style="font-size:28px;color: #15e2f5"></i></a>
 </div>
 
 
@@ -2402,13 +2402,13 @@ function closeModal() {
 
 
 
-  <button id="speakButton"></button>
+  <butto id="speakbutto"></butto>
 
   <script>
     // Check if the browser supports the Web Speech API
     if ('speechSynthesis' in window) {
       const synth = window.speechSynthesis;
-      const speakButton = document.getElementById('speakButton');
+      const speakbutto = document.getElementById('speakbutto');
 
       function speakTime() {
         const now = new Date();
@@ -2421,16 +2421,16 @@ function closeModal() {
         synth.speak(utterance);
       }
 
-      speakButton.addEventListener('click', speakTime);
+      speakbutto.addEventListener('click', speakTime);
     } else {
       alert("Text-to-speech is not supported in this browser.");
     }
   </script>
 
-<button id="speakButton1"></button>
+<butto id="speakbutto1"></butto>
 
     <script>
-        document.getElementById("speakButton1").addEventListener("click", function () {
+        document.getElementById("speakbutto1").addEventListener("click", function () {
             if ('speechSynthesis' in window) {
                 navigator.getBattery().then(function (battery) {
                     var chargePercentage = (battery.level * 100).toString() + " percent";
@@ -2459,8 +2459,8 @@ function closeModal() {
 
 
 
-    <button id="AdAudio"></button>
-    <button id="AdVideo"></button>
+    <butto id="AdAudio"></butto>
+    <butto id="AdVideo"></butto>
 
     
     
@@ -2475,7 +2475,7 @@ function closeModal() {
 
         // Function to initiate voice search for audio
         function startVoiceSearchForAudio() {
-            // Disable the audio button with a 2-second delay
+            // Disable the audio butto with a 2-second delay
             document.getElementById('AdAudio').disabled = true;
             setTimeout(function () {
                 var recognition = new webkitSpeechRecognition() || SpeechRecognition();
@@ -2486,7 +2486,7 @@ function closeModal() {
                 };
 
                 recognition.onend = function () {
-                    // Enable the audio button after recognition has started
+                    // Enable the audio butto after recognition has started
                     document.getElementById('AdAudio').disabled = false;
                 };
 
@@ -2550,7 +2550,7 @@ audioPlayer.play();
 
         // Function to initiate voice search for video
         function startVoiceSearchForVideo() {
-            // Disable the video button with a 2-second delay
+            // Disable the video butto with a 2-second delay
             document.getElementById('AdVideo').disabled = true;
             setTimeout(function () {
                 var recognition = new webkitSpeechRecognition() || SpeechRecognition();
@@ -2561,7 +2561,7 @@ audioPlayer.play();
                 };
 
                 recognition.onend = function () {
-                    // Enable the video button after recognition has started
+                    // Enable the video butto after recognition has started
                     document.getElementById('AdVideo').disabled = false;
                 };
 
@@ -2615,7 +2615,7 @@ songThumbnailDiv.innerHTML = '<img src="' + thumbnailUrl + '" alt="Thumbnail">';
                 apiKey: 'AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo',
                 discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest'],
             }).then(function () {
-                // Add click event listeners to the voice search buttons
+                // Add click event listeners to the voice search buttos
                 document.getElementById('AdAudio').addEventListener('click', startVoiceSearchForAudio);
                 document.getElementById('AdVideo').addEventListener('click', startVoiceSearchForVideo);
             });
@@ -2806,7 +2806,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
   searchField.val(suggestion);
   hideAutocompleteResults();
 
-  // Programmatically trigger a click on the search button
+  // Programmatically trigger a click on the search butto
   $("#search-btn").click();
 });
 
