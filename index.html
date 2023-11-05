@@ -1077,19 +1077,7 @@ volume100butto.addEventListener('click', function () {
 
 
 	
-const titleaudio = document.getElementById('SAudio');
-const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
 
-audio.addEventListener('play', () => {
-  // Update the tab title when audio starts playing
-  const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
-  document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
-});
-
-audio.addEventListener('pause', () => {
-  // Restore the original page title when audio is paused
-  document.title = 'VIVEKFY-AI';
-});
 
 
 
