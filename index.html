@@ -918,8 +918,8 @@ $("#showPopupbutto").click(function() {
 $("#closePopup").click(function() {
     $("#popupContainer").hide();
 });
-
-
+	
+	
 function loadSong(song, ind) {
     var id = $(song).attr("vid");
     var indId = parseInt($(song).attr("index"));
@@ -941,28 +941,7 @@ function loadSong(song, ind) {
     // Set the title text to the marquee div with ID "vfytitle"
     $("#vfytitle").html('<marquee behavior="alternate" scrollamount="4" onmousedown="this.stop();" onmouseup="this.start();">' + title + '</marquee>');
 
-    
-    
     play(id, indId);
-}
-
-function showNotification(title, thumbnail) {
-    if (!("Notification" in window)) {
-        alert("Browser does not support notifications");
-    } else if (Notification.permission === "granted") {
-        // Create a notification
-        var options = {
-            body: "Now playing: " + title,
-            icon: thumbnail,
-        };
-        var notification = new Notification("Music Player", options);
-    } else if (Notification.permission !== "denied") {
-        Notification.requestPermission().then(function (permission) {
-            if (permission === "granted") {
-                showNotification(title, thumbnail);
-            }
-        });
-    }
 }
 
 
@@ -1077,17 +1056,13 @@ volume100butto.addEventListener('click', function () {
 
 
 	
-
 const titleaudio = document.getElementById('SAudio');
 const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
-const thumbnailElement = document.getElementById('profileThumbnail'); // Assuming the thumbnail is displayed in an element with ID 'thumbnail'
 
 audio.addEventListener('play', () => {
   // Update the tab title when audio starts playing
   const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
-  const profileThumbnail = thumbnailElement.getAttribute('src'); // Get the thumbnail source
   document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
-  document.title += ' - ' + thumbnail; // Add the thumbnail to the title
 });
 
 audio.addEventListener('pause', () => {
