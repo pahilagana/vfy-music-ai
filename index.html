@@ -1065,13 +1065,13 @@ audio.addEventListener('play', () => {
   const thumbnailSrc = thumbnailElement.getAttribute('src'); // Get the thumbnail image source
   document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
   // You can also update the thumbnail image source if needed
-  // thumbnailElement.setAttribute('src', 'new_thumbnail_image_url');
+  thumbnailElement.setAttribute('src', 'new_thumbnail_image_url');
 });
 
 audio.addEventListener('pause', () => {
   document.title = 'VIVEKFY-AI';
   // You can reset the thumbnail image source if needed
-  // thumbnailElement.setAttribute('src', 'original_thumbnail_image_url');
+  thumbnailElement.setAttribute('src', 'original_thumbnail_image_url');
 });
 
 
