@@ -2814,57 +2814,179 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 
 
 	
-  <ul1>
-    <li1><a href="#"><i class="fa fa-address-book" aria-hidden="true"></i></a></li1>
-    <li1><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li1>
-    <li1 class="active"><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li1>
-    <li1><a href="#"><i class="fa fa-bell" aria-hidden="true"></i></a></li1>
-    <li1><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i></a></li1>
-    <li1><a href="#"><i class="fa fa-cog" aria-hidden="true"></i></a></li1>
-  </ul1>
   
-  
-<style>body, ul1, li1{
-  margin: 0;
-  padding: 0;
+<style>@import 'https://fonts.googleapis.com/css?family=Ubuntu';
+
+body { background: #eee; }
+
+.box-menu {
+	position: absolute;
+	left: 50px;
+	top: 50px;
+	cursor: pointer;
+	background: #49A4EB;
+	width: 60px;
+	height: 60px;
+	box-shadow: 2px 3px 5px rgba(0,0,0,.3);
+	border-radius: 60px;
+	transition: height .4s;
+}
+.full-menu {
+	height: 300px;
 }
 
-ul1{
-  background: #333;
-  min-width: 30px;
-  height: 100%;
-  box-sizing: border-box;
-  position: fixed;
-}
-li1{
-  list-style-type: none;
-  padding: 10px 0 10px 0px;
-  border-bottom: 1px solid #222;
-  transform: translateY(55px);
-  text-align: center;
-  cursor: pointer;
-}
-a{
-  color: #aaa;
-  text-decoration: none;
-  padding: 10px 10px;
-}
-li1.active{
-  background: #222;
-  opacity: 1;
-}
-li1:not(.active):hover {
-  background: #2c2c2c;
+.wrapper {
+	position: relative;
+	width: 60px;
+	height: 60px;
 }
 
-li1:hover img, .active img{
-  opacity: 1;
-}</style>
-<script>$('ul1 li1').click(function(){
-    $('ul1 li1').removeClass("active");
-    $(this).addClass("active");
+/*ГАМБУРГЕР*/
+.hamburger {
+	position: absolute;
+	left: 22px;
+	top: 22px;
+	width: 16px;
+	height: 16px;
+}
+.hamburger span {
+	position: absolute;
+	display: inline-block;
+	height: 2px;
+	width: 100%;
+	background: #fff;
+	border-radius: 10px;
+	/*transition: top .3s, transform .3s, left .3s, width .3s;*/
+	transition: all .3s;
+}
+
+.hamburger span:nth-child(1) { top: 3px; }
+.hamburger span:nth-child(2) { top: 8px; }
+.hamburger span:nth-child(3) { top: 8px; }
+.hamburger span:nth-child(4) { top: 13px; }
+
+.hamburger.active span:nth-child(1) { width: 0; margin-left: 8px;}
+.hamburger.active span:nth-child(2) { transform: rotate(45deg); }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg); }
+.hamburger.active span:nth-child(4) { width: 0; margin-left: 8px;}
+
+/*ОСНОВНОЕ МЕНЮ*/
+.menu {
+	position: relative;
+	left: -9999px;
+}
+
+.menu a {
+	white-space: nowrap;
+	position: relative;
+	display: inline-block;
+	color: #333;
+	text-decoration: none;
+	width: 150px;
+	height: 58px;
+	line-height: 58px;
+	font-family: Ubuntu;
+}
+.menu a::after {
+	content: '';
+	position: absolute;
+	left: 57px;
+	top: 29px;
+	height: 0px;
+	width: 3px;
+	background: #fff;
+	transition: height .3s, top .3s;
+}
+.menu a.active::after {
+	top: 19px;
+	height: 20px;
+}
+.menu a span {
+	opacity: 0;
+	display: inline-block;
+	font-size: 14px;
+}
+.menu a span.icon {
+	transform: scale(.5);
+	color: #fff;
+	font-size: 18px;
+	display: inline-block;
+	width: 60px;
+	text-align: center;
+	transition: transform .3s;
+}
+.menu a span.text {
+  text-shadow: 1px 1px 0px rgba(0,0,0,.3);
+	opacity: 0;
+	margin-left: 40px;
+	transition: margin .3s, opacity .3s, transform .3s;
+}
+
+/*Развернутое меню*/
+.full-menu .menu {
+	left: 0;
+}
+.full-menu .menu a {
+	/*opacity: .8;*/
+}
+.full-menu .menu a:hover span {
+	opacity: 1;	
+}
+.full-menu .menu a span {
+	opacity: .8;
+}
+.full-menu .menu a span.icon {
+	transform: scale(1.1);
+}
+.full-menu .menu a span.text {
+	margin-left: 25px;
+	/*opacity: .7;*/
+}
+.full-menu .menu a:hover span.text {
+	/*margin-left: 30px;*/
+	transform: translateX(5px);
+	transition-delay: 0s;
+}
+
+/*Анимация меню*/
+.menu a:nth-child(1) span { transition: all .5s .1s, opacity .5s 0s, transform .5s 0s; }
+.menu a:nth-child(2) span { transition: all .5s .15s, opacity .5s 0s, transform .5s 0s; }
+.menu a:nth-child(3) span { transition: all .5s .2s, opacity .5s 0s, transform .5s 0s; }
+.menu a:nth-child(4) span { transition: all .5s .25s, opacity .5s 0s, transform .5s 0s; }</style>
+<script>$(function(){
+	$('.box-menu .wrapper').on('click', function(){
+		$('.box-menu').toggleClass('full-menu');
+		$('.hamburger').toggleClass('active');
+	});
+	$('a').on('click', function(){
+		$(this).siblings('a').removeClass('active');
+		$(this).addClass('active');
+	});
 });</script>
+	
+	Stretch navigation
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="css/main.css" />
 
 
-
+	<div class="box-menu">
+		<div class="wrapper">
+			<div class="hamburger">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+		<div class="menu">
+			<a href="#" class="active"><span class="icon fa fa-info-circle"></span><span class="text">About Us</span></a>
+			<a href="#"><span class="icon fa fa-suitcase"></span><span class="text">Portfolio</span></a>
+			<a href="#"><span class="icon fa fa-shopping-basket"></span><span class="text">Store</span></a>
+			<a href="#"><span class="icon fa fa-phone"></span><span class="text">Contacts</span></a>
+		</div>
+	</div>
+	
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script src="js/main.js"></script>
 
