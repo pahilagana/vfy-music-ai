@@ -2515,6 +2515,33 @@ var videoHeading = document.createElement('h4');
 videoHeading.textContent = videoTitle;
 document.getElementById('vfyAu').appendChild(videoHeading);
 
+
+// Assuming you have the 'videoHeading' element with the video title
+var videoTitle = document.getElementById('vfyAu').textContent; // Get the title from the 'videoHeading' element
+
+// Check if the browser supports notifications
+if ("Notification" in window) {
+  // Request permission for notifications
+  Notification.requestPermission().then(function (permission) {
+    if (permission === "granted") {
+      // Create a notification with the video title
+      var options = {
+        body: "Now playing: " + videoTitle,
+        icon: "path/to/your/icon.png", // Replace with the path to your notification icon
+      };
+
+      var notification = new Notification("Now Playing", options);
+
+      // You can also add an event listener to handle clicks on the notification
+      notification.addEventListener("click", function () {
+        // Handle the click event, e.g., navigate to the video page
+        window.location.href = "video-url.html"; // Replace with the actual URL
+      });
+    }
+  });
+}
+
+		    
 // 10 seconds ke baad audio load fail hone par check karo
 setTimeout(function() {
     if (audioPlayer.error) {
@@ -2532,19 +2559,7 @@ audioPlayer.play();
             });
         }		    
 
-const titleaudio = document.getElementById('SAudio');
-const songTitleElement = document.getElementById('vfyAu'); // Assuming the song title is displayed in an element with ID 'vfytitle'
 
-audio.addEventListener('play', () => {
-  // Update the tab title when audio starts playing
-  const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
-  document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
-});
-
-audio.addEventListener('pause', () => {
-  // Restore the original page title when audio is paused
-  document.title = 'VIVEKFY-AI';
-});
       
 	    
 	    
