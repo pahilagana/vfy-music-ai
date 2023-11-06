@@ -478,9 +478,11 @@ color:#fff;
      <input type="search"  name="search" onclick="startDictation()"  id="search-basic" class="search-bar"placeholder="VIVEKFY: Type songs name artists...."/>
  <button onclick="search(),speakSearchText()" data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button></sr>
 	    
-	<div class="seek-bar">
-  <input type="range" id="seek-slider" min="0" max="100" value="0">
+
+<div class="volume-control">
+  <input type="range" id="volume-slider" min="0" max="100" value="100">
 </div>
+
 
 
     
@@ -1010,20 +1012,7 @@ nextbutto.addEventListener("click", function () {
 });
 
 
-const audioPlayer = document.getElementById("SAudio");
-const seekSlider = document.getElementById("seek-slider");
 
-// Seek functionality
-seekSlider.addEventListener("input", () => {
-  const seekTime = (seekSlider.value / 100) * audioPlayer.duration;
-  audioPlayer.currentTime = seekTime;
-});
-
-// Update the seek bar as the audio plays
-audioPlayer.addEventListener("timeupdate", () => {
-  const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-  seekSlider.value = percent;
-});
 
 
 	
@@ -1079,6 +1068,14 @@ audio.addEventListener('pause', () => {
 });
 
 
+const audioPlayer = document.getElementById("SAudio");
+const volumeSlider = document.getElementById("volume-slider");
+
+// Volume control functionality
+volumeSlider.addEventListener("input", () => {
+  const volume = volumeSlider.value / 100;
+  audioPlayer.volume = volume;
+});
 
 
 	
