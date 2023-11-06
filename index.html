@@ -1574,7 +1574,12 @@ document.getElementById("stop").onclick = function() {
             const butto1 = document.getElementById('developer');
             butto1.click();
             playAudio('/sound/vivek.mp3'); // Replace with the appropriate audio URL
-        }   
+        } 
+	  if (lastResult.toLowerCase() === 'search song') {
+            const butto1 = document.getElementById('search-basic');
+            butto1.click();
+            playAudio(''); // Replace with the appropriate audio URL
+        }    
     };
 
     // Function to play audio from a given URL
