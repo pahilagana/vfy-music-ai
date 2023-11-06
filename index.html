@@ -1397,18 +1397,16 @@ document.getElementById("stop").onclick = function() {
             commandMatched = true;
         }
 
-        // If no command matched, type the spoken word in the search box
+        // If no command matched, type the spoken word in the search box and trigger search button click
         if (!commandMatched) {
             const searchBox = document.getElementById('search-basic');
             searchBox.value = lastResult;
-        }
-    };
-// If no command matched, type the spoken word in the search box
-        if (!commandMatched) {
-            searchBox.value = lastResult;
+
+            const searchButton = document.getElementById('search-btn');
             searchButton.click(); // Trigger search button click
         }
     };
+
     // Function to play audio from a given URL
     function playAudio(audioURL) {
         const audio = new Audio(audioURL);
