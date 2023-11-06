@@ -244,7 +244,24 @@ background: radial-gradient(circle, rgba(63,181,219,1) 0%, rgba(32,53,58,1) 100%
 
 
 
+<script>
+        // Function to extract URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
 
+        // Get the "url" parameter from the URL
+        var sharedUrl = getUrlParameter('url');
+
+        if (sharedUrl) {
+            // Set the shared URL in the search box
+            const searchBox = document.getElementById('search-basic');
+            searchBox.value = sharedUrl;
+        }
+    </script>
 
 
 
