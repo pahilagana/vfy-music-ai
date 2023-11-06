@@ -1605,7 +1605,7 @@ document.getElementById("stop").onclick = function() {
 
 <script>
 function startDictationWithDelay() {
-    // Button click ke 2 seconds baad voice recognition ko shuru karne ke liye setTimeout ka upayog karein.
+    // Delay the start of recognition by 2 seconds after clicking the button
     setTimeout(function() {
         if (window.hasOwnProperty('webkitSpeechRecognition')) {
             var recognition = new webkitSpeechRecognition();
@@ -1629,8 +1629,9 @@ function startDictationWithDelay() {
 
             recognition.start();
         }
-    }, 2000); // 2000 milliseconds (2 seconds) delay
+    }, 2000); // 2 seconds delay (2000 milliseconds)
 }
+
 
 
 function searchHindiSongs() {
