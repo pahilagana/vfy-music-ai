@@ -1344,6 +1344,16 @@ document.getElementById("stop").onclick = function() {
             playAudio('/sound/vfull.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         }
+	   if (lastResult.toLowerCase() === 'play' ||
+            lastResult.toLowerCase() === 'start' ||
+            lastResult.toLowerCase() === 'chalu' ||
+            lastResult.toLowerCase() === 'bajao') {
+            // Handle volume increase commands
+            const butto1 = document.getElementById('play');
+            butto1.click();
+            playAudio('/sound/play.mp3'); // Replace with the appropriate audio URL
+            commandMatched = true;
+        } 
         if (lastResult.toLowerCase() === 'next' ||
             lastResult.toLowerCase() === 'song change' ||
             lastResult.toLowerCase() === 'change song') {
