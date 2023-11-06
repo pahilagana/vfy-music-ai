@@ -1010,6 +1010,20 @@ nextbutto.addEventListener("click", function () {
 });
 
 
+const audioPlayer = document.getElementById("SAudio");
+const seekSlider = document.getElementById("seek-slider");
+
+// Seek functionality
+seekSlider.addEventListener("input", () => {
+  const seekTime = (seekSlider.value / 100) * audioPlayer.duration;
+  audioPlayer.currentTime = seekTime;
+});
+
+// Update the seek bar as the audio plays
+audioPlayer.addEventListener("timeupdate", () => {
+  const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+  seekSlider.value = percent;
+});
 
 
 	
@@ -1065,20 +1079,6 @@ audio.addEventListener('pause', () => {
 });
 
 
-const audioPlayer = document.getElementById("SAudio");
-const seekSlider = document.getElementById("seek-slider");
-
-// Seek functionality
-seekSlider.addEventListener("input", () => {
-  const seekTime = (seekSlider.value / 100) * audioPlayer.duration;
-  audioPlayer.currentTime = seekTime;
-});
-
-// Update the seek bar as the audio plays
-audioPlayer.addEventListener("timeupdate", () => {
-  const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-  seekSlider.value = percent;
-});
 
 
 	
