@@ -248,39 +248,6 @@ background: radial-gradient(circle, rgba(63,181,219,1) 0%, rgba(32,53,58,1) 100%
 
 
 
-<script>
-    // Function to start dictation
-    function startDictation() {
-        if ("webkitSpeechRecognition" in window) {
-            const recognition = new webkitSpeechRecognition();
-            recognition.continuous = false;
-            recognition.interimResults = false;
-            recognition.lang = "en"; // You can specify the language here
-
-            recognition.onresult = function (event) {
-                const result = event.results[0][0].transcript;
-                document.getElementById("search-basic").value = result;
-
-                // Initiate the search here
-                search(result);
-            }
-
-            recognition.start();
-        } else {
-            alert("Speech recognition is not supported in your browser.");
-        }
-    }
-
-    // Function to initiate the search
-    function search(query) {
-        // Add your search functionality here, using the "query" parameter
-    }
-</script>
-
-
-
-
-
 
 
 
@@ -501,7 +468,6 @@ color:#fff;
 
 
   
-<button onclick="startRecognition()" data-role="button" data-mini="true" data-inline="true" data-theme="b" id="start-voice-recognition-btn">Start Voice Recognition</button>
 
 
 	    
@@ -1638,7 +1604,7 @@ document.getElementById("stop").onclick = function() {
       recognition.start();
 
       recognition.onresult = function(e) {
-        document.getElementById('search-basi').value
+        document.getElementById('search-basic').value
                                  = e.results[0][0].transcript;
         recognition.stop();
         document.getElementById('search-btn').submit();
@@ -2840,6 +2806,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 
 
 	
+
 
 
 
