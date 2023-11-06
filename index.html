@@ -1604,38 +1604,34 @@ document.getElementById("stop").onclick = function() {
 
 
 <script>
-function startDictation() {
-    // Disable the button initially
-    document.getElementById('search-btn').disabled = true;
+function startDictationWithDelay() {
+    // Button click ke 2 seconds baad voice recognition ko shuru karne ke liye setTimeout ka upayog karein.
+    setTimeout(function() {
+        if (window.hasOwnProperty('webkitSpeechRecognition')) {
+            var recognition = new webkitSpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = "en-US";
 
-    if (window.hasOwnProperty('webkitSpeechRecognition')) {
-        var recognition = new webkitSpeechRecognition();
-        recognition.continuous = false;
-        recognition.interimResults = false;
-        recognition.lang = "en-US";
+            recognition.onresult = function(e) {
+                var spokenText = e.results[0][0].transcript;
+                document.getElementById('search-basic').value = spokenText;
 
-        recognition.onresult = function(e) {
-            var spokenText = e.results[0][0].transcript;
-            document.getElementById('search-basic').value = spokenText;
+                // Automatically trigger the search when the song name is recognized.
+                if (spokenText) {
+                    document.getElementById('search-btn').click();
+                }
+            };
 
-            // Enable the button after 2 seconds
-            setTimeout(function() {
-                document.getElementById('search-btn').disabled = false;
-            }, 2000);
-
-            // Automatically trigger the search when the song name is recognized.
-            if (spokenText) {
-                document.getElementById('search-btn').click();
+            recognition.onerror = function(e) {
+                recognition.stop();
             }
-        };
 
-        recognition.onerror = function(e) {
-            recognition.stop();
+            recognition.start();
         }
-
-        recognition.start();
-    }
+    }, 2000); // 2000 milliseconds (2 seconds) delay
 }
+
 
 function searchHindiSongs() {
     var query = "Latest release hindi songs"; // Hindi songs ke liye query
