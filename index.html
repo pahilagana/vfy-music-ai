@@ -780,25 +780,20 @@ color:#fff;
   </div>   
  
 <script>
-$(document).ready(function() {
-  // Get the path part of the URL
-  const path = window.location.pathname;
-  // Remove leading and trailing slashes from the path
-  const trimmedPath = path.replace(/^\/|\/$/g, '');
-  // Split the path into segments by '/'
-  const pathSegments = trimmedPath.split('/');
 
-  // Check if there is at least one path segment
-  if (pathSegments.length > 0) {
-    // Get the first segment as the search query
-    const query = pathSegments[0];
-    // Set the search query in the search input field
+$(document).ready(function() {
+  // Get the search query from the URL
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const query = urlParams.get('vfy');
+
+  if (query) {
+    // If a query is present in the URL, set it in the search bar
     $(".search-bar").val(query);
     // Trigger the search function with the query
     search(query); // Pass the query to the search function
   }
 });
-
 
 $(document).on('swipeleft', '.ui-page', function(event){    
     if(event.handled !== true) // This will prevent event triggering more then once
