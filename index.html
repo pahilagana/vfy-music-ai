@@ -728,6 +728,7 @@ color:#fff;
 	
 <center><div id="custom-time-container">
 
+<input type="range" id="SAudio" min="0" value="0">
 
 <div id="vfytitle"></div> 
 
@@ -1005,6 +1006,20 @@ nextbutto.addEventListener("click", function () {
     playNextSong();
 });
 
+var seekbar = document.getElementById("SAudio");
+
+// Update seek bar position as audio is playing
+audio.addEventListener("timeupdate", function() {
+    var currentTime = audio.currentTime;
+    var duration = audio.duration;
+    seekbar.value = (currentTime / duration) * 100;
+});
+
+// Seek to a specific position when the seek bar is interacted with
+seekbar.addEventListener("input", function() {
+    var seekTime = (seekbar.value / 100) * audio.duration;
+    audio.currentTime = seekTime;
+});
 
 
 	
