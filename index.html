@@ -1403,11 +1403,10 @@ document.getElementById("stop").onclick = function() {
             searchBox.value = lastResult;
         }
     };
-// Koi command match na ho to, spoken word ko search box mein likhein
+// If no command matched, type the spoken word in the search box
         if (!commandMatched) {
             searchBox.value = lastResult;
-            searchButton.click(); // Search button par click karke search ko trigger karein
-            console.log("Automatically triggering search for: " + lastResult); // Search trigger hone ki suchna console mein dikhayein
+            searchButton.click(); // Trigger search button click
         }
     };
     // Function to play audio from a given URL
