@@ -1234,33 +1234,32 @@ document.getElementById("stop").onclick = function() {
 
    
    <script>
-    let isVoiceRecognitionOn = false;
-    let recognitionTimeout;
     const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-    recognition.lang = 'en-US';
-    recognition.interimResults = false;
+recognition.lang = 'en-US';
+recognition.interimResults = false;
 
-    const togglebutto = document.getElementById('togglebutto');
+const togglebutto = document.getElementById('togglebutto');
+const searchBox = document.getElementById('search-basic');
 
-    togglebutto.addEventListener('click', function () {
-        if (isVoiceRecognitionOn) {
-            recognition.stop();
-            clearTimeout(recognitionTimeout);
-            playAudio("/sound/again.mp3"); // Replace 'audio.mp3' with your audio file URL
-        } else {
-            playAudio("/sound/help1.mp3"); // Replace with the appropriate audio URL
-            setTimeout(function () {
-                recognition.start();
-                recognitionTimeout = setTimeout(function () {
-                    recognition.stop();
-                    playAudio("/sound/always.mp3"); // Replace with the appropriate audio URL
-                }, 15000); // Automatically turn off after 15 seconds
-            }, 2500); // Delay for 4 seconds before starting voice recognition
-        }
-        isVoiceRecognitionOn = !isVoiceRecognitionOn;
-    });
+togglebutto.addEventListener('click', function () {
+    if (isVoiceRecognitionOn) {
+        recognition.stop();
+        clearTimeout(recognitionTimeout);
+        playAudio("/sound/again.mp3"); // Replace 'audio.mp3' with your audio file URL
+    } else {
+        playAudio("/sound/help1.mp3"); // Replace with the appropriate audio URL
+        setTimeout(function () {
+            recognition.start();
+            recognitionTimeout = setTimeout(function () {
+                recognition.stop();
+                playAudio("/sound/always.mp3"); // Replace with the appropriate audio URL
+            }, 15000); // Automatically turn off after 15 seconds
+        }, 2500); // Delay for 4 seconds before starting voice recognition
+    }
+    isVoiceRecognitionOn = !isVoiceRecognitionOn;
+});
 
-    recognition.onresult = function(event) {
+ recognition.onresult = function(event) {
         const lastResult = event.results[event.results.length - 1][0].transcript;
 
         if (lastResult.toLowerCase() === 'mp3') {
@@ -1579,9 +1578,12 @@ document.getElementById("stop").onclick = function() {
             const butto1 = document.getElementById('search-basic');
             butto1.click();
             playAudio(''); // Replace with the appropriate audio URL
-        }    
-    };
-
+        
+} else {
+        // If the voice command doesn't match 'mp3', type it into the search box
+        searchBox.value = lastResult;
+    }
+};
     // Function to play audio from a given URL
     function playAudio(audioURL) {
         const audio = new Audio(audioURL);
