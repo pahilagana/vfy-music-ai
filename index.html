@@ -2532,8 +2532,24 @@ audioPlayer.play();
             });
         }		    
 
+const titleaudio = document.getElementById('SAudio');
+const songTitleElement = document.getElementById('vfyAu'); // Assuming the song title is displayed in an element with ID 'vfytitle'
 
-        // Function to initiate voice search for video
+audio.addEventListener('play', () => {
+  // Update the tab title when audio starts playing
+  const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
+  document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
+});
+
+audio.addEventListener('pause', () => {
+  // Restore the original page title when audio is paused
+  document.title = 'VIVEKFY-AI';
+});
+      
+	    
+	    
+	    
+	    // Function to initiate voice search for video
         function startVoiceSearchForVideo() {
             // Disable the video butto with a 2-second delay
             document.getElementById('AdVideo').disabled = true;
