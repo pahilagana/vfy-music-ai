@@ -244,24 +244,37 @@ background: radial-gradient(circle, rgba(63,181,219,1) 0%, rgba(32,53,58,1) 100%
 
 
 
+
+
 <script>
-        // Function to extract URL parameters
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            var results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        }
+    // Function to start dictation
+    function startDictation() {
+        if ('webkitSpeechRecognition' in window) {
+            const recognition = new webkitSpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = 'en'; // You can specify the language here
 
-        // Get the "url" parameter from the URL
-        var sharedUrl = getUrlParameter('url');
+            recognition.onresult = function (event) {
+                const result = event.results[0][0].transcript;
+                document.getElementById('search-basic').value = result;
 
-        if (sharedUrl) {
-            // Set the shared URL in the search box
-            const searchBox = document.getElementById('search-basic');
-            searchBox.value = sharedUrl;
+                // Initiate the search here
+                search(result);
+            }
+
+            recognition.start();
+        } else {
+            alert("Speech recognition is not supported in your browser.");
         }
-    </script>
+    }
+
+    // Function to initiate the search
+    function search(query) {
+        // Add your search functionality here, using the 'query' parameter
+    }
+</script>
+
 
 
 
@@ -1621,7 +1634,7 @@ document.getElementById("stop").onclick = function() {
       recognition.start();
 
       recognition.onresult = function(e) {
-        document.getElementById('search-basic').value
+        document.getElementById('search-basi').value
                                  = e.results[0][0].transcript;
         recognition.stop();
         document.getElementById('search-btn').submit();
