@@ -2814,37 +2814,61 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 
 
 	
+  <ul>
+    <li><a href="#"><i class="fa fa-address-book" aria-hidden="true"></i></a></li>
+    <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i></a></li>
+    <li class="active"><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+    <li><a href="#"><i class="fa fa-bell" aria-hidden="true"></i></a></li>
+    <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i></a></li>
+    <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i></a></li>
+  </ul>
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://use.fontawesome.com/e7cb172c8c.js"></script>
 
-
-<a class="buttonLink" href="#"><button type="button" class="btn btn-large verticalButton" id="current-time">Deze camper helemaal voor jou?</button></a>
-
-<style>
-
-
-
-
-.buttonLink {
-  color: #275d8b;
+<style>body, ul, li{
+  margin: 0;
+  padding: 0;
 }
 
-.verticalButton {
-  padding:0px 0px 0px 0px;
-    width: 250px;
-    height:40px;
-    background:#FF931E;
-    border-radius: 0px 0px 5px 5px;
-    -moz-transform:rotate(90deg);
-    -ms-transform:rotate(90deg);
-    -o-transform:rotate(90deg);
-    -webkit-transform:rotate(90deg);
-    position: fixed;
-    right: -105px;
-  top: 200px;
+ul{
+  background: #333;
+  min-width: 30px;
+  height: 100%;
+  box-sizing: border-box;
+  position: fixed;
 }
-</style>
-
-
-
+li{
+  list-style-type: none;
+  padding: 10px 0 10px 0px;
+  border-bottom: 1px solid #222;
+  transform: translateY(55px);
+  text-align: center;
+  cursor: pointer;
+}
+a{
+  color: #aaa;
+  text-decoration: none;
+  padding: 10px 10px;
+}
+li.active{
+  background: #222;
+  opacity: 1;
+}
+li:not(.active):hover {
+  background: #2c2c2c;
+}
+img{
+  width: 30px;
+  opacity: 0.6;
+}
+li:hover img, .active img{
+  opacity: 1;
+}</style>
+<script>$('ul li').click(function(){
+    $('ul li').removeClass("active");
+    $(this).addClass("active");
+});</script>
 
 
 
