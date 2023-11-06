@@ -158,7 +158,18 @@ img:hover {
   box-shadow: 0 0 20px #000;
   box-opacity: 0.2;
 }
-
+#SThumb::before {
+  content: "Live";
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center the text within the container */
+  color: white; /* Text color */
+  background: rgba(0, 0, 0, 0.5); /* Background color with transparency */
+  padding: 5px 10px; /* Adjust padding as needed */
+  border-radius: 5px; /* Rounded corners for the background */
+}
+		
 .rotate {
   animation: spin 5s linear infinite, rotation 5s linear infinite;
 }
