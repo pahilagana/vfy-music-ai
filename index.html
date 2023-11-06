@@ -1068,14 +1068,7 @@ audio.addEventListener('pause', () => {
 });
 
 
-const audioPlayer = document.getElementById("#SAudio");
-const volumeSlider = document.getElementById("volume-slider");
 
-// Volume control functionality
-volumeSlider.addEventListener("input", () => {
-  const volume = volumeSlider.value / 100;
-  audioPlayer.volume = volume;
-});
 
 
 	
@@ -1244,7 +1237,17 @@ document.getElementById("stop").onclick = function() {
 }
 </script></div>
 
+<script>
+const audioPlayer = document.getElementById("#SAudio");
+const volumeSlider = document.getElementById("volume-slider");
 
+// Volume control functionality
+volumeSlider.addEventListener("input", () => {
+  const volume = volumeSlider.value / 100;
+  audioPlayer.volume = volume;
+});
+</script>
+	
 <butto id="pahilagana"></butto>
     <butto id="vivekmasona"></butto>
 
