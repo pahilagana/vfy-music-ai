@@ -13,14 +13,14 @@
 <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
 <meta content='blogger' name='generator'/>
 <link href='https://www.pahilagana.xyz/favicon.ico' rel='icon' type='image/x-icon'/>
-<link href='https://vfy-live.netlify.app/Vivek' rel='canonical'/>
+<link href='https://vfy.netlify.app?vfy=trending+latest+hindi+songs' rel='canonical'/>
 <link rel="alternate" type="application/atom+xml" title="PahilaGana.in - Atom" href="https://www.pahilagana.xyz/feeds/posts/default" />
 <link rel="alternate" type="application/rss+xml" title="PahilaGana.in - RSS" href="https://www.pahilagana.xyz/feeds/posts/default?alt=rss" />
 <link rel="service.post" type="application/atom+xml" title="PahilaGana.in - Atom" href="https://www.blogger.com/feeds/8210896260184509547/posts/default" />
 <!--Can't find substitution for tag [blog.ieCssRetrofitLinks]-->
 <meta content='VFY is Online YouTube Music  Player' name='description'/>
-<meta content='https://Vfy-live.netlify.app/Vivek' property='og:url'/>
-<meta content='https://vivekfy.onrender.com/' property='og:title'/>
+<meta content='https://vfy.netlify.app?vfy=trending+latest+hindi+songs' property='og:url'/>
+<meta content='Vivekfy-Ai Songs Library' property='og:title'/>
 <meta content='vivefy:-vfy is smart online music player and downloader developer vivek masona' property='og:description'/>
 <title>VIVEKFY-AI</title>
 
@@ -2515,33 +2515,6 @@ var videoHeading = document.createElement('h4');
 videoHeading.textContent = videoTitle;
 document.getElementById('vfyAu').appendChild(videoHeading);
 
-
-// Assuming you have the 'videoHeading' element with the video title
-var videoTitle = document.getElementById('vfyAu').textContent; // Get the title from the 'videoHeading' element
-
-// Check if the browser supports notifications
-if ("Notification" in window) {
-  // Request permission for notifications
-  Notification.requestPermission().then(function (permission) {
-    if (permission === "granted") {
-      // Create a notification with the video title
-      var options = {
-        body: "Now playing: " + videoTitle,
-        icon: "path/to/your/icon.png", // Replace with the path to your notification icon
-      };
-
-      var notification = new Notification("Now Playing", options);
-
-      // You can also add an event listener to handle clicks on the notification
-      notification.addEventListener("click", function () {
-        // Handle the click event, e.g., navigate to the video page
-        window.location.href = "video-url.html"; // Replace with the actual URL
-      });
-    }
-  });
-}
-
-		    
 // 10 seconds ke baad audio load fail hone par check karo
 setTimeout(function() {
     if (audioPlayer.error) {
@@ -2560,11 +2533,7 @@ audioPlayer.play();
         }		    
 
 
-      
-	    
-	    
-	    
-	    // Function to initiate voice search for video
+        // Function to initiate voice search for video
         function startVoiceSearchForVideo() {
             // Disable the video butto with a 2-second delay
             document.getElementById('AdVideo').disabled = true;
@@ -2845,6 +2814,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 
 
 	
+
 
 
 
