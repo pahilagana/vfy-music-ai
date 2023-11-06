@@ -477,7 +477,9 @@ color:#fff;
     </div>
     <div data-role="main" class="ui-content">
      <input type="search"  name="search" onclick="startDictation()"  id="search-basic" class="search-bar"placeholder="VIVEKFY: Type songs name artists...."/>
- <button onclick="search(),speakSearchText()" data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button></sr>
+
+	    
+	    <button onclick="search(),speakSearchText()" data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button></sr>
 	    
 	    
 	    
@@ -1242,6 +1244,8 @@ document.getElementById("stop").onclick = function() {
     recognition.interimResults = false;
 
     const togglebutto = document.getElementById('togglebutto');
+    const searchBox = document.getElementById('search-basic');
+    const searchButton = document.getElementById('search-btn');
 
     togglebutto.addEventListener('click', function () {
         if (isVoiceRecognitionOn) {
@@ -1260,22 +1264,7 @@ document.getElementById("stop").onclick = function() {
         }
         isVoiceRecognitionOn = !isVoiceRecognitionOn;
     });
-// Add an event listener for the input event to trigger search
-    searchBox.addEventListener('input', function () {
-        const query = searchBox.value;
-        // You can implement your search logic here using the 'query' variable
-        // For example, you can trigger a search when the input changes.
-        // Replace the code below with your search logic.
-        console.log('Search query:', query);
-    });
 
-    searchButton.addEventListener('click', function () {
-        const query = searchBox.value;
-        // Implement your search logic here using the 'query' variable
-        // For example, you can send an API request to perform the search.
-        console.log('Searching for:', query);
-        // Replace the console.log statement with your actual search logic.
-    });
     recognition.onresult = function(event) {
         const lastResult = event.results[event.results.length - 1][0].transcript;
 
