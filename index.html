@@ -468,6 +468,7 @@ color:#fff;
 
 
   
+<input type="range" id="SAudio" min="0" max="100" value="50">
 
 
 	    
@@ -1062,19 +1063,11 @@ audio.addEventListener('pause', () => {
 });
 
 
-var seekbar = document.getElementById("SAudio");
+var rangeSlider = document.getElementById("SAudio");
 
-// Update seek bar position as audio is playing
-audio.addEventListener("timeupdate", function() {
-    var currentTime = audio.currentTime;
-    var duration = audio.duration;
-    seekbar.value = (currentTime / duration) * 100;
-});
-
-// Seek to a specific position when the seek bar is interacted with
-seekbar.addEventListener("input", function() {
-    var seekTime = (seekbar.value / 100) * audio.duration;
-    audio.currentTime = seekTime;
+rangeSlider.addEventListener("input", function() {
+    var sliderValue = rangeSlider.value;
+    // Do something with the slider value, e.g., update your audio volume or seek position.
 });
 
 	
