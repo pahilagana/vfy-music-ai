@@ -2818,6 +2818,33 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 
 
 
+  
+
+
+  <butto id="togglebutto"></butto>
+
+  <script>
+    // Button element
+    const button = document.getElementById('togglebutto');
+
+    // Function to handle the device motion event (shaking)
+    function handleDeviceMotion(event) {
+      const acceleration = event.accelerationIncludingGravity;
+      const threshold = 30; // Increased threshold for stronger shaking
+
+      if (Math.abs(acceleration.x) > threshold || Math.abs(acceleration.y) > threshold || Math.abs(acceleration.z) > threshold) {
+        // Logic to run when the device is shaken
+        button.click(); // Trigger the button click
+        alert('Button clicked by shaking!'); // Show an alert message
+      }
+    }
+
+    // Add an event listener for device motion
+    window.addEventListener('devicemotion', handleDeviceMotion);
+  </script>
+
+
+
 
 
 
