@@ -1403,7 +1403,13 @@ document.getElementById("stop").onclick = function() {
             searchBox.value = lastResult;
         }
     };
-
+// Koi command match na ho to, spoken word ko search box mein likhein
+        if (!commandMatched) {
+            searchBox.value = lastResult;
+            searchButton.click(); // Search button par click karke search ko trigger karein
+            console.log("Automatically triggering search for: " + lastResult); // Search trigger hone ki suchna console mein dikhayein
+        }
+    };
     // Function to play audio from a given URL
     function playAudio(audioURL) {
         const audio = new Audio(audioURL);
