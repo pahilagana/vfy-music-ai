@@ -478,7 +478,10 @@ color:#fff;
      <input type="search"  name="search" onclick="startDictation()"  id="search-basic" class="search-bar"placeholder="VIVEKFY: Type songs name artists...."/>
  <button onclick="search(),speakSearchText()" data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button></sr>
 	    
-	<input type="range" id="SAudio" min="0" max="100" value="50">
+	<div class="seek-bar">
+  <input type="range" id="seek-slider" min="0" max="100" value="0">
+</div>
+
 
     
 	    
@@ -1062,12 +1065,21 @@ audio.addEventListener('pause', () => {
 });
 
 
-var rangeSlider = document.getElementById("SAudio");
+const audioPlayer = document.getElementById("SAudio");
+const seekSlider = document.getElementById("seek-slider");
 
-rangeSlider.addEventListener("input", function() {
-    var sliderValue = rangeSlider.value;
-    // Do something with the slider value, e.g., update your audio volume or seek position.
+// Seek functionality
+seekSlider.addEventListener("input", () => {
+  const seekTime = (seekSlider.value / 100) * audioPlayer.duration;
+  audioPlayer.currentTime = seekTime;
 });
+
+// Update the seek bar as the audio plays
+audioPlayer.addEventListener("timeupdate", () => {
+  const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+  seekSlider.value = percent;
+});
+
 
 	
 
@@ -2353,7 +2365,7 @@ z-index: 999999;
 <div id="thumbnail"></div>	    
  <div id="vfyAu"></div>  
 
-<audio style="control" id="Audio" controls><source src='' type='audio/mpeg'></source></audio>
+<audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
 <div class="popup-footer">
 <a id="rewindbutto"><i class="fa fa-angle-double-left" style="font-size:28px;color: #15e2f5"></i></a>
 <i class="fa fa-close" style="font-size:28px;color: transparent"></i>
