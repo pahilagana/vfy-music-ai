@@ -1251,16 +1251,16 @@ document.getElementById("stop").onclick = function() {
         if (isVoiceRecognitionOn) {
             recognition.stop();
             clearTimeout(recognitionTimeout);
-            playAudio("/sound/again.mp3"); // Replace 'audio.mp3' with your audio file URL
+            playAudio("/sound/again.mp3"); // Apni audio file URL ke sath replace karein
         } else {
-            playAudio("/sound/help1.mp3"); // Replace with the appropriate audio URL
+            playAudio("/sound/help1.mp3"); // Sahi audio URL ke sath replace karein
             setTimeout(function () {
                 recognition.start();
                 recognitionTimeout = setTimeout(function () {
                     recognition.stop();
-                    playAudio("/sound/always.mp3"); // Replace with the appropriate audio URL
-                }, 15000); // Automatically turn off after 15 seconds
-            }, 2500); // Delay for 4 seconds before starting voice recognition
+                    playAudio("/sound/always.mp3"); // Sahi audio URL ke sath replace karein
+                }, 15000); // 15 seconds ke baad apne aap band ho jayega
+            }, 2500); // Voice recognition start hone se pehle 4 seconds ka delay
         }
         isVoiceRecognitionOn = !isVoiceRecognitionOn;
     });
@@ -1269,7 +1269,6 @@ document.getElementById("stop").onclick = function() {
         const lastResult = event.results[event.results.length - 1][0].transcript;
 
         let commandMatched = false;
-
         // Check if the voice command matches any predefined commands
         if (lastResult.toLowerCase() === 'mp3' ||
             lastResult.toLowerCase() === 'download mp3' ||
@@ -1409,20 +1408,20 @@ document.getElementById("stop").onclick = function() {
             commandMatched = true;
         }
 
-        // If no command matched, type the spoken word in the search box
+        // Koi command match na ho to, spoken word ko search box mein likhein
         if (!commandMatched) {
-            const searchBox = document.getElementById('search-basic');
             searchBox.value = lastResult;
+            searchButton.click(); // Search button par click karke search ko trigger karein
+            console.log("Automatically triggering search for: " + lastResult); // Search trigger hone ki suchna console mein dikhayein
         }
     };
 
-    // Function to play audio from a given URL
+    // Audio play karne ke liye ek function
     function playAudio(audioURL) {
         const audio = new Audio(audioURL);
         audio.play();
     }
 </script>
-
             
             
 
