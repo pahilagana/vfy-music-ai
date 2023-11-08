@@ -1,5 +1,5 @@
 {
-  "name": "BG-PLAYER",
+  "name": "VFY AI",
   "short_name": "VFy-MUSIC",
     "share_target": {
     "action": "/",
@@ -16,7 +16,7 @@
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "./img/logo.png",
+      "src": "./img/newdp.png",
       "type": "image/png",
       "sizes": "512x512"
         }
