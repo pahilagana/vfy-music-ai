@@ -792,20 +792,20 @@ function search(){
  //var ytapi = "AIzaSyBh6s9emY3VYSbsHudlhxProRt8mtFyt2s";
  //var ytapi = "AIzaSyBfsNcJJHd-O0ftUzH2KqIRc_KhXgPXne0";
   
-  var q = $(".search-bar").val();
-  if(q === null || q === undefined || q=== ""){
+var q = $(".search-bar").val();
+if (q === null || q === undefined || q === "") {
     return;
-  }else{
-      
-$.get(
-      "https://www.googleapis.com/youtube/v3/search",{
-          part : 'snippet , id',
-          q : q,
-          type : 'video',
-	 videoSyndicated: 'true',
-	videoCategoryId: '10',
-        videoDuration: 'short', // This filters for videos under 4 minutes
-        eventType: 'none', // Exclude live videos
+} else {
+
+    $.get(
+        "https://www.googleapis.com/youtube/v3/search", {
+            part: 'snippet, id',
+            q: q + ' official music video', // Include "official music video" to find original songs
+            type: 'video',
+            videoSyndicated: 'true',
+            videoCategoryId: '10',
+            videoDuration: 'short', // This filters for videos under 4 minutes
+            eventType: 'none', // Exclude live videos
         //videoDuration: 'medium', // 'medium' ya 'long' as per your preference
         //eventType: 'none' // 'none'
 	//videoEmbeddable: 'true', // Exclude live videos
