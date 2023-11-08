@@ -2669,7 +2669,16 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
   
 
 
-  
+  <script>
+        function speakMessage() {
+            var searchBox = document.getElementById("search-basic");
+
+            if (searchBox.value.toLowerCase() === "vivek") {
+                var speech = new SpeechSynthesisUtterance("This is developer name");
+                window.speechSynthesis.speak(speech);
+            }
+        }
+    </script>
 
   
 
