@@ -12,8 +12,8 @@
 
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#4D5656",
-  "theme_color": "#4D5656",
+  "background_color": "#34495E",
+  "theme_color": "#34495E",
   "icons": [
     {
       "src": "./img/newdp.png",
@@ -45,17 +45,7 @@
     }
  ],
   "shortcuts": [
-{
-      "name": "Video",
-      "url": "/video",
-      "icons": [
-        {
-          "src": "/img/video.png",
-          "type": "image/png",
-          "sizes": "192x192"
-        }
-      ]
-    },
+
     {
       "name": "Downloader",
       "url": "/copy",
