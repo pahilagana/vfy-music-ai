@@ -1359,6 +1359,17 @@ document.getElementById("stop").onclick = function() {
             playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         }
+	if (lastResult.toLowerCase() === 'developer' ||
+            lastResult.toLowerCase() === 'your developer' ||
+            lastResult.toLowerCase() === 'what is your developer name' ||
+            lastResult.toLowerCase() === 'vivek' ||
+            lastResult.toLowerCase() === 'who is vivek') {
+            // Handle commands for rewinding the song
+            const butto1 = document.getElementById('developer');
+            butto1.click();
+            playAudio('/sound/vivek.mp3'); // Replace with the appropriate audio URL
+            commandMatched = true;
+        }  
         if (lastResult.toLowerCase() === 'stop' ||
             lastResult.toLowerCase() === 'song stop' ||
             lastResult.toLowerCase() === 'stop song' ||
