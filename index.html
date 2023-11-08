@@ -846,13 +846,19 @@ $.get(
           function(data){
             var nextPageToken = data.nextPageToken;
             var prevPageToken = data.prevPageToken;
-		if (data.items.length > 0) {
-          // Extract the first video's ID from the search results
-          var firstVideoId = data.items[0].id.videoId;
+		
+// Recognition.onresult event handler ke andar is code ko add karein
+        document.getElementById('search-basic').value = e.results[0][0].transcript;
+        recognition.stop();
 
-          // Automatically play the first video
-          play(firstVideoId, 0);
-        }  
+        // Search results mein pehle gaane par click event trigger karein
+        var firstSong = document.querySelector('.list');
+        if (firstSong) {
+            firstSong.click();
+        }
+
+
+		  
             $.each(data.items,function(i,item){
               var output = getOutput(item,i);
               $(output).appendTo("#homepage-content").listview();
@@ -2685,17 +2691,6 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
   </script>
 
   
-<script>
-        // Recognition.onresult event handler ke andar is code ko add karein
-        document.getElementById('search-basic').value = e.results[0][0].transcript;
-        recognition.stop();
-
-        // Search results mein pehle gaane par click event trigger karein
-        var firstSong = document.querySelector('.list');
-        if (firstSong) {
-            firstSong.click();
-        }
-    </script>
 
 
 
