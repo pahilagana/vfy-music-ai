@@ -1787,9 +1787,13 @@ function closeNav() {
   /*]]>*/</script>
 <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./sw.js');
-    } else {
-      alert('ServiceWorker unavailable');
+      navigator.serviceWorker.register('/service-worker.js') // Service Worker file path
+        .then(function(registration) {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch(function(error) {
+          console.error('Service Worker registration failed:', error);
+        });
     }
   </script>
 
