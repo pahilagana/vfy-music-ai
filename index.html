@@ -862,15 +862,7 @@ if (e.results[0][0].isFinal) {
 
 		  
 		  
-		  // Recognition.onresult event handler ke andar is code ko add karein
-        document.getElementById('search-basic').value = e.results[0][0].transcript;
-        recognition.stop();
-
-        // Search results mein pehle gaane par click event trigger karein
-        var firstSong = document.querySelector('.list');
-        if (firstSong) {
-            firstSong.click();
-        }
+		
 
 
 		  
