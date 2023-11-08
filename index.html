@@ -846,33 +846,13 @@ $.get(
           function(data){
             var nextPageToken = data.nextPageToken;
             var prevPageToken = data.prevPageToken;
-		
-// Recognition.onresult event handler ke andar is code ko add karein
-document.getElementById('search-basic').value = e.results[0][0].transcript;
-recognition.stop();
-
-// Check if the input came from voice recognition
-if (e.results[0][0].isFinal) {
-    // If it's a final result from voice recognition, automatically play the first video
-    var firstSong = document.querySelector('.list');
-    if (firstSong) {
-        firstSong.click();
-    }
-}
-
-	if (data.items.length > 0) {
+		if (data.items.length > 0) {
           // Extract the first video's ID from the search results
           var firstVideoId = data.items[0].id.videoId;
 
           // Automatically play the first video
           play(firstVideoId, 0);
         }  
-
-
-		
-
-
-		  
             $.each(data.items,function(i,item){
               var output = getOutput(item,i);
               $(output).appendTo("#homepage-content").listview();
@@ -2708,7 +2688,9 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 
 
 
+
   
+
 
 
 
