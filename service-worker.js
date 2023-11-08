@@ -5,8 +5,9 @@ self.addEventListener('install', function(event) {
     caches.open('my-cache').then(function(cache) {
       return cache.addAll([
         '/index.html',
-        '/styles.css',
-        '/script.js',
+        '/share/index.html',
+        '/img',
+        '/sound',
         // Include other files your app uses
       ]);
     })
