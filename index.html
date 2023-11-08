@@ -804,13 +804,13 @@ if (q === null || q === undefined || q === "") {
     $.get(
         "https://www.googleapis.com/youtube/v3/search", {
             part: 'snippet, id',
-            q: q + ' official music video ' + artistName + ' ' + releaseYear,
+            q: q + ' official music video',
             type: 'video',
             videoSyndicated: 'true',
             videoCategoryId: '10',
             videoDuration: 'short',
-            eventType: 'none',
-            //videoDuration: 'medium', // 'medium' ya 'long' as per your preference
+            eventType: 'none'
+        //videoDuration: 'medium', // 'medium' ya 'long' as per your preference
         //eventType: 'none' // 'none'
 	//videoEmbeddable: 'true', // Exclude live videos
         //videoType: 'video',
