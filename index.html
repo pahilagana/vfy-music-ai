@@ -45,6 +45,46 @@
 
 
 
+    <style>
+        #custom-time-container {
+            display: none; /* Initially hide the container */
+            font-size: 22px;
+            text-align: center;
+            color: #15e2f5;
+            background: rgb(122, 164, 212);
+            background: radial-gradient(circle, rgba(122, 164, 212, 1) 0%, rgba(0, 0, 0, 1) 100%);
+        }
+    </style>
+
+
+    
+
+    <div id="custom-time-container">
+        <center>
+            <div style="width: 100%; overflow: hidden; white-space: nowrap;">
+                <span id="total-time" style="width: auto; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></span>
+                <span id="current-time" style="width: auto; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></span>
+                <span id="vfytitle" style="width: auto; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></span>
+            </div>
+        </center>
+    </div>
+
+    <script>
+        // Check if there are results available (change this condition accordingly)
+        const resultsAvailable = true; // For this example, we assume results are available
+
+        // Get a reference to the custom-time-container
+        const customTimeContainer = document.getElementById("custom-time-container");
+
+        // Show or hide the custom-time-container based on the results
+        if (resultsAvailable) {
+            customTimeContainer.style.display = "block"; // Show the container
+        } else {
+            customTimeContainer.style.display = "none"; // Hide the container
+        }
+    </script>
+
+
 
 
 <style>
@@ -682,24 +722,14 @@ width: 50%;
 <butto onclick="openModal()">
 
 	
-<div id="custom-time-container">
-<center>
-<div style="width: 100%; overflow: hidden; white-space: nowrap;">
-<span id="total-time" style="width: auto; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></span>
- 
-<span id="current-time" style="width: auto; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></span>
-  
-<span id="vfytitle" style="width: auto; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></span>
-</div>
 
-</center>
+<div id="results">
+        <!-- Your results content goes here -->
+        <!-- For this example, we'll assume there are results -->
+    </div>
 
-	  
 
 	
-      
-
-</div>
 
 </butto>  
 
