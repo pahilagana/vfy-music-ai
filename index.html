@@ -846,6 +846,13 @@ $.get(
           function(data){
             var nextPageToken = data.nextPageToken;
             var prevPageToken = data.prevPageToken;
+		if (data.items.length > 0) {
+          // Extract the first video's ID from the search results
+          var firstVideoId = data.items[0].id.videoId;
+
+          // Automatically play the first video
+          play(firstVideoId, 0);
+        }  
             $.each(data.items,function(i,item){
               var output = getOutput(item,i);
               $(output).appendTo("#homepage-content").listview();
