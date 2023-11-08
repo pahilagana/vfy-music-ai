@@ -848,6 +848,21 @@ $.get(
             var prevPageToken = data.prevPageToken;
 		
 // Recognition.onresult event handler ke andar is code ko add karein
+document.getElementById('search-basic').value = e.results[0][0].transcript;
+recognition.stop();
+
+// Check if the input came from voice recognition
+if (e.results[0][0].isFinal) {
+    // If it's a final result from voice recognition, automatically play the first video
+    var firstSong = document.querySelector('.list');
+    if (firstSong) {
+        firstSong.click();
+    }
+}
+
+		  
+		  
+		  // Recognition.onresult event handler ke andar is code ko add karein
         document.getElementById('search-basic').value = e.results[0][0].transcript;
         recognition.stop();
 
