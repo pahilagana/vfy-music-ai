@@ -792,7 +792,11 @@ function search(){
  //var ytapi = "AIzaSyBh6s9emY3VYSbsHudlhxProRt8mtFyt2s";
  //var ytapi = "AIzaSyBfsNcJJHd-O0ftUzH2KqIRc_KhXgPXne0";
   
+
+
 var q = $(".search-bar").val();
+var displayedSongs = [];
+
 if (q === null || q === undefined || q === "") {
     return;
 } else {
@@ -800,14 +804,13 @@ if (q === null || q === undefined || q === "") {
     $.get(
         "https://www.googleapis.com/youtube/v3/search", {
             part: 'snippet, id',
-            q: q + ' official music video ' + artistName + ' ' + releaseYear
-// Include "official music video" to find original songs
+            q: q + ' official music video ' + artistName + ' ' + releaseYear,
             type: 'video',
             videoSyndicated: 'true',
             videoCategoryId: '10',
-            videoDuration: 'short', // This filters for videos under 4 minutes
-            eventType: 'none', // Exclude live videos
-        //videoDuration: 'medium', // 'medium' ya 'long' as per your preference
+            videoDuration: 'short',
+            eventType: 'none',
+            //videoDuration: 'medium', // 'medium' ya 'long' as per your preference
         //eventType: 'none' // 'none'
 	//videoEmbeddable: 'true', // Exclude live videos
         //videoType: 'video',
@@ -821,27 +824,35 @@ if (q === null || q === undefined || q === "") {
 	  key : "AIzaSyBfsNcJJHd-O0ftUzH2KqIRc_KhXgPXne0",
           maxResults : "40"
         },
-          function(data){
+        function(data) {
             var nextPageToken = data.nextPageToken;
             var prevPageToken = data.prevPageToken;
-            $.each(data.items,function(i,item){
-              var output = getOutput(item,i);
-              $(output).appendTo("#homepage-content").listview();
+
+            $.each(data.items, function(i, item) {
+                var videoId = item.id.videoId;
+                if (displayedSongs.indexOf(videoId) === -1) {
+                    // Display the song
+                    displayedSongs.push(videoId);
+                    var output = getOutput(item, i);
+                    $(output).appendTo("#homepage-content").listview();
+                }
             });
-            if(prevPageToken){
-              $("#prev-btn").show();
-              $("#prev-btn").attr("prev",prevPageToken);
-              $("#prev-btn").attr("q",q);
+
+            if (prevPageToken) {
+                $("#prev-btn").show();
+                $("#prev-btn").attr("prev", prevPageToken);
+                $("#prev-btn").attr("q", q);
             }
-            if(nextPageToken){
-              $("#next-btn").show();
-              $("#next-btn").attr("next",nextPageToken);
-              $("#next-btn").attr("q",q);
+            if (nextPageToken) {
+                $("#next-btn").show();
+                $("#next-btn").attr("next", nextPageToken);
+                $("#next-btn").attr("q", q);
             }
-          }
-    )
-    } 
+        }
+    );
 }
+
+	
 
 function getOutput(item,i){
   var id = item.id.videoId;
