@@ -794,6 +794,10 @@ $(document).on('swipeleft', '.ui-page', function(event){
     }
     return false;         
 });
+// Activate the home content by calling the search() function
+search(); // This line activates the home content
+
+	
 $(document).on('swiperight', '.ui-page', function(event){     
     if(event.handled !== true) // This will prevent event triggering more then once
     {      
