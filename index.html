@@ -797,7 +797,15 @@ $(document).on('swipeleft', '.ui-page', function(event){
 });
 // Activate the home content by calling the search() function
 search(); // This line activates the home content
+// Function to handle the search button click event
+$("#search-button").click(function() {
+    searchBhaktiSongs();
+});
 
+// Function to activate the home content by calling the searchBhaktiSongs() function
+function searchBhaktiSongs() {
+    // Your modified search code goes here
+}
 	
 $(document).on('swiperight', '.ui-page', function(event){     
     if(event.handled !== true) // This will prevent event triggering more then once
