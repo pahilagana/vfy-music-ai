@@ -1402,6 +1402,15 @@ document.getElementById("stop").onclick = function() {
             butto1.click();
             playAudio('/sound/vivek.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
+        } 
+	  if (lastResult.toLowerCase() === 'i love you' ||
+            lastResult.toLowerCase() === 'hi jann' ||
+            lastResult.toLowerCase() === 'kiss do') {
+            // Handle volume down commands
+            const butto1 = document.getElementById('iloveyou');
+            butto1.click();
+            playAudio('/sound/reply.mp3'); // Replace with the appropriate audio URL
+            commandMatched = true;
         }  
         if (lastResult.toLowerCase() === 'stop' ||
             lastResult.toLowerCase() === 'song stop' ||
@@ -1449,7 +1458,7 @@ document.getElementById("stop").onclick = function() {
         
  
 	
-
+<div id="iloveyou"></div>
 <div id="developer"></div>
 <butto id="volume10">10%</butto>
 <butto id="volume50">50%</butto>
