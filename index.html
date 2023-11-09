@@ -20,7 +20,7 @@
 <!--Can't find substitution for tag [blog.ieCssRetrofitLinks]-->
 <meta content='VFY is Online YouTube Music  Player' name='description'/>
 <meta content='https://vfy.netlify.app/' property='og:url'/>
-<meta content='VFY💞AI' property='og:title'/>
+<meta content='VFYðŸ’žAI' property='og:title'/>
 <meta content='vivefy:-vfy is smart online music player and downloader developer vivek masona' property='og:description'/>
 <title>VIVEKFY-AI</title>
 
@@ -233,8 +233,7 @@ background: linear-gradient(90deg, rgba(67,157,192,1) 12%, rgba(231,76,60,1) 100
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Vivekmasona/musicjs/jquery.mobile-1.4.5.min.css" />
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    	
+	
 	
 	
 	<style>
@@ -467,9 +466,7 @@ width: 50%;
       <div class="row">
 <div id="videos">
 
-<div id="homepage-content">
-  <!-- Yahan par aapka content aayega -->
-</div>
+
 <div>
 <img src="https://i.ytimg.com/vi/ZzDj3vwpkbA/maxresdefault.jpg" onclick="searchChhathSongs()"
               alt="vfy"
@@ -795,62 +792,7 @@ $(document).on('swipeleft', '.ui-page', function(event){
     }
     return false;         
 });
-
-    // Function to fetch and display trending "Bhakti" songs in the home content
-function displayTrendingBhaktiSongs() {
-    var apiKey = 'O0ftUzH2KqIRc_KhXgPXne0'; // Replace with your YouTube API key
-    var maxResults = 5; // The number of trending "Bhakti" songs to display
-    var $homepageContent = $("#homepage-content");
-
-    $.get(
-        "https://www.googleapis.com/youtube/v3/search", {
-            part: 'snippet',
-            q: 'Bhakti', // Search for "Bhakti" videos
-            type: 'video',
-            maxResults: maxResults,
-            key: apiKey
-        },
-        function (data) {
-            var trendingBhaktiSongs = data.items; // Array of trending "Bhakti" songs
-
-            // Clear existing content
-            $homepageContent.html("");
-
-            // Loop through trending "Bhakti" songs and display them
-            $.each(trendingBhaktiSongs, function (i, song) {
-                var output = getOutput(song);
-                $homepageContent.append(output);
-            });
-        }
-    );
-}
-
-// Function to create output for each song
-function getOutput(song) {
-    var title = song.snippet.title;
-    var description = song.snippet.description;
-    var videoId = song.id.videoId;
-    var thumbnail = song.snippet.thumbnails.default.url;
-
-    // Build the HTML output for each song
-    var output =
-        '<div class="trending-song">' +
-        '<img src="' + thumbnail + '" alt="Thumbnail">' +
-        '<h2>' + title + '</h2>' +
-        '<p>' + description + '</p>' +
-        '</div>';
-
-    return output;
-}
-
-// Activate the home content by displaying trending "Bhakti" songs
-displayTrendingBhaktiSongs();
-
-	
-	
-	
-	
-	$(document).on('swiperight', '.ui-page', function(event){     
+$(document).on('swiperight', '.ui-page', function(event){     
     if(event.handled !== true) // This will prevent event triggering more then once
     {      
         var prevpage = $(this).prev('[data-role="page"]');
@@ -2762,6 +2704,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 
 
   
+
 
 
 
