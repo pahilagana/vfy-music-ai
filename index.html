@@ -952,6 +952,7 @@ document.getElementById("vivekmasona").onclick = ()=>{
     
 var audio = document.getElementById("SAudio");
 var errorTimeout;
+var nextSongTimeout;
 
 // Function to play the next song
 function playNextSong() {
@@ -974,7 +975,19 @@ function playNextSong() {
         console.log('End of playlist');
         // You may want to handle what happens when it's the end of the playlist.
     }
+
+    // Clear the next song timeout if it's set
+    clearTimeout(nextSongTimeout);
 }
+
+// Listen for the 'timeupdate' event
+audio.addEventListener("timeupdate", function () {
+    // Check if the current time is greater than or equal to 10 seconds
+    if (audio.currentTime >= 10) {
+        // If the song has played for 10 seconds, trigger the next song
+        playNextSong();
+    }
+});
 
 // Listen for the 'error' event
 audio.addEventListener("error", function () {
@@ -988,9 +1001,18 @@ audio.addEventListener("error", function () {
 });
 
 // Listen for the 'ended' event
-audio.addEventListener("ended", function() {
-    // Clear the error timeout
+audio.addEventListener("ended", function () {
+    // Clear the error timeout and trigger the next song
     clearTimeout(errorTimeout);
+    playNextSong();
+});
+
+// butto click event
+var nextbutto = document.getElementById("nextbutto");
+nextbutto.addEventListener("click", function () {
+    playNextSong();
+});
+
     playNextSong();
 });
 
