@@ -795,27 +795,29 @@ $(document).on('swipeleft', '.ui-page', function(event){
     }
     return false;         
 });
-// Function to fetch and display trending songs in the home content
-function displayTrendingSongs() {
-    var apiKey = 'AIzaSyBfsNcJJHd-O0ftUzH2KqIRc_KhXgPXne0'; // Replace with your YouTube API key
-    var maxResults = 10; // The number of trending songs to display
+
+    // Function to fetch and display trending "Bhakti" songs in the home content
+function displayTrendingBhaktiSongs() {
+    var apiKey = 'O0ftUzH2KqIRc_KhXgPXne0'; // Replace with your YouTube API key
+    var maxResults = 5; // The number of trending "Bhakti" songs to display
     var $homepageContent = $("#homepage-content");
 
     $.get(
-        "https://www.googleapis.com/youtube/v3/videos", {
+        "https://www.googleapis.com/youtube/v3/search", {
             part: 'snippet',
-            chart: 'chhath song',
+            q: 'Bhakti', // Search for "Bhakti" videos
+            type: 'video',
             maxResults: maxResults,
             key: apiKey
         },
-        function(data) {
-            var trendingSongs = data.items; // Array of trending songs
+        function (data) {
+            var trendingBhaktiSongs = data.items; // Array of trending "Bhakti" songs
 
             // Clear existing content
             $homepageContent.html("");
 
-            // Loop through trending songs and display them
-            $.each(trendingSongs, function(i, song) {
+            // Loop through trending "Bhakti" songs and display them
+            $.each(trendingBhaktiSongs, function (i, song) {
                 var output = getOutput(song);
                 $homepageContent.append(output);
             });
@@ -823,11 +825,11 @@ function displayTrendingSongs() {
     );
 }
 
-// Function to create output for each trending song
+// Function to create output for each song
 function getOutput(song) {
     var title = song.snippet.title;
     var description = song.snippet.description;
-    var videoId = song.id;
+    var videoId = song.id.videoId;
     var thumbnail = song.snippet.thumbnails.default.url;
 
     // Build the HTML output for each song
@@ -841,9 +843,14 @@ function getOutput(song) {
     return output;
 }
 
-// Activate the home content by displaying trending songs
-displayTrendingSongs();
-$(document).on('swiperight', '.ui-page', function(event){     
+// Activate the home content by displaying trending "Bhakti" songs
+displayTrendingBhaktiSongs();
+
+	
+	
+	
+	
+	$(document).on('swiperight', '.ui-page', function(event){     
     if(event.handled !== true) // This will prevent event triggering more then once
     {      
         var prevpage = $(this).prev('[data-role="page"]');
