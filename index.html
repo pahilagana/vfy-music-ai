@@ -795,18 +795,54 @@ $(document).on('swipeleft', '.ui-page', function(event){
     }
     return false;         
 });
-// Activate the home content by calling the search() function
-search(); // This line activates the home content
-// Function to handle the search button click event
-$("#search-button").click(function() {
-    searchBhaktiSongs();
-});
+// Function to fetch and display trending songs in the home content
+function displayTrendingSongs() {
+    var apiKey = 'AIzaSyBfsNcJJHd-O0ftUzH2KqIRc_KhXgPXne0'; // Replace with your YouTube API key
+    var maxResults = 5; // The number of trending songs to display
+    var $homepageContent = $("#homepage-content");
 
-// Function to activate the home content by calling the searchBhaktiSongs() function
-function searchBhaktiSongs() {
-    // Your modified search code goes here
+    $.get(
+        "https://www.googleapis.com/youtube/v3/videos", {
+            part: 'snippet',
+            chart: 'mostPopular',
+            maxResults: maxResults,
+            key: apiKey
+        },
+        function(data) {
+            var trendingSongs = data.items; // Array of trending songs
+
+            // Clear existing content
+            $homepageContent.html("");
+
+            // Loop through trending songs and display them
+            $.each(trendingSongs, function(i, song) {
+                var output = getOutput(song);
+                $homepageContent.append(output);
+            });
+        }
+    );
 }
-	
+
+// Function to create output for each trending song
+function getOutput(song) {
+    var title = song.snippet.title;
+    var description = song.snippet.description;
+    var videoId = song.id;
+    var thumbnail = song.snippet.thumbnails.default.url;
+
+    // Build the HTML output for each song
+    var output =
+        '<div class="trending-song">' +
+        '<img src="' + thumbnail + '" alt="Thumbnail">' +
+        '<h2>' + title + '</h2>' +
+        '<p>' + description + '</p>' +
+        '</div>';
+
+    return output;
+}
+
+// Activate the home content by displaying trending songs
+displayTrendingSongs();
 $(document).on('swiperight', '.ui-page', function(event){     
     if(event.handled !== true) // This will prevent event triggering more then once
     {      
@@ -828,7 +864,7 @@ function search(){
  //var ytapi = "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA";
  //var ytapi = "AIzaSyBemcQ7KH8CvxN0kKjGK-nhfuBzzTy4KEk";
  //var ytapi = "AIzaSyBh6s9emY3VYSbsHudlhxProRt8mtFyt2s";
- var ytapi = "AIzaSyBfsNcJJHd-O0ftUzH2KqIRc_KhXgPXne0";
+ //var ytapi = "AIzaSyBfsNcJJHd-O0ftUzH2KqIRc_KhXgPXne0";
   
   var q = $(".search-bar").val();
   if(q === null || q === undefined || q=== ""){
