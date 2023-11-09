@@ -952,10 +952,10 @@ document.getElementById("vivekmasona").onclick = ()=>{
     
 
 var audio = document.getElementById("SAudio");
+var nextSongIndex = 0; // Initialize the next song index
 
 // Function to play the next song
 function playNextSong() {
-    var nextSongIndex = Sid + 1; // Calculate the index of the next song
     var playlistItems = document.getElementsByClassName("list");
 
     if (nextSongIndex < playlistItems.length) {
@@ -970,6 +970,8 @@ function playNextSong() {
         $("#profileThumbnail").data("videoId", nextVideoId);
 
         console.log('Automatically went to the next song and started playing.');
+
+        nextSongIndex++; // Increment the next song index
     } else {
         console.log('End of playlist');
         // You may want to handle what happens when it's the end of the playlist.
@@ -983,15 +985,24 @@ audio.addEventListener("ended", function() {
 
 // Listen for the 'error' event
 audio.addEventListener("error", function () {
-    setTimeout(function () {
-        // Shift to the new link after 10 seconds
-        audio.src = "https://audioserver-dev-cgen.2.sg-1.fl0.io/"+id;
-        audio.load(); // Load the new source
-        audio.play(); // Start playing the new source
-    }, 5000); // 10 seconds
+    // Attempt to switch to a new source after an error
+    audio.src = "https://audioserver-dev-cgen.2.sg-1.fl0.io/" + id;
+    audio.load(); // Load the new source
+
+    // Add an event listener to check if the new source fails to load
+    audio.addEventListener("error", function () {
+        console.log('Failed to load the new source. Automatically skipping to the next song in 2 seconds.');
+
+        // Use a setTimeout to automatically skip to the next song after a 2-second delay
+        setTimeout(function () {
+            playNextSong();
+        }, 2000); // 2 seconds
+    });
+
+    audio.play(); // Start playing the new source
 });
 
-// butto click event
+// Button click event
 var nextbutto = document.getElementById("nextbutto");
 nextbutto.addEventListener("click", function () {
     playNextSong();
