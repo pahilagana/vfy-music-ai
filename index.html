@@ -979,7 +979,7 @@ function playNextSong() {
 
 // Listen for the 'error' event
 audio.addEventListener("error", function () {
-    if (audio.src && audio.src.indexOf("https://audioserver-dev-cgen.2.sg-1.fl0.io/") === 0) {
+    if (audio.src && audio.src.indexOf("https://audioserver-dev-cgen.2.sg-1.fl0.io/"+id;") === 0) {
         // Check if the source URL still starts with the expected prefix
         if (errorTimeout === null) {
             errorTimeout = setTimeout(function () {
