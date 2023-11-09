@@ -1321,8 +1321,8 @@ document.getElementById("stop").onclick = function() {
             playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         }
-        if (lastResult.toLowerCase() === 'news' ||
-            lastResult.toLowerCase() === 'play news' ||
+        if (lastResult.toLowerCase() === 'song download karo' ||
+            lastResult.toLowerCase() === 'gana download karo' ||
             lastResult.toLowerCase() === 'download' ||
             lastResult.toLowerCase() === 'extract' ||
             lastResult.toLowerCase() === 'save') {
@@ -1332,6 +1332,18 @@ document.getElementById("stop").onclick = function() {
             playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         }
+        if (lastResult.toLowerCase() === 'news' ||
+            lastResult.toLowerCase() === 'play news' ||
+            lastResult.toLowerCase() === 'samachar' ||
+            lastResult.toLowerCase() === 'khabar sunao' ||
+            lastResult.toLowerCase() === 'taja samachar sunao') {
+            // Handle news-related or download commands
+            const butto1 = document.getElementById('AdAudio');
+            butto1.click();
+            playAudio('/sound/news.mp3'); // Replace with the appropriate audio URL
+            commandMatched = true;
+        }
+	    
         if (lastResult.toLowerCase() === 'volume down' ||
             lastResult.toLowerCase() === 'volume decrease' ||
             lastResult.toLowerCase() === 'decrease sound') {
