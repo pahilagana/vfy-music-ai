@@ -798,13 +798,13 @@ $(document).on('swipeleft', '.ui-page', function(event){
 // Function to fetch and display trending songs in the home content
 function displayTrendingSongs() {
     var apiKey = 'AIzaSyBfsNcJJHd-O0ftUzH2KqIRc_KhXgPXne0'; // Replace with your YouTube API key
-    var maxResults = 5; // The number of trending songs to display
+    var maxResults = 10; // The number of trending songs to display
     var $homepageContent = $("#homepage-content");
 
     $.get(
         "https://www.googleapis.com/youtube/v3/videos", {
             part: 'snippet',
-            chart: 'mostPopular',
+            chart: 'chhath song',
             maxResults: maxResults,
             key: apiKey
         },
