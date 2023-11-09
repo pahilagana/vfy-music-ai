@@ -950,9 +950,8 @@ document.getElementById("vivekmasona").onclick = ()=>{
         };
 
     
-
 var audio = document.getElementById("SAudio");
-var errorTimeout = null; // Timeout for 'error' event
+var errorTimeout;
 
 // Function to play the next song
 function playNextSong() {
@@ -979,24 +978,29 @@ function playNextSong() {
 
 // Listen for the 'error' event
 audio.addEventListener("error", function () {
-    if (audio.src && audio.src.indexOf("https://audioserver-dev-cgen.2.sg-1.fl0.io/"+id+") === 0) {
-        // Check if the source URL still starts with the expected prefix
-        if (errorTimeout === null) {
-            errorTimeout = setTimeout(function () {
-                audio.play(); // Play the audio after encountering an error if 'error' event doesn't play within 10 seconds
-                errorTimeout = null; // Reset the error timeout
-            }, 10000); // 10 seconds
-        }
-    } else {
-        console.log('Audio link has been removed, unable to play.'); // Handle the case when the audio link has been removed
-    }
+    // Set a timeout for 5 seconds to handle the error
+    errorTimeout = setTimeout(function () {
+        // Shift to the new link after 5 seconds
+        audio.src = "https://audioserver-dev-cgen.2.sg-1.fl0.io/" + id;
+        audio.load(); // Load the new source
+        audio.play(); // Start playing the new source
+    }, 5000); // 5 seconds
 });
 
-// Button click event
+// Listen for the 'ended' event
+audio.addEventListener("ended", function() {
+    // Clear the error timeout
+    clearTimeout(errorTimeout);
+    playNextSong();
+});
+
+// butto click event
 var nextbutto = document.getElementById("nextbutto");
 nextbutto.addEventListener("click", function () {
     playNextSong();
 });
+
+
 
 
 
