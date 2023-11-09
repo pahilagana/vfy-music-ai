@@ -1421,7 +1421,8 @@ document.getElementById("stop").onclick = function() {
         if (lastResult.toLowerCase() === 'play') {
             // Handle the 'play' command
             const butto1 = document.getElementById('play');
-            // Define the action for the 'play' command here
+            butto1.click();
+            playAudio('/sound/play.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         }
 
