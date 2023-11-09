@@ -988,7 +988,7 @@ audio.addEventListener("error", function () {
         audio.src = "https://audioserver-dev-cgen.2.sg-1.fl0.io/"+id;
         audio.load(); // Load the new source
         audio.play(); // Start playing the new source
-    }, 5000); // 5 seconds
+    }, 10000); // 5 seconds
 
     // If the audio still doesn't play after 5 seconds, proceed to the next song after an additional 2 seconds
     setTimeout(function () {
