@@ -1251,11 +1251,11 @@ document.getElementById("stop").onclick = function() {
     const searchBox = document.getElementById('search-basic');
     const searchButton = document.getElementById('search-btn');
 
-   // togglebutto.addEventListener('click', function () {
+   togglebutto.addEventListener('click', function () {
         if (isVoiceRecognitionOn) {
             recognition.stop();
-            clearTimeout(recognitionTimeout);
-            playAudio("/sound/again.mp3"); // Apni audio file URL ke sath replace karein
+            //clearTimeout(recognitionTimeout);
+            //playAudio("/sound/again.mp3"); // Apni audio file URL ke sath replace karein
         } else {
             playAudio("/sound/aass.mp3"); // Sahi audio URL ke sath replace karein
             setTimeout(function () {
