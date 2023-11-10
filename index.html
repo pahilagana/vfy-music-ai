@@ -1259,7 +1259,9 @@ togglebutto.addEventListener('click', function () {
 
     if (isVoiceRecognitionOn) {
         playAudio("/sound/aass.mp3");
-        recognition.start();
+        setTimeout(function () {
+            recognition.start();
+        }, 2000); // 2-second delay
     } else {
         recognition.stop();
     }
