@@ -1113,7 +1113,7 @@ playVideobutto.addEventListener("click", function() {
 
     // Create and display the video in a popup
     var modal = document.createElement("div");
-    modal.style.backgroundColor = "#E74C3C";
+    modal.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
     modal.style.position = "fixed";
     modal.style.top = "0";
     modal.style.left = "0";
@@ -1153,22 +1153,7 @@ closebutto.addEventListener("click", function() {
 });
 
 	
-  var maxPlayingTime = 10; // Maximum allowed playing time in seconds
-var isSongPlaying = false;
-
-audio.addEventListener("timeupdate", function () {
-    if (audio.currentTime < maxPlayingTime && !isSongPlaying) {
-        setTimeout(function () {
-            if (!audio.paused) {
-                console.log('Song is playing, no need to trigger error event.');
-            } else {
-                console.log('Song is on time less than 10 seconds, triggering error event.');
-                audio.dispatchEvent(new Event("error"));
-            }
-        }, (maxPlayingTime - audio.currentTime) * 1000);
-        audio.removeEventListener("timeupdate", this);
-    }
-});  
+    
 
 	
 
@@ -1380,6 +1365,8 @@ document.getElementById("stop").onclick = function() {
         }
         if (lastResult.toLowerCase() === 'next' ||
             lastResult.toLowerCase() === 'song change' ||
+	    lastResult.toLowerCase() === 'next song' ||
+	    lastResult.toLowerCase() === 'song next' ||
             lastResult.toLowerCase() === 'change song') {
             // Handle commands for changing to the next song
             const butto1 = document.getElementById('nextbutto');
@@ -1437,7 +1424,7 @@ document.getElementById("stop").onclick = function() {
             lastResult.toLowerCase() === 'stop mp3' ||
             lastResult.toLowerCase() === 'mp3 stop') {
             // Handle commands for stopping audio
-            const butto1 = document.getElementById('play i');
+            const butto1 = document.getElementById('stop');
             butto1.click();
             playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
