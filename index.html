@@ -1255,9 +1255,9 @@ document.getElementById("stop").onclick = function() {
         if (isVoiceRecognitionOn) {
             recognition.stop();
             clearTimeout(recognitionTimeout);
-            playAudio("/sound/asist.mp3"); // Apni audio file URL ke sath replace karein
+            playAudio("/sound/again.mp3"); // Apni audio file URL ke sath replace karein
         } else {
-            playAudio("/sound/help1.mp3"); // Sahi audio URL ke sath replace karein
+            playAudio("/sound/asist.mp3"); // Sahi audio URL ke sath replace karein
             setTimeout(function () {
                 recognition.start();
                 recognitionTimeout = setTimeout(function () {
