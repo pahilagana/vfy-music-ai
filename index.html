@@ -956,6 +956,9 @@ var ttsSpeech = new SpeechSynthesisUtterance();
 // Variable to track the current song being played
 var currentSongIndex = -1;
 
+// Variable to track if the server change message has been spoken
+var hasServerChangedMessageBeenSpoken = false;
+
 // Function to play the next song
 function playNextSong() {
     var nextSongIndex = Sid + 1; // Calculate the index of the next song
@@ -975,11 +978,8 @@ function playNextSong() {
             $("#profileThumbnail").html('<img src="' + nextThumbnail + '" alt="Profile Thumbnail">');
             $("#profileThumbnail").data("videoId", nextVideoId);
 
-            // Speak a message for server change
-            speakMessage("Server changed.");
-
-            // Update the current song index
-            currentSongIndex = nextSongIndex;
+            // Reset the server change flag for the new song
+            hasServerChangedMessageBeenSpoken = false;
 
             console.log('Automatically went to the next song and started playing.');
         }
@@ -997,8 +997,9 @@ function speakMessage(message) {
 
 // Listen for the 'ended' event
 audio.addEventListener("ended", function() {
-    // Reset current song index at the end of a song
+    // Reset current song index and server change flag at the end of a song
     currentSongIndex = -1;
+    hasServerChangedMessageBeenSpoken = false;
     playNextSong();
 });
 
@@ -1011,8 +1012,14 @@ var alternativeAudioSources = [
 var currentAlternativeIndex = 0;
 
 audio.addEventListener("error", function () {
-    // Play a TTS message for server change
-    speakMessage("Server changed.");
+    // Check if the server change message has been spoken for the current song
+    if (!hasServerChangedMessageBeenSpoken) {
+        // Play a TTS message for server change
+        speakMessage("Server changed.");
+
+        // Set the flag to indicate that the message has been spoken
+        hasServerChangedMessageBeenSpoken = true;
+    }
 
     // Switch to an alternative audio source
     audio.src = alternativeAudioSources[currentAlternativeIndex];
