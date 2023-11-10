@@ -996,26 +996,20 @@ var currentAlternativeIndex = 0;
 
 audio.addEventListener("error", function () {
     if (!isHandlingError) {
-        // Set the flag to indicate that we're handling the error
         isHandlingError = true;
-
-        // Check if "Please wait" audio is already playing
-        if (!isPleaseWaitAudioPlaying) {
-            // Play the "Please wait" audio message
-            var pleaseWaitAudio = new Audio("/sound/server.mp3");
-            pleaseWaitAudio.play();
-            isPleaseWaitAudioPlaying = true;
-        }
-
+        // Play the "error" audio message
+        var errorAudio = new Audio("/sound/server.mp3");
+        errorAudio.play();
+        
+        // Switch to an alternative audio source
+        audio.src = alternativeAudioSources[currentAlternativeIndex];
+        audio.load();
+        audio.play();
+        
+        currentAlternativeIndex = (currentAlternativeIndex + 1) % alternativeAudioSources.length;
+        
         setTimeout(function () {
-            audio.src = alternativeAudioSources[currentAlternativeIndex];
-            audio.load();
-            audio.play();
-            currentAlternativeIndex = (currentAlternativeIndex + 1) % alternativeAudioSources.length;
-
-            // Reset the flag and the "Please wait" audio flag
             isHandlingError = false;
-            isPleaseWaitAudioPlaying = false;
         }, 5000);
     }
 });
@@ -1025,6 +1019,7 @@ var nextbutto = document.getElementById("nextbutto");
 nextbutto.addEventListener("click", function () {
     playNextSong();
 });
+
 
 
         
