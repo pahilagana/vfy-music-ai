@@ -949,14 +949,8 @@ document.getElementById("vivekmasona").onclick = ()=>{
      location.href= "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/download/video?url=https://youtu.be/"+id;
         };
 
-    
 var audio = document.getElementById("SAudio");
-
-// Variable to track if the "Please wait" audio is currently playing
-var isPleaseWaitAudioPlaying = false;
-
-// Variable to track if the error event is already being handled
-var isHandlingError = false;
+var ttsSpeech = new SpeechSynthesisUtterance();
 
 // Function to play the next song
 function playNextSong() {
@@ -981,6 +975,12 @@ function playNextSong() {
     }
 }
 
+// Function to speak a message
+function speakMessage(message) {
+    ttsSpeech.text = message;
+    window.speechSynthesis.speak(ttsSpeech);
+}
+
 // Listen for the 'ended' event
 audio.addEventListener("ended", function() {
     playNextSong();
@@ -995,23 +995,13 @@ var alternativeAudioSources = [
 var currentAlternativeIndex = 0;
 
 audio.addEventListener("error", function () {
-    if (!isHandlingError) {
-        isHandlingError = true;
-        // Play the "error" audio message
-        var errorAudio = new Audio("/sound/server.mp3");
-        errorAudio.play();
-        
-        // Switch to an alternative audio source
-        audio.src = alternativeAudioSources[currentAlternativeIndex];
-        audio.load();
-        audio.play();
-        
-        currentAlternativeIndex = (currentAlternativeIndex + 1) % alternativeAudioSources.length;
-        
-        setTimeout(function () {
-            isHandlingError = false;
-        }, 5000);
-    }
+    // Play a TTS message
+    speakMessage("Server changed.");
+
+    audio.src = alternativeAudioSources[currentAlternativeIndex];
+    audio.load();
+    audio.play();
+    currentAlternativeIndex = (currentAlternativeIndex + 1) % alternativeAudioSources.length;
 });
 
 // button click event
@@ -1019,10 +1009,10 @@ var nextbutto = document.getElementById("nextbutto");
 nextbutto.addEventListener("click", function () {
     playNextSong();
 });
+    
 
+    
 
-
-        
 
 	
 var audio = document.getElementById('SAudio');
