@@ -1242,39 +1242,38 @@ document.getElementById("stop").onclick = function() {
     
 <script>
     const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-recoconst recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-recognition.laconst recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
 recognition.lang = 'en-US';
 recognition.interimResults = false;
 
-const toggleButton = document.getElementById('togglebutto');
+const togglebutto = document.getElementById('togglebutto');
 const searchBox = document.getElementById('search-basic');
 const searchButton = document.getElementById('search-btn');
 let isVoiceRecognitionOn = false;
 let recognitionTimeout;
 
-toggleButton.addEventListener('click', function () {
-    if (isVoiceRecognitionOn) {
-        //playAudio("/sound/again.mp3"); // Uncomment this line if you want the "again" sound
-        recognition.start(); // This line ensures that recognition starts again on the second click
-    } else {
-        playAudio("/sound/aass.mp3");
+togglebutto.addEventListener('click', function () {
+    if (!isVoiceRecognitionOn) {
+        playAudio("/sound/aass.mp3"); // Sahi audio URL ke sath replace karein
         setTimeout(function () {
             recognition.start();
-            setTimeout(function () {
+            recognitionTimeout = setTimeout(function () {
                 recognition.stop();
-                // playAudio("/sound/always.mp3"); // Uncomment this line if you want the "always" sound
-            }, 10000);
-        }, 2500);
+            }, 15000); // 15 seconds ke baad apne aap band ho jayega
+        }, 2500); // Voice recognition start hone se pehle 2.5 seconds ka delay
     }
-    isVoiceRecognitionOn = !isVoiceRecognitionOn;
+    isVoiceRecognitionOn = true;
 });
 
 recognition.onresult = function(event) {
     const lastResult = event.results[event.results.length - 1][0].transcript;
     let commandMatched = false;
 
+    // Recognition results ka processing yahan par hota hai
+};
 
+togglebutto.addEventListener('mouseout', function () {
+    isVoiceRecognitionOn = false;
+});
 
     // Check if the voice command matches any predefined commands
         if (lastResult.toLowerCase() === 'mp3' ||
