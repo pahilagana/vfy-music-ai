@@ -1268,7 +1268,7 @@ function startVoiceRecognition() {
     recognitionTimeout = setTimeout(function () {
         recognition.stop();
         // No sound is played after voice recognition stops
-    }, 10);
+    }, 100000);
 }
 
 recognition.onresult = function(event) {
