@@ -1252,24 +1252,20 @@ const togglebutto = document.getElementById('togglebutto');
 const searchBox = document.getElementById('search-basic');
 const searchButton = document.getElementById('search-btn');
 
+// Add random sound file paths
 const randomSounds = [
   "/sound/aass.mp3",
-  "/sound/play.mp3",
-  "/sound/stop.mp3",
-  "/sound/again.mp3"
+  "/sound/aass.mp3",
+  "/sound/aass.mp3",
+  "/sound/aass.mp3"
 ];
 
 togglebutto.addEventListener('click', function () {
-    if (isVoiceRecognitionOn) {
-        recognition.stop();
-        clearTimeout(recognitionTimeout);
-        isVoiceRecognitionOn = false;
-    } else {
-        playRandomSound();
-        setTimeout(function () {
-            startVoiceRecognition();
-        }, isVoiceRecognitionOn ? 0 : 2500);
-    }
+    playRandomSound();
+
+    setTimeout(function () {
+        startVoiceRecognition();
+    }, 2500);
 });
 
 function playRandomSound() {
@@ -1282,8 +1278,7 @@ function startVoiceRecognition() {
     recognitionTimeout = setTimeout(function () {
         recognition.stop();
         playAudio("/sound/always.mp3");
-    }, 150000);
-    isVoiceRecognitionOn = true;
+    }, 15000);
 }
 
 recognition.onresult = function(event) {
@@ -1291,7 +1286,7 @@ recognition.onresult = function(event) {
 
     let commandMatched = false;
     
-    
+
     // Check if the voice command matches any predefined commands
         if (lastResult.toLowerCase() === 'mp3' ||
             lastResult.toLowerCase() === 'download mp3' ||
