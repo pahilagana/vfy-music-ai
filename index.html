@@ -949,15 +949,8 @@ document.getElementById("vivekmasona").onclick = ()=>{
      location.href= "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/download/video?url=https://youtu.be/"+id;
         };
 
-
+    
 var audio = document.getElementById("SAudio");
-var ttsSpeech = new SpeechSynthesisUtterance();
-
-// Variable to track the current song being played
-var currentSongIndex = -1;
-
-// Variable to track if the server change message has been spoken
-var hasServerChangedMessageBeenSpoken = false;
 
 // Function to play the next song
 function playNextSong() {
@@ -965,81 +958,59 @@ function playNextSong() {
     var playlistItems = document.getElementsByClassName("list");
 
     if (nextSongIndex < playlistItems.length) {
-        // Check if it's a new song
-        if (nextSongIndex !== currentSongIndex) {
-            // Play the next song
-            playlistItems[nextSongIndex].click();
-            audio.play();
+        playlistItems[nextSongIndex].click(); // Play the next song
+        audio.play(); // Play the audio
 
-            // Update the profile thumbnail and video ID for the next song
-            var nextSong = playlistItems[nextSongIndex];
-            var nextThumbnail = $(nextSong).children('img').attr("src");
-            var nextVideoId = $(nextSong).attr("vid");
-            $("#profileThumbnail").html('<img src="' + nextThumbnail + '" alt="Profile Thumbnail">');
-            $("#profileThumbnail").data("videoId", nextVideoId);
+        // Update the profile thumbnail and video ID for the next song
+        var nextSong = playlistItems[nextSongIndex];
+        var nextThumbnail = $(nextSong).children('img').attr("src");
+        var nextVideoId = $(nextSong).attr("vid");
+        $("#profileThumbnail").html('<img src="' + nextThumbnail + '" alt="Profile Thumbnail">');
+        $("#profileThumbnail").data("videoId", nextVideoId);
 
-            // Reset the server change flag for the new song
-            hasServerChangedMessageBeenSpoken = false;
-
-            console.log('Automatically went to the next song and started playing.');
-        }
+        console.log('Automatically went to the next song and started playing.');
     } else {
         console.log('End of playlist');
         // You may want to handle what happens when it's the end of the playlist.
     }
 }
 
-// Function to speak a message
-function speakMessage(message) {
-    ttsSpeech.text = message;
-    window.speechSynthesis.speak(ttsSpeech);
-}
-
 // Listen for the 'ended' event
 audio.addEventListener("ended", function() {
-    // Reset current song index and server change flag at the end of a song
-    currentSongIndex = -1;
-    hasServerChangedMessageBeenSpoken = false;
     playNextSong();
 });
 
 // Listen for the 'error' event
 var alternativeAudioSources = [
-    "https://audioserver-dev-cgen.2.sg-1.fl0.io/" + id,
-    "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/low-audio?url=https://youtu.be/" + id,
+    
+"https://audioserver-dev-cgen.2.sg-1.fl0.io/" + id,
+"https://vivekfy-dev-jmbe.2.ie-1.fl0.io/low-audio?url=https://youtu.be/" + id,
+    
 ];
 
 var currentAlternativeIndex = 0;
 
 audio.addEventListener("error", function () {
-    // Check if the server change message has been spoken for the current song
-    if (!hasServerChangedMessageBeenSpoken) {
-        // Play a TTS message for server change
-        speakMessage("Server changed.");
-
-        // Set the flag to indicate that the message has been spoken
-        hasServerChangedMessageBeenSpoken = true;
-    }
-
-    // Switch to an alternative audio source
-    audio.src = alternativeAudioSources[currentAlternativeIndex];
-    audio.load();
-    audio.play();
-    currentAlternativeIndex = (currentAlternativeIndex + 1) % alternativeAudioSources.length;
-
-    // Reset the current song index after 2 seconds
     setTimeout(function () {
-        currentSongIndex = -1;
-    }, 2000);
+        audio.src = alternativeAudioSources[currentAlternativeIndex];
+        audio.load();
+        audio.play();
+        currentAlternativeIndex = (currentAlternativeIndex + 1) % alternativeAudioSources.length;
+    }, 5000);
 });
 
-// button click event
+
+// butto click event
 var nextbutto = document.getElementById("nextbutto");
 nextbutto.addEventListener("click", function () {
     playNextSong();
 });
 
-    
+
+
+
+
+
 
 
 	
@@ -2755,6 +2726,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 
 
   
+
 
 
 
