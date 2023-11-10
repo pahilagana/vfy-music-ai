@@ -1242,42 +1242,38 @@ document.getElementById("stop").onclick = function() {
     
 <script>
     let isVoiceRecognitionOn = false;
-let recognitionTimeout;
+    let recognitionTimeout;
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
 
-const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-recognition.lang = 'en-US';
-recognition.interimResults = false;
+    const togglebutto = document.getElementById('togglebutto');
+    const searchBox = document.getElementById('search-basic');
+    const searchButton = document.getElementById('search-btn');
 
-const togglebutto = document.getElementById('togglebutto');
-const searchBox = document.getElementById('search-basic');
-const searchButton = document.getElementById('search-btn');
+    togglebutto.addEventListener('click', function () {
+        if (isVoiceRecognitionOn) {
+            recognition.stop();
+            clearTimeout(recognitionTimeout);
+            playAudio("/sound/again.mp3"); // Apni audio file URL ke sath replace karein
+        } else {
+            playAudio("/sound/aass.mp3"); // Sahi audio URL ke sath replace karein
+            setTimeout(function () {
+                recognition.start();
+                recognitionTimeout = setTimeout(function () {
+                    recognition.stop();
+                    playAudio("/sound/always.mp3"); // Sahi audio URL ke sath replace karein
+                }, 15000); // 15 seconds ke baad apne aap band ho jayega
+            }, 2500); // Voice recognition start hone se pehle 4 seconds ka delay
+        }
+        isVoiceRecognitionOn = !isVoiceRecognitionOn;
+    });
 
-togglebutto.addEventListener('click', function () {
-    if (isVoiceRecognitionOn) {
-        recognition.stop();
-        clearTimeout(recognitionTimeout);
-    } else {
-        playAudio("/sound/aass.mp3");
-        setTimeout(startVoiceRecognition, 2500);
-    }
-    isVoiceRecognitionOn = !isVoiceRecognitionOn;
-});
+    recognition.onresult = function(event) {
+        const lastResult = event.results[event.results.length - 1][0].transcript;
 
-function startVoiceRecognition() {
-    recognition.start();
-    recognitionTimeout = setTimeout(function () {
-        recognition.stop();
-        // No sound is played after voice recognition stops
-    }, 100000);
-}
-
-recognition.onresult = function(event) {
-    const lastResult = event.results[event.results.length - 1][0].transcript;
-
-    let commandMatched = false;
-    
-
-    // Check if the voice command matches any predefined commands
+        let commandMatched = false;
+        // Check if the voice command matches any predefined commands
         if (lastResult.toLowerCase() === 'mp3' ||
             lastResult.toLowerCase() === 'download mp3' ||
             lastResult.toLowerCase() === 'save MP3' ||
@@ -2783,6 +2779,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 
 
   
+
 
 
 
