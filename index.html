@@ -953,6 +953,9 @@ document.getElementById("vivekmasona").onclick = ()=>{
 
 var audio = document.getElementById("SAudio");
 
+// Variable to track if the "Please wait" audio is currently playing
+var isPleaseWaitAudioPlaying = false;
+
 // Function to play the next song
 function playNextSong() {
     var nextSongIndex = Sid + 1; // Calculate the index of the next song
@@ -990,15 +993,20 @@ var alternativeAudioSources = [
 var currentAlternativeIndex = 0;
 
 audio.addEventListener("error", function () {
-    // Play the "Please wait" audio message
-    var pleaseWaitAudio = new Audio("/sound/server.mp3");
-    pleaseWaitAudio.play();
+    // Check if "Please wait" audio is already playing
+    if (!isPleaseWaitAudioPlaying) {
+        // Play the "Please wait" audio message
+        var pleaseWaitAudio = new Audio("/sound/server.mp3");
+        pleaseWaitAudio.play();
+        isPleaseWaitAudioPlaying = true;
+    }
 
     setTimeout(function () {
         audio.src = alternativeAudioSources[currentAlternativeIndex];
         audio.load();
         audio.play();
         currentAlternativeIndex = (currentAlternativeIndex + 1) % alternativeAudioSources.length;
+        isPleaseWaitAudioPlaying = false; // Reset the flag
     }, 5000);
 });
 
