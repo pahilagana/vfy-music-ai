@@ -1241,39 +1241,37 @@ document.getElementById("stop").onclick = function() {
    
     
 <script>
-    let isVoiceRecognitionOn = false;
-    let recognitionTimeout;
     const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-    recognition.lang = 'en-US';
-    recognition.interimResults = false;
+recognition.lang = 'en-US';
+recognition.interimResults = false;
 
-    const togglebutto = document.getElementById('togglebutto');
-    const searchBox = document.getElementById('search-basic');
-    const searchButton = document.getElementById('search-btn');
+const toggleButton = document.getElementById('togglebutto');
+const searchBox = document.getElementById('search-basic');
+const searchButton = document.getElementById('search-btn');
+let isVoiceRecognitionOn = false;
+let recognitionTimeout;
 
-    togglebutto.addEventListener('click', function () {
-        if (isVoiceRecognitionOn) {
+toggleButton.addEventListener('click', function () {
+    if (isVoiceRecognitionOn) {
+        recognition.stop();
+        clearTimeout(recognitionTimeout);
+        playAudio("/sound/again.mp3");
+    } else {
+        playAudio("/sound/aass.mp3");
+        recognition.start();
+        recognitionTimeout = setTimeout(function () {
             recognition.stop();
-            clearTimeout(recognitionTimeout);
-            playAudio("/sound/again.mp3"); // Apni audio file URL ke sath replace karein
-        } else {
-            playAudio("/sound/aass.mp3"); // Sahi audio URL ke sath replace karein
-            setTimeout(function () {
-                recognition.start();
-                recognitionTimeout = setTimeout(function () {
-                    recognition.stop();
-                    playAudio("/sound/always.mp3"); // Sahi audio URL ke sath replace karein
-                }, 15000); // 15 seconds ke baad apne aap band ho jayega
-            }, 2500); // Voice recognition start hone se pehle 4 seconds ka delay
-        }
-        isVoiceRecognitionOn = !isVoiceRecognitionOn;
-    });
+            playAudio("/sound/always.mp3");
+        }, 15000);
+    }
+    isVoiceRecognitionOn = !isVoiceRecognitionOn;
+});
 
-    recognition.onresult = function(event) {
-        const lastResult = event.results[event.results.length - 1][0].transcript;
+recognition.onresult = function(event) {
+    const lastResult = event.results[event.results.length - 1][0].transcript;
+    let commandMatched = false;
 
-        let commandMatched = false;
-        // Check if the voice command matches any predefined commands
+    // Check if the voice command matches any predefined commands
         if (lastResult.toLowerCase() === 'mp3' ||
             lastResult.toLowerCase() === 'download mp3' ||
             lastResult.toLowerCase() === 'save MP3' ||
