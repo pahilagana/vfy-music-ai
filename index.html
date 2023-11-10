@@ -1242,7 +1242,6 @@ document.getElementById("stop").onclick = function() {
     
 <script>
     let isVoiceRecognitionOn = false;
-let recognitiolet isVoiceRecognitionOn = false;
 let recognitionTimeout;
 
 const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
@@ -1266,6 +1265,10 @@ togglebutto.addEventListener('click', function () {
 
 function startVoiceRecognition() {
     recognition.start();
+    recognitionTimeout = setTimeout(function () {
+        recognition.stop();
+        // No sound is played after voice recognition stops
+    }, 10);
 }
 
 recognition.onresult = function(event) {
