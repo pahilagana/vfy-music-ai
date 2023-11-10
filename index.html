@@ -1283,8 +1283,8 @@ function startVoiceRecognition() {
     recognition.start();
     recognitionTimeout = setTimeout(function () {
         recognition.stop();
-        playAudio("/sound/always.mp3");
-    }, 15000);
+        //playAudio("/sound/always.mp3");
+    }, 150000);
 }
 
 recognition.onresult = function(event) {
