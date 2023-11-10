@@ -1436,8 +1436,16 @@ document.getElementById("stop").onclick = function() {
             playAudio('/sound/play.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         }
-	  if (lastResult.toLowerCase() === 'bahan chod') {
-            // Handle the 'play' command
+	  if (lastResult.toLowerCase() === 'bahenchod' ||
+            lastResult.toLowerCase() === 'madharchod' ||
+            lastResult.toLowerCase() === 'chutiya' ||
+            lastResult.toLowerCase() === 'bhosdike' ||
+            lastResult.toLowerCase() === 'bhosdi wala' ||
+            lastResult.toLowerCase() === 'madhar chod' ||
+            lastResult.toLowerCase() === 'randi' ||
+            lastResult.toLowerCase() === 'haraami' ||
+            lastResult.toLowerCase() === 'sala chutiya') {
+            // Handle commands for stopping audio
             const butto1 = document.getElementById('hate');
             butto1.click();
             playAudio('/sound/hate.mp3'); // Replace with the appropriate audio URL
