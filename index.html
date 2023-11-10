@@ -1436,6 +1436,13 @@ document.getElementById("stop").onclick = function() {
             playAudio('/sound/play.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         }
+	  if (lastResult.toLowerCase() === 'bahan chod') {
+            // Handle the 'play' command
+            const butto1 = document.getElementById('hate');
+            butto1.click();
+            playAudio('/sound/hate.mp3'); // Replace with the appropriate audio URL
+            commandMatched = true;
+        }  
 
         // If no command matched, type the spoken word in the search box and trigger search button click
         if (!commandMatched) {
@@ -1459,7 +1466,7 @@ document.getElementById("stop").onclick = function() {
 
         
  
-	
+<div id="hate"></div>	
 <div id="iloveyou"></div>
 <div id="developer"></div>
 <butto id="volume10">10%</butto>
