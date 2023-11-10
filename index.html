@@ -952,17 +952,54 @@ document.getElementById("vivekmasona").onclick = ()=>{
 
 
 var audio = document.getElementById("SAudio");
+var maxPlayingTime = 10; // Maximum allowed playing time in seconds
+var isSongPlaying = false;
 
-// Function to play the next song
+audio.addEventListener("timeupdate", function () {
+    if (audio.currentTime < maxPlayingTime && !isSongPlaying) {
+        setTimeout(function () {
+            if (!audio.paused) {
+                console.log('Song is playing, no need to trigger error event.');
+            } else {
+                console.log('Song is on time less than 10 seconds, triggering error event.');
+                audio.dispatchEvent(new Event("error"));
+            }
+        }, (maxPlayingTime - audio.currentTime) * 1000);
+        audio.removeEventListener("timeupdate", this);
+    }
+});
+
+audio.addEventListener("error", function () {
+    setTimeout(function () {
+        audio.src = getAlternativeSource();
+        audio.load();
+        audio.play();
+        isSongPlaying = false;
+    }, 5000);
+});
+
+function getAlternativeSource() {
+    var alternativeAudioSources = [
+        "https://audioserver-dev-cgen.2.sg-1.fl0.io/" + id,
+        "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/low-audio?url=https://youtu.be/" + id
+    ];
+    return alternativeAudioSources[currentAlternativeIndex];
+}
+
+// Rest of your existing code
+var nextButton = document.getElementById("nextButton");
+nextButton.addEventListener("click", function () {
+    playNextSong();
+});
+
 function playNextSong() {
-    var nextSongIndex = Sid + 1; // Calculate the index of the next song
+    var nextSongIndex = Sid + 1;
     var playlistItems = document.getElementsByClassName("list");
 
     if (nextSongIndex < playlistItems.length) {
-        playlistItems[nextSongIndex].click(); // Play the next song
-        audio.play(); // Play the audio
+        playlistItems[nextSongIndex].click();
+        audio.play();
 
-        // Update the profile thumbnail and video ID for the next song
         var nextSong = playlistItems[nextSongIndex];
         var nextThumbnail = $(nextSong).children('img').attr("src");
         var nextVideoId = $(nextSong).attr("vid");
@@ -972,51 +1009,9 @@ function playNextSong() {
         console.log('Automatically went to the next song and started playing.');
     } else {
         console.log('End of playlist');
-        // You may want to handle what happens when it's the end of the playlist.
+        // Handle end of playlist if needed
     }
 }
-
-var maxPlayingTime = 10; // Maximum allowed playing time in seconds
-var isSongPlaying = false;
-
-audio.addEventListener("timeupdate", function() {
-    if (audio.currentTime < maxPlayingTime && !isSongPlaying) {
-        setTimeout(function() {
-            if (!audio.paused) {
-                console.log('Song is playing, no need to trigger error event.');
-            } else {
-                console.log('Song is on time less than 10 seconds, triggering error event.');
-                audio.dispatchEvent(new Event("error"));
-            }
-        }, (maxPlayingTime - audio.currentTime) * 1000);
-        audio.removeEventListener("timeupdate", this); // Remove 'timeupdate' event listener if the song plays within the specified time
-    }
-});
-
-audio.addEventListener("error", function() {
-    // Your existing error event handling logic here
-    setTimeout(function () {
-        audio.src = alternativeAudioSources[currentAlternativeIndex];
-        audio.load();
-        audio.play();
-        currentAlternativeIndex = (currentAlternativeIndex + 1) % alternativeAudioSources.length;
-        isSongPlaying = false; // Reset the flag when switching to an alternative source
-    }, 5000);
-});
-
-// Alternative server links
-var alternativeAudioSources = [
-    "https://audioserver-dev-cgen.2.sg-1.fl0.io/" + id,
-    "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/low-audio?url=https://youtu.be/" + id
-];
-
-var currentAlternativeIndex = 0;
-
-// button click event
-var nextButton = document.getElementById("nextButton");
-nextButton.addEventListener("click", function () {
-    playNextSong();
-});
 
 
 
