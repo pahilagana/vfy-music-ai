@@ -1249,20 +1249,20 @@ const toggleButton = document.getElementById('togglebutto');
 const searchBox = document.getElementById('search-basic');
 const searchButton = document.getElementById('search-btn');
 let isVoiceRecognitionOn = false;
-let recognitionTimeout;
 
 toggleButton.addEventListener('click', function () {
     if (isVoiceRecognitionOn) {
         recognition.stop();
-        clearTimeout(recognitionTimeout);
         playAudio("/sound/again.mp3");
     } else {
         playAudio("/sound/aass.mp3");
-        recognition.start();
-        recognitionTimeout = setTimeout(function () {
-            recognition.stop();
-            playAudio("/sound/always.mp3");
-        }, 15000);
+        setTimeout(function () {
+            recognition.start();
+            setTimeout(function () {
+                recognition.stop();
+                playAudio("/sound/always.mp3");
+            }, 10000);
+        }, 2500);
     }
     isVoiceRecognitionOn = !isVoiceRecognitionOn;
 });
