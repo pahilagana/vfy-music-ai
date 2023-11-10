@@ -1242,6 +1242,7 @@ document.getElementById("stop").onclick = function() {
     
 <script>
     let isVoiceRecognitionOn = false;
+let recognitiolet isVoiceRecognitionOn = false;
 let recognitionTimeout;
 
 const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
@@ -1256,22 +1257,15 @@ togglebutto.addEventListener('click', function () {
     if (isVoiceRecognitionOn) {
         recognition.stop();
         clearTimeout(recognitionTimeout);
-        startVoiceRecognition();
     } else {
         playAudio("/sound/aass.mp3");
-        setTimeout(function () {
-            startVoiceRecognition();
-        }, 2500);
+        setTimeout(startVoiceRecognition, 2500);
     }
     isVoiceRecognitionOn = !isVoiceRecognitionOn;
 });
 
 function startVoiceRecognition() {
     recognition.start();
-    recognitionTimeout = setTimeout(function () {
-        recognition.stop();
-        playAudio("/sound/always.mp3");
-    }, 15000);
 }
 
 recognition.onresult = function(event) {
