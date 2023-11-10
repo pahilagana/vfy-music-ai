@@ -1242,6 +1242,7 @@ document.getElementById("stop").onclick = function() {
     
 <script>
     const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+recoconst recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
 recognition.lang = 'en-US';
 recognition.interimResults = false;
 
@@ -1252,7 +1253,6 @@ let isVoiceRecognitionOn = false;
 let recognitionTimeout;
 
 toggleButton.addEventListener('click', function () {
-    recognition.stop(); // Make sure to stop any ongoing recognition
     if (isVoiceRecognitionOn) {
         playAudio("/sound/again.mp3"); // Uncomment this line if you want the "again" sound
     } else {
