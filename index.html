@@ -1256,24 +1256,30 @@ togglebutto.addEventListener('click', function () {
     if (isVoiceRecognitionOn) {
         recognition.stop();
         clearTimeout(recognitionTimeout);
+        startVoiceRecognition();
     } else {
         playAudio("/sound/aass.mp3");
         setTimeout(function () {
-            recognition.start();
-            recognitionTimeout = setTimeout(function () {
-                recognition.stop();
-                playAudio("/sound/always.mp3");
-            }, 15000);
+            startVoiceRecognition();
         }, 2500);
     }
     isVoiceRecognitionOn = !isVoiceRecognitionOn;
 });
+
+function startVoiceRecognition() {
+    recognition.start();
+    recognitionTimeout = setTimeout(function () {
+        recognition.stop();
+        playAudio("/sound/always.mp3");
+    }, 15000);
+}
 
 recognition.onresult = function(event) {
     const lastResult = event.results[event.results.length - 1][0].transcript;
 
     let commandMatched = false;
     
+
     // Check if the voice command matches any predefined commands
         if (lastResult.toLowerCase() === 'mp3' ||
             lastResult.toLowerCase() === 'download mp3' ||
