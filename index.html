@@ -950,6 +950,7 @@ document.getElementById("vivekmasona").onclick = ()=>{
         };
 
     
+
 var audio = document.getElementById("SAudio");
 
 // Function to play the next song
@@ -982,15 +983,17 @@ audio.addEventListener("ended", function() {
 
 // Listen for the 'error' event
 var alternativeAudioSources = [
-    
-"https://audioserver-dev-cgen.2.sg-1.fl0.io/" + id,
-"https://vivekfy-dev-jmbe.2.ie-1.fl0.io/low-audio?url=https://youtu.be/" + id,
-    
+    "https://audioserver-dev-cgen.2.sg-1.fl0.io/" + id,
+    "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/low-audio?url=https://youtu.be/" + id,
 ];
 
 var currentAlternativeIndex = 0;
 
 audio.addEventListener("error", function () {
+    // Play the "Please wait" audio message
+    var pleaseWaitAudio = new Audio("server.mp3");
+    pleaseWaitAudio.play();
+
     setTimeout(function () {
         audio.src = alternativeAudioSources[currentAlternativeIndex];
         audio.load();
@@ -999,8 +1002,7 @@ audio.addEventListener("error", function () {
     }, 5000);
 });
 
-
-// butto click event
+// button click event
 var nextbutto = document.getElementById("nextbutto");
 nextbutto.addEventListener("click", function () {
     playNextSong();
