@@ -1437,7 +1437,7 @@ document.getElementById("stop").onclick = function() {
             lastResult.toLowerCase() === 'stop mp3' ||
             lastResult.toLowerCase() === 'mp3 stop') {
             // Handle commands for stopping audio
-            const butto1 = document.getElementById('stop');
+            const butto1 = document.getElementById('play i');
             butto1.click();
             playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
