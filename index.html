@@ -991,7 +991,7 @@ var currentAlternativeIndex = 0;
 
 audio.addEventListener("error", function () {
     // Play the "Please wait" audio message
-    var pleaseWaitAudio = new Audio("server.mp3");
+    var pleaseWaitAudio = new Audio("/sound/server.mp3");
     pleaseWaitAudio.play();
 
     setTimeout(function () {
