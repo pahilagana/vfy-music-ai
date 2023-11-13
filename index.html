@@ -24,9 +24,7 @@
 <meta content='vivefy:-vfy is smart online music player and downloader developer vivek masona' property='og:description'/>
 <title>VIVEKFY-AI</title>
 
-<script>/*<![CDATA[*/ 
-  const installbutto = document.getElementById("vivek_maurya");window.addEventListener("beforeinstallprompt", e => {e.preventDefault();deferredPrompt = e;installbutto.hidden = false;installbutto.addEventListener("click", installApp);});function installApp() {deferredPrompt.prompt();installbutto.disabled = true;deferredPrompt.userChoice.then(choiceResult => {if (choiceResult.outcome === "accepted") {installbutto.hidden = true;} else {}installbutto.disabled = false;deferredPrompt = null;});}window.addEventListener("appinstalled", evt => {console.log("appinstalled fired", evt);});
-  /*]]>*/</script>
+
 
 
 <audio id="myAudio" src="/sound/fw.mp3"></audio>
@@ -1907,11 +1905,15 @@ function closeNav() {
 </script>
      
 
+</!doctype>
 
-
-<script>	
-
-if ('serviceWorker' in navigator) {
+	
+</script>
+<script>/*<![CDATA[*/ 
+  const installbutto = document.getElementById("vivek_maurya");window.addEventListener("beforeinstallprompt", e => {e.preventDefault();deferredPrompt = e;installbutto.hidden = false;installbutto.addEventListener("click", installApp);});function installApp() {deferredPrompt.prompt();installbutto.disabled = true;deferredPrompt.userChoice.then(choiceResult => {if (choiceResult.outcome === "accepted") {installbutto.hidden = true;} else {}installbutto.disabled = false;deferredPrompt = null;});}window.addEventListener("appinstalled", evt => {console.log("appinstalled fired", evt);});
+  /*]]>*/</script>
+<script>
+    if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('./sw.js');
     } else {
       alert('ServiceWorker unavailable');
@@ -1921,7 +1923,9 @@ if ('serviceWorker' in navigator) {
 
 	
 	
-<script>
+	<script>
+
+
 
 $('#showAutoClose').click( function (){
   showToast(
@@ -2795,8 +2799,10 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 
   
 
-<!doctype html>
 
+
+
+  
 
   
   
@@ -2809,7 +2815,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 
     .icon {
       color: #E74C3C; /* Set icon color */
-      font-size: 18px; /* Set icon size */
+      font-size: 19px; /* Set icon size */
       margin-right: 2px; /* Optional: Add margin to separate icon from text */
     }
   </style>
@@ -2866,6 +2872,14 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
     }
   </script>
 
-</!doctype>
 
-  
+
+
+
+
+
+
+
+
+
+
