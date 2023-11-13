@@ -23,21 +23,10 @@
 <meta content='VFYðŸ’žAI' property='og:title'/>
 <meta content='vivefy:-vfy is smart online music player and downloader developer vivek masona' property='og:description'/>
 <title>VIVEKFY-AI</title>
-<script>
-/*<![CDATA[*/
-document.addEventListener("DOMContentLoaded", function() {
-  document.documentElement.requestFullscreen(); // Enable full screen
-});
 
-const fullscreenButton = document.getElementById("toggleButton");
-
-fullscreenButton.addEventListener("click", () => {
-  document.documentElement.requestFullscreen();
-});
-/*]]>*/
-
-</script>
-
+<script>/*<![CDATA[*/ 
+  const installbutto = document.getElementById("vivek_maurya");window.addEventListener("beforeinstallprompt", e => {e.preventDefault();deferredPrompt = e;installbutto.hidden = false;installbutto.addEventListener("click", installApp);});function installApp() {deferredPrompt.prompt();installbutto.disabled = true;deferredPrompt.userChoice.then(choiceResult => {if (choiceResult.outcome === "accepted") {installbutto.hidden = true;} else {}installbutto.disabled = false;deferredPrompt = null;});}window.addEventListener("appinstalled", evt => {console.log("appinstalled fired", evt);});
+  /*]]>*/</script>
 
 
 <audio id="myAudio" src="/sound/fw.mp3"></audio>
@@ -1918,50 +1907,7 @@ function closeNav() {
 </script>
      
 
-</!doctype>
 
-	
-</script>
-<script>
-	
-/*<![CDATA[*/
-const installButton = document.getElementById("vivek_maurya");
-const fullscreenButton = document.getElementById("fullscreenButton");
-
-window.addEventListener("beforeinstallprompt", e => {
-  e.preventDefault();
-  deferredPrompt = e;
-  installButton.hidden = false;
-  installButton.addEventListener("click", installApp);
-});
-
-function installApp() {
-  deferredPrompt.prompt();
-  installButton.disabled = true;
-  deferredPrompt.userChoice.then(choiceResult => {
-    if (choiceResult.outcome === "accepted") {
-      installButton.hidden = true;
-    } else {
-      // Handle the case where the user did not install the app
-      // You can trigger full-screen mode here if needed
-      document.documentElement.requestFullscreen(); // Request full-screen mode
-    }
-    installButton.disabled = false;
-    deferredPrompt = null;
-  });
-}
-
-fullscreenButton.addEventListener("click", () => {
-  document.documentElement.requestFullscreen();
-});
-
-window.addEventListener("appinstalled", evt => {
-  console.log("appinstalled fired", evt);
-});
-/*]]>*/
-
-
-</script>
 
 <script>	
 
@@ -1975,9 +1921,7 @@ if ('serviceWorker' in navigator) {
 
 	
 	
-	<script>
-
-
+<script>
 
 $('#showAutoClose').click( function (){
   showToast(
@@ -2866,59 +2810,56 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 
 
   
+<script>
+  var fullscreen = true;
 
-  <script>
-    var fullscreen = false;
-
-    // Toggle button click event
-    document.getElementById('toggleButton').addEventListener('click', function() {
-      if (fullscreen) {
-        exitFullScreen();
-      } else {
-        enterFullScreen();
-      }
-      fullscreen = !fullscreen; // Toggle fullscreen variable
-    });
-
-    // Full screen mode activate karne ke liye
-    function enterFullScreen() {
-      var element = document.documentElement;
-      if (element.requestFullscreen) {
-        element.requestFullscreen();
-      } else if (element.mozRequestFullScreen) {
-        element.mozRequestFullScreen();
-      } else if (element.webkitRequestFullscreen) {
-        element.webkitRequestFullscreen();
-      } else if (element.msRequestFullscreen) {
-        element.msRequestFullscreen();
-      }
-
-      // Toggle icons
-      document.getElementById('fullscreenIcon').style.display = 'none';
-      document.getElementById('exitFullscreenIcon').style.display = 'inline';
+  // Full screen mode activate karne ke liye
+  function enterFullScreen() {
+    var element = document.documentElement;
+    if (element.requestFullscreen) {
+      element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+      element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) {
+      element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) {
+      element.msRequestFullscreen();
     }
 
-    // Full screen mode se bahar nikalne ke liye
-    function exitFullScreen() {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-      } else if (document.msExitFullscreen) {
-        document.msExitFullscreen();
-      }
+    // Toggle icons
+    document.getElementById('fullscreenIcon').style.display = 'none';
+    document.getElementById('exitFullscreenIcon').style.display = 'inline';
+  }
 
-      // Toggle icons
-      document.getElementById('fullscreenIcon').style.display = 'inline';
-      document.getElementById('exitFullscreenIcon').style.display = 'none';
+  // Full screen mode se bahar nikalne ke liye
+  function exitFullScreen() {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
     }
-  </script>
+
+    // Toggle icons
+    document.getElementById('fullscreenIcon').style.display = 'inline';
+    document.getElementById('exitFullscreenIcon').style.display = 'none';
+  }
+
+  // Automatically enter full screen on page load
+  enterFullScreen();
+
+  // Toggle button click event
+  document.getElementById('toggleButton').addEventListener('click', function () {
+    if (fullscreen) {
+      exitFullScreen();
+    } else {
+      enterFullScreen();
+    }
+    fullscreen = !fullscreen; // Toggle fullscreen variable
+  });
+</script>
 
   
-
-  
-  
-    
-
