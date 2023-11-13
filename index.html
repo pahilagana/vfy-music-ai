@@ -2795,8 +2795,14 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 
   
 
+<!doctype html>
 
-<style>
+
+  
+  
+    <style>
+    
+
     #toggleButton {
       color: #E74C3C; /* Set button text color */
     }
@@ -2804,62 +2810,62 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
     .icon {
       color: #E74C3C; /* Set icon color */
       font-size: 18px; /* Set icon size */
-      margin-right: 5px; /* Optional: Add margin to separate icon from text */
+      margin-right: 2px; /* Optional: Add margin to separate icon from text */
     }
   </style>
 
 
+  
+
   <script>
-  var fullscreen = true;
+    var fullscreen = false;
 
-  // Full screen mode activate karne ke liye
-  function enterFullScreen() {
-    var element = document.documentElement;
-    if (element.requestFullscreen) {
-      element.requestFullscreen();
-    } else if (element.mozRequestFullScreen) {
-      element.mozRequestFullScreen();
-    } else if (element.webkitRequestFullscreen) {
-      element.webkitRequestFullscreen();
-    } else if (element.msRequestFullscreen) {
-      element.msRequestFullscreen();
+    // Toggle button click event
+    document.getElementById('toggleButton').addEventListener('click', function() {
+      if (fullscreen) {
+        exitFullScreen();
+      } else {
+        enterFullScreen();
+      }
+      fullscreen = !fullscreen; // Toggle fullscreen variable
+    });
+
+    // Full screen mode activate karne ke liye
+    function enterFullScreen() {
+      var element = document.documentElement;
+      if (element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+      } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      }
+
+      // Toggle icons
+      document.getElementById('fullscreenIcon').style.display = 'none';
+      document.getElementById('exitFullscreenIcon').style.display = 'inline';
     }
 
-    // Toggle icons
-    document.getElementById('fullscreenIcon').style.display = 'none';
-    document.getElementById('exitFullscreenIcon').style.display = 'inline';
-  }
+    // Full screen mode se bahar nikalne ke liye
+    function exitFullScreen() {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
 
-  // Full screen mode se bahar nikalne ke liye
-  function exitFullScreen() {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.mozCancelFullScreen) {
-      document.mozCancelFullScreen();
-    } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
+      // Toggle icons
+      document.getElementById('fullscreenIcon').style.display = 'inline';
+      document.getElementById('exitFullscreenIcon').style.display = 'none';
     }
+  </script>
 
-    // Toggle icons
-    document.getElementById('fullscreenIcon').style.display = 'inline';
-    document.getElementById('exitFullscreenIcon').style.display = 'none';
-  }
+</!doctype>
 
-  // Automatically enter full screen after 1 second
-  setTimeout(function () {
-    enterFullScreen();
-  }, 1000);
-
-  // Toggle button click event
-  document.getElementById('toggleButton').addEventListener('click', function () {
-    if (fullscreen) {
-      exitFullScreen();
-    } else {
-      enterFullScreen();
-    }
-    fullscreen = !fullscreen; // Toggle fullscreen variable
-  });
-</script>
-
+  
