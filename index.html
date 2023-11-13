@@ -23,7 +23,24 @@
 <meta content='VFYðŸ’žAI' property='og:title'/>
 <meta content='vivefy:-vfy is smart online music player and downloader developer vivek masona' property='og:description'/>
 <title>VIVEKFY-AI</title>
+<script>
+/*<![CDATA[*/
+const fullscreenButton = document.getElementById("fullscreenButton");
 
+// Check if the app is installed on Android
+if (window.matchMedia('(display-mode: standalone)').matches) {
+  // Web app is installed
+  document.documentElement.style.overflow = 'auto'; // Disable full screen
+} else {
+  // Web app is not installed
+  document.documentElement.requestFullscreen(); // Enable full screen
+}
+
+fullscreenButton.addEventListener("click", () => {
+  document.documentElement.requestFullscreen();
+});
+/*]]>*/
+</script>
 
 
 
