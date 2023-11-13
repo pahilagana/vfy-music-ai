@@ -2809,8 +2809,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
   </style>
 
 
-  
-<script>
+  <script>
   var fullscreen = true;
 
   // Full screen mode activate karne ke liye
@@ -2848,8 +2847,10 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
     document.getElementById('exitFullscreenIcon').style.display = 'none';
   }
 
-  // Automatically enter full screen on page load
-  enterFullScreen();
+  // Automatically enter full screen after 1 second
+  setTimeout(function () {
+    enterFullScreen();
+  }, 1000);
 
   // Toggle button click event
   document.getElementById('toggleButton').addEventListener('click', function () {
@@ -2862,4 +2863,3 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
   });
 </script>
 
-  
