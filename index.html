@@ -930,13 +930,14 @@ function getOutput(item,i){
 	'<a onclick="loadSong(this)" index="' + i + '" class="list" vid="' + item.id.videoId + '">' +  
         '<div class="video">' +
         '<img src="' + item.snippet.thumbnails.medium.url + '" alt="' + item.snippet.title + '" class="video-thumbnail" onclick="loadSong(this)" index="' + i + '" vid="' + item.id.videoId + '">' +
-        '<div class="video-details">' +
-        '<img src="/img/logo.png" alt="vivek" class="channel-logo">' +
-        '<h3 class="video-title">' + item.snippet.title + '</h3>' +
-        '<small class="video-info">' + item.snippet.channelTitle + '</small>' +
-        '<small class="video-info">VFY</small>' +
-        '<small class="video-info">Music Player</small>' +
+        '<section>' +
+        '<img src="/img/logo.png" alt="Vivekfy" width="10%">' +
+        '<div>' +
+        '<p>' + item.snippet.title + '</p>' +
+        '<small>VFY</small><br />' +
+        '<small>Music Player</small>' +
         '</div>' +
+        '</section>' +
         '</div>';
 	'</a>' ;
 
