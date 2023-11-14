@@ -46,7 +46,15 @@
 
 
 
+<script>
+const videoList = document.getElementById("videos");
+const videoElement = document.querySelector(".video");
 
+for (let i = 0; i < 5; i++) {
+    let cln = videoElement.cloneNode(true);
+    videoList.appendChild(cln);
+}
+</script>
 
 <style>
   #vfytitle {
