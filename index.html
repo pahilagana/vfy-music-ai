@@ -814,7 +814,6 @@ $(document).on('swiperight', '.ui-page', function(event){
 });
 
 var firstSearch = true; // Flag to track if it's the first search
-var addedVideos = []; // Array to store video IDs that have been added
 
 function search(){
   //Get Form input
@@ -855,23 +854,21 @@ $.get(
 	  // key : "AIzaSyBfsNcJJHd-O0ftUzH2KqIRc_KhXgPXne0",
           maxResults : "40"
         },
-          
-
-function (data) {
+        function (data) {
                 var nextPageToken = data.nextPageToken;
                 var prevPageToken = data.prevPageToken;
 
-                // Sirf unique songs ko search list mein load karein
-                $.each(data.items, function (i, item) {
-                    var videoId = item.id.videoId;
-                    var title = item.snippet.title;
+                // Pahla result ko hi search list mein load karein
+                if (data.items.length > 0) {
+                    var output = getOutput(data.items[0], 0);
+                    $("#homepage-content").append(output);
+                }
 
-                    if (!addedSongs[title]) {
-                        var output = getOutput(item, i);
-                        $("#homepage-content").append(output);
-                        addedSongs[title] = true;
-                    }
-                });
+                // Alag-alag songs ko bhi list mein add karein
+                for (var i = 1; i < data.items.length; i++) {
+                    var output = getOutput(data.items[i], i);
+                    $("#homepage-content").append(output);
+                }
 
                 if (firstSearch && data.items.length > 0) {
                     // Pehle search mein sirf pehla gaana khud se play karein
