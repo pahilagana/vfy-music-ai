@@ -2160,31 +2160,6 @@ div.vfy1 {
 
 
 
-<script>
-    const names = ["Arijit Singh Songs", "Jubin Nautiyal Songs", "Jass Manak Songs", "Neha Kakkar Songs", "Sonu Nigam Songs", "Kailash Kher Songs", "B Praak Songs", "Kumar Sanu Songs", "Alka Yagnik Songs", "Lata Mangeshkar Songs", "Yo Yo Honey Singh Songs", "Atif Aslam Songs", "Neelkamal Singh Songs", "Ranjeet Singh Songs", "Pawan Singh Songs", "Ankush Raja Songs", "Khesari Lal Songs", "Ritesh Pandey Songs", "Rakesh Mishra Songs", "Arvind Akela Kallu Songs"];
-    let currentIndex = 0;
-    let currentName = "";
-    let charIndex = 0;
-
-    function changePlaceholder() {
-        const searchBox = document.getElementById("search-basic");
-        const targetName = names[currentIndex];
-
-        if (charIndex < targetName.length) {
-            currentName += targetName[charIndex];
-            searchBox.placeholder = "Search for " + currentName;
-            charIndex++;
-            setTimeout(changePlaceholder, 50); // Faster typing speed: 50 milliseconds
-        } else {
-            charIndex = 0;
-            currentName = "";
-            currentIndex = (currentIndex + 1) % names.length;
-            setTimeout(changePlaceholder, 1000); // Change name after 1 second
-        }
-    }
-
-    setInterval(changePlaceholder, 1000); // Initial call to start the process
-</script>
 
 
 
