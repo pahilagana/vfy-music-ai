@@ -2210,17 +2210,25 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 
 
 
-
-
 <script>
   function speakSearchText() {
     const searchInput = document.getElementById('search-basic');
     const searchText = searchInput.value.toLowerCase();
 
-    // Check if the user input starts with the command "play"
-    if (searchText.startsWith('play ')) {
-      // Extract the content after "play"
-      const textToSpeak = searchText.slice(5);
+    // Check if the user input starts with specific commands
+    if (
+      searchText.startsWith('play ') ||
+      searchText.startsWith('sunao ') ||
+      searchText.startsWith('bajao ') ||
+      searchText.startsWith('start ') ||
+      searchText.startsWith('chalao ') ||
+      searchText.startsWith('chalu karo ') ||
+      searchText.startsWith('play karo ') ||
+      searchText.startsWith('sunna hai ') ||
+      searchText.startsWith('start kro ')
+    ) {
+      // Extract the content after the command
+      const textToSpeak = searchText.split(' ').slice(1).join(' ');
 
       if ('speechSynthesis' in window) {
         const utterance = new SpeechSynthesisUtterance(textToSpeak);
@@ -2254,8 +2262,7 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 
 
 
-
-
+        
 
 
 	
