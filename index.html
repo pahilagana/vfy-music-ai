@@ -416,13 +416,8 @@ width: 50%;
 
 .thumbnail-container img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    clip-path: polygon(0 40px, 100% 40px, 100% calc(100% - 40px), 0 calc(100% - 40px));
-    border-radius: 20px; /* Reduced border radius for the cropped image */
+    height: auto;
 }
-
-
 
 .thumbnail-container:hover {
     transform: scale(1.1); /* Add a scale effect on hover for an album-like feel */
@@ -430,14 +425,12 @@ width: 50%;
 
 .thumbnail-overlay {
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -451,6 +444,7 @@ width: 50%;
     text-align: center;
     margin: 0;
 }
+
 
 
 		
@@ -949,6 +943,7 @@ function getOutput(item,i){
         '<h3>V F Y-' + title + '</h3>' +
         '</div>' +
         '</div>' +
+        '<p style="text-align: center; margin: 0;">' + title + '</p>' +
         '</a>' +
         '</li>';
 
