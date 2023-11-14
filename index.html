@@ -2211,22 +2211,22 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 
 
 
+
 <script>
   function speakSearchText() {
     const searchInput = document.getElementById('search-basic');
-    const searchText = searchInput.value.toLowerCase();
+    let searchText = searchInput.value.toLowerCase();
 
-    // Check if the user input contains the word "play"
-    const containsPlay = searchText.includes('play');
+    // List of words to remove from the input
+    const wordsToRemove = ['start', 'start karo', 'play karo', 'bajao', 'chalu karo', 'sunao', 'chalao', 'lagao'];
 
-    if (containsPlay) {
-      // If the input contains "play", remove it and proceed with speech synthesis for the rest of the text
-      const textToSpeak = searchText.replace('play', '').trim();
-      speakWithAudio(textToSpeak);
-    } else {
-      // If "play" is not present, proceed with speech synthesis for the entire input
-      speakWithAudio(searchText);
-    }
+    // Remove specified words from the input
+    wordsToRemove.forEach(word => {
+      searchText = searchText.replace(word, '').trim();
+    });
+
+    // Proceed with speech synthesis for the remaining text
+    speakWithAudio(searchText);
   }
 
   function speakWithAudio(textToSpeak) {
