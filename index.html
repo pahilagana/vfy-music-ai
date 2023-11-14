@@ -2210,27 +2210,32 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 
 
 
+
 <script>
   function speakSearchText() {
     const searchInput = document.getElementById('search-basic');
     const searchText = searchInput.value.toLowerCase();
 
-    // Check if the user input starts with specific commands
-    if (
-      searchText.startsWith('play ') ||
-      searchText.startsWith('sunao ') ||
-      searchText.startsWith('bajao ') ||
-      searchText.startsWith('start ') ||
-      searchText.startsWith('chalao ') ||
-      searchText.startsWith('chalu karo ') ||
-      searchText.startsWith('play karo ') ||
-      searchText.startsWith('sunna hai ')
-    ) {
-      // Extract the content after the command
-      const textToSpeak = searchText.split(' ').slice(1).join(' ');
+    const excludedCommands = [
+      'play ',
+      'sunao ',
+      'bajao ',
+      'start ',
+      'chalao ',
+      'chalu karo ',
+      'play karo ',
+      'sunna hai ',
+      'start kro '
+    ];
 
+    // Check if the user input starts with any excluded command
+    if (excludedCommands.some(command => searchText.startsWith(command))) {
+      // Handle excluded commands (optional)
+      console.log('Excluded command detected');
+    } else {
+      // If not an excluded command, proceed with speech synthesis
       if ('speechSynthesis' in window) {
-        const utterance = new SpeechSynthesisUtterance(textToSpeak);
+        const utterance = new SpeechSynthesisUtterance(searchText);
 
         // Select a male voice, if available
         const voices = window.speechSynthesis.getVoices();
@@ -2244,7 +2249,7 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
         utterance.volume = 1; // Set volume to 100%
 
         utterance.onend = function () {
-          // Once the name is spoken, initiate the audio link for "Search results from bhi faai music"
+          // Once the text is spoken, initiate the audio link for "Search results from bhi faai music"
           const audio = new Audio('/sound/result.mp3');
           audio.play();
         };
@@ -2253,8 +2258,6 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
       } else {
         console.log('Text-to-speech not supported in this browser');
       }
-    } else {
-      // Handle other commands or do nothing for non-command input
     }
   }
 </script>
