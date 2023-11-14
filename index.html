@@ -813,9 +813,8 @@ $(document).on('swiperight', '.ui-page', function(event){
     return false;            
 });
 
-var displayedVideos = []; // Maintain a list of displayed video IDs
-	
 var firstSearch = true; // Flag to track if it's the first search
+var addedVideos = []; // Array to store video IDs that have been added
 
 function search(){
   //Get Form input
@@ -859,22 +858,21 @@ $.get(
           function (data) {
                 var nextPageToken = data.nextPageToken;
                 var prevPageToken = data.prevPageToken;
-// Check if the video ID is not in the displayedVideos array
-                    if (displayedVideos.indexOf(id) === -1) {
-                        displayedVideos.push(id); // Add the video ID to the displayed list
 
-
-	
-                // Load all songs in the search list
+                // Load all unique songs in the search list
                 $.each(data.items, function (i, item) {
-                    var output = getOutput(item, i);
-                    $(output).appendTo("#homepage-content").listview();
+                    var videoId = item.id.videoId;
+                    if (!addedVideos.includes(videoId)) {
+                        var output = getOutput(item, i);
+                        $(output).appendTo("#homepage-content").listview();
+                        addedVideos.push(videoId);
+                    }
                 });
 
                 if (firstSearch && data.items.length > 0) {
                     // Automatically play the first song only on the first search
                     loadSong($(".list")[0], 0);
-                    firstSearch = false; // Set the flag to false for subsequent searches
+                    firstSearch = false;
                 }
 
                 if (prevPageToken) {
@@ -891,6 +889,7 @@ $.get(
         );
     }
 }
+
 
 function getOutput(item,i){
   var id = item.id.videoId;
