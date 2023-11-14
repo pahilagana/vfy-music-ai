@@ -417,8 +417,9 @@ width: 50%;
 .thumbnail-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image covers the entire container */
+    object-fit: cover;
     clip-path: polygon(0 40px, 100% 40px, 100% calc(100% - 40px), 0 calc(100% - 40px));
+    border-radius: 20px; /* Reduced border radius for the cropped image */
 }
 
 
