@@ -1548,7 +1548,6 @@ recognition.onresult = function(event) {
 
 
 
-
 <script>
 function startDictation() {
     if (window.hasOwnProperty('webkitSpeechRecognition')) {
@@ -1559,8 +1558,8 @@ function startDictation() {
         
         recognition.onresult = function(e) {
             var spokenText = e.results[0][0].transcript;
-            typeWithAnimation('search-basic', spokenText);
-
+            document.getElementById('search-basic').value = spokenText;
+            
             // Automatically trigger the search when the song name is recognized.
             if (spokenText) {
                 document.getElementById('search-btn').click();
@@ -1574,23 +1573,6 @@ function startDictation() {
         recognition.start();
     }
 }
-
-function typeWithAnimation(elementId, text) {
-    var element = document.getElementById(elementId);
-    var index = 0;
-
-    function type() {
-        if (index < text.length) {
-            element.value += text.charAt(index);
-            index++;
-            setTimeout(type, 50); // Adjust typing speed here (milliseconds)
-        }
-    }
-
-    type();
-}
-
-
 
 function searchHindiSongs() {
     var query = "2023 new hindi songs"; // Hindi songs ke liye query
@@ -2236,7 +2218,7 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
     let searchText = searchInput.value.toLowerCase();
 
     // List of words to remove from the input
-    const wordsToRemove = ['start', 'start karo', 'play karo', 'bajao', 'bhejo', 'chalu karo', 'sunao', 'chalao', 'lagao'];
+    const wordsToRemove = ['start', 'start karo', 'play karo', 'bajao', 'chalu karo', 'sunao', 'chalao', 'lagao'];
 
     // Remove specified words from the input
     wordsToRemove.forEach(word => {
@@ -2905,15 +2887,4 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
       document.getElementById('exitFullscreenIcon').style.display = 'none';
     }
   </script>
-
-
-
-
-
-
-
-
-
-
-
 
