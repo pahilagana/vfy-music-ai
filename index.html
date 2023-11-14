@@ -926,7 +926,7 @@ function getOutput(item,i){
 // Thumbnail ke liye custom styling container ko add karein
     
     var output =
-        '<div class="video" onclick="loadSong(\'' + item.id.videoId + '\')">' +
+        '<div class="video" onclick="loadSong(' + i + ')">' +
         '<img src="' + item.snippet.thumbnails.medium.url + '" alt="' + item.snippet.title + '" class="video-thumbnail">' +
         '<div class="video-details">' +
         '<h3 class="video-title">' + item.snippet.title + '</h3>' +
