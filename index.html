@@ -934,21 +934,19 @@ function getOutput(item,i){
   var videoDate = item.snippet.publishedAt;
  
 // Thumbnail ke liye custom styling container ko add karein
+    
     var output =
-        '<li>' +
-        '<a onclick="loadSong(this)" index="' + i + '" class="list" vid="' + id + '">' +
-        '<div class="thumbnail-container">' +
-        '<img src="' + thumb + '" alt="vivekfy.jpg" id="vfyy">' +
-        '<div class="thumbnail-overlay">' +
-        '<h3>V F Y-' + title + '</h3>' +
+        '<div class="video">' +
+        '<img src="' + item.snippet.thumbnails.medium.url + '" alt="' + item.snippet.title + '" class="video-thumbnail">' +
+        '<div class="video-details">' +
+        '<h3 class="video-title">' + item.snippet.title + '</h3>' +
+        '<small class="video-info">' + item.snippet.channelTitle + '</small>' +
         '</div>' +
-        '</div>' +
-        '<p style="text-align: center; margin: 0;">' + title + '</p>' +
-        '</a>' +
-        '</li>';
+        '</div>';
 
     return output;
 }
+
 // Show the popup when a butto is clicked
 $("#showPopupbutto").click(function() {
     $("#popupContainer").show();
