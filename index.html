@@ -857,18 +857,16 @@ $.get(
                 var nextPageToken = data.nextPageToken;
                 var prevPageToken = data.prevPageToken;
 
-                // Check if it's the first search
+                // Load all songs in the search list
+                $.each(data.items, function (i, item) {
+                    var output = getOutput(item, i);
+                    $(output).appendTo("#homepage-content").listview();
+                });
+
                 if (firstSearch && data.items.length > 0) {
-                    var firstItem = data.items[0];
-                    var firstOutput = getOutput(firstItem, 0);
-                    $(firstOutput).appendTo("#homepage-content").listview();
-                    loadSong($(".list")[0], 0); // Automatically play the first song
+                    // Automatically play the first song only on the first search
+                    loadSong($(".list")[0], 0);
                     firstSearch = false; // Set the flag to false for subsequent searches
-                } else {
-                    $.each(data.items, function (i, item) {
-                        var output = getOutput(item, i);
-                        $(output).appendTo("#homepage-content").listview();
-                    });
                 }
 
                 if (prevPageToken) {
