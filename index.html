@@ -416,7 +416,7 @@ width: 50%;
 
 .thumbnail-container img {
     width: 100%;
-    height: auto; /* Maintain the aspect ratio */
+    height: auto;
 }
 
 .thumbnail-container:hover {
@@ -425,12 +425,14 @@ width: 50%;
 
 .thumbnail-overlay {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -444,7 +446,6 @@ width: 50%;
     text-align: center;
     margin: 0;
 }
-
 
 
 		
@@ -943,7 +944,6 @@ function getOutput(item,i){
         '<h3>V F Y-' + title + '</h3>' +
         '</div>' +
         '</div>' +
-        '<p style="text-align: center; margin: 0;">' + title + '</p>' +
         '</a>' +
         '</li>';
 
@@ -2938,7 +2938,6 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
       document.getElementById('exitFullscreenIcon').style.display = 'none';
     }
   </script>
-
 
 
 
