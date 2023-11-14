@@ -936,16 +936,19 @@ function getOutput(item,i){
  
 // Thumbnail ke liye custom styling container ko add karein
     var output =
+        '<li>' +
+        '<a onclick="loadSong(this)" index="' + i + '" class="list" vid="' + id + '">' +
         '<div class="thumbnail-container">' +
         '<img src="' + thumb + '" alt="vivekfy.jpg" id="vfyy">' +
         '<div class="thumbnail-overlay">' +
         '<h3>V F Y-' + title + '</h3>' +
         '</div>' +
-        '</div>';
+        '</div>' +
+        '</a>' +
+        '</li>';
 
     return output;
 }
-
 // Show the popup when a butto is clicked
 $("#showPopupbutto").click(function() {
     $("#popupContainer").show();
