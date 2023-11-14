@@ -2211,7 +2211,6 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 
 
 
-
 <script>
   function speakSearchText() {
     const searchInput = document.getElementById('search-basic');
@@ -2221,10 +2220,11 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
     const containsPlay = searchText.includes('play');
 
     if (containsPlay) {
-      // If the input contains "play", do not proceed with speech synthesis
-      console.log('Play command detected; not processing for speech synthesis');
+      // If the input contains "play", remove it and proceed with speech synthesis for the rest of the text
+      const textToSpeak = searchText.replace('play', '').trim();
+      speakWithAudio(textToSpeak);
     } else {
-      // If "play" is not present, proceed with speech synthesis
+      // If "play" is not present, proceed with speech synthesis for the entire input
       speakWithAudio(searchText);
     }
   }
@@ -2256,6 +2256,7 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
     }
   }
 </script>
+
 
 
 
