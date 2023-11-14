@@ -931,11 +931,11 @@ function getOutput(item,i){
         '<div class="video" onclick="loadSong(' + i + ')">' +
         '<img src="' + item.snippet.thumbnails.medium.url + '" alt="' + item.snippet.title + '" class="video-thumbnail">' +
         '<div class="video-details">' +
-	'</a>' + 
         '<h3 class="video-title">' + item.snippet.title + '</h3>' +
         '<small class="video-info">' + item.snippet.channelTitle + '</small>' +
         '</div>' +
-        '</div>';
+        '</div>' +
+	'</a>' ;
 
     return output;
 }
