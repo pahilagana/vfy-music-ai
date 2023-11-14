@@ -2208,43 +2208,49 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
     setInterval(checkInternetConnection, internetCheckInterval);
   </script>
 
+
+
+
+
 <script>
   function speakSearchText() {
     const searchInput = document.getElementById('search-basic');
-    const nameToSpeak = searchInput.value;
+    const searchText = searchInput.value.toLowerCase();
 
-    if ('speechSynthesis' in window) {
-      const utteranceName = new SpeechSynthesisUtterance(nameToSpeak);
+    // Check if the user input starts with the command "play"
+    if (searchText.startsWith('play ')) {
+      // Extract the content after "play"
+      const textToSpeak = searchText.slice(5);
 
-      // Select a male voice, if available
-      const voices = window.speechSynthesis.getVoices();
-      let maleVoice = voices.find(voice => voice.name === 'vivek');
-      if (maleVoice) {
-        utteranceName.voice = maleVoice;
+      if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance(textToSpeak);
 
-        // Check if the input text is 'vivek' to play the audio file
-        if (nameToSpeak.toLowerCase() === 'vivek') {
-          utteranceName.onend = function() {
-            // Once the name is spoken, initiate the audio link for "Search results from bhi faai music"
-            const audio = new Audio('/sound/result.mp3');
-            audio.play();
-          };
+        // Select a male voice, if available
+        const voices = window.speechSynthesis.getVoices();
+        let maleVoice = voices.find(voice => voice.name === 'vivek');
+        if (maleVoice) {
+          utterance.voice = maleVoice;
+        } else {
+          console.log('Male voice not found; using the default voice.');
         }
+
+        utterance.volume = 1; // Set volume to 100%
+
+        utterance.onend = function () {
+          // Once the name is spoken, initiate the audio link for "Search results from bhi faai music"
+          const audio = new Audio('/sound/result.mp3');
+          audio.play();
+        };
+
+        window.speechSynthesis.speak(utterance);
       } else {
-        console.log('Male voice not found; using the default voice.');
+        console.log('Text-to-speech not supported in this browser');
       }
-
-      utteranceName.volume = 1; // Set volume to 100%
-
-      window.speechSynthesis.speak(utteranceName);
     } else {
-      console.log('Text-to-speech not supported in this browser');
+      // Handle other commands or do nothing for non-command input
     }
   }
 </script>
-
-
-
 
 
 
