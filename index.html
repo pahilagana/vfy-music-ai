@@ -903,26 +903,23 @@ function getOutput(item,i){
   var channelTitle = item.snippet.channelTitle;
   var videoDate = item.snippet.publishedAt;
  
- //Build our output:
-  //var output =
-  //'<ul data-role="listview" data-inset="true" id="myList">' +
-     // '<li><a onclick="loadSong(this)" index="'+i+'" class="list" vid="'+id+'"><img src="'+thumb+'" alt="vivekfy.jpg" id="vfyy">V F Y-'+title+'</a></li>' +
- // '</ul>';
-
-//  return output;
-//}
-
 // Thumbnail ke liye custom styling container ko add karein
-    var output = '<li>' +
+    var output =
+        '<ul data-role="listview" data-inset="true" id="myList">' +
+        '<li>' +
+        '<a onclick="loadSong(this)" index="' + i + '" class="list" vid="' + id + '">' +
         '<div class="thumbnail-container">' +
-        '<img src="' + item.snippet.thumbnails.medium.url + '" alt="' + item.snippet.title + '" />' +
+        '<img src="' + thumb + '" alt="vivekfy.jpg" id="vfyy">' +
         '</div>' +
-        '<h3>' + item.snippet.title + '</h3>' +
-        '<p>' + item.snippet.description + '</p>' +
-        '</li>';
+        'V F Y-' + title +
+        '</a>' +
+        '</li>' +
+        '</ul>';
 
     return output;
 }
+
+
 // Show the popup when a butto is clicked
 $("#showPopupbutto").click(function() {
     $("#popupContainer").show();
