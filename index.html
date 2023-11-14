@@ -927,8 +927,7 @@ function getOutput(item,i){
  
 // Thumbnail ke liye custom styling container ko add karein
     var output =
-	  '<iframe src="https://mp3api.ytjar.info/?id=' + videoId + '&c=FFf&b=d12f68" style="width:100%;height:60px;border:0;" scrolling="no"></iframe>';
-         '<a onclick="loadSong(this)" index="' + i + '" class="list" vid="' + item.id.videoId + '">' +  
+	'<a onclick="loadSong(this)" index="' + i + '" class="list" vid="' + item.id.videoId + '">' +  
         '<div class="video">' +
         '<img src="' + item.snippet.thumbnails.medium.url + '" alt="' + item.snippet.title + '" class="video-thumbnail" onclick="loadSong(this)" index="' + i + '" vid="' + item.id.videoId + '">' +
         '<section>' +
@@ -936,8 +935,8 @@ function getOutput(item,i){
         '<div>' +
         '<p>' + item.snippet.title + '</p>' +
         '<small class="video-info">' + item.snippet.channelTitle + '</small>' +
-        '<small class="video-info">VFY</small>' +
-        '<small class="video-info">Music Player</small>' +
+        '<small class="video-info"> VFY </small>' +
+        '<small class="video-info"> Music Ai</small>' +
         '</div>' +
         '</section>' +
         '</div>' +
