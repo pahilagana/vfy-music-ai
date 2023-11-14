@@ -1101,39 +1101,47 @@ volume100butto.addEventListener('click', function () {
 
 	
 const titleaudio = document.getElementById('SAudio');
-const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
-const songThumbnailElement = document.getElementById('vfyy'); // Assuming the song thumbnail is displayed in an img element with ID 'vfyy'
+const songTitleElement = document.getElementById('vfytitle'); // Maan lo ki gaana ka title 'vfytitle' ID wale element mein dikhaya ja raha hai
 
 audio.addEventListener('play', () => {
-  // Update the tab title when audio starts playing
-  const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
+  // Jab audio chalu hota hai, tab tab ka title update karo
+  const songTitle = songTitleElement.textContent; // 'vfytitle' element se gaana ka title le lo
   document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
 
-  // Show Chrome notification
+  // Chrome notification dikhao
   if (Notification.permission === 'granted') {
-    showNotification(songTitle, songThumbnailElement.src);
+    showNotification(songTitle);
   } else if (Notification.permission !== 'denied') {
     Notification.requestPermission().then(permission => {
       if (permission === 'granted') {
-        showNotification(songTitle, songThumbnailElement.src);
+        showNotification(songTitle);
       }
     });
   }
 });
 
-function showNotification(title, thumbnailUrl) {
+function showNotification(title) {
+  // Notification dikhane ke liye function
+  const thumbnailUrl = 'https://img.youtube.com/vi/' + getVideoId() + '/maxresdefault.jpg';
+
   const notification = new Notification(title, {
     icon: thumbnailUrl,
-    body: 'Now playing!',
   });
 
   notification.addEventListener('click', () => {
-    // Handle notification click (e.g., open a link or perform an action)
+    // Notification par click karne ka handle (for example, koi link kholna ya koi aur action lena)
   });
 }
 
+function getVideoId() {
+  // Yahan par apne logic ke hisab se video ID fetch karein
+  // Aap YouTube Data API ya koi aur source ka istemal kar sakte hain
+  // Niche di gayi line ko apne actual implementation se replace karein
+  return 'your_actual_video_id';
+}
+
 audio.addEventListener('pause', () => {
-  // Restore the original page title when audio is paused
+  // Jab audio pause hota hai, tab original page title restore karo
   document.title = 'VIVEKFY-AI';
 });
 
