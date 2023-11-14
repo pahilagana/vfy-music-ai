@@ -855,7 +855,9 @@ $.get(
 	  // key : "AIzaSyBfsNcJJHd-O0ftUzH2KqIRc_KhXgPXne0",
           maxResults : "40"
         },
-          function (data) {
+          
+
+function (data) {
                 var nextPageToken = data.nextPageToken;
                 var prevPageToken = data.prevPageToken;
 
@@ -866,7 +868,7 @@ $.get(
 
                     if (!addedSongs[title]) {
                         var output = getOutput(item, i);
-                        $("#homepage-content").append(output).listview("refresh");
+                        $("#homepage-content").append(output);
                         addedSongs[title] = true;
                     }
                 });
@@ -887,11 +889,13 @@ $.get(
                     $("#next-btn").attr("next", nextPageToken);
                     $("#next-btn").attr("q", q);
                 }
+
+                // Refresh the listview
+                $("#homepage-content").listview("refresh");
             }
         );
     }
 }
-
 
 
 
