@@ -1548,6 +1548,7 @@ recognition.onresult = function(event) {
 
 
 
+
 <script>
 function startDictation() {
     if (window.hasOwnProperty('webkitSpeechRecognition')) {
@@ -1558,8 +1559,8 @@ function startDictation() {
         
         recognition.onresult = function(e) {
             var spokenText = e.results[0][0].transcript;
-            document.getElementById('search-basic').value = spokenText;
-            
+            typeWithAnimation('search-basic', spokenText);
+
             // Automatically trigger the search when the song name is recognized.
             if (spokenText) {
                 document.getElementById('search-btn').click();
@@ -1573,6 +1574,23 @@ function startDictation() {
         recognition.start();
     }
 }
+
+function typeWithAnimation(elementId, text) {
+    var element = document.getElementById(elementId);
+    var index = 0;
+
+    function type() {
+        if (index < text.length) {
+            element.value += text.charAt(index);
+            index++;
+            setTimeout(type, 50); // Adjust typing speed here (milliseconds)
+        }
+    }
+
+    type();
+}
+
+
 
 function searchHindiSongs() {
     var query = "2023 new hindi songs"; // Hindi songs ke liye query
