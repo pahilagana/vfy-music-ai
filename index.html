@@ -404,7 +404,6 @@ width: 50%;
 
 }
 
-
 /* Thumbnail ke liye custom styling */
 .thumbnail-container {
     border-radius: 20px;
@@ -416,6 +415,8 @@ width: 50%;
     width: 100%;
     height: auto;
 }
+
+
 		
 </style>
 
@@ -822,7 +823,6 @@ $(document).on('swiperight', '.ui-page', function(event){
     }
     return false;            
 });
-
 var firstSearch = true; // Flag to track if it's the first search
 
 function search(){
@@ -864,26 +864,20 @@ $.get(
 	  // key : "AIzaSyBfsNcJJHd-O0ftUzH2KqIRc_KhXgPXne0",
           maxResults : "40"
         },
-        function (data) {
+          function (data) {
                 var nextPageToken = data.nextPageToken;
                 var prevPageToken = data.prevPageToken;
 
-                // Pahla result ko hi search list mein load karein
-                if (data.items.length > 0) {
-                    var output = getOutput(data.items[0], 0);
-                    $("#homepage-content").append(output);
-                }
-
-                // Alag-alag songs ko bhi list mein add karein
-                for (var i = 1; i < data.items.length; i++) {
-                    var output = getOutput(data.items[i], i);
-                    $("#homepage-content").append(output);
-                }
+                // Load all songs in the search list
+                $.each(data.items, function (i, item) {
+                    var output = getOutput(item, i);
+                    $(output).appendTo("#homepage-content").listview();
+                });
 
                 if (firstSearch && data.items.length > 0) {
-                    // Pehle search mein sirf pehla gaana khud se play karein
+                    // Automatically play the first song only on the first search
                     loadSong($(".list")[0], 0);
-                    firstSearch = false;
+                    firstSearch = false; // Set the flag to false for subsequent searches
                 }
 
                 if (prevPageToken) {
@@ -896,16 +890,10 @@ $.get(
                     $("#next-btn").attr("next", nextPageToken);
                     $("#next-btn").attr("q", q);
                 }
-
-                // Refresh the listview
-                $("#homepage-content").listview("refresh");
             }
         );
     }
 }
-
-
-
 
 function getOutput(item,i){
   var id = item.id.videoId;
@@ -916,16 +904,12 @@ function getOutput(item,i){
   var videoDate = item.snippet.publishedAt;
  
  //Build our output:
-  // Thumbnail ke liye custom styling container ko add karein
-    var output = '<li>' +
-        '<div class="thumbnail-container">' +
-        '<img src="' + item.snippet.thumbnails.medium.url + '" alt="' + item.snippet.title + '" />' +
-        '</div>' +
-        '<h3>' + item.snippet.title + '</h3>' +
-        '<p>' + item.snippet.description + '</p>' +
-        '</li>';
+  var output =
+  '<ul data-role="listview" data-inset="true" id="myList">' +
+      '<li><a onclick="loadSong(this)" index="'+i+'" class="list" vid="'+id+'"><img src="'+thumb+'" alt="vivekfy.jpg" id="vfyy">V F Y-'+title+'</a></li>' +
+  '</ul>';
 
-    return output;
+  return output;
 }
 
 
