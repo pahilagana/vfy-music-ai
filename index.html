@@ -859,13 +859,15 @@ $.get(
                 var nextPageToken = data.nextPageToken;
                 var prevPageToken = data.prevPageToken;
 
-                // Load all unique songs in the search list
+                // Load only unique songs in the search list
                 $.each(data.items, function (i, item) {
                     var videoId = item.id.videoId;
-                    if (!addedVideos.includes(videoId)) {
+                    var title = item.snippet.title;
+
+                    if (!addedSongs[title]) {
                         var output = getOutput(item, i);
                         $(output).appendTo("#homepage-content").listview();
-                        addedVideos.push(videoId);
+                        addedSongs[title] = true;
                     }
                 });
 
@@ -889,6 +891,7 @@ $.get(
         );
     }
 }
+
 
 
 function getOutput(item,i){
