@@ -859,20 +859,20 @@ $.get(
                 var nextPageToken = data.nextPageToken;
                 var prevPageToken = data.prevPageToken;
 
-                // Load only unique songs in the search list
+                // Sirf unique songs ko search list mein load karein
                 $.each(data.items, function (i, item) {
                     var videoId = item.id.videoId;
                     var title = item.snippet.title;
 
                     if (!addedSongs[title]) {
                         var output = getOutput(item, i);
-                        $(output).appendTo("#homepage-content").listview();
+                        $("#homepage-content").append(output).listview("refresh");
                         addedSongs[title] = true;
                     }
                 });
 
                 if (firstSearch && data.items.length > 0) {
-                    // Automatically play the first song only on the first search
+                    // Pehle search mein sirf pehla gaana khud se play karein
                     loadSong($(".list")[0], 0);
                     firstSearch = false;
                 }
@@ -891,6 +891,8 @@ $.get(
         );
     }
 }
+
+
 
 
 
