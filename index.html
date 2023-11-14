@@ -406,14 +406,38 @@ width: 50%;
 
 /* Thumbnail ke liye custom styling */
 .thumbnail-container {
+    position: relative;
     border-radius: 20px;
     overflow: hidden;
-    margin-right: 10px; /* Optional: Adds some spacing between thumbnails */
 }
 
 .thumbnail-container img {
     width: 100%;
     height: auto;
+}
+
+.thumbnail-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.thumbnail-container:hover .thumbnail-overlay {
+    opacity: 1;
+}
+
+.thumbnail-overlay h3 {
+    color: white;
+    text-align: center;
+    margin: 0;
 }
 
 
@@ -910,15 +934,16 @@ function getOutput(item,i){
         '<a onclick="loadSong(this)" index="' + i + '" class="list" vid="' + id + '">' +
         '<div class="thumbnail-container">' +
         '<img src="' + thumb + '" alt="vivekfy.jpg" id="vfyy">' +
+        '<div class="thumbnail-overlay">' +
+        '<h3>V F Y-' + title + '</h3>' +
         '</div>' +
-        'V F Y-' + title +
+        '</div>' +
         '</a>' +
         '</li>' +
         '</ul>';
 
     return output;
 }
-
 
 // Show the popup when a butto is clicked
 $("#showPopupbutto").click(function() {
