@@ -412,14 +412,11 @@ width: 50%;
     margin: 10px;
     display: inline-block;
     transition: transform 0.3s ease;
-    height: 150px; /* Adjust the overall height */
 }
 
 .thumbnail-container img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 50% 20%; /* Adjust the object-position as needed */
+    height: auto;
 }
 
 .thumbnail-container:hover {
@@ -447,7 +444,6 @@ width: 50%;
     text-align: center;
     margin: 0;
 }
-
 
 
 
@@ -2942,6 +2938,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
       document.getElementById('exitFullscreenIcon').style.display = 'none';
     }
   </script>
+
 
 
 
