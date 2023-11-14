@@ -44,31 +44,8 @@
 </script>
 
 
-<style>
-a:link {
-  color: green;
-  background-color: transparent;
-  text-decoration: none;
-}
 
-a:visited {
-  color: pink;
-  background-color: transparent;
-  text-decoration: none;
-}
 
-a:hover {
-  color: red;
-  background-color: transparent;
-  text-decoration: underline;
-}
-
-a:active {
-  color: yellow;
-  background-color: transparent;
-  text-decoration: underline;
-}
-</style>
 
 
 <style>
@@ -460,7 +437,7 @@ width: 50%;
 }
 
 
-a { color: white; }
+
 
 		
 </style>
@@ -954,11 +931,11 @@ function getOutput(item,i){
         '<div class="video" onclick="loadSong(' + i + ')">' +
         '<img src="' + item.snippet.thumbnails.medium.url + '" alt="' + item.snippet.title + '" class="video-thumbnail">' +
         '<div class="video-details">' +
+	'</a>' + 
         '<h3 class="video-title">' + item.snippet.title + '</h3>' +
         '<small class="video-info">' + item.snippet.channelTitle + '</small>' +
         '</div>' +
-        '</div>' +
-	'</a>';
+        '</div>';
 
     return output;
 }
