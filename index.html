@@ -417,7 +417,9 @@ width: 50%;
 .thumbnail-container img {
     width: 100%;
     height: auto;
+    clip-path: polygon(0 40px, 100% 40px, 100% calc(100% - 40px), 0 calc(100% - 40px));
 }
+
 
 .thumbnail-container:hover {
     transform: scale(1.1); /* Add a scale effect on hover for an album-like feel */
