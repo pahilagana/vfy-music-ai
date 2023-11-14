@@ -856,12 +856,30 @@ $.get(
             var nextPageToken = data.nextPageToken;
             var prevPageToken = data.prevPageToken;
 		if (data.items.length > 0) {
-          // Extract the first video's ID from the search results
-          var firstVideoId = data.items[0].id.videoId;
+          // Global variable to check if it's the first search
+var isFirstSearch = true;
 
-          // Automatically play the first video
-          play(firstVideoId, 0);
-        }  
+// Function to handle search and play
+function handleSearch() {
+  // Your search code here
+
+  // Extract the first video's ID from the search results
+  var firstVideoId = data.items[0].id.videoId;
+
+  // Check if it's the first search
+  if (isFirstSearch) {
+    // Automatically play the first video
+    play(firstVideoId, 0);
+
+    // Set isFirstSearch to false after the first play
+    isFirstSearch = false;
+  }
+  // If it's not the first search, don't autoplay
+  else {
+    // Handle the search result without autoplay
+  }
+}
+
             $.each(data.items,function(i,item){
               var output = getOutput(item,i);
               $(output).appendTo("#homepage-content").listview();
