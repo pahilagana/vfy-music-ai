@@ -410,9 +410,19 @@ width: 50%;
     border-radius: 10px; /* Reduced border radius */
     overflow: hidden;
     margin: 10px;
-    display: inline-block;
+    display: flex; /* Use flex to align logo, text, and thumbnail */
     transition: transform 0.3s ease;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: Adds a subtle shadow for depth */
+}
+
+.logo-container {
+    flex-shrink: 0; /* Prevent the logo from shrinking */
+    margin-right: 10px; /* Adjust margin as needed */
+}
+
+.logo-container img {
+    width: 50px; /* Adjust logo width as needed */
+    height: 50px; /* Adjust logo height as needed */
 }
 
 .thumbnail-container img {
@@ -421,6 +431,11 @@ width: 50%;
     object-fit: cover;
     object-position: center top;
     clip-path: inset(40px 0 40px 0); /* Crop 40px from top and bottom */
+}
+
+.song-info {
+    display: flex;
+    flex-direction: column;
 }
 
 .thumbnail-container:hover {
@@ -450,7 +465,6 @@ width: 50%;
     text-align: center;
     margin: 0;
 }
-
 
 		
 </style>
@@ -938,14 +952,19 @@ function getOutput(item,i){
   var channelTitle = item.snippet.channelTitle;
   var videoDate = item.snippet.publishedAt;
  
-// Thumbnail ke liye custom styling container ko add karein
+function getOutput(item, i) {
     var output =
         '<li>' +
         '<a onclick="loadSong(this)" index="' + i + '" class="list" vid="' + id + '">' +
         '<div class="thumbnail-container">' +
+        '<div class="logo-container">' +
+        '<img src="/img/logo.png" alt="VFY Music Logo">' +
+        '</div>' +
         '<img src="' + thumb + '" alt="vivekfy.jpg" id="vfyy">' +
+        '<div class="song-info">' +
         '<div class="thumbnail-overlay">' +
         '<h3>V F Y-' + title + '</h3>' +
+        '</div>' +
         '</div>' +
         '</div>' +
         '</a>' +
@@ -953,6 +972,7 @@ function getOutput(item,i){
 
     return output;
 }
+
 // Show the popup when a butto is clicked
 $("#showPopupbutto").click(function() {
     $("#popupContainer").show();
