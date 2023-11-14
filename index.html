@@ -412,14 +412,15 @@ width: 50%;
     display: inline-block;
     transition: transform 0.3s ease;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: Adds a subtle shadow for depth */
-    height: 160px; /* Set the desired height of the thumbnail container */
+    height: 120px; /* Set the desired height of the thumbnail container */
+    width: 160px; /* Set the desired width of the thumbnail container */
 }
 
 .thumbnail-container img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
-    object-position: center top; /* Crop 40px from top */
+    object-position: center center; /* Crop from both top and bottom */
 }
 
 .thumbnail-container:hover {
@@ -449,7 +450,6 @@ width: 50%;
     text-align: center;
     margin: 0;
 }
-
 
 		
 </style>
