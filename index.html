@@ -404,25 +404,28 @@ width: 50%;
 
 }
 
+
+
+
 /* Thumbnail ke liye custom styling */
 .thumbnail-container {
     position: relative;
-    border-radius: 10px; /* Reduced border radius */
+    border-radius: 10px;
     overflow: hidden;
     margin: 10px;
-    display: flex; /* Use flex to align logo, text, and thumbnail */
+    display: flex;
     transition: transform 0.3s ease;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: Adds a subtle shadow for depth */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .logo-container {
-    flex-shrink: 0; /* Prevent the logo from shrinking */
-    margin-right: 10px; /* Adjust margin as needed */
+    flex-shrink: 0;
+    margin-right: 10px;
 }
 
 .logo-container img {
-    width: 50px; /* Adjust logo width as needed */
-    height: 50px; /* Adjust logo height as needed */
+    width: 40px; /* Adjusted size to 40px */
+    height: auto;
 }
 
 .thumbnail-container img {
@@ -430,7 +433,7 @@ width: 50%;
     height: 100%;
     object-fit: cover;
     object-position: center top;
-    clip-path: inset(40px 0 40px 0); /* Crop 40px from top and bottom */
+    clip-path: inset(40px 0 40px 0);
 }
 
 .song-info {
@@ -439,7 +442,7 @@ width: 50%;
 }
 
 .thumbnail-container:hover {
-    transform: scale(1.1); /* Add a scale effect on hover for an album-like feel */
+    transform: scale(1.1);
 }
 
 .thumbnail-overlay {
@@ -465,6 +468,10 @@ width: 50%;
     text-align: center;
     margin: 0;
 }
+
+
+
+		
 
 		
 </style>
