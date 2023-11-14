@@ -418,6 +418,9 @@ width: 50%;
 .thumbnail-container img {
     width: 100%;
     height: auto;
+    object-fit: cover;
+    object-position: center top;
+    clip-path: inset(40px 0 40px 0); /* Crop 40px from top and bottom */
 }
 
 .thumbnail-container:hover {
