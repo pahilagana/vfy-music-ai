@@ -412,11 +412,15 @@ width: 50%;
     margin: 10px;
     display: inline-block;
     transition: transform 0.3s ease;
+    width: 140px; /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
 }
 
 .thumbnail-container img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover; /* Crop the image to cover the container */
+    object-position: center center; /* Adjust the cropping position */
 }
 
 .thumbnail-container:hover {
@@ -428,6 +432,7 @@ width: 50%;
     bottom: 0;
     left: 0;
     width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.5);
     padding: 10px;
     box-sizing: border-box;
@@ -444,6 +449,7 @@ width: 50%;
     text-align: center;
     margin: 0;
 }
+
 
 
 
