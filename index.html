@@ -2216,51 +2216,54 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
     const searchInput = document.getElementById('search-basic');
     const searchText = searchInput.value.toLowerCase();
 
-    const excludedCommands = [
-      'play ',
-      'sunao ',
-      'bajao ',
-      'start ',
-      'chalao ',
-      'chalu karo ',
-      'play karo ',
-      'sunna hai ',
-      'start kro '
-    ];
+    // Check if the user input contains a "play" command followed by a link
+    const playCommandIndex = searchText.indexOf('play ');
+    const linkIndex = searchText.indexOf('http');
 
-    // Check if the user input starts with any excluded command
-    if (excludedCommands.some(command => searchText.startsWith(command))) {
-      // Handle excluded commands (optional)
-      console.log('Excluded command detected');
+    if (playCommandIndex !== -1 && linkIndex !== -1 && playCommandIndex < linkIndex) {
+      // If it's a "play" command followed by a link, proceed with speech synthesis
+      speakWithAudio(searchText);
     } else {
-      // If not an excluded command, proceed with speech synthesis
-      if ('speechSynthesis' in window) {
-        const utterance = new SpeechSynthesisUtterance(searchText);
-
-        // Select a male voice, if available
-        const voices = window.speechSynthesis.getVoices();
-        let maleVoice = voices.find(voice => voice.name === 'vivek');
-        if (maleVoice) {
-          utterance.voice = maleVoice;
-        } else {
-          console.log('Male voice not found; using the default voice.');
-        }
-
-        utterance.volume = 1; // Set volume to 100%
-
-        utterance.onend = function () {
-          // Once the text is spoken, initiate the audio link for "Search results from bhi faai music"
-          const audio = new Audio('/sound/result.mp3');
-          audio.play();
-        };
-
-        window.speechSynthesis.speak(utterance);
+      // Check if the user input starts with excluded commands
+      const excludedCommands = ['start karo', 'bajao', 'play karo'];
+      if (excludedCommands.some(command => searchText.startsWith(command))) {
+        // Handle excluded commands (optional)
+        console.log('Excluded command detected');
       } else {
-        console.log('Text-to-speech not supported in this browser');
+        // If not an excluded command, proceed with speech synthesis
+        speakWithAudio(searchText);
       }
     }
   }
+
+  function speakWithAudio(textToSpeak) {
+    if ('speechSynthesis' in window) {
+      const utterance = new SpeechSynthesisUtterance(textToSpeak);
+
+      // Select a male voice, if available
+      const voices = window.speechSynthesis.getVoices();
+      let maleVoice = voices.find(voice => voice.name === 'vivek');
+      if (maleVoice) {
+        utterance.voice = maleVoice;
+      } else {
+        console.log('Male voice not found; using the default voice.');
+      }
+
+      utterance.volume = 1; // Set volume to 100%
+
+      utterance.onend = function () {
+        // Once the text is spoken, initiate the audio link for "Search results from bhi faai music"
+        const audio = new Audio('/sound/result.mp3');
+        audio.play();
+      };
+
+      window.speechSynthesis.speak(utterance);
+    } else {
+      console.log('Text-to-speech not supported in this browser');
+    }
+  }
 </script>
+
 
 
 
