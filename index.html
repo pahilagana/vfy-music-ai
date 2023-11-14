@@ -934,11 +934,12 @@ function getOutput(item,i){
         '<img src="/img/logo.png" alt="Vivekfy" width="10%">' +
         '<div>' +
         '<p>' + item.snippet.title + '</p>' +
-        '<small>VFY</small><br />' +
-        '<small>Music Player</small>' +
+        '<h3 class="video-title">' + item.snippet.title + '</h3>' +
+        '<small class="video-info"> VFY </small>' +
+        '<small class="video-info">Music Player</small>' +
         '</div>' +
         '</section>' +
-        '</div>';
+        '</div>' +
 	'</a>' ;
 
     return output;
