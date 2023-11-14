@@ -2158,22 +2158,35 @@ div.vfy1 {
     
 
 
-</!doctype>
 
 
 <script>
-const names = ["Arijit Singh Songs","Jubin nariyal songs","Jass Manak songs","Nehal kakkar songs","Sonu nigam songs","Kailash khair songs"," B praak songs","Kumar sanu songs","Alka Yagnik songs","Lata Mangeshkar songs","Yo Yo honey Singh songs","Aatif Aslam Songs","Neelkamal singh songs", "Ranjeet Singh songs", "Pawan singh songs","Ankush Raja songs","khesari lal songs","Ritesh Pandey songs", "Rakesh Mishra songs","Arvind akela Kallu songs"]; // Add your list of names here
-let currentIndex = 0;
-function changePlaceholder() {
-    const searchBox = document.getElementById("search-basic");
-    searchBox.placeholder = "Search for " + names[currentIndex];
-    currentIndex = (currentIndex + 1) % names.length;
-}
+    const names = ["Arijit Singh Songs", "Jubin Nautiyal Songs", "Jass Manak Songs", "Neha Kakkar Songs", "Sonu Nigam Songs", "Kailash Kher Songs", "B Praak Songs", "Kumar Sanu Songs", "Alka Yagnik Songs", "Lata Mangeshkar Songs", "Yo Yo Honey Singh Songs", "Atif Aslam Songs", "Neelkamal Singh Songs", "Ranjeet Singh Songs", "Pawan Singh Songs", "Ankush Raja Songs", "Khesari Lal Songs", "Ritesh Pandey Songs", "Rakesh Mishra Songs", "Arvind Akela Kallu Songs"];
+    let currentIndex = 0;
+    let currentName = "";
+    let charIndex = 0;
 
-setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
+    function changePlaceholder() {
+        const searchBox = document.getElementById("search-basic");
+        const targetName = names[currentIndex];
+
+        if (charIndex < targetName.length) {
+            currentName += targetName[charIndex];
+            searchBox.placeholder = "Search for " + currentName;
+            charIndex++;
+            setTimeout(changePlaceholder, 100); // Typing speed: 100 milliseconds
+        } else {
+            charIndex = 0;
+            currentName = "";
+            currentIndex = (currentIndex + 1) % names.length;
+            setTimeout(changePlaceholder, 1000); // Change name after 1 second
+        }
+    }
+
+    setInterval(changePlaceholder, 1000); // Initial call to start the process
 </script>
 
-<!doctype html>
+
 
 
   
