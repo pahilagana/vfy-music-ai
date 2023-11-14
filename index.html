@@ -420,6 +420,8 @@ width: 50%;
 .thumbnail-container img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: center top; /* Crop 40px from top */
 }
 
 .thumbnail-container:hover {
@@ -456,6 +458,7 @@ width: 50%;
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     gap: 10px;
 }
+
 
 
 </style>
@@ -943,7 +946,8 @@ function getOutput(item,i){
   var channelTitle = item.snippet.channelTitle;
   var videoDate = item.snippet.publishedAt;
  
-// Thumbnail ke liye custom styling container ko add karein
+
+    // Thumbnail ke liye custom styling container ko add karein
     var output =
         '<li>' +
         '<a onclick="loadSong(this)" index="' + i + '" class="list" vid="' + id + '">' +
@@ -958,6 +962,20 @@ function getOutput(item,i){
 
     return output;
 }
+
+// Assuming your song data is stored in an array named 'songs'
+var songs = [...]; // Your song data array
+var listOutput = '<ul id="myList">';
+
+for (var i = 0; i < songs.length; i++) {
+    listOutput += getOutput(songs[i], i);
+}
+
+listOutput += '</ul>';
+
+// Append listOutput to your HTML wherever you want to display the song grid
+// Example: document.getElementById('yourContainer').innerHTML = listOutput;
+
 // Show the popup when a butto is clicked
 $("#showPopupbutto").click(function() {
     $("#popupContainer").show();
