@@ -2211,28 +2211,21 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 
 
 
+
 <script>
   function speakSearchText() {
     const searchInput = document.getElementById('search-basic');
     const searchText = searchInput.value.toLowerCase();
 
-    // Check if the user input contains a "play" command followed by a link
-    const playCommandIndex = searchText.indexOf('play ');
-    const linkIndex = searchText.indexOf('http');
+    // Check if the user input contains the word "play"
+    const containsPlay = searchText.includes('play');
 
-    if (playCommandIndex !== -1 && linkIndex !== -1 && playCommandIndex < linkIndex) {
-      // If it's a "play" command followed by a link, proceed with speech synthesis
-      speakWithAudio(searchText);
+    if (containsPlay) {
+      // If the input contains "play", do not proceed with speech synthesis
+      console.log('Play command detected; not processing for speech synthesis');
     } else {
-      // Check if the user input starts with excluded commands
-      const excludedCommands = ['start karo', 'bajao', 'play karo'];
-      if (excludedCommands.some(command => searchText.startsWith(command))) {
-        // Handle excluded commands (optional)
-        console.log('Excluded command detected');
-      } else {
-        // If not an excluded command, proceed with speech synthesis
-        speakWithAudio(searchText);
-      }
+      // If "play" is not present, proceed with speech synthesis
+      speakWithAudio(searchText);
     }
   }
 
@@ -2263,7 +2256,6 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
     }
   }
 </script>
-
 
 
 
