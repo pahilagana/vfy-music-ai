@@ -2221,17 +2221,20 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
       let maleVoice = voices.find(voice => voice.name === 'vivek');
       if (maleVoice) {
         utteranceName.voice = maleVoice;
+
+        // Check if the input text is 'vivek' to play the audio file
+        if (nameToSpeak.toLowerCase() === 'vivek') {
+          utteranceName.onend = function() {
+            // Once the name is spoken, initiate the audio link for "Search results from bhi faai music"
+            const audio = new Audio('/sound/result.mp3');
+            audio.play();
+          };
+        }
       } else {
         console.log('Male voice not found; using the default voice.');
       }
 
       utteranceName.volume = 1; // Set volume to 100%
-
-      utteranceName.onend = function() {
-        // Once the name is spoken, initiate the audio link for "Search results from bhi faai music"
-        const audio = new Audio('/sound/result.mp3');
-        audio.play();
-      };
 
       window.speechSynthesis.speak(utteranceName);
     } else {
@@ -2239,6 +2242,7 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
     }
   }
 </script>
+
 
 
 
