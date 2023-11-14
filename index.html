@@ -812,6 +812,9 @@ $(document).on('swiperight', '.ui-page', function(event){
     }
     return false;            
 });
+
+var displayedVideos = []; // Maintain a list of displayed video IDs
+	
 var firstSearch = true; // Flag to track if it's the first search
 
 function search(){
@@ -856,7 +859,12 @@ $.get(
           function (data) {
                 var nextPageToken = data.nextPageToken;
                 var prevPageToken = data.prevPageToken;
+// Check if the video ID is not in the displayedVideos array
+                    if (displayedVideos.indexOf(id) === -1) {
+                        displayedVideos.push(id); // Add the video ID to the displayed list
 
+
+	
                 // Load all songs in the search list
                 $.each(data.items, function (i, item) {
                     var output = getOutput(item, i);
