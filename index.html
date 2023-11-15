@@ -946,7 +946,7 @@ function getOutput(item, i) {
 
   // Thumbnail ke liye custom styling container ko add karein
   var output =
-    '<a onclick="loadSong(this)" index="' + i + '" class="list" vid="' + item.id.videoId + '">' +
+    '<b onclick="loadSong(this)" index="' + i + '" class="list" vid="' + item.id.videoId + '">' +
     '<div class="video">' +
     '<img src="' + item.snippet.thumbnails.medium.url + '" alt="' + item.snippet.title + '" class="video-thumbnail" onclick="loadSong(this)" index="' + i + '" vid="' + item.id.videoId + '">' +
     '<section>' +
@@ -960,7 +960,7 @@ function getOutput(item, i) {
     '</div>' +
     '</section>' +
     '</div>' +
-    '</a>';
+    '</b>';
 
   return output;
 }
