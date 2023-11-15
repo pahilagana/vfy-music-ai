@@ -931,7 +931,6 @@ $.get(
     }
 }
 
-
 function getOutput(item, i) {
   var id = item.id.videoId;
   var title = item.snippet.title;
@@ -939,7 +938,6 @@ function getOutput(item, i) {
   var thumb = item.snippet.thumbnails.high.url;
   var channelTitle = item.snippet.channelTitle;
   var videoDate = new Date(item.snippet.publishedAt);
-  var views = item.statistics ? item.statistics.viewCount : 'N/A';
 
   // Check if the video is live and exclude it
   if (item.snippet.liveBroadcastContent === "live") {
@@ -956,10 +954,9 @@ function getOutput(item, i) {
     '<div>' +
     '<p>' + item.snippet.title + '</p>' +
     '<small class="video-info">' + item.snippet.channelTitle + '</small>' +
-    '<small class="video-info">VFY</small>' +
-    '<small class="video-info">Music Ai</small>' +
+    '<small class="video-info"> VFY </small>' +
+    '<small class="video-info"> Ai </small>' +
     '<small class="video-info">Release Date: ' + videoDate.toDateString() + '</small>' +
-    '<small class="video-info">Views: ' + views + '</small>' +
     '</div>' +
     '</section>' +
     '</div>' +
@@ -967,6 +964,7 @@ function getOutput(item, i) {
 
   return output;
 }
+
 
 // Show the popup when a butto is clicked
 $("#showPopupbutto").click(function() {
