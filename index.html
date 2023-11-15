@@ -934,6 +934,7 @@ $.get(
 
 function getOutput(item,i){
   var id = item.id.videoId;
+  var thumbnailUrl = item.snippet.thumbnails.maxres ? item.snippet.thumbnails.maxres.url : item.snippet.thumbnails.medium.url;
   var title = item.snippet.title;
   var description = item.snippet.description;
   var thumb = item.snippet.thumbnails.high.url;
@@ -946,7 +947,6 @@ function getOutput(item,i){
 
 
 
-var thumbnailUrl = item.snippet.thumbnails.maxres ? item.snippet.thumbnails.maxres.url : item.snippet.thumbnails.medium.url;
 
 var output =
     '<a onclick="loadSong(this)" index="' + i + '" class="list" vid="' + item.id.videoId + '">' +
