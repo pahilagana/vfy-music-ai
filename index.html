@@ -2381,7 +2381,7 @@ z-index: 999999;
   .modal-content {
     background-color: transparent;
     width: 100%;
-    top: 40%;
+    top: 75%;
     padding: 20px;
     text-align: center;
   }
@@ -2397,13 +2397,6 @@ z-index: 999999;
   <div class="modal-content">
     <span onclick="closeModal()" style="float: right;"></span>
 
-	  <div id="song-thumbnail"></div>
-	 <div id="profileThumbnail">
-	<!-- Profile thumbnail will be displayed here -->
-        </div>
-<div id="thumbnail"></div>	    
- <div id="vfyAu"></div>  
-
 <audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
 <div class="popup-footer">
 <a id="rewindbutto"><i class="fa fa-backward" style="font-size:28px;color: #E74C3C"></i></a>
@@ -2414,15 +2407,7 @@ z-index: 999999;
 </div>
 
 
-<!-- Popup container -->
-
-
-
-
-	  
-    
-    
-	   
+<!-- Popup container -->	   
   </div>
 </div>
 
@@ -2439,239 +2424,6 @@ function closeModal() {
   document.getElementById("modal").style.display = "none";
 }
 </script>
-
-
-</!doctype>
-
-
-
-  <butto id="speakbutto"></butto>
-
-  <script>
-    // Check if the browser supports the Web Speech API
-    if ('speechSynthesis' in window) {
-      const synth = window.speechSynthesis;
-      const speakbutto = document.getElementById('speakbutto');
-
-      function speakTime() {
-        const now = new Date();
-        const time = now.toLocaleTimeString();
-
-        // Create a SpeechSynthesisUtterance and set the rate to 0.7 (70%)
-        const utterance = new SpeechSynthesisUtterance(time);
-        utterance.rate = 0.7;
-
-        synth.speak(utterance);
-      }
-
-      speakbutto.addEventListener('click', speakTime);
-    } else {
-      alert("Text-to-speech is not supported in this browser.");
-    }
-  </script>
-
-<butto id="speakbutto1"></butto>
-
-    <script>
-        document.getElementById("speakbutto1").addEventListener("click", function () {
-            if ('speechSynthesis' in window) {
-                navigator.getBattery().then(function (battery) {
-                    var chargePercentage = (battery.level * 100).toString() + " percent";
-                    var synth = window.speechSynthesis;
-                    var utterance = new SpeechSynthesisUtterance(chargePercentage);
-                    synth.speak(utterance);
-                }).catch(function (err) {
-                    console.error("Battery API is not supported in this browser.");
-                });
-            } else {
-                console.error("Web Speech API is not supported in this browser.");
-            }
-        });
-    </script>
-
-
-
-    
-	
-<!doctype html>
-
-
-
-    <script src="https://apis.google.com/js/client.js"></script>
-    <script src="https://apis.google.com/js/api.js"></script>
-
-
-
-    <butto id="AdAudio"></butto>
-    <butto id="AdVideo"></butto>
-
-    
-    
-    <iframe id="video-player" width="0" height="0" style="display: none" allowfullscreen></iframe>
-
-    <script>
-        // Function to clean up text and remove special characters
-        function cleanText(text) {
-            // Use a regular expression to remove special characters and non-Hindi text
-            return text.replace(/[^A-Za-z0-9\u0900-\u097F\s]/g, '');
-        }
-
-        // Function to initiate voice search for audio
-        function startVoiceSearchForAudio() {
-            // Disable the audio butto with a 2-second delay
-            document.getElementById('AdAudio').disabled = true;
-            setTimeout(function () {
-                var recognition = new webkitSpeechRecognition() || SpeechRecognition();
-                recognition.onresult = function (event) {
-                    // Get the recognized speech as the search query
-                    var query = event.results[0][0].transcript;
-                    searchYouTubeForAudio(query);
-                };
-
-                recognition.onend = function () {
-                    // Enable the audio butto after recognition has started
-                    document.getElementById('AdAudio').disabled = false;
-                };
-
-                recognition.start();
-            }, 4000); // 2000 milliseconds (2 seconds) delay
-        }
-
-        // Function to perform a YouTube search and play the audio
-        function searchYouTubeForAudio(query) {
-            gapi.client.youtube.search.list({
-                part: 'snippet',
-                q: query,
-                maxResults: 1
-            }).then(function (response) {
-                // Clear previous result
-                document.getElementById('vfyAu').innerHTML = '';
-
-                // Display the search result
-                var item = response.result.items[0];
-                var videoTitle = cleanText(item.snippet.title); // Clean up the video title
-                var videoId = item.id.videoId;
-                
-                var thumbnailUrl = item.snippet.thumbnails.high.url; // Use 'high' for HD size
-
-var songThumbnailDiv = document.getElementById('thumbnail');
-songThumbnailDiv.innerHTML = '<img src="' + thumbnailUrl + '" alt="Thumbnail">';
-
-                
-
-                // Add TTS for the video title
-                var synth = window.speechSynthesis;
-                var utterance = new SpeechSynthesisUtterance(videoTitle);
-                synth.speak(utterance);
-
-	    // Audio player ko audio source se set karo
-var audioPlayer = document.getElementById('SAudio');
-audioPlayer.src = 'https://audioserver-dev-cgen.2.sg-1.fl0.io/' + videoId;
-
-// Video title ko display karo
-var videoHeading = document.createElement('h4');
-videoHeading.textContent = videoTitle;
-document.getElementById('vfyAu').appendChild(videoHeading);
-
-// 10 seconds ke baad audio load fail hone par check karo
-setTimeout(function() {
-    if (audioPlayer.error) {
-        // Dusre link par shift karo aur play karo
-        audioPlayer.src = 'https://myserver-dev-atmq.2.ie-1.fl0.io/low-audio?url=https://youtu.be/' + videoId;
-        audioPlayer.play();
-    }
-}, 10000);
-
-// Audio ko display karo aur play karo
-audioPlayer.style.display = 'block';
-audioPlayer.play();
-}, function (error) {
-                console.error('Error: ' + error.result.error.message);
-            });
-        }		    
-
-
-        // Function to initiate voice search for video
-        function startVoiceSearchForVideo() {
-            // Disable the video butto with a 2-second delay
-            document.getElementById('AdVideo').disabled = true;
-            setTimeout(function () {
-                var recognition = new webkitSpeechRecognition() || SpeechRecognition();
-                recognition.onresult = function (event) {
-                    // Get the recognized speech as the search query
-                    var query = event.results[0][0].transcript;
-                    searchYouTubeForVideo(query);
-                };
-
-                recognition.onend = function () {
-                    // Enable the video butto after recognition has started
-                    document.getElementById('AdVideo').disabled = false;
-                };
-
-                recognition.start();
-            }, 4000); // 2000 milliseconds (2 seconds) delay
-        }
-
-        // Function to perform a YouTube search and display the video
-        function searchYouTubeForVideo(query) {
-            gapi.client.youtube.search.list({
-                part: 'snippet',
-                q: query,
-                maxResults: 1
-            }).then(function (response) {
-                // Clear previous result
-                document.getElementById('vfyAu').innerHTML = '';
-
-                // Display the search result
-                var item = response.result.items[0];
-                var videoId = item.id.videoId;
-
-                // Set the source for the video player
-                var videoPlayer = document.getElementById('video-player');
-                videoPlayer.style.display = 'block';
-                videoPlayer.src = 'https://vivekfy-dev-jmbe.2.ie-1.fl0.io/download/audio?url=https://youtu.be/'+videoId;
-
-                // Display the video title
-                var videoTitle = cleanText(item.snippet.title); // Clean up the video title
-                var videoHeading = document.createElement('h4');
-                videoHeading.textContent = videoTitle;
-                document.getElementById('vfyAu').appendChild(videoHeading);
-                
-                
-                var thumbnailUrl = item.snippet.thumbnails.high.url; // Use 'high' for HD size
-
-var songThumbnailDiv = document.getElementById('song-thumbnail');
-songThumbnailDiv.innerHTML = '<img src="' + thumbnailUrl + '" alt="Thumbnail">';
-
-                
-
-                // Play the video
-                videoPlayer.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-            }, function (error) {
-                console.error('Error: ' + error.result.error.message);
-            });
-        }
-
-        // Load the API client library
-        gapi.load('client', function () {
-            gapi.client.init({
-                apiKey: 'AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo',
-                discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest'],
-            }).then(function () {
-                // Add click event listeners to the voice search buttos
-                document.getElementById('AdAudio').addEventListener('click', startVoiceSearchForAudio);
-                document.getElementById('AdVideo').addEventListener('click', startVoiceSearchForVideo);
-            });
-        });
-    </script>
-
-
-</!doctype>
-
-
-
-
-
 
 
 <style>
