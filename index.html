@@ -415,12 +415,17 @@ width: 50%;
 
 .video {
   background-color: #252525;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .video-thumbnail {
   border-radius: 10px;
   margin-bottom: 10px;
-  width: 90%; /* Ensure the thumbnail takes the full width */
+  width: 90%; /* Set the width to 90% */
+  max-width: 100%; /* Ensure it doesn't exceed the container width */
 }
 
 .video-details {
