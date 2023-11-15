@@ -927,19 +927,7 @@ $.get(
         );
     }
 }
-// Maintain a list to store unique video IDs
-var uniqueVideoIds = [];
 
-function getOutput(item, i) {
-  var id = item.id.videoId;
-
-  // Check if the video ID is already in the list, if yes, skip
-  if (uniqueVideoIds.includes(id)) {
-    return '';
-  }
-
-  // Add the current video ID to the list
-  uniqueVideoIds.push(id);
 
 function getOutput(item,i){
   var id = item.id.videoId;
@@ -952,6 +940,20 @@ function getOutput(item,i){
   if (item.snippet.liveBroadcastContent === "live") {
     return ''; // Empty string means skipping this item
   }
+
+// Maintain a list to store unique video IDs
+var uniqueVideoIds = [];
+
+function getOutput(item, i) {
+  var id = item.id.videoId;
+
+  // Check if the video ID is already in the list, if yes, skip
+  if (uniqueVideoIds.includes(id)) {
+    return '';
+  }
+
+  
+	
 // Thumbnail ke liye custom styling container ko add karein
     var output =
 	'<a onclick="loadSong(this)" index="' + i + '" class="list" vid="' + item.id.videoId + '">' +  
