@@ -928,9 +928,16 @@ $.get(
     }
 }
 
-
+// Maintain a list to store unique video IDs
+var uniqueVideoIds = [];
 function getOutput(item,i){
   var id = item.id.videoId;
+ // Check if the video ID is already in the list, if yes, skip
+  if (uniqueVideoIds.includes(id)) {
+    return '';
+  }
+// Add the current video ID to the list
+  uniqueVideoIds.push(id);
   var title = item.snippet.title;
   var description = item.snippet.description;
   var thumb = item.snippet.thumbnails.high.url;
