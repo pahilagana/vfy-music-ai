@@ -414,7 +414,7 @@ width: 50%;
 }
 
 .video {
-  background-color: #EBDEF0;
+  background-color: #252525;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -424,7 +424,7 @@ width: 50%;
 .video-thumbnail {
   border-radius: 10px;
   margin-bottom: 10px;
-  width: 100%;
+  width: 95%;
   max-width: 100%;
 box-shadow: 0 4px 4px #000; /* Add shadow with color #15e2f5 */
 }
@@ -440,7 +440,6 @@ box-shadow: 0 4px 4px #000; /* Add shadow with color #15e2f5 */
 .video-title {
   font-size: 1.2em;
   margin-bottom: 5px;
- 
   width: 100%; /* Ensure the title takes the full width within the details */
 }
 
@@ -947,10 +946,9 @@ function getOutput(item, i) {
 
   // Thumbnail ke liye custom styling container ko add karein
   var output =
-        '<div class="video">' +
-  '<a onclick="loadSong(this)" index="' + i + '" class="list" vid="' + item.id.videoId + '">' +
-  '<img src="' + item.snippet.thumbnails.medium.url + '" alt="' + item.snippet.title + '" class="video-thumbnail" onclick="loadSong(this)" index="' + i + '" vid="' + item.id.videoId + '">' +
-    '</a>' +
+    '<a onclick="loadSong(this)" index="' + i + '" class="list" vid="' + item.id.videoId + '">' +
+    '<div class="video">' +
+    '<img src="' + item.snippet.thumbnails.medium.url + '" alt="' + item.snippet.title + '" class="video-thumbnail" onclick="loadSong(this)" index="' + i + '" vid="' + item.id.videoId + '">' +
     '<section>' +
     '<img src="/img/logo.png" alt="Vivekfy" width="10%" padding="20">' +
     '<div>' +
@@ -961,7 +959,8 @@ function getOutput(item, i) {
     '<small class="video-info">Release Date: ' + videoDate.toDateString() + '</small>' +
     '</div>' +
     '</section>' +
-    '</div>' ;
+    '</div>' +
+    '</a>';
 
   return output;
 }
@@ -2980,6 +2979,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
       document.getElementById('exitFullscreenIcon').style.display = 'none';
     }
   </script>
+
 
 
 
