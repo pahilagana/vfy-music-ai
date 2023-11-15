@@ -941,7 +941,7 @@ function getOutput(item, i) {
   var id = item.id.videoId;
   var title = item.snippet.title;
   var description = item.snippet.description;
-  var thumb = item.snippet.thumbnails.maxres.url;
+  var thumb = item.snippet.thumbnails.high.url;
   var channelTitle = item.snippet.channelTitle;
   var videoDate = new Date(item.snippet.publishedAt);
 
@@ -954,7 +954,7 @@ function getOutput(item, i) {
   var output =
     '<b onclick="loadSong(this)" index="' + i + '" class="list" vid="' + item.id.videoId + '">' +
     '<div class="video">' +
-    '<img src="' + item.snippet.thumbnails.maxres.url + '" alt="' + item.snippet.title + '" class="video-thumbnail" onclick="loadSong(this)" index="' + i + '" vid="' + item.id.videoId + '">' +
+    '<img src="' + item.snippet.thumbnails.medium.url + '" alt="' + item.snippet.title + '" class="video-thumbnail" onclick="loadSong(this)" index="' + i + '" vid="' + item.id.videoId + '">' +
     '<section>' +
     '<img src="/img/logo.png" alt="Vivekfy" width="10%" padding="20">' +
     '<div>' +
