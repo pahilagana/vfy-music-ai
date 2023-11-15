@@ -935,7 +935,10 @@ function getOutput(item,i){
   var thumb = item.snippet.thumbnails.high.url;
   var channelTitle = item.snippet.channelTitle;
   var videoDate = item.snippet.publishedAt;
- 
+ // Check if the video is live and exclude it
+  if (item.snippet.liveBroadcastContent === "live") {
+    return ''; // Empty string means skipping this item
+  }
 // Thumbnail ke liye custom styling container ko add karein
     var output =
 	'<a onclick="loadSong(this)" index="' + i + '" class="list" vid="' + item.id.videoId + '">' +  
