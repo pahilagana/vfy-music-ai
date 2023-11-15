@@ -941,11 +941,8 @@ function getOutput(item,i){
     return ''; // Empty string means skipping this item
   }
 
-// Maintain a list to store unique video IDs
-var uniqueVideoIds = [];
 
-function getOutput(item, i) {
-  var id = item.id.videoId;
+
 
   // Check if the video ID is already in the list, if yes, skip
   if (uniqueVideoIds.includes(id)) {
