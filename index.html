@@ -422,6 +422,7 @@ width: 50%;
 }
 
 .video-thumbnail {
+  position: relative; /* Set position to relative for absolute positioning */
   border-radius: 10px;
   margin-bottom: 10px;
   width: 95%;
@@ -432,6 +433,21 @@ width: 50%;
 
 .video-thumbnail:hover {
   transform: scale(1.1); /* Zoom in on hover */
+}
+
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  color: #fff;
+  display: none; /* Initially hidden, will be displayed on hover */
+}
+
+.video-thumbnail:hover .play-icon {
+  display: block; /* Display play icon on hover */
+}
 }
 
 
