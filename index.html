@@ -945,9 +945,6 @@ function getOutput(item,i){
     return ''; // Empty string means skipping this item
   }
 
-
-
-
 var output =
     '<a onclick="loadSong(this)" index="' + i + '" class="list" vid="' + item.id.videoId + '">' +
     '<div class="video-container">' + // Add a container class for styling
@@ -965,11 +962,7 @@ var output =
     '</a>';
 
 return output;
-
-  
-
-  
-	
+}	
 
 // Show the popup when a butto is clicked
 $("#showPopupbutto").click(function() {
