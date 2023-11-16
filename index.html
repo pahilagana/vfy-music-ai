@@ -884,19 +884,35 @@ width: 50%;
     text-align: center;
 }
 
-        .play-button {
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.play-button {
     width: 10%;
     display: flex;
     align-items: center;
     position: relative;
+    overflow: hidden;
 }
 
 .play-button i {
-    font-size: 24px; /* Adjust the font size as needed */
-    border: 2px solid #fff; /* Border color */
-    border-radius: 5%; /* Border radius to create a circle */
-    padding: 10px; /* Padding to create space around the icon */
+    font-size: 24px;
+    border: 2px solid #fff;
+    border-radius: 5%;
+    padding: 8px;
+    position: relative;
+    z-index: 2;
 }
+
 .play-button::before {
     content: "";
     position: absolute;
@@ -909,7 +925,7 @@ width: 50%;
     background-size: 400% 400%;
     animation: gradientAnimation 5s ease infinite;
 }
-        
+
     </style>
     
 
