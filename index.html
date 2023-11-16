@@ -152,22 +152,17 @@ img:hover {
 <div class="fixed">
         <b href="" class="butto ">
     <div class="buttoDiv bg-b-blue">        
-
 <div class="audio-player">
-  <div id="poster-container">
-    <div class="center-dot"></div>
-    <div id="progress-container">
-      <div id="progress"></div>
-    </div>
-
-<img id="SThumb" src="/img/newdp.png"  alt="developer vivek masona" width="60" height="60" border="0" border-color="#15E2F5" style="border-radius: 200px;">
-  
-	  
-    <!-- Your poster image goes here -->
-  </div>
-</div>
 
 	
+  <div id="progress-container">
+    <div id="progress"></div>
+  </div>
+  <div id="poster-container">
+<div class="center-dot"></div>
+
+	<img id="SThumb" src="/img/newdp.png"  alt="developer vivek masona" width="60" height="60" border="0" border-color="#15E2F5" style="border-radius: 200px;">
+      </div>  
     <!-- Your poster image goes here -->
   </div>
 </div>
@@ -367,52 +362,47 @@ Color:#E74C3C;
 
 .audio-player {
   position: relative;
-  width: 120px; /* As needed */
-  height: 120px; /* As needed */
-  overflow: hidden;
-}
-
-#poster-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.center-dot {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 20px;
-  height: 20px;
-  background-color: white;
+  width: 120px; /* Adjust as needed */
+  height: 120px; /* Adjust as needed */
   border-radius: 50%;
+  overflow: hidden;
 }
 
 #progress-container {
   position: absolute;
   width: 100%;
   height: 100%;
-  clip-path: circle(50% at 50% 50%); /* Circular clipping path */
-  overflow: hidden;
+  animation: rotate 5s linear infinite; /* Adjust duration and styling as needed */
 }
 
 #progress {
-  position: absolute;
-  width: 100%;
-  height: 20px; /* Thickness of the progress bar */
-  border-radius: 10px; /* Half of the height for a rounded appearance */
+  width: 6px;
+  height: 100%;
   background: linear-gradient(90deg, rgba(12,78,10,1) 4%, rgba(34,108,31,1) 15%, rgba(133,173,130,1) 34%, rgba(168,196,166,1) 38%, rgba(255,255,255,1) 50%, rgba(255,254,254,1) 64%, rgba(255,217,200,1) 70%, rgba(255,103,31,1) 88%);
-  animation: moveProgress 5s linear infinite; /* Adjust duration and styling as needed */
 }
 
-@keyframes moveProgress {
-  0% {
-    left: -100%; /* Initial position off-screen to the left */
-  }
-  100% {
-    left: 100%; /* Move progress bar off-screen to the right */
-  }
+#poster-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#poster-container img{
+  max-width: 80%; /* Adjust as needed */
+  max-height: 80%; /* Adjust as needed */
+  border-radius: 50%;
+}
+
+.center-dot {
+  width: 20px;
+  height: 20px;
+z-index: 999999;
+  background-color:#E74C3C ;
+  border-radius: 50%;
+  position: absolute;
 }
 
 
@@ -2774,6 +2764,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
       document.getElementById('exitFullscreenIcon').style.display = 'none';
     }
   </script>
+
 
 
 
