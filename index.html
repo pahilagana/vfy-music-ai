@@ -2484,7 +2484,81 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 
 
         
+<!doctype html>
+ <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      
+      background-color: red;
+    }
 
+    #profile {
+height: 100vh;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      margin-bottom: 20px;
+height: 100%;
+      width: 100%; /* Adjusted width for better fit */
+      max-width: 400px; /* Set a max-width to prevent it from getting too wide on larger screens */
+    }
+
+    #profile img {
+      width: 150px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+
+    h1, p {
+      color: #333;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+
+    li {
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    #footer {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      background-color: #333;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      left: -10;
+      width: 100%;
+      
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+
+
+
+</!doctype>
 
 	
 	
@@ -2527,6 +2601,35 @@ z-index: 999999;
   <div class="modal-content">
     <span onclick="closeModal()" style="float: right;"></span>
 
+
+
+
+  <div id="profile">
+    <img src="profile-picture.jpg" alt="Profile Picture" />
+    <h1>Music Lover</h1>
+    <p>Favorite Genre: Rock</p>
+    <ul>
+      <li>Followers: 1000</li>
+      <li>Following: 500</li>
+      <li>Tracks: 50</li>
+    </ul>
+    <button>Follow</button>
+  </div>
+
+  <div id="footer">
+    <button>Backward</button>
+    <button>Play</button>
+    <button>Pause</button>
+    <button>Forward</button>
+
+  </div>
+
+
+
+
+
+	  
+
   <center>  <input type="range" id="seekbar" value="0"></center>
 
 	<div id="audio-player">
@@ -2552,6 +2655,15 @@ z-index: 999999;
   </div>
 </div>
 
+
+
+
+
+
+
+
+
+	
 <script>
 // Function to open the modal
 function openModal() {
