@@ -60,6 +60,14 @@
     var seekto = audio.duration * (seekbar.value / 100);
     audio.currentTime = seekto;
   });
+
+  function playPause() {
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  }
 </script>
 
 
@@ -2448,9 +2456,20 @@ z-index: 999999;
 <div id="modal" class="modal-container">
   <div class="modal-content">
     <span onclick="closeModal()" style="float: right;"></span>
-<input type="range" id="seekbar" value="0">
 
-<audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
+	  
+	<div id="audio-player">
+  <audio id="SAudio" controls style="display: none;">
+    <source src="your-audio-file.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <input type="range" id="seekbar" value="0">
+  <button onclick="playPause()">Play</button>
+</div>
+  
+	  
+	  
 <div class="popup-footer">
 <a id="rewindbutto"><i class="fa fa-backward" style="font-size:28px;color: #E74C3C"></i></a>
 <i class="fa fa-close" style="font-size:28px;color: transparent"></i>
