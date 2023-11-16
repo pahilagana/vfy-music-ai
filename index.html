@@ -47,6 +47,25 @@
 
 
 
+<script>
+  var audio = document.getElementById("SAudio");
+  var seekbar = document.getElementById("seekbar");
+
+  audio.addEventListener("timeupdate", function() {
+    var value = (audio.currentTime / audio.duration) * 100;
+    seekbar.value = value;
+  });
+
+  seekbar.addEventListener("input", function() {
+    var seekto = audio.duration * (seekbar.value / 100);
+    audio.currentTime = seekto;
+  });
+</script>
+
+
+
+
+
 
 <style>
   #vfytitle {
@@ -2429,6 +2448,7 @@ z-index: 999999;
 <div id="modal" class="modal-container">
   <div class="modal-content">
     <span onclick="closeModal()" style="float: right;"></span>
+<input type="range" id="seekbar" value="0">
 
 <audio style="control" id="SAudio" controls><source src='' type='audio/mpeg'></source></audio>
 <div class="popup-footer">
