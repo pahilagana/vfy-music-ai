@@ -47,28 +47,7 @@
 
 
 
-<script>
-  var audio = document.getElementById("SAudio");
-  var seekbar = document.getElementById("seekbar");
 
-  audio.addEventListener("timeupdate", function() {
-    var value = (audio.currentTime / audio.duration) * 100;
-    seekbar.value = value;
-  });
-
-  seekbar.addEventListener("input", function() {
-    var seekto = audio.duration * (seekbar.value / 100);
-    audio.currentTime = seekto;
-  });
-
-  function playPause() {
-    if (audio.paused) {
-      audio.play();
-    } else {
-      audio.pause();
-    }
-  }
-</script>
 
 
 
@@ -1190,6 +1169,19 @@ rewindbutto.addEventListener('click', function () {
         audio.currentTime = 0;
     }
 });
+
+var audio = document.getElementById("SAudio");
+  var seekbar = document.getElementById("seekbar");
+
+  audio.addEventListener("timeupdate", function() {
+    var value = (audio.currentTime / audio.duration) * 100;
+    seekbar.value = value;
+  });
+
+  seekbar.addEventListener("input", function() {
+    var seekto = audio.duration * (seekbar.value / 100);
+    audio.currentTime = seekto;
+  });	
 
 var audio = document.getElementById('SAudio');
 var volume10butto = document.getElementById('volume10');
