@@ -47,23 +47,31 @@
 
 
 <style>
-  #seekbar {
-    background-color: red;
-    border-radius: 10px; /* Adjust the value as needed for the desired roundness */
-    overflow: hidden;
+  /* Hide the default seek bar */
+  #SAudio {
+    width: 100%;
+    height: 0;
+    opacity: 0;
   }
 
-  #seekbar::-webkit-slider-runnable-track {
-    background-color: transparent;
+  
+
+  #seekbar {
+    width: 100%;
+    height: 10px;
+    border-radius: 5px; /* Adjust the value for the desired roundness */
+    background-color: black;
+    outline: none;
+    -webkit-appearance: none; /* Override default styles on iOS */
   }
 
   #seekbar::-webkit-slider-thumb {
-    background-color: red;
-    border: none;
-    height: 20px; /* Adjust the height of the thumb as needed */
+    -webkit-appearance: none;
+    appearance: none;
     width: 20px; /* Adjust the width of the thumb as needed */
+    height: 20px; /* Adjust the height of the thumb as needed */
+    background-color: red;
     border-radius: 50%;
-    margin-top: -8px; /* Half of the thumb's height to vertically center it */
     cursor: pointer;
   }
 </style>
