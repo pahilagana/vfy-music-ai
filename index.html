@@ -272,6 +272,7 @@ img:hover {
 
 	<style>
 
+
 #SThumb {
   width: 200px;
   height: 200px;
@@ -285,6 +286,7 @@ img:hover {
   height: 100%;
   border-radius: 50%;
   box-shadow: 0 0 20px # /* Add your logic for random color here */;
+  animation: glow 2s infinite alternate; /* Add glow animation */
 }
 
 .layer:nth-child(1) {
@@ -308,7 +310,7 @@ img:hover {
 }
 
 .rotate {
-  animation: spin 5s linear infinite, rotation 5s linear infinite;
+  animation: spin 5s linear infinite, rotation 5s linear infinite, colorChange 0.2s infinite; /* Updated color change time */
 }
 
 @keyframes spin {
@@ -329,6 +331,23 @@ img:hover {
   }
 }
 
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px # /* Initial color */;
+  }
+  to {
+    box-shadow: 0 0 20px # /* Add your logic for random color here */;
+  }
+}
+
+@keyframes colorChange {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
 
 </style>	
 
