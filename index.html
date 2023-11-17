@@ -1105,30 +1105,27 @@ function getOutput(item, i) {
   if (item.snippet.liveBroadcastContent === "live") {
     return ''; // Empty string means skipping this item
   }
+// Thumbnail ke liye custom styling container ko add karein
+  var output =
+    '<b onclick="loadSong(this)" index="' + i + '" class="list" vid="' + item.id.videoId + '">' +
+    '<div class="video">' +
+    '<img src="' + item.snippet.thumbnails.medium.url + '" alt="' + item.snippet.title + '" class="video-thumbnail" onclick="loadSong(this)" index="' + i + '" vid="' + item.id.videoId + '">' +
+    '<section>' +
+    '<img src="/img/logo.png" alt="Vivekfy" width="10%" padding="20">' +
+    '<div>' +
+    '<p>V F Y ' + item.snippet.title + '</p>' +
+    '<small class="video-info">'+ item.snippet.channelTitle + '</small>' +
+    '<small class="video-info"> VFY </small>' +
+    '<small class="video-info"> Ai </small>' +
+    '<small class="video-info">Release Date: ' + videoDate.toDateString() + '</small>' +
+    '</div>' +
+    '</section>' +
+    '</div>' +
+    '</b>';
 
-  // Thumbnail ke liye custom styling container ko add karein
-var output =
-  '<b onclick="loadSong(this)" index="' + i + '" class="list" vid="' + item.id.videoId + '">' +
-  '<div class="video" style="position: relative;">' +
-  '<div class="loading-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.7); text-align: center; display: none;">' +
-  'Loading...</div>' +
-  '<img src="' + item.snippet.thumbnails.medium.url + '" alt="' + item.snippet.title + '" class="video-thumbnail" onclick="loadSong(this)" index="' + i + '" vid="' + item.id.videoId + '">' +
-  '<section>' +
-  '<img src="/img/logo.png" alt="Vivekfy" width="10%" padding="20">' +
-  '<div>' +
-'<small class="video-info">'+ item.snippet.channelTitle + '</small>' +
-'<p>V F Y ' + item.snippet.title + '</p>' +	
-  '<small class="video-info"> VFY </small>' +
-  '<small class="video-info"> Ai </small>' +
-  '<small class="video-info">Release Date: ' + videoDate.toDateString() + '</small>' +
-   '</div>' +
-  '</section>' +
-  '</div>' +
-  '</b>';
-
-return output;
-
+  return output;
 }
+
 
 
 // Show the popup when a butto is clicked
