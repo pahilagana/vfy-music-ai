@@ -1293,6 +1293,9 @@ audioPlayer.addEventListener("loadedmetadata", () => {
 audioPlayer.addEventListener("timeupdate", () => {
   const currentTime = audioPlayer.currentTime;
   currentTimeDisplay.textContent = formatTime(currentTime);
+
+  const progress = (currentTime / audioPlayer.duration) * 100;
+  document.getElementById("progress").style.width = progress + "%";
 });
 
 function formatTime(seconds) {
@@ -1406,12 +1409,7 @@ watermarkAudio2.controls = false;
 
 	
 
-	audio.addEventListener("timeupdate", function() {
-  const currentTime = audio.currentTime;
-  const duration = audio.duration;
-  const progress = (currentTime / duration) * 100;
-  document.getElementById("progress1").style.width = progress + "%";
-});
+	
 
 
   document.getElementById("play").onclick = function () {
