@@ -1180,19 +1180,7 @@ function playPreviousSong() {
         playlistItems[previousSongIndex].click(); // Play the previous song
         audio.play(); // Play the audio
 
-        // Update the profile thumbnail and video ID for the previous song
-        var previousSong = playlistItems[previousSongIndex];
-        var previousThumbnail = $(previousSong).children('img').attr("src");
-        var previousVideoId = $(previousSong).attr("vid");
-        $("#profileThumbnail").html('<img src="' + previousThumbnail + '" alt="Profile Thumbnail">');
-        $("#profileThumbnail").data("videoId", previousVideoId);
-
-        console.log('Automatically went to the previous song and started playing.');
-    } else {
-        console.log('Beginning of playlist');
-        // You may want to handle what happens when it's the beginning of the playlist.
-    }
-}
+        
 
 // Listen for the 'ended' event
 audio.addEventListener("ended", function () {
