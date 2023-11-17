@@ -277,7 +277,6 @@ img:hover {
   height: 200px;
   border-radius: 50%;
   position: relative;
-  animation: spin 5s linear infinite, hueBlink 2s infinite; /* Adjust durations as needed */
 }
 
 .layer {
@@ -308,6 +307,10 @@ img:hover {
   left: 5px;
 }
 
+.rotate {
+  animation: spin 5s linear infinite, hueBlink 2s infinite; /* Adjust durations as needed */
+}
+
 @keyframes spin {
   from {
     transform: rotate(0deg);
@@ -328,6 +331,11 @@ img:hover {
     filter: hue-rotate(0deg);
   }
 }
+
+.spin-stop {
+  animation: none;
+}
+
 
 
 
