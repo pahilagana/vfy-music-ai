@@ -278,6 +278,7 @@ img:hover {
   height: 200px;
   border-radius: 50%;
   position: relative;
+  animation: hueChange 5s linear infinite; /* Adjust duration as needed */
 }
 
 .layer {
@@ -286,7 +287,6 @@ img:hover {
   height: 100%;
   border-radius: 50%;
   box-shadow: 0 0 20px # /* Add your logic for random color here */;
-  animation: glow 2s infinite alternate; /* Add glow animation */
 }
 
 .layer:nth-child(1) {
@@ -310,7 +310,7 @@ img:hover {
 }
 
 .rotate {
-  animation: spin 5s linear infinite, rotation 5s linear infinite, colorChange 0.2s infinite; /* Updated color change time */
+  animation: spin 5s linear infinite; /* Adjust duration as needed */
 }
 
 @keyframes spin {
@@ -322,25 +322,7 @@ img:hover {
   }
 }
 
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes glow {
-  from {
-    box-shadow: 0 0 20px # /* Initial color */;
-  }
-  to {
-    box-shadow: 0 0 20px # /* Add your logic for random color here */;
-  }
-}
-
-@keyframes colorChange {
+@keyframes hueChange {
   from {
     filter: hue-rotate(0deg);
   }
@@ -348,6 +330,7 @@ img:hover {
     filter: hue-rotate(360deg);
   }
 }
+
 
 </style>	
 
