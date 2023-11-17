@@ -272,13 +272,12 @@ img:hover {
 
 	<style>
 
-
 #SThumb {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   position: relative;
-  animation: hueChange 5s linear infinite; /* Adjust duration as needed */
+  animation: spin 5s linear infinite, hueBlink 2s infinite; /* Adjust durations as needed */
 }
 
 .layer {
@@ -309,10 +308,6 @@ img:hover {
   left: 5px;
 }
 
-.rotate {
-  animation: spin 5s linear infinite; /* Adjust duration as needed */
-}
-
 @keyframes spin {
   from {
     transform: rotate(0deg);
@@ -322,14 +317,19 @@ img:hover {
   }
 }
 
-@keyframes hueChange {
-  from {
+@keyframes hueBlink {
+  0% {
     filter: hue-rotate(0deg);
   }
-  to {
-    filter: hue-rotate(360deg);
+  50% {
+    filter: hue-rotate(180deg); /* Adjust the degree for half of the color spectrum */
+  }
+  100% {
+    filter: hue-rotate(0deg);
   }
 }
+
+
 
 
 </style>	
