@@ -1146,6 +1146,8 @@ document.getElementById("vivekmasona").onclick = ()=>{
 
     
 var audio = document.getElementById("SAudio");
+audio.preload = "auto";
+
 
 // Function to play the next song
 function playNextSong() {
@@ -1199,7 +1201,7 @@ audio.addEventListener("error", function () {
 var nextbutto = document.getElementById("nextbutto");
 nextbutto.addEventListener("click", function () {
     playNextSong();
-});
+}); 
 
 
 
