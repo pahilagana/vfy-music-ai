@@ -829,7 +829,7 @@ width: 50%;
 </vfy>
 
 
-  <style>
+<style>
     body {
       margin: 0;
       padding: 0;
@@ -852,7 +852,7 @@ width: 50%;
       position: relative; /* Add position relative */
     }
 
-    #progress {
+    #progress1 {
       height: 100%;
       width: 0;
       position: absolute;
@@ -866,22 +866,63 @@ width: 50%;
       text-align: center;
     }
 
-    /* Your existing styles */
+    .play-button {
+      width: 11%;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .play-button i {
+      font-size: 24px;
+      padding: 8px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .play-button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      background: linear-gradient(45deg, #ff8a00, #E74C3C, #00bfff, #E74C3C);
+      background-size: 400% 400%;
+      animation: gradientAnimation 5s ease infinite;
+      border: 0px solid #E74C3C; /* Add border to the gradient background */
+      border-radius: 100px; /* Adjust the border-radius value */
+      box-sizing: border-box;
+    }
+
+    @keyframes gradientAnimation {
+      0% {
+          background-position: 0% 50%;
+      }
+      50% {
+          background-position: 100% 50%;
+      }
+      100% {
+          background-position: 0% 50%;
+      }
+    }
+
+    
 
   </style>
-</head>
-<body>
-  <!-- Your body content -->
+
 
   <footer class="fixed-footer">
-    <div id="progress"></div>
+    <div id="progress1"></div>
     <div class="play-button">
       <b id="play"><i class="fa fa-play" aria-hidden="true"></i></b>
     </div>
     <div class="song-title">
       <span onclick="openModal()" id="vfytitle" style="width: auto; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></span>
     </div>    
-  </footer>	  
+  </footer>  
 
 
 <div id="togglebutto"></div>
