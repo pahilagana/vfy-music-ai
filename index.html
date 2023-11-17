@@ -1300,7 +1300,13 @@ function formatTime(seconds) {
   return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
 }
 
-
+// Function to convert time in format '0:00' to seconds
+function convertTimeToSeconds(time) {
+  var parts = time.split(":");
+  var minutes = parseInt(parts[0]);
+  var seconds = parseInt(parts[1]);
+  return (minutes * 60) + seconds;
+}
 
 // Add an event listener to the "Play Video" butto
 var playVideobutto = document.getElementById("playVideobutto");
@@ -1399,20 +1405,12 @@ watermarkAudio2.controls = false;
 
 	
 
-	document.addEventListener("DOMContentLoaded", function () {
-  const audio = /* Your audio element */;
-  const progress1 = document.getElementById("progress1");
-
-  audio.addEventListener("timeupdate", updateProgressBar);
-
-  function updateProgressBar() {
-    const currentTime = audio.currentTime;
-    const duration = audio.duration;
-    const progress = (currentTime / duration) * 100;
-    progress1.style.width = progress + "%";
-  }
+	audio.addEventListener("timeupdate", function() {
+  const currentTime = audio.currentTime;
+  const duration = audio.duration;
+  const progress = (currentTime / duration) * 100;
+  document.getElementById("progress1").style.width = progress + "%";
 });
-
 
 
   document.getElementById("play").onclick = function () {
