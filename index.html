@@ -1300,13 +1300,7 @@ function formatTime(seconds) {
   return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
 }
 
-// Function to convert time in format '0:00' to seconds
-function convertTimeToSeconds(time) {
-  var parts = time.split(":");
-  var minutes = parseInt(parts[0]);
-  var seconds = parseInt(parts[1]);
-  return (minutes * 60) + seconds;
-}
+
 
 // Add an event listener to the "Play Video" butto
 var playVideobutto = document.getElementById("playVideobutto");
