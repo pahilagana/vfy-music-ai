@@ -1241,31 +1241,21 @@ $("#closePopup").click(function() {
 });
 	
 	
-function loadSong(song, ind) {
+function loadSong(song) {
     var id = $(song).attr("vid");
-    var indId = parseInt($(song).attr("index"));
     var thumbnail = $(song).children('img').attr("src");
     var title = $(song).text(); // Get the title text
 
     localStorage.setItem("playPresent", id);
     localStorage.setItem("thumbnail", thumbnail);
-    $("#thumbnail").attr("src", thumbnail);
 
-    // Set the profile ID
-    localStorage.setItem("profileID", id);
-    $("#profileID").text("Profile ID: " + id);
+    // Set the thumbnail for the currently playing song in a separate div
+    $("#currentThumbnail").attr("src", thumbnail);
 
-    // Set the profile thumbnail and video ID
-    $("#profileThumbnail").html('<img src="' + thumbnail + '" alt="Profile Thumbnail">');
-    $("#profileThumbnail").data("videoId", id);
+    // Set the title for the currently playing song in a separate div
+    $("#currentTitle").text(title);
 
-    // Set the title text to the marquee div with ID "vfytitle"
-    $("#vfytitle").html('<marquee behavior="alternate" scrollamount="4" onmousedown="this.stop();" onmouseup="this.start();">' + title + '</marquee>');
-
-    // Create a div with id "VFYthumb" and set its HTML content to display the thumbnail
-    $("#VFYthumb").html('<img src="' + thumbnail + '" alt="Thumbnail">');
-
-    play(id, indId);
+    play(id);
 }
 
 
