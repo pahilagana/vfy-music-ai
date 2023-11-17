@@ -1060,21 +1060,14 @@ width: 50%;
 <!-- Your webpage content goes here -->
 
 <footer class="fixed-footer" >
-    <div class="play-button">
-    
-    <b  id="play"> <i class="fa fa-play" aria-hidden="true"></i></b>
-    
-    </i></div>
-
-	
-    <div class="song-title">
+ <div class="play-button">
+ <b  id="play"> <i class="fa fa-play" aria-hidden="true"></i></b>
+</i></div>
+<div class="song-title">
 <span onclick="openModal()" id="vfytitle" style="width: auto; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></span>
 </div>    
-    
-    </div>
+</div>
 </footer>
-
-
 </!doctype>	
       
 
@@ -2682,8 +2675,8 @@ z-index: 999999;
 
     <div id="time-slider">
       <div class="slider-times">
-        <span>1:21</span> 
-        <span>3:46</span> 
+        <span id="total-time"></span> 
+        <span id="current-time"></span> 
       </div>
       <input type="range" min="1" max="100" value="0" class="slider" id="seekbar" />
     </div> <!-- /time-slider -->
