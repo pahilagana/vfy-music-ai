@@ -1405,11 +1405,11 @@ watermarkAudio2.controls = false;
 
 	
 
-	audio.addEventListener("timeupdate", function() {
+	audio.addEventListener("timeupdate1", function() {
   const currentTime = audio.currentTime;
   const duration = audio.duration;
   const progress = (currentTime / duration) * 100;
-  document.getElementById("progress").style.width = progress + "%";
+  document.getElementById("progress1").style.width = progress + "%";
 });
 
 
