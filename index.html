@@ -1146,8 +1146,6 @@ document.getElementById("vivekmasona").onclick = ()=>{
 
     
 var audio = document.getElementById("SAudio");
-audio.preload = "auto";
-
 
 // Function to play the next song
 function playNextSong() {
@@ -1172,30 +1170,6 @@ function playNextSong() {
     }
 }
 
-
-// Create a p5.js sketch for the music visualizer
-        let visualizer;
-
-        // Function to set up the p5.js sketch
-        function setupVisualizer() {
-            visualizer = new p5(visualize);
-        }
-
-        // Function to visualize the audio
-        function visualize() {
-            // Your visualization code goes here
-            // Example: draw a bar graph based on the amplitude of the audio
-            let amplitude = new p5.Amplitude();
-            let level = amplitude.getLevel();
-            let height = map(level, 0, 1, 0, window.innerHeight);
-            fill(255, 0, 0);
-            rect(0, window.innerHeight - height, 20, height);
-        }
-
-        // Call the setupVisualizer function when the page is loaded
-        window.onload = setupVisualizer;
-
-	
 // Listen for the 'ended' event
 audio.addEventListener("ended", function() {
     playNextSong();
@@ -1225,7 +1199,7 @@ audio.addEventListener("error", function () {
 var nextbutto = document.getElementById("nextbutto");
 nextbutto.addEventListener("click", function () {
     playNextSong();
-}); 
+});
 
 
 
@@ -2564,11 +2538,6 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
     <div id="song-details">
       <h1 class="song-title"id="vfytitle"></h1>
       <span class="artist">VFY A I</span>
-
-<canvas id="visualizerCanvas"></canvas>
-
-
-	    
     </div> <!-- /song-details -->
 
     <div id="time-slider">
@@ -2941,6 +2910,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
       document.getElementById('exitFullscreenIcon').style.display = 'none';
     }
   </script>
+
 
 
 
