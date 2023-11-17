@@ -1399,12 +1399,20 @@ watermarkAudio2.controls = false;
 
 	
 
-	audio.addEventListener("timeupdate", function() {
-  const currentTime = audio.currentTime;
-  const duration = audio.duration;
-  const progress = (currentTime / duration) * 100;
-  document.getElementById("progress1").style.width = progress + "%";
+	document.addEventListener("DOMContentLoaded", function () {
+  const audio = /* Your audio element */;
+  const progress1 = document.getElementById("progress1");
+
+  audio.addEventListener("timeupdate", updateProgressBar);
+
+  function updateProgressBar() {
+    const currentTime = audio.currentTime;
+    const duration = audio.duration;
+    const progress = (currentTime / duration) * 100;
+    progress1.style.width = progress + "%";
+  }
 });
+
 
 
   document.getElementById("play").onclick = function () {
