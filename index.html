@@ -724,7 +724,7 @@ width: 50%;
 
 
   
-<div id="VFYthumb"></div>
+
 
 	    
 <h1>VFY
@@ -1241,22 +1241,31 @@ $("#closePopup").click(function() {
 });
 	
 	
-function loadSong(song) {
+function loadSong(song, ind) {
     var id = $(song).attr("vid");
+    var indId = parseInt($(song).attr("index"));
     var thumbnail = $(song).children('img').attr("src");
     var title = $(song).text(); // Get the title text
 
     localStorage.setItem("playPresent", id);
     localStorage.setItem("thumbnail", thumbnail);
+    $("#thumbnail").attr("src", thumbnail);
 
-    // Set the thumbnail for the currently playing song in a separate div
-    $("#VFYthumb").attr("src", thumbnail);
+    // Set the profile ID
+    localStorage.setItem("profileID", id);
+    $("#profileID").text("Profile ID: " + id);
 
-    // Set the title for the currently playing song in a separate div
-    $("#currentTitle").text(title);
+    // Set the profile thumbnail and video ID
+    $("#profileThumbnail").html('<img src="' + thumbnail + '" alt="Profile Thumbnail">');
+    $("#profileThumbnail").data("videoId", id);
 
-    play(id);
+    // Set the title text to the marquee div with ID "vfytitle"
+    $("#vfytitle").html('<marquee behavior="alternate" scrollamount="4" onmousedown="this.stop();" onmouseup="this.start();">' + title + '</marquee>');
+
+    play(id, indId);
 }
+
+
 
 
 
@@ -3034,6 +3043,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
       document.getElementById('exitFullscreenIcon').style.display = 'none';
     }
   </script>
+
 
 
 
