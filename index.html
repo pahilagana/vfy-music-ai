@@ -1259,48 +1259,19 @@ volume100butto.addEventListener('click', function () {
 
 
 	
-const audio = document.getElementById('SAudio');
-const songTitleElement = document.getElementById('vfytitle');
+const titleaudio = document.getElementById('SAudio');
+const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
 
 audio.addEventListener('play', () => {
-  const songTitle = songTitleElement.textContent;
+  // Update the tab title when audio starts playing
+  const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
   document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
-
-  showNotification('Now Playing', songTitle);
 });
 
 audio.addEventListener('pause', () => {
+  // Restore the original page title when audio is paused
   document.title = 'VIVEKFY-AI';
 });
-
-function showNotification(title, message) {
-  if ('Notification' in window) {
-    if (Notification.permission === 'granted') {
-      const options = {
-        body: message,
-        icon: 'path/to/your/icon.png', // Replace with the path to your icon
-        actions: [
-          { action: 'next', title: 'Next Song' }
-        ]
-      };
-
-      const notification = new Notification(title, options);
-
-      notification.addEventListener('action', (event) => {
-        if (event.action === 'next') {
-          // Handle next song action here
-          document.getElementById('next').click(); // Assuming 'next' is the ID of your next button
-        }
-      });
-    } else if (Notification.permission !== 'denied') {
-      Notification.requestPermission().then(permission => {
-        if (permission === 'granted') {
-          showNotification(title, message);
-        }
-      });
-    }
-  }
-}
 
 
 
@@ -2939,6 +2910,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
       document.getElementById('exitFullscreenIcon').style.display = 'none';
     }
   </script>
+
 
 
 
