@@ -835,23 +835,22 @@ width: 50%;
       padding: 0;
     }
 
-           .fixed-footer {
-
-	
-    border-radius: 5px, 20px, 0px, 40px; /* Adjust the pixel value as needed */
-    	
-    position: fixed;
-box-shadow: 0 0 15px #000;	
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    background: rgb(231,76,60);
-background: linear-gradient(90deg, rgba(231,76,60,1) 0%, rgba(60,57,53,1) 31%, rgba(62,59,56,1) 66%, rgba(70,66,66,1) 98%);    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center; /* Center vertically */
-    padding: 10px;
-}
+    .fixed-footer {
+      border-radius: 5px, 20px, 0px, 40px; /* Adjust the pixel value as needed */
+      position: fixed;
+      box-shadow: 0 0 15px #000;	
+      bottom: 0;
+      width: 100%;
+      height: 60px;
+      background: rgb(231,76,60);
+      background: linear-gradient(90deg, rgba(231,76,60,1) 0%, rgba(60,57,53,1) 31%, rgba(62,59,56,1) 66%, rgba(70,66,66,1) 98%);
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; /* Center vertically */
+      padding: 10px;
+      position: relative; /* Add position relative */
+    }
 
     #progress1 {
       height: 100%;
@@ -1293,9 +1292,6 @@ audioPlayer.addEventListener("loadedmetadata", () => {
 audioPlayer.addEventListener("timeupdate", () => {
   const currentTime = audioPlayer.currentTime;
   currentTimeDisplay.textContent = formatTime(currentTime);
-
-  const progress = (currentTime / audioPlayer.duration) * 100;
-  document.getElementById("progress").style.width = progress + "%";
 });
 
 function formatTime(seconds) {
@@ -1409,7 +1405,12 @@ watermarkAudio2.controls = false;
 
 	
 
-	
+	audio.addEventListener("timeupdate", function() {
+  const currentTime = audio.currentTime;
+  const duration = audio.duration;
+  const progress = (currentTime / duration) * 100;
+  document.getElementById("progress1").style.width = progress + "%";
+});
 
 
   document.getElementById("play").onclick = function () {
@@ -2911,6 +2912,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
       document.getElementById('exitFullscreenIcon').style.display = 'none';
     }
   </script>
+
 
 
 
