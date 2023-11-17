@@ -1148,62 +1148,79 @@ document.getElementById("vivekmasona").onclick = ()=>{
 var audio = document.getElementById("SAudio");
 
 
-// Function to play the next or previous song
-function playAdjacentSong(isNext) {
-    var adjacentSongIndex = isNext ? Sid + 1 : Sid - 1;
+// Function to play the next song
+function playNextSong() {
+    var nextSongIndex = Sid + 1; // Calculate the index of the next song
     var playlistItems = document.getElementsByClassName("list");
 
-    if (adjacentSongIndex >= 0 && adjacentSongIndex < playlistItems.length) {
-        playlistItems[adjacentSongIndex].click();
-        audio.play();
+    if (nextSongIndex < playlistItems.length) {
+        playlistItems[nextSongIndex].click(); // Play the next song
+        audio.play(); // Play the audio
 
-        var adjacentSong = playlistItems[adjacentSongIndex];
-        var adjacentThumbnail = $(adjacentSong).children('img').attr("src");
-        var adjacentVideoId = $(adjacentSong).attr("vid");
-        $("#profileThumbnail").html('<img src="' + adjacentThumbnail + '" alt="Profile Thumbnail">');
-        $("#profileThumbnail").data("videoId", adjacentVideoId);
+        // Update the profile thumbnail and video ID for the next song
+        var nextSong = playlistItems[nextSongIndex];
+        var nextThumbnail = $(nextSong).children('img').attr("src");
+        var nextVideoId = $(nextSong).attr("vid");
+        $("#profileThumbnail").html('<img src="' + nextThumbnail + '" alt="Profile Thumbnail">');
+        $("#profileThumbnail").data("videoId", nextVideoId);
 
-        console.log('Automatically went to the ' + (isNext ? 'next' : 'previous') + ' song and started playing.');
+        console.log('Automatically went to the next song and started playing.');
     } else {
-        console.log(isNext ? 'End of playlist' : 'Beginning of playlist');
-        // Handle what happens when it's the end or beginning of the playlist.
+        console.log('End of playlist');
+        // You may want to handle what happens when it's the end of the playlist.
+    }
+}
+
+// Function to play the previous song
+function playPreviousSong() {
+    var previousSongIndex = Sid - 1; // Calculate the index of the previous song
+    var playlistItems = document.getElementsByClassName("list");
+
+    if (previousSongIndex >= 0) {
+        playlistItems[previousSongIndex].click(); // Play the previous song
+        audio.play(); // Play the audio
+
+        // Update the profile thumbnail and video ID for the previous song
+        var previousSong = playlistItems[previousSongIndex];
+        var previousThumbnail = $(previousSong).children('img').attr("src");
+        var previousVideoId = $(previousSong).attr("vid");
+        $("#profileThumbnail").html('<img src="' + previousThumbnail + '" alt="Profile Thumbnail">');
+        $("#profileThumbnail").data("videoId", previousVideoId);
+
+        console.log('Automatically went to the previous song and started playing.');
+    } else {
+        console.log('Beginning of playlist');
+        // You may want to handle what happens when it's the beginning of the playlist.
     }
 }
 
 // Listen for the 'ended' event
 audio.addEventListener("ended", function () {
-    playAdjacentSong(true); // Play the next song when the current one ends
+    playNextSong();
 });
 
-// Listen for the 'error' event
-var alternativeAudioSources = [
-    "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/low-audio?url=https://youtu.be/" + id,
-    "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/low-audio?url=https://youtu.be/" + id,
-];
-
-var currentAlternativeIndex = 0;
-
-audio.addEventListener("error", function () {
-    setTimeout(function () {
-        audio.src = alternativeAudioSources[currentAlternativeIndex];
-        audio.load();
-        audio.play();
-        currentAlternativeIndex = (currentAlternativeIndex + 1) % alternativeAudioSources.length;
-    }, 5000);
-});
-
-// Button click events
+// Listen for the 'error' event only for the 'Next' button
 var nextbutto = document.getElementById("nextbutto");
 nextbutto.addEventListener("click", function () {
-    playAdjacentSong(true); // Play the next song
+    audio.addEventListener("error", nextSongErrorHandler);
+    playNextSong();
 });
 
+// Error event handler for the 'Next' button
+function nextSongErrorHandler() {
+    audio.removeEventListener("error", nextSongErrorHandler); // Remove the listener to avoid multiple bindings
+    setTimeout(function () {
+        audio.src = "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/low-audio?url=https://youtu.be/" + id;
+        audio.load();
+        audio.play();
+    }, 5000);
+}
+
+// Button click events
 var previousbutto = document.getElementById("previousbutto");
 previousbutto.addEventListener("click", function () {
-    playAdjacentSong(false); // Play the previous song
+    playPreviousSong();
 });
-
-
 
 
 	
