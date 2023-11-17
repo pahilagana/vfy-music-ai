@@ -1616,7 +1616,7 @@ recognition.onresult = function(event) {
             butto1.click();
             playAudio('/sound/vdown.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
-        }
+        } 
         if (lastResult.toLowerCase() === 'volume increase' ||
             lastResult.toLowerCase() === 'volume full' ||
             lastResult.toLowerCase() === 'sound full' ||
@@ -2555,7 +2555,7 @@ z-index: 999999;
   
     <div id="top-menu">
       <div class="button">
-        <i class="fas fa-arrow-left"></i>
+        <i onclick="closeModal()" class="fas fa-arrow-left"></i>
       </div>
       <div class="small-text">Playing Now</div>
       <div class="button">
@@ -2631,19 +2631,18 @@ z-index: 999999;
 </div>
 
 <script>
-// Function to open the modal
-function openModal() {
-  document.getElementById("modal").style.display = "block";
-  // Automatically close the modal after 3 seconds
-  setTimeout(closeModal, 4000);
-}
+    // Function to open the modal
+    function openModal() {
+      document.getElementById("modal").style.display = "block";
+      // Automatically close the modal after 2 minutes (120,000 milliseconds)
+      setTimeout(closeModal, 120000);
+    }
 
-// Function to close the modal
-function closeModal() {
-  document.getElementById("modal").style.display = "none";
-}
-</script>
-
+    // Function to close the modal
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+  </script>
 
 <style>
 * {
