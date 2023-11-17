@@ -724,7 +724,7 @@ width: 50%;
 
 
   
-
+<div id="VFYthumbContainer"></div>
 
 	    
 <h1>VFY
@@ -1262,10 +1262,11 @@ function loadSong(song, ind) {
     // Set the title text to the marquee div with ID "vfytitle"
     $("#vfytitle").html('<marquee behavior="alternate" scrollamount="4" onmousedown="this.stop();" onmouseup="this.start();">' + title + '</marquee>');
 
+    // Create a div with id "VFYthumb" and set its HTML content to display the thumbnail
+    $("#VFYthumb").html('<img src="' + thumbnail + '" alt="Thumbnail">');
+
     play(id, indId);
 }
-
-
 
 
 
