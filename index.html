@@ -1253,73 +1253,36 @@ nextbutto.addEventListener("click", function () {
 
 
 
+const audio = document.getElementById('SAudio');
+const fastForwardButton = document.getElementById('fastForwardbutto');
+const rewindButton = document.getElementById('rewindbutto');
+const seekbar = document.getElementById('seekbar');
+const volume10Button = document.getElementById('volume10');
+const volume50Button = document.getElementById('volume50');
+const volume100Button = document.getElementById('volume100');
+const songTitleElement = document.getElementById('vfytitle');
+
+fastForwardButton.addEventListener('click', () => { audio.currentTime += 10; });
+
+rewindButton.addEventListener('click', () => {
+    audio.currentTime = Math.max(0, audio.currentTime - 5);
+});
+
+audio.addEventListener('timeupdate', () => { seekbar.value = (audio.currentTime / audio.duration) * 100; });
+
+seekbar.addEventListener('input', () => { audio.currentTime = audio.duration * (seekbar.value / 100); });
+
+volume10Button.addEventListener('click', () => { audio.volume = 0.1; });
+volume50Button.addEventListener('click', () => { audio.volume = 0.5; });
+volume100Button.addEventListener('click', () => { audio.volume = 1.0; });
+
+audio.addEventListener('play', () => { document.title = `${songTitleElement.textContent} - ${audio.currentTime} seconds`; });
+
+audio.addEventListener('pause', () => { document.title = 'VIVEKFY-AI'; });
 
 
 
 	
-var audio = document.getElementById('SAudio');
-var fastForwardbutto = document.getElementById('fastForwardbutto');
-
-fastForwardbutto.addEventListener('click', function () {
-    audio.currentTime += 10;
-});
-var audio = document.getElementById('SAudio');
-var rewindbutto = document.getElementById('rewindbutto');
-
-rewindbutto.addEventListener('click', function () {
-    if (audio.currentTime >= 5) {
-        audio.currentTime -= 5;
-    } else {
-        audio.currentTime = 0;
-    }
-});
-
-var audio = document.getElementById("SAudio");
-  var seekbar = document.getElementById("seekbar");
-
-  audio.addEventListener("timeupdate", function() {
-    var value = (audio.currentTime / audio.duration) * 100;
-    seekbar.value = value;
-  });
-
-  seekbar.addEventListener("input", function() {
-    var seekto = audio.duration * (seekbar.value / 100);
-    audio.currentTime = seekto;
-  });	
-
-var audio = document.getElementById('SAudio');
-var volume10butto = document.getElementById('volume10');
-var volume50butto = document.getElementById('volume50');
-var volume100butto = document.getElementById('volume100');
-
-volume10butto.addEventListener('click', function () {
-    audio.volume = 0.1; // Set volume to 10%
-});
-
-volume50butto.addEventListener('click', function () {
-    audio.volume = 0.5; // Set volume to 50%
-});
-
-volume100butto.addEventListener('click', function () {
-    audio.volume = 1.0; // Set volume to 100%
-});
-
-
-
-	
-const titleaudio = document.getElementById('SAudio');
-const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
-
-audio.addEventListener('play', () => {
-  // Update the tab title when audio starts playing
-  const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
-  document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
-});
-
-audio.addEventListener('pause', () => {
-  // Restore the original page title when audio is paused
-  document.title = 'VIVEKFY-AI';
-});
 
 
 
