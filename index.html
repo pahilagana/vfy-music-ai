@@ -139,7 +139,7 @@ a:hover {
 }
 
 #time-slider {
-  margin: 35% 5%;
+  margin: 28% 5%;
 }
 
 .slider-times {
@@ -199,6 +199,7 @@ box-shadow: inset 2px 2px 2px 0 rgba(104, 139, 255, 0.1), rgba(0, 0, 0, 0.1) 0px
   height: 65px;
   width: 65px;
 }</style>
+ 
 
 
 
@@ -1098,7 +1099,7 @@ function getOutput(item, i) {
   var id = item.id.videoId;
   var title = item.snippet.title;
   var description = item.snippet.description;
-  var thumb = item.snippet.thumbnails.high.url;
+  var thumbUrl = 'https://img.youtube.com/vi/' + id + '/maxresdefault.jpg' || 'https://example.com/default-thumbnail.jpg';
   var channelTitle = item.snippet.channelTitle;
   var videoDate = new Date(item.snippet.publishedAt);
 
@@ -1106,16 +1107,16 @@ function getOutput(item, i) {
   if (item.snippet.liveBroadcastContent === "live") {
     return ''; // Empty string means skipping this item
   }
-// Thumbnail ke liye custom styling container ko add karein
+
   var output =
-    '<b onclick="loadSong(this)" index="' + i + '" class="list" vid="' + item.id.videoId + '">' +
+    '<b onclick="loadSong(this)" index="' + i + '" class="list" vid="' + id + '">' +
     '<div class="video">' +
-    '<img src="' + item.snippet.thumbnails.medium.url + '" alt="' + item.snippet.title + '" class="video-thumbnail" onclick="loadSong(this)" index="' + i + '" vid="' + item.id.videoId + '">' +
+    '<img src="' + thumbUrl + '" alt="' + title + '" class="video-thumbnail" onclick="loadSong(this)" index="' + i + '" vid="' + id + '">' +
     '<section>' +
     '<img src="/img/logo.png" alt="Vivekfy" width="10%" padding="20">' +
     '<div>' +
-    '<p>V F Y ' + item.snippet.title + '</p>' +
-    '<small class="video-info">'+ item.snippet.channelTitle + '</small>' +
+    '<p>V F Y ' + title + '</p>' +
+    '<small class="video-info">' + channelTitle + '</small>' +
     '<small class="video-info"> VFY </small>' +
     '<small class="video-info"> Ai </small>' +
     '<small class="video-info">Release Date: ' + videoDate.toDateString() + '</small>' +
@@ -1126,6 +1127,7 @@ function getOutput(item, i) {
 
   return output;
 }
+
 
 
 
@@ -1143,7 +1145,7 @@ $("#closePopup").click(function() {
 function loadSong(song, ind) {
     var id = $(song).attr("vid");
     var indId = parseInt($(song).attr("index"));
-    var thumbnail = $(song).children('img').attr("src");
+    var thumbnail = 'https://img.youtube.com/vi/' + id + '/maxresdefault.jpg';
     var title = $(song).text(); // Get the title text
     var currentTime = new Date().toLocaleTimeString();
 
@@ -1168,13 +1170,9 @@ function loadSong(song, ind) {
     // Set the current song title with marquee effect to the div with ID "currentSongTitle"
     $("#currentSongTitle").html('<marquee behavior="scroll" direction="left">' + title + '</marquee>');
 
-    // Set the current song thumbnail to the div with ID "currentSongThumbnail"
-    $("#currentSongThumbnail").html('<img src="' + thumbnail + '" alt="Current Song Thumbnail">');
-
-    // Create a div with ID "currentSongInfo" to display video ID, thumbnail, and current time
-    $("#currentSongInfo").html('Video ID: ' + id + '<br>' +
-                               'Current Time: ' + currentTime + '<br>' +
-                               'Thumbnail: <img src="' + thumbnail + '" alt="Current Song Thumbnail">');
+    // Create a div with ID "currentSongOutput" to display video ID and max resolution thumbnail
+    $("#currentSongOutput").html('Video ID: ' + id + '<br>' +
+                                 'Max Resolution Thumbnail: <img src="' + thumbnail + '" alt="Current Song Thumbnail" style="max-width:100%; max-height:100%;">');
 
     play(id, indId);
 }
