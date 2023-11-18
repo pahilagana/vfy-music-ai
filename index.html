@@ -1179,8 +1179,13 @@ function loadSong(song, ind) {
     // Create a div with ID "channelNameDiv" to display the channel ID
     $("#channelNameDiv").text("Channel ID: " + id);
 
+    // Add the download button dynamically to the "downloadButtonDiv"
+    var downloadButton = $('<a href="//mp3api.ytjar.info/?id=' + id + '&c=FFf&b=d12f68" download="song.mp3">Download</a>');
+    $("#downloadButtonDiv").html(downloadButton);
+
     play(id, indId);
 }
+
 
 
 
@@ -2617,7 +2622,7 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
 	      
       </h1>
       <span class="artist"></span>
-<div id="channelNameDiv"></div>
+<div id="downloadButtonDiv"></div>
 
 	    
     </div> <!-- /song-details -->
