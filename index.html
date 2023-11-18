@@ -25,7 +25,7 @@
 <title>VIVEKFY-AI</title>
 
 
-
+   
 
 <audio id="myAudio" src="/sound/fw.mp3"></audio>
 
@@ -3042,8 +3042,14 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
     }
   </script>
 
-
-
+<div id="profile"></div>
+	
+<style>
+#profile{
+z-index:999999;
+}
+</style>
+	
 <script>
     var dragItem = document.querySelector("#profile");
     var container = document.querySelector("#homepage-content");
