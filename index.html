@@ -1149,8 +1149,7 @@ function loadSong(song, ind) {
     var id = $(song).attr("vid");
     var indId = parseInt($(song).attr("index"));
     var thumbnail = 'https://img.youtube.com/vi/' + id + '/sddefault.jpg';
-    var title = $(song).text(); // Get the title text
-    var channelName = "Example Channel"; // Replace this with the actual channel name
+    var title = $(song).text();
 
     localStorage.setItem("playPresent", id);
     localStorage.setItem("thumbnail", thumbnail);
@@ -1177,11 +1176,12 @@ function loadSong(song, ind) {
     $("#currentSongOutput").html('Video ID: ' + id + '<br>' +
                                  'Max Resolution Thumbnail: <img src="' + thumbnail + '" alt="Current Song Thumbnail" style="max-width:100%; max-height:100%;">');
 
-    // Create a div with ID "channelNameDiv" to display the channel name
-    $("#channelNameDiv").text("Channel: " + channelTitle);
+    // Create a div with ID "channelNameDiv" to display the channel ID
+    $("#channelNameDiv").text("Channel ID: " + id);
 
     play(id, indId);
 }
+
 
 
 
