@@ -1145,12 +1145,13 @@ $("#closePopup").click(function() {
 });
 	
 	
+
 function loadSong(song, ind) {
     var id = $(song).attr("vid");
     var indId = parseInt($(song).attr("index"));
-    var thumbnail = 'https://img.youtube.com/vi/' + id + '/sddefault.jpg';
+    var thumbnail = $(song).children('img').attr("src");
     var title = $(song).text(); // Get the title text
-    var currentTime = new Date().toLocaleTimeString();
+    var releaseDate = $(song).data("releaseDate"); // Assuming release date is stored as a data attribute
 
     localStorage.setItem("playPresent", id);
     localStorage.setItem("thumbnail", thumbnail);
@@ -1164,18 +1165,12 @@ function loadSong(song, ind) {
     $("#profileThumbnail").html('<img src="' + thumbnail + '" alt="Profile Thumbnail">');
     $("#profileThumbnail").data("videoId", id);
 
-    // Set the title text to the marquee div with ID "vfytitle"
-    $("#vfytitle").html('<marquee behavior="alternate" scrollamount="4" onmousedown="this.stop();" onmouseup="this.start();">' + title + '</marquee>');
+    // Set the title text with marquee effect to the div with ID "currentSongTitle"
+    var titleWithMarquee = '<marquee behavior="scroll" direction="left">' + title + '</marquee>';
+    $("#currentSongTitle").html(titleWithMarquee);
 
-    // Set the current time title to the div with ID "currentTimeTitle"
-    $("#currentTimeTitle").text("Current Time: " + currentTime);
-
-    // Set the current song title with marquee effect to the div with ID "currentSongTitle"
-    $("#currentSongTitle").html('<marquee behavior="scroll" direction="left">' + title + '</marquee>');
-
-    // Create a div with ID "currentSongOutput" to display video ID and max resolution thumbnail
-    $("#currentSongOutput").html('Video ID: ' + id + '<br>' +
-                                 'Max Resolution Thumbnail: <img src="' + thumbnail + '" alt="Current Song Thumbnail" style="max-width:100%; max-height:100%;">');
+    // Display the release date in a separate div with ID "releaseDate"
+    $("#releaseDate").text("Release Date: " + releaseDate);
 
     play(id, indId);
 }
@@ -2612,7 +2607,8 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
 
 	      
       </h1>
-      <span class="artist">VFY A I</span>
+      <span class="artist" id="releaseDate">
+</span>
     </div> <!-- /song-details -->
 
     <div id="time-slider">
