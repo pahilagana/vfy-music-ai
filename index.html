@@ -1106,9 +1106,9 @@ function getOutput(item, i) {
   if (
     item.snippet.liveBroadcastContent === "live" ||
     item.contentDetails.duration <= "PT30S"
-  ) {
-    return ''; // Empty string means skipping this item
-  }
+  ) 
+      // Empty string means skipping this item
+
   var output =
     '<b onclick="loadSong(this)" index="' + i + '" class="list" vid="' + id + '">' +
     '<div class="video">' +
