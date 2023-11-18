@@ -614,7 +614,7 @@ width: 50%;
 
 
   
-<div id="currentSongThumbnail"></div>
+<div id="currentSongInfo"></div>
 
 	    
 <h1>VFY
@@ -1171,10 +1171,13 @@ function loadSong(song, ind) {
     // Set the current song thumbnail to the div with ID "currentSongThumbnail"
     $("#currentSongThumbnail").html('<img src="' + thumbnail + '" alt="Current Song Thumbnail">');
 
+    // Create a div with ID "currentSongInfo" to display video ID, thumbnail, and current time
+    $("#currentSongInfo").html('Video ID: ' + id + '<br>' +
+                               'Current Time: ' + currentTime + '<br>' +
+                               'Thumbnail: <img src="' + thumbnail + '" alt="Current Song Thumbnail">');
+
     play(id, indId);
 }
-
-
 
 
 
