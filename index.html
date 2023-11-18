@@ -385,7 +385,6 @@ box-shadow: 0 0 20px #000; /* Add dark black shadow */
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Vivekmasona/musicjs/bootstrap.min.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Vivekmasona/musicjs/jquery.mobile-1.4.5.min.css" />
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 	
 	<style>
@@ -1212,16 +1211,20 @@ document.getElementById("vivekmasona").onclick = ()=>{
 
     
 var audio = document.getElementById("SAudio");
-var repeatMode = false; // Variable to track repeat mode
 
+// Function to play the next song
 function playNextSong() {
-    var nextSongIndex = Sid + 1;
+    var nextSongIndex = Sid + 1; // Calculate the index of the next song
     var playlistItems = document.getElementsByClassName("list");
 
-    if (nextSongIndex < playlistItems.length) {
-        playlistItems[nextSongIndex].click();
-        audio.play();
+    
+	
 
+    if (nextSongIndex < playlistItems.length) {
+        playlistItems[nextSongIndex].click(); // Play the next song
+        audio.play(); // Play the audio
+
+        // Update the profile thumbnail and video ID for the next song
         var nextSong = playlistItems[nextSongIndex];
         var nextThumbnail = $(nextSong).children('img').attr("src");
         var nextVideoId = $(nextSong).attr("vid");
@@ -1230,26 +1233,22 @@ function playNextSong() {
 
         console.log('Automatically went to the next song and started playing.');
     } else {
-        if (repeatMode) {
-            // If repeat mode is active, go back to the first song
-            Sid = 0; // Assuming Sid is a global variable
-            playlistItems[Sid].click();
-            audio.play();
-            console.log('Repeating the playlist.');
-        } else {
-            console.log('End of playlist');
-            // Handle what happens when it's the end of the playlist without repeat
-        }
+        console.log('End of playlist');
+        // You may want to handle what happens when it's the end of the playlist.
     }
 }
 
+// Listen for the 'ended' event
 audio.addEventListener("ended", function() {
     playNextSong();
 });
 
+// Listen for the 'error' event
 var alternativeAudioSources = [
-    "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/low-audio?url=https://youtu.be/" + id,
-    "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/low-audio?url=https://youtu.be/" + id,
+    
+"https://vivekfy-dev-jmbe.2.ie-1.fl0.io/low-audio?url=https://youtu.be/" + id,
+"https://vivekfy-dev-jmbe.2.ie-1.fl0.io/low-audio?url=https://youtu.be/" + id,
+    
 ];
 
 var currentAlternativeIndex = 0;
@@ -1263,17 +1262,13 @@ audio.addEventListener("error", function () {
     }, 5000);
 });
 
+
+// butto click event
 var nextbutto = document.getElementById("nextbutto");
 nextbutto.addEventListener("click", function () {
     playNextSong();
 });
 
-// Add a function or event listener to toggle the repeat mode
-var repeatButton = document.getElementById("repeatButton"); // Assuming you have a button for toggling repeat
-repeatButton.addEventListener("click", function () {
-    repeatMode = !repeatMode; // Toggle repeat mode
-    console.log('Repeat mode: ' + (repeatMode ? 'On' : 'Off'));
-});
 
 
 
@@ -2636,7 +2631,7 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
         <i id="stop" class="fas fa-stop"></i>
       </div>
 	<div class="button">
-        <i id="repeatButton" class="fas fa-backward"></i>
+        <i id="rewindbutto" class="fas fa-backward"></i>
       </div>
       <div class="button">
           <i id="fastForwardbutto" class="fas fa-forward"></i>
@@ -2990,4 +2985,5 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
       document.getElementById('exitFullscreenIcon').style.display = 'none';
     }
   </script>
+
 
