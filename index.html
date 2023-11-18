@@ -1056,8 +1056,8 @@ $.get(
         //videoType: 'video',
         //order: 'date', // Sort by date (newest first)
         //videoLicense: 'creativeCommon',
-          key : "AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo",
-	  //key : "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA",
+          //key : "AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo",
+	  key : "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA",
 	  //key : "AIzaSyCbn2fAWsEvw6TyD4PsfNchyK35rN69jH0",
 	  //key : "AIzaSyBemcQ7KH8CvxN0kKjGK-nhfuBzzTy4KEk", 
 	  //key : "AIzaSyBh6s9emY3VYSbsHudlhxProRt8mtFyt2s",
@@ -1103,12 +1103,11 @@ function getOutput(item, i) {
   var channelTitle = item.snippet.channelTitle;
   var videoDate = new Date(item.snippet.publishedAt);
 
-  if (
-    item.snippet.liveBroadcastContent === "live" ||
-    item.contentDetails.duration <= "PT30S"
-  ) {
+  // Check if the video is live and exclude it
+  if (item.snippet.liveBroadcastContent === "live") {
     return ''; // Empty string means skipping this item
   }
+
   var output =
     '<b onclick="loadSong(this)" index="' + i + '" class="list" vid="' + id + '">' +
     '<div class="video">' +
@@ -2983,15 +2982,4 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
       document.getElementById('exitFullscreenIcon').style.display = 'none';
     }
   </script>
-
-
-
-
-
-
-
-
-
-
-
 
