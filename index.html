@@ -1100,33 +1100,17 @@ function getOutput(item, i) {
   var id = item.id.videoId;
   var title = item.snippet.title;
   var description = item.snippet.description;
-  var maxresUrl = 'https://img.youtube.com/vi/' + id + '/maxresdefault.jpg';
-  var mqUrl = 'https://img.youtube.com/vi/' + id + '/mqdefault.jpg';
+  var thumbUrl = 'https://img.youtube.com/vi/' + id + '/maxresdefault.jpg' || 'https://example.com/default-thumbnail.jpg';
   var channelTitle = item.snippet.channelTitle;
   var videoDate = new Date(item.snippet.publishedAt);
 
-  // Check karein ki video live toh nahi hai, agar hai toh ise chhod dein
-  if (item.snippet.liveBroadcastContent === "live") {
-    return ''; // Khali string ka matlab hai ki yeh item chhod diya gaya hai
+  // Check if the video is live and exclude it
+ if (item.snippet.liveBroadcastContent === "live") {
+    return ''; // Empty string means skipping this item
   }
 
-  // Thumbnail URL initialize karein
-  var thumbUrl = '';
 
-  // XMLHttpRequest ka upayog karke maxresdefault ka upasthiti check karein
-  var xhr = new XMLHttpRequest();
-  xhr.open('HEAD', maxresUrl, false);
-  xhr.send();
-
-  // Agar maxresdefault thumbnail uplabdh hai, toh uska istemal karein
-  if (xhr.status !== 404) {
-    thumbUrl = maxresUrl;
-  } else {
-    // Agar maxresdefault thumbnail nahi uplabdh hai, toh mqdefault ka istemal karein
-    thumbUrl = mqUrl;
-  }
-
-  // HTML output taiyar karein
+	
   var output =
     '<b onclick="loadSong(this)" index="' + i + '" class="list" vid="' + id + '">' +
     '<div class="video">' +
@@ -1146,6 +1130,7 @@ function getOutput(item, i) {
 
   return output;
 }
+
 
 
 
