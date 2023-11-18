@@ -1101,7 +1101,8 @@ function getOutput(item, i) {
   var description = item.snippet.description;
   var maxResUrl = 'https://img.youtube.com/vi/' + id + '/maxresdefault.jpg';
   var mqDefaultUrl = 'https://img.youtube.com/vi/' + id + '/mqdefault.jpg';
-  var thumbUrl = maxResUrl || mqDefaultUrl || 'https://example.com/default-thumbnail.jpg';
+  var thumbUrl = 'https://example.com/default-thumbnail.jpg'; // Default thumbnail URL
+
   var channelTitle = item.snippet.channelTitle;
   var videoDate = new Date(item.snippet.publishedAt);
 
@@ -1110,10 +1111,22 @@ function getOutput(item, i) {
     return ''; // Empty string means skipping this item
   }
 
+  // Create an image element to handle errors
+  var imgElement = new Image();
+  
+  // Set the source to maxResUrl
+  imgElement.src = maxResUrl;
+
+  // Handle the case when maxresdefault fails to load
+  imgElement.onerror = function() {
+    // Fallback to mqdefault when maxresdefault fails
+    imgElement.src = mqDefaultUrl;
+  };
+
   var output =
     '<b onclick="loadSong(this)" index="' + i + '" class="list" vid="' + id + '">' +
     '<div class="video">' +
-    '<img src="' + thumbUrl + '" alt="' + title + '" class="video-thumbnail" onclick="loadSong(this)" index="' + i + '" vid="' + id + '">' +
+    '<img src="' + imgElement.src + '" alt="' + title + '" class="video-thumbnail" onclick="loadSong(this)" index="' + i + '" vid="' + id + '">' +
     '<section>' +
     '<img src="/img/logo.png" alt="Vivekfy" width="10%" padding="20">' +
     '<div>' +
@@ -1129,6 +1142,7 @@ function getOutput(item, i) {
 
   return output;
 }
+
 
 
 
