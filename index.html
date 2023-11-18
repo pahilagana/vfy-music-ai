@@ -614,7 +614,7 @@ width: 50%;
 
 
   
-<div id="current-song-title"></div>
+<div id="currentSongThumbnail"></div>
 
 	    
 <h1>VFY
@@ -1145,6 +1145,7 @@ function loadSong(song, ind) {
     var indId = parseInt($(song).attr("index"));
     var thumbnail = $(song).children('img').attr("src");
     var title = $(song).text(); // Get the title text
+    var currentTime = new Date().toLocaleTimeString();
 
     localStorage.setItem("playPresent", id);
     localStorage.setItem("thumbnail", thumbnail);
@@ -1161,8 +1162,14 @@ function loadSong(song, ind) {
     // Set the title text to the marquee div with ID "vfytitle"
     $("#vfytitle").html('<marquee behavior="alternate" scrollamount="4" onmousedown="this.stop();" onmouseup="this.start();">' + title + '</marquee>');
 
+    // Set the current time title to the div with ID "currentTimeTitle"
+    $("#currentTimeTitle").text("Current Time: " + currentTime);
+
     // Set the current song title with marquee effect to the div with ID "currentSongTitle"
     $("#currentSongTitle").html('<marquee behavior="scroll" direction="left">' + title + '</marquee>');
+
+    // Set the current song thumbnail to the div with ID "currentSongThumbnail"
+    $("#currentSongThumbnail").html('<img src="' + thumbnail + '" alt="Current Song Thumbnail">');
 
     play(id, indId);
 }
