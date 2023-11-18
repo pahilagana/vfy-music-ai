@@ -1129,17 +1129,21 @@ function getOutput(item, i) {
     '</div>' +
     '</b>';
 
-  // Add handler for maxresdefault and mqdefault
+  // Add error handling for the thumbnail
   var thumbnailImage = new Image();
-  thumbnailImage.src = maxresUrl;
+  thumbnailImage.onload = function() {
+    // Thumbnail loaded successfully
+  };
   thumbnailImage.onerror = function() {
     // If maxresdefault fails, fallback to mqdefault
     thumbUrl = mqUrl;
     // You can add additional logic or handlers here if needed
   };
+  thumbnailImage.src = thumbUrl;
 
   return output;
 }
+
 
 
 
