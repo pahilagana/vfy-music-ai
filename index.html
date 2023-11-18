@@ -231,18 +231,23 @@ box-shadow: inset 2px 2px 2px 0 rgba(104, 139, 255, 0.1), rgba(0, 0, 0, 0.1) 0px
   background-color: #yourProgressBarColor; /* Set the color for the progress bar */
 }
 
-#ff {
-  position: fixed;
-  bottom: 0;
-  z-index:999999;
-  left: 0;
-  width: 100%;
-  height: 50px; /* You can adjust the height of the footer */
-  background-color: #333; /* Set the background color of the footer */
-  color: white; /* Set the text color of the footer */
-  text-align: center;
-}
+.ff {
 
+	
+    border-radius: 5px, 20px, 0px, 40px; /* Adjust the pixel value as needed */
+    	
+    position: fixed;
+box-shadow: 0 0 15px #000;	
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background: rgb(231,76,60);
+background: linear-gradient(90deg, rgba(231,76,60,1) 0%, rgba(60,57,53,1) 31%, rgba(62,59,56,1) 66%, rgba(70,66,66,1) 98%);    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Center vertically */
+    padding: 10px;
+}
 	
 </style>
 
