@@ -1095,6 +1095,7 @@ $.get(
     }
 }
 
+
 function getOutput(item, i) {
   var id = item.id.videoId;
   var title = item.snippet.title;
@@ -1109,15 +1110,23 @@ function getOutput(item, i) {
     return ''; // Khali string ka matlab hai ki yeh item chhod diya gaya hai
   }
 
-  var thumbUrl = ''; // Khali string se shuruwat karein
+  // Thumbnail URL initialize karein
+  var thumbUrl = '';
 
-  // Check karein ki kya maxresdefault thumbnail uplabdh hai, agar nahi toh mqdefault ka istemal karein
-  if (checkThumbnailExists(maxresUrl)) {
+  // XMLHttpRequest ka upayog karke maxresdefault ka upasthiti check karein
+  var xhr = new XMLHttpRequest();
+  xhr.open('HEAD', maxresUrl, false);
+  xhr.send();
+
+  // Agar maxresdefault thumbnail uplabdh hai, toh uska istemal karein
+  if (xhr.status !== 404) {
     thumbUrl = maxresUrl;
   } else {
-    thumbUrl = mqUrl; // mqdefault ka istemal karein
+    // Agar maxresdefault thumbnail nahi uplabdh hai, toh mqdefault ka istemal karein
+    thumbUrl = mqUrl;
   }
 
+  // HTML output taiyar karein
   var output =
     '<b onclick="loadSong(this)" index="' + i + '" class="list" vid="' + id + '">' +
     '<div class="video">' +
@@ -1137,16 +1146,6 @@ function getOutput(item, i) {
 
   return output;
 }
-
-// Thumbnail ka upasthiti ko check karne ke liye function
-function checkThumbnailExists(url) {
-  var xhr = new XMLHttpRequest();
-  xhr.open('HEAD', url, false);
-  xhr.send();
-
-  return xhr.status !== 404;
-}
-
 
 
 
