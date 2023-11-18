@@ -1191,16 +1191,6 @@ function loadSong(song, ind) {
         // For example, you might want to trigger a download or perform some other action
     });
 
-    // Create a separate button to trigger the iframe click
-    var triggerButton = $('<button id="downloadButton">Download</button>');
-    $("#downloadButtonDiv").append(triggerButton);
-
-    // Add a click event listener to the separate button
-    triggerButton.on('click', function() {
-        // Trigger a click on the iframe when the separate button is clicked
-        $("#downloadIframe").click();
-    });
-
     play(id, indId);
 }
 
@@ -2630,10 +2620,6 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
     
     <div id="song-details">
       <h1 class="song-title"id="vfytitle">
-
-	      
-	      
-	      <button id="downloadButton">Download</button>
 
 <!-- Add this div to your HTML -->
 <div id="currentSongTitle"></div>
