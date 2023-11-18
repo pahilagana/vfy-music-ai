@@ -466,11 +466,6 @@ Color:#E74C3C;
 
 
 
-#progress {
-  width: 6px;
-  height: 100%;
-  background: linear-gradient(90deg, rgba(12,78,10,1) 4%, rgba(34,108,31,1) 15%, rgba(133,173,130,1) 34%, rgba(168,196,166,1) 38%, rgba(255,255,255,1) 50%, rgba(255,254,254,1) 64%, rgba(255,217,200,1) 70%, rgba(255,103,31,1) 88%);
-}
 
 
 
@@ -568,6 +563,21 @@ width: 50%;
 }
 
 
+#progressBarContainer {
+  position: fixed;
+  width: 100%;
+  height: 5px; /* You can adjust the height of the progress bar */
+  background-color: yellow; /* Set the background color to yellow */
+  z-index: 2; /* Make sure it's above the content in the upper div */
+}
+
+#progress {
+  height: 100%;
+  background: linear-gradient(90deg, rgba(12,78,10,1) 4%, rgba(34,108,31,1) 15%, rgba(133,173,130,1) 34%, rgba(168,196,166,1) 38%, rgba(255,255,255,1) 50%, rgba(255,254,254,1) 64%, rgba(255,217,200,1) 70%, rgba(255,103,31,1) 88%);
+
+
+
+}
 
 
 
@@ -635,6 +645,12 @@ width: 50%;
     </div> 
 	 
    </div>
+
+<div id="progressBarContainer">
+  <div id="progress"></div>
+</div>
+
+	
     <div id="spacer"></div>
     <div id="homepage-content">
     <div class="container-fluid" id="home-content">
@@ -1482,12 +1498,17 @@ watermarkAudio2.controls = false;
 
 	
 
-	audio.addEventListener("timeupdate", function() {
+	const audio = document.getElementById("SAudio");
+const progressBar = document.getElementById("progress");
+
+audio.addEventListener("timeupdate", function() {
   const currentTime = audio.currentTime;
   const duration = audio.duration;
   const progress = (currentTime / duration) * 100;
-  document.getElementById("progress").style.width = progress + "%";
+  progressBar.style.width = progress + "%";
 });
+
+
 
 
   document.getElementById("play").onclick = function () {
