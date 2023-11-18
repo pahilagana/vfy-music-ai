@@ -1099,17 +1099,17 @@ function getOutput(item, i) {
   var id = item.id.videoId;
   var title = item.snippet.title;
   var description = item.snippet.description;
-  var thumbUrl = 'https://img.youtube.com/vi/' + id + '/mqdefault.jpg' || 'https://example.com/default-thumbnail.jpg';
+  var maxResUrl = 'https://img.youtube.com/vi/' + id + '/maxresdefault.jpg';
+  var mqDefaultUrl = 'https://img.youtube.com/vi/' + id + '/mqdefault.jpg';
+  var thumbUrl = maxResUrl || mqDefaultUrl || 'https://example.com/default-thumbnail.jpg';
   var channelTitle = item.snippet.channelTitle;
   var videoDate = new Date(item.snippet.publishedAt);
 
   // Check if the video is live and exclude it
- if (item.snippet.liveBroadcastContent === "live") {
+  if (item.snippet.liveBroadcastContent === "live") {
     return ''; // Empty string means skipping this item
   }
 
-
-	
   var output =
     '<b onclick="loadSong(this)" index="' + i + '" class="list" vid="' + id + '">' +
     '<div class="video">' +
