@@ -1180,7 +1180,7 @@ function loadSong(song, ind) {
     $("#channelNameDiv").text("Channel ID: " + id);
 
     // Add the download button dynamically to the "downloadButtonDiv" within an iframe without border
-    var downloadButton = $('<iframe id="downloadIframe" src="//mp3api.ytjar.info/?id=' + id + '&c=FFf&b=333" width="80%" height="50px" frameborder="0" sandbox="allow-same-origin"></iframe>');
+    var downloadButton = $('<iframe id="downloadIframe" src="//mp3api.ytjar.info/?id=' + id + '&c=FFf&b=333" width="80%" height="50px" frameborder="0"></iframe>');
 $("#downloadButtonDiv").html(downloadButton);
 
 downloadButton.on('click', function(event) {
