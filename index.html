@@ -925,6 +925,14 @@ background: linear-gradient(90deg, rgba(231,76,60,1) 0%, rgba(60,57,53,1) 31%, r
     position: relative;
     z-index: 2;
 }
+.fixed-footer {
+    text-align: center;
+}
+
+.up-arrow {
+    margin-top: 10px; /* Adjust the margin as needed */
+}
+	
 
 .play-button::before {
     content: "";
@@ -964,17 +972,17 @@ background: linear-gradient(90deg, rgba(231,76,60,1) 0%, rgba(60,57,53,1) 31%, r
 
 <!-- Your webpage content goes here -->
 
-<footer class="fixed-footer" >
- <div class="play-button">
- <b  id="play"> <i class="fa fa-play" aria-hidden="true"></i></b>
-</i></div>
-<div class="song-title">
-<span onclick="openModal()" id="vfytitle" style="width: auto; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></span>
-</div>    
-</div>
+<footer class="fixed-footer">
+    <div class="play-button">
+        <b id="play"> <i class="fa fa-play" aria-hidden="true"></i></b>
+    </div>
+    <div class="song-title">
+        <span onclick="openModal()" id="vfytitle" style="width: auto; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></span>
+    </div>
+    <div class="up-arrow">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </div>
 </footer>
-</!doctype>	
-      
 
 
 <div id="togglebutto"></div>
