@@ -1179,20 +1179,14 @@ function loadSong(song, ind) {
     // Create a div with ID "channelNameDiv" to display the channel ID
     $("#channelNameDiv").text("Channel ID: " + id);
 
-    // Add the download button dynamically to the "downloadButtonDiv" within an iframe without border
-    var downloadButton = $('<iframe id="downloadIframe" src="//mp3api.ytjar.info/?id=' + id + '&c=FFf&b=333" width="80%" height="50px" frameborder="0"></iframe>');
-    $("#downloadButtonDiv").html(downloadButton);
+var downloadButton = $('<iframe id="downloadIframe" src="//mp3api.ytjar.info/?id=' + id + '&c=FFf&b=333" width="80%" height="50px" frameborder="0" sandbox="allow-same-origin"></iframe>');
+$("#downloadButtonDiv").html(downloadButton);
 
-    // Add a click event listener to the iframe button
-    downloadButton.on('click', function(event) {
-        event.preventDefault(); // Prevent the default behavior of the link
+downloadButton.on('click', function(event) {
+    event.preventDefault();
+    // Your additional actions or code here
+});
 
-        // Add any additional actions or code you want to execute when the button is clicked
-        // For example, you might want to trigger a download or perform some other action
-    });
-
-    play(id, indId);
-}
 
 
 
