@@ -1104,13 +1104,19 @@ function getOutput(item, i) {
   var channelTitle = item.snippet.channelTitle;
   var videoDate = new Date(item.snippet.publishedAt);
 
-  // Check if the video is live and exclude it
+  // Check karein ki video live toh nahi hai, agar hai toh ise chhod dein
   if (item.snippet.liveBroadcastContent === "live") {
-    return ''; // Empty string means skipping this item
+    return ''; // Khali string ka matlab hai ki yeh item chhod diya gaya hai
   }
 
-  // Use maxresdefault thumbnail if available, otherwise fallback to mqdefault
-  var thumbUrl = maxresUrl || mqUrl;
+  var thumbUrl = ''; // Khali string se shuruwat karein
+
+  // Check karein ki kya maxresdefault thumbnail uplabdh hai, agar nahi toh mqdefault ka istemal karein
+  if (checkThumbnailExists(maxresUrl)) {
+    thumbUrl = maxresUrl;
+  } else {
+    thumbUrl = mqUrl; // mqdefault ka istemal karein
+  }
 
   var output =
     '<b onclick="loadSong(this)" index="' + i + '" class="list" vid="' + id + '">' +
@@ -1129,19 +1135,16 @@ function getOutput(item, i) {
     '</div>' +
     '</b>';
 
-  // Add error handling for the thumbnail
-  var thumbnailImage = new Image();
-  thumbnailImage.onload = function() {
-    // Thumbnail loaded successfully
-  };
-  thumbnailImage.onerror = function() {
-    // If maxresdefault fails, fallback to mqdefault
-    thumbUrl = mqUrl;
-    // You can add additional logic or handlers here if needed
-  };
-  thumbnailImage.src = thumbUrl;
-
   return output;
+}
+
+// Thumbnail ka upasthiti ko check karne ke liye function
+function checkThumbnailExists(url) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('HEAD', url, false);
+  xhr.send();
+
+  return xhr.status !== 404;
 }
 
 
