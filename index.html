@@ -1143,7 +1143,10 @@ function loadSong(song, ind) {
     var id = $(song).attr("vid");
     var indId = parseInt($(song).attr("index"));
     var thumbnail = $(song).children('img').attr("src");
-    var title = $(song).text(); // Get the title text
+
+    // Get the current time and format it as the title
+    var currentTime = new Date().toLocaleTimeString();
+    var title = "Now Playing: " + currentTime;
 
     localStorage.setItem("playPresent", id);
     localStorage.setItem("thumbnail", thumbnail);
@@ -1159,6 +1162,9 @@ function loadSong(song, ind) {
 
     // Set the title text to the marquee div with ID "vfytitle"
     $("#vfytitle").html('<marquee behavior="alternate" scrollamount="4" onmousedown="this.stop();" onmouseup="this.start();">' + title + '</marquee>');
+
+    // Set the current time title to the div with ID "currentTimeTitle"
+    $("#currentTimeTitle").text(title);
 
     play(id, indId);
 }
@@ -1200,11 +1206,7 @@ function playNextSong() {
     var nextSongIndex = Sid + 1; // Calculate the index of the next song
     var playlistItems = document.getElementsByClassName("list");
 
-    // Set the title of the currently playing song
-    var title = $(".list").eq(Sid).text(); // Get the title from the list item
-    $("#current-song-title").text("Now Playing: " + title); // Set the title in the div
-
-
+    
 	
 
     if (nextSongIndex < playlistItems.length) {
@@ -2591,7 +2593,13 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
     </div> <!--/thumbnail-border -->
     
     <div id="song-details">
-      <h1 class="song-title"id="vfytitle"></h1>
+      <h1 class="song-title"id="vfytitle">
+
+<!-- Add this div to your HTML -->
+<div id="currentTimeTitle"></div>
+
+	      
+      </h1>
       <span class="artist">VFY A I</span>
     </div> <!-- /song-details -->
 
