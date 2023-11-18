@@ -1160,11 +1160,12 @@ function loadSong(song, ind) {
     // Set the title text to the marquee div with ID "vfytitle"
     $("#vfytitle").html('<marquee behavior="alternate" scrollamount="4" onmousedown="this.stop();" onmouseup="this.start();">' + title + '</marquee>');
 
-    // Set the current song title to the div with ID "currentSongTitle"
-    $("#currentSongTitle").text("Now Playing: " + title);
+    // Set the current song title with marquee effect to the div with ID "currentSongTitle"
+    $("#currentSongTitle").html('<marquee behavior="scroll" direction="left">' + title + '</marquee>');
 
     play(id, indId);
 }
+
 
 
 
