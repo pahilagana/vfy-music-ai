@@ -613,7 +613,7 @@ width: 50%;
 
 
   
-
+<div id="current-song-title"></div>
 
 	    
 <h1>VFY
@@ -1199,6 +1199,13 @@ var audio = document.getElementById("SAudio");
 function playNextSong() {
     var nextSongIndex = Sid + 1; // Calculate the index of the next song
     var playlistItems = document.getElementsByClassName("list");
+
+    // Set the title of the currently playing song
+    var title = $(".list").eq(Sid).text(); // Get the title from the list item
+    $("#current-song-title").text("Now Playing: " + title); // Set the title in the div
+
+
+	
 
     if (nextSongIndex < playlistItems.length) {
         playlistItems[nextSongIndex].click(); // Play the next song
