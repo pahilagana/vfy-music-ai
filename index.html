@@ -1099,10 +1099,8 @@ function getOutput(item, i) {
   var id = item.id.videoId;
   var title = item.snippet.title;
   var description = item.snippet.description;
-  var maxResUrl = 'https://img.youtube.com/vi/' + id + '/maxresdefault.jpg';
-  var mqDefaultUrl = 'https://img.youtube.com/vi/' + id + '/mqdefault.jpg';
-  var thumbUrl = 'https://example.com/default-thumbnail.jpg'; // Default thumbnail URL
-
+  var maxresUrl = 'https://img.youtube.com/vi/' + id + '/maxresdefault.jpg';
+  var mqUrl = 'https://img.youtube.com/vi/' + id + '/mqdefault.jpg';
   var channelTitle = item.snippet.channelTitle;
   var videoDate = new Date(item.snippet.publishedAt);
 
@@ -1111,22 +1109,13 @@ function getOutput(item, i) {
     return ''; // Empty string means skipping this item
   }
 
-  // Create an image element to handle errors
-  var imgElement = new Image();
-  
-  // Set the source to maxResUrl
-  imgElement.src = maxResUrl;
-
-  // Handle the case when maxresdefault fails to load
-  imgElement.onerror = function() {
-    // Fallback to mqdefault when maxresdefault fails
-    imgElement.src = mqDefaultUrl;
-  };
+  // Use maxresdefault thumbnail if available, otherwise fallback to mqdefault
+  var thumbUrl = maxresUrl || mqUrl;
 
   var output =
     '<b onclick="loadSong(this)" index="' + i + '" class="list" vid="' + id + '">' +
     '<div class="video">' +
-    '<img src="' + imgElement.src + '" alt="' + title + '" class="video-thumbnail" onclick="loadSong(this)" index="' + i + '" vid="' + id + '">' +
+    '<img src="' + thumbUrl + '" alt="' + title + '" class="video-thumbnail" onclick="loadSong(this)" index="' + i + '" vid="' + id + '">' +
     '<section>' +
     '<img src="/img/logo.png" alt="Vivekfy" width="10%" padding="20">' +
     '<div>' +
@@ -1140,10 +1129,17 @@ function getOutput(item, i) {
     '</div>' +
     '</b>';
 
+  // Add handler for maxresdefault and mqdefault
+  var thumbnailImage = new Image();
+  thumbnailImage.src = maxresUrl;
+  thumbnailImage.onerror = function() {
+    // If maxresdefault fails, fallback to mqdefault
+    thumbUrl = mqUrl;
+    // You can add additional logic or handlers here if needed
+  };
+
   return output;
 }
-
-
 
 
 
