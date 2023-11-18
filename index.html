@@ -216,9 +216,39 @@ box-shadow: inset 2px 2px 2px 0 rgba(104, 139, 255, 0.1), rgba(0, 0, 0, 0.1) 0px
     color: #ffffff; /* Font color ko white (#ffffff) par set kiya gaya hai */
     text-shadow: 2px 2px 6px #000000; /* Text shadow ko 2px horizontal, 2px vertical, 4px blur, aur black color (#000000) par set kiya gaya hai */
   }
+
+
+#progressBarContainer {
+  position: fixed;
+  width: 100%;
+  height: 5px; /* You can adjust the height of the progress bar */
+  background-color: yellow; /* Set the background color to yellow */
+  z-index: 2; /* Make sure it's above the content in the upper div */
+}
+
+#progress {
+  height: 100%;
+  background-color: #yourProgressBarColor; /* Set the color for the progress bar */
+}
+
+#ff {
+  position: fixed;
+  bottom: 0;
+	z-index:99999;
+  width: 100%;
+  height: 50px; /* You can adjust the height of the footer */
+  background-color: #333; /* Set the background color of the footer */
+  color: white; /* Set the text color of the footer */
+  text-align: center;
+}
+
+	
 </style>
 
-
+<div id="f">
+    <div id="progressBarContainer">
+    <div id="progress"></div>
+  </div>
 
 <script>
 document.addEventListener('contextmenu', function (e) {
