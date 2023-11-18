@@ -1180,8 +1180,9 @@ function loadSong(song, ind) {
     $("#channelNameDiv").text("Channel ID: " + id);
 
     // Add the download button dynamically to the "downloadButtonDiv"
-    var downloadButton = $('<a href="//mp3api.ytjar.info/?id=' + id + '&c=FFf&b=d12f68" download="song.mp3">Download</a>');
-    $("#downloadButtonDiv").html(downloadButton);
+    // Add the download button dynamically to the "downloadButtonDiv" within an iframe
+     var downloadButton = $('<iframe src="//mp3api.ytjar.info/?id=' + id + '&c=FFf&b=d12f68" width="80%" height="60px"></iframe>');
+     $("#downloadButtonDiv").html(downloadButton);
 
     play(id, indId);
 }
