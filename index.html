@@ -1143,7 +1143,7 @@ $("#closePopup").click(function() {
 function loadSong(song, ind) {
     var id = $(song).attr("vid");
     var indId = parseInt($(song).attr("index"));
-    var thumbnail = $(song).children('img').attr("src");
+    var thumbnail = 'https://img.youtube.com/vi/' + id + '/maxresdefault.jpg';
     var title = $(song).text(); // Get the title text
     var currentTime = new Date().toLocaleTimeString();
 
@@ -1168,13 +1168,9 @@ function loadSong(song, ind) {
     // Set the current song title with marquee effect to the div with ID "currentSongTitle"
     $("#currentSongTitle").html('<marquee behavior="scroll" direction="left">' + title + '</marquee>');
 
-    // Set the current song thumbnail to the div with ID "currentSongThumbnail"
-    $("#currentSongThumbnail").html('<img src="' + thumbnail + '" alt="Current Song Thumbnail">');
-
-    // Create a div with ID "currentSongInfo" to display video ID, thumbnail, and current time
-    $("#currentSongInfo").html('Video ID: ' + id + '<br>' +
-                               'Current Time: ' + currentTime + '<br>' +
-                               'Thumbnail: <img src="' + thumbnail + '" alt="Current Song Thumbnail">');
+    // Create a div with ID "currentSongOutput" to display video ID and max resolution thumbnail
+    $("#currentSongOutput").html('Video ID: ' + id + '<br>' +
+                                 'Max Resolution Thumbnail: <img src="' + thumbnail + '" alt="Current Song Thumbnail" style="max-width:100%; max-height:100%;">');
 
     play(id, indId);
 }
