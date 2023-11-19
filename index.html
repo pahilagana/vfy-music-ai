@@ -279,7 +279,7 @@ img:hover {
   height: 200px;
   border-radius: 50%;
   position: relative;
-box-shadow: 0 0 40px #E74C3C; /* Add dark black shadow */
+box-shadow: 0 0 20px #000; /* Add dark black shadow */
 }
 
 .layer {
@@ -545,7 +545,7 @@ width: 50%;
   margin-bottom: 10px;
   width: 90%;
   max-width: 100%;
-  box-shadow: 0 0px 0px #252525;
+  box-shadow: 0 1px 1px #252525;
   transition: transform 0.3s ease-in-out; /* Add smooth transition effect */
 }
 
@@ -931,7 +931,7 @@ background: linear-gradient(90deg, rgba(231,76,60,1) 0%, rgba(60,57,53,1) 31%, r
 }
 
 .play-button {
-    width: 15%;
+    width: 11%;
     display: flex;
     align-items: center;
     position: relative;
@@ -940,7 +940,7 @@ background: linear-gradient(90deg, rgba(231,76,60,1) 0%, rgba(60,57,53,1) 31%, r
 
 .play-button i {
     font-size: 24px;
-    padding: 15px;
+    padding: 8px;
     position: relative;
     z-index: 2;
 }
@@ -1225,7 +1225,7 @@ function play(id,Sid){
      //data = "https://myserver-dev-atmq.2.ie-1.fl0.io/low-audio?url=https://youtu.be/"+id;
      data = "https://myserver-dev-atmq.2.ie-1.fl0.io/audio?url=https://youtu.be/"+id;
      //data = "https://audioserver-dev-cgen.2.sg-1.fl0.io/"+id;
-    document.getElementById("SThumb").src = "https://i.ytimg.com/vi/"+id+"/mqdefault.jpg";
+    document.getElementById("SThumb").src = "https://i.ytimg.com/vi/"+id+"/maxresdefault.jpg";
     document.getElementById("pahilagana").onclick = ()=>{
         //location.href= "https://myserver-dev-akkd.2.sg-1.fl0.io/mp3?url=https://youtu.be/"+id;
         location.href= "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/download/audio?url=https://youtu.be/"+id;
@@ -1281,7 +1281,7 @@ audio.addEventListener("ended", function() {
 var alternativeAudioSources = [
     
 "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/low-audio?url=https://youtu.be/" + id,
-"https://vivekfy-api-v2.onrender.com/audio/" + id,
+"https://vivekfy-dev-jmbe.2.ie-1.fl0.io/low-audio?url=https://youtu.be/" + id,
     
 ];
 
@@ -1542,16 +1542,6 @@ document.getElementById("stop").onclick = function() {
       document.querySelector("#play i").className = "fa fa-pause";
    }
 }
-audio.src=data;
-     audio.pause();
-   var ids = localStorage.getItem("playPresent");
-   if(audio){
-     audio.pause();
-     audio.play();
-      document.querySelector("#play i").className = "fa fa-pause";
-   }
-}
-	
 </script></div>
 
 
@@ -2688,14 +2678,12 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
 	
 <div id="song-controls">
       
-      
+      <div class="button">
+        <i id="stop" class="fas fa-stop"></i>
+      </div>
 	<div class="button">
         <i id="rewindbutto" class="fas fa-backward"></i>
       </div>
-<div class="button">
-        <b  id="play"> <i class="fa fa-play" aria-hidden="true"></i></b>
-</i>      </div>
-	
       <div class="button">
           <i id="fastForwardbutto" class="fas fa-forward"></i>
       </div>
@@ -3048,9 +3036,6 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
       document.getElementById('exitFullscreenIcon').style.display = 'none';
     }
   </script>
-
-
-
 
 
 
