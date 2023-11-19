@@ -1272,6 +1272,19 @@ function playNextSong() {
     }
 }
 
+var audioPlayer = document.getElementById('SAudio');
+var playPauseButton = document.getElementById('playPauseButton');
+
+function togglePlayPause() {
+  if (audioPlayer.paused) {
+    audioPlayer.play();
+  } else {
+    audioPlayer.pause();
+  }
+}
+
+
+	
 // Listen for the 'ended' event
 audio.addEventListener("ended", function() {
     playNextSong();
@@ -1542,16 +1555,7 @@ document.getElementById("stop").onclick = function() {
       document.querySelector("#play i").className = "fa fa-pause";
    }
 }
-var audioPlayer = document.getElementById('SAudio');
-var playPauseButton = document.getElementById('playPauseButton');
 
-function togglePlayPause() {
-  if (audioPlayer.paused) {
-    audioPlayer.play();
-  } else {
-    audioPlayer.pause();
-  }
-}
 
 
 </script></div>
