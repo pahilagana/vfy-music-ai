@@ -985,7 +985,7 @@ background: linear-gradient(90deg, rgba(231,76,60,1) 0%, rgba(60,57,53,1) 31%, r
 
 <footer class="fixed-footer" >
  <div class="play-button">
- <b  id="playPauseButton"> <i class="fa fa-play" aria-hidden="true"></i></b>
+ <b  id="stop"> <i class="fa fa-stop" aria-hidden="true"></i></b>
 </i></div>
 <div class="song-title">
 <span onclick="openModal()" id="vfytitle" style="width: auto; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></span>
@@ -1250,8 +1250,6 @@ var audio = document.getElementById("SAudio");
 function playNextSong() {
     var nextSongIndex = Sid + 1; // Calculate the index of the next song
     var playlistItems = document.getElementsByClassName("list");
-var audioPlayer = document.getElementById('SAudio');
-var playPauseButton = document.getElementById('playPauseButton');
 
     
 	
@@ -1274,11 +1272,6 @@ var playPauseButton = document.getElementById('playPauseButton');
     }
 }
 
-
-
-
-
-	
 // Listen for the 'ended' event
 audio.addEventListener("ended", function() {
     playNextSong();
@@ -1549,15 +1542,6 @@ document.getElementById("stop").onclick = function() {
       document.querySelector("#play i").className = "fa fa-pause";
    }
 }
-
-function togglePlayPause() {
-  if (audioPlayer.paused) {
-    audioPlayer.play();
-  } else {
-    audioPlayer.pause();
-  }
-}
-
 </script></div>
 
 
@@ -3054,6 +3038,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
       document.getElementById('exitFullscreenIcon').style.display = 'none';
     }
   </script>
+
 
 
 
