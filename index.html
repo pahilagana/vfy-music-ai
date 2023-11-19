@@ -1250,6 +1250,8 @@ var audio = document.getElementById("SAudio");
 function playNextSong() {
     var nextSongIndex = Sid + 1; // Calculate the index of the next song
     var playlistItems = document.getElementsByClassName("list");
+var audioPlayer = document.getElementById('SAudio');
+var playPauseButton = document.getElementById('playPauseButton');
 
     
 	
@@ -1272,16 +1274,8 @@ function playNextSong() {
     }
 }
 
-var audioPlayer = document.getElementById('SAudio');
-var playPauseButton = document.getElementById('playPauseButton');
 
-function togglePlayPause() {
-  if (audioPlayer.paused) {
-    audioPlayer.play();
-  } else {
-    audioPlayer.pause();
-  }
-}
+
 
 
 	
@@ -1556,7 +1550,13 @@ document.getElementById("stop").onclick = function() {
    }
 }
 
-
+function togglePlayPause() {
+  if (audioPlayer.paused) {
+    audioPlayer.play();
+  } else {
+    audioPlayer.pause();
+  }
+}
 
 </script></div>
 
