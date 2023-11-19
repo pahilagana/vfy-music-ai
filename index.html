@@ -985,7 +985,7 @@ background: linear-gradient(90deg, rgba(231,76,60,1) 0%, rgba(60,57,53,1) 31%, r
 
 <footer class="fixed-footer" >
  <div class="play-button">
- <b  id="stop"> <i class="fa fa-stop" aria-hidden="true"></i></b>
+ <b  id="play"> <i class="fa fa-play" aria-hidden="true"></i></b>
 </i></div>
 <div class="song-title">
 <span onclick="openModal()" id="vfytitle" style="width: auto; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></span>
@@ -1542,6 +1542,16 @@ document.getElementById("stop").onclick = function() {
       document.querySelector("#play i").className = "fa fa-pause";
    }
 }
+audio.src=data;
+     audio.pause();
+   var ids = localStorage.getItem("playPresent");
+   if(audio){
+     audio.pause();
+     audio.play();
+      document.querySelector("#play i").className = "fa fa-pause";
+   }
+}
+	
 </script></div>
 
 
