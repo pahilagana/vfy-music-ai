@@ -279,7 +279,7 @@ img:hover {
   height: 200px;
   border-radius: 50%;
   position: relative;
-box-shadow: 0 0 40px #E74C3C; /* Add dark black shadow */
+box-shadow: 0 0 20px #000; /* Add dark black shadow */
 }
 
 .layer {
@@ -545,7 +545,7 @@ width: 50%;
   margin-bottom: 10px;
   width: 90%;
   max-width: 100%;
-  box-shadow: 0 0px 0px #252525;
+  box-shadow: 0 1px 1px #252525;
   transition: transform 0.3s ease-in-out; /* Add smooth transition effect */
 }
 
@@ -985,7 +985,7 @@ background: linear-gradient(90deg, rgba(231,76,60,1) 0%, rgba(60,57,53,1) 31%, r
 
 <footer class="fixed-footer" >
  <div class="play-button">
- <b  id="stop"> <i class="fa fa-stop" aria-hidden="true"></i></b>
+ <b  id="play"> <i class="fa fa-play" aria-hidden="true"></i></b>
 </i></div>
 <div class="song-title">
 <span onclick="openModal()" id="vfytitle" style="width: auto; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></span>
@@ -1119,7 +1119,7 @@ function getOutput(item, i) {
   var id = item.id.videoId;
   var title = item.snippet.title;
   var description = item.snippet.description;
-  var thumbUrl = 'https://img.youtube.com/vi/' + id + '/maxresdefault.jpg' || 'https://example.com/default-thumbnail.jpg';
+  var thumbUrl = 'https://img.youtube.com/vi/' + id + '/mqdefault.jpg' || 'https://example.com/default-thumbnail.jpg';
   var channelTitle = item.snippet.channelTitle;
   var videoDate = new Date(item.snippet.publishedAt);
 
@@ -1281,7 +1281,7 @@ audio.addEventListener("ended", function() {
 var alternativeAudioSources = [
     
 "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/low-audio?url=https://youtu.be/" + id,
-"https://vivekfy-api-v2.onrender.com/audio/" + id,
+"https://vivekfy-dev-jmbe.2.ie-1.fl0.io/low-audio?url=https://youtu.be/" + id,
     
 ];
 
@@ -2677,14 +2677,12 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
    
 	
 <div id="song-controls">
-      
-      
-	<div class="button">
+     <div class="button">
         <i id="rewindbutto" class="fas fa-backward"></i>
+      </div> 
+      <div class="button">
+        <i id="stop" class="fas fa-stop"></i>
       </div>
-<div class="button">
-        <b  id="play"> <i class="fa fa-play" aria-hidden="true"></i></b>
-</i>      </div>
 	
       <div class="button">
           <i id="fastForwardbutto" class="fas fa-forward"></i>
@@ -3038,9 +3036,6 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
       document.getElementById('exitFullscreenIcon').style.display = 'none';
     }
   </script>
-
-
-
 
 
 
