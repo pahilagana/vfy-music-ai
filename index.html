@@ -1890,6 +1890,12 @@ function startSearchWithTyping(query) {
     searchInput.value = ''; // Clear existing text
     simulateTyping(searchInput, query);
 }
+// Function to initiate search with typing effect
+function startSearchWithTyping(query) {
+    var searchInput = document.getElementById('search-basic');
+    searchInput.value = ''; // Clear existing text
+    simulateTyping(searchInput, query);
+}
 function searchHindiSongs() {
     var query = "2023 new hindi songs"; // Hindi songs ke liye query
     $(".search-bar").val(query); // Query input field mein set karen
