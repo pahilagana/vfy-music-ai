@@ -2680,14 +2680,14 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
       <input type="range" min="1" max="100" value="0" class="slider" id="seekbar" />
     </div> <!-- /time-slider -->
     
-   
+   <b id="stop"></b>
 	
 <div id="song-controls">
      <div class="button">
         <i id="rewindbutto" class="fas fa-backward"></i>
       </div> 
       <div class="button">
-        <i id="stop" class="fas fa-stop"></i>
+        <i onclick="clickButton()" class="fas fa-pause"></i>
       </div>
 	
       <div class="button">
@@ -3045,4 +3045,14 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 
 
 
+
+    <script>
+        function clickButton() {
+            // Get the reference to the button by its ID
+            var button1 = document.getElementById("play");
+
+            // Simulate a click on the button
+            button1.click();
+        }
+    </script>
 
