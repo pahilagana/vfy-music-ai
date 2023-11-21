@@ -268,8 +268,13 @@ background-color: #15E2F5;
             <div id="backwardButton"><i class="fa fa-backward" style="font-size:28px;color:#E74C3C"></i></div>
 		<div id="playButton"><i class="fa fa-pause-circle-o" style="font-size:48px;color:#E74C3C"></i></div>
 		
-		<div id="forwardButton"><i class="fa fa-forward" style="font-size:28px;color:#E74C3C"></i></div> <!-- Forward button -->
-            <div id="loopButton"><i class="fa fa-repeat" style="font-size:10px;color:red"></i></div> <!-- Loop button -->
+		<div id="forwardButton"><i class="fa fa-forward" style="font-size:28px;color:#E74C3C"></i>
+		
+		</div> <!-- Forward button -->
+            <div id="loopButton">
+		    
+		    RPT    
+	    </div> <!-- Loop button -->
                <i class="fa fa-heart" style="font-size:2px;color:transparent"></i>
             <!-- Sound controller (volume control) with icon -->
             <div id="soundController">
@@ -349,7 +354,7 @@ backwardButton.addEventListener('click', function() {
         soundIcon.addEventListener('click', function() {
             if (audioPlayer.volume === 0) {
                 audioPlayer.volume = 1; // Turn the sound on
-                soundIcon.innerHTML = 'ðŸŽ§'; // Volume icon
+                soundIcon.innerHTML = 'MT'; // Volume icon
             } else {
                 audioPlayer.volume = 0; // Mute the sound
                 soundIcon.innerHTML = '&#128263;'; // Muted speaker icon
