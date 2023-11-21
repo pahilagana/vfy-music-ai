@@ -962,6 +962,12 @@ display: flex;
     border-radius: 100px;
     box-sizing: border-box;
 }
+.paused .play-button::before {
+    animation: none; /* Pause the gradient animation */
+    background-position: 0% 50%; /* Set the background position to the initial state */
+    filter: drop-shadow(0 0 8px #00bfff); /* Add a water effect using drop-shadow */
+}
+	
 
 @keyframes gradientAnimation {
     0% {
