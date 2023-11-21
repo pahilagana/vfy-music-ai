@@ -962,13 +962,11 @@ display: flex;
     border-radius: 100px;
     box-sizing: border-box;
 }
-.paused .play-button::before {
-    animation: none; /* Pause the gradient animation */
-    background-position: 0% 50%; /* Set the background position to the initial state */
-    filter: drop-shadow(0 0 8px #00bfff); /* Add a water effect using drop-shadow */
-}
-	
 
+	
+#footer {
+      display: none; /* Hide the footer initially */
+    }
 @keyframes gradientAnimation {
     0% {
         background-position: 0% 50%;
@@ -989,18 +987,22 @@ display: flex;
 
 
 
-<!-- Your webpage content goes here -->
+<footer class="fixed-footer" id="footer">
+    <div class="play-button">
+      <b id="play"><i class="fa fa-play" aria-hidden="true"></i></b>
+    </div>
+    <div class="song-title">
+      <span onclick="openModal()" id="vfytitle" style="width: auto; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></span>
+    </div>
+  </footer>
 
-<footer class="fixed-footer" >
- <div class="play-button">
- <b  id="play"> <i class="fa fa-play" aria-hidden="true"></i></b>
-</i></div>
-<div class="song-title">
-<span onclick="openModal()" id="vfytitle" style="width: auto; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></span>
-</div>    
-</div>
-</footer>
-</!doctype>	
+  <!-- Add the script to toggle footer visibility -->
+  <script>
+    document.getElementById("play").addEventListener("click", function() {
+      var footer = document.getElementById("footer");
+      footer.style.display = (footer.style.display === "none" || footer.style.display === "") ? "flex" : "none";
+    });
+  </script>
       
 
 
