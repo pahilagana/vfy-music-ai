@@ -2692,7 +2692,7 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
       </div> 
       <div class="button">
 
-	  <i onclick="clickButton()" id="pause-icon" class="fas fa-pause" onclick="togglePause()"></i>
+	  <i id="play" class="fas fa-pause" onclick="togglePause()", onclick="clickButton()"></i>
 
         
             
@@ -3079,7 +3079,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
     let isPaused = false;
     
     function togglePause() {
-      const pauseIcon = document.getElementById('pause-icon');
+      const pauseIcon = document.getElementById('play');
       isPaused = !isPaused;
 
       if (isPaused) {
