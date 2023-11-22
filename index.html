@@ -2648,32 +2648,19 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
         <i id="VFYmp3" class="fas fa-download"></i>
       </div>
     </div>  <!-- /top-menu -->
-
-
-	
-	<div class="audio-player">
-<div class="plane-block">
-	<div class="circle" id="lowCircle"></div>
-	<div class="circle" id="mediumCircle"></div>
-	<div class="circle" id="highCircle"></div>
-	<img id="SThum" src="/img/newdp.png"  alt="developer vivek masona" width="60" height="60" border="0" border-color="#15E2F5" style="border-radius: 200px;">
-         </div>
-
-
-
-	
-
-</div>  
-
-</div>  
     
+    <div class="thumbnail-border">
+      
+<div class="audio-player">
+
+	<img id="SThumb" src="/img/newdp.png"  alt="developer vivek masona" width="60" height="60" border="0" border-color="#15E2F5" style="border-radius: 200px;">
+      </div>  
+    <!-- Your poster image goes here -->
   
+
+	    
+    </div> <!--/thumbnail-border -->
     
-
-
-
-
-	  
     <div id="song-details">
       <h1 class="song-title"id="vfytitle">
 
@@ -3103,172 +3090,3 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
   </script>
 
 
-<script>let context, analyser, dataArray;
-const circleLow = document.getElementById('lowCircle');
-const circleMedium = document.getElementById('mediumCircle');
-const circleHigh = document.getElementById('highCircle');
-
-const audio = document.getElementById('audio');
-audio.crossOrigin = "anonymous";
-
-const plate = document.getElementById('plate');
-
-const togglePlayer = () => {
-	if(!context){
-		preparation();
-	}
-	if(audio.paused){
-		playAudio();
-	} else {
-		pauseAudio();
-	}
-}
-
-const playAudio = () => {
-	audio.play();
-	loop();
-	plate.style.animationPlayState = 'running';
-}
-
-const pauseAudio = () => {
-	audio.pause();
-	plate.style.animationPlayState = 'paused';
-}
-
-const preparation = () => {
-	context = new AudioContext();
-	analyser = context.createAnalyser();
-	const src = context.createMediaElementSource(audio);
-	src.connect(analyser);
-	analyser.connect(context.destination);
-	loop();
-}
-
-const loop = () => {
-	if(audio.paused){
-		return;
-	}
-
-	window.requestAnimationFrame(loop);
-
-	dataArray = new Uint8Array(analyser.frequencyBinCount);
-	analyser.getByteFrequencyData(dataArray);
-
-	changeCircles(circleLow, 20);
-	changeCircles(circleMedium, 40);
-	changeCircles(circleHigh, 60);
-
-	setTimeout(() => {
-		resetBorder(circleLow, circleMedium, circleHigh);
-	}, 200);
-}
-
-const changeCircles = (circle, frequency) => {
-	circle.style.height = `calc(50% + ${dataArray[frequency]}px)`;
-	circle.style.backgroundColor = `rgba(${dataArray[frequency] / 2}, 58, 183, .55)`;
-	// circle.style.transform = `translate(-${dataArray[frequency]}px, -${dataArray[frequency]}px)`;
-	circle.style.borderRadius = generateBorderRadius();
-}
-
-const resetBorder = (...circles) =>{
-	circles.forEach(circle => circle.style.borderRadius = '50%');
-}
-
-const generateBorderRadius = () => {
-	const randomizeAngle = () => Math.floor(Math.random() * (85 - 15) + 15);
-
-	const top = randomizeAngle();
-	const bottom = randomizeAngle();
-	const left = randomizeAngle();
-	const right = randomizeAngle();
-
-	return `${top}% ${100-top}% ${bottom}% ${100-bottom}% / ${left}% ${right}% ${100-right}% ${100-left}%`;
-}
-
-plate.addEventListener('click', togglePlayer);</script>
-
-<script>let context, analyser, dataArray;
-const circleLow = document.getElementById('lowCircle');
-const circleMedium = document.getElementById('mediumCircle');
-const circleHigh = document.getElementById('highCircle');
-
-const audio = document.getElementById('SAudio');
-audio.crossOrigin = "anonymous";
-
-const plate = document.getElementById('plate');
-
-const togglePlayer = () => {
-	if(!context){
-		preparation();
-	}
-	if(audio.paused){
-		playAudio();
-	} else {
-		pauseAudio();
-	}
-}
-
-const playAudio = () => {
-	audio.play();
-	loop();
-	plate.style.animationPlayState = 'running';
-}
-
-const pauseAudio = () => {
-	audio.pause();
-	plate.style.animationPlayState = 'paused';
-}
-
-const preparation = () => {
-	context = new AudioContext();
-	analyser = context.createAnalyser();
-	const src = context.createMediaElementSource(audio);
-	src.connect(analyser);
-	analyser.connect(context.destination);
-	loop();
-}
-
-const loop = () => {
-	if(audio.paused){
-		return;
-	}
-
-	window.requestAnimationFrame(loop);
-
-	dataArray = new Uint8Array(analyser.frequencyBinCount);
-	analyser.getByteFrequencyData(dataArray);
-
-	changeCircles(circleLow, 20);
-	changeCircles(circleMedium, 40);
-	changeCircles(circleHigh, 60);
-
-	setTimeout(() => {
-		resetBorder(circleLow, circleMedium, circleHigh);
-	}, 200);
-}
-
-const changeCircles = (circle, frequency) => {
-	circle.style.height = `calc(50% + ${dataArray[frequency]}px)`;
-	circle.style.backgroundColor = `rgba(${dataArray[frequency] / 2}, 58, 183, .55)`;
-	// circle.style.transform = `translate(-${dataArray[frequency]}px, -${dataArray[frequency]}px)`;
-	circle.style.borderRadius = generateBorderRadius();
-}
-
-const resetBorder = (...circles) =>{
-	circles.forEach(circle => circle.style.borderRadius = '50%');
-}
-
-const generateBorderRadius = () => {
-	const randomizeAngle = () => Math.floor(Math.random() * (85 - 15) + 15);
-
-	const top = randomizeAngle();
-	const bottom = randomizeAngle();
-	const left = randomizeAngle();
-	const right = randomizeAngle();
-
-	return `${top}% ${100-top}% ${bottom}% ${100-bottom}% / ${left}% ${right}% ${100-right}% ${100-left}%`;
-}
-
-plate.addEventListener('click', togglePlayer);</script>
-
-	
