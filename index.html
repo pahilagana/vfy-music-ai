@@ -386,7 +386,6 @@ box-shadow: 0 0 20px #000; /* Add dark black shadow */
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Vivekmasona/musicjs/jquery.mobile-1.4.5.min.css" />
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 	
 	<style>
 
@@ -2693,9 +2692,8 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
       </div> 
       <div class="button">
 
-	  <i id="play" class="fas fa-pause" onclick="togglePause()"></i>
-        
-            
+	<i id="pause-icon" class="fas fa-pause" onclick="togglePause()"></i>
+   
       
       </div>
 	
@@ -3065,8 +3063,16 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
         }
     </script>
 
-<style>
-    #play {
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <style>
+    #pause-icon {
       transition: transform 0.3s ease-in-out;
     }
   </style>
@@ -3074,12 +3080,11 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 <body>
 
   
-
   <script>
     let isPaused = false;
     
     function togglePause() {
-      const pauseIcon = document.getElementById('play');
+      const pauseIcon = document.getElementById('pause-icon');
       isPaused = !isPaused;
 
       if (isPaused) {
@@ -3092,5 +3097,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
     }
   </script>
 
+</body>
+</html>
 
-
+	
