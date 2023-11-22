@@ -2692,7 +2692,7 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
       </div> 
       <div class="button">
 
-	<i id="pause-icon" class="fas fa-pause" onclick="togglePause()"></i>
+	<i id="play" class="fas fa-pause" onclick="togglePause()"></i>
    
       
       </div>
@@ -3072,7 +3072,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   <style>
-    #pause-icon {
+    #play {
       transition: transform 0.3s ease-in-out;
     }
   </style>
@@ -3084,7 +3084,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
     let isPaused = false;
     
     function togglePause() {
-      const pauseIcon = document.getElementById('pause-icon');
+      const pauseIcon = document.getElementById('play');
       isPaused = !isPaused;
 
       if (isPaused) {
