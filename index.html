@@ -2691,7 +2691,7 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
         <i id="rewindbutto" class="fas fa-backward"></i>
       </div> 
       <div class="button">
-        <i onclick="clickButton()" class="fas fa-pause"></i>
+        <i onclick="clickButton()" id="pause-icon" onclick="togglePause()" class="fas fa-pause"></i>
       </div>
 	
       <div class="button">
@@ -3059,5 +3059,33 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
             button1.click();
         }
     </script>
+
+<style>
+    #pause-icon {
+      transition: transform 0.3s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+
+  
+
+  <script>
+    let isPaused = false;
+    
+    function togglePause() {
+      const pauseIcon = document.getElementById('pause-icon');
+      isPaused = !isPaused;
+
+      if (isPaused) {
+        pauseIcon.classList.remove('fa-pause');
+        pauseIcon.classList.add('fa-play');
+      } else {
+        pauseIcon.classList.remove('fa-play');
+        pauseIcon.classList.add('fa-pause');
+      }
+    }
+  </script>
+
 
 
