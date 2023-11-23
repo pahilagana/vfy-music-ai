@@ -1368,19 +1368,42 @@ volume100butto.addEventListener('click', function () {
 
 
 	
-const titleaudio = document.getElementById('SAudio');
-const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
+const audio = document.getElementById('SAudio');
+const songTitleElement = document.getElementById('vfytitle');
+const thumbnailElement = document.getElementById('SThumb');
 
 audio.addEventListener('play', () => {
-  // Update the tab title when audio starts playing
-  const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
-  document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
+    const songTitle = songTitleElement.textContent;
+    const thumbnail = thumbnailElement.src;
+
+    // Update the tab title when audio starts playing
+    document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
+
+    // Display a notification with the thumbnail
+    if ('Notification' in window) {
+        Notification.requestPermission().then(function (permission) {
+            if (permission === 'granted') {
+                var notification = new Notification(songTitle, {
+                    body: 'Now Playing',
+                    icon: thumbnail
+                });
+
+                // Handle notification click
+                notification.onclick = function () {
+                    // Handle what happens when the notification is clicked
+                    // You can redirect to the player or perform any other action
+                    console.log('Notification clicked');
+                };
+            }
+        });
+    }
 });
 
 audio.addEventListener('pause', () => {
-  // Restore the original page title when audio is paused
-  document.title = 'VIVEKFY-AI';
+    // Restore the original page title when audio is paused
+    document.title = 'VIVEKFY-AI';
 });
+
 
 
 
