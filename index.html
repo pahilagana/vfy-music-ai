@@ -27,7 +27,7 @@
 
 
 
-<audio id="myAudio" src="/sound/fw.mp3"></audio>
+<audio id="myAudio" src="/sound/fw.mp3" controls style="display: none;"></audio>
 
 <script>
   // Audio element ko select karein
@@ -42,70 +42,7 @@
     audio.pause();
   });
 </script>
-<style>
-h4 {
-	z-index:99999;
-	color: black;
-	font-weight: bold;
-	margin-top: 33px;
-	text-align: center;
-}
 
-.loading-icon,
-.loading-icon::before,
-.loading-icon::after {
-	z-index:99999;
-  left: 50%;
-  top: 50%;
-  margin-left: -50px;
-  margin-top: -50px;
-  position: absolute;
-  vertical-align: middle;
-  background: #ffff00;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-}
-.loading-icon::before {
-  content: "";
-  animation: bounce 1.5s infinite;
-}
-.loading-icon::after {
-  content: "";
-  animation: bounce 1.5s -0.4s infinite;
-}
-
-@keyframes bounce {
-  0% {
-    transform: scale(0.8);
-    -webkit-transform: scale(0.8);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(2);
-    -webkit-transform: scale(2);
-    opacity: 0;
-  }
-}
-
-@-webkit-keyframes bounce {
-  0% {
-    transform: scale(0.8);
-    -webkit-transform: scale(0.8);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(2);
-    -webkit-transform: scale2);
-    opacity: 0;
-  }</style>
-
-
-<div id="loadingvkm">
-<div class="loading-icon">
-<h4>VFy</h4>
-</div>
-  </div>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Khula:wght@400;600;700&family=Public+Sans:wght@100;300;400;600&display=swap');
@@ -2149,22 +2086,7 @@ var offlineMsg = document.getElementById("offline-message");
         height:15%;
         overflow:hidden;
     }
-	
- #loadingvkm1m{
-    position: absolute;
-Top:-4px;
-Left:-4px;
-overflow:hidden;
-z-index:999999;
-    width:104%;
-    height:105%;
-    background: #000;
-    display: flex;
-    
-    color:#ffffff;
-    font-weight:bolder;
-    font-size:30px;
-}
+ 
 </style>
 
 <script>
@@ -3168,6 +3090,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
       }
     }
   </script>
+
 
 
 
