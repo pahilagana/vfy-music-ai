@@ -1370,41 +1370,47 @@ volume100butto.addEventListener('click', function () {
 
 
 	
-const audio = document.getElementById('SAudio');
-const songTitleElement = document.getElementById('vfytitle');
-const thumbnailElement = document.getElementById('SThumb1');
+    const audio = document.getElementById('SAudio');
+    const songTitleElement = document.getElementById('vfytitle');
+    const thumbnailElement = document.getElementById('SThumb1');
 
-audio.addEventListener('play', () => {
-    const songTitle = songTitleElement.textContent;
-    const thumbnail = thumbnailElement.src;
+    audio.addEventListener('play', () => {
+        const songTitle = songTitleElement.textContent;
+        const thumbnail = thumbnailElement.src;
 
-    // Update the tab title when audio starts playing
-    document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
+        // Update the tab title when audio starts playing
+        document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
 
-    // Display a notification with the thumbnail
-    if ('Notification' in window) {
+        // Display a notification with the thumbnail only if permission is already granted
+        if (Notification.permission === 'granted') {
+            var notification = new Notification(songTitle, {
+                body: 'Now Playing',
+                icon: thumbnail
+            });
+
+            // Handle notification click
+            notification.onclick = function () {
+                // Handle what happens when the notification is clicked
+                // You can redirect to the player or perform any other action
+                console.log('Notification clicked');
+            };
+        }
+    });
+
+    audio.addEventListener('pause', () => {
+        // Restore the original page title when audio is paused
+        document.title = 'VIVEKFY-AI';
+    });
+
+    // You can request permission when the user interacts with a specific element, like a button
+    document.getElementById('notificationButton').addEventListener('click', () => {
         Notification.requestPermission().then(function (permission) {
-            if (permission === 'granted') {
-                var notification = new Notification(songTitle, {
-                    body: 'Now Playing',
-                    icon: thumbnail
-                });
-
-                // Handle notification click
-                notification.onclick = function () {
-                    // Handle what happens when the notification is clicked
-                    // You can redirect to the player or perform any other action
-                    console.log('Notification clicked');
-                };
-            }
+            console.log('Notification permission:', permission);
         });
-    }
-});
+    });
 
-audio.addEventListener('pause', () => {
-    // Restore the original page title when audio is paused
-    document.title = 'VIVEKFY-AI';
-});
+    
+
 
 
 
