@@ -1233,9 +1233,7 @@ function play(id,Sid){
      data = "https://myserver-dev-atmq.2.ie-1.fl0.io/audio?url=https://youtu.be/"+id;
      //data = "https://audioserver-dev-cgen.2.sg-1.fl0.io/"+id;
     document.getElementById("SThumb").src = "https://i.ytimg.com/vi/"+id+"/mqdefault.jpg";
-   document.getElementById("SThumb1").src = "https://i.ytimg.com/vi/"+id+"/mqdefault.jpg";
-     
-	document.getElementById("pahilagana").onclick = ()=>{
+    document.getElementById("pahilagana").onclick = ()=>{
         //location.href= "https://myserver-dev-akkd.2.sg-1.fl0.io/mp3?url=https://youtu.be/"+id;
         location.href= "https://vivekfy-dev-jmbe.2.ie-1.fl0.io/download/audio?url=https://youtu.be/"+id;
         //location.href= "https://vivekfy-dl-api.onrender.com/audio/"+id;
@@ -1370,48 +1368,19 @@ volume100butto.addEventListener('click', function () {
 
 
 	
-    const audio = document.getElementById('SAudio');
-    const songTitleElement = document.getElementById('vfytitle');
-    const thumbnailElement = document.getElementById('SThumb1');
+const titleaudio = document.getElementById('SAudio');
+const songTitleElement = document.getElementById('vfytitle'); // Assuming the song title is displayed in an element with ID 'vfytitle'
 
-    audio.addEventListener('play', () => {
-        const songTitle = songTitleElement.textContent;
-        const thumbnail = thumbnailElement.src;
+audio.addEventListener('play', () => {
+  // Update the tab title when audio starts playing
+  const songTitle = songTitleElement.textContent; // Get the song title from the 'vfytitle' element
+  document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
+});
 
-        // Update the tab title when audio starts playing
-        document.title = songTitle + ' - ' + audio.currentTime + ' seconds';
-
-        // Display a notification with the thumbnail only if permission is already granted
-        if (Notification.permission === 'granted') {
-            var notification = new Notification(songTitle, {
-                body: 'Now Playing',
-                icon: thumbnail
-            });
-
-            // Handle notification click
-            notification.onclick = function () {
-                // Handle what happens when the notification is clicked
-                // You can redirect to the player or perform any other action
-                console.log('Notification clicked');
-            };
-        }
-    });
-
-    audio.addEventListener('pause', () => {
-        // Restore the original page title when audio is paused
-        document.title = 'VIVEKFY-AI';
-    });
-
-    // You can request permission when the user interacts with a specific element, like a button
-    document.getElementById('notificationButton').addEventListener('click', () => {
-        Notification.requestPermission().then(function (permission) {
-            console.log('Notification permission:', permission);
-        });
-    });
-
-    
-
-
+audio.addEventListener('pause', () => {
+  // Restore the original page title when audio is paused
+  document.title = 'VIVEKFY-AI';
+});
 
 
 
@@ -3122,6 +3091,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
       }
     }
   </script>
+
 
 
 
