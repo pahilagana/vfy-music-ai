@@ -1363,6 +1363,12 @@ volume100butto.addEventListener('click', function () {
     audio.volume = 1.0; // Set volume to 100%
 });
 
+var audio = document.getElementById('SAudio');
+var volumeSlider = document.getElementById('volumeSlider');
+
+volumeSlider.addEventListener('input', function () {
+    audio.volume = volumeSlider.value / 100;
+});
 
 
 	
@@ -1451,7 +1457,7 @@ iframe.setAttribute("autoplay", "true");
 closebutto.innerHTML = "&#10006;";
 closebutto.className = "close-butto";
 closebutto.style.color = "#ffffff"; // Text color
-closebutto.style.backgroundColor = "#15e2f5"; // Background color
+closebutto.style.backgroundColor = "red"; // Background color
 closebutto.style.border = "0px"; // Remove the butto's border
 closebutto.addEventListener("click", function() {
     document.body.removeChild(modal); // Close the modal when the butto is clicked
@@ -2682,6 +2688,10 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
         <span id="total-time"></span> 
         <span id="current-time"></span> 
       </div>
+<input type="range" id="volumeSlider" min="0" max="100" step="1" value="100"/>
+
+
+	    
       <input type="range" min="1" max="100" value="0" class="slider" id="seekbar" />
     </div> <!-- /time-slider -->
     
