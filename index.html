@@ -48,7 +48,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Khula:wght@400;600;700&family=Public+Sans:wght@100;300;400;600&display=swap');
 
 body {
-  background-color: red;
+  background-color: transparent;
 font-family: "Public Sans", sans-serif;
   color: #E74C3C;
 }
@@ -474,8 +474,7 @@ Color:#E74C3C;
   height: 59.5px; /* Set the height to 80px */
   background: rgb(237,192,101);
 background: linear-gradient(90deg, rgba(237,192,101,1) 0%, rgba(36,58,206,1) 100%);
-
-z-index: 2;
+  z-index: 2;
 }
 
 #progress {
@@ -642,7 +641,7 @@ width: 50%;
      <input type="search"  name="search" onclick="startDictation()"  id="search-basic" class="search-bar"placeholder="VIVEKFY: Type songs name artists...."/>
  <button onclick="search(),speakSearchText()" data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button></sr>
 	    
-<button id="back">back</button>	    
+	    
 	    
    <div id="autocomplete-results"></div>
 
@@ -1257,18 +1256,11 @@ function playNextSong() {
     var nextSongIndex = Sid + 1; // Calculate the index of the next song
     var playlistItems = document.getElementsByClassName("list");
 
-    // Function to play the next song
-function playNextSong() {
-    var nextSongIndex = Sid - 1; // Calculate the index of the next song
-    var playlistItems = document.getElementsByClassName("list");
-
+    
 	
 
     if (nextSongIndex < playlistItems.length) {
         playlistItems[nextSongIndex].click(); // Play the next song
-        audio.play(); // Play the audio
-if (backSongIndex < playlistItems.length) {
-        playlistItems[backSongIndex].click(); // Play the next song
         audio.play(); // Play the audio
 
         // Update the profile thumbnail and video ID for the next song
@@ -1284,19 +1276,6 @@ if (backSongIndex < playlistItems.length) {
         // You may want to handle what happens when it's the end of the playlist.
     }
 }
-// Update the profile thumbnail and video ID for the next song
-        var backSong = playlistItems[backSongIndex];
-        var backThumbnail = $(backSong).children('img').attr("src");
-        var backVideoId = $(backSong).attr("vid");
-        $("#profileThumbnail").html('<img src="' + backThumbnail + '" alt="Profile Thumbnail">');
-        $("#profileThumbnail").data("videoId", backVideoId);
-
-        console.log('Automatically went to the next song and started playing.');
-    } else {
-        console.log('End of playlist');
-        // You may want to handle what happens when it's the end of the playlist.
-    }
-}	
 
 // Listen for the 'ended' event
 audio.addEventListener("ended", function() {
@@ -1330,11 +1309,7 @@ nextbutto.addEventListener("click", function () {
 });
 
 
-// butto click event
-var back = document.getElementById("back");
-back.addEventListener("click", function () {
-    playBackSong();
-});
+
 
 
 
