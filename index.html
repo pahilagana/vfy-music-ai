@@ -1257,11 +1257,18 @@ function playNextSong() {
     var nextSongIndex = Sid + 1; // Calculate the index of the next song
     var playlistItems = document.getElementsByClassName("list");
 
-    
+    // Function to play the next song
+function playNextSong() {
+    var nextSongIndex = Sid - 1; // Calculate the index of the next song
+    var playlistItems = document.getElementsByClassName("list");
+
 	
 
     if (nextSongIndex < playlistItems.length) {
         playlistItems[nextSongIndex].click(); // Play the next song
+        audio.play(); // Play the audio
+if (backSongIndex < playlistItems.length) {
+        playlistItems[backSongIndex].click(); // Play the next song
         audio.play(); // Play the audio
 
         // Update the profile thumbnail and video ID for the next song
@@ -1277,6 +1284,19 @@ function playNextSong() {
         // You may want to handle what happens when it's the end of the playlist.
     }
 }
+// Update the profile thumbnail and video ID for the next song
+        var backSong = playlistItems[backSongIndex];
+        var backThumbnail = $(backSong).children('img').attr("src");
+        var backVideoId = $(backSong).attr("vid");
+        $("#profileThumbnail").html('<img src="' + backThumbnail + '" alt="Profile Thumbnail">');
+        $("#profileThumbnail").data("videoId", backVideoId);
+
+        console.log('Automatically went to the next song and started playing.');
+    } else {
+        console.log('End of playlist');
+        // You may want to handle what happens when it's the end of the playlist.
+    }
+}	
 
 // Listen for the 'ended' event
 audio.addEventListener("ended", function() {
@@ -1310,7 +1330,11 @@ nextbutto.addEventListener("click", function () {
 });
 
 
-
+// butto click event
+var back = document.getElementById("back");
+back.addEventListener("click", function () {
+    playBackSong();
+});
 
 
 
