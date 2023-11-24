@@ -1418,6 +1418,7 @@ function convertTimeToSeconds(time) {
 
 
 
+
 var playVideobutto = document.getElementById("playVideobutto");
 
 playVideobutto.addEventListener("click", function () {
@@ -1443,21 +1444,24 @@ playVideobutto.addEventListener("click", function () {
     modal.style.flexDirection = "column";
     modal.style.alignItems = "center";
     modal.style.justifyContent = "center";
-    modal.setAttribute("draggable", "true"); // Make the modal draggable
+    modal.style.cursor = "move"; // Set cursor to indicate draggable
 
-    // Add event listeners for dragging
     var isDragging = false;
     var offset = { x: 0, y: 0 };
 
+    // Add event listeners for dragging
     modal.addEventListener("mousedown", function (e) {
         isDragging = true;
-        offset = { x: e.offsetX, y: e.offsetY };
+        offset = {
+            x: e.clientX - modal.getBoundingClientRect().left,
+            y: e.clientY - modal.getBoundingClientRect().top
+        };
     });
 
     document.addEventListener("mousemove", function (e) {
         if (isDragging) {
-            modal.style.top = e.clientY - offset.y + "px";
             modal.style.left = e.clientX - offset.x + "px";
+            modal.style.top = e.clientY - offset.y + "px";
         }
     });
 
