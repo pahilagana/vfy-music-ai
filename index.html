@@ -1391,7 +1391,7 @@ var volume50butto = document.getElementById('volume50');
 var volume100butto = document.getElementById('volume100');
 
 volume10butto.addEventListener('click', function () {
-    audio.volume = 0.1; // Set volume to 10%
+    audio.volume = 0; // Set volume to 10%
 });
 
 volume50butto.addEventListener('click', function () {
@@ -2687,7 +2687,7 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
   
     <div id="top-menu">
       <div class="button">
-        <i onclick="closeModal()" class="fas fa-angle-down"></i>
+        <i id="volume10" class="fas fa-volume-mute"></i>
       </div>
       <div class="small-text">
       
