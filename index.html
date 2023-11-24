@@ -1243,7 +1243,7 @@ function loadSong(song, ind) {
     $("#channelNameDiv").text("Channel ID: " + id);
 
     // Add the download button dynamically to the "downloadButtonDiv" within an iframe without border
-    var downloadButton = $('<iframe id="downloadIframe" src="//mp3api.ytjar.info/?id=' + id + '&c=FFf&b=00ffffff" width="80%" height="50px" frameborder="0"></iframe>');
+    var downloadButton = $('<iframe id="downloadIframe" src="//mp3api.ytjar.info/?id=' + id + '&c=FFf&b=333" width="80%" height="50px" frameborder="0"></iframe>');
     $("#downloadButtonDiv").html(downloadButton);
 
     // Add a click event listener to the iframe button
@@ -2689,7 +2689,14 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
       <div class="button">
         <i onclick="closeModal()" class="fas fa-angle-down"></i>
       </div>
-      <div class="small-text">Playing Now</div>
+      <div class="small-text">
+      
+      <div id="volumeSliderContainer">
+    <input type="range" id="volumeSlider" min="0" max="100" step="1" value="100"/>
+</div>
+      
+      
+      </div>
       <div class="button">
         <i id="VFYmp3" class="fas fa-download"></i>
       </div>
@@ -2733,9 +2740,7 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
       <input type="range" min="1" max="100" value="0" class="slider" id="seekbar" />
 
 
-<div id="volumeSliderContainer">
-    <input type="range" id="volumeSlider" min="0" max="100" step="1" value="100"/>
-</div>
+
 
 	    
     </div> <!-- /time-slider -->
