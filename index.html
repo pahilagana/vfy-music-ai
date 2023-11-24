@@ -200,6 +200,11 @@ box-shadow: inset 2px 2px 2px 0 rgba(104, 139, 255, 0.1), rgba(0, 0, 0, 0.1) 0px
   width: 65px;
 }
 
+#volumeSliderContainer {
+    margin-top: 10px; /* Set space above the slider */
+    margin-bottom: 10px; /* Set space below the slider */
+}
+
 #volumeSlider {
     width: 100%;
     height: 10px;
@@ -222,6 +227,7 @@ box-shadow: inset 2px 2px 2px 0 rgba(104, 139, 255, 0.1), rgba(0, 0, 0, 0.1) 0px
     background: white; /* Set thumb color for Firefox */
     cursor: pointer;
 }
+
 				       
 
 
@@ -2719,7 +2725,11 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
 
 	    
       <input type="range" min="1" max="100" value="0" class="slider" id="seekbar" />
-<input type="range" id="volumeSlider" min="0" max="100" step="1" value="100" id="Svfy"/>
+
+
+<div id="volumeSliderContainer">
+    <input type="range" id="volumeSlider" min="0" max="100" step="1" value="100"/>
+</div>
 
 	    
     </div> <!-- /time-slider -->
