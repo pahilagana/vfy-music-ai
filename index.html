@@ -1416,7 +1416,6 @@ function convertTimeToSeconds(time) {
   return (minutes * 60) + seconds;
 }
 
-
 // Add an event listener to the "Play Video" butto
 var playVideobutto = document.getElementById("playVideobutto");
 playVideobutto.addEventListener("click", function() {
@@ -1468,8 +1467,7 @@ closebutto.addEventListener("click", function() {
     modal.appendChild(iframe);
     modal.appendChild(closebutto);
     document.body.appendChild(modal);
-
-
+});
 
 	
     
@@ -3093,6 +3091,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
       }
     }
   </script>
+
 
 
 
