@@ -27,7 +27,7 @@
 
 
 
-<audio id="myAudio" src="/sound/fw.mp3" controls style="display: none;"></audio>
+<audio id="myAudio" src="/sound/fw.mp3"></audio>
 
 <script>
   // Audio element ko select karein
@@ -117,7 +117,7 @@ a:hover {
 
 .button:hover {
     box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2);
-  background-color: #E74C3C;
+  background-color: #779bff;
   color: #fff;
 }
 
@@ -472,8 +472,7 @@ Color:#E74C3C;
   bottom: 0;
   width: 100%;
   height: 59.5px; /* Set the height to 80px */
-  background: rgb(237,192,101);
-background: linear-gradient(90deg, rgba(237,192,101,1) 0%, rgba(36,58,206,1) 100%);
+  background-color: #333;
   z-index: 2;
 }
 
@@ -542,20 +541,17 @@ width: 50%;
 }
 
 .video-thumbnail {
-  border-radius: 4px;
+  border-radius: 10px;
   margin-bottom: 10px;
-  width: 99%;
+  width: 90%;
   max-width: 100%;
   box-shadow: 0 1px 1px #252525;
   transition: transform 0.3s ease-in-out; /* Add smooth transition effect */
-  filter: grayscale(0%); /* Convert thumbnail to black and white initially */
 }
 
 .video-thumbnail:hover {
-  transform: scale(0.98); /* Adjust the scale value for your desired zoom level */
-  filter: grayscale(100%); /* Convert thumbnail to black and white initially */
+  transform: scale(0.90); /* Adjust the scale value for your desired zoom level */
 }
-
 
 
 
@@ -665,7 +661,7 @@ width: 50%;
 
 
 <div>
-<img src="https://i.ytimg.com/vi/J0fzg0hFgkg/maxresdefault.jpg" onclick="searchAidcSongs()"
+<img src="https://i.ytimg.com/vi/ZzDj3vwpkbA/maxresdefault.jpg" onclick="searchChhathSongs()"
               alt="vfy"
               width="100%"
             />
@@ -676,7 +672,7 @@ width: 50%;
                 width="10%"
               />
               <div>
-                <p>AIDC all Hits remix songs</p>
+                <p>Chhath Puja Geet /Chhath Songs</p>
                 <small>VFY</small><br />
                 <small>Music Player</small>
               </div>
@@ -686,7 +682,7 @@ width: 50%;
 		      
 		      
 <div>
-<img src="https://i.ytimg.com/vi/OLRZVFx2r2o/maxresdefault.jpg" onclick="searchAlonelofiSongs()"
+<img src="https://i.ytimg.com/vi/9KYG0L4PYNc/maxresdefault.jpg" onclick="searchTrendingSongs()"
               alt="vfy"
               width="100%"
             />
@@ -697,7 +693,7 @@ width: 50%;
                 width="10%"
               />
               <div>
-                <p>New hits Lofi remix songs</p>
+                <p>New Releases Hindi Songs 2023</p>
                 <small>VFY</small><br />
                 <small>Music Player</small>
               </div>
@@ -705,7 +701,7 @@ width: 50%;
 ></section></img
 ></div>	
 <div>
-<img src="https://i.ytimg.com/vi/QM-NFY9T1ac/maxresdefault.jpg" onclick="searchNonstopSongs()"
+<img src="https://i.ytimg.com/vi/mmk98CRv7Jg/maxresdefault.jpg" onclick="searchPawanSongs()"
               alt="vfy"
               width="100%"
             />
@@ -716,7 +712,7 @@ width: 50%;
                 width="10%"
               />
               <div>
-                <p>Non stop hindi remix song</p>
+                <p>Pawan Singh New Songs </p>
                 <small>VFY</small><br />
                 <small>Music Player</small>
               </div>
@@ -725,7 +721,7 @@ width: 50%;
 ></div>	
 
 <div>
-<img src="https://i.ytimg.com/vi/_HbWER1nM_Q/maxresdefault.jpg" onclick="searchHindiSongs()"
+<img src="https://i.ytimg.com/vi/5oExKMYIE9U/maxresdefault.jpg" onclick="searchHindiSongs()"
               alt="vfy"
               width="100%"
             />
@@ -736,7 +732,7 @@ width: 50%;
                 width="10%"
               />
               <div>
-                <p>90's hits hindi songs</p>
+                <p>Top Trending New Hindi Songs 2023</p>
                 <small>VFY</small><br />
                 <small>Music Player</small>
               </div>
@@ -747,7 +743,7 @@ width: 50%;
 
 
 <div>
-<img src="https://i.ytimg.com/vi/eW4At7ozGFQ/maxresdefault.jpg" onclick="searchPuraneSongs()"
+<img src="https://i.ytimg.com/vi/Fe_aRh7zjqo/maxresdefault.jpg" onclick="searchSadSongs()"
               alt="vivekfy"
               width="100%"
             /></a>
@@ -758,7 +754,7 @@ width: 50%;
                 width="10%"
               />
               <div>
-                <p>sad song hits hindi song</p>
+                <p>2023 Hits Sad Song Remix</p>
                 <small>VFY</small><br />
                 <small>Music Player</small>
               </div>
@@ -767,7 +763,7 @@ width: 50%;
 ></div>
 
 <div>
-<img src="https://i.ytimg.com/vi/KmI4y0T7DRo/maxresdefault.jpg" onclick="searchVibesSongs()"
+<img src="https://i.ytimg.com/vi/9S0Ws-lQJsI/maxresdefault.jpg" onclick="searchLofiSongs()"
               alt="vivekfy"
               width="100%"
             />
@@ -778,7 +774,7 @@ width: 50%;
                 width="10%"
               />
               <div>
-                <p>hits hindi song vibes</p>
+                <p>Hits Remix Lofi Song 2023</p>
                 <small>VFY</small><br />
                 <small>Music Player</small>
               </div>
@@ -935,7 +931,7 @@ display: flex;
 }
 
 .play-button {
-	color:#abb3c7;
+	color:#fff;
     width: 15%;
     display: flex;
     align-items: center;
@@ -944,7 +940,7 @@ display: flex;
 }
 
 .play-button i {
-	color:#abb3c7;
+	color:#fff;
     font-size: 24px;
     padding: 15px;
     position: relative;
@@ -1127,7 +1123,7 @@ function getOutput(item, i) {
   var id = item.id.videoId;
   var title = item.snippet.title;
   var description = item.snippet.description;
-  var thumbUrl = 'https://img.youtube.com/vi/' + id + '/maxresdefault.jpg' || 'https://example.com/default-thumbnail.jpg';
+  var thumbUrl = 'https://img.youtube.com/vi/' + id + '/mqdefault.jpg' || 'https://example.com/default-thumbnail.jpg';
   var channelTitle = item.snippet.channelTitle;
   var videoDate = new Date(item.snippet.publishedAt);
 
@@ -1426,7 +1422,7 @@ playVideobutto.addEventListener("click", function() {
     }
 
     // Construct the video URL with the video ID and time
-    var videoUrl = "https://www.youtube.com/embed/" + id;
+    var videoUrl = "https://all-in-one-vid.000webhostapp.com/Play?id=" + id;
 
     // Create and display the video in a popup
     var modal = document.createElement("div");
@@ -1903,8 +1899,8 @@ function startSearchWithTyping(query) {
     searchInput.value = ''; // Clear existing text
     simulateTyping(searchInput, query);
 }
-function searchVibesSongs() {
-    var query = "sachet prampra new hindi songs"; // Hindi songs ke liye query
+function searchHindiSongs() {
+    var query = "2023 new hindi songs"; // Hindi songs ke liye query
     $(".search-bar").val(query); // Query input field mein set karen
     search(); // Search function ko call karen
 }
@@ -1918,13 +1914,13 @@ function searchBhaktiSongs() {
     $(".search-bar").val(query); // Query input field mein set karen
     search(); // Search function ko call karen
 }	
-function searchAidcSongs() {
-    var query = "AIDC"; // Hindi songs ke liye query
+function searchChhathSongs() {
+    var query = "Pawan singh chhath song"; // Hindi songs ke liye query
     $(".search-bar").val(query); // Query input field mein set karen
     search(); // Search function ko call karen
 }	
-function searchAlonelofiSongs() {
-    var query = "SR lofi"; // Hindi songs ke liye query
+function searchLofiSongs() {
+    var query = "Remix hindi lofi "; // Hindi songs ke liye query
     $(".search-bar").val(query); // Query input field mein set karen
     search(); // Search function ko call karen
 }	
@@ -1938,18 +1934,18 @@ function searchBhaktibhojpuriSongs() {
     $(".search-bar").val(query); // Query input field mein set karen
     search(); // Search function ko call karen
 }
-function searchPuraneSongs() {
-    var query = "original hinid sad song"; // Hindi songs ke liye query
+function searchSadSongs() {
+    var query = "Sad song"; // Hindi songs ke liye query
     $(".search-bar").val(query); // Query input field mein set karen
     search(); // Search function ko call karen
 }		
-function searchHindiSongs() {
-    var query = "Tips official"; // Hindi songs ke liye query
+function searchTrendingSongs() {
+    var query = "New Terending hindi songs"; // Hindi songs ke liye query
     $(".search-bar").val(query); // Query input field mein set karen
     search(); // Search function ko call karen
 }
-function searchNonstopSongs() {
-    var query = "its non-stop"; // Hindi songs ke liye query
+function searchPawanSongs() {
+    var query = "pawan singh song"; // Hindi songs ke liye query
     $(".search-bar").val(query); // Query input field mein set karen
     search(); // Search function ko call karen
 }		
@@ -1965,15 +1961,15 @@ function searchNonstopSongs() {
 <style>html {
 	background-color:#000;
 }
-audio, myAudio {
+audio {
 	background-color:red;
        border-radius : 0px; 
-	height: 0px;
-Width:0%;
+	height: 26px;
+Width:100%;
 	outline: 2;
 
 	filter: invert(1);
-	opacity: 0;
+	opacity: 1;
 }</style>
 <style >
 Footer{
@@ -2739,7 +2735,7 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
     function openModal() {
       document.getElementById("modal").style.display = "block";
       // Automatically close the modal after 2 minutes (120,000 milliseconds)
-      setTimeout(closeModal, 400000);
+      setTimeout(closeModal, 120000);
     }
 
     // Function to close the modal
@@ -3091,9 +3087,4 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
       }
     }
   </script>
-
-
-
-
-
 
