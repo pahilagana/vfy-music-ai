@@ -1416,6 +1416,8 @@ function convertTimeToSeconds(time) {
   return (minutes * 60) + seconds;
 }
 
+
+
 var playVideobutto = document.getElementById("playVideobutto");
 
 playVideobutto.addEventListener("click", function () {
@@ -1443,6 +1445,26 @@ playVideobutto.addEventListener("click", function () {
     modal.style.justifyContent = "center";
     modal.setAttribute("draggable", "true"); // Make the modal draggable
 
+    // Add event listeners for dragging
+    var isDragging = false;
+    var offset = { x: 0, y: 0 };
+
+    modal.addEventListener("mousedown", function (e) {
+        isDragging = true;
+        offset = { x: e.offsetX, y: e.offsetY };
+    });
+
+    document.addEventListener("mousemove", function (e) {
+        if (isDragging) {
+            modal.style.top = e.clientY - offset.y + "px";
+            modal.style.left = e.clientX - offset.x + "px";
+        }
+    });
+
+    document.addEventListener("mouseup", function () {
+        isDragging = false;
+    });
+
     var iframe = document.createElement("iframe");
     iframe.style.width = "100%";
     iframe.style.height = "100%";
@@ -1466,7 +1488,6 @@ playVideobutto.addEventListener("click", function () {
     modal.appendChild(closebutto);
     document.body.appendChild(modal);
 });
-
 
 	
     
