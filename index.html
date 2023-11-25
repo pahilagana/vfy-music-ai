@@ -1051,7 +1051,7 @@ display: flex;
  
 <script>
 
-$(document).ready(function() {
+$(document).on('pagecreate', function() {
   // Get the search query from the URL
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -1065,29 +1065,28 @@ $(document).ready(function() {
   }
 });
 
-$(document).on('swipeleft', '.ui-page', function(event){    
-    if(event.handled !== true) // This will prevent event triggering more then once
-    {    
-        var nextpage = $.mobile.activePage.next('[data-role="page"]');
-        // swipe using id of next page if exists
-        if (nextpage.length > 0) {
-            $.mobile.changePage(nextpage, {transition: "slide", reverse: false}, true, true);
-        }
-        event.handled = true;
+$(document).on('swiperight', '[data-role="page"]', function(event) {
+  if (event.handled !== true) {
+    var prevpage = $(this).prev('[data-role="page"]');
+    if (prevpage.length > 0) {
+      $.mobile.changePage(prevpage, { transition: "slide", reverse: true });
     }
-    return false;         
+    event.handled = true;
+  }
+  return false;
 });
-$(document).on('swiperight', '.ui-page', function(event){     
-    if(event.handled !== true) // This will prevent event triggering more then once
-    {      
-        var prevpage = $(this).prev('[data-role="page"]');
-        if (prevpage.length > 0) {
-            $.mobile.changePage(prevpage, {transition: "slide", reverse: true}, true, true);
-        }
-        event.handled = true;
+
+$(document).on('swipeleft', '[data-role="page"]', function(event) {
+  if (event.handled !== true) {
+    var nextpage = $(this).next('[data-role="page"]');
+    if (nextpage.length > 0) {
+      $.mobile.changePage(nextpage, { transition: "slide", reverse: false });
     }
-    return false;            
+    event.handled = true;
+  }
+  return false;
 });
+
 var firstSearch = true; // Flag to track if it's the first search
 
 function search(){
