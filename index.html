@@ -1201,7 +1201,6 @@ function getOutput(item, i) {
 	
   var output =
     '<b onclick="loadSong(this)" index="' + i + '" class="list" vid="' + id + '">' +
-     '<div id="videos">' +
     '<div class="video">' +
     '<img src="' + thumbUrl + '" alt="' + title + '" class="video-thumbnail" onclick="loadSong(this)" index="' + i + '" vid="' + id + '">' +
     '<section>' +
@@ -1215,8 +1214,9 @@ function getOutput(item, i) {
     '</div>' +
     '</section>' +
     '</div>' +
-    '</div>' +
     '</b>';
+
+
 
   return output;
 }
@@ -2940,16 +2940,23 @@ section {
   }
 }</style>
 
-<script>const videoList = document.getElementById("videos");
+const videoList = document.getElementById("videos");
 const li = document.getElementsByTagName("li");
 const videos = videoList.childNodes;
 
 for (let i = 0; i < 5; i++) {
-  videos.forEach((item) => {
-    let cln = item.cloneNode(true);
-    videoList.appendChild(cln);
-  });
+    videos.forEach((item) => {
+        let cln = item.cloneNode(true);
+        videoList.appendChild(cln);
+    });
 }
+
+// Assuming you want to add the 'video' class to the cloned elements
+const clonedVideos = document.querySelectorAll("#videos .video");
+
+clonedVideos.forEach((video) => {
+    video.classList.add("video");
+});
 
 
 }</script>
