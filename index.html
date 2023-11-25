@@ -1201,6 +1201,7 @@ function getOutput(item, i) {
 	
   var output =
     '<b onclick="loadSong(this)" index="' + i + '" class="list" vid="' + id + '">' +
+     '<div id="videos">' +
     '<div class="video">' +
     '<img src="' + thumbUrl + '" alt="' + title + '" class="video-thumbnail" onclick="loadSong(this)" index="' + i + '" vid="' + id + '">' +
     '<section>' +
@@ -1213,6 +1214,7 @@ function getOutput(item, i) {
     '<small class="video-info">Release Date: ' + videoDate.toDateString() + '</small>' +
     '</div>' +
     '</section>' +
+    '</div>' +
     '</div>' +
     '</b>';
 
