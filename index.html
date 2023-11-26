@@ -106,7 +106,6 @@ a:hover {
 }
 
 .button {
-
   height: 50px;
   width: 50px;
   display: flex;
@@ -465,7 +464,10 @@ right: 0;
 	
  z-index : 1;
 }
-
+#spacer{
+background: linear-gradient(0deg, rgba(42,42,42,1) 18%, rgba(0,232,255,1) 53%, rgba(42,42,42,1) 80%);
+  height : 180px;
+}
 #tube{
   color: #000;
   background: #E74C3C;
@@ -489,7 +491,9 @@ border: 2px solid #E74C3C !important;
     border: 0 solid #E74C3C !important;
 }
 Color:#E74C3C;
-
+.search-header{
+  float : right;
+}
 
 #home-content{
 
@@ -507,7 +511,7 @@ Color:#E74C3C;
   bottom: 0;
   width: 100%;
   height: 59.5px; /* Set the height to 80px */
-  
+  background: rgb(237,192,101);
 background: linear-gradient(90deg, rgba(237,192,101,1) 0%, rgba(36,58,206,1) 100%);
   z-index: 2;
 }
@@ -527,7 +531,15 @@ border-radius: 1 px;
 }
 	
 	
+.content{
 
+  height : 190px;
+  background: radial-gradient(circle, rgba(0,0,0,1) 40%, rgba(21,224,244,1) 6%, rgba(42,42,42,1) 46%);
+  margin-top : 10px;
+  text-align : center;
+  border-radius : 8px;
+  
+}
 
 
 
@@ -960,7 +972,7 @@ display: flex;
 }
 
 .play-button {
-	color:#fff;
+	color:#abb3c7;
     width: 15%;
     display: flex;
     align-items: center;
@@ -969,7 +981,7 @@ display: flex;
 }
 
 .play-button i {
-	color:#fff;
+	color:#abb3c7;
     font-size: 24px;
     padding: 15px;
     position: relative;
@@ -1038,7 +1050,7 @@ display: flex;
  
 <script>
 
-$(document).on('pagecreate', function() {
+$(document).ready(function() {
   // Get the search query from the URL
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -1052,28 +1064,29 @@ $(document).on('pagecreate', function() {
   }
 });
 
-$(document).on('swiperight', '[data-role="page"]', function(event) {
-  if (event.handled !== true) {
-    var prevpage = $(this).prev('[data-role="page"]');
-    if (prevpage.length > 0) {
-      $.mobile.changePage(prevpage, { transition: "slide", reverse: true });
+$(document).on('swipeleft', '.ui-page', function(event){    
+    if(event.handled !== true) // This will prevent event triggering more then once
+    {    
+        var nextpage = $.mobile.activePage.next('[data-role="page"]');
+        // swipe using id of next page if exists
+        if (nextpage.length > 0) {
+            $.mobile.changePage(nextpage, {transition: "slide", reverse: false}, true, true);
+        }
+        event.handled = true;
     }
-    event.handled = true;
-  }
-  return false;
+    return false;         
 });
-
-$(document).on('swipeleft', '[data-role="page"]', function(event) {
-  if (event.handled !== true) {
-    var nextpage = $(this).next('[data-role="page"]');
-    if (nextpage.length > 0) {
-      $.mobile.changePage(nextpage, { transition: "slide", reverse: false });
+$(document).on('swiperight', '.ui-page', function(event){     
+    if(event.handled !== true) // This will prevent event triggering more then once
+    {      
+        var prevpage = $(this).prev('[data-role="page"]');
+        if (prevpage.length > 0) {
+            $.mobile.changePage(prevpage, {transition: "slide", reverse: true}, true, true);
+        }
+        event.handled = true;
     }
-    event.handled = true;
-  }
-  return false;
+    return false;            
 });
-
 var firstSearch = true; // Flag to track if it's the first search
 
 function search(){
@@ -1472,7 +1485,7 @@ playVideobutto.addEventListener("click", function() {
 
     var iframe = document.createElement("iframe");
 iframe.style.width = "100%"; // Set iframe width to 100%
-iframe.style.height = "110%"; // Set iframe height to 100%
+iframe.style.height = "100%"; // Set iframe height to 100%
 iframe.setAttribute("src", videoUrl);
 iframe.setAttribute("frameborder", "0");
 iframe.style.border = "0px solid #15e2f5"; // Add a 4px border around the iframe
@@ -2765,7 +2778,7 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
 
   	<div id="audio-player">
   <audio id="SAudio" controls style="display: none;">
-    <source src="/sound/ok.mp3" type="audio/mp3">
+    <source src="your-audio-file.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
@@ -2901,7 +2914,19 @@ section {
   }
 }</style>
 
+<script>const videoList = document.getElementById("videos");
+const li = document.getElementsByTagName("li");
+const videos = videoList.childNodes;
 
+for (let i = 0; i < 5; i++) {
+  videos.forEach((item) => {
+    let cln = item.cloneNode(true);
+    videoList.appendChild(cln);
+  });
+}
+
+
+}</script>
 
 
 
@@ -3125,7 +3150,6 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
       }
     }
   </script>
-
 
 
 
