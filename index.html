@@ -43,6 +43,61 @@
   });
 </script>
 
+<style>
+SThumb {
+	position: relative;
+	width: 300px;
+	height: 300px;
+	background: -webkit-gradient(linear,left bottom, left top,from(#000000),to(#262626));
+	background: -webkit-linear-gradient(bottom,#000000,#262626);
+	background: -moz-linear-gradient(bottom,#000000,#262626);
+	background: -o-linear-gradient(bottom,#000000,#262626);
+	background: linear-gradient(0deg,#000000,#262626);
+	-webkit-border-radius: 50%;
+	   -moz-border-radius: 50%;
+	        border-radius: 50%;
+}
+.SThumb::before, .glow::after {
+	content: '';
+	position: absolute;
+	top: -2px;
+	left: -2px;
+	background: -webkit-linear-gradient(45deg,#ff00ee,#0000ff,#00ff00,#ff0000,#ff00ee,#0000ff,#00ff00,#ffff00,#ff0000);
+	background: -moz-linear-gradient(45deg,#ff00ee,#0000ff,#00ff00,#ff0000,#ff00ee,#0000ff,#00ff00,#ffff00,#ff0000);
+	background: -o-linear-gradient(45deg,#ff00ee,#0000ff,#00ff00,#ff0000,#ff00ee,#0000ff,#00ff00,#ffff00,#ff0000);
+	background: linear-gradient(45deg,#ff00ee,#0000ff,#00ff00,#ff0000,#ff00ee,#0000ff,#00ff00,#ffff00,#ff0000);
+	-webkit-background-size: 400% 400%;
+	   -moz-background-size: 400%;
+	     -o-background-size: 400%;
+	        background-size: 400%;
+	max-width: -webkit-calc(300px + 4px);
+	max-width: -moz-calc(300px + 4px);
+	max-width: calc(300px + 4px);
+	max-height: -webkit-calc(300px + 4px);
+	max-height: -moz-calc(300px + 4px);
+	max-height: calc(300px + 4px);
+	width: -webkit-calc(300px + 4px);
+	width: -moz-calc(300px + 4px);
+	width: calc(300px + 4px);
+	height: -webkit-calc(300px + 4px);
+	height: -moz-calc(300px + 4px);
+	height: calc(300px + 4px);
+	z-index: -1;
+	-webkit-animation: animate 20s linear infinite;
+	   -moz-animation: animate 20s linear infinite;
+	     -o-animation: animate 20s linear infinite;
+	        animation: animate 20s linear infinite;
+	-webkit-border-radius: 50%;
+	   -moz-border-radius: 50%;
+	        border-radius: 50%;
+}
+.SThumb::after {
+	-webkit-filter: blur(20px);
+	        filter: blur(20px);
+}
+	</style>
+	
+
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Khula:wght@400;600;700&family=Public+Sans:wght@100;300;400;600&display=swap');
