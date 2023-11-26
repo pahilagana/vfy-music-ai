@@ -1191,19 +1191,14 @@ function getOutput(item, i) {
     '</section>' +
     '</div>' +
     '</b>';
-
-  return output;
-}
-
-
- //Build our output:
-  var output =
-  '<ul data-role="listview" data-inset="true" id="myList">' +
+'<ul data-role="listview" data-inset="true" id="myList">' +
       '<li><a onclick="loadSong(this)" index="'+i+'" class="list" vid="'+id+'"><img src="'+thumb+'" alt="vivekfy.jpg" id="vfyy">VFY. '+title+'</a></li>' +
   '</ul>';
-
   return output;
 }
+
+
+ 
 
 // Show the popup when a butto is clicked
 $("#showPopupbutto").click(function() {
