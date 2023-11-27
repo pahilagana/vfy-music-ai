@@ -1475,9 +1475,9 @@ function togglePlayPause() {
 // Function to update play button visibility based on play/pause state
 function updatePlayButtonVisibility() {
    if (audio.paused) {
-      playButtonOverlay.style.display = "block"; // Show play button overlay
+      playButtonOverlay.style.display = "none"; // Show play button overlay
    } else {
-      playButtonOverlay.style.display = "none"; // Hide play button overlay
+      playButtonOverlay.style.display = "block"; // Hide play button overlay
    }
 }
 
@@ -1497,7 +1497,7 @@ audio.addEventListener("play", function() {
    updatePlayButtonVisibility(); // Update play button visibility when the song is played
 });
 
-// ... (rest of your existing code)
+
 
 
 
