@@ -1458,6 +1458,44 @@ audio.addEventListener('pause', () => {
 });
 
 
+var audio = document.getElementById("SAudio");
+var playButtonOverlay = document.getElementById("playButtonOverlay");
+
+// Function to toggle play/pause and update play button visibility
+function togglePlayPause() {
+   if (audio.paused) {
+      audio.play();
+   } else {
+      audio.pause();
+   }
+
+   updatePlayButtonVisibility();
+}
+
+// Function to update play button visibility based on play/pause state
+function updatePlayButtonVisibility() {
+   if (audio.paused) {
+      playButtonOverlay.style.display = "block"; // Show play button overlay
+   } else {
+      playButtonOverlay.style.display = "none"; // Hide play button overlay
+   }
+}
+
+// Listen for the 'ended' event
+audio.addEventListener("ended", function() {
+   playNextSong();
+   updatePlayButtonVisibility(); // Update play button visibility when the song ends
+});
+
+// Listen for the 'pause' event
+audio.addEventListener("pause", function() {
+   updatePlayButtonVisibility(); // Update play button visibility when the song is paused
+});
+
+// Listen for the 'play' event
+audio.addEventListener("play", function() {
+   updatePlayButtonVisibility(); // Update play button visibility when the song is played
+});
 
 
 	
