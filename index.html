@@ -62,7 +62,26 @@
 }
 	
 </style>
+<script>
+        // Function to generate a random color
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
 
+        // Apply a random color to the background
+        const playButtonOverlay = document.getElementById('playButtonOverlay');
+        playButtonOverlay.style.background = getRandomColor();
+
+        // Add a click event to change the color on click
+        playButtonOverlay.addEventListener('click', function() {
+            playButtonOverlay.style.background = getRandomColor();
+        });
+    </script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Khula:wght@400;600;700&family=Public+Sans:wght@100;300;400;600&display=swap');
