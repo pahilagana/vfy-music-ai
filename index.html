@@ -1817,6 +1817,7 @@ recognition.onresult = function(event) {
         } 
         if (lastResult.toLowerCase() === 'volume increase' ||
             lastResult.toLowerCase() === 'volume full' ||
+	    lastResult.toLowerCase() === 'volume up' ||
             lastResult.toLowerCase() === 'sound full' ||
             lastResult.toLowerCase() === 'full sound') {
             // Handle volume increase commands
