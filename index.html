@@ -1563,7 +1563,8 @@ closebutto.addEventListener("click", function() {
 });
 
 	
-  const mainAudio = document.getElementById('SAudio');
+  
+const mainAudio = document.getElementById('SAudio');
 const watermarkAudio1 = document.getElementById('watermarkAudio1');
 const watermarkAudio2 = document.getElementById('watermarkAudio2');
 const coverImage = document.getElementById('SThumb');
@@ -1576,23 +1577,28 @@ mainAudio.addEventListener('loadedmetadata', () => {
     setVolumeForWatermarkAudios(0.2); // Adjust the volume as needed (0.2 means 20% of the main audio volume).
 });
 
-// When the main audio plays, show the play button.
-mainAudio.addEventListener('play', () => {
-    showPlayButton();
-    rotateCoverImage(true); // Rotate the cover image
-});
-
-// Listen for the 'ended' event on the main audio to hide the play button.
+// Listen for the 'ended' event on the main audio to start playing the second watermark audio, stop rotating the image, and set volume.
 mainAudio.addEventListener('ended', () => {
-    hidePlayButton();
+    watermarkAudio2.play();
     rotateCoverImage(false); // Stop rotating the cover image
     setVolumeForWatermarkAudios(0.2); // Adjust the volume as needed (0.2 means 20% of the main audio volume).
 });
 
+// When the main audio plays, rotate the image.
+mainAudio.addEventListener('play', () => {
+    rotateCoverImage(true); // Rotate the cover image
+    showPlayButton();
+});
+
 // When the main audio pauses or is manually paused, stop rotating the image.
 mainAudio.addEventListener('pause', () => {
-    hidePlayButton();
     rotateCoverImage(false); // Stop rotating the cover image
+    hidePlayButton();
+});
+
+// When the main audio ends, hide the play button overlay
+mainAudio.addEventListener('ended', () => {
+    hidePlayButton();
 });
 
 // Function to show the play button overlay
@@ -1623,9 +1629,7 @@ function setVolumeForWatermarkAudios(volume) {
 // To hide the watermark audio player controls, you can style it or set 'controls' attribute to false for both watermark audio elements.
 watermarkAudio1.controls = false;
 watermarkAudio2.controls = false;
-  
 
-	
 
 	
 
