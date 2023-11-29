@@ -1580,10 +1580,15 @@ mainAudio.addEventListener('loadedmetadata', () => {
     setVolumeForWatermarkAudios(0.2); // Adjust the volume as needed (0.2 means 20% of the main audio volume).
 });
 
+// Listen for the 'ended' event on the first watermark audio to hide the play button.
+watermarkAudio1.addEventListener('ended', () => {
+    hidePlayButton();
+});
+
 // Listen for the 'ended' event on the main audio to start playing the second watermark audio, hide the play button, stop rotating the image, and set volume.
 mainAudio.addEventListener('ended', () => {
     watermarkAudio2.play();
-    hidePlayButton();
+    hidePlayButton(); // Hide the play button when the main audio ends
     rotateCoverImage(false); // Stop rotating the cover image
     setVolumeForWatermarkAudios(0.2); // Adjust the volume as needed (0.2 means 20% of the main audio volume).
 });
@@ -1625,13 +1630,9 @@ function setVolumeForWatermarkAudios(volume) {
     watermarkAudio2.volume = volume;
 }
 
-
 // To hide the watermark audio player controls, you can style it or set 'controls' attribute to false for both watermark audio elements.
 watermarkAudio1.controls = false;
 watermarkAudio2.controls = false;
-
-
-
 	
 
 	audio.addEventListener("timeupdate", function() {
