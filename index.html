@@ -1472,7 +1472,44 @@ audio.addEventListener('pause', () => {
 });
 
 
+var audio = document.getElementById("SAudio");
+var playButtonOverlay = document.getElementById("playButtonOverlay");
 
+// Function to toggle play/pause and update play button visibility
+function togglePlayPause() {
+   if (audio.paused) {
+      audio.play();
+   } else {
+      audio.pause();
+   }
+
+   updatePlayButtonVisibility();
+}
+
+// Function to update play button visibility based on play/pause state
+function updatePlayButtonVisibility() {
+   if (audio.paused) {
+      playButtonOverlay.style.display = "none"; // Show play button overlay
+   } else {
+      playButtonOverlay.style.display = "block"; // Hide play button overlay
+   }
+}
+
+// Listen for the 'ended' event
+audio.addEventListener("ended", function() {
+   playNextSong();
+   updatePlayButtonVisibility(); // Update play button visibility when the song ends
+});
+
+// Listen for the 'pause' event
+audio.addEventListener("pause", function() {
+   updatePlayButtonVisibility(); // Update play button visibility when the song is paused
+});
+
+// Listen for the 'play' event
+audio.addEventListener("play", function() {
+   updatePlayButtonVisibility(); // Update play button visibility when the song is played
+});
 
 
 
@@ -1566,65 +1603,37 @@ closebutto.addEventListener("click", function() {
     
 
 	
+
 const mainAudio = document.getElementById('SAudio');
 const watermarkAudio1 = document.getElementById('watermarkAudio1');
 const watermarkAudio2 = document.getElementById('watermarkAudio2');
 const coverImage = document.getElementById('SThumb');
-const playButtonOverlay = document.getElementById('playButtonOverlay');
 
-// When the main audio is loaded, start playing the first watermark audio, show the play button, rotate the image, and set volume.
+// When the main audio is loaded, start playing the first watermark audio and rotate the cover.
 mainAudio.addEventListener('loadedmetadata', () => {
     watermarkAudio1.play();
-    showPlayButton();
-    rotateCoverImage(true); // Rotate the cover image
-    setVolumeForWatermarkAudios(0.2); // Adjust the volume as needed (0.2 means 20% of the main audio volume).
+    coverImage.classList.add('rotate'); // Add the "rotate" class
 });
 
-// Listen for the 'ended' event on the main audio to start playing the second watermark audio, hide the play button, stop rotating the image, and set volume.
+// Listen for the 'ended' event on the main audio to start playing the second watermark audio.
 mainAudio.addEventListener('ended', () => {
     watermarkAudio2.play();
-    hidePlayButton();
-    rotateCoverImage(false); // Stop rotating the cover image
-    setVolumeForWatermarkAudios(0.2); // Adjust the volume as needed (0.2 means 20% of the main audio volume).
+    coverImage.classList.remove('rotate'); // Remove the "rotate" class
 });
 
-// When the main audio plays, show the play button, rotate the image.
+// When the main audio plays, start the rotation.
 mainAudio.addEventListener('play', () => {
-    showPlayButton();
-    rotateCoverImage(true); // Rotate the cover image
+    coverImage.classList.add('rotate');
 });
 
-// When the main audio pauses or is manually paused, hide the play button, stop rotating the image.
+// When the main audio pauses or is manually paused, stop the rotation.
 mainAudio.addEventListener('pause', () => {
-    hidePlayButton();
-    rotateCoverImage(false); // Stop rotating the cover image
+    coverImage.classList.remove('rotate');
 });
 
-// Function to show the play button overlay
-function showPlayButton() {
-    playButtonOverlay.style.display = 'block';
-}
-
-// Function to hide the play button overlay
-function hidePlayButton() {
-    playButtonOverlay.style.display = 'none';
-}
-
-// Function to rotate the cover image
-function rotateCoverImage(rotate) {
-    if (rotate) {
-        coverImage.classList.add('rotate');
-    } else {
-        coverImage.classList.remove('rotate');
-    }
-}
-
-// Function to set volume for watermark audios
-function setVolumeForWatermarkAudios(volume) {
-    watermarkAudio1.volume = volume;
-    watermarkAudio2.volume = volume;
-}
-
+// Adjust the volume of the watermark audios as needed.
+watermarkAudio1.volume = 0.2; // Adjust the volume as needed (0.2 means 20% of the main audio volume).
+watermarkAudio2.volume = 0.2; // Adjust the volume as needed (0.2 means 20% of the main audio volume).
 
 // To hide the watermark audio player controls, you can style it or set 'controls' attribute to false for both watermark audio elements.
 watermarkAudio1.controls = false;
@@ -1808,7 +1817,6 @@ recognition.onresult = function(event) {
         } 
         if (lastResult.toLowerCase() === 'volume increase' ||
             lastResult.toLowerCase() === 'volume full' ||
-	    lastResult.toLowerCase() === 'volume up' ||
             lastResult.toLowerCase() === 'sound full' ||
             lastResult.toLowerCase() === 'full sound') {
             // Handle volume increase commands
@@ -2791,7 +2799,7 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
 
 	
 <div id="thumbnailContainer">
-   <img id="SThumb" src="" alt="Thumbnail" onclick="clickButton()">
+   <img id="SThumb" src="" alt="Thumbnail">
    <div id="playButtonOverlay" onclick="playPause()"></div>
 </div>
 
@@ -3238,8 +3246,6 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
       }
     }
   </script>
-
-
 
 
 
