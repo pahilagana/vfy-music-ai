@@ -1564,13 +1564,19 @@ closebutto.addEventListener("click", function() {
 
 	
     
-
-	
 const mainAudio = document.getElementById('SAudio');
 const watermarkAudio1 = document.getElementById('watermarkAudio1');
 const watermarkAudio2 = document.getElementById('watermarkAudio2');
 const coverImage = document.getElementById('SThumb');
 const playButtonOverlay = document.getElementById('playButtonOverlay');
+
+// Add an event listener for time updates on the main audio
+mainAudio.addEventListener('timeupdate', () => {
+    // Check if the current time is greater than a certain threshold (e.g., 10 seconds)
+    if (mainAudio.currentTime > 10) {
+        showPlayButton();
+    }
+});
 
 // When the main audio is loaded, start playing the first watermark audio, show the play button, rotate the image, and set volume.
 mainAudio.addEventListener('loadedmetadata', () => {
@@ -1625,10 +1631,12 @@ function setVolumeForWatermarkAudios(volume) {
     watermarkAudio2.volume = volume;
 }
 
-
 // To hide the watermark audio player controls, you can style it or set 'controls' attribute to false for both watermark audio elements.
 watermarkAudio1.controls = false;
 watermarkAudio2.controls = false;
+
+	
+
 
 
 
