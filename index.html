@@ -1879,6 +1879,9 @@ recognition.onresult = function(event) {
             lastResult.toLowerCase() === 'stop music' ||
             lastResult.toLowerCase() === 'audio stop' ||
             lastResult.toLowerCase() === 'stop audio' ||
+	    lastResult.toLowerCase() === 'band' ||
+	    lastResult.toLowerCase() === 'gana band karo' ||
+	    lastResult.toLowerCase() === 'band karo' ||
             lastResult.toLowerCase() === 'stop mp3' ||
             lastResult.toLowerCase() === 'mp3 stop') {
             // Handle commands for stopping audio
@@ -1887,15 +1890,14 @@ recognition.onresult = function(event) {
             playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         }
-        if (lastResult.toLowerCase() === 'play') 
+        if (lastResult.toLowerCase() === 'play' || 
 	lastResult.toLowerCase() === 'chalu' ||
 	lastResult.toLowerCase() === 'start' ||	
 	lastResult.toLowerCase() === 'suru karo' ||
 	lastResult.toLowerCase() === 'start karo' ||
 	lastResult.toLowerCase() === 'chalu karo' ||
 	lastResult.toLowerCase() === 'song start' ||
-	lastResult.toLowerCase() === 'bajao' ||	
-	 {
+	lastResult.toLowerCase() === 'bajao') {
             // Handle the 'play' command
             const butto1 = document.getElementById('play');
             butto1.click();
