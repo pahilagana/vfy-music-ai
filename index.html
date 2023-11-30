@@ -1882,12 +1882,20 @@ recognition.onresult = function(event) {
             lastResult.toLowerCase() === 'stop mp3' ||
             lastResult.toLowerCase() === 'mp3 stop') {
             // Handle commands for stopping audio
-            const butto1 = document.getElementById('stop');
+            const butto1 = document.getElementById('play');
             butto1.click();
             playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         }
-        if (lastResult.toLowerCase() === 'play') {
+        if (lastResult.toLowerCase() === 'play') 
+	lastResult.toLowerCase() === 'chalu' ||
+	lastResult.toLowerCase() === 'start' ||	
+	lastResult.toLowerCase() === 'suru karo' ||
+	lastResult.toLowerCase() === 'start karo' ||
+	lastResult.toLowerCase() === 'chalu karo' ||
+	lastResult.toLowerCase() === 'song start' ||
+	lastResult.toLowerCase() === 'bajao' ||	
+	 {
             // Handle the 'play' command
             const butto1 = document.getElementById('play');
             butto1.click();
