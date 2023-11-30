@@ -1268,7 +1268,7 @@ function loadSong(song, ind) {
     $("#currentTimeTitle").text("Current Time: " + new Date().toLocaleTimeString());
 
     // Set the current song title with marquee effect to the div with ID "currentSongTitle"
-    $("#currentSongTitle").html('<marquee behavior="alternate" scrollamount="4" onmousedown="this.stop();" onmouseup="this.start();">' + title + '</marquee>');
+    $("#currentSongTitle").html('<marquee behavior="alternate" scrollamount="2">' + title + '</marquee>');
     // Create a div with ID "currentSongOutput" to display video ID and max resolution thumbnail
     $("#currentSongOutput").html('Video ID: ' + id + '<br>' +
                                  'Max Resolution Thumbnail: <img src="' + thumbnail + '" alt="Current Song Thumbnail" style="max-width:100%; max-height:100%;">');
