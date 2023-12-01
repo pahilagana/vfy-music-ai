@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 <style>#volumeSlider {
   /* Remove default browser styles */
   -webkit-appearance: none;
@@ -425,7 +418,7 @@ watermarkAudio.controls = false;</script>
             if (videoId) {
                 const iframeContainer = document.querySelector('#iframeContainer');
                 const iframe = document.createElement('iframe');
-                iframe.src = `https://www.youtube.com/embed/${videoId}`;
+                iframe.src = `https://yt-dl-web.vercel.app/result?url=https://youtu.be/${videoId}`;
                 iframe.setAttribute('allowfullscreen', true);
                 iframe.setAttribute('frameborder', 0);
                 iframe.style.width = '100%';
