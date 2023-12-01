@@ -1,49 +1,4 @@
 
-<style>
-        #thumbnailContainer {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 145vh;
-		width:100%;
-            overflow: hidden; /* Hide scrollbars */
-        }
-	body {
-        overflow: hidden; /* Hide scrollbars */
-	}
-
-        
-.square-frame {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            position: relative;
-            animation: rotation 60s linear infinite, borderChange 4s linear infinite alternate;
-        }
-
-        
-	
-
-        .img-container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: rotation 40s linear infinite;
-        }
-
-        .img-fluid {
-            width: 100%;
-            height: 100%;
-            max-width: 152px;
-            max-height: 152px;
-            border-radius: 5%;
-        }
-
-        
-        
-</style>
 
 
 
@@ -95,15 +50,8 @@
   background: #15e2f5; /* You can change this color to make it distinct when disabled */
 }</style>
 
-<div id="thumbnailContainer">
-        <div class="square-frame">
-            <div class="img-container">
-                <!-- The generated thumbnail image will be inserted here -->
-                <img src="/img/newdp.png" width="200" height="200" class="img-fluid" />
-            </div>
-        </div>
-    </div>
 
+<div id="iframeContainer"></div>
     
 
 <script>
@@ -391,35 +339,6 @@ loopButton.addEventListener('click', function() {
 
 
 
-<script>
-        function getVideoIdFromUrl(url) {
-            const shortUrlMatch = url.match(/youtu.be\/([^?]+)/);
-            if (shortUrlMatch && shortUrlMatch.length > 1) {
-                return shortUrlMatch[1];
-            }
-        
-            const regularUrlMatch = url.match(/[?&]v=([^&]+)/);
-            if (regularUrlMatch && regularUrlMatch.length > 1) {
-                return regularUrlMatch[1];
-            }
-        
-            return null;
-        }
-        
-        // Get the URL parameter from the query string
-        const urlParam = new URLSearchParams(window.location.search).get('url');
-        
-        if (urlParam) {
-            const videoId = getVideoIdFromUrl(urlParam);
-        
-            if (videoId) {
-                const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-                const thumbnailImg = document.querySelector('#thumbnailContainer .img-fluid');
-                thumbnailImg.src = thumbnailUrl;
-            }
-        }
-    </script>
-
 
 
 </!doctype>
@@ -465,14 +384,7 @@ watermarkAudio.controls = false;</script>
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full Screen YouTube Video</title>
-    <style>
+   <style>
         body, html {
             margin: 0;
             padding: 0;
@@ -486,10 +398,8 @@ watermarkAudio.controls = false;</script>
             height: 100%;
         }
     </style>
-</head>
 
-<body>
-    <div id="iframeContainer"></div>
+    
 
     <script>
         function getVideoIdFromUrl(url) {
@@ -524,9 +434,6 @@ watermarkAudio.controls = false;</script>
             }
         }
     </script>
-</body>
-
-</html>
 
 
 
