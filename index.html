@@ -2216,68 +2216,63 @@ var offlineMsg = document.getElementById("offline-message");
 
 
 
-<style>
-  body {
-    background: linear-gradient(to bottom, #ffffff, #e6e6e6); /* Add your gradient colors here */
-    margin: 0;
-  }
 
-  #overlayvkm1m {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.9); /* Adjust the overlay background color and opacity */
-    z-index: 1000;
-  }
+
+
+<div class="main-container">
+  <div class="main-header">
+   </div> <div id="api1" class="modal-design">
+    <div>
+   
+<style>
+#share_titlevkm1m,#share_textvkm1m,#outputvkm1m{
+    text-align:center;
+    font-size:20px;
+}
+ .iframevkm1mr{
+        outline:0;
+        border:0;
+        width:100%;
+        height:86%;
+        overflow:hidden;
+    }
+.iframevkar{
+        outline:0;
+        border:0;
+        width:100%;
+        height:15%;
+        overflow:hidden;
+    }
+ 
 </style>
 
 <script>
   window.addEventListener('load', function() {
+    setTimeout(hide,2000);
     var url = new URL(window.location.toString());
-    let output = document.querySelector("#outputvkm1m");
-    let overlay = document.querySelector("#overlayvkm1m");
-
-    function hide() {
-      document.querySelector('#loadingvkm1m').style = "display:none";
-    }
-
-    function showOverlay() {
-      overlay.style.display = "block";
-    }
-
-    if (url.searchParams.get('text')) {
-      showOverlay();
-    }
-
-    // Your existing code
-    setTimeout(hide, 2000);
     let vTitle = document.querySelector('#share_titlevkm1m');
-    vTitle.innerText = 'Title- ' + url.searchParams.get('title');
+    vTitle.innerText = 'Title- '   + url.searchParams.get('title');
     let vUrl = document.querySelector('#share_textvkm1m');
-    vUrl.innerText = 'URL - ' + url.searchParams.get('text');
-
-    // Add your iframe code here
-    output.innerHTML = "<iframe src='https://vfy.netlify.app/share-v2?url=https://vivekfy.1.ie-1.fl0.io/audio?url=" + url.searchParams.get('text') + "&f=mp3&color=16E2F5' class='iframevkm1mr'></iframe>";
+    vUrl.innerText  = 'URL - ' + url.searchParams.get('text');
+    let output = document.querySelector("#outputvkm1m");
+    console.log(output);
+    function hide(){
+      document.querySelector('#loadingvkm1m').style="display:none";
+    }
+if(url.searchParams.get('text')){
+    openNav()
+}
+   // output.innerHTML ="<iframe src='https://vfy.netlify.app/share?url=https://vivekfy.1.ie-1.fl0.io/audio?url="+ url.searchParams.get('text') +"&f=mp3&color=16E2F5' class='iframevkm1mr'></iframe>";
+  //});
+	output.innerHTML ="<iframe src='https://vfy.netlify.app/share-v2?url=https://vivekfy.1.ie-1.fl0.io/audio?url="+ url.searchParams.get('text') +"&f=mp3&color=16E2F5' class='iframevkm1mr'></iframe>";
   });
-</script>
+  </script>
 
 
-<center>
+  </div></div></div>
 
-	    
-<div class="alert alert-success" role="alert">
-  <butto type="butto" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></butto>
-	<div class="vfy1">
-  <strong><div id="share_titlevkm1m">
-</div>
-</div>
-<div id="share_textvkm1m"></div></div>
-<div id="outputvkm1m"></div>    
-</center>
 
+<!doctype html>
 
 
 
@@ -2355,9 +2350,18 @@ background-color:#333;
 	  
 	  
 	  
-<iframe src="https://akaspanion.github.io/music-app/" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
-    Your browser doesn't support iframes
-</iframe>
+<center>
+
+	    
+<div class="alert alert-success" role="alert">
+  <butto type="butto" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></butto>
+	<div class="vfy1">
+  <strong><div id="share_titlevkm1m">
+</div>
+</div>
+<div id="share_textvkm1m"></div></div>
+<div id="outputvkm1m"></div>    
+</center>
 
 
 </div>
@@ -3267,6 +3271,7 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
       }
     }
   </script>
+
 
 
 
