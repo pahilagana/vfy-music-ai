@@ -613,7 +613,6 @@ width: 50%;
 }
 
 .list {
-    display: flex;
     border: 1px solid #ccc;
     margin: 10px;
     padding: 10px;
@@ -622,20 +621,21 @@ width: 50%;
 
 .video {
     display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
 .video-thumbnail {
-    width: 100px; /* Adjust the size as needed */
-    height: 100px; /* Adjust the size as needed */
+    width: 100%; /* Adjust the size as needed */
+    height: auto;
     object-fit: cover;
-    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 .logo {
     width: 30px; /* Adjust the size as needed */
     height: 30px; /* Adjust the size as needed */
-    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 .song-info {
@@ -646,6 +646,17 @@ width: 50%;
     display: block;
 }
 
+@media (min-width: 600px) {
+    .list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .video {
+        width: 48%; /* Adjust as needed */
+        margin: 1%;
+    }
+}
 
 
 
