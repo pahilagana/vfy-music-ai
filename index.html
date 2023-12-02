@@ -2246,27 +2246,54 @@ var offlineMsg = document.getElementById("offline-message");
  
 </style>
 
+<style>
+  body {
+    background: linear-gradient(to bottom, #ffffff, #e6e6e6); /* Add your gradient colors here */
+    margin: 0;
+  }
+
+  #overlayvkm1m {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9); /* Adjust the overlay background color and opacity */
+    z-index: 1000;
+  }
+</style>
+
 <script>
   window.addEventListener('load', function() {
-    setTimeout(hide,2000);
     var url = new URL(window.location.toString());
-    let vTitle = document.querySelector('#share_titlevkm1m');
-    vTitle.innerText = 'Title- '   + url.searchParams.get('title');
-    let vUrl = document.querySelector('#share_textvkm1m');
-    vUrl.innerText  = 'URL - ' + url.searchParams.get('text');
     let output = document.querySelector("#outputvkm1m");
-    console.log(output);
-    function hide(){
-      document.querySelector('#loadingvkm1m').style="display:none";
+    let overlay = document.querySelector("#overlayvkm1m");
+
+    function hide() {
+      document.querySelector('#loadingvkm1m').style = "display:none";
     }
-if(url.searchParams.get('text')){
-    openNav()
-}
-   // output.innerHTML ="<iframe src='https://vfy.netlify.app/share?url=https://vivekfy.1.ie-1.fl0.io/audio?url="+ url.searchParams.get('text') +"&f=mp3&color=16E2F5' class='iframevkm1mr'></iframe>";
-  //});
-	output.innerHTML ="<iframe src='https://vfy.netlify.app/share-v2?url=https://vivekfy.1.ie-1.fl0.io/audio?url="+ url.searchParams.get('text') +"&f=mp3&color=16E2F5' class='iframevkm1mr'></iframe>";
+
+    function showOverlay() {
+      overlay.style.display = "block";
+    }
+
+    if (url.searchParams.get('text')) {
+      showOverlay();
+    }
+
+    // Your existing code
+    setTimeout(hide, 2000);
+    let vTitle = document.querySelector('#share_titlevkm1m');
+    vTitle.innerText = 'Title- ' + url.searchParams.get('title');
+    let vUrl = document.querySelector('#share_textvkm1m');
+    vUrl.innerText = 'URL - ' + url.searchParams.get('text');
+
+    // Add your iframe code here
+    output.innerHTML = "<iframe src='https://vfy.netlify.app/share-v2?url=https://vivekfy.1.ie-1.fl0.io/audio?url=" + url.searchParams.get('text') + "&f=mp3&color=16E2F5' class='iframevkm1mr'></iframe>";
   });
-  </script>
+</script>
+
 
 
   </div></div></div>
