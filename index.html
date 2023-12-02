@@ -613,6 +613,7 @@ width: 50%;
 }
 
 
+
 .list {
     position: relative;
     overflow: hidden;
@@ -1226,6 +1227,7 @@ function getOutput(item, i) {
   var output =
     '<div onclick="loadSong(this)" index="' + i + '" class="list" vid="' + id + '">' +
     '<div class="video">' +
+    '<img src="' + thumbUrl + '" alt="' + title + '" class="video-thumbnail">' +
     '<div class="overlay">' +
     '<img src="/img/logo.png" alt="Vivekfy" class="logo">' +
     '<div class="song-info">' +
@@ -1233,7 +1235,6 @@ function getOutput(item, i) {
     '<small class="video-info">Release Date: ' + videoDate.toDateString() + '</small>' +
     '</div>' +
     '</div>' +
-    '<img src="' + thumbUrl + '" alt="' + title + '" class="video-thumbnail">' +
     '</div>' +
     '</div>';
 
