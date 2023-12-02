@@ -1311,105 +1311,74 @@ function loadSong(song, ind) {
 
 
 
-function play(id,Sid){
-     //data = "https://vivekfy-obg6.onrender.com/audio?url="+id;
-      data = "https://vivekfy-api.vercel.app/audio/"+id;
-      //data = "https://vivekmasona.000webhostapp.com/play?vfy=https://youtu.be/"+id;
-     // data = "https://projectlounge.pw/ytdl/download?url=https://youtu.be/"+id+"&format=599";
-     // data = "https://vivekfy.1.ie-1.fl0.io/audio?url=https://youtu.be/"+id;
-     //data = "https://myserver-dev-atmq.2.ie-1.fl0.io/low-audio?url=https://youtu.be/"+id;
-     //data = "https://myserver-dev-atmq.2.ie-1.fl0.io/audio?url=https://youtu.be/"+id;
-     //data = "https://audioserver-dev-cgen.2.sg-1.fl0.io/"+id;
-    document.getElementById("SThumb").src = "https://i.ytimg.com/vi/"+id+"/maxresdefault.jpg";
-    document.getElementById("pahilagana").onclick = ()=>{
-        //location.href= "https://myserver-dev-akkd.2.sg-1.fl0.io/mp3?url=https://youtu.be/"+id;
-        location.href= "https://vivekfy-api.vercel.app/download/audio?url=https://youtu.be/"+id;
-        //location.href= "https://vivekfy-dl-api.onrender.com/audio/"+id;
+const nodemailer = require('nodemailer');
+
+// Transporter setup
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'vivekinternatemasona@gmail.com',
+        pass: 'your_gmail_password', // Replace with your Gmail password
+    },
+});
+
+// Function to send email
+function sendEmail() {
+    const mailOptions = {
+        from: 'vivekinternatemasona@gmail.com',
+        to: 'vivekmasona04@gmail.com',
+        subject: 'Server Issue Alert',
+        text: 'Audio playback taking more than 20 seconds. Please check the server.',
     };
-	document.getElementById("VFYmp3").onclick = ()=>{
-        //location.href= "https://myserver-dev-akkd.2.sg-1.fl0.io/mp3?url=https://youtu.be/"+id;
-        location.href= "https://vivekfy-api.vercel.app/download/audio?url=https://youtu.be/"+id;
-        //location.href= "https://vivekfy-dl-api.onrender.com/audio/"+id;
-    };
-document.getElementById("vivekmasona").onclick = ()=>{
-        location.href= "https://vivekfy-video.onrender.com/download?url=https://youtu.be/"+id;
-        //location.href= "https://myserver-dev-akkd.2.sg-1.fl0.io/mp4?url=https://youtu.be/"+id;
-        //location.href= "https://vivekfy-api-v2.onrender.com/video?url=https://youtu.be/"+id;
-     //location.href= "https://vivekfy-obg6.onrender.com/download/video?url=https://youtu.be/"+id;
-        };
 
-    
-var audio = document.getElementById("SAudio");
-
-// Function to play the next song
-function playNextSong() {
-    var nextSongIndex = Sid + 1; // Calculate the index of the next song
-    var playlistItems = document.getElementsByClassName("list");
-
-    
-	
-
-    if (nextSongIndex < playlistItems.length) {
-        playlistItems[nextSongIndex].click(); // Play the next song
-        audio.play(); // Play the audio
-
-        // Update the profile thumbnail and video ID for the next song
-        var nextSong = playlistItems[nextSongIndex];
-        var nextThumbnail = $(nextSong).children('img').attr("src");
-        var nextVideoId = $(nextSong).attr("vid");
-        $("#profileThumbnail").html('<img src="' + nextThumbnail + '" alt="Profile Thumbnail">');
-        $("#profileThumbnail").data("videoId", nextVideoId);
-
-        console.log('Automatically went to the next song and started playing.');
-    } else {
-        console.log('End of playlist');
-        // You may want to handle what happens when it's the end of the playlist.
-    }
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error sending email:', error);
+        } else {
+            console.log('Email sent successfully:', info.response);
+        }
+    });
 }
 
-function playPause() {
-   var audio = document.getElementById("SAudio");
+// Your existing code...
+function play(id, Sid) {
+    const data = "https://vivekfy-api.vercel.app/audio/" + id;
+    document.getElementById("SThumb").src = "https://i.ytimg.com/vi/" + id + "/maxresdefault.jpg";
+    document.getElementById("pahilagana").onclick = () => {
+        location.href = "https://vivekfy-api.vercel.app/download/audio?url=https://youtu.be/" + id;
+    };
+    document.getElementById("VFYmp3").onclick = () => {
+        location.href = "https://vivekfy-api.vercel.app/download/audio?url=https://youtu.be/" + id;
+    };
+    document.getElementById("vivekmasona").onclick = () => {
+        location.href = "https://vivekfy-video.onrender.com/download?url=https://youtu.be/" + id;
+    };
 
-   if (audio.paused) {
-      audio.play();
-   } else {
-      audio.pause();
-   }
+    var audio = document.getElementById("SAudio");
+
+    audio.addEventListener("ended", function () {
+        playNextSong();
+    });
+
+    audio.addEventListener("error", function () {
+        setTimeout(function () {
+            audio.src = alternativeAudioSources[currentAlternativeIndex];
+            audio.load();
+            audio.play();
+            currentAlternativeIndex = (currentAlternativeIndex + 1) % alternativeAudioSources.length;
+
+            // Send email when an error occurs
+            sendEmail();
+        }, 5000);
+    });
+
+    var nextbutto = document.getElementById("nextbutto");
+    nextbutto.addEventListener("click", function () {
+        playNextSong();
+    });
 }
 
-	
-
-// Listen for the 'ended' event
-audio.addEventListener("ended", function() {
-    playNextSong();
-});
-
-// Listen for the 'error' event
-var alternativeAudioSources = [
-    
-"https://vivekmasona.000webhostapp.com/play?vfy=https://youtu.be/" + id,
-"https://vivekfy.1.ie-1.fl0.io/audio?url=https://youtu.be/" + id,
-    
-];
-
-var currentAlternativeIndex = 0;
-
-audio.addEventListener("error", function () {
-    setTimeout(function () {
-        audio.src = alternativeAudioSources[currentAlternativeIndex];
-        audio.load();
-        audio.play();
-        currentAlternativeIndex = (currentAlternativeIndex + 1) % alternativeAudioSources.length;
-    }, 5000);
-});
-
-
-// butto click event
-var nextbutto = document.getElementById("nextbutto");
-nextbutto.addEventListener("click", function () {
-    playNextSong();
-});
-
+   
 
 
 
