@@ -1,6 +1,6 @@
 {
-  "short_name": "Music Player",
-  "name": "Music Player PWA",
+  "short_name": "vfy Player",
+  "name": "vfy ofline",
   "icons": [
     {
       "src": "favicon.ico",
