@@ -695,7 +695,7 @@ width: 50%;
 	   
 	    
 	<button id="toggleButton">
-	<i class="fa fa-chevron-down" id="exitFullscreenIcon" style="display: none;font-size:18px;color:red"></i>	
+	<i class="fa fa-chevron-down" onclick="openvfy()" style="display: none;font-size:18px;color:red"></i>	
     <i class="fa fa-arrows-alt" id="fullscreenIcon" style="font-size:18px;color:red"></i>	
     
     
@@ -2397,11 +2397,11 @@ function closeNav() {
 
 
 <script>
-function openNav() {
+function openvfy() {
   document.getElementById("vfy-file").style.width = "100%";
 }
 
-function closeNav() {
+function closevfy() {
   document.getElementById("vfy-file").style.width = "0%";
 }
 </script>
@@ -2409,7 +2409,7 @@ function closeNav() {
 
 
 <div id="vfy-lile" class="overlay">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fa fa-arrow-left" style="font-size:20px;color:#E74C3C"></i></a>
+  <a href="javascript:void(0)" class="closebtn" onclick="closevfy()"><i class="fa fa-arrow-left" style="font-size:20px;color:#E74C3C"></i></a>
   <div class="overlay-content">
     
 vivek	  
