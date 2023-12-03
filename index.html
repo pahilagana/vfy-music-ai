@@ -2672,7 +2672,7 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 
 <style>
   /* Styling for the modal container */
-  .modal-container {
+  .modal-container1 {
     display: none;
     position: fixed;
     top: 0;
@@ -2686,7 +2686,7 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
   }
 
   /* Styling for the modal content */
-  .modal-content {
+  .modal-content1 {
     background-color: transparent;
     width: 100%;
     top: 0%;
@@ -2701,8 +2701,8 @@ background: radial-gradient(circle, rgba(59,175,194,0.9557312232860621) 0%, rgba
 
 
 <!-- The modal container -->
-<div id="modal" class="modal-container">
-  <div class="modal-content">
+<div id="modal1" class="modal-container1">
+  <div class="modal-content1">
     <span onclick="closeModal()" style="float: right;"></span>
 
 
@@ -3185,7 +3185,6 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
   </script>
 
 
-
 <div class="modal-content" data-modal-id="1">
     <iframe src="https://vfy.netlify.app/offline" style="position:fixed; top:20; left:0; bottom:0; right:0; width:100%; height:96%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999; "></iframe>  
  
@@ -3207,14 +3206,14 @@ modalBtns.forEach((modalBtn) => {
 });
 
 function removeAllmodals() {
-  let modals = Array.from(document.getElementsByClassName("modal1"));
+  let modals = Array.from(document.getElementsByClassName("modal"));
 
-  modals.forEach((modal1) => {
-    removemodal(modal1);
+  modals.forEach((modal) => {
+    removemodal(modal);
   });
 }
 
-function removemodal(modal1) {
+function removemodal(modal) {
   document.body.style.overflow = "";
   modal.classList.add("hidden");
 
@@ -3342,7 +3341,7 @@ body {
   display: none;
 }
 
-.modal1 {
+.modal {
   z-index: 999999;
   background-color: #BABED9;
   border-radius: 1rem 1rem 0 0;
@@ -3392,6 +3391,4 @@ body {
 }</style>
 
 	
-
-      
 
