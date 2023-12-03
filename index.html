@@ -2253,13 +2253,7 @@ var offlineMsg = document.getElementById("offline-message");
 
         // Set the value in the search box based on the link type
         let searchBox = document.querySelector('#search-basic');
-        if (isYouTubeLink(url.searchParams.get('text'))) {
-            // If it's a YouTube link, set the video ID
-            searchBox.value = extractVideoId(url.searchParams.get('text')) || '';
-        } else {
-            // If it's any other link, remove the website link and set the remaining text
-            searchBox.value = removeWebsiteLink(url.searchParams.get('text')) || '';
-        }
+        searchBox.value = removeWebsiteLink(url.searchParams.get('text')) || '';
 
         let vUrl = document.querySelector('#share_textvkm1m');
         vUrl.innerText = 'URL - ' + url.searchParams.get('text');
@@ -2272,23 +2266,13 @@ var offlineMsg = document.getElementById("offline-message");
         document.getElementById('search-btn').click();
     });
 
-    // Function to extract video ID from YouTube link
-    function extractVideoId(youtubeUrl) {
-        let videoIdMatch = youtubeUrl.match(/[?&]v=([^&]+)/);
-        return videoIdMatch ? videoIdMatch[1] : null;
-    }
-
-    // Function to check if the link is a YouTube link
-    function isYouTubeLink(link) {
-        return link.includes('youtube.com') || link.includes('youtu.be');
-    }
-
-    // Function to remove the website link and get the remaining text
+    // Function to remove the common structure of a website link
     function removeWebsiteLink(link) {
-        // Add logic to remove the website link; for example, remove 'https://' and the domain
-        return link.replace(/^https:\/\/(www\.)?example\.com\//, '') || '';
+        // Add logic to remove the common structure; for example, remove 'https://example.com/'
+        return link.replace(/^https:\/\/example\.com\//, '') || '';
     }
 </script>
+
   </div></div></div>
 
 <div id="share_titlevkm1m"></div>
