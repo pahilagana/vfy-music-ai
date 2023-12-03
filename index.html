@@ -725,8 +725,8 @@ width: 50%;
   </div>
 		
     <div data-role="main" class="ui-content">
-     <input type="search"  name="search" onclick="startDictation()"  id="search-basic" class="search-bar"placeholder="VIVEKFY: Type songs name artists...."/>
- <button onclick="search(),speakSearchText()" data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button></sr>
+     <input type="search" name="search" onclick="startDictation()" id="search-basic" class="search-bar" placeholder=""/>
+<button onclick="search(),speakSearchText()" data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" id="search-btn">SEARCH..</button>
 	    
 	    
 	    
@@ -3409,4 +3409,58 @@ body {
 	
 
 
+
+<script>
+const TYPE_DELAY = 70;
+const SEARCH_TERMS = [
+  "best time to buy houseplants",
+  "best buy near me",
+  "diy shelf installation",
+  "best movies on netflix",
+  "netflix originals",
+  "disney+ subscription",
+];
+
+function throttle(fn, limit) {
+  let prm = Promise.resolve();
+  return function (...args) {
+    if (args[0].wait) {
+      prm = prm
+        .then(() => {
+          document.getElementById('search').classList.add('active');
+          return new Promise((r) => setTimeout(r, args[0].wait))
+        })
+        .then(() => {
+          document.getElementById('search').classList.remove('active');
+          return Promise.resolve(args[0].cb());
+        });
+      return;
+    }
+
+    prm = prm.then(
+      () =>
+        new Promise((r) => {
+          fn.apply(null, args);
+          setTimeout(r, limit);
+        })
+    );
+  };
+}
+
+let tickTimeout;
+
+function tick() {
+  tickTimeout = setTimeout(() => {
+    const b = document.getElementById("search-basic");
+    b.placeholder = b.placeholder.slice(0, -1) + b.placeholder[b.placeholder.length - 1];
+    tick();
+  }, TYPE_DELAY);
+}
+
+tick();
+
+</script>
+
+
+	
 
