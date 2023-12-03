@@ -2245,7 +2245,6 @@ var offlineMsg = document.getElementById("offline-message");
     }
  
 </style>
-
 <script>
     window.addEventListener('load', function() {
         setTimeout(hide, 2000);
@@ -2253,7 +2252,7 @@ var offlineMsg = document.getElementById("offline-message");
 
         // Set the value in the search box based on the link type
         let searchBox = document.querySelector('#search-basic');
-        searchBox.value = removeWebsiteLink(url.searchParams.get('text')) || '';
+        searchBox.value = removeDomainFromURL(url.searchParams.get('text')) || '';
 
         let vUrl = document.querySelector('#share_textvkm1m');
         vUrl.innerText = 'URL - ' + url.searchParams.get('text');
@@ -2266,10 +2265,10 @@ var offlineMsg = document.getElementById("offline-message");
         document.getElementById('search-btn').click();
     });
 
-    // Function to remove the common structure of a website link
-    function removeWebsiteLink(link) {
-        // Add logic to remove the common structure; for example, remove 'https://example.com/'
-        return link.replace(/^https:\/\/example\.com\//, '') || '';
+    // Function to remove the domain from the URL
+    function removeDomainFromURL(link) {
+        // Add logic to remove the domain; for example, remove 'https://www.' or 'http://www.'
+        return link.replace(/^https?:\/\/(www\.)?/, '') || '';
     }
 </script>
 
