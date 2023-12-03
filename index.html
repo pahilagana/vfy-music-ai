@@ -691,8 +691,8 @@ width: 50%;
 
 
 	    
-        <a href="#" class="ui-btn ui-corner-all ui-shadow" data-modal-btn-id="1"><i class='fa fa-sliders' style='font-size:18px;color:#E74C3C'></i></i></a>
-	   <b class="modal-btn" >
+        <a href="#" class="modal-btn" data-modal-btn-id="1"><i class='fa fa-sliders' style='font-size:18px;color:#E74C3C'></i></i></a>
+	   
 	    
 	<button id="toggleButton">
 	<i class="fa fa-chevron-down" id="exitFullscreenIcon" style="display: none;font-size:18px;color:red"></i>	
@@ -2315,114 +2315,7 @@ var offlineMsg = document.getElementById("offline-message");
 <div id="share_textvkm1m"></div>
 <div id="outputvkm1m"></div>    
 
-<!doctype html>
 
-
-
-<style>
-body {
-  font-family: 'Lato', sans-serif;
-}
-
-.overlay {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 999999;
-  top: 0;
-  left: 0;
-  background: rgb(127,124,118);
-background: linear-gradient(180deg, rgba(127,124,118,0) 25%, rgba(214,138,100,1) 56%, rgba(45,184,223,1) 100%);
-
-	
-	overflow-x: hidden;
-  transition: 0.5s;
-}
-
-.overlay-content {
-  position: relative;
-  top: 13.5%;
-  width: 100%;
-  text-align: center;
-  margin-top: 0px;
-}
-
-.overlay a {
-  padding: 8px;
-  text-decoration: none;
-  font-size: 36px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-.overlay a:hover, .overlay a:focus {
-  color: #f1f1f1;
-}
-
-.overlay .closebtn {
-  position: absolute;
-z-index:999;
-border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;	
-  top: 0.5%;
-Color:#fff;
-background-color:#333;
-  right: 89%;
-  font-size: 50px;
-
-}
-
-@media screen and (max-height: 450px) {
-  .overlay a {font-size: 20px}
-  .overlay .closebtn {
-  font-size: 40px;
-  top: 205px;
-  right: 35px;
-  }
-}
-</style>
-
-
-
-	
-
-
-
-<div id="myNew" class="overlay">
-  <a href="javascript:void(0)" id="closeBtn" onclick="closeNav()"><i class="fa fa-arrow-left" style="font-size:20px;color:#E74C3C"></i></a>
-  <div class="overlay-content">
-   
-	  
-	  
-	
-  
-  </div>
-</div>
-
-<script>
-  // Automatically open the overlay on page load
-  window.onload = function() {
-    document.getElementById("myNew").style.width = "100%";
-  };
-
-  // Close button function
-  function closeNav() {
-    document.getElementById("myNew").style.width = "0%";
-  }
-
-  // Open button function
-  document.getElementById("openBtn").onclick = function() {
-    document.getElementById("myNew").style.width = "100%";
-  };
-</script>
-
-
-
-
-
-	
-</!doctype>
 
 	
 </script>
