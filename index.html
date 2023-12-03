@@ -2251,12 +2251,10 @@ var offlineMsg = document.getElementById("offline-message");
         setTimeout(hide, 2000);
         var url = new URL(window.location.toString());
 
-        // Set the title in the search box
+        // Set the URL in the search box
         let searchBox = document.querySelector('#search-basic');
-        searchBox.value = url.searchParams.get('title') || '';
+        searchBox.value = url.searchParams.get('text') || '';
 
-        let vTitle = document.querySelector('#share_titlevkm1m');
-        vTitle.innerText = 'Title- ' + url.searchParams.get('title');
         let vUrl = document.querySelector('#share_textvkm1m');
         vUrl.innerText = 'URL - ' + url.searchParams.get('text');
         
