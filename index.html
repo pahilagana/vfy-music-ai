@@ -1149,7 +1149,12 @@ function search(){
  //var ytapi = "AIzaSyBh6s9emY3VYSbsHudlhxProRt8mtFyt2s";
  //var ytapi = "AIzaSyBfsNcJJHd-O0ftUzH2KqIRc_KhXgPXne0";
   
-  var apiKeys = [
+  var q = $(".search-bar").val();
+  if(q === null || q === undefined || q=== ""){
+    return;
+  }else{
+      
+const apiKeys = [
   "AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo",
   "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA",
   "AIzaSyCbn2fAWsEvw6TyD4PsfNchyK35rN69jH0",
@@ -1157,53 +1162,68 @@ function search(){
   "AIzaSyBh6s9emY3VYSbsHudlhxProRt8mtFyt2s"
 ];
 
-var q = $(".search-bar").val();
-
-if (q === null || q === undefined || q === "") {
-  return;
-} else {
-  var randomApiKey = apiKeys[Math.floor(Math.random() * apiKeys.length)];
-
-  $.get(
-    "https://www.googleapis.com/youtube/v3/search", {
-      part: 'snippet , id',
-      q: q,
-      type: 'video',
-      videoSyndicated: 'true',
-      videoCategoryId: '10',
-      key: randomApiKey,
-      maxResults: "40"
-    },
-    function (data) {
-      var nextPageToken = data.nextPageToken;
-      var prevPageToken = data.prevPageToken;
-
-      // Load all songs in the search list
-      $.each(data.items, function (i, item) {
-        var output = getOutput(item, i);
-        $(output).appendTo("#homepage-content").listview();
-      });
-
-      if (firstSearch && data.items.length > 0) {
-        // Automatically play the first song only on the first search
-        loadSong($(".list")[0], 0);
-        firstSearch = false; // Set the flag to false for subsequent searches
-      }
-
-      if (prevPageToken) {
-        $("#prev-btn").show();
-        $("#prev-btn").attr("prev", prevPageToken);
-        $("#prev-btn").attr("q", q);
-      }
-      if (nextPageToken) {
-        $("#next-btn").show();
-        $("#next-btn").attr("next", nextPageToken);
-        $("#next-btn").attr("q", q);
-      }
-    }
-  );
+function getRandomApiKey() {
+  return apiKeys[Math.floor(Math.random() * apiKeys.length)];
 }
 
+const apiUrl = "https://www.googleapis.com/youtube/v3/search";
+const searchQuery = "your_search_query";
+
+// Assuming you have a function to make the API request
+function makeApiRequest(apiKey) {
+  const params = {
+    part: 'snippet,id',
+    q: searchQuery,
+    type: 'video',
+    videoSyndicated: 'true',
+    videoCategoryId: '10',
+    eventType: 'none',
+    key: apiKey,
+    maxResults: '40'
+  };
+
+  // Include your logic for making the API request here
+  // For example:
+  // fetch(apiUrl + '?' + new URLSearchParams(params))
+  //   .then(response => response.json())
+  //   .then(data => console.log(data))
+  //   .catch(error => console.error('Error:', error));
+}
+
+// Example usage:
+const selectedApiKey = getRandomApiKey();
+makeApiRequest(selectedApiKey);
+
+          function (data) {
+                var nextPageToken = data.nextPageToken;
+                var prevPageToken = data.prevPageToken;
+
+                // Load all songs in the search list
+                $.each(data.items, function (i, item) {
+                    var output = getOutput(item, i);
+                    $(output).appendTo("#homepage-content").listview();
+                });
+
+                if (firstSearch && data.items.length > 0) {
+                    // Automatically play the first song only on the first search
+                    loadSong($(".list")[0], 0);
+                    firstSearch = false; // Set the flag to false for subsequent searches
+                }
+
+                if (prevPageToken) {
+                    $("#prev-btn").show();
+                    $("#prev-btn").attr("prev", prevPageToken);
+                    $("#prev-btn").attr("q", q);
+                }
+                if (nextPageToken) {
+                    $("#next-btn").show();
+                    $("#next-btn").attr("next", nextPageToken);
+                    $("#next-btn").attr("q", q);
+                }
+            }
+        );
+    }
+}
 
 function getOutput(item, i) {
   var id = item.id.videoId;
