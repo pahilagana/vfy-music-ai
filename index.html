@@ -725,11 +725,18 @@ width: 50%;
   </div>
 		
     <div data-role="main" class="ui-content">
-     <div style="display: flex; align-items: center;">
-    <input type="search" name="search" onclick="startDictation()" id="search-basic" class="search-bar" placeholder="VIVEKFY: Type songs name artists...."/>
-    <button onclick="search(); speakSearchText()" data-role="button" data-mini="true" data-inline="true" data-theme="b" id="search-btn">
-        <i class="fa fa-search"></i> SEARCH..
-    </button>
+     <div class="search-local">
+        <div class="icon">
+            <ion-icon name="location-outline"></ion-icon>
+        </div>
+
+        <input type="search" name="search" onclick="startDictation()" id="search-basic" class="search-local-input" placeholder="Localização para entrega" />
+
+        <button onclick="search(),speakSearchText()" data-role="button" data-icon="search" data-mini="true" data-inline="true" data-theme="b" class="search-local-button">
+            <a href="#">Buscar</a>
+            <ion-icon name="search-outline" class="search-icon"></ion-icon>
+        </button>
+    </div>
 </div>
  
 	    
@@ -3396,6 +3403,134 @@ body {
 
 	
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        :root {
+            --font: "Inter", sans-serif;
+            --red: #da2535;
+            --black: #292929;
+            --white: #fbfbfb;
+        }
 
+        .search-local {
+            width: 100%;
+            max-width: 75rem;
+            display: flex;
+            align-items: center;
+            column-gap: 2rem;
+            padding-left: 2rem;
+            background: var(--white);
+            border-radius: 1rem;
+            min-height: 7rem;
+            height: auto;
+            border: 0.1rem solid var(--black);
+            border-right: none;
+        }
+
+        .icon {
+            color: var(--red);
+            font-size: 3.5rem;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .icon:hover {
+            animation: funny-icon 0.4s ease-in-out;
+        }
+
+        @keyframes funny-icon {
+            0% {
+                scale: 1;
+            }
+
+            50% {
+                scale: 0.8;
+                transform-origin: bottom;
+                transform: rotate(-15deg);
+            }
+
+            100% {
+                scale: 1;
+            }
+        }
+
+        .search-local-input {
+            height: 100%;
+            width: 100%;
+            flex: 1 1 25rem;
+            background: var(--white);
+            display: flex;
+            outline: none;
+            border: none;
+            color: var(--black);
+            font-size: 2.4rem;
+        }
+
+        .search-local-input::placeholder {
+            color: var(--black);
+            font-size: 2.4rem;
+        }
+
+        .search-local-button {
+            background: var(--red);
+            border: none;
+            border-radius: 0 1rem 1rem 0;
+            font-weight: 500;
+            font-size: 2.4rem;
+            height: 7rem;
+            width: 18rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .search-local button a {
+            color: var(--white);
+        }
+
+        .search-local-button .search-icon {
+            display: none;
+        }
+
+        .search-local-button:hover {
+            letter-spacing: 0.5rem;
+        }
+
+        @media (max-width: 575px) {
+            .search-local {
+                padding-left: 0;
+                column-gap: 0.25rem;
+            }
+
+            .search-local-button {
+                width: 10rem;
+            }
+
+            .search-local button a {
+                display: none;
+            }
+
+            .search-local-button .search-icon {
+                display: block;
+                margin-inline: auto;
+                color: var(--white);
+                font-size: 3rem;
+            }
+
+            .search-local-input::placeholder {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
 
