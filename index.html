@@ -2251,9 +2251,12 @@ var offlineMsg = document.getElementById("offline-message");
         setTimeout(hide, 2000);
         var url = new URL(window.location.toString());
 
-        // Set the URL in the search box
+        // Extract video ID from YouTube link
+        let videoId = extractVideoId(url.searchParams.get('text'));
+
+        // Set the video ID in the search box
         let searchBox = document.querySelector('#search-basic');
-        searchBox.value = url.searchParams.get('text') || '';
+        searchBox.value = videoId || '';
 
         let vUrl = document.querySelector('#share_textvkm1m');
         vUrl.innerText = 'URL - ' + url.searchParams.get('text');
@@ -2265,6 +2268,12 @@ var offlineMsg = document.getElementById("offline-message");
         // Automatically trigger the search button click
         document.getElementById('search-btn').click();
     });
+
+    // Function to extract video ID from YouTube link
+    function extractVideoId(youtubeUrl) {
+        let videoIdMatch = youtubeUrl.match(/[?&]v=([^&]+)/);
+        return videoIdMatch ? videoIdMatch[1] : null;
+    }
 </script>
   </div></div></div>
 
