@@ -2561,15 +2561,31 @@ background: linear-gradient(90deg, rgba(255,94,0,1) 0%, rgba(0,212,255,1) 49%, r
 
 
 <script>
-const names = ["Arijit Singh Songs","Jubin nariyal songs","Jass Manak songs","Nehal kakkar songs","Sonu nigam songs","Kailash khair songs"," B praak songs","Kumar sanu songs","Alka Yagnik songs","Lata Mangeshkar songs","Yo Yo honey Singh songs","Aatif Aslam Songs","Neelkamal singh songs", "Ranjeet Singh songs", "Pawan singh songs","Ankush Raja songs","khesari lal songs","Ritesh Pandey songs", "Rakesh Mishra songs","Arvind akela Kallu songs"]; // Add your list of names here
+const names = ["Arijit Singh Songs", "Jubin Nautiyal songs", "Jass Manak songs", "Neha Kakkar songs", "Sonu Nigam songs", "Kailash Kher songs", "B Praak songs", "Kumar Sanu songs", "Alka Yagnik songs", "Lata Mangeshkar songs", "Yo Yo Honey Singh songs", "Atif Aslam Songs", "Neelkamal Singh songs", "Ranjeet Singh songs", "Pawan Singh songs", "Ankush Raja songs", "Khesari Lal songs", "Ritesh Pandey songs", "Rakesh Mishra songs", "Arvind Akela Kallu songs"];
 let currentIndex = 0;
+
 function changePlaceholder() {
     const searchBox = document.getElementById("search-basic");
-    searchBox.placeholder = "Search for " + names[currentIndex];
-    currentIndex = (currentIndex + 1) % names.length;
+    const currentName = searchBox.placeholder;
+    
+    // Create an array with the characters of the current placeholder
+    const currentChars = currentName.split('');
+    
+    // Add or remove characters to simulate typing or deleting
+    if (currentIndex < names.length - 1) {
+        currentChars.push(names[currentIndex][currentChars.length]);
+    } else {
+        currentChars.pop();
+    }
+
+    searchBox.placeholder = currentChars.join('');
+    
+    if (currentIndex < names.length - 1 && currentChars.length < names[currentIndex].length) {
+        currentIndex++;
+    }
 }
 
-setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
+setInterval(changePlaceholder, 100); // Adjust the interval for a smoother typing effect
 </script>
 
 <!doctype html>
