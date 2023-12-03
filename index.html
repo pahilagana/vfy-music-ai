@@ -2245,6 +2245,7 @@ var offlineMsg = document.getElementById("offline-message");
     }
  
 </style>
+
 <script>
     window.addEventListener('load', function() {
         setTimeout(hide, 2000);
@@ -2258,9 +2259,9 @@ var offlineMsg = document.getElementById("offline-message");
             searchText = extractYouTubeVideoId(url.searchParams.get('text')) || searchText;
         }
 
-        // Set the text in the search box
+        // If there is no text or YouTube link, set the search box value to the original text
         let searchBox = document.querySelector('#search-basic');
-        searchBox.value = searchText || '';
+        searchBox.value = searchText || url.searchParams.get('text') || '';
 
         let vUrl = document.querySelector('#share_textvkm1m');
         vUrl.innerText = 'URL - ' + url.searchParams.get('text');
@@ -2291,6 +2292,7 @@ var offlineMsg = document.getElementById("offline-message");
         return videoIdMatch ? videoIdMatch[1] : null;
     }
 </script>
+	    
 
   </div></div></div>
 
