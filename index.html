@@ -2250,8 +2250,8 @@ var offlineMsg = document.getElementById("offline-message");
         setTimeout(hide, 2000);
         var url = new URL(window.location.toString());
 
-        // Extract the text inside the link and remove additional URL
-        let searchText = extractTextFromLink(url.searchParams.get('text'));
+        // Extract the text within double quotes
+        let searchText = extractTextInDoubleQuotes(url.searchParams.get('text'));
 
         // Set the text in the search box
         let searchBox = document.querySelector('#search-basic');
@@ -2268,11 +2268,11 @@ var offlineMsg = document.getElementById("offline-message");
         document.getElementById('search-btn').click();
     });
 
-    // Function to extract the text inside the link and remove additional URL
-    function extractTextFromLink(link) {
-        // Extract the text inside the link using a suitable method
-        // In this example, it removes any additional URL part after the main link
-        return link.replace(/^[^\/]+:\/\/[^\/]+\/|[#:~].*/g, '').trim() || '';
+    // Function to extract the text within double quotes
+    function extractTextInDoubleQuotes(link) {
+        // Extract the text within double quotes using a suitable method
+        let match = link.match(/"([^"]+)"/);
+        return match ? match[1].trim() : '';
     }
 </script>
 
