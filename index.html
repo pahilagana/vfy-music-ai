@@ -2378,7 +2378,17 @@ background-color:#333;
 
 
 	
+<script>
+  // Modified openNav function to open the overlay
+  function openNav() {
+    document.getElementById("myNav").style.width = "100%";
+  }
 
+  // closeNav function remains the same
+
+  // Add an event listener to the button
+  document.getElementById("yourButtonId").addEventListener("click", openNav);
+</script>
 
 
 
