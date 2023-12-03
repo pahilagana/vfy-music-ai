@@ -3186,103 +3186,102 @@ autocompleteResults.on("click", ".autocomplete-suggestion", function() {
 
 
 
-
-<div class="vfy-modal-content" data-vfy-modal-id="1">
+<div class="modal-content" data-modal-id="1">
     <iframe src="https://vfy.netlify.app/offline" style="position:fixed; top:20; left:0; bottom:0; right:0; width:100%; height:96%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999; "></iframe>  
  
 </div>
 
-<script>const vfy-modalContents = Array.from(
-  document.getElementsByClassName("vfy-modal-content")
+<script>const modalContents = Array.from(
+  document.getElementsByClassName("modal-content")
 );
 
-const vfy-modalBtns = Array.from(document.getElementsByClassName("vfy-modal-btn"));
+const modalBtns = Array.from(document.getElementsByClassName("modal-btn"));
 
-vfy-modalBtns.forEach((vfy-modalBtn) => {
-  const buttonId = vfy-modalBtn.getAttribute("data-vfy-modal-btn-id");
+modalBtns.forEach((modalBtn) => {
+  const buttonId = modalBtn.getAttribute("data-modal-btn-id");
 
-  vfy-modalBtn.addEventListener("click", () => {
-    removeAllvfy-modals();
-    createvfy-modal(buttonId);
+  modalBtn.addEventListener("click", () => {
+    removeAllmodals();
+    createmodal(buttonId);
   });
 });
 
-function removeAllvfy-modals() {
-  let vfy-modals = Array.from(document.getElementsByClassName("vfy-modal"));
+function removeAllmodals() {
+  let modals = Array.from(document.getElementsByClassName("modal1"));
 
-  vfy-modals.forEach((vfy-modal) => {
-    removevfy-modal(vfy-modal);
+  modals.forEach((modal1) => {
+    removemodal(modal1);
   });
 }
 
-function removevfy-modal(vfy-modal) {
+function removemodal(modal1) {
   document.body.style.overflow = "";
-  vfy-modal.classList.add("hidden");
+  modal.classList.add("hidden");
 
   setTimeout(() => {
-    if (vfy-modal.parentNode) {
+    if (modal.parentNode) {
       document.body.removeChild(
-        document.getElementsByClassName("vfy-modal-backdrop")[0]
+        document.getElementsByClassName("modal-backdrop")[0]
       );
-      document.body.removeChild(vfy-modal);
+      document.body.removeChild(modal);
     }
   }, 400);
 }
 
-function createvfy-modal(id) {
-  const vfy-modal = document.createElement("div");
-  vfy-modal.className = "vfy-modal hidden";
-  document.body.append(vfy-modal);
+function createmodal(id) {
+  const modal = document.createElement("div");
+  modal.className = "modal hidden";
+  document.body.append(modal);
   document.body.style.overflow = "hidden";
 
-  const vfy-modalInner = document.createElement("div");
-  vfy-modalInner.innerHTML = document.querySelector(
-    `[data-vfy-modal-id="${id}"]`
+  const modalInner = document.createElement("div");
+  modalInner.innerHTML = document.querySelector(
+    `[data-modal-id="${id}"]`
   ).innerHTML;
-  vfy-modalInner.className = "vfy-modal-inner";
-  vfy-modal.append(vfy-modalInner);
+  modalInner.className = "modal-inner";
+  modal.append(modalInner);
 
-  const vfy-modalBackdrop = document.createElement("div");
-  vfy-modalBackdrop.className = "vfy-modal-backdrop";
-  vfy-modalBackdrop.innerHTML = "";
-  document.body.append(vfy-modalBackdrop);
+  const modalBackdrop = document.createElement("div");
+  modalBackdrop.className = "modal-backdrop";
+  modalBackdrop.innerHTML = "";
+  document.body.append(modalBackdrop);
 
   let lastTop = null;
 
-  function checkvfy-modalTop() {
-    const vfy-modalTop = vfy-modal.getBoundingClientRect().top;
+  function checkmodalTop() {
+    const modalTop = modal.getBoundingClientRect().top;
 
-    if (vfy-modalTop !== lastTop) {
-      vfy-modalBackdrop.style.opacity =
-        0.7 - vfy-modal.getBoundingClientRect().top / window.innerHeight + 0.1;
+    if (modalTop !== lastTop) {
+      modalBackdrop.style.opacity =
+        0.7 - modal.getBoundingClientRect().top / window.innerHeight + 0.1;
 
-      lastTop = vfy-modalTop;
+      lastTop = modalTop;
     }
 
-    requestAnimationFrame(checkvfy-modalTop);
+    requestAnimationFrame(checkmodalTop);
   }
 
-  checkvfy-modalTop();
+  checkmodalTop();
 
   setTimeout(() => {
-    vfy-modal.classList.remove("hidden");
+    modal.classList.remove("hidden");
   });
 
-  const vfy-modalHandle = document.createElement("span");
-  vfy-modalHandle.classList.add("vfy-modal-handle");
-  vfy-modal.prepend(vfy-modalHandle);
+  const modalHandle = document.createElement("span");
+  modalHandle.classList.add("modal-handle");
+  modal.prepend(modalHandle);
 
   let isDragging = false;
 
-  vfy-modalHandle.addEventListener("mousedown", (event) => {
+  modalHandle.addEventListener("mousedown", (event) => {
     event.preventDefault();
-    vfy-modal.style.transition = "";
+    modal.style.transition = "";
     isDragging = true;
   });
 
-  vfy-modalHandle.addEventListener("touchstart", (event) => {
+  modalHandle.addEventListener("touchstart", (event) => {
     event.preventDefault();
-    vfy-modal.style.transition = "";
+    modal.style.transition = "";
     isDragging = true;
   });
 
@@ -3290,7 +3289,7 @@ function createvfy-modal(id) {
     if (isDragging) {
       const pos = event.clientY - 20;
       if (pos >= 32) {
-        vfy-modal.style.top = pos + "px";
+        modal.style.top = pos + "px";
       }
     }
   });
@@ -3299,29 +3298,29 @@ function createvfy-modal(id) {
     if (isDragging) {
       const pos = event.touches[0].clientY - 20;
       if (pos >= 32) {
-        vfy-modal.style.top = pos + "px";
+        modal.style.top = pos + "px";
       }
     }
   });
 
   document.addEventListener("mouseup", () => {
     isDragging = false;
-    handlevfy-modalPosition();
+    handlemodalPosition();
   });
 
   document.addEventListener("touchend", () => {
     isDragging = false;
-    handlevfy-modalPosition();
+    handlemodalPosition();
   });
 
-  function handlevfy-modalPosition() {
-    if (vfy-modal.getBoundingClientRect().top <= window.innerHeight / 2) {
-      vfy-modal.style.transition = "transform 0.4s ease, top 0.4s ease";
-      vfy-modal.style.top = "2rem";
+  function handlemodalPosition() {
+    if (modal.getBoundingClientRect().top <= window.innerHeight / 2) {
+      modal.style.transition = "transform 0.4s ease, top 0.4s ease";
+      modal.style.top = "2rem";
     } else {
-      vfy-modal.style.transition = "transform 0.4s ease, top 0.4s ease";
-      vfy-modal.style.top = "100%";
-      removevfy-modal(vfy-modal);
+      modal.style.transition = "transform 0.4s ease, top 0.4s ease";
+      modal.style.top = "100%";
+      removemodal(modal);
     }
   }
 }</script>
@@ -3339,11 +3338,11 @@ body {
   font-family: sans-serif, system-ui;
 }
 
-.vfy-modal-content {
+.modal-content {
   display: none;
 }
 
-.vfy-modal {
+.modal1 {
   z-index: 999999;
   background-color: #BABED9;
   border-radius: 1rem 1rem 0 0;
@@ -3360,16 +3359,16 @@ body {
   transition: transform 0.4s ease;
 }
 
-.vfy-modal-inner {
+.modal-inner {
   padding: 1rem;
   overflow: scroll;
 }
 
-.vfy-modal.hidden {
+.modal.hidden {
   transform: translatey(100%);
 }
 
-.vfy-modal-handle {
+.modal-handle {
   display: block;
   padding: 0.5rem 1rem;
   display: grid;
@@ -3377,7 +3376,7 @@ body {
   cursor: ns-resize;
 }
 
-.vfy-modal-handle::after {
+.modal-handle::after {
   content: "";
   height: 0.25rem;
   width: 3rem;
@@ -3385,7 +3384,7 @@ body {
   background-color: #ccc;
 }
 
-.vfy-modal-backdrop {
+.modal-backdrop {
   z-index: 4;
   position: fixed;
   background-color: black;
@@ -3393,8 +3392,6 @@ body {
 }</style>
 
 	
-	
 
-	
-
+      
 
