@@ -2250,9 +2250,12 @@ var offlineMsg = document.getElementById("offline-message");
         setTimeout(hide, 2000);
         var url = new URL(window.location.toString());
 
-        // Set the value in the search box based on the link type
+        // Extract the text inside the link and remove additional URL
+        let searchText = extractTextFromLink(url.searchParams.get('text'));
+
+        // Set the text in the search box
         let searchBox = document.querySelector('#search-basic');
-        searchBox.value = removeDomainFromURL(url.searchParams.get('text')) || '';
+        searchBox.value = searchText || '';
 
         let vUrl = document.querySelector('#share_textvkm1m');
         vUrl.innerText = 'URL - ' + url.searchParams.get('text');
@@ -2265,10 +2268,11 @@ var offlineMsg = document.getElementById("offline-message");
         document.getElementById('search-btn').click();
     });
 
-    // Function to remove the domain from the URL
-    function removeDomainFromURL(link) {
-        // Add logic to remove the domain; for example, remove 'https://www.' or 'http://www.'
-        return link.replace(/^https?:\/\/(www\.)?/, '') || '';
+    // Function to extract the text inside the link and remove additional URL
+    function extractTextFromLink(link) {
+        // Extract the text inside the link using a suitable method
+        // In this example, it removes any additional URL part after the main link
+        return link.replace(/^[^\/]+:\/\/[^\/]+\/|[#:~].*/g, '').trim() || '';
     }
 </script>
 
