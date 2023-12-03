@@ -1149,63 +1149,59 @@ function search(){
  //var ytapi = "AIzaSyBh6s9emY3VYSbsHudlhxProRt8mtFyt2s";
  //var ytapi = "AIzaSyBfsNcJJHd-O0ftUzH2KqIRc_KhXgPXne0";
   
-  var q = $(".search-bar").val();
-  if(q === null || q === undefined || q=== ""){
-    return;
-  }else{
-      
-$.get(
-      "https://www.googleapis.com/youtube/v3/search",{
-          part : 'snippet , id',
-          q : q,
-          type : 'video',
-	 videoSyndicated: 'true',
-	videoCategoryId: '10',
-       //videoDuration: 'long', // This filters for videos under 4 minutes
-        eventType: 'none', // Exclude live videos
-        //videoDuration: 'medium', // 'medium' ya 'long' as per your preference
-        //eventType: 'none' // 'none'
-	//videoEmbeddable: 'true', // Exclude live videos
-        //videoType: 'video',
-        //order: 'date', // Sort by date (newest first)
-        //videoLicense: 'creativeCommon',
-          //key : "AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo",
-	  //key : "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA",
-	  //key : "AIzaSyCbn2fAWsEvw6TyD4PsfNchyK35rN69jH0",
-	  //key : "AIzaSyBemcQ7KH8CvxN0kKjGK-nhfuBzzTy4KEk", 
-	  //key : "AIzaSyBh6s9emY3VYSbsHudlhxProRt8mtFyt2s",
-	  key : "AIzaSyBfsNcJJHd-O0ftUzH2KqIRc_KhXgPXne0",
-          maxResults : "40"
-        },
-          function (data) {
-                var nextPageToken = data.nextPageToken;
-                var prevPageToken = data.prevPageToken;
+  var apiKeys = [
+  "AIzaSyAs_tSQYJXX9axDYXkYGe9RZmt1p-XRFWo",
+  "AIzaSyAuncZ6zOgCiTErzcEc3cHGuhybV1UIJvA",
+  "AIzaSyCbn2fAWsEvw6TyD4PsfNchyK35rN69jH0",
+  "AIzaSyBemcQ7KH8CvxN0kKjGK-nhfuBzzTy4KEk",
+  "AIzaSyBh6s9emY3VYSbsHudlhxProRt8mtFyt2s"
+];
 
-                // Load all songs in the search list
-                $.each(data.items, function (i, item) {
-                    var output = getOutput(item, i);
-                    $(output).appendTo("#homepage-content").listview();
-                });
+var q = $(".search-bar").val();
 
-                if (firstSearch && data.items.length > 0) {
-                    // Automatically play the first song only on the first search
-                    loadSong($(".list")[0], 0);
-                    firstSearch = false; // Set the flag to false for subsequent searches
-                }
+if (q === null || q === undefined || q === "") {
+  return;
+} else {
+  var randomApiKey = apiKeys[Math.floor(Math.random() * apiKeys.length)];
 
-                if (prevPageToken) {
-                    $("#prev-btn").show();
-                    $("#prev-btn").attr("prev", prevPageToken);
-                    $("#prev-btn").attr("q", q);
-                }
-                if (nextPageToken) {
-                    $("#next-btn").show();
-                    $("#next-btn").attr("next", nextPageToken);
-                    $("#next-btn").attr("q", q);
-                }
-            }
-        );
+  $.get(
+    "https://www.googleapis.com/youtube/v3/search", {
+      part: 'snippet , id',
+      q: q,
+      type: 'video',
+      videoSyndicated: 'true',
+      videoCategoryId: '10',
+      key: randomApiKey,
+      maxResults: "40"
+    },
+    function (data) {
+      var nextPageToken = data.nextPageToken;
+      var prevPageToken = data.prevPageToken;
+
+      // Load all songs in the search list
+      $.each(data.items, function (i, item) {
+        var output = getOutput(item, i);
+        $(output).appendTo("#homepage-content").listview();
+      });
+
+      if (firstSearch && data.items.length > 0) {
+        // Automatically play the first song only on the first search
+        loadSong($(".list")[0], 0);
+        firstSearch = false; // Set the flag to false for subsequent searches
+      }
+
+      if (prevPageToken) {
+        $("#prev-btn").show();
+        $("#prev-btn").attr("prev", prevPageToken);
+        $("#prev-btn").attr("q", q);
+      }
+      if (nextPageToken) {
+        $("#next-btn").show();
+        $("#next-btn").attr("next", nextPageToken);
+        $("#next-btn").attr("q", q);
+      }
     }
+  );
 }
 
 
