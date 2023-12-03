@@ -2382,52 +2382,28 @@ background-color:#333;
   }
 }
 </style>
-
-
-
 <div id="myNew" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fa fa-arrow-left" style="font-size:20px;color:#E74C3C"></i></a>
   <div class="overlay-content">
-    
-	  
-	  
-	  
-	<iframe src="https://vfy.netlify.app/offline" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
+    <iframe src="https://vfy.netlify.app/offline" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
 </iframe>  
-
-
-	    
-
-
-
 </div>
+</div>
+<script>
+  function openNav() {
+    document.getElementById("myNew").style.width = "100%";
+  }
 
-  </div>
-
-
-
-
+  function closeNav() {
+    document.getElementById("myNew").style.width = "0%";
+  }
+</script>
 
 
 
 
 
 	
-
-
-
-
-<script>
-function openNav() {
-  document.getElementById("myNew").style.width = "100%";
-}
-
-function closeNav() {
-  document.getElementById("myNew").style.width = "0%";
-}
-</script>
-     
-
 </!doctype>
 
 	
@@ -2642,25 +2618,14 @@ background: linear-gradient(90deg, rgba(255,94,0,1) 0%, rgba(0,212,255,1) 49%, r
   }
 
 
+</style>
 
 
 
 
-<style>
-div.vfy1 {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}</style>
-
-<script>window.setTimeout(function() {
-    $(".alert").fadeTo(2000, 0).slideUp(3000, function(){
-        $(this).remove(); 
-    });
-}, 2000);</script>
 
 
-<script></script>
+
 	
 <audio id="watermarkAudio2" controls>
             <source src="/sound/next.mp3" type="audio/mpeg">
