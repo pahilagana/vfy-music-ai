@@ -12,8 +12,8 @@
 
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#BABED9",
-  "theme_color": "#BABED9",
+  "background_color": "#E74C3C",
+  "theme_color": "#E74C3C",
   "icons": [
     {
       "src": "./img/newdp.png",
