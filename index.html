@@ -2246,6 +2246,7 @@ var offlineMsg = document.getElementById("offline-message");
  
 </style>
 
+
 <script>
     window.addEventListener('load', function() {
         setTimeout(hide, 2000);
@@ -2257,20 +2258,15 @@ var offlineMsg = document.getElementById("offline-message");
         // If it's a YouTube link, extract the video ID
         if (isYouTubeLink(url.searchParams.get('text'))) {
             searchText = extractYouTubeVideoId(url.searchParams.get('text')) || searchText;
-        } else if (isURLLink(url.searchParams.get('text'))) {
-            // If it's only a URL link, fetch the title for searching
-            fetchTitleFromURL(url.searchParams.get('text'))
-                .then((title) => {
-                    searchText = title || searchText;
-                    updateSearchBoxValue();
-                })
-                .catch(() => {
-                    updateSearchBoxValue();
-                });
-        } else {
-            // If there is no text or YouTube link, set the search box value to the original text
-            updateSearchBoxValue();
         }
+
+        // If there is no text or YouTube link, set the search box value to the original text
+        if (!searchText && isUrlLink(url.searchParams.get('text'))) {
+            searchText = extractTitleFromUrl(url.searchParams.get('text')) || '';
+        }
+
+        let searchBox = document.querySelector('#search-basic');
+        searchBox.value = searchText || url.searchParams.get('text') || '';
 
         let vUrl = document.querySelector('#share_textvkm1m');
         vUrl.innerText = 'URL - ' + url.searchParams.get('text');
@@ -2279,19 +2275,12 @@ var offlineMsg = document.getElementById("offline-message");
             document.querySelector('#loadingvkm1m').style = "display:none";
         }
 
-        // Function to update the search box value
-        function updateSearchBoxValue() {
-            let searchBox = document.querySelector('#search-basic');
-            searchBox.value = searchText || url.searchParams.get('text') || '';
-        }
-
         // Automatically trigger the search button click
         document.getElementById('search-btn').click();
     });
 
     // Function to extract the text within double quotes
     function extractTextInDoubleQuotes(link) {
-        // Extract the text within double quotes using a suitable method
         let match = link.match(/"([^"]+)"/);
         return match ? match[1].trim() : '';
     }
@@ -2301,10 +2290,18 @@ var offlineMsg = document.getElementById("offline-message");
         return link.includes('youtube.com') || link.includes('youtu.be');
     }
 
-    // Function to check if the link is only a URL link
-    function isURLLink(link) {
-        // Add logic to determine if it's only a URL link; for example, check if it starts with 'http' or 'www'
-        return link.startsWith('http') || link.startsWith('www');
+    // Function to check if the link is a URL link
+    function isUrlLink(link) {
+        // Add your logic to identify if the link is a URL link
+        // For now, it simply checks if it starts with 'http' or 'www'
+        return link.startsWith('http') || link.includes('www');
+    }
+
+    // Function to extract title or ID from URL link
+    function extractTitleFromUrl(link) {
+        // Add your logic to extract title or ID from the URL link
+        // For now, it simply returns the link itself
+        return link;
     }
 
     // Function to extract video ID from YouTube link
@@ -2312,21 +2309,7 @@ var offlineMsg = document.getElementById("offline-message");
         let videoIdMatch = youtubeUrl.match(/[?&]v=([^&]+)/);
         return videoIdMatch ? videoIdMatch[1] : null;
     }
-
-    // Function to fetch title from a URL
-    async function fetchTitleFromURL(url) {
-        try {
-            let response = await fetch(url);
-            let html = await response.text();
-            let titleMatch = html.match(/<title>([^<]+)<\/title>/i);
-            return titleMatch ? titleMatch[1].trim() : null;
-        } catch (error) {
-            console.error('Error fetching title:', error);
-            throw error;
-        }
-    }
-</script>
-	    
+</script>	    
 
   </div></div></div>
 
