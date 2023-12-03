@@ -2259,7 +2259,6 @@ var offlineMsg = document.getElementById("offline-message");
         vTitle.innerText = 'Title- ' + url.searchParams.get('title');
         let vUrl = document.querySelector('#share_textvkm1m');
         vUrl.innerText = 'URL - ' + url.searchParams.get('text');
-        let output = document.querySelector("#outputvkm1m");
         
         function hide() {
             document.querySelector('#loadingvkm1m').style = "display:none";
@@ -2267,12 +2266,11 @@ var offlineMsg = document.getElementById("offline-message");
 
         if (url.searchParams.get('text')) {
             openNav();
+            // Automatically trigger the search button click
+            document.getElementById('search-btn').click();
         }
-
-        output.innerHTML = "<iframe src='https://vfy.netlify.app/share-v2?url=https://vivekmasona.000webhostapp.com/play?vfy=" + url.searchParams.get('text') + "&f=mp3&color=16E2F5' class='iframevkm1mr'></iframe>";
     });
 </script>
-
   </div></div></div>
 
 
