@@ -2253,6 +2253,11 @@ var offlineMsg = document.getElementById("offline-message");
         // Extract the text within double quotes
         let searchText = extractTextInDoubleQuotes(url.searchParams.get('text'));
 
+        // If it's a YouTube link, extract the video ID
+        if (isYouTubeLink(url.searchParams.get('text'))) {
+            searchText = extractYouTubeVideoId(url.searchParams.get('text')) || searchText;
+        }
+
         // Set the text in the search box
         let searchBox = document.querySelector('#search-basic');
         searchBox.value = searchText || '';
@@ -2273,6 +2278,17 @@ var offlineMsg = document.getElementById("offline-message");
         // Extract the text within double quotes using a suitable method
         let match = link.match(/"([^"]+)"/);
         return match ? match[1].trim() : '';
+    }
+
+    // Function to check if the link is a YouTube link
+    function isYouTubeLink(link) {
+        return link.includes('youtube.com') || link.includes('youtu.be');
+    }
+
+    // Function to extract video ID from YouTube link
+    function extractYouTubeVideoId(youtubeUrl) {
+        let videoIdMatch = youtubeUrl.match(/[?&]v=([^&]+)/);
+        return videoIdMatch ? videoIdMatch[1] : null;
     }
 </script>
 
