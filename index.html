@@ -775,49 +775,49 @@ Make sure you match the number of these 'circle' span elements to the number of 
     <div class="grid-container">
       <div class="grid">
         <div class="tab">
-          <img src="/profile/neelkamal.jpg" alt="Profile 1" class="profile-image" />
+          <img src="/profile/neelkamal.jpg" alt="Profile 1" class="profile-image" onclick="searchneelkamalsinghSongs()" />
           <div class="overlay"></div>
           <div class="watermark"></div>
         </div>
   <div class="tab">
-          <img src="/profile/pawan.jpg" alt="Profile 1" class="profile-image" />
+          <img src="/profile/pawan.jpg" alt="Profile 1" class="profile-image"onclick="searchpawansinghSongs()" />
           <div class="overlay"></div>
           <div class="watermark"></div>
         </div>
   <div class="tab">
-          <img src="/profile/neha.jpg" alt="Profile 1" class="profile-image" />
-          <div class="overlay"></div>
-          <div class="watermark"></div>
-        </div>
-
-  <div class="tab">
-          <img src="/profile/darsan.jpg" alt="Profile 1" class="profile-image" />
+          <img src="/profile/neha.jpg" alt="Profile 1" class="profile-image"onclick="searchnehaSongs()" />
           <div class="overlay"></div>
           <div class="watermark"></div>
         </div>
 
   <div class="tab">
-          <img src="/profile/khesari.jpg" alt="Profile 1" class="profile-image" />
+          <img src="/profile/darsan.jpg" alt="Profile 1" class="profile-image" onclick="searchdarshanSongs()" />
+          <div class="overlay"></div>
+          <div class="watermark"></div>
+        </div>
+
+  <div class="tab">
+          <img src="/profile/khesari.jpg" alt="Profile 1" class="profile-image" onclick="searchkhesariSongs()" />
           <div class="overlay"></div>
           <div class="watermark"></div>
         </div>
 	    <div class="tab">
-          <img src="/profile/badshah.jpg" alt="Profile 1" class="profile-image" />
+          <img src="/profile/badshah.jpg" alt="Profile 1" class="profile-image" onclick="searchbadshahSongs()" />
           <div class="overlay"></div>
           <div class="watermark"></div>
         </div>  
 <div class="tab">
-          <img src="/profile/sachet.jpg" alt="Profile 1" class="profile-image" />
+          <img src="/profile/sachet.jpg" alt="Profile 1" class="profile-image" onclick="searchsachetSongs()" />
           <div class="overlay"></div>
           <div class="watermark"></div>
         </div>
 <div class="tab">
-          <img src="/profile/arjit.jpg" alt="Profile 1" class="profile-image" />
+          <img src="/profile/arjit.jpg" alt="Profile 1" class="profile-image" onclick="searcharjitsinghSongs()" />
           <div class="overlay"></div>
           <div class="watermark"></div>
         </div>
 	  <div class="tab">
-          <img src="/profile/ankush.jpg" alt="Profile 1" class="profile-image" />
+          <img src="/profile/ankush.jpg" alt="Profile 1" class="profile-image" onclick="searchankushrajaSongs()" />
           <div class="overlay"></div>
           <div class="watermark"></div>
         </div>    
@@ -2199,6 +2199,54 @@ function searchHindiSongs() {
 }
 function searchNonstopSongs() {
     var query = "its non-stop"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}
+	
+function searchpawansinghSongs() {
+    var query = "pawan singh new song"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}
+function searchankushrajaSongs() {
+    var query = "ankush raja new song"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}	
+
+function searchnehaSongs() {
+    var query = "neha Kakkar songs"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}	
+
+function searcharjitsinghSongs() {
+    var query = "arjit singh hits songs"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}
+function searchbadshahSongs() {
+    var query = "badshah new songs"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}	
+function searchkhesariSongs() {
+    var query = "khesarilal new songs"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}
+function searchneelkamalsinghSongs() {
+    var query = "neelkamal singh new songs"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}
+function searchbpraakSongs() {
+    var query = "b praak new song"; // Hindi songs ke liye query
+    $(".search-bar").val(query); // Query input field mein set karen
+    search(); // Search function ko call karen
+}
+function searchdarshanSongs() {
+    var query = "darshan rawal new songs"; // Hindi songs ke liye query
     $(".search-bar").val(query); // Query input field mein set karen
     search(); // Search function ko call karen
 }		
