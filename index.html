@@ -2326,14 +2326,20 @@ var offlineMsg = document.getElementById("offline-message");
 <script>/*<![CDATA[*/ 
   const installbutto = document.getElementById("vivek_maurya");window.addEventListener("beforeinstallprompt", e => {e.preventDefault();deferredPrompt = e;installbutto.hidden = false;installbutto.addEventListener("click", installApp);});function installApp() {deferredPrompt.prompt();installbutto.disabled = true;deferredPrompt.userChoice.then(choiceResult => {if (choiceResult.outcome === "accepted") {installbutto.hidden = true;} else {}installbutto.disabled = false;deferredPrompt = null;});}window.addEventListener("appinstalled", evt => {console.log("appinstalled fired", evt);});
   /*]]>*/</script>
-<script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./sw.js');
-    } else {
-      alert('ServiceWorker unavailable');
-    }
-  </script>
 
+
+<!-- Include this in your HTML file -->
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(registration => {
+        console.log('Service Worker registered with scope:', registration.scope);
+      })
+      .catch(error => {
+        console.error('Service Worker registration failed:', error);
+      });
+  }
+</script>
 
 	
 	
