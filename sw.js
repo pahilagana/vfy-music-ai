@@ -4,6 +4,7 @@ const cacheName = 'my-pwa-cache-v1';
 const filesToCache = [
   '/',
   '/index.html',
+  '/offline',
   
   // Add other essential files and assets here
 ];
