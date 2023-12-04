@@ -744,23 +744,31 @@ width: 50%;
 
 	
     <div id="homepage-content">
-<section id="mySlider" class="img-slider">
-  <div class="slider-container">
-    
-    <div class="slide" id="slide1">
-      <img />
-    </div>
-    
-    <div class="slide" id="slide2">
-      <img />
-    </div>
-
-    <div class="slide" id="slide3">
-      <img />
-    </div>
-    
+<div class="slideshowContainer">
+  
+<!-- Replace the image 'src' with the images in your project.
+Javascript is set up so that you can add as many images as you like, but make sure that you match the number of 'circle' span elements (below) to the number of images -->
+  <img class="imageSlides" src="http://s1.picswalls.com/wallpapers/2015/09/20/beautiful-hd-wallpaper-2015_111526537_269.jpg" alt="beach side city view" />
+  <img class="imageSlides" src="http://4.bp.blogspot.com/-oxlezteeOII/TfiTImj4RlI/AAAAAAAAA1k/UAgctmU5VZo/s1600/Widescreen+Unique+And+Beautiful+Photography+%25284%2529.jpg" alt="leaf on the ground" />
+  <img class="imageSlides" src="https://i.pinimg.com/originals/cf/ed/a0/cfeda03d01da4b779093c9d928c01dee.jpg" alt="lake surrounded by mountains" />
+  
+<!-- I would recommend to replace these 'span' elements with 'img' files
+for each the left and right arrow that fits your project, and size accordingly.
+I've shown 'span' elements because I didn't want to upload files. -->
+  <span id ="leftArrow" class="slideshowArrow">&#8249;</span>
+  <span id ="rightArrow" class="slideshowArrow">&#8250;</span>
+  
+  <div class="slideshowCircles">
+<!-- Filled 'dot' class is set to first image in slideshow, and then via Javascript the filled 'dot' class follows the current image.
+Make sure you match the number of these 'circle' span elements to the number of images in your slideshow. -->
+    <span class="circle dot"></span>
+    <span class="circle"></span>
+    <span class="circle"></span>
   </div>
-</section>
+  
+</div>
+
+	    
 
 	    
 <div class="link-bar">
@@ -3525,11 +3533,162 @@ background: radial-gradient(circle, rgba(63,94,251,0) 0%, rgba(8,7,6,0.887957830
 
 
 
-<script>
-  // Dynamically set image sources
-  document.getElementById('slide1').querySelector('img').src = 'https://i.ytimg.com/vi/OLRZVFx2r2o/maxresdefault.jpg';
-  document.getElementById('slide2').querySelector('img').src = 'https://i.ytimg.com/vi/OLRZVFx2r2o/maxresdefault.jpg';
-  document.getElementById('slide3').querySelector('img').src = 'https://i.ytimg.com/vi/OLRZVFx2r2o/maxresdefault.jpg';
-</script>
+<script>// IMAGE SLIDES & CIRCLES ARRAYS, & COUNTER
+var imageSlides = document.getElementsByClassName('imageSlides');
+var circles = document.getElementsByClassName('circle');
+var leftArrow = document.getElementById('leftArrow');
+var rightArrow = document.getElementById('rightArrow');
+var counter = 0;
+
+// HIDE ALL IMAGES FUNCTION
+function hideImages() {
+  for (var i = 0; i < imageSlides.length; i++) {
+    imageSlides[i].classList.remove('visible');
+  }
+}
+
+// REMOVE ALL DOTS FUNCTION
+function removeDots() {
+  for (var i = 0; i < imageSlides.length; i++) {
+    circles[i].classList.remove('dot');
+  }
+}
+
+// SINGLE IMAGE LOOP/CIRCLES FUNCTION
+function imageLoop() {
+  var currentImage = imageSlides[counter];
+  var currentDot = circles[counter];
+  currentImage.classList.add('visible');
+  removeDots();
+  currentDot.classList.add('dot');
+  counter++;
+}
+
+// LEFT & RIGHT ARROW FUNCTION & CLICK EVENT LISTENERS
+function arrowClick(e) {
+  var target = e.target;
+  if (target == leftArrow) {
+    clearInterval(imageSlideshowInterval);
+    hideImages();
+    removeDots();
+    if (counter == 1) {
+      counter = (imageSlides.length - 1);
+      imageLoop();
+      imageSlideshowInterval = setInterval(slideshow, 10000);
+    } else {
+      counter--;
+      counter--;
+      imageLoop();
+      imageSlideshowInterval = setInterval(slideshow, 10000);
+    }
+  } 
+  else if (target == rightArrow) {
+    clearInterval(imageSlideshowInterval);
+    hideImages();
+    removeDots();
+    if (counter == imageSlides.length) {
+      counter = 0;
+      imageLoop();
+      imageSlideshowInterval = setInterval(slideshow, 10000);
+    } else {
+      imageLoop();
+      imageSlideshowInterval = setInterval(slideshow, 10000);
+    }
+  }
+}
+
+leftArrow.addEventListener('click', arrowClick);
+rightArrow.addEventListener('click', arrowClick);
+
+
+// IMAGE SLIDE FUNCTION
+function slideshow() {
+  if (counter < imageSlides.length) {
+    imageLoop();
+  } else {
+    counter = 0;
+    hideImages();
+    imageLoop();
+  }
+}
+
+// SHOW FIRST IMAGE, & THEN SET & CALL SLIDE INTERVAL
+setTimeout(slideshow, 1000);
+var imageSlideshowInterval = setInterval(slideshow, 10000);</script>
+
+
+<style>.slideshowContainer {
+  position: relative;
+  overflow: hidden;
+  margin: 50px 0 75px;
+  width: 100%;
+  height: 200px;
+}
+
+.imageSlides {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: -1;
+}
+
+/* add 'visible' class via Javascript */
+.visible {
+  opacity: 1;
+}
+
+.slideshowArrow {
+  font-size: 7em;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.slideshowArrow:hover {
+  opacity: 0.75;
+}
+
+#leftArrow {
+  position: absolute;
+  left: 4%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#rightArrow {
+  position: absolute;
+  right: 4%;
+  top: 50%;
+  transform: translate(50%, -50%);
+}
+
+.slideshowCircles {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.circle {
+  display: inline-block;
+  margin-left: 3px;
+  margin-right: 3px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: solid 2px rgba(255, 255, 255, 0.5);
+  transition: 1s ease-in-out;
+}
+
+.dot {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: solid 2px rgba(255, 255, 255, 0.5);
+}</style>
 
 	
