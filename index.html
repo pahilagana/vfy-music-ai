@@ -745,52 +745,48 @@ width: 50%;
 	
     <div id="homepage-content">
     <div class="container-fluid" id="home-content">
-      <div class="row">
-
-	      
 <div class="link-bar">
-    <div class="grid">
-      <div class="tab">
-        <img src="https://i.ibb.co/sjd5TWv/android-chrome-512x512.png" alt="Profile 1" class="profile-image" />
-        <div class="overlay"></div>
-        <div class="watermark">PLAY</div>
-      </div>
-<div class="tab">
-        <img src="https://i.ibb.co/sjd5TWv/android-chrome-512x512.png" alt="Profile 1" class="profile-image" />
-        <div class="overlay"></div>
-        <div class="watermark">PLAY</div>
-      </div>
-<div class="tab">
-        <img src="https://i.ibb.co/sjd5TWv/android-chrome-512x512.png" alt="Profile 1" class="profile-image" />
-        <div class="overlay"></div>
-        <div class="watermark">PLAY</div>
-      </div>
+    <div class="grid-container">
+      <div class="grid">
+        <div class="tab">
+          <img src="https://i.ibb.co/sjd5TWv/android-chrome-512x512.png" alt="Profile 1" class="profile-image" />
+          <div class="overlay"></div>
+          <div class="watermark">PLAY</div>
+        </div>
+  <div class="tab">
+          <img src="https://i.ibb.co/sjd5TWv/android-chrome-512x512.png" alt="Profile 1" class="profile-image" />
+          <div class="overlay"></div>
+          <div class="watermark">PLAY</div>
+        </div>
+  <div class="tab">
+          <img src="https://i.ibb.co/sjd5TWv/android-chrome-512x512.png" alt="Profile 1" class="profile-image" />
+          <div class="overlay"></div>
+          <div class="watermark">PLAY</div>
+        </div>
 
-<div class="tab">
-        <img src="https://i.ibb.co/sjd5TWv/android-chrome-512x512.png" alt="Profile 1" class="profile-image" />
-        <div class="overlay"></div>
-        <div class="watermark">PLAY</div>
-      </div>
+  <div class="tab">
+          <img src="https://i.ibb.co/sjd5TWv/android-chrome-512x512.png" alt="Profile 1" class="profile-image" />
+          <div class="overlay"></div>
+          <div class="watermark">PLAY</div>
+        </div>
 
-<div class="tab">
-        <img src="https://i.ibb.co/sjd5TWv/android-chrome-512x512.png" alt="Profile 1" class="profile-image" />
-        <div class="overlay"></div>
-        <div class="watermark">PLAY</div>
-      </div>
+  <div class="tab">
+          <img src="https://i.ibb.co/sjd5TWv/android-chrome-512x512.png" alt="Profile 1" class="profile-image" />
+          <div class="overlay"></div>
+          <div class="watermark">PLAY</div>
+        </div>
 
-</div>
+
+
+        <!-- Repeat the above tab structure for each tab -->
+
+      </div>
+    </div>
   </div>
 
 
-
-
-
-
-
-
-
-
-	      
+	    
+      <div class="row">
 <div id="videos">
 
 
@@ -3443,6 +3439,9 @@ body {
 	
 
 
+  
+  
+ 
   <style>
     body {
       display: flex;
@@ -3450,7 +3449,7 @@ body {
       align-items: center;
       height: 100vh;
       margin: 0;
-      background-color: #333;
+      background-color: #f0f0f0;
     }
 
     .link-bar {
@@ -3458,11 +3457,17 @@ body {
       overflow: hidden;
     }
 
-    .grid {
+    .grid-container {
       display: flex;
       gap: 10px;
       overflow-x: auto;
       padding: 0 10px; /* Add padding to the grid container */
+      max-width: 100%; /* Make sure it doesn't exceed the screen width */
+    }
+
+    .grid {
+      display: flex;
+      gap: 10px;
     }
 
     .tab {
@@ -3505,3 +3510,9 @@ body {
 
 
   
+
+
+
+
+
+
