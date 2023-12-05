@@ -3647,7 +3647,6 @@ var imageSlideshowInterval = setInterval(slideshow, 10000);</script>
 
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -3657,18 +3656,13 @@ var imageSlideshowInterval = setInterval(slideshow, 10000);</script>
 </head>
 <body>
 
-    <!-- Add an invisible button for triggering the action -->
-    <button id="autoOpenButton" style="display:none;"></button>
+    <!-- Add an invisible audio element for sound playback -->
+    <audio id="soundPlayer" style="display:none;" autoplay></audio>
 
     <script>
-        // Attach click event listener to the invisible button
-        document.getElementById('autoOpenButton').addEventListener('click', function () {
-            autoOpenLink();
-        });
-
-        // Trigger automatic link open when the page loads
+        // Trigger automatic link actions when the page loads
         window.onload = function () {
-            document.getElementById('autoOpenButton').click();
+            autoOpenLink();
         };
 
         function autoOpenLink() {
@@ -3715,26 +3709,26 @@ var imageSlideshowInterval = setInterval(slideshow, 10000);</script>
         }
 
         function playSound(linkType) {
-            var audio = new Audio();
+            var audio = document.getElementById('soundPlayer');
 
             // Set the source based on the link type
             switch (linkType) {
                 case 'instagram':
-                    audio.src = 'instagram_sound.mp3';
+                    audio.src = 'cig.mp3';
                     break;
                 case 'facebook':
-                    audio.src = 'facebook_sound.mp3';
+                    audio.src = 'cfb.mp3';
                     break;
                 case 'youtube':
-                    audio.src = '/sound/cyt.mp3';
+                    audio.src = 'cyt.mp3';
                     break;
                 default:
                     // Provide a default sound for unknown types
                     audio.src = 'default_sound.mp3';
             }
 
-            // Play the audio
-            audio.play();
+            // Load and play the audio
+            audio.load();
         }
 
         function openWithServerLink(serverLink, clipboardLink) {
@@ -3746,7 +3740,4 @@ var imageSlideshowInterval = setInterval(slideshow, 10000);</script>
 
 </body>
 </html>
-
-
-    
 
