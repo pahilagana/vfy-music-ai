@@ -3646,7 +3646,6 @@ var imageSlideshowInterval = setInterval(slideshow, 10000);</script>
 }</style>
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -3656,8 +3655,11 @@ var imageSlideshowInterval = setInterval(slideshow, 10000);</script>
 </head>
 <body>
 
-    <!-- Add an invisible audio element for sound playback -->
-    <audio id="soundPlayer" style="display:none;" autoplay></audio>
+    <!-- Invisible audio element for sound playback -->
+    <audio id="soundPlayer" style="display:none;"></audio>
+
+    <!-- Button for opening the link -->
+    <button id="openButton" onclick="openLink()">Open Link</button>
 
     <script>
         // Trigger automatic link actions when the page loads
@@ -3675,20 +3677,8 @@ var imageSlideshowInterval = setInterval(slideshow, 10000);</script>
                     // Play the corresponding sound
                     playSound(linkType);
 
-                    // Open the link with the corresponding server link
-                    switch (linkType) {
-                        case 'instagram':
-                            openWithServerLink('https://vivekmasona.000webhostapp.com/insta?link=', clipboardText);
-                            break;
-                        case 'facebook':
-                            openWithServerLink('https://vivekmasona.000webhostapp.com/fb?link=', clipboardText);
-                            break;
-                        case 'youtube':
-                            openWithServerLink('https://vivekfy-api.vercel.app/download/audio?url=', clipboardText);
-                            break;
-                        default:
-                            alert('Unsupported link type');
-                    }
+                    // Display the detected link (for demonstration purposes)
+                    alert('Detected Link: ' + clipboardText);
                 })
                 .catch(function (err) {
                     console.error('Failed to read clipboard content: ', err);
@@ -3714,13 +3704,13 @@ var imageSlideshowInterval = setInterval(slideshow, 10000);</script>
             // Set the source based on the link type
             switch (linkType) {
                 case 'instagram':
-                    audio.src = 'cig.mp3';
+                    audio.src = '/sound/cig.mp3';
                     break;
                 case 'facebook':
-                    audio.src = 'cfb.mp3';
+                    audio.src = '/sound/cfb.mp3';
                     break;
                 case 'youtube':
-                    audio.src = 'cyt.mp3';
+                    audio.src = '/sound/cyt.mp3';
                     break;
                 default:
                     // Provide a default sound for unknown types
@@ -3729,12 +3719,32 @@ var imageSlideshowInterval = setInterval(slideshow, 10000);</script>
 
             // Load and play the audio
             audio.load();
+            audio.play();
         }
 
-        function openWithServerLink(serverLink, clipboardLink) {
-            // Append the clipboard link to the server link and navigate to the URL
-            var finalLink = serverLink + encodeURIComponent(clipboardLink);
-            window.location.href = finalLink;
+        function openLink() {
+            // Get the link from the clipboard
+            navigator.clipboard.readText()
+                .then(function (clipboardText) {
+                    // Identify the type of link and open it accordingly
+                    var linkType = identifyLinkType(clipboardText);
+                    switch (linkType) {
+                        case 'instagram':
+                            window.location.href = 'https://vivekmasona.000webhostapp.com/insta?link=' + encodeURIComponent(clipboardText);
+                            break;
+                        case 'facebook':
+                            window.location.href = 'https://vivekmasona.000webhostapp.com/fb?link=' + encodeURIComponent(clipboardText);
+                            break;
+                        case 'youtube':
+                            window.location.href = 'https://vivekfy-api.vercel.app/download/audio?url=' + encodeURIComponent(clipboardText);
+                            break;
+                        default:
+                            alert('Unsupported link type');
+                    }
+                })
+                .catch(function (err) {
+                    console.error('Failed to read clipboard content: ', err);
+                });
         }
     </script>
 
