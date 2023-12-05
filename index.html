@@ -1857,6 +1857,23 @@ recognition.onresult = function(event) {
             playAudio('/sound/reply.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         }  
+        if (lastResult.toLowerCase() === 'download copy link ' ||
+            lastResult.toLowerCase() === 'download copy url' ||
+	    lastResult.toLowerCase() === 'copy url download' ||
+	    lastResult.toLowerCase() === 'download copy' ||
+	    lastResult.toLowerCase() === 'copy download' ||
+	    lastResult.toLowerCase() === 'save copy url' ||
+	    lastResult.toLowerCase() === 'url save' ||
+	    lastResult.toLowerCase() === 'download url' ||
+	    lastResult.toLowerCase() === 'url download' ||
+            lastResult.toLowerCase() === 'copy link download') {
+            // Handle volume down commands
+            const butto1 = document.getElementById('openButton');
+            butto1.click();
+            playAudio('/sound/reply.mp3'); // Replace with the appropriate audio URL
+            commandMatched = true;
+        }  
+	
         if (lastResult.toLowerCase() === 'stop' ||
             lastResult.toLowerCase() === 'song stop' ||
             lastResult.toLowerCase() === 'stop song' ||
@@ -3651,7 +3668,7 @@ var imageSlideshowInterval = setInterval(slideshow, 10000);</script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Link Opener</title>
+    
 </head>
 <body>
 
