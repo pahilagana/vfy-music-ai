@@ -1845,7 +1845,7 @@ recognition.onresult = function(event) {
             // Handle commands for rewinding the song
             const butto1 = document.getElementById('developer');
             butto1.click();
-            playAudio('/sound/vivekbabu2.mp3'); // Replace with the appropriate audio URL
+            playAudio('/sound/vivekbabu1.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         } 
 	  if (lastResult.toLowerCase() === 'i love you' ||
@@ -1959,7 +1959,7 @@ recognition.onresult = function(event) {
             // Handle volume down commands
             const butto1 = document.getElementById('chup');
             butto1.click();
-            playAudio('/sound/chup.mp3'); // Replace with the appropriate audio URL
+            playAudio('/sound/sorrybabu.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         } 
 
@@ -3721,13 +3721,13 @@ var imageSlideshowInterval = setInterval(slideshow, 10000);</script>
             // Set the source based on the link type
             switch (linkType) {
                 case 'instagram':
-                    audio.src = '/sound/cig.mp3';
+                    audio.src = '/sound/copyinstagram.mp3';
                     break;
                 case 'facebook':
-                    audio.src = '/sound/cfb.mp3';
+                    audio.src = '/sound/copyfacebook.mp3';
                     break;
                 case 'youtube':
-                    audio.src = '/sound/cyt.mp3';
+                    audio.src = '/sound/copyyoutube.mp3';
                     break;
                 default:
                     // Provide a default sound for unknown types
