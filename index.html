@@ -1889,7 +1889,7 @@ recognition.onresult = function(event) {
             // Handle commands for stopping audio
             const butto1 = document.getElementById('play');
             butto1.click();
-            playAudio('/sound/stop.mp3'); // Replace with the appropriate audio URL
+            playAudio('/sound/songstop.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         }
         if (lastResult.toLowerCase() === 'play' || 
@@ -1907,7 +1907,7 @@ recognition.onresult = function(event) {
             // Handle the 'play' command
             const butto1 = document.getElementById('play');
             butto1.click();
-            playAudio('/sound/play.mp3'); // Replace with the appropriate audio URL
+            playAudio('/sound/songplay.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         }
 	  if (lastResult.toLowerCase() === 'bhenchod' ||
