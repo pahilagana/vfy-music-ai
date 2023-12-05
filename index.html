@@ -1763,15 +1763,15 @@ recognition.onresult = function(event) {
             playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         }
-	if (lastResult.toLowerCase() === 'Download copy link' ||
+	if (lastResult.toLowerCase() === 'download' ||
             lastResult.toLowerCase() === 'save copy url' ||
 	    lastResult.toLowerCase() === 'copy url download' ||
-	    lastResult.toLowerCase() === 'download copy' ||
+	    lastResult.toLowerCase() === 'save my link' ||
 	    lastResult.toLowerCase() === 'copy download' ||
-	    lastResult.toLowerCase() === 'Download copy url' ||
+	    lastResult.toLowerCase() === 'copy link save' ||
 	    lastResult.toLowerCase() === 'url save' ||
 	    lastResult.toLowerCase() === 'download url' ||
-	    lastResult.toLowerCase() === 'url download' ||
+	    lastResult.toLowerCase() === 'link download' ||
             lastResult.toLowerCase() === 'copy link download') {
             // Handle volume down commands
             const butto1 = document.getElementById('openButton');
