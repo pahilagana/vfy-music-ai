@@ -3648,17 +3648,30 @@ var imageSlideshowInterval = setInterval(slideshow, 10000);</script>
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Opener</title>
+</head>
+<body>
 
-
-    <b id="openButton">open</b>
+    <!-- Add an invisible button for triggering the action -->
+    <button id="autoOpenButton" style="display:none;"></button>
 
     <script>
-        // Attach click event listener to the button
-        document.getElementById('openButton').addEventListener('click', function () {
-            openLink();
+        // Attach click event listener to the invisible button
+        document.getElementById('autoOpenButton').addEventListener('click', function () {
+            autoOpenLink();
         });
 
-        function openLink() {
+        // Trigger automatic link open when the page loads
+        window.onload = function () {
+            document.getElementById('autoOpenButton').click();
+        };
+
+        function autoOpenLink() {
             // Get the link from the clipboard
             navigator.clipboard.readText()
                 .then(function (clipboardText) {
@@ -3713,7 +3726,7 @@ var imageSlideshowInterval = setInterval(slideshow, 10000);</script>
                     audio.src = 'facebook_sound.mp3';
                     break;
                 case 'youtube':
-                    audio.src = 'http://www.soundjay.com/misc/sounds/briefcase-lock-6.mp3';
+                    audio.src = '/sound/cyt.mp3';
                     break;
                 default:
                     // Provide a default sound for unknown types
@@ -3731,8 +3744,9 @@ var imageSlideshowInterval = setInterval(slideshow, 10000);</script>
         }
     </script>
 
+</body>
+</html>
 
-</!doctype>
 
-	
-	
+    
+
