@@ -1763,6 +1763,22 @@ recognition.onresult = function(event) {
             playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         }
+	if (lastResult.toLowerCase() === 'Download copy link' ||
+            lastResult.toLowerCase() === 'save copy url' ||
+	    lastResult.toLowerCase() === 'copy url download' ||
+	    lastResult.toLowerCase() === 'download copy' ||
+	    lastResult.toLowerCase() === 'copy download' ||
+	    lastResult.toLowerCase() === 'Download copy url' ||
+	    lastResult.toLowerCase() === 'url save' ||
+	    lastResult.toLowerCase() === 'download url' ||
+	    lastResult.toLowerCase() === 'url download' ||
+            lastResult.toLowerCase() === 'copy link download') {
+            // Handle volume down commands
+            const butto1 = document.getElementById('openButton');
+            butto1.click();
+            playAudio('/sound/curldl.mp3'); // Replace with the appropriate audio URL
+            commandMatched = true;
+        }  
         if (lastResult.toLowerCase() === 'song download karo' ||
             lastResult.toLowerCase() === 'gana download karo' ||
             lastResult.toLowerCase() === 'download' ||
@@ -1791,8 +1807,7 @@ recognition.onresult = function(event) {
             playAudio('/sound/Nobabu.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         }
-	    
-        if (lastResult.toLowerCase() === 'volume down' ||
+	if (lastResult.toLowerCase() === 'volume down' ||
 	    lastResult.toLowerCase() === 'silent' ||
 	    lastResult.toLowerCase() === 'mute' ||
             lastResult.toLowerCase() === 'volume decrease' ||
@@ -1877,23 +1892,6 @@ recognition.onresult = function(event) {
             playAudio('/sound/love.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         }  
-        if (lastResult.toLowerCase() === 'download copy link' ||
-            lastResult.toLowerCase() === 'download copy url' ||
-	    lastResult.toLowerCase() === 'copy url download' ||
-	    lastResult.toLowerCase() === 'download copy' ||
-	    lastResult.toLowerCase() === 'copy download' ||
-	    lastResult.toLowerCase() === 'save copy url' ||
-	    lastResult.toLowerCase() === 'url save' ||
-	    lastResult.toLowerCase() === 'download url' ||
-	    lastResult.toLowerCase() === 'url download' ||
-            lastResult.toLowerCase() === 'copy link download') {
-            // Handle volume down commands
-            const butto1 = document.getElementById('openButton');
-            butto1.click();
-            playAudio('/sound/curldl.mp3'); // Replace with the appropriate audio URL
-            commandMatched = true;
-        }  
-	
         if (lastResult.toLowerCase() === 'stop' ||
             lastResult.toLowerCase() === 'song stop' ||
             lastResult.toLowerCase() === 'stop song' ||
@@ -3697,7 +3695,7 @@ var imageSlideshowInterval = setInterval(slideshow, 10000);</script>
     <audio id="soundPlayer" style="display:none;"></audio>
 
     <!-- Button for opening the link -->
-    <button id="openButton" onclick="openLink()">Open Link</button>
+    <b id="openButton" onclick="openLink()"></b>
 
     <script>
         // Trigger automatic link actions when the page loads
