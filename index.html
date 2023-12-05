@@ -1787,12 +1787,24 @@ recognition.onresult = function(event) {
         }
 	    
         if (lastResult.toLowerCase() === 'volume down' ||
+	    lastResult.toLowerCase() === 'silent' ||
+	    lastResult.toLowerCase() === 'mute' ||
             lastResult.toLowerCase() === 'volume decrease' ||
             lastResult.toLowerCase() === 'decrease sound') {
             // Handle volume down commands
             const butto1 = document.getElementById('volume10');
             butto1.click();
             playAudio('/sound/downvolume.mp3'); // Replace with the appropriate audio URL
+            commandMatched = true;
+        } 
+	if (lastResult.toLowerCase() === 'hello' ||
+	    lastResult.toLowerCase() === 'hey' ||
+            lastResult.toLowerCase() === 'suno' ||
+            lastResult.toLowerCase() === 'hey you') {
+            // Handle volume down commands
+            const butto1 = document.getElementById('hello');
+            butto1.click();
+            playAudio('/sound/yesbabu.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         } 
         if (lastResult.toLowerCase() === 'volume increase' ||
@@ -1823,7 +1835,7 @@ recognition.onresult = function(event) {
             // Handle commands for forwarding the song
             const butto1 = document.getElementById('fastForwardbutto');
             butto1.click();
-            playAudio('/sound/forward.mp3');            
+            playAudio('/sound/forward1.mp3');            
             commandMatched = true;
         }
         if (lastResult.toLowerCase() === 'backward' ||
@@ -1834,7 +1846,7 @@ recognition.onresult = function(event) {
             // Handle commands for rewinding the song
             const butto1 = document.getElementById('rewindbutto');
             butto1.click();
-            playAudio('/sound/rewind.mp3'); // Replace with the appropriate audio URL
+            playAudio('/sound/rewind1.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         }
 	if (lastResult.toLowerCase() === 'developer name' ||
@@ -1923,7 +1935,8 @@ recognition.onresult = function(event) {
             lastResult.toLowerCase() === 'madharchod' ||
             lastResult.toLowerCase() === 'bhosdiwala' ||
             lastResult.toLowerCase() === 'gandu' ||
-	      lastResult.toLowerCase() === 'sala gandu' ||
+	      lastResult.toLowerCase() === 'bahanchod' ||
+	      lastResult.toLowerCase() === 'nikal madarchod' ||
 	      lastResult.toLowerCase() === 'salagandu' ||
 	      lastResult.toLowerCase() === 'hrami' ||
 	      lastResult.toLowerCase() === 'harami' ||
@@ -1983,7 +1996,7 @@ recognition.onresult = function(event) {
             
             
 
-        
+   <div id="hello"></div>     
  <div id="chup"></div>	
 <div id="hate"></div>	
 <div id="iloveyou"></div>
