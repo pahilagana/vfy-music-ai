@@ -1727,7 +1727,7 @@ recognition.onresult = function(event) {
             // Handle audio-related commands
             const butto1 = document.getElementById('pahilagana');
             butto1.click();
-            playAudio('/sound/audio.mp3'); // Replace with the appropriate audio URL
+            playAudio('/sound/saveaudio.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         }
         if (lastResult.toLowerCase() === 'video download' ||
@@ -1738,7 +1738,7 @@ recognition.onresult = function(event) {
             // Handle video-related commands
             const butto1 = document.getElementById('vivekmasona');
             butto1.click();
-            playAudio('/sound/videodownload.mp3'); // Replace with the appropriate audio URL
+            playAudio('/sound/savevideo.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         }
         if (lastResult.toLowerCase() === 'play video' ||
