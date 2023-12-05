@@ -1849,12 +1849,12 @@ recognition.onresult = function(event) {
             commandMatched = true;
         } 
 	  if (lastResult.toLowerCase() === 'i love you' ||
-            lastResult.toLowerCase() === 'hi jaan' ||
+            lastResult.toLowerCase() === 'hello babu' ||
             lastResult.toLowerCase() === 'pagal') {
             // Handle volume down commands
             const butto1 = document.getElementById('iloveyou');
             butto1.click();
-            playAudio('/sound/reply.mp3'); // Replace with the appropriate audio URL
+            playAudio('/sound/love.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         }  
         if (lastResult.toLowerCase() === 'download copy link ' ||
