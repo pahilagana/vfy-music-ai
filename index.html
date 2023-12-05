@@ -1774,15 +1774,21 @@ recognition.onresult = function(event) {
             playAudio('/sound/song.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         }
-        if (lastResult.toLowerCase() === 'news' ||
-            lastResult.toLowerCase() === 'play news' ||
-            lastResult.toLowerCase() === 'samachar' ||
-            lastResult.toLowerCase() === 'khabar sunao' ||
-            lastResult.toLowerCase() === 'taja samachar sunao') {
+        if (lastResult.toLowerCase() === 'chuma' ||
+            lastResult.toLowerCase() === 'chumma do' ||
+	    lastResult.toLowerCase() === 'kiss do' ||
+	    lastResult.toLowerCase() === 'kiss do na' ||
+	    lastResult.toLowerCase() === 'land logi' ||
+	    lastResult.toLowerCase() === 'munh Mein logi' ||
+	    lastResult.toLowerCase() === 'land legi' ||
+	    lastResult.toLowerCase() === 'munh Mein legi' ||
+            lastResult.toLowerCase() === 'jaan chumma do' ||
+            lastResult.toLowerCase() === 'kareza chumma do na' ||
+            lastResult.toLowerCase() === 'jaan chumma do na') {
             // Handle news-related or download commands
             const butto1 = document.getElementById('AdAudio');
             butto1.click();
-            playAudio('/sound/news.mp3'); // Replace with the appropriate audio URL
+            playAudio('/sound/nobabu.mp3'); // Replace with the appropriate audio URL
             commandMatched = true;
         }
 	    
