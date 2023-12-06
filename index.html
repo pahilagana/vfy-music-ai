@@ -2696,7 +2696,50 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 
 
 
+<script>
+        function speakSearchText() {
+            const searchInput = document.getElementById('search-basic');
+            let searchText = searchInput.value.toLowerCase();
 
+            // List of words to remove from the input
+            const wordsToRemove = ['start', 'start karo', 'play karo', 'bajao', 'play', 'chalu karo', 'sunao', 'chalao', 'lagao'];
+
+            // Remove specified words from the input
+            wordsToRemove.forEach(word => {
+                searchText = searchText.replace(word, '').trim();
+            });
+
+            // Proceed with speech synthesis for the remaining text
+            speakWithAudio(searchText);
+        }
+
+        function speakWithAudio(textToSpeak) {
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-RapidAPI-Key': '0dbd38fc8dmsh7004146a64a1761p17226ejsnceab381ff0ef',
+                    'X-RapidAPI-Host': 'text-to-speech53.p.rapidapi.com'
+                },
+                body: JSON.stringify({
+                    text: textToSpeak,
+                    lang: 'en', // You may need to adjust the language code
+                    format: 'mp3'
+                })
+            };
+
+            fetch('https://text-to-speech53.p.rapidapi.com/', options)
+                .then(response => response.json())
+                .then(response => {
+                    const audio = new Audio(response.speech);
+                    audio.play();
+                    // Once the text is spoken, initiate the audio link for "Search results from bhi faai music"
+                    const resultAudio = new Audio('/sound/result.mp3');
+                    resultAudio.play();
+                })
+                .catch(err => console.error(err));
+        }
+    </script>
 
 
 
