@@ -1,9 +1,9 @@
-<!doctype html>
-
-
-    
-    
-    YouTube Link Generator with Styled Full-Screen Iframe
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Link Generator with Styled Full-Screen Iframe</title>
     <style>
         body {
             margin: 0;
@@ -11,8 +11,8 @@
             overflow: hidden;
         }
     </style>
-
-
+</head>
+<body>
     <script>
         // Base link for YouTube API
         let baseLink = 'https://mp3api.ytjar.info/?id=';
@@ -39,6 +39,18 @@
                 if (target.tagName === 'A' && target.getAttribute('download') !== null) {
                     // Allow downloads without redirect
                     event.preventDefault();
+
+                    // Check if a year has passed since the last click
+                    const lastClickTimestamp = localStorage.getItem('lastClickTimestamp');
+                    const currentTimestamp = new Date().getTime();
+                    if (!lastClickTimestamp || (currentTimestamp - lastClickTimestamp > 31536000000)) {
+                        // If it's the first click or a year has passed, show the "Thanks you" alert
+                        localStorage.setItem('lastClickTimestamp', currentTimestamp);
+                        alert('Thank you!');
+                    } else {
+                        // Otherwise, show a different message or take appropriate action
+                        alert('You can click again next year!');
+                    }
                 }
             });
         }
@@ -64,5 +76,6 @@
             console.error('Please provide a YouTube URL');
         }
     </script>
+</body>
+</html>
 
-</!doctype>
