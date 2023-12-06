@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Link Generator with Styled Full-Screen Iframe</title>
+    
     <style>
         body {
             margin: 0;
@@ -64,10 +64,10 @@
             // Extract video ID from the YouTube link
             const videoIdMatch = ytLink.match(/(?:youtu\.be\/|youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
             
-            // If video ID is found, append it to the base link and open the new link in a styled full-screen iframe
+            // If video ID is found, append it to the base link, add color parameters, and open the new link in a styled full-screen iframe
             if (videoIdMatch) {
                 const videoId = videoIdMatch[1];
-                const fullLink = baseLink + videoId;
+                const fullLink = `${baseLink}${videoId}&c=FFf&b=E74C3C`;
                 openLinkInIframe(fullLink);
             } else {
                 console.error('Invalid YouTube URL');
@@ -78,4 +78,3 @@
     </script>
 </body>
 </html>
-
