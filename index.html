@@ -2695,50 +2695,7 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 
 
 
-<script>
-  function speakSearchText() {
-    const searchInput = document.getElementById('search-basic');
-    let searchText = searchInput.value.toLowerCase();
 
-    // List of words to remove from the input
-    const wordsToRemove = ['start', 'start karo', 'play karo', 'bajao', 'play', 'chalu karo', 'sunao', 'chalao', 'lagao'];
-
-    // Remove specified words from the input
-    wordsToRemove.forEach(word => {
-      searchText = searchText.replace(word, '').trim();
-    });
-
-    // Proceed with speech synthesis for the remaining text
-    speakWithAudio(searchText);
-  }
-
-  function speakWithAudio(textToSpeak) {
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(textToSpeak);
-
-      // Select a male voice, if available
-      const voices = window.speechSynthesis.getVoices();
-      let maleVoice = voices.find(voice => voice.name === 'vivek');
-      if (maleVoice) {
-        utterance.voice = maleVoice;
-      } else {
-        console.log('Male voice not found; using the default voice.');
-      }
-
-      utterance.volume = 1; // Set volume to 100%
-
-      utterance.onend = function () {
-        // Once the text is spoken, initiate the audio link for "Search results from bhi faai music"
-        const audio = new Audio('/sound/result.mp3');
-        audio.play();
-      };
-
-      window.speechSynthesis.speak(utterance);
-    } else {
-      console.log('Text-to-speech not supported in this browser');
-    }
-  }
-</script>
 
 
 
