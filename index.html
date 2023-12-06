@@ -2021,63 +2021,44 @@ recognition.onresult = function(event) {
 
 <script>
 function simulateTyping(element, text, index = 0) {
-function simulateTyping(element, text, index = 0, callback) {
     if (index < text.length) {
         element.value += text.charAt(index);
         index++;
         setTimeout(function() {
-            simulateTyping(element, text, index, callback);
+            simulateTyping(element, text, index);
         }, 100); // Adjust the timeout for the typing speed
     } else {
-        // Call the provided callback function
-        callback();
+        // Trigger the search after typing is complete
+        document.getElementById('search-btn').click();
     }
 }
 
-function getTextToSpeech(text) {
-    const options = {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json',
-            'X-RapidAPI-Key': '0dbd38fc8dmsh7004146a64a1761p17226ejsnceab381ff0ef',
-            'X-RapidAPI-Host': 'text-to-speech53.p.rapidapi.com'
-        },
-        body: JSON.stringify({
-            text: text,
-            lang: 'en', // Change to the appropriate language code
-            format: 'mp3' // Change to the desired output format
-        })
-    };
+function startDictation() {
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+        var recognition = new webkitSpeechRecognition();
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.lang = "en-US";
 
-    fetch('https://text-to-speech53.p.rapidapi.com/', options)
-        .then(response => response.json())
-        .then(response => {
-            // Play the generated speech
-            playSpeech(response.speech);
-        })
-        .catch(err => console.error(err));
+        recognition.onresult = function(e) {
+            var spokenText = e.results[0][0].transcript;
+            startSearchWithTyping(spokenText);
+        };
+
+        recognition.onerror = function(e) {
+            recognition.stop();
+        }
+
+        recognition.start();
+    }
 }
 
-function playSpeech(audioUrl) {
-    var audio = new Audio(audioUrl);
-    audio.play();
-}
-
+// Function to initiate search with typing effect
 function startSearchWithTyping(query) {
     var searchInput = document.getElementById('search-basic');
     searchInput.value = ''; // Clear existing text
-    simulateTyping(searchInput, query, 0, function() {
-        // Call Text-to-Speech API after typing is complete
-        getTextToSpeech(query);
-    });
+    simulateTyping(searchInput, query);
 }
-
-function searchVibesSongs() {
-    var query = "sachet prampra new hindi songs"; // Hindi songs ke liye query
-    $(".search-bar").val(query); // Query input field mein set karen
-    startSearchWithTyping(query); // Start search with typing effect
-}
-
 // Function to initiate search with typing effect
 function startSearchWithTyping(query) {
     var searchInput = document.getElementById('search-basic');
@@ -2695,51 +2676,51 @@ setInterval(changePlaceholder, 1000); // Change placeholder every 1 second
 
 
 
-
 <script>
-        function speakSearchText() {
-            const searchInput = document.getElementById('search-basic');
-            let searchText = searchInput.value.toLowerCase();
+  function speakSearchText() {
+    const searchInput = document.getElementById('search-basic');
+    let searchText = searchInput.value.toLowerCase();
 
-            // List of words to remove from the input
-            const wordsToRemove = ['start', 'start karo', 'play karo', 'bajao', 'play', 'chalu karo', 'sunao', 'chalao', 'lagao'];
+    // List of words to remove from the input
+    const wordsToRemove = ['start', 'start karo', 'play karo', 'bajao', 'play', 'chalu karo', 'sunao', 'chalao', 'lagao'];
 
-            // Remove specified words from the input
-            wordsToRemove.forEach(word => {
-                searchText = searchText.replace(word, '').trim();
-            });
+    // Remove specified words from the input
+    wordsToRemove.forEach(word => {
+      searchText = searchText.replace(word, '').trim();
+    });
 
-            // Proceed with speech synthesis for the remaining text
-            speakWithAudio(searchText);
-        }
+    // Proceed with speech synthesis for the remaining text
+    speakWithAudio(searchText);
+  }
 
-        function speakWithAudio(textToSpeak) {
-            const options = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-RapidAPI-Key': '0dbd38fc8dmsh7004146a64a1761p17226ejsnceab381ff0ef',
-                    'X-RapidAPI-Host': 'text-to-speech53.p.rapidapi.com'
-                },
-                body: JSON.stringify({
-                    text: textToSpeak,
-                    lang: 'en', // You may need to adjust the language code
-                    format: 'mp3'
-                })
-            };
+  function speakWithAudio(textToSpeak) {
+    if ('speechSynthesis' in window) {
+      const utterance = new SpeechSynthesisUtterance(textToSpeak);
 
-            fetch('https://text-to-speech53.p.rapidapi.com/', options)
-                .then(response => response.json())
-                .then(response => {
-                    const audio = new Audio(response.speech);
-                    audio.play();
-                    // Once the text is spoken, initiate the audio link for "Search results from bhi faai music"
-                    const resultAudio = new Audio('/sound/result.mp3');
-                    resultAudio.play();
-                })
-                .catch(err => console.error(err));
-        }
-    </script>
+      // Select a male voice, if available
+      const voices = window.speechSynthesis.getVoices();
+      let maleVoice = voices.find(voice => voice.name === 'vivek');
+      if (maleVoice) {
+        utterance.voice = maleVoice;
+      } else {
+        console.log('Male voice not found; using the default voice.');
+      }
+
+      utterance.volume = 1; // Set volume to 100%
+
+      utterance.onend = function () {
+        // Once the text is spoken, initiate the audio link for "Search results from bhi faai music"
+        const audio = new Audio('/sound/result.mp3');
+        audio.play();
+      };
+
+      window.speechSynthesis.speak(utterance);
+    } else {
+      console.log('Text-to-speech not supported in this browser');
+    }
+  }
+</script>
+
 
 
 
@@ -3805,5 +3786,6 @@ var imageSlideshowInterval = setInterval(slideshow, 5000);</script>
 
 </body>
 </html>
+
 
 
