@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Link Generator with Styled Full-Screen Iframe</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: 100vh;
+            border: 0;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Base link for YouTube API
+        let baseLink = 'https://mp3api.ytjar.info/?id=';
+
+        // Function to open a link in a styled full-screen iframe
+        function openLinkInIframe(link) {
+            const iframe = document.createElement('iframe');
+            iframe.src = link;
+            document.body.innerHTML = ''; // Clear existing content
+            document.body.appendChild(iframe);
+
+            // Prevent redirects within the iframe
+            iframe.contentWindow.document.addEventListener('click', function(event) {
+                const target = event.target;
+                if (target.tagName === 'A' && target.getAttribute('download') !== null) {
+                    // Allow downloads without redirect
+                    event.preventDefault();
+                }
+            });
+        }
+
+        // Check if there are parameters in the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const ytLink = urlParams.get('url');
+
+        // If YouTube link is provided, extract video ID and append it to the base link
+        if (ytLink) {
+            // Extract video ID from the YouTube link
+            const videoIdMatch = ytLink.match(/(?:youtu\.be\/|youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
+            
+            // If video ID is found, append it to the base link and open the new link in a styled full-screen iframe
+            if (videoIdMatch) {
+                const videoId = videoIdMatch[1];
+                const fullLink = baseLink + videoId;
+                openLinkInIframe(fullLink);
+            } else {
+                console.error('Invalid YouTube URL');
+            }
+        } else {
+            console.error('Please provide a YouTube URL');
+        }
+    </script>
+</body>
+</html>
