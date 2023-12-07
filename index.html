@@ -1282,8 +1282,8 @@ function loadSong(song, ind) {
 
 
 function play(id,Sid){
-     //data = "https://vivekfy-obg6.onrender.com/audio?url="+id;
-      data = "https://vivekfy-api.vercel.app/audio/"+id;
+     data = "https://vivekfy-api-v1.vercel.app/low-audio?url=https://youtu.be/"+id;
+      //data = "https://vivekfy-api.vercel.app/audio/"+id;
       //data = "https://vivekmasona.000webhostapp.com/play?vfy=https://youtu.be/"+id;
      // data = "https://projectlounge.pw/ytdl/download?url=https://youtu.be/"+id+"&format=599";
      // data = "https://vivekfy.1.ie-1.fl0.io/audio?url=https://youtu.be/"+id;
@@ -1356,9 +1356,9 @@ audio.addEventListener("ended", function() {
 
 // Listen for the 'error' event
 var alternativeAudioSources = [
-    
+"https://vivekfy-api.vercel.app/audio/" + id,   
 "https://vivekmasona.000webhostapp.com/play?vfy=https://youtu.be/" + id,
-"https://vivekfy.1.ie-1.fl0.io/audio?url=https://youtu.be/" + id,
+"https://vivekfy-api-v1.vercel.app/audio?url=https://youtu.be/" + id,
     
 ];
 
