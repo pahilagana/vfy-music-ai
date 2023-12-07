@@ -769,7 +769,7 @@ Make sure you match the number of these 'circle' span elements to the number of 
 </div>
 
 	    
-<div id="tab-container">
+
 	    
 <div class="link-bar">
     <div class="grid-container">
@@ -2309,78 +2309,76 @@ var offlineMsg = document.getElementById("offline-message");
  
 </style>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Page Title</title>
-</head>
-<body>
-
 <script>
-    // Function to load a YouTube video based on its ID
-    function loadSong(element) {
-        var videoId = element.getAttribute('vid');
-        // Add logic to load the YouTube video with the given ID
-        // ...
+    window.addEventListener('load', function() {
+        setTimeout(hide, 2000);
+        var url = new URL(window.location.toString());
 
-        // For demonstration purposes, let's just log the video ID to the console
-        console.log('Loading video with ID:', videoId);
+        // Extract the text within double quotes
+        let searchText = extractTextInDoubleQuotes(url.searchParams.get('text'));
+
+        // If it's a YouTube link, extract the video ID
+        if (isYouTubeLink(url.searchParams.get('text'))) {
+            searchText = extractYouTubeVideoId(url.searchParams.get('text')) || searchText;
+        }
+
+        // If there is no text or YouTube link, set the search box value to the original text
+        if (!searchText && isUrlLink(url.searchParams.get('text'))) {
+            searchText = extractTitleFromUrl(url.searchParams.get('text')) || '';
+        }
+
+        let searchBox = document.querySelector('#search-basic');
+        searchBox.value = searchText || url.searchParams.get('text') || '';
+
+        let vUrl = document.querySelector('#share_textvkm1m');
+        vUrl.innerText = 'URL - ' + url.searchParams.get('text');
+        
+        function hide() {
+            document.querySelector('#loadingvkm1m').style = "display:none";
+        }
+
+        // Automatically trigger the search button click
+        document.getElementById('search-btn').click();
+    });
+
+    // Function to extract the text within double quotes
+    function extractTextInDoubleQuotes(link) {
+        let match = link.match(/"([^"]+)"/);
+        return match ? match[1].trim() : '';
     }
 
-    // Function to add a new tab with YouTube video details
-    function addVideoTab(videoId, thumbnailSrc, title) {
-        var tabContainer = document.getElementById('tab-container');
-
-        // Create a new tab element
-        var tab = document.createElement('b');
-        tab.setAttribute('onclick', 'loadSong(this)');
-        tab.className = 'list';
-        tab.setAttribute('vid', videoId);
-
-        // Create the structure of the tab
-        tab.innerHTML = `
-            <div class="video">
-                <img src="${thumbnailSrc}" alt="${title}" class="video-thumbnail">
-                <section>
-                    <img src="/img/newdp.png" alt="Vivekfy" width="10%" style="padding: 20px;">
-                    <div>
-                        <p>${title}</p>
-                    </div>
-                </section>
-            </div>
-        `;
-
-        // Append the new tab to the container
-        tabContainer.appendChild(tab);
+    // Function to check if the link is a YouTube link
+    function isYouTubeLink(link) {
+        return link.includes('youtube.com') || link.includes('youtu.be');
     }
 
-    // Function to extract YouTube video ID from a URL
-    function extractYouTubeVideoId(url) {
-        var videoIdMatch = url.match(/[?&]v=([^&]+)/);
+    // Function to check if the link is a URL link
+    function isUrlLink(link) {
+        // Add your logic to identify if the link is a URL link
+        // For now, it simply checks if it starts with 'http' or 'www'
+        return link.startsWith('http') || link.includes('www');
+    }
+
+    // Function to extract title or ID from URL link
+    function extractTitleFromUrl(link) {
+        // Add your logic to extract title or ID from the URL link
+        // For now, it simply returns the link itself
+        return link;
+    }
+
+    // Function to extract video ID from YouTube link
+    function extractYouTubeVideoId(youtubeUrl) {
+        let videoIdMatch = youtubeUrl.match(/[?&]v=([^&]+)/);
         return videoIdMatch ? videoIdMatch[1] : null;
     }
-
-    // Example usage:
-    var youtubeUrl = 'https://www.youtube.com/watch?v=9Tfbp9g8uHc';
-    var videoId = extractYouTubeVideoId(youtubeUrl);
-    var thumbnailSrc = 'https://i.ytimg.com/vi/' + videoId + '/maxresdefault.jpg';
-    var title = 'V F Y Sad Breakup 💔 song lofi style night version song mood off song';
-
-    // Add a new tab with the extracted video details
-    if (videoId) {
-        addVideoTab(videoId, thumbnailSrc, title);
-    }
 </script>
+    
 
+  </div></div></div>
 
-    <!-- Existing tabs or dynamically added tabs will be appended here -->
-</div>
-
-</body>
-</html>
+<div id="share_titlevkm1m"></div>
+<div id="share_textvkm1m"></div>
+<div id="outputvkm1m"></div>    
 
 
 
@@ -3788,6 +3786,7 @@ var imageSlideshowInterval = setInterval(slideshow, 5000);</script>
 
 </body>
 </html>
+
 
 
 
