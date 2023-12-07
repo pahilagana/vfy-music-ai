@@ -745,27 +745,9 @@ width: 50%;
 	
     <div id="homepage-content">
 <div class="slideshowContainer">
-  
-<!-- Replace the image 'src' with the images in your project.
-Javascript is set up so that you can add as many images as you like, but make sure that you match the number of 'circle' span elements (below) to the number of images -->
   <img class="imageSlides" src="https://i.ytimg.com/vi/EWVWhsBqN34/hqdefault.jpg" alt="beach side city view" />
   <img class="imageSlides" src="https://i.ytimg.com/vi/PY5RVWQHNH0/hqdefault.jpg" alt="leaf on the ground" />
-  <img class="imageSlides"onclick="searchAidcSongs()" src="https://i.ytimg.com/vi/-vGkVkQsSBA/hqdefault.jpg" alt="lake surrounded by mountains"  />
-  
-<!-- I would recommend to replace these 'span' elements with 'img' files
-for each the left and right arrow that fits your project, and size accordingly.
-I've shown 'span' elements because I didn't want to upload files. -->
-  <span id ="leftArrow" class="slideshowArrow">&#8249;</span>
-  <span id ="rightArrow" class="slideshowArrow">&#8250;</span>
-  
-  <div class="slideshowCircles">
-<!-- Filled 'dot' class is set to first image in slideshow, and then via Javascript the filled 'dot' class follows the current image.
-Make sure you match the number of these 'circle' span elements to the number of images in your slideshow. -->
-    <span class="circle dot"></span>
-    <span class="circle"></span>
-    <span class="circle"></span>
-  </div>
-  
+  <img class="imageSlides" onclick="searchAidcSongs()" src="https://i.ytimg.com/vi/-vGkVkQsSBA/hqdefault.jpg" alt="lake surrounded by mountains" />
 </div>
 
 	    
@@ -3509,11 +3491,9 @@ background: radial-gradient(circle, rgba(63,94,251,0) 0%, rgba(8,7,6,0.887957830
 
 <!-- Your HTML code remains unchanged -->
 
+
 <script>
   var imageSlides = document.getElementsByClassName('imageSlides');
-  var circles = document.getElementsByClassName('circle');
-  var leftArrow = document.getElementById('leftArrow');
-  var rightArrow = document.getElementById('rightArrow');
   var counter = 0;
 
   function hideImages() {
@@ -3522,33 +3502,17 @@ background: radial-gradient(circle, rgba(63,94,251,0) 0%, rgba(8,7,6,0.887957830
     }
   }
 
-  function removeDots() {
-    for (var i = 0; i < imageSlides.length; i++) {
-      circles[i].classList.remove('dot');
-    }
-  }
-
   function imageLoop() {
     var currentImage = imageSlides[counter];
-    var currentDot = circles[counter];
     currentImage.classList.add('visible');
-    removeDots();
-    currentDot.classList.add('dot');
     counter++;
 
     // Add click event listener to each image
-    currentImage.addEventListener('click', function() {
+    currentImage.addEventListener('click', function () {
       console.log('Image clicked: ' + counter);
       // Add your custom logic for image click here
     });
   }
-
-  function arrowClick(e) {
-    // Your arrowClick function
-  }
-
-  leftArrow.addEventListener('click', arrowClick);
-  rightArrow.addEventListener('click', arrowClick);
 
   function slideshow() {
     if (counter < imageSlides.length) {
